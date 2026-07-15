@@ -19,6 +19,17 @@ Shared domain data and types for Fathom.
   lookups (`loadSourcesFor`, `loadImagesFor`, `loadStatisticsFor`).
 - `src/validate.ts` — `validateEntity`, non-throwing validation with readable
   issues.
+- `src/derived.ts` — Country, Water Body, and Region registries derived from
+  the strait documents (countries arrays, region fields, and "A ↔ B"
+  connects values); nothing is stored twice.
+- `src/engine.ts` — the relationship engine: `getEntity(id)` for canonical
+  ids (`strait:gibraltar`, `country:spain`), strongly typed
+  `getRelated(entity, relationship)` single-hop traversal, and the
+  `getChildren`/`getParents` containment hierarchy. Because every lookup is
+  one hop, circular references can never loop the engine.
+- `src/integrity.ts` — `findBrokenReferences()`, a flat (cycle-safe) scan of
+  every reference in the dataset, distinguishing unknown ids from types that
+  have no collection yet.
 
 The strait document keeps its prototype core (required) and adds the
 canonical expansion from `docs/DATA_MODEL.md` as optional fields — names,

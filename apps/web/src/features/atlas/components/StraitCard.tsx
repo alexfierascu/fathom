@@ -1,6 +1,6 @@
 import { Link } from 'react-router';
 
-import type { Strait } from '@fathom/data';
+import { getRelated, getStraitEntity, type Strait } from '@fathom/data';
 
 import { formatLat, formatLon } from '../lib/format';
 
@@ -10,6 +10,10 @@ interface StraitCardProps {
 }
 
 export function StraitCard({ strait, onHover }: StraitCardProps) {
+  const entity = getStraitEntity(strait);
+  const region = getRelated(entity, 'region');
+  const countries = getRelated(entity, 'countries');
+
   return (
     <Link
       to={`/straits/${strait.id}`}
@@ -22,12 +26,12 @@ export function StraitCard({ strait, onHover }: StraitCardProps) {
         onHover(null);
       }}
     >
-      <div className="eyebrow">{strait.region}</div>
+      <div className="eyebrow">{region?.name ?? strait.region}</div>
       <h3>{strait.name}</h3>
       <div className="pills">
-        {strait.countries.map((country) => (
-          <span key={country} className="pill">
-            {country}
+        {countries.map((country) => (
+          <span key={country.id} className="pill">
+            {country.name}
           </span>
         ))}
       </div>

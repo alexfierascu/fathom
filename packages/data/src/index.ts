@@ -67,6 +67,14 @@ export {
   loadWildlife,
 } from './entities';
 
+// Relationship engine
+export { getChildren, getEntity, getParents, getRelated, getStraitEntity } from './engine';
+export type { EntityDataMap, EntityNode, NodeType, RelationshipMap } from './engine';
+export { connectedWaterBodyNames, slugifyName } from './derived';
+export type { Country, RegionEntity, WaterBody } from './derived';
+export { findBrokenReferences, loadAtlasDataset } from './integrity';
+export type { AtlasDataset, BrokenReference } from './integrity';
+
 // Utilities
 export { validateEntity } from './validate';
 export type { ValidationResult } from './validate';

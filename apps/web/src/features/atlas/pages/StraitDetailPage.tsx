@@ -1,5 +1,7 @@
 import { Link, useOutletContext, useParams } from 'react-router';
 
+import { getRelated, getStraitEntity } from '@fathom/data';
+
 import type { LayoutContext } from '../../../app/RootLayout';
 import { Breadcrumbs } from '../components/Breadcrumbs';
 import { StraitMap } from '../components/StraitMap';
@@ -22,6 +24,10 @@ export function StraitDetailPage() {
   }
 
   const { previous, next } = getAdjacentStraits(strait.id);
+  const entity = getStraitEntity(strait);
+  const region = getRelated(entity, 'region');
+  const countries = getRelated(entity, 'countries');
+  const regionName = region?.name ?? strait.region;
   const seo = buildStraitSeo(strait);
   const canonical = new URL(seo.path, window.location.origin).href;
 
@@ -37,16 +43,16 @@ export function StraitDetailPage() {
       <meta property="og:site_name" content="Fathom" />
 
       <Breadcrumbs
-        items={[{ label: 'Home', to: '/' }, { label: strait.region }, { label: strait.name }]}
+        items={[{ label: 'Home', to: '/' }, { label: regionName }, { label: strait.name }]}
       />
 
       <article className="detail">
-        <div className="eyebrow">{strait.region}</div>
+        <div className="eyebrow">{regionName}</div>
         <h2 className="detail-title">{strait.name}</h2>
         <div className="pills">
-          {strait.countries.map((country) => (
-            <span key={country} className="pill">
-              {country}
+          {countries.map((country) => (
+            <span key={country.id} className="pill">
+              {country.name}
             </span>
           ))}
         </div>
