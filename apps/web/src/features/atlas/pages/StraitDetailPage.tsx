@@ -6,6 +6,7 @@ import { StraitMap } from '../components/StraitMap';
 import { StraitPager } from '../components/StraitPager';
 import { formatLat, formatLon } from '../lib/format';
 import { findStraitBySlug, getAdjacentStraits } from '../lib/navigation';
+import { buildStraitSeo } from '../lib/seo';
 
 export function StraitDetailPage() {
   const { slug } = useParams();
@@ -21,9 +22,20 @@ export function StraitDetailPage() {
   }
 
   const { previous, next } = getAdjacentStraits(strait.id);
+  const seo = buildStraitSeo(strait);
+  const canonical = new URL(seo.path, window.location.origin).href;
 
   return (
     <>
+      <title>{seo.title}</title>
+      <meta name="description" content={seo.description} />
+      <link rel="canonical" href={canonical} />
+      <meta property="og:title" content={seo.title} />
+      <meta property="og:description" content={seo.description} />
+      <meta property="og:type" content="article" />
+      <meta property="og:url" content={canonical} />
+      <meta property="og:site_name" content="Fathom" />
+
       <Breadcrumbs
         items={[{ label: 'Home', to: '/' }, { label: strait.region }, { label: strait.name }]}
       />
