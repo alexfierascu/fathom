@@ -1,0 +1,7 @@
+{
+  "id": "canada",
+  "name": "Canada",
+  "code": "CA",
+  "summary": "Holds more strait-riven coastline than any nation, from Juan de Fuca to Nares.",
+  "sourceIds": ["iso-3166-country-codes"]
+}

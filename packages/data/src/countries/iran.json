@@ -1,0 +1,7 @@
+{
+  "id": "iran",
+  "name": "Iran",
+  "code": "IR",
+  "summary": "Holds the northern shore of the Strait of Hormuz, the gateway to the Persian Gulf.",
+  "sourceIds": ["iso-3166-country-codes"]
+}

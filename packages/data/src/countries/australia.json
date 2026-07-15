@@ -1,0 +1,7 @@
+{
+  "id": "australia",
+  "name": "Australia",
+  "code": "AU",
+  "summary": "Continent nation between the Torres Strait in the north and the Bass Strait in the south.",
+  "sourceIds": ["iso-3166-country-codes"]
+}

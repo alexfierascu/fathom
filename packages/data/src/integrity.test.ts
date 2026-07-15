@@ -1,7 +1,7 @@
 import { describe, expect, it } from 'vitest';
 
 import { findBrokenReferences, loadAtlasDataset, type AtlasDataset } from './integrity';
-import type { Source, Strait, WaterBody } from './schema';
+import type { Country, Source, Strait, WaterBody } from './schema';
 
 const testStrait: Strait = {
   id: 'test-strait',
@@ -40,9 +40,20 @@ const testWaterBodies: WaterBody[] = [
   },
 ];
 
+const testCountries: Country[] = [
+  {
+    id: 'testland',
+    name: 'Testland',
+    code: 'TL',
+    summary: 'A country for testing.',
+    sourceIds: ['test-source'],
+  },
+];
+
 const baseDataset: AtlasDataset = {
   straits: [testStrait],
   waterBodies: testWaterBodies,
+  countries: testCountries,
   sources: [testSource],
   images: [],
   events: [],

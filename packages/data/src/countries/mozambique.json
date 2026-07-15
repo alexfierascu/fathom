@@ -1,0 +1,7 @@
+{
+  "id": "mozambique",
+  "name": "Mozambique",
+  "code": "MZ",
+  "summary": "Fronts the Mozambique Channel along the southeast African coast.",
+  "sourceIds": ["iso-3166-country-codes"]
+}

@@ -1,0 +1,7 @@
+{
+  "id": "spain",
+  "name": "Spain",
+  "code": "ES",
+  "summary": "Holds the northern shore of the Strait of Gibraltar, with coasts on both the Atlantic and the Mediterranean.",
+  "sourceIds": ["iso-3166-country-codes"]
+}

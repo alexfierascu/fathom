@@ -1,0 +1,7 @@
+{
+  "id": "greenland",
+  "name": "Greenland",
+  "code": "GL",
+  "summary": "The world’s largest island, flanked by the Davis, Denmark, and Nares straits.",
+  "sourceIds": ["iso-3166-country-codes"]
+}

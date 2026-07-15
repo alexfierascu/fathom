@@ -1,0 +1,7 @@
+{
+  "id": "united-kingdom",
+  "name": "United Kingdom",
+  "code": "GB",
+  "summary": "An island nation commanding the Dover narrows of the English Channel and the waters of the Solent.",
+  "sourceIds": ["iso-3166-country-codes"]
+}

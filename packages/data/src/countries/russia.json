@@ -1,0 +1,7 @@
+{
+  "id": "russia",
+  "name": "Russia",
+  "code": "RU",
+  "summary": "Spans coasts from the Baltic and Black seas to the Pacific and the Arctic Northern Sea Route.",
+  "sourceIds": ["iso-3166-country-codes"]
+}

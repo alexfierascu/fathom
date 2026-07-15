@@ -1,0 +1,7 @@
+{
+  "id": "new-zealand",
+  "name": "New Zealand",
+  "code": "NZ",
+  "summary": "Two main islands split by the rough waters of Cook Strait.",
+  "sourceIds": ["iso-3166-country-codes"]
+}

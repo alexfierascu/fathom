@@ -1,0 +1,7 @@
+{
+  "id": "china",
+  "name": "China",
+  "code": "CN",
+  "summary": "Faces Taiwan across the Taiwan Strait, with coasts on the Yellow, East China, and South China seas.",
+  "sourceIds": ["iso-3166-country-codes"]
+}

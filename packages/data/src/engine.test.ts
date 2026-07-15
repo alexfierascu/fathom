@@ -58,6 +58,15 @@ describe('getRelated: reverse and derived relationships', () => {
     expect(straits.map((s) => s.id)).toContain('gibraltar');
   });
 
+  it('countries resolve neighbors across shared straits and their sources', () => {
+    const spain = getEntity('country:spain');
+    if (spain?.type !== 'country') throw new Error('expected country node');
+    expect(spain.data.code).toBe('ES');
+    expect(getRelated(spain, 'neighbors').map((c) => c.id)).toContain('morocco');
+    expect(getRelated(spain, 'neighbors').map((c) => c.id)).not.toContain('spain');
+    expect(getRelated(spain, 'sources').map((s) => s.id)).toEqual(['iso-3166-country-codes']);
+  });
+
   it('country ↔ water body is derived through shared straits', () => {
     const indonesia = getEntity('country:indonesia');
     if (indonesia?.type !== 'country') throw new Error('expected country node');

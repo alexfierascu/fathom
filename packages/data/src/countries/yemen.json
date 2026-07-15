@@ -1,0 +1,7 @@
+{
+  "id": "yemen",
+  "name": "Yemen",
+  "code": "YE",
+  "summary": "Holds the Arabian shore of Bab-el-Mandeb at the mouth of the Red Sea.",
+  "sourceIds": ["iso-3166-country-codes"]
+}

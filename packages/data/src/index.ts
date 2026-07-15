@@ -10,6 +10,9 @@
 
 // Schemas and inferred types
 export {
+  CountriesIndexSchema,
+  CountryIndexEntrySchema,
+  CountrySchema,
   ENTITY_TYPES,
   DateValueSchema,
   EditorialStatusSchema,
@@ -40,6 +43,9 @@ export {
   parseEntityId,
 } from './schema';
 export type {
+  CountriesIndex,
+  Country,
+  CountryIndexEntry,
   DateValue,
   EditorialStatus,
   EntityRef,
@@ -66,6 +72,9 @@ export type {
 // Strait loaders
 export { loadAllStraits, loadStrait, loadStraitsIndex } from './loader';
 
+// Country loaders
+export { loadAllCountries, loadCountriesIndex, loadCountry } from './countries';
+
 // Water body loaders
 export { loadAllWaterBodies, loadWaterBodiesIndex, loadWaterBody } from './water-bodies';
 
@@ -83,7 +92,7 @@ export {
 export { getChildren, getEntity, getParents, getRelated, getStraitEntity } from './engine';
 export type { EntityDataMap, EntityNode, NodeType, RelationshipMap } from './engine';
 export { connectedWaterBodyNames, slugifyName } from './derived';
-export type { Country, RegionEntity } from './derived';
+export type { RegionEntity } from './derived';
 export { findBrokenReferences, loadAtlasDataset } from './integrity';
 export type { AtlasDataset, BrokenReference } from './integrity';
 

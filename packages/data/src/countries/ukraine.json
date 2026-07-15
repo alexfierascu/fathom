@@ -1,0 +1,7 @@
+{
+  "id": "ukraine",
+  "name": "Ukraine",
+  "code": "UA",
+  "summary": "Black Sea nation on the Kerch Strait, the narrow entrance to the Sea of Azov.",
+  "sourceIds": ["iso-3166-country-codes"]
+}

@@ -1,0 +1,7 @@
+{
+  "id": "japan",
+  "name": "Japan",
+  "code": "JP",
+  "summary": "Island arc pierced by the Korea, Tsugaru, and La Pérouse straits.",
+  "sourceIds": ["iso-3166-country-codes"]
+}

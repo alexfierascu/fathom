@@ -1,0 +1,7 @@
+{
+  "id": "philippines",
+  "name": "Philippines",
+  "code": "PH",
+  "summary": "Archipelago south of the Luzon Strait and its undersea cable routes.",
+  "sourceIds": ["iso-3166-country-codes"]
+}

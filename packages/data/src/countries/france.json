@@ -1,0 +1,7 @@
+{
+  "id": "france",
+  "name": "France",
+  "code": "FR",
+  "summary": "Fronts the Channel at Dover and holds Corsica above the Strait of Bonifacio.",
+  "sourceIds": ["iso-3166-country-codes"]
+}

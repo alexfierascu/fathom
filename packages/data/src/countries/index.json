@@ -1,0 +1,202 @@
+[
+  {
+    "id": "spain",
+    "name": "Spain",
+    "code": "ES"
+  },
+  {
+    "id": "morocco",
+    "name": "Morocco",
+    "code": "MA"
+  },
+  {
+    "id": "united-kingdom",
+    "name": "United Kingdom",
+    "code": "GB"
+  },
+  {
+    "id": "france",
+    "name": "France",
+    "code": "FR"
+  },
+  {
+    "id": "italy",
+    "name": "Italy",
+    "code": "IT"
+  },
+  {
+    "id": "albania",
+    "name": "Albania",
+    "code": "AL"
+  },
+  {
+    "id": "turkey",
+    "name": "Turkey",
+    "code": "TR"
+  },
+  {
+    "id": "russia",
+    "name": "Russia",
+    "code": "RU"
+  },
+  {
+    "id": "ukraine",
+    "name": "Ukraine",
+    "code": "UA"
+  },
+  {
+    "id": "norway",
+    "name": "Norway",
+    "code": "NO"
+  },
+  {
+    "id": "denmark",
+    "name": "Denmark",
+    "code": "DK"
+  },
+  {
+    "id": "sweden",
+    "name": "Sweden",
+    "code": "SE"
+  },
+  {
+    "id": "iran",
+    "name": "Iran",
+    "code": "IR"
+  },
+  {
+    "id": "oman",
+    "name": "Oman",
+    "code": "OM"
+  },
+  {
+    "id": "yemen",
+    "name": "Yemen",
+    "code": "YE"
+  },
+  {
+    "id": "djibouti",
+    "name": "Djibouti",
+    "code": "DJ"
+  },
+  {
+    "id": "eritrea",
+    "name": "Eritrea",
+    "code": "ER"
+  },
+  {
+    "id": "mozambique",
+    "name": "Mozambique",
+    "code": "MZ"
+  },
+  {
+    "id": "madagascar",
+    "name": "Madagascar",
+    "code": "MG"
+  },
+  {
+    "id": "india",
+    "name": "India",
+    "code": "IN"
+  },
+  {
+    "id": "sri-lanka",
+    "name": "Sri Lanka",
+    "code": "LK"
+  },
+  {
+    "id": "indonesia",
+    "name": "Indonesia",
+    "code": "ID"
+  },
+  {
+    "id": "malaysia",
+    "name": "Malaysia",
+    "code": "MY"
+  },
+  {
+    "id": "singapore",
+    "name": "Singapore",
+    "code": "SG"
+  },
+  {
+    "id": "china",
+    "name": "China",
+    "code": "CN"
+  },
+  {
+    "id": "taiwan",
+    "name": "Taiwan",
+    "code": "TW"
+  },
+  {
+    "id": "philippines",
+    "name": "Philippines",
+    "code": "PH"
+  },
+  {
+    "id": "south-korea",
+    "name": "South Korea",
+    "code": "KR"
+  },
+  {
+    "id": "japan",
+    "name": "Japan",
+    "code": "JP"
+  },
+  {
+    "id": "australia",
+    "name": "Australia",
+    "code": "AU"
+  },
+  {
+    "id": "papua-new-guinea",
+    "name": "Papua New Guinea",
+    "code": "PG"
+  },
+  {
+    "id": "new-zealand",
+    "name": "New Zealand",
+    "code": "NZ"
+  },
+  {
+    "id": "united-states",
+    "name": "United States",
+    "code": "US"
+  },
+  {
+    "id": "canada",
+    "name": "Canada",
+    "code": "CA"
+  },
+  {
+    "id": "greenland",
+    "name": "Greenland",
+    "code": "GL"
+  },
+  {
+    "id": "cuba",
+    "name": "Cuba",
+    "code": "CU"
+  },
+  {
+    "id": "bahamas",
+    "name": "Bahamas",
+    "code": "BS"
+  },
+  {
+    "id": "iceland",
+    "name": "Iceland",
+    "code": "IS"
+  },
+  {
+    "id": "chile",
+    "name": "Chile",
+    "code": "CL"
+  },
+  {
+    "id": "argentina",
+    "name": "Argentina",
+    "code": "AR"
+  }
+]

@@ -1,0 +1,7 @@
+{
+  "id": "iceland",
+  "name": "Iceland",
+  "code": "IS",
+  "summary": "North Atlantic island across the Denmark Strait from Greenland.",
+  "sourceIds": ["iso-3166-country-codes"]
+}

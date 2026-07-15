@@ -1,0 +1,7 @@
+{
+  "id": "albania",
+  "name": "Albania",
+  "code": "AL",
+  "summary": "Holds the eastern shore of the Strait of Otranto, the gateway to the Adriatic.",
+  "sourceIds": ["iso-3166-country-codes"]
+}

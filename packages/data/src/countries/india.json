@@ -1,0 +1,7 @@
+{
+  "id": "india",
+  "name": "India",
+  "code": "IN",
+  "summary": "Subcontinental nation separated from Sri Lanka by the shallow Palk Strait.",
+  "sourceIds": ["iso-3166-country-codes"]
+}

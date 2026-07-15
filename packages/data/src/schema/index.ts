@@ -30,6 +30,9 @@ export {
 } from './knowledge';
 export type { HistoricalEvent, Image, Source, Statistic, Tag, Wildlife } from './knowledge';
 
+export { CountriesIndexSchema, CountryIndexEntrySchema, CountrySchema } from './country';
+export type { CountriesIndex, Country, CountryIndexEntry } from './country';
+
 export {
   WATER_BODY_TYPES,
   WaterBodiesIndexSchema,

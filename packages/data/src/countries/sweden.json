@@ -1,0 +1,7 @@
+{
+  "id": "sweden",
+  "name": "Sweden",
+  "code": "SE",
+  "summary": "Baltic nation whose western coast faces the Kattegat and the Öresund crossing to Denmark.",
+  "sourceIds": ["iso-3166-country-codes"]
+}

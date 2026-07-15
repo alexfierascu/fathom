@@ -7,6 +7,7 @@ import {
   loadTags,
   loadWildlife,
 } from './entities';
+import { loadAllCountries } from './countries';
 import { connectedWaterBodyNames, slugifyName } from './derived';
 import { loadAllStraits } from './loader';
 import { loadAllWaterBodies } from './water-bodies';
@@ -16,6 +17,7 @@ import {
   type HistoricalEvent,
   type Image,
   type Source,
+  type Country,
   type Statistic,
   type Strait,
   type Tag,
@@ -27,6 +29,7 @@ import {
 export interface AtlasDataset {
   straits: readonly Strait[];
   waterBodies: readonly WaterBody[];
+  countries: readonly Country[];
   sources: readonly Source[];
   images: readonly Image[];
   events: readonly HistoricalEvent[];
@@ -39,6 +42,7 @@ export function loadAtlasDataset(): AtlasDataset {
   return {
     straits: loadAllStraits(),
     waterBodies: loadAllWaterBodies(),
+    countries: loadAllCountries(),
     sources: loadSources(),
     images: loadImages(),
     events: loadHistoricalEvents(),
@@ -74,7 +78,7 @@ export function findBrokenReferences(
 
   const known: Partial<Record<EntityRef['type'], ReadonlySet<string>>> = {
     strait: new Set(dataset.straits.map((s) => s.id)),
-    country: new Set(derived.countriesById.keys()),
+    country: new Set(dataset.countries.map((c) => c.id)),
     'water-body': new Set(dataset.waterBodies.map((wb) => wb.id)),
     region: new Set(derived.regionsById.keys()),
     source: new Set(dataset.sources.map((s) => s.id)),
@@ -117,6 +121,21 @@ export function findBrokenReferences(
     }
     for (const name of connectedWaterBodyNames(strait)) {
       checkRef(from, 'connects', { type: 'water-body', id: slugifyName(name) });
+    }
+    for (const name of strait.countries) {
+      checkRef(from, 'countries', { type: 'country', id: slugifyName(name) });
+    }
+  }
+
+  for (const country of dataset.countries) {
+    checkIds(entityId('country', country.id), 'sourceIds', 'source', country.sourceIds);
+    if (country.coastline) {
+      checkIds(
+        entityId('country', country.id),
+        'coastline.sourceIds',
+        'source',
+        country.coastline.sourceIds,
+      );
     }
   }
 

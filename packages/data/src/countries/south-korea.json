@@ -1,0 +1,7 @@
+{
+  "id": "south-korea",
+  "name": "South Korea",
+  "code": "KR",
+  "summary": "Peninsula nation on the Korea Strait crossing to Japan.",
+  "sourceIds": ["iso-3166-country-codes"]
+}

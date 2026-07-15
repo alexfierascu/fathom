@@ -26,13 +26,6 @@ describe('connectedWaterBodyNames', () => {
 describe('derivedRegistries', () => {
   const registries = derivedRegistries();
 
-  it('derives every country named by a strait, exactly once', () => {
-    const spain = registries.countriesById.get('spain');
-    expect(spain).toEqual({ id: 'spain', name: 'Spain' });
-    const names = [...registries.countriesById.values()].map((c) => c.name);
-    expect(new Set(names).size).toBe(names.length);
-  });
-
   it('derives all five regions', () => {
     expect(registries.regionsById.size).toBe(5);
     expect(registries.regionsById.get('americas-arctic')?.name).toBe('Americas & Arctic');

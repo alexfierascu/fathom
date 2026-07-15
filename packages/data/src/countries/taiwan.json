@@ -1,0 +1,7 @@
+{
+  "id": "taiwan",
+  "name": "Taiwan",
+  "code": "TW",
+  "summary": "Island across the Taiwan Strait from the mainland, flanking the Luzon Strait to its south.",
+  "sourceIds": ["iso-3166-country-codes"]
+}

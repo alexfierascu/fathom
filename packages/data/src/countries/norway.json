@@ -1,0 +1,7 @@
+{
+  "id": "norway",
+  "name": "Norway",
+  "code": "NO",
+  "summary": "Atlantic seafaring nation whose southern coast meets the Skagerrak.",
+  "sourceIds": ["iso-3166-country-codes"]
+}

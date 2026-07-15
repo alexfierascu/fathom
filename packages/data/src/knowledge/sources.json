@@ -6,5 +6,12 @@
     "publisher": "International Hydrographic Organization",
     "locator": "IHO S-23, 3rd edition",
     "publishedOn": "1953"
+  },
+  {
+    "id": "iso-3166-country-codes",
+    "type": "dataset",
+    "title": "ISO 3166-1 Country Codes",
+    "publisher": "International Organization for Standardization",
+    "locator": "ISO 3166-1:2020"
   }
 ]

@@ -1,4 +1,5 @@
-import { derivedRegistries, slugifyName, type Country, type RegionEntity } from './derived';
+import { loadAllCountries, loadCountry } from './countries';
+import { derivedRegistries, slugifyName, type RegionEntity } from './derived';
 import { loadHistoricalEvents, loadImages, loadSources, loadTags, loadWildlife } from './entities';
 import { loadAllStraits, loadStrait } from './loader';
 import { loadAllWaterBodies, loadWaterBody } from './water-bodies';
@@ -11,6 +12,7 @@ import {
   type Image,
   type Source,
   type Statistic,
+  type Country,
   type Strait,
   type Tag,
   type WaterBody,
@@ -99,6 +101,9 @@ export interface RelationshipMap {
   country: {
     straits: readonly EntityNode<'strait'>[];
     waterBodies: readonly EntityNode<'water-body'>[];
+    /** Countries sharing at least one strait with this one. */
+    neighbors: readonly EntityNode<'country'>[];
+    sources: readonly EntityNode<'source'>[];
   };
   'water-body': {
     straits: readonly EntityNode<'strait'>[];
@@ -152,8 +157,7 @@ const RESOLVERS: {
   strait: {
     countries: (n) =>
       n.data.countries.flatMap((name) => {
-        const id = derivedRegistries().countryIdByName.get(name);
-        const country = id ? derivedRegistries().countriesById.get(id) : undefined;
+        const country = loadAllCountries().find((c) => c.id === slugifyName(name));
         return country ? [countryNode(country)] : [];
       }),
     region: (n) => {
@@ -220,6 +224,17 @@ const RESOLVERS: {
           RESOLVERS.strait.waterBodies(strait),
         ),
       ),
+    neighbors: (n) =>
+      dedupeById(
+        straitsOfIds(derivedRegistries().straitIdsByCountryId.get(n.id)).flatMap((strait) =>
+          RESOLVERS.strait.countries(strait),
+        ),
+      ).filter((country) => country.id !== n.id),
+    sources: (n) =>
+      n.data.sourceIds.flatMap((id) => {
+        const source = loadSources().find((src) => src.id === id);
+        return source ? [sourceNode(source)] : [];
+      }),
   },
   'water-body': {
     straits: (n) => straitsOfIds(derivedRegistries().straitIdsByWaterBodyId.get(n.id)),
@@ -305,8 +320,11 @@ export function getEntity(id: string): EntityNode | null {
       }
     }
     case 'country': {
-      const country = derivedRegistries().countriesById.get(token);
-      return country ? countryNode(country) : null;
+      try {
+        return countryNode(loadCountry(token));
+      } catch {
+        return null;
+      }
     }
     case 'water-body': {
       try {

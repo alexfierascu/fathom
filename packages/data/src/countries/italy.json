@@ -1,0 +1,7 @@
+{
+  "id": "italy",
+  "name": "Italy",
+  "code": "IT",
+  "summary": "A peninsula flanked by the Tyrrhenian, Ionian, and Adriatic seas, split from Sicily by the Strait of Messina.",
+  "sourceIds": ["iso-3166-country-codes"]
+}

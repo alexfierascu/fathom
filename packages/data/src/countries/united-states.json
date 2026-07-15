@@ -1,0 +1,7 @@
+{
+  "id": "united-states",
+  "name": "United States",
+  "code": "US",
+  "summary": "Faces Russia across the Bering Strait and Cuba across the Straits of Florida.",
+  "sourceIds": ["iso-3166-country-codes"]
+}

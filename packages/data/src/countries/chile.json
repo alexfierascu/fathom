@@ -1,0 +1,7 @@
+{
+  "id": "chile",
+  "name": "Chile",
+  "code": "CL",
+  "summary": "Holds most of the Strait of Magellan, the classic passage between the oceans.",
+  "sourceIds": ["iso-3166-country-codes"]
+}

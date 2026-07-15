@@ -1,0 +1,7 @@
+{
+  "id": "madagascar",
+  "name": "Madagascar",
+  "code": "MG",
+  "summary": "The great island across the Mozambique Channel from the African mainland.",
+  "sourceIds": ["iso-3166-country-codes"]
+}

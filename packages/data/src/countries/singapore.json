@@ -1,0 +1,7 @@
+{
+  "id": "singapore",
+  "name": "Singapore",
+  "code": "SG",
+  "summary": "City-state on the strait that bears its name, one of the busiest shipping lanes on Earth.",
+  "sourceIds": ["iso-3166-country-codes"]
+}

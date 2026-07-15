@@ -1,0 +1,7 @@
+{
+  "id": "morocco",
+  "name": "Morocco",
+  "code": "MA",
+  "summary": "Faces Spain across the Strait of Gibraltar, where Africa comes closest to Europe.",
+  "sourceIds": ["iso-3166-country-codes"]
+}

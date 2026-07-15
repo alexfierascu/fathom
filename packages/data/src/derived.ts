@@ -2,18 +2,12 @@ import { loadAllStraits } from './loader';
 import type { Strait, StraitRegion } from './schema';
 
 /**
- * Countries and regions are not stored as documents yet — duplicating them
- * would violate the single-source rule, so they are derived from the strait
- * documents. Water bodies ARE first-class documents (src/water-bodies/);
- * here only the strait ↔ water body edges are derived, by slugifying the
- * `connects` values of the form "A ↔ B" (prose values yield none). Edge ids
- * must resolve to water body documents — integrity checking enforces it.
+ * Regions are not stored as documents yet, so they are derived from the
+ * strait documents. Countries and water bodies ARE first-class documents;
+ * here only edges are derived — strait ↔ country from `countries` names and
+ * strait ↔ water body from "A ↔ B" `connects` values — by slugifying names.
+ * Edge ids must resolve to documents; integrity checking enforces it.
  */
-
-export interface Country {
-  id: string;
-  name: string;
-}
 
 export interface RegionEntity {
   id: string;
@@ -37,8 +31,6 @@ export function connectedWaterBodyNames(strait: Strait): readonly string[] {
 }
 
 export interface DerivedRegistries {
-  countriesById: ReadonlyMap<string, Country>;
-  countryIdByName: ReadonlyMap<string, string>;
   regionsById: ReadonlyMap<string, RegionEntity>;
   /** Membership and edge maps, all in canonical strait order. */
   straitIdsByCountryId: ReadonlyMap<string, readonly string[]>;
@@ -50,8 +42,6 @@ export interface DerivedRegistries {
 let cache: DerivedRegistries | null = null;
 
 export function buildDerivedRegistries(straits: readonly Strait[]): DerivedRegistries {
-  const countriesById = new Map<string, Country>();
-  const countryIdByName = new Map<string, string>();
   const regionsById = new Map<string, RegionEntity>();
   const straitIdsByCountryId = new Map<string, string[]>();
   const straitIdsByWaterBodyId = new Map<string, string[]>();
@@ -66,12 +56,7 @@ export function buildDerivedRegistries(straits: readonly Strait[]): DerivedRegis
 
   for (const strait of straits) {
     for (const countryName of strait.countries) {
-      const id = slugifyName(countryName);
-      if (!countriesById.has(id)) {
-        countriesById.set(id, { id, name: countryName });
-        countryIdByName.set(countryName, id);
-      }
-      append(straitIdsByCountryId, id, strait.id);
+      append(straitIdsByCountryId, slugifyName(countryName), strait.id);
     }
 
     const regionId = slugifyName(strait.region);
@@ -88,8 +73,6 @@ export function buildDerivedRegistries(straits: readonly Strait[]): DerivedRegis
   }
 
   return {
-    countriesById,
-    countryIdByName,
     regionsById,
     straitIdsByCountryId,
     straitIdsByWaterBodyId,

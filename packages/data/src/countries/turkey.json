@@ -1,0 +1,7 @@
+{
+  "id": "turkey",
+  "name": "Turkey",
+  "code": "TR",
+  "summary": "Controls both Turkish Straits — the Bosporus and the Dardanelles — between the Black Sea and the Aegean.",
+  "sourceIds": ["iso-3166-country-codes"]
+}
