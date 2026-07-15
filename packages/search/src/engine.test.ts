@@ -82,8 +82,10 @@ describe('createSearchIndex', () => {
 });
 
 describe('groupResults', () => {
-  it('groups results by type in canonical order, skipping empty groups', () => {
+  it('groups by type with the best-matching group first', () => {
     const groups = groupResults(index.search('denmark'));
-    expect(groups.map((g) => g.type)).toEqual(['strait', 'country']);
+    expect(groups.map((g) => g.type)).toEqual(['country', 'strait']);
+    const tied = groupResults(index.search('e'));
+    expect(tied.length).toBeGreaterThan(1);
   });
 });

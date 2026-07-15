@@ -41,6 +41,9 @@ importers:
       '@fathom/data':
         specifier: workspace:*
         version: link:../../packages/data
+      '@fathom/search':
+        specifier: workspace:*
+        version: link:../../packages/search
       leaflet:
         specifier: ^1.9.4
         version: 1.9.4

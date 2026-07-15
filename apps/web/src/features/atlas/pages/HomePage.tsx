@@ -1,22 +1,40 @@
 import { useMemo, useState } from 'react';
 
-import { useOutletContext } from 'react-router';
+import { useOutletContext, useSearchParams } from 'react-router';
 
 import { loadAllStraits } from '@fathom/data';
 
 import type { LayoutContext } from '../../../app/RootLayout';
 import { MapPanel } from '../components/MapPanel';
+import { GlobalSearch } from '../../search/GlobalSearch';
 import { RegionChips } from '../components/RegionChips';
 import { ResultsGrid } from '../components/ResultsGrid';
-import { SearchBar } from '../components/SearchBar';
 import { filterStraits, isFiltering, type RegionFilter } from '../lib/filtering';
+import { REGION_FILTERS } from '../lib/regions';
 
 const STRAITS = loadAllStraits();
 
 export function HomePage() {
   const { tileStyle } = useOutletContext<LayoutContext>();
+  const [searchParams] = useSearchParams();
   const [query, setQuery] = useState('');
-  const [activeRegion, setActiveRegion] = useState<RegionFilter>('All');
+
+  // Region search results land on /?region=…; adopt it as the active filter,
+  // both on first load and when it changes. State is adjusted during render
+  // (not in an effect) per React guidance.
+  const regionParam = searchParams.get('region');
+  const validRegion = (value: string | null): value is RegionFilter =>
+    value !== null && (REGION_FILTERS as readonly string[]).includes(value);
+  const [activeRegion, setActiveRegion] = useState<RegionFilter>(
+    validRegion(regionParam) ? regionParam : 'All',
+  );
+  const [adoptedParam, setAdoptedParam] = useState(regionParam);
+  if (regionParam !== adoptedParam) {
+    setAdoptedParam(regionParam);
+    if (validRegion(regionParam)) {
+      setActiveRegion(regionParam);
+    }
+  }
   const [hoveredId, setHoveredId] = useState<string | null>(null);
 
   const filtered = useMemo(
@@ -32,7 +50,7 @@ export function HomePage() {
   return (
     <>
       <div className="controls">
-        <SearchBar query={query} onQueryChange={setQuery} />
+        <GlobalSearch query={query} onQueryChange={setQuery} />
         <RegionChips
           straits={STRAITS}
           activeRegion={activeRegion}

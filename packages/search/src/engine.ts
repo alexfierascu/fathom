@@ -162,10 +162,20 @@ export interface SearchResultGroup {
   results: readonly SearchResult[];
 }
 
-/** Groups results for display, in the atlas's canonical type order. */
+/**
+ * Groups results for display. Groups are ordered by their best-scoring
+ * result (canonical type order as the tiebreak), so the strongest match is
+ * always first on screen and first to open on Enter.
+ */
 export function groupResults(results: readonly SearchResult[]): readonly SearchResultGroup[] {
-  return SEARCHABLE_TYPES.map((type) => ({
+  return SEARCHABLE_TYPES.map((type, position) => ({
     type,
+    position,
     results: results.filter((result) => result.document.type === type),
-  })).filter((group) => group.results.length > 0);
+  }))
+    .filter((group) => group.results.length > 0)
+    .sort(
+      (a, b) => (b.results[0]?.score ?? 0) - (a.results[0]?.score ?? 0) || a.position - b.position,
+    )
+    .map(({ type, results: groupResults }) => ({ type, results: groupResults }));
 }
