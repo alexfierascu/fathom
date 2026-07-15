@@ -1,0 +1,8 @@
+{
+  "id": "skagerrak",
+  "name": "Skagerrak",
+  "type": "sea",
+  "summary": "The strait-like sea area between Norway, Denmark, and Sweden, linking the North Sea toward the Baltic.",
+  "parentId": "north-sea",
+  "sourceIds": ["iho-limits-of-oceans-and-seas"]
+}

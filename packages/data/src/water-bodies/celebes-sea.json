@@ -1,0 +1,8 @@
+{
+  "id": "celebes-sea",
+  "name": "Celebes Sea",
+  "type": "sea",
+  "summary": "The deep basin between Borneo, Sulawesi, and the southern Philippines.",
+  "parentId": "pacific-ocean",
+  "sourceIds": ["iho-limits-of-oceans-and-seas"]
+}

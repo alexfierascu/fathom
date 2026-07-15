@@ -1,0 +1,8 @@
+{
+  "id": "sea-of-okhotsk",
+  "name": "Sea of Okhotsk",
+  "type": "sea",
+  "summary": "The cold marginal sea between Sakhalin, the Kuril Islands, and Kamchatka.",
+  "parentId": "pacific-ocean",
+  "sourceIds": ["iho-limits-of-oceans-and-seas"]
+}

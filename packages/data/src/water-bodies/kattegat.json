@@ -1,0 +1,8 @@
+{
+  "id": "kattegat",
+  "name": "Kattegat",
+  "type": "sea",
+  "summary": "The shallow sea between Denmark and Sweden, on the way from the Skagerrak to the Baltic.",
+  "parentId": "north-sea",
+  "sourceIds": ["iho-limits-of-oceans-and-seas"]
+}

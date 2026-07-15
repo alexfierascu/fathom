@@ -21,6 +21,11 @@ export {
   NameSchema,
   STRAIT_REGIONS,
   SlugSchema,
+  WATER_BODY_TYPES,
+  WaterBodiesIndexSchema,
+  WaterBodyIndexEntrySchema,
+  WaterBodySchema,
+  WaterBodyTypeSchema,
   SourceSchema,
   StatisticSchema,
   StraitDimensionsSchema,
@@ -51,11 +56,18 @@ export type {
   StraitRegion,
   StraitsIndex,
   Tag,
+  WaterBodiesIndex,
+  WaterBody,
+  WaterBodyIndexEntry,
+  WaterBodyType,
   Wildlife,
 } from './schema';
 
 // Strait loaders
 export { loadAllStraits, loadStrait, loadStraitsIndex } from './loader';
+
+// Water body loaders
+export { loadAllWaterBodies, loadWaterBodiesIndex, loadWaterBody } from './water-bodies';
 
 // Knowledge-layer loaders
 export {
@@ -71,7 +83,7 @@ export {
 export { getChildren, getEntity, getParents, getRelated, getStraitEntity } from './engine';
 export type { EntityDataMap, EntityNode, NodeType, RelationshipMap } from './engine';
 export { connectedWaterBodyNames, slugifyName } from './derived';
-export type { Country, RegionEntity, WaterBody } from './derived';
+export type { Country, RegionEntity } from './derived';
 export { findBrokenReferences, loadAtlasDataset } from './integrity';
 export type { AtlasDataset, BrokenReference } from './integrity';
 

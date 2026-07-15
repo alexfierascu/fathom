@@ -1,0 +1,8 @@
+{
+  "id": "salish-sea",
+  "name": "Salish Sea",
+  "type": "sea",
+  "summary": "The inland sea shared by British Columbia and Washington State.",
+  "parentId": "pacific-ocean",
+  "sourceIds": ["iho-limits-of-oceans-and-seas"]
+}

@@ -105,9 +105,28 @@ describe('hierarchy', () => {
     expect(getChildren(getStraitEntity(loadStrait('gibraltar')))).toEqual([]);
   });
 
-  it('water bodies report their regions as parents', () => {
+  it('water bodies follow the document hierarchy for parents and children', () => {
     const mediterranean = getEntity('water-body:mediterranean-sea');
-    if (!mediterranean) throw new Error('missing water body');
-    expect(getParents(mediterranean).map((p) => p.id)).toEqual(['europe']);
+    if (mediterranean?.type !== 'water-body') throw new Error('missing water body');
+
+    expect(getParents(mediterranean).map((p) => p.entityId)).toEqual(['water-body:atlantic-ocean']);
+    expect(getRelated(mediterranean, 'parent')?.id).toBe('atlantic-ocean');
+
+    const childIds = getChildren(mediterranean).map((c) => c.id);
+    expect(childIds).toContain('aegean-sea');
+    expect(childIds).toContain('black-sea');
+
+    const atlantic = getEntity('water-body:atlantic-ocean');
+    if (atlantic?.type !== 'water-body') throw new Error('missing ocean');
+    expect(getParents(atlantic)).toEqual([]);
+    expect(getRelated(atlantic, 'children').map((c) => c.id)).toContain('mediterranean-sea');
+  });
+
+  it('water bodies cite their sources through the engine', () => {
+    const mediterranean = getEntity('water-body:mediterranean-sea');
+    if (mediterranean?.type !== 'water-body') throw new Error('missing water body');
+    expect(getRelated(mediterranean, 'sources').map((s) => s.id)).toEqual([
+      'iho-limits-of-oceans-and-seas',
+    ]);
   });
 });

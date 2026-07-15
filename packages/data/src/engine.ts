@@ -1,12 +1,7 @@
-import {
-  derivedRegistries,
-  slugifyName,
-  type Country,
-  type RegionEntity,
-  type WaterBody,
-} from './derived';
+import { derivedRegistries, slugifyName, type Country, type RegionEntity } from './derived';
 import { loadHistoricalEvents, loadImages, loadSources, loadTags, loadWildlife } from './entities';
 import { loadAllStraits, loadStrait } from './loader';
+import { loadAllWaterBodies, loadWaterBody } from './water-bodies';
 import { loadStatisticsFor } from './resolve';
 import {
   entityId,
@@ -18,6 +13,7 @@ import {
   type Statistic,
   type Strait,
   type Tag,
+  type WaterBody,
   type Wildlife,
 } from './schema';
 
@@ -108,6 +104,10 @@ export interface RelationshipMap {
     straits: readonly EntityNode<'strait'>[];
     countries: readonly EntityNode<'country'>[];
     regions: readonly EntityNode<'region'>[];
+    /** one-to-one: the containing water body (null for oceans). */
+    parent: EntityNode<'water-body'> | null;
+    children: readonly EntityNode<'water-body'>[];
+    sources: readonly EntityNode<'source'>[];
   };
   region: {
     straits: readonly EntityNode<'strait'>[];
@@ -161,12 +161,11 @@ const RESOLVERS: {
       return region ? regionNode(region) : null;
     },
     waterBodies: (n) => {
-      const { waterBodyIdsByStraitId, waterBodiesById } = derivedRegistries();
-      const derivedIds = waterBodyIdsByStraitId.get(n.id) ?? [];
+      const derivedIds = derivedRegistries().waterBodyIdsByStraitId.get(n.id) ?? [];
       const explicitIds = (n.data.connectsWaterBodies ?? []).map((ref) => ref.id);
       return dedupeById(
         [...explicitIds, ...derivedIds].flatMap((id) => {
-          const body = waterBodiesById.get(id);
+          const body = loadAllWaterBodies().find((wb) => wb.id === id);
           return body ? [waterBodyNode(body)] : [];
         }),
       );
@@ -237,6 +236,21 @@ const RESOLVERS: {
           return region ? [region] : [];
         }),
       ),
+    parent: (n) => {
+      const parentId = n.data.parentId;
+      if (parentId === undefined) return null;
+      const parent = loadAllWaterBodies().find((wb) => wb.id === parentId);
+      return parent ? waterBodyNode(parent) : null;
+    },
+    children: (n) =>
+      loadAllWaterBodies()
+        .filter((wb) => wb.parentId === n.id)
+        .map(waterBodyNode),
+    sources: (n) =>
+      n.data.sourceIds.flatMap((id) => {
+        const source = loadSources().find((src) => src.id === id);
+        return source ? [sourceNode(source)] : [];
+      }),
   },
   region: {
     straits: (n) => straitsOfIds(derivedRegistries().straitIdsByRegionId.get(n.id)),
@@ -295,8 +309,11 @@ export function getEntity(id: string): EntityNode | null {
       return country ? countryNode(country) : null;
     }
     case 'water-body': {
-      const body = derivedRegistries().waterBodiesById.get(token);
-      return body ? waterBodyNode(body) : null;
+      try {
+        return waterBodyNode(loadWaterBody(token));
+      } catch {
+        return null;
+      }
     }
     case 'region': {
       const region = derivedRegistries().regionsById.get(token);
@@ -360,6 +377,8 @@ export function getChildren(entity: EntityNode): readonly EntityNode[] {
   switch (entity.type) {
     case 'region':
       return [...getRelated(entity, 'straits'), ...getRelated(entity, 'waterBodies')];
+    case 'water-body':
+      return getRelated(entity, 'children');
     case 'strait':
       return [
         ...getRelated(entity, 'images'),
@@ -377,8 +396,10 @@ export function getParents(entity: EntityNode): readonly EntityNode[] {
       const region = getRelated(entity, 'region');
       return region ? [region] : [];
     }
-    case 'water-body':
-      return getRelated(entity, 'regions');
+    case 'water-body': {
+      const parent = getRelated(entity, 'parent');
+      return parent ? [parent] : [];
+    }
     case 'image':
       return getRelated(entity, 'depicts');
     case 'historical-event':

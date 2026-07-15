@@ -1,0 +1,8 @@
+{
+  "id": "mediterranean-sea",
+  "name": "Mediterranean Sea",
+  "type": "sea",
+  "summary": "An intercontinental sea between Europe, Africa, and Asia, connected to the Atlantic at Gibraltar.",
+  "parentId": "atlantic-ocean",
+  "sourceIds": ["iho-limits-of-oceans-and-seas"]
+}

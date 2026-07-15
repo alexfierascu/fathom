@@ -1,0 +1,8 @@
+{
+  "id": "labrador-sea",
+  "name": "Labrador Sea",
+  "type": "sea",
+  "summary": "The arm of the North Atlantic between Labrador and Greenland.",
+  "parentId": "atlantic-ocean",
+  "sourceIds": ["iho-limits-of-oceans-and-seas"]
+}

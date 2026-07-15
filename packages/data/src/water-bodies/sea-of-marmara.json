@@ -1,0 +1,8 @@
+{
+  "id": "sea-of-marmara",
+  "name": "Sea of Marmara",
+  "type": "sea",
+  "summary": "The small inland sea between the Bosporus and the Dardanelles, lying entirely within Turkey.",
+  "parentId": "mediterranean-sea",
+  "sourceIds": ["iho-limits-of-oceans-and-seas"]
+}

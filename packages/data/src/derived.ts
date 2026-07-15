@@ -2,19 +2,15 @@ import { loadAllStraits } from './loader';
 import type { Strait, StraitRegion } from './schema';
 
 /**
- * Countries, water bodies, and regions are not stored as documents yet —
- * duplicating them would violate the single-source rule. They are derived
- * from the strait documents: countries from `countries`, regions from
- * `region`, and water bodies from `connects` values of the form "A ↔ B"
- * (prose values like "Separates Corsica from Sardinia" yield none).
+ * Countries and regions are not stored as documents yet — duplicating them
+ * would violate the single-source rule, so they are derived from the strait
+ * documents. Water bodies ARE first-class documents (src/water-bodies/);
+ * here only the strait ↔ water body edges are derived, by slugifying the
+ * `connects` values of the form "A ↔ B" (prose values yield none). Edge ids
+ * must resolve to water body documents — integrity checking enforces it.
  */
 
 export interface Country {
-  id: string;
-  name: string;
-}
-
-export interface WaterBody {
   id: string;
   name: string;
 }
@@ -43,9 +39,8 @@ export function connectedWaterBodyNames(strait: Strait): readonly string[] {
 export interface DerivedRegistries {
   countriesById: ReadonlyMap<string, Country>;
   countryIdByName: ReadonlyMap<string, string>;
-  waterBodiesById: ReadonlyMap<string, WaterBody>;
   regionsById: ReadonlyMap<string, RegionEntity>;
-  /** Membership maps, all in canonical strait order. */
+  /** Membership and edge maps, all in canonical strait order. */
   straitIdsByCountryId: ReadonlyMap<string, readonly string[]>;
   straitIdsByWaterBodyId: ReadonlyMap<string, readonly string[]>;
   straitIdsByRegionId: ReadonlyMap<string, readonly string[]>;
@@ -57,7 +52,6 @@ let cache: DerivedRegistries | null = null;
 export function buildDerivedRegistries(straits: readonly Strait[]): DerivedRegistries {
   const countriesById = new Map<string, Country>();
   const countryIdByName = new Map<string, string>();
-  const waterBodiesById = new Map<string, WaterBody>();
   const regionsById = new Map<string, RegionEntity>();
   const straitIdsByCountryId = new Map<string, string[]>();
   const straitIdsByWaterBodyId = new Map<string, string[]>();
@@ -88,9 +82,6 @@ export function buildDerivedRegistries(straits: readonly Strait[]): DerivedRegis
 
     for (const waterBodyName of connectedWaterBodyNames(strait)) {
       const id = slugifyName(waterBodyName);
-      if (!waterBodiesById.has(id)) {
-        waterBodiesById.set(id, { id, name: waterBodyName });
-      }
       append(straitIdsByWaterBodyId, id, strait.id);
       append(waterBodyIdsByStraitId, strait.id, id);
     }
@@ -99,7 +90,6 @@ export function buildDerivedRegistries(straits: readonly Strait[]): DerivedRegis
   return {
     countriesById,
     countryIdByName,
-    waterBodiesById,
     regionsById,
     straitIdsByCountryId,
     straitIdsByWaterBodyId,

@@ -1,0 +1,7 @@
+{
+  "id": "arctic-ocean",
+  "name": "Arctic Ocean",
+  "type": "ocean",
+  "summary": "The smallest and coldest ocean, largely ice-covered, surrounding the North Pole.",
+  "sourceIds": ["iho-limits-of-oceans-and-seas"]
+}

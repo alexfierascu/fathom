@@ -1,0 +1,8 @@
+{
+  "id": "baltic-sea",
+  "name": "Baltic Sea",
+  "type": "sea",
+  "summary": "A brackish inland sea of northern Europe, reached only through the Danish straits.",
+  "parentId": "atlantic-ocean",
+  "sourceIds": ["iho-limits-of-oceans-and-seas"]
+}

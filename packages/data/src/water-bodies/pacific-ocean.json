@@ -1,0 +1,7 @@
+{
+  "id": "pacific-ocean",
+  "name": "Pacific Ocean",
+  "type": "ocean",
+  "summary": "The largest and deepest ocean, covering a third of the planet between Asia, Oceania, and the Americas.",
+  "sourceIds": ["iho-limits-of-oceans-and-seas"]
+}

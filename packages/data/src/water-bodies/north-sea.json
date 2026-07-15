@@ -1,0 +1,8 @@
+{
+  "id": "north-sea",
+  "name": "North Sea",
+  "type": "sea",
+  "summary": "A shallow shelf sea between Britain and continental Europe, among the busiest shipping areas in the world.",
+  "parentId": "atlantic-ocean",
+  "sourceIds": ["iho-limits-of-oceans-and-seas"]
+}

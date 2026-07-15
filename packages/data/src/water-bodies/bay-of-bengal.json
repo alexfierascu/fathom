@@ -1,0 +1,8 @@
+{
+  "id": "bay-of-bengal",
+  "name": "Bay of Bengal",
+  "type": "bay",
+  "summary": "The vast bay of the northeastern Indian Ocean, bounded by India, Bangladesh, and Myanmar.",
+  "parentId": "indian-ocean",
+  "sourceIds": ["iho-limits-of-oceans-and-seas"]
+}

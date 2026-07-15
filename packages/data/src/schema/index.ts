@@ -31,6 +31,15 @@ export {
 export type { HistoricalEvent, Image, Source, Statistic, Tag, Wildlife } from './knowledge';
 
 export {
+  WATER_BODY_TYPES,
+  WaterBodiesIndexSchema,
+  WaterBodyIndexEntrySchema,
+  WaterBodySchema,
+  WaterBodyTypeSchema,
+} from './water-body';
+export type { WaterBodiesIndex, WaterBody, WaterBodyIndexEntry, WaterBodyType } from './water-body';
+
+export {
   STRAIT_REGIONS,
   StraitDimensionsSchema,
   StraitIndexEntrySchema,

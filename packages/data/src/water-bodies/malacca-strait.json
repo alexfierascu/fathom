@@ -1,0 +1,8 @@
+{
+  "id": "malacca-strait",
+  "name": "Malacca Strait",
+  "type": "strait",
+  "summary": "The waters of the Strait of Malacca, treated here as the connecting water toward the South China Sea.",
+  "parentId": "indian-ocean",
+  "sourceIds": ["iho-limits-of-oceans-and-seas"]
+}

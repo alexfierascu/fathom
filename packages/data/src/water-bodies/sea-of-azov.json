@@ -1,0 +1,8 @@
+{
+  "id": "sea-of-azov",
+  "name": "Sea of Azov",
+  "type": "sea",
+  "summary": "The shallow northern lobe of the Black Sea, entered through the Kerch Strait.",
+  "parentId": "black-sea",
+  "sourceIds": ["iho-limits-of-oceans-and-seas"]
+}

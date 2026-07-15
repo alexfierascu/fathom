@@ -1,0 +1,8 @@
+{
+  "id": "gulf-of-aden",
+  "name": "Gulf of Aden",
+  "type": "gulf",
+  "summary": "The gulf between Yemen and the Horn of Africa, linking the Red Sea with the wider Indian Ocean.",
+  "parentId": "indian-ocean",
+  "sourceIds": ["iho-limits-of-oceans-and-seas"]
+}

@@ -10,8 +10,12 @@ import {
 } from './entities';
 
 describe('knowledge collections', () => {
-  it('load and validate as empty until sourced data arrives', () => {
-    expect(loadSources()).toEqual([]);
+  it('loads and validates the sources on record', () => {
+    const ids = loadSources().map((source) => source.id);
+    expect(ids).toContain('iho-limits-of-oceans-and-seas');
+  });
+
+  it('loads the still-empty collections as empty', () => {
     expect(loadImages()).toEqual([]);
     expect(loadHistoricalEvents()).toEqual([]);
     expect(loadWildlife()).toEqual([]);

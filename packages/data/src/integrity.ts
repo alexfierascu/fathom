@@ -7,7 +7,9 @@ import {
   loadTags,
   loadWildlife,
 } from './entities';
+import { connectedWaterBodyNames, slugifyName } from './derived';
 import { loadAllStraits } from './loader';
+import { loadAllWaterBodies } from './water-bodies';
 import {
   entityId,
   type EntityRef,
@@ -17,12 +19,14 @@ import {
   type Statistic,
   type Strait,
   type Tag,
+  type WaterBody,
   type Wildlife,
 } from './schema';
 
 /** Every collection the integrity checker validates, injectable for tests. */
 export interface AtlasDataset {
   straits: readonly Strait[];
+  waterBodies: readonly WaterBody[];
   sources: readonly Source[];
   images: readonly Image[];
   events: readonly HistoricalEvent[];
@@ -34,6 +38,7 @@ export interface AtlasDataset {
 export function loadAtlasDataset(): AtlasDataset {
   return {
     straits: loadAllStraits(),
+    waterBodies: loadAllWaterBodies(),
     sources: loadSources(),
     images: loadImages(),
     events: loadHistoricalEvents(),
@@ -70,7 +75,7 @@ export function findBrokenReferences(
   const known: Partial<Record<EntityRef['type'], ReadonlySet<string>>> = {
     strait: new Set(dataset.straits.map((s) => s.id)),
     country: new Set(derived.countriesById.keys()),
-    'water-body': new Set(derived.waterBodiesById.keys()),
+    'water-body': new Set(dataset.waterBodies.map((wb) => wb.id)),
     region: new Set(derived.regionsById.keys()),
     source: new Set(dataset.sources.map((s) => s.id)),
     image: new Set(dataset.images.map((i) => i.id)),
@@ -110,6 +115,17 @@ export function findBrokenReferences(
     for (const [dimension, measurement] of Object.entries(strait.dimensions ?? {})) {
       checkIds(from, `dimensions.${dimension}.sourceIds`, 'source', measurement.sourceIds);
     }
+    for (const name of connectedWaterBodyNames(strait)) {
+      checkRef(from, 'connects', { type: 'water-body', id: slugifyName(name) });
+    }
+  }
+
+  for (const waterBody of dataset.waterBodies) {
+    const from = entityId('water-body', waterBody.id);
+    if (waterBody.parentId !== undefined) {
+      checkRef(from, 'parentId', { type: 'water-body', id: waterBody.parentId });
+    }
+    checkIds(from, 'sourceIds', 'source', waterBody.sourceIds);
   }
 
   for (const image of dataset.images) {

@@ -1,7 +1,7 @@
 import { describe, expect, it } from 'vitest';
 
 import { findBrokenReferences, loadAtlasDataset, type AtlasDataset } from './integrity';
-import type { Strait } from './schema';
+import type { Source, Strait, WaterBody } from './schema';
 
 const testStrait: Strait = {
   id: 'test-strait',
@@ -14,9 +14,36 @@ const testStrait: Strait = {
   note: 'A strait for testing.',
 };
 
-const emptyDataset: AtlasDataset = {
+const testSource: Source = {
+  id: 'test-source',
+  type: 'website',
+  title: 'Test Source',
+  publisher: 'Testers',
+  locator: 'https://example.test',
+};
+
+const testWaterBodies: WaterBody[] = [
+  {
+    id: 'trial-ocean',
+    name: 'Trial Ocean',
+    type: 'ocean',
+    summary: 'An ocean for testing.',
+    sourceIds: ['test-source'],
+  },
+  {
+    id: 'test-sea',
+    name: 'Test Sea',
+    type: 'sea',
+    parentId: 'trial-ocean',
+    summary: 'A sea for testing.',
+    sourceIds: ['test-source'],
+  },
+];
+
+const baseDataset: AtlasDataset = {
   straits: [testStrait],
-  sources: [],
+  waterBodies: testWaterBodies,
+  sources: [testSource],
   images: [],
   events: [],
   wildlife: [],
@@ -31,7 +58,7 @@ describe('findBrokenReferences', () => {
 
   it('flags references to unknown ids', () => {
     const dataset: AtlasDataset = {
-      ...emptyDataset,
+      ...baseDataset,
       straits: [{ ...testStrait, sourceIds: ['missing-source'], tagIds: ['missing-tag'] }],
     };
     const broken = findBrokenReferences(dataset);
@@ -44,9 +71,38 @@ describe('findBrokenReferences', () => {
     });
   });
 
-  it('accepts references that resolve against derived entities', () => {
+  it('flags connects values that name no water body document', () => {
+    const dataset: AtlasDataset = { ...baseDataset, waterBodies: [] };
+    const broken = findBrokenReferences(dataset);
+    expect(broken.map((b) => b.ref)).toEqual(['water-body:test-sea', 'water-body:trial-ocean']);
+    expect(broken.every((b) => b.field === 'connects' && b.reason === 'unknown-id')).toBe(true);
+  });
+
+  it('flags water body parents and sources that do not resolve', () => {
     const dataset: AtlasDataset = {
-      ...emptyDataset,
+      ...baseDataset,
+      straits: [],
+      waterBodies: [
+        {
+          id: 'orphan-sea',
+          name: 'Orphan Sea',
+          type: 'sea',
+          parentId: 'no-such-ocean',
+          summary: 'A sea with a missing parent.',
+          sourceIds: ['missing-source'],
+        },
+      ],
+    };
+    const broken = findBrokenReferences(dataset);
+    expect(broken.map((b) => `${b.field}:${b.ref}`)).toEqual([
+      'parentId:water-body:no-such-ocean',
+      'sourceIds:source:missing-source',
+    ]);
+  });
+
+  it('accepts references that resolve against documents and derived entities', () => {
+    const dataset: AtlasDataset = {
+      ...baseDataset,
       straits: [
         {
           ...testStrait,
@@ -63,7 +119,7 @@ describe('findBrokenReferences', () => {
 
   it('reports not-yet-modeled entity types distinctly', () => {
     const dataset: AtlasDataset = {
-      ...emptyDataset,
+      ...baseDataset,
       straits: [{ ...testStrait, separates: [{ type: 'island', id: 'isle-of-wight' }] }],
     };
     expect(findBrokenReferences(dataset)).toEqual([
@@ -77,16 +133,8 @@ describe('findBrokenReferences', () => {
   });
 
   it('handles circular references safely and validates statistic subjects', () => {
-    const source = {
-      id: 'test-source',
-      type: 'website' as const,
-      title: 'Test Source',
-      publisher: 'Testers',
-      locator: 'https://example.test',
-    };
     const dataset: AtlasDataset = {
-      ...emptyDataset,
-      sources: [source],
+      ...baseDataset,
       events: [
         {
           id: 'event-a',

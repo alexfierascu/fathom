@@ -1,0 +1,7 @@
+{
+  "id": "southern-ocean",
+  "name": "Southern Ocean",
+  "type": "ocean",
+  "summary": "The ocean encircling Antarctica, defined by the world's strongest circumpolar current.",
+  "sourceIds": ["iho-limits-of-oceans-and-seas"]
+}

@@ -1,0 +1,7 @@
+{
+  "id": "indian-ocean",
+  "name": "Indian Ocean",
+  "type": "ocean",
+  "summary": "The third-largest ocean, bounded by Africa, Asia, and Australia, and the main artery of east–west seaborne trade.",
+  "sourceIds": ["iho-limits-of-oceans-and-seas"]
+}

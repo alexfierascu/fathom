@@ -1,0 +1,8 @@
+{
+  "id": "gulf-of-st-lawrence",
+  "name": "Gulf of St. Lawrence",
+  "type": "gulf",
+  "summary": "The outlet of the St. Lawrence River into the Atlantic, enclosed by eastern Canada.",
+  "parentId": "atlantic-ocean",
+  "sourceIds": ["iho-limits-of-oceans-and-seas"]
+}

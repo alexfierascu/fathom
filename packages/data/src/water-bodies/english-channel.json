@@ -1,0 +1,8 @@
+{
+  "id": "english-channel",
+  "name": "English Channel",
+  "type": "channel",
+  "summary": "The arm of the Atlantic separating southern England from northern France, narrowing at Dover.",
+  "parentId": "atlantic-ocean",
+  "sourceIds": ["iho-limits-of-oceans-and-seas"]
+}

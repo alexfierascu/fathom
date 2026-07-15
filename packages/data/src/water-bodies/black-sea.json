@@ -1,0 +1,8 @@
+{
+  "id": "black-sea",
+  "name": "Black Sea",
+  "type": "sea",
+  "summary": "The great inland sea between Europe and Asia, reached only through the Turkish Straits.",
+  "parentId": "mediterranean-sea",
+  "sourceIds": ["iho-limits-of-oceans-and-seas"]
+}

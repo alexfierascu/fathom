@@ -1,0 +1,232 @@
+[
+  {
+    "id": "atlantic-ocean",
+    "name": "Atlantic Ocean",
+    "type": "ocean"
+  },
+  {
+    "id": "pacific-ocean",
+    "name": "Pacific Ocean",
+    "type": "ocean"
+  },
+  {
+    "id": "indian-ocean",
+    "name": "Indian Ocean",
+    "type": "ocean"
+  },
+  {
+    "id": "arctic-ocean",
+    "name": "Arctic Ocean",
+    "type": "ocean"
+  },
+  {
+    "id": "southern-ocean",
+    "name": "Southern Ocean",
+    "type": "ocean"
+  },
+  {
+    "id": "mediterranean-sea",
+    "name": "Mediterranean Sea",
+    "type": "sea"
+  },
+  {
+    "id": "north-sea",
+    "name": "North Sea",
+    "type": "sea"
+  },
+  {
+    "id": "english-channel",
+    "name": "English Channel",
+    "type": "channel"
+  },
+  {
+    "id": "baltic-sea",
+    "name": "Baltic Sea",
+    "type": "sea"
+  },
+  {
+    "id": "skagerrak",
+    "name": "Skagerrak",
+    "type": "sea"
+  },
+  {
+    "id": "kattegat",
+    "name": "Kattegat",
+    "type": "sea"
+  },
+  {
+    "id": "baltic-approaches",
+    "name": "Baltic approaches",
+    "type": "sea"
+  },
+  {
+    "id": "gulf-of-mexico",
+    "name": "Gulf of Mexico",
+    "type": "gulf"
+  },
+  {
+    "id": "gulf-of-st-lawrence",
+    "name": "Gulf of St. Lawrence",
+    "type": "gulf"
+  },
+  {
+    "id": "labrador-sea",
+    "name": "Labrador Sea",
+    "type": "sea"
+  },
+  {
+    "id": "tyrrhenian-sea",
+    "name": "Tyrrhenian Sea",
+    "type": "sea"
+  },
+  {
+    "id": "ionian-sea",
+    "name": "Ionian Sea",
+    "type": "sea"
+  },
+  {
+    "id": "adriatic-sea",
+    "name": "Adriatic Sea",
+    "type": "sea"
+  },
+  {
+    "id": "aegean-sea",
+    "name": "Aegean Sea",
+    "type": "sea"
+  },
+  {
+    "id": "sea-of-marmara",
+    "name": "Sea of Marmara",
+    "type": "sea"
+  },
+  {
+    "id": "black-sea",
+    "name": "Black Sea",
+    "type": "sea"
+  },
+  {
+    "id": "sea-of-azov",
+    "name": "Sea of Azov",
+    "type": "sea"
+  },
+  {
+    "id": "red-sea",
+    "name": "Red Sea",
+    "type": "sea"
+  },
+  {
+    "id": "gulf-of-aden",
+    "name": "Gulf of Aden",
+    "type": "gulf"
+  },
+  {
+    "id": "persian-gulf",
+    "name": "Persian Gulf",
+    "type": "gulf"
+  },
+  {
+    "id": "gulf-of-oman",
+    "name": "Gulf of Oman",
+    "type": "gulf"
+  },
+  {
+    "id": "bay-of-bengal",
+    "name": "Bay of Bengal",
+    "type": "bay"
+  },
+  {
+    "id": "palk-bay",
+    "name": "Palk Bay",
+    "type": "bay"
+  },
+  {
+    "id": "andaman-sea",
+    "name": "Andaman Sea",
+    "type": "sea"
+  },
+  {
+    "id": "malacca-strait",
+    "name": "Malacca Strait",
+    "type": "strait"
+  },
+  {
+    "id": "south-china-sea",
+    "name": "South China Sea",
+    "type": "sea"
+  },
+  {
+    "id": "east-china-sea",
+    "name": "East China Sea",
+    "type": "sea"
+  },
+  {
+    "id": "philippine-sea",
+    "name": "Philippine Sea",
+    "type": "sea"
+  },
+  {
+    "id": "sea-of-japan",
+    "name": "Sea of Japan",
+    "type": "sea"
+  },
+  {
+    "id": "sea-of-okhotsk",
+    "name": "Sea of Okhotsk",
+    "type": "sea"
+  },
+  {
+    "id": "java-sea",
+    "name": "Java Sea",
+    "type": "sea"
+  },
+  {
+    "id": "celebes-sea",
+    "name": "Celebes Sea",
+    "type": "sea"
+  },
+  {
+    "id": "coral-sea",
+    "name": "Coral Sea",
+    "type": "sea"
+  },
+  {
+    "id": "arafura-sea",
+    "name": "Arafura Sea",
+    "type": "sea"
+  },
+  {
+    "id": "tasman-sea",
+    "name": "Tasman Sea",
+    "type": "sea"
+  },
+  {
+    "id": "salish-sea",
+    "name": "Salish Sea",
+    "type": "sea"
+  },
+  {
+    "id": "greenland-sea",
+    "name": "Greenland Sea",
+    "type": "sea"
+  },
+  {
+    "id": "baffin-bay",
+    "name": "Baffin Bay",
+    "type": "bay"
+  },
+  {
+    "id": "hudson-bay",
+    "name": "Hudson Bay",
+    "type": "bay"
+  },
+  {
+    "id": "kara-sea",
+    "name": "Kara Sea",
+    "type": "sea"
+  },
+  {
+    "id": "laptev-sea",
+    "name": "Laptev Sea",
+    "type": "sea"
+  }
+]
