@@ -2,14 +2,18 @@ import { useMemo } from 'react';
 
 import { Link, useOutletContext, useParams } from 'react-router';
 
-import { getEntity, getRelated, entityId } from '@fathom/data';
+import { entityId, getEntity, getRelated } from '@fathom/data';
 
 import type { LayoutContext } from '../../../app/RootLayout';
 import { Breadcrumbs, type BreadcrumbItem } from '../components/Breadcrumbs';
+import { EntityPills } from '../components/EntityPills';
+import { Section } from '../components/Section';
+import { SeoTags } from '../components/SeoTags';
+import { SourcesList } from '../components/SourcesList';
 import { StraitCard } from '../components/StraitCard';
 import { StraitsMap } from '../components/StraitsMap';
 import { findWaterBodyBySlug } from '../lib/navigation';
-import { buildWaterBodySeo } from '../lib/seo';
+import { breadcrumbsJsonLd, buildWaterBodySeo, placeJsonLd } from '../lib/seo';
 
 const TYPE_LABELS: Record<string, string> = {
   ocean: 'Ocean',
@@ -55,18 +59,22 @@ export function WaterBodyDetailPage() {
   crumbs.push({ label: waterBody.name });
 
   const seo = buildWaterBodySeo(waterBody);
-  const canonical = new URL(seo.path, window.location.origin).href;
 
   return (
     <>
-      <title>{seo.title}</title>
-      <meta name="description" content={seo.description} />
-      <link rel="canonical" href={canonical} />
-      <meta property="og:title" content={seo.title} />
-      <meta property="og:description" content={seo.description} />
-      <meta property="og:type" content="article" />
-      <meta property="og:url" content={canonical} />
-      <meta property="og:site_name" content="Fathom" />
+      <SeoTags
+        title={seo.title}
+        description={seo.description}
+        path={seo.path}
+        jsonLd={[
+          placeJsonLd({ name: waterBody.name, description: seo.description, path: seo.path }),
+          breadcrumbsJsonLd([
+            { name: 'Home', path: '/' },
+            ...(parent ? [{ name: parent.name, path: `/water-bodies/${parent.id}` }] : []),
+            { name: waterBody.name, path: seo.path },
+          ]),
+        ]}
+      />
 
       <Breadcrumbs items={crumbs} />
 
@@ -82,57 +90,30 @@ export function WaterBodyDetailPage() {
         )}
 
         {children.length > 0 && (
-          <section className="detail-section">
-            <div className="eyebrow">Contains</div>
-            <div className="pills">
-              {children.map((child) => (
-                <Link key={child.id} className="pill" to={`/water-bodies/${child.id}`}>
-                  {child.name}
-                </Link>
-              ))}
-            </div>
-          </section>
+          <Section label="Contains">
+            <EntityPills entities={children} />
+          </Section>
         )}
 
         {countries.length > 0 && (
-          <section className="detail-section">
-            <div className="eyebrow">Bordered by</div>
-            <div className="pills">
-              {countries.map((country) => (
-                <Link key={country.id} className="pill" to={`/countries/${country.id}`}>
-                  {country.name}
-                </Link>
-              ))}
-            </div>
-          </section>
+          <Section label="Bordered by">
+            <EntityPills entities={countries} />
+          </Section>
         )}
 
         <StraitsMap straits={straitDocs} tileStyle={tileStyle} />
 
         {straits.length > 0 && (
-          <section className="detail-section">
-            <div className="eyebrow">Straits of these waters</div>
+          <Section label="Straits of these waters">
             <div className="grid">
               {straits.map((strait) => (
                 <StraitCard key={strait.id} strait={strait.data} />
               ))}
             </div>
-          </section>
+          </Section>
         )}
 
-        {sources.length > 0 && (
-          <section className="detail-section">
-            <div className="eyebrow">Sources</div>
-            <ul className="sources">
-              {sources.map((source) => (
-                <li key={source.id}>
-                  {source.data.title} — {source.data.publisher}
-                  {source.data.publishedOn ? ` (${source.data.publishedOn})` : ''}
-                </li>
-              ))}
-            </ul>
-          </section>
-        )}
+        <SourcesList sources={sources} />
       </article>
     </>
   );

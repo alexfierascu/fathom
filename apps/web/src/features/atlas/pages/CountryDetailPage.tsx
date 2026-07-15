@@ -2,14 +2,18 @@ import { useMemo } from 'react';
 
 import { Link, useOutletContext, useParams } from 'react-router';
 
-import { entityId, getEntity, getRelated, type EntityNode, type WaterBodyType } from '@fathom/data';
+import { entityId, getEntity, getRelated, type WaterBodyType } from '@fathom/data';
 
 import type { LayoutContext } from '../../../app/RootLayout';
 import { Breadcrumbs } from '../components/Breadcrumbs';
+import { EntityPills } from '../components/EntityPills';
+import { Section } from '../components/Section';
+import { SeoTags } from '../components/SeoTags';
+import { SourcesList } from '../components/SourcesList';
 import { StraitCard } from '../components/StraitCard';
 import { StraitsMap } from '../components/StraitsMap';
 import { findCountryBySlug } from '../lib/navigation';
-import { buildCountrySeo } from '../lib/seo';
+import { breadcrumbsJsonLd, buildCountrySeo, placeJsonLd } from '../lib/seo';
 
 const WATER_GROUPS: readonly { type: WaterBodyType; label: string }[] = [
   { type: 'ocean', label: 'Oceans' },
@@ -56,7 +60,6 @@ export function CountryDetailPage() {
   })).filter((group) => group.bodies.length > 0);
 
   const seo = buildCountrySeo(country);
-  const canonical = new URL(seo.path, window.location.origin).href;
 
   const facts: readonly { label: string; value: string }[] = [
     {
@@ -72,14 +75,18 @@ export function CountryDetailPage() {
 
   return (
     <>
-      <title>{seo.title}</title>
-      <meta name="description" content={seo.description} />
-      <link rel="canonical" href={canonical} />
-      <meta property="og:title" content={seo.title} />
-      <meta property="og:description" content={seo.description} />
-      <meta property="og:type" content="article" />
-      <meta property="og:url" content={canonical} />
-      <meta property="og:site_name" content="Fathom" />
+      <SeoTags
+        title={seo.title}
+        description={seo.description}
+        path={seo.path}
+        jsonLd={[
+          placeJsonLd({ name: country.name, description: seo.description, path: seo.path }),
+          breadcrumbsJsonLd([
+            { name: 'Home', path: '/' },
+            { name: country.name, path: seo.path },
+          ]),
+        ]}
+      />
 
       <Breadcrumbs items={[{ label: 'Home', to: '/' }, { label: country.name }]} />
 
@@ -94,20 +101,12 @@ export function CountryDetailPage() {
         <div className="note">{country.summary}</div>
 
         {waterGroups.map((group) => (
-          <section key={group.type} className="detail-section">
-            <div className="eyebrow">{group.label}</div>
-            <div className="pills">
-              {group.bodies.map((waterBody) => (
-                <Link key={waterBody.id} className="pill" to={`/water-bodies/${waterBody.id}`}>
-                  {waterBody.name}
-                </Link>
-              ))}
-            </div>
-          </section>
+          <Section key={group.type} label={group.label}>
+            <EntityPills entities={group.bodies} />
+          </Section>
         ))}
 
-        <section className="detail-section">
-          <div className="eyebrow">Infrastructure</div>
+        <Section label="Infrastructure">
           <div className="facts">
             {INFRASTRUCTURE_LABELS.map((label) => (
               <div key={label} className="fact">
@@ -116,10 +115,9 @@ export function CountryDetailPage() {
               </div>
             ))}
           </div>
-        </section>
+        </Section>
 
-        <section className="detail-section">
-          <div className="eyebrow">Statistics</div>
+        <Section label="Statistics">
           <div className="facts">
             {facts.map((fact) => (
               <div key={fact.label} className="fact">
@@ -128,47 +126,27 @@ export function CountryDetailPage() {
               </div>
             ))}
           </div>
-        </section>
+        </Section>
 
         <StraitsMap straits={straitDocs} tileStyle={tileStyle} />
 
         {straits.length > 0 && (
-          <section className="detail-section">
-            <div className="eyebrow">Straits of {country.name}</div>
+          <Section label={`Straits of ${country.name}`}>
             <div className="grid">
-              {straits.map((strait: EntityNode<'strait'>) => (
+              {straits.map((strait) => (
                 <StraitCard key={strait.id} strait={strait.data} />
               ))}
             </div>
-          </section>
+          </Section>
         )}
 
         {neighbors.length > 0 && (
-          <section className="detail-section">
-            <div className="eyebrow">Neighbors across the water</div>
-            <div className="pills">
-              {neighbors.map((neighbor) => (
-                <Link key={neighbor.id} className="pill" to={`/countries/${neighbor.id}`}>
-                  {neighbor.name}
-                </Link>
-              ))}
-            </div>
-          </section>
+          <Section label="Neighbors across the water">
+            <EntityPills entities={neighbors} />
+          </Section>
         )}
 
-        {sources.length > 0 && (
-          <section className="detail-section">
-            <div className="eyebrow">Sources</div>
-            <ul className="sources">
-              {sources.map((source) => (
-                <li key={source.id}>
-                  {source.data.title} — {source.data.publisher}
-                  {source.data.publishedOn ? ` (${source.data.publishedOn})` : ''}
-                </li>
-              ))}
-            </ul>
-          </section>
-        )}
+        <SourcesList sources={sources} />
       </article>
     </>
   );

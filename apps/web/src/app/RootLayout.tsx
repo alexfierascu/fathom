@@ -1,6 +1,6 @@
-import { useMemo } from 'react';
+import { useEffect, useMemo, useRef } from 'react';
 
-import { Outlet, ScrollRestoration } from 'react-router';
+import { Outlet, ScrollRestoration, useLocation } from 'react-router';
 
 import { loadAllStraits } from '@fathom/data';
 
@@ -19,13 +19,31 @@ const straitCount = loadAllStraits().length;
 export function RootLayout() {
   const { theme, setTheme } = useTheme();
   const context = useMemo<LayoutContext>(() => ({ tileStyle: THEMES[theme].tile }), [theme]);
+  const location = useLocation();
+  const mainRef = useRef<HTMLElement>(null);
+  const isFirstRender = useRef(true);
+
+  // Move focus to the content landmark on navigation so keyboard and
+  // screen-reader users land on the new page, not mid-old-page.
+  useEffect(() => {
+    if (isFirstRender.current) {
+      isFirstRender.current = false;
+      return;
+    }
+    mainRef.current?.focus({ preventScroll: true });
+  }, [location.pathname]);
 
   return (
     <div className="wrap">
+      <a className="skip-link" href="#main">
+        Skip to content
+      </a>
       <AtlasHeader straitCount={straitCount}>
         <ThemeSwitcher theme={theme} onChange={setTheme} />
       </AtlasHeader>
-      <Outlet context={context} />
+      <main id="main" ref={mainRef} tabIndex={-1}>
+        <Outlet context={context} />
+      </main>
       <AtlasFooter straitCount={straitCount} />
       <ScrollRestoration />
     </div>

@@ -1,3 +1,5 @@
+import { memo } from 'react';
+
 import { Link } from 'react-router';
 
 import { getRelated, getStraitEntity, type Strait } from '@fathom/data';
@@ -9,7 +11,7 @@ interface StraitCardProps {
   onHover?: (id: string | null) => void;
 }
 
-export function StraitCard({ strait, onHover }: StraitCardProps) {
+export const StraitCard = memo(function StraitCard({ strait, onHover }: StraitCardProps) {
   const entity = getStraitEntity(strait);
   const region = getRelated(entity, 'region');
   const countries = getRelated(entity, 'countries');
@@ -42,4 +44,4 @@ export function StraitCard({ strait, onHover }: StraitCardProps) {
       </div>
     </Link>
   );
-}
+});

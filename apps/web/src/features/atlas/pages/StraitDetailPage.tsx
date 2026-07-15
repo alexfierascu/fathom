@@ -5,11 +5,13 @@ import { getRelated, getStraitEntity } from '@fathom/data';
 import type { LayoutContext } from '../../../app/RootLayout';
 import { Breadcrumbs } from '../components/Breadcrumbs';
 import { ConnectsLine } from '../components/ConnectsLine';
+import { EntityPills } from '../components/EntityPills';
+import { SeoTags } from '../components/SeoTags';
 import { StraitMap } from '../components/StraitMap';
 import { StraitPager } from '../components/StraitPager';
 import { formatLat, formatLon } from '../lib/format';
 import { findStraitBySlug, getAdjacentStraits } from '../lib/navigation';
-import { buildStraitSeo } from '../lib/seo';
+import { breadcrumbsJsonLd, buildStraitSeo, placeJsonLd } from '../lib/seo';
 
 export function StraitDetailPage() {
   const { slug } = useParams();
@@ -30,18 +32,28 @@ export function StraitDetailPage() {
   const countries = getRelated(entity, 'countries');
   const regionName = region?.name ?? strait.region;
   const seo = buildStraitSeo(strait);
-  const canonical = new URL(seo.path, window.location.origin).href;
 
   return (
     <>
-      <title>{seo.title}</title>
-      <meta name="description" content={seo.description} />
-      <link rel="canonical" href={canonical} />
-      <meta property="og:title" content={seo.title} />
-      <meta property="og:description" content={seo.description} />
-      <meta property="og:type" content="article" />
-      <meta property="og:url" content={canonical} />
-      <meta property="og:site_name" content="Fathom" />
+      <SeoTags
+        title={seo.title}
+        description={seo.description}
+        path={seo.path}
+        jsonLd={[
+          placeJsonLd({
+            name: strait.name,
+            description: seo.description,
+            path: seo.path,
+            lat: strait.lat,
+            lon: strait.lon,
+          }),
+          breadcrumbsJsonLd([
+            { name: 'Home', path: '/' },
+            { name: regionName },
+            { name: strait.name, path: seo.path },
+          ]),
+        ]}
+      />
 
       <Breadcrumbs
         items={[{ label: 'Home', to: '/' }, { label: regionName }, { label: strait.name }]}
@@ -50,13 +62,7 @@ export function StraitDetailPage() {
       <article className="detail">
         <div className="eyebrow">{regionName}</div>
         <h2 className="detail-title">{strait.name}</h2>
-        <div className="pills">
-          {countries.map((country) => (
-            <Link key={country.id} className="pill" to={`/countries/${country.id}`}>
-              {country.name}
-            </Link>
-          ))}
-        </div>
+        <EntityPills entities={countries} />
         <ConnectsLine strait={strait} />
         <div className="note">{strait.note}</div>
         <div className="coords">

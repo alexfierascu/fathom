@@ -876,6 +876,31 @@ a.pill:hover {
   color: var(--text);
 }
 
+/* ---------- Accessibility ---------- */
+
+.skip-link {
+  position: absolute;
+  left: -9999px;
+  top: 0;
+  z-index: 2000;
+  background: var(--accent);
+  color: var(--accent-contrast);
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.8rem;
+  padding: 10px 16px;
+  border-radius: 0 0 6px 0;
+  text-decoration: none;
+}
+.skip-link:focus {
+  left: 0;
+}
+main:focus {
+  outline: none;
+}
+.sources a {
+  color: var(--accent-2);
+}
+
 footer {
   margin-top: 50px;
   padding-top: 20px;
