@@ -11,6 +11,7 @@ import {
   type Strait,
 } from '@fathom/data';
 
+import { EntityGallery } from '../../media/MediaGallery';
 import type { LayoutContext } from '../../../app/RootLayout';
 import { Breadcrumbs } from '../components/Breadcrumbs';
 import { EntityPills } from '../components/EntityPills';
@@ -123,6 +124,8 @@ function StructurePage({
         {resolved.mapStraits.length > 0 && (
           <StraitsMap straits={resolved.mapStraits} tileStyle={tileStyle} />
         )}
+
+        <EntityGallery entity={{ type: node.type, id: node.id }} />
 
         <SourcesList sources={resolved.sources} />
       </article>

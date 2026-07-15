@@ -4,6 +4,7 @@ import { Link, useOutletContext, useParams } from 'react-router';
 
 import { entityId, getEntity, getRelated } from '@fathom/data';
 
+import { EntityGallery } from '../../media/MediaGallery';
 import type { LayoutContext } from '../../../app/RootLayout';
 import { Breadcrumbs, type BreadcrumbItem } from '../components/Breadcrumbs';
 import { EntityPills } from '../components/EntityPills';
@@ -134,6 +135,8 @@ export function WaterBodyDetailPage() {
             </div>
           </Section>
         )}
+
+        <EntityGallery entity={{ type: 'water-body', id: waterBody.id }} />
 
         <SourcesList sources={sources} />
       </article>

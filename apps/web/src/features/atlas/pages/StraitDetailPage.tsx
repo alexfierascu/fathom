@@ -2,6 +2,7 @@ import { Link, useOutletContext, useParams } from 'react-router';
 
 import { getRelated, getStraitEntity } from '@fathom/data';
 
+import { EntityGallery } from '../../media/MediaGallery';
 import type { LayoutContext } from '../../../app/RootLayout';
 import { Breadcrumbs } from '../components/Breadcrumbs';
 import { ConnectsLine } from '../components/ConnectsLine';
@@ -103,6 +104,8 @@ export function StraitDetailPage() {
         )}
 
         <StraitMap strait={strait} tileStyle={tileStyle} />
+
+        <EntityGallery entity={{ type: 'strait', id: strait.id }} />
 
         <StraitPager previous={previous} next={next} />
       </article>
