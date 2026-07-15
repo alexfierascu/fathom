@@ -1,0 +1,10 @@
+{
+  "id": "luzon",
+  "name": "Luzon Strait",
+  "countries": ["Taiwan", "Philippines"],
+  "region": "East Asia & Oceania",
+  "connects": "Philippine Sea ↔ South China Sea",
+  "lat": 21,
+  "lon": 121,
+  "note": "Includes the Bashi Channel, a major undersea cable route."
+}

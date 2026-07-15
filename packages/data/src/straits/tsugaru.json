@@ -1,0 +1,10 @@
+{
+  "id": "tsugaru",
+  "name": "Tsugaru Strait",
+  "countries": ["Japan"],
+  "region": "East Asia & Oceania",
+  "connects": "Sea of Japan ↔ Pacific Ocean",
+  "lat": 41.5,
+  "lon": 140.5,
+  "note": "Separates Honshu from Hokkaido; crossed by an undersea rail tunnel."
+}

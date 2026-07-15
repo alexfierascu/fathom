@@ -1,0 +1,10 @@
+{
+  "id": "messina",
+  "name": "Strait of Messina",
+  "countries": ["Italy"],
+  "region": "Europe",
+  "connects": "Tyrrhenian Sea ↔ Ionian Sea",
+  "lat": 38.25,
+  "lon": 15.63,
+  "note": "Separates Sicily from the mainland; home of the mythical Scylla and Charybdis."
+}

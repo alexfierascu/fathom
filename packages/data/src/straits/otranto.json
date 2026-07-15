@@ -1,0 +1,10 @@
+{
+  "id": "otranto",
+  "name": "Strait of Otranto",
+  "countries": ["Italy", "Albania"],
+  "region": "Europe",
+  "connects": "Adriatic Sea ↔ Ionian Sea",
+  "lat": 40.1,
+  "lon": 19,
+  "note": "The gateway between the Adriatic and the wider Mediterranean."
+}

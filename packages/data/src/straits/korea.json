@@ -1,0 +1,10 @@
+{
+  "id": "korea",
+  "name": "Korea Strait",
+  "countries": ["South Korea", "Japan"],
+  "region": "East Asia & Oceania",
+  "connects": "East China Sea ↔ Sea of Japan",
+  "lat": 34,
+  "lon": 129,
+  "note": "Separates the Korean Peninsula from Japan's Kyushu island."
+}

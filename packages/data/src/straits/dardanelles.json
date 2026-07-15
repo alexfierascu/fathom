@@ -1,0 +1,10 @@
+{
+  "id": "dardanelles",
+  "name": "Dardanelles",
+  "countries": ["Turkey"],
+  "region": "Europe",
+  "connects": "Sea of Marmara ↔ Aegean Sea",
+  "lat": 40.15,
+  "lon": 26.4,
+  "note": "Site of the WWI Gallipoli campaign."
+}

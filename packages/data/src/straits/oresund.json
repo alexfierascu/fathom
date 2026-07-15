@@ -1,0 +1,10 @@
+{
+  "id": "oresund",
+  "name": "Öresund",
+  "countries": ["Denmark", "Sweden"],
+  "region": "Europe",
+  "connects": "Baltic Sea ↔ Kattegat",
+  "lat": 55.63,
+  "lon": 12.7,
+  "note": "Crossed by the Öresund Bridge linking Copenhagen and Malmö."
+}

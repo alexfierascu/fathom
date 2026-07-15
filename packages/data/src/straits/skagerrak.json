@@ -1,0 +1,10 @@
+{
+  "id": "skagerrak",
+  "name": "Skagerrak",
+  "countries": ["Norway", "Denmark", "Sweden"],
+  "region": "Europe",
+  "connects": "North Sea ↔ Kattegat",
+  "lat": 57.8,
+  "lon": 8.5,
+  "note": "One of the busiest and saltiest shipping straits in the world."
+}

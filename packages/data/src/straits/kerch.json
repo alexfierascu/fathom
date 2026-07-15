@@ -1,0 +1,10 @@
+{
+  "id": "kerch",
+  "name": "Kerch Strait",
+  "countries": ["Russia", "Ukraine"],
+  "region": "Europe",
+  "connects": "Black Sea ↔ Sea of Azov",
+  "lat": 45.33,
+  "lon": 36.5,
+  "note": "Crossed by a bridge linking Russia to Crimea."
+}

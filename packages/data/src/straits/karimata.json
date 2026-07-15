@@ -1,0 +1,10 @@
+{
+  "id": "karimata",
+  "name": "Karimata Strait",
+  "countries": ["Indonesia"],
+  "region": "South & Southeast Asia",
+  "connects": "South China Sea ↔ Java Sea",
+  "lat": -1.5,
+  "lon": 108.5,
+  "note": "Between Sumatra and Borneo."
+}

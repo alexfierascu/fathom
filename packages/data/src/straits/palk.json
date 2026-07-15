@@ -1,0 +1,10 @@
+{
+  "id": "palk",
+  "name": "Palk Strait",
+  "countries": ["India", "Sri Lanka"],
+  "region": "South & Southeast Asia",
+  "connects": "Bay of Bengal ↔ Palk Bay",
+  "lat": 9.7,
+  "lon": 79.6,
+  "note": "Too shallow for large ships; separates India from Sri Lanka."
+}

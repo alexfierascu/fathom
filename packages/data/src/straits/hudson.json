@@ -1,0 +1,10 @@
+{
+  "id": "hudson",
+  "name": "Hudson Strait",
+  "countries": ["Canada"],
+  "region": "Americas & Arctic",
+  "connects": "Hudson Bay ↔ Atlantic Ocean",
+  "lat": 62,
+  "lon": -70,
+  "note": "Between Baffin Island and northern Quebec."
+}

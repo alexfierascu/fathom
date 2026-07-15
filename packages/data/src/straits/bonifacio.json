@@ -1,0 +1,10 @@
+{
+  "id": "bonifacio",
+  "name": "Strait of Bonifacio",
+  "countries": ["France", "Italy"],
+  "region": "Europe",
+  "connects": "Separates Corsica from Sardinia",
+  "lat": 41.31,
+  "lon": 9.18,
+  "note": "A UNESCO-listed marine reserve known for treacherous currents."
+}

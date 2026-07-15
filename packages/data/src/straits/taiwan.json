@@ -1,0 +1,10 @@
+{
+  "id": "taiwan",
+  "name": "Taiwan Strait",
+  "countries": ["China", "Taiwan"],
+  "region": "East Asia & Oceania",
+  "connects": "East China Sea ↔ South China Sea",
+  "lat": 24.5,
+  "lon": 119.5,
+  "note": "One of the most closely watched geopolitical flashpoints today."
+}

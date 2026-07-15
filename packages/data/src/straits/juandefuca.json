@@ -1,0 +1,10 @@
+{
+  "id": "juandefuca",
+  "name": "Strait of Juan de Fuca",
+  "countries": ["United States", "Canada"],
+  "region": "Americas & Arctic",
+  "connects": "Pacific Ocean ↔ Salish Sea",
+  "lat": 48.3,
+  "lon": -124,
+  "note": "Leads to Seattle and Vancouver's shared inland sea."
+}

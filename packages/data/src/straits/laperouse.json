@@ -1,0 +1,10 @@
+{
+  "id": "laperouse",
+  "name": "La Pérouse Strait",
+  "countries": ["Japan", "Russia"],
+  "region": "East Asia & Oceania",
+  "connects": "Sea of Japan ↔ Sea of Okhotsk",
+  "lat": 45.75,
+  "lon": 142,
+  "note": "Between Hokkaido and Russia's Sakhalin Island."
+}

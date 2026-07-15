@@ -1,0 +1,10 @@
+{
+  "id": "bosporus",
+  "name": "Bosporus",
+  "countries": ["Turkey"],
+  "region": "Europe",
+  "connects": "Black Sea ↔ Sea of Marmara",
+  "lat": 41.12,
+  "lon": 29.07,
+  "note": "Splits Istanbul in two; forms half of the Turkish Straits."
+}

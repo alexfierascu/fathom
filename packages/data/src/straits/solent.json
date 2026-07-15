@@ -1,0 +1,10 @@
+{
+  "id": "solent",
+  "name": "The Solent",
+  "countries": ["United Kingdom"],
+  "region": "Europe",
+  "connects": "Separates the Isle of Wight from mainland England",
+  "lat": 50.78,
+  "lon": -1.3,
+  "note": "Some of the busiest recreational sailing waters in the world."
+}

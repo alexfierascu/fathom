@@ -1,0 +1,10 @@
+{
+  "id": "georgia",
+  "name": "Strait of Georgia",
+  "countries": ["Canada"],
+  "region": "Americas & Arctic",
+  "connects": "Part of the Salish Sea",
+  "lat": 49.3,
+  "lon": -123.8,
+  "note": "Between Vancouver Island and mainland British Columbia."
+}

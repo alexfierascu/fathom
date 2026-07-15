@@ -1,0 +1,10 @@
+{
+  "id": "makassar",
+  "name": "Makassar Strait",
+  "countries": ["Indonesia"],
+  "region": "South & Southeast Asia",
+  "connects": "Java Sea ↔ Celebes Sea",
+  "lat": -2,
+  "lon": 118,
+  "note": "Between Borneo and Sulawesi."
+}

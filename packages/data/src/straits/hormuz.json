@@ -1,0 +1,10 @@
+{
+  "id": "hormuz",
+  "name": "Strait of Hormuz",
+  "countries": ["Iran", "Oman"],
+  "region": "Middle East & Africa",
+  "connects": "Persian Gulf ↔ Gulf of Oman",
+  "lat": 26.57,
+  "lon": 56.25,
+  "note": "Roughly a fifth of the world's oil supply passes through here."
+}

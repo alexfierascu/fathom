@@ -1,0 +1,10 @@
+{
+  "id": "vilkitsky",
+  "name": "Vilkitsky Strait",
+  "countries": ["Russia"],
+  "region": "Americas & Arctic",
+  "connects": "Kara Sea ↔ Laptev Sea",
+  "lat": 77.9,
+  "lon": 103.5,
+  "note": "A key link in Russia's Arctic Northern Sea Route."
+}

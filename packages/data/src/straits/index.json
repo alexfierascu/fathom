@@ -1,0 +1,338 @@
+[
+  {
+    "id": "gibraltar",
+    "name": "Strait of Gibraltar",
+    "region": "Europe",
+    "countries": ["Spain", "Morocco"],
+    "lat": 35.95,
+    "lon": -5.59
+  },
+  {
+    "id": "dover",
+    "name": "Strait of Dover",
+    "region": "Europe",
+    "countries": ["United Kingdom", "France"],
+    "lat": 51,
+    "lon": 1.4
+  },
+  {
+    "id": "solent",
+    "name": "The Solent",
+    "region": "Europe",
+    "countries": ["United Kingdom"],
+    "lat": 50.78,
+    "lon": -1.3
+  },
+  {
+    "id": "messina",
+    "name": "Strait of Messina",
+    "region": "Europe",
+    "countries": ["Italy"],
+    "lat": 38.25,
+    "lon": 15.63
+  },
+  {
+    "id": "bonifacio",
+    "name": "Strait of Bonifacio",
+    "region": "Europe",
+    "countries": ["France", "Italy"],
+    "lat": 41.31,
+    "lon": 9.18
+  },
+  {
+    "id": "otranto",
+    "name": "Strait of Otranto",
+    "region": "Europe",
+    "countries": ["Italy", "Albania"],
+    "lat": 40.1,
+    "lon": 19
+  },
+  {
+    "id": "bosporus",
+    "name": "Bosporus",
+    "region": "Europe",
+    "countries": ["Turkey"],
+    "lat": 41.12,
+    "lon": 29.07
+  },
+  {
+    "id": "dardanelles",
+    "name": "Dardanelles",
+    "region": "Europe",
+    "countries": ["Turkey"],
+    "lat": 40.15,
+    "lon": 26.4
+  },
+  {
+    "id": "kerch",
+    "name": "Kerch Strait",
+    "region": "Europe",
+    "countries": ["Russia", "Ukraine"],
+    "lat": 45.33,
+    "lon": 36.5
+  },
+  {
+    "id": "skagerrak",
+    "name": "Skagerrak",
+    "region": "Europe",
+    "countries": ["Norway", "Denmark", "Sweden"],
+    "lat": 57.8,
+    "lon": 8.5
+  },
+  {
+    "id": "kattegat",
+    "name": "Kattegat",
+    "region": "Europe",
+    "countries": ["Denmark", "Sweden"],
+    "lat": 57,
+    "lon": 11.3
+  },
+  {
+    "id": "oresund",
+    "name": "Öresund",
+    "region": "Europe",
+    "countries": ["Denmark", "Sweden"],
+    "lat": 55.63,
+    "lon": 12.7
+  },
+  {
+    "id": "hormuz",
+    "name": "Strait of Hormuz",
+    "region": "Middle East & Africa",
+    "countries": ["Iran", "Oman"],
+    "lat": 26.57,
+    "lon": 56.25
+  },
+  {
+    "id": "bab-el-mandeb",
+    "name": "Bab-el-Mandeb",
+    "region": "Middle East & Africa",
+    "countries": ["Yemen", "Djibouti", "Eritrea"],
+    "lat": 12.58,
+    "lon": 43.33
+  },
+  {
+    "id": "mozambique",
+    "name": "Mozambique Channel",
+    "region": "Middle East & Africa",
+    "countries": ["Mozambique", "Madagascar"],
+    "lat": -18,
+    "lon": 41
+  },
+  {
+    "id": "palk",
+    "name": "Palk Strait",
+    "region": "South & Southeast Asia",
+    "countries": ["India", "Sri Lanka"],
+    "lat": 9.7,
+    "lon": 79.6
+  },
+  {
+    "id": "malacca",
+    "name": "Strait of Malacca",
+    "region": "South & Southeast Asia",
+    "countries": ["Indonesia", "Malaysia", "Singapore"],
+    "lat": 2.5,
+    "lon": 101
+  },
+  {
+    "id": "singapore",
+    "name": "Singapore Strait",
+    "region": "South & Southeast Asia",
+    "countries": ["Singapore", "Indonesia", "Malaysia"],
+    "lat": 1.2,
+    "lon": 103.8
+  },
+  {
+    "id": "sunda",
+    "name": "Sunda Strait",
+    "region": "South & Southeast Asia",
+    "countries": ["Indonesia"],
+    "lat": -5.9,
+    "lon": 105.9
+  },
+  {
+    "id": "lombok",
+    "name": "Lombok Strait",
+    "region": "South & Southeast Asia",
+    "countries": ["Indonesia"],
+    "lat": -8.45,
+    "lon": 115.7
+  },
+  {
+    "id": "makassar",
+    "name": "Makassar Strait",
+    "region": "South & Southeast Asia",
+    "countries": ["Indonesia"],
+    "lat": -2,
+    "lon": 118
+  },
+  {
+    "id": "karimata",
+    "name": "Karimata Strait",
+    "region": "South & Southeast Asia",
+    "countries": ["Indonesia"],
+    "lat": -1.5,
+    "lon": 108.5
+  },
+  {
+    "id": "taiwan",
+    "name": "Taiwan Strait",
+    "region": "East Asia & Oceania",
+    "countries": ["China", "Taiwan"],
+    "lat": 24.5,
+    "lon": 119.5
+  },
+  {
+    "id": "luzon",
+    "name": "Luzon Strait",
+    "region": "East Asia & Oceania",
+    "countries": ["Taiwan", "Philippines"],
+    "lat": 21,
+    "lon": 121
+  },
+  {
+    "id": "korea",
+    "name": "Korea Strait",
+    "region": "East Asia & Oceania",
+    "countries": ["South Korea", "Japan"],
+    "lat": 34,
+    "lon": 129
+  },
+  {
+    "id": "tsugaru",
+    "name": "Tsugaru Strait",
+    "region": "East Asia & Oceania",
+    "countries": ["Japan"],
+    "lat": 41.5,
+    "lon": 140.5
+  },
+  {
+    "id": "laperouse",
+    "name": "La Pérouse Strait",
+    "region": "East Asia & Oceania",
+    "countries": ["Japan", "Russia"],
+    "lat": 45.75,
+    "lon": 142
+  },
+  {
+    "id": "torres",
+    "name": "Torres Strait",
+    "region": "East Asia & Oceania",
+    "countries": ["Australia", "Papua New Guinea"],
+    "lat": -10.3,
+    "lon": 142.2
+  },
+  {
+    "id": "bass",
+    "name": "Bass Strait",
+    "region": "East Asia & Oceania",
+    "countries": ["Australia"],
+    "lat": -39.5,
+    "lon": 146
+  },
+  {
+    "id": "cook",
+    "name": "Cook Strait",
+    "region": "East Asia & Oceania",
+    "countries": ["New Zealand"],
+    "lat": -41.3,
+    "lon": 174.5
+  },
+  {
+    "id": "bering",
+    "name": "Bering Strait",
+    "region": "Americas & Arctic",
+    "countries": ["United States", "Russia"],
+    "lat": 65.75,
+    "lon": -169
+  },
+  {
+    "id": "juandefuca",
+    "name": "Strait of Juan de Fuca",
+    "region": "Americas & Arctic",
+    "countries": ["United States", "Canada"],
+    "lat": 48.3,
+    "lon": -124
+  },
+  {
+    "id": "georgia",
+    "name": "Strait of Georgia",
+    "region": "Americas & Arctic",
+    "countries": ["Canada"],
+    "lat": 49.3,
+    "lon": -123.8
+  },
+  {
+    "id": "belleisle",
+    "name": "Strait of Belle Isle",
+    "region": "Americas & Arctic",
+    "countries": ["Canada"],
+    "lat": 51.6,
+    "lon": -56.5
+  },
+  {
+    "id": "northumberland",
+    "name": "Northumberland Strait",
+    "region": "Americas & Arctic",
+    "countries": ["Canada"],
+    "lat": 46,
+    "lon": -63.5
+  },
+  {
+    "id": "florida",
+    "name": "Florida Straits",
+    "region": "Americas & Arctic",
+    "countries": ["United States", "Cuba", "Bahamas"],
+    "lat": 24.5,
+    "lon": -81
+  },
+  {
+    "id": "hudson",
+    "name": "Hudson Strait",
+    "region": "Americas & Arctic",
+    "countries": ["Canada"],
+    "lat": 62,
+    "lon": -70
+  },
+  {
+    "id": "davis",
+    "name": "Davis Strait",
+    "region": "Americas & Arctic",
+    "countries": ["Canada", "Greenland"],
+    "lat": 66,
+    "lon": -58
+  },
+  {
+    "id": "denmark",
+    "name": "Denmark Strait",
+    "region": "Americas & Arctic",
+    "countries": ["Iceland", "Greenland"],
+    "lat": 66,
+    "lon": -27
+  },
+  {
+    "id": "nares",
+    "name": "Nares Strait",
+    "region": "Americas & Arctic",
+    "countries": ["Canada", "Greenland"],
+    "lat": 80,
+    "lon": -70
+  },
+  {
+    "id": "magellan",
+    "name": "Strait of Magellan",
+    "region": "Americas & Arctic",
+    "countries": ["Chile", "Argentina"],
+    "lat": -53.5,
+    "lon": -70
+  },
+  {
+    "id": "vilkitsky",
+    "name": "Vilkitsky Strait",
+    "region": "Americas & Arctic",
+    "countries": ["Russia"],
+    "lat": 77.9,
+    "lon": 103.5
+  }
+]

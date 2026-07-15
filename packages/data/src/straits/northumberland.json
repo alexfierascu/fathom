@@ -1,0 +1,10 @@
+{
+  "id": "northumberland",
+  "name": "Northumberland Strait",
+  "countries": ["Canada"],
+  "region": "Americas & Arctic",
+  "connects": "Part of the Gulf of St. Lawrence",
+  "lat": 46,
+  "lon": -63.5,
+  "note": "Separates Prince Edward Island from the Canadian mainland."
+}

@@ -1,0 +1,10 @@
+{
+  "id": "davis",
+  "name": "Davis Strait",
+  "countries": ["Canada", "Greenland"],
+  "region": "Americas & Arctic",
+  "connects": "Baffin Bay ↔ Labrador Sea",
+  "lat": 66,
+  "lon": -58,
+  "note": "Between Baffin Island and Greenland."
+}

@@ -1,0 +1,10 @@
+{
+  "id": "torres",
+  "name": "Torres Strait",
+  "countries": ["Australia", "Papua New Guinea"],
+  "region": "East Asia & Oceania",
+  "connects": "Coral Sea ↔ Arafura Sea",
+  "lat": -10.3,
+  "lon": 142.2,
+  "note": "Dotted with dozens of small islands between Cape York and New Guinea."
+}

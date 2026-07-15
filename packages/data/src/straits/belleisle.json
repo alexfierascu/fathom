@@ -1,0 +1,10 @@
+{
+  "id": "belleisle",
+  "name": "Strait of Belle Isle",
+  "countries": ["Canada"],
+  "region": "Americas & Arctic",
+  "connects": "Gulf of St. Lawrence ↔ Atlantic Ocean",
+  "lat": 51.6,
+  "lon": -56.5,
+  "note": "Between Newfoundland and Labrador; often choked with icebergs."
+}

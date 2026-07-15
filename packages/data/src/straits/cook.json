@@ -1,0 +1,10 @@
+{
+  "id": "cook",
+  "name": "Cook Strait",
+  "countries": ["New Zealand"],
+  "region": "East Asia & Oceania",
+  "connects": "Tasman Sea ↔ Pacific Ocean",
+  "lat": -41.3,
+  "lon": 174.5,
+  "note": "Notoriously rough waters between New Zealand's two main islands."
+}

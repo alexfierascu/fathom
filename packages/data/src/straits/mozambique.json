@@ -1,0 +1,10 @@
+{
+  "id": "mozambique",
+  "name": "Mozambique Channel",
+  "countries": ["Mozambique", "Madagascar"],
+  "region": "Middle East & Africa",
+  "connects": "Indian Ocean passage",
+  "lat": -18,
+  "lon": 41,
+  "note": "One of the widest straits on Earth, over 400 km across."
+}

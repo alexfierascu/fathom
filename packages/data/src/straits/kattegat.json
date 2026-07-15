@@ -1,0 +1,10 @@
+{
+  "id": "kattegat",
+  "name": "Kattegat",
+  "countries": ["Denmark", "Sweden"],
+  "region": "Europe",
+  "connects": "Skagerrak ↔ Baltic approaches",
+  "lat": 57,
+  "lon": 11.3,
+  "note": "A shallow, sandy sea between the Skagerrak and the Baltic."
+}

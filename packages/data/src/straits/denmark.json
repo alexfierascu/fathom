@@ -1,0 +1,10 @@
+{
+  "id": "denmark",
+  "name": "Denmark Strait",
+  "countries": ["Iceland", "Greenland"],
+  "region": "Americas & Arctic",
+  "connects": "Greenland Sea ↔ Atlantic Ocean",
+  "lat": 66,
+  "lon": -27,
+  "note": "Site of the world's tallest underwater waterfall, the Denmark Strait cataract."
+}

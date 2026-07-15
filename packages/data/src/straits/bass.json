@@ -1,0 +1,10 @@
+{
+  "id": "bass",
+  "name": "Bass Strait",
+  "countries": ["Australia"],
+  "region": "East Asia & Oceania",
+  "connects": "Southern Ocean ↔ Tasman Sea",
+  "lat": -39.5,
+  "lon": 146,
+  "note": "Separates the Australian mainland from Tasmania."
+}

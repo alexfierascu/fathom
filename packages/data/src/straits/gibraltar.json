@@ -1,0 +1,10 @@
+{
+  "id": "gibraltar",
+  "name": "Strait of Gibraltar",
+  "countries": ["Spain", "Morocco"],
+  "region": "Europe",
+  "connects": "Atlantic Ocean ↔ Mediterranean Sea",
+  "lat": 35.95,
+  "lon": -5.59,
+  "note": "Only 13 km wide at its narrowest; ships have crossed here since antiquity."
+}

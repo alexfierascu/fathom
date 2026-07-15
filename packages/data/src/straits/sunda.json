@@ -1,0 +1,10 @@
+{
+  "id": "sunda",
+  "name": "Sunda Strait",
+  "countries": ["Indonesia"],
+  "region": "South & Southeast Asia",
+  "connects": "Java Sea ↔ Indian Ocean",
+  "lat": -5.9,
+  "lon": 105.9,
+  "note": "Between Java and Sumatra, near the volcano Krakatoa."
+}

@@ -1,0 +1,10 @@
+{
+  "id": "florida",
+  "name": "Florida Straits",
+  "countries": ["United States", "Cuba", "Bahamas"],
+  "region": "Americas & Arctic",
+  "connects": "Gulf of Mexico ↔ Atlantic Ocean",
+  "lat": 24.5,
+  "lon": -81,
+  "note": "Where the Gulf Stream begins its journey north."
+}
