@@ -1,11 +1,19 @@
 import { useEffect, useImperativeHandle, useRef, type Ref } from 'react';
 
-import L from 'leaflet';
+import type L from 'leaflet';
 
 import type { Strait } from '@fathom/data';
 
 import type { TileStyle } from '../../theme/themes';
-import { popupHtml } from '../lib/popup';
+import {
+  WORLD_CENTER,
+  WORLD_ZOOM,
+  bindStraitMarker,
+  createStraitMap,
+  createTileManager,
+  observeMapSize,
+  type TileManager,
+} from '../lib/map';
 
 export interface MapPanelHandle {
   focusStrait: (id: string) => void;
@@ -21,32 +29,6 @@ interface MapPanelProps {
   ref?: Ref<MapPanelHandle>;
 }
 
-const TILE_STYLES: Record<TileStyle, { url: string; attribution: string }> = {
-  dark: {
-    url: 'https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png',
-    attribution:
-      '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>',
-  },
-  light: {
-    url: 'https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png',
-    attribution:
-      '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>',
-  },
-};
-
-const INITIAL_CENTER: L.LatLngTuple = [15, 10];
-const INITIAL_ZOOM = 2;
-
-function createIcon(): L.DivIcon {
-  return L.divIcon({
-    className: 'strait-icon',
-    html: '<span class="pin-pulse"></span><span class="pin-dot"></span>',
-    iconSize: [18, 18],
-    iconAnchor: [9, 9],
-    popupAnchor: [0, -9],
-  });
-}
-
 export function MapPanel({
   straits,
   filteredIds,
@@ -58,69 +40,39 @@ export function MapPanel({
   const panelRef = useRef<HTMLDivElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
   const mapRef = useRef<L.Map | null>(null);
-  const tileLayerRef = useRef<L.TileLayer | null>(null);
-  const tileStyleRef = useRef<TileStyle | null>(null);
+  const tilesRef = useRef<TileManager | null>(null);
   const markersRef = useRef(new Map<string, L.Marker>());
   const popupTimerRef = useRef<number | undefined>(undefined);
-
-  // The initial tile style must be available to the one-time init effect
-  // without re-running it when the theme changes.
-  const initialTileStyle = useRef(tileStyle);
-  initialTileStyle.current = tileStyle;
 
   useEffect(() => {
     const container = containerRef.current;
     if (!container) return;
 
-    const map = L.map(container, { minZoom: 2, maxZoom: 18, worldCopyJump: true }).setView(
-      INITIAL_CENTER,
-      INITIAL_ZOOM,
-    );
-    map.attributionControl.setPrefix(false);
+    const map = createStraitMap(container, WORLD_CENTER, WORLD_ZOOM);
     mapRef.current = map;
-    setTileStyle(map, initialTileStyle.current);
+    tilesRef.current = createTileManager(map);
 
     const markers = markersRef.current;
     for (const strait of straits) {
-      const marker = L.marker([strait.lat, strait.lon], { icon: createIcon() }).addTo(map);
-      marker.bindTooltip(strait.name, {
-        direction: 'top',
-        offset: [0, -11],
-        className: 'strait-tip',
-      });
-      marker.bindPopup(popupHtml(strait));
-      markers.set(strait.id, marker);
+      markers.set(strait.id, bindStraitMarker(map, strait));
     }
 
-    const handleResize = () => map.invalidateSize();
-    window.addEventListener('resize', handleResize);
-    const initialInvalidate = window.setTimeout(() => map.invalidateSize(), 250);
+    const stopObserving = observeMapSize(map);
 
     return () => {
-      window.removeEventListener('resize', handleResize);
-      window.clearTimeout(initialInvalidate);
+      stopObserving();
       window.clearTimeout(popupTimerRef.current);
       map.remove();
       mapRef.current = null;
-      tileLayerRef.current = null;
-      tileStyleRef.current = null;
+      tilesRef.current = null;
       markers.clear();
     };
   }, [straits]);
 
-  function setTileStyle(map: L.Map, style: TileStyle) {
-    if (style === tileStyleRef.current) return;
-    if (tileLayerRef.current) map.removeLayer(tileLayerRef.current);
-    tileLayerRef.current = L.tileLayer(TILE_STYLES[style].url, {
-      attribution: TILE_STYLES[style].attribution,
-      subdomains: 'abcd',
-      maxZoom: 19,
-    }).addTo(map);
-    tileStyleRef.current = style;
-  }
-
+  // No dependency array: runs after every commit, which both applies the
+  // initial style right after the map-init effect and follows theme changes.
   useEffect(() => {
-    if (mapRef.current) setTileStyle(mapRef.current, tileStyle);
+    tilesRef.current?.set(tileStyle);
   });
 
   useEffect(() => {
@@ -172,7 +124,7 @@ export function MapPanel({
             id="resetView"
             type="button"
             onClick={() => {
-              mapRef.current?.flyTo(INITIAL_CENTER, INITIAL_ZOOM, { duration: 0.8 });
+              mapRef.current?.flyTo(WORLD_CENTER, WORLD_ZOOM, { duration: 0.8 });
             }}
           >
             Reset view
