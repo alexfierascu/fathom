@@ -3,3 +3,6 @@ dist/
 coverage/
 pnpm-lock.yaml
 .idea/
+
+# Permanent historical reference — must never be reformatted or modified
+legacy/
