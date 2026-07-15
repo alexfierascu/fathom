@@ -1,8 +1,8 @@
 # Fathom
 
-Fathom is a web application built as a pnpm workspace monorepo. This repository currently
-contains the project foundation only — tooling, structure, and CI — with no application
-features yet.
+Fathom is an open-source interactive maritime atlas. The web app currently charts 42 of
+the world's key straits on an interactive map, with search, region filters, and four
+color themes. See [docs/PROJECT_VISION.md](docs/PROJECT_VISION.md) for where it is going.
 
 ## Tech stack
 
@@ -50,8 +50,10 @@ fathom/
 │   └── web/              # Vite + React application (@fathom/web)
 │       ├── public/       # Static assets served as-is
 │       └── src/          # Application source
-├── packages/             # Shared libraries (empty for now)
-├── docs/                 # Architecture docs and decision records
+├── packages/
+│   └── data/             # @fathom/data — shared datasets and domain types
+├── legacy/               # Original single-file prototype (permanent reference)
+├── docs/                 # Vision, data model, architecture, decision records
 ├── .github/workflows/    # CI pipeline
 ├── eslint.config.js      # Shared ESLint flat config
 ├── prettier.config.js    # Shared Prettier config
@@ -67,3 +69,14 @@ the conventions to follow when adding code.
 Every push to `main` and every pull request runs the full quality gate in GitHub Actions:
 install → lint → format check → typecheck → test → build. See
 [.github/workflows/ci.yml](.github/workflows/ci.yml).
+
+## Deployment
+
+The web app is a fully static build with no server-side code, deployable to Cloudflare
+Pages with these settings:
+
+- **Build command:** `pnpm build`
+- **Build output directory:** `apps/web/dist`
+- **Node version:** from `.nvmrc`; pnpm is picked up from the `packageManager` field
+
+No redirect rules are needed — the app is a single page.
