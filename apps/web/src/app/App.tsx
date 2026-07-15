@@ -1,6 +1,6 @@
 import { useMemo, useRef, useState } from 'react';
 
-import { STRAITS } from '@fathom/data';
+import { loadAllStraits } from '@fathom/data';
 
 import { AtlasFooter } from '../features/atlas/components/AtlasFooter';
 import { AtlasHeader } from '../features/atlas/components/AtlasHeader';
@@ -12,6 +12,8 @@ import { filterStraits, isFiltering, type RegionFilter } from '../features/atlas
 import { ThemeSwitcher } from '../features/theme/ThemeSwitcher';
 import { THEMES } from '../features/theme/themes';
 import { useTheme } from '../features/theme/useTheme';
+
+const STRAITS = loadAllStraits();
 
 export function App() {
   const { theme, setTheme } = useTheme();

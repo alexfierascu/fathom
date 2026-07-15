@@ -1,6 +1,8 @@
-import { STRAITS } from '@fathom/data';
+import { loadAllStraits } from '@fathom/data';
 
 import { filterStraits, isFiltering, matchesQuery } from './filtering';
+
+const STRAITS = loadAllStraits();
 
 const hormuz = STRAITS.find((s) => s.id === 'hormuz');
 if (!hormuz) throw new Error('fixture strait missing');

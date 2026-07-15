@@ -15,8 +15,3 @@ export {
 export type { Strait, StraitIndexEntry, StraitRegion, StraitsIndex } from './schema';
 
 export { loadAllStraits, loadStrait, loadStraitsIndex } from './loader';
-
-import { loadAllStraits } from './loader';
-
-/** @deprecated Transitional alias — use loadAllStraits(). */
-export const STRAITS = loadAllStraits();
