@@ -39,6 +39,41 @@ describe('StraitSchema', () => {
   it('rejects unknown keys', () => {
     expect(StraitSchema.safeParse({ ...valid, extra: true }).success).toBe(false);
   });
+
+  it('accepts the optional canonical expansion fields', () => {
+    const rich = {
+      ...valid,
+      slug: 'gibraltar',
+      names: [{ value: 'Estrecho de Gibraltar', language: 'es', kind: 'official' }],
+      summary: 'Short summary.',
+      status: 'published',
+      connectsWaterBodies: [
+        { type: 'water-body', id: 'atlantic-ocean' },
+        { type: 'water-body', id: 'mediterranean-sea' },
+      ],
+      separates: [{ type: 'country', id: 'spain' }],
+      borderedBy: [{ type: 'country', id: 'morocco' }],
+      dimensions: {
+        widthMin: { value: 13, unit: 'km', sourceIds: ['test-source'] },
+      },
+      tagIds: ['chokepoint'],
+      sourceIds: ['test-source'],
+    };
+    expect(StraitSchema.safeParse(rich).success).toBe(true);
+  });
+
+  it('rejects invalid canonical expansion values', () => {
+    expect(
+      StraitSchema.safeParse({
+        ...valid,
+        dimensions: { widthMin: { value: 13, unit: 'km', sourceIds: [] } },
+      }).success,
+    ).toBe(false);
+    expect(
+      StraitSchema.safeParse({ ...valid, connectsWaterBodies: [{ type: 'ocean', id: 'x' }] })
+        .success,
+    ).toBe(false);
+  });
 });
 
 describe('StraitIndexEntrySchema', () => {
