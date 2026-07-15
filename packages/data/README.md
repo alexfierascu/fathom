@@ -7,9 +7,25 @@ Shared domain data and types for Fathom.
 - `src/straits/` — the straits dataset: one JSON document per strait, plus
   `index.json` holding lightweight metadata (id, name, region, countries,
   coordinates) for every strait in canonical order.
-- `src/schema.ts` — Zod schemas describing the documents; the TypeScript types
-  are inferred from them.
-- `src/loader.ts` — validated access to the dataset.
+- `src/knowledge/` — knowledge-layer collections (sources, images, historical
+  events, wildlife, statistics, tags). Empty until real, sourced data arrives.
+- `src/schema/` — Zod schemas, the code form of `docs/DATA_MODEL.md`: the
+  shared entity foundation (`common.ts`), the knowledge entities
+  (`knowledge.ts`), and the strait document (`strait.ts`). TypeScript types
+  are inferred from the schemas.
+- `src/loader.ts` — validated access to the straits dataset.
+- `src/entities.ts` — validated loaders for the knowledge collections.
+- `src/resolve.ts` — relationship resolution (`resolveRef`) and attachment
+  lookups (`loadSourcesFor`, `loadImagesFor`, `loadStatisticsFor`).
+- `src/validate.ts` — `validateEntity`, non-throwing validation with readable
+  issues.
+
+The strait document keeps its prototype core (required) and adds the
+canonical expansion from `docs/DATA_MODEL.md` as optional fields — names,
+summary, relationships, sourced dimensions, and knowledge attachments — so
+existing documents remain valid while the model grows. Measurements and
+knowledge entities require sources by schema; nothing unsourced can enter
+the dataset.
 
 ## Usage
 
