@@ -52,9 +52,9 @@ export function StraitDetailPage() {
         <h2 className="detail-title">{strait.name}</h2>
         <div className="pills">
           {countries.map((country) => (
-            <span key={country.id} className="pill">
+            <Link key={country.id} className="pill" to={`/countries/${country.id}`}>
               {country.name}
-            </span>
+            </Link>
           ))}
         </div>
         <ConnectsLine strait={strait} />

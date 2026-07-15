@@ -1,4 +1,4 @@
-import type { Strait, WaterBody } from '@fathom/data';
+import type { Country, Strait, WaterBody } from '@fathom/data';
 
 export interface StraitSeo {
   title: string;
@@ -13,6 +13,15 @@ export function buildStraitSeo(strait: Strait): StraitSeo {
     title: `${strait.name} — Fathom`,
     description: `${strait.name}: ${strait.connects}. ${strait.note}`,
     path: `/straits/${strait.id}`,
+  };
+}
+
+/** Page metadata composed purely from existing country data. */
+export function buildCountrySeo(country: Country): StraitSeo {
+  return {
+    title: `${country.name} — Fathom`,
+    description: `${country.name}: ${country.summary}`,
+    path: `/countries/${country.id}`,
   };
 }
 

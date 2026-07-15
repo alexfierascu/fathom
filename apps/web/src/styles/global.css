@@ -745,6 +745,52 @@ a.pill:hover {
   margin-bottom: 4px;
 }
 
+/* ---------- Country detail ---------- */
+
+.detail-title-row {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 14px;
+}
+.detail-title-row .detail-title {
+  margin: 0;
+}
+.flag-chip {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.9rem;
+  letter-spacing: 0.06em;
+  color: var(--accent-2);
+  border: 1px dashed color-mix(in srgb, var(--accent-2) 45%, transparent);
+  border-radius: 6px;
+  padding: 8px 10px;
+}
+.facts {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  gap: 10px;
+}
+.fact {
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 12px 14px;
+}
+.fact-label {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.65rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: 4px;
+}
+.fact-value {
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 700;
+  font-size: 1.2rem;
+  color: var(--text);
+}
+
 footer {
   margin-top: 50px;
   padding-top: 20px;

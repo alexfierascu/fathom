@@ -2,7 +2,7 @@ import { useEffect, useRef } from 'react';
 
 import L from 'leaflet';
 
-import type { Strait, WaterBody } from '@fathom/data';
+import type { Strait } from '@fathom/data';
 
 import type { TileStyle } from '../../theme/themes';
 import {
@@ -15,15 +15,17 @@ import {
   type TileManager,
 } from '../lib/map';
 
-interface WaterBodyMapProps {
-  waterBody: WaterBody;
-  /** The straits connecting this water body, shown as markers. */
+interface StraitsMapProps {
+  /**
+   * The straits shown as markers. Pass a memoized array — the map is
+   * recreated when the array identity changes.
+   */
   straits: readonly Strait[];
   tileStyle: TileStyle;
 }
 
-/** Interactive map fitted to a water body's connecting straits. */
-export function WaterBodyMap({ waterBody, straits, tileStyle }: WaterBodyMapProps) {
+/** Interactive map fitted to a set of strait markers. */
+export function StraitsMap({ straits, tileStyle }: StraitsMapProps) {
   const containerRef = useRef<HTMLDivElement>(null);
   const tilesRef = useRef<TileManager | null>(null);
 
@@ -47,7 +49,7 @@ export function WaterBodyMap({ waterBody, straits, tileStyle }: WaterBodyMapProp
       map.remove();
       tilesRef.current = null;
     };
-  }, [waterBody, straits]);
+  }, [straits]);
 
   // No dependency array: applies the initial style right after map init and
   // follows theme changes afterwards.

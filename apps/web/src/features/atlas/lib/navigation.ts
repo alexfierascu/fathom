@@ -1,7 +1,9 @@
 import {
   loadAllStraits,
+  loadCountry,
   loadStrait,
   loadWaterBody,
+  type Country,
   type Strait,
   type WaterBody,
 } from '@fathom/data';
@@ -21,6 +23,16 @@ export function findWaterBodyBySlug(slug: string | undefined): WaterBody | null 
   if (!slug) return null;
   try {
     return loadWaterBody(slug);
+  } catch {
+    return null;
+  }
+}
+
+/** Slug-based country lookup for routes; returns null instead of throwing. */
+export function findCountryBySlug(slug: string | undefined): Country | null {
+  if (!slug) return null;
+  try {
+    return loadCountry(slug);
   } catch {
     return null;
   }

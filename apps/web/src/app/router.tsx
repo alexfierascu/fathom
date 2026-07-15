@@ -3,6 +3,7 @@ import { createBrowserRouter } from 'react-router';
 import { HomePage } from '../features/atlas/pages/HomePage';
 import { NotFoundPage } from '../features/atlas/pages/NotFoundPage';
 import { StraitDetailPage } from '../features/atlas/pages/StraitDetailPage';
+import { CountryDetailPage } from '../features/atlas/pages/CountryDetailPage';
 import { WaterBodyDetailPage } from '../features/atlas/pages/WaterBodyDetailPage';
 import { RootLayout } from './RootLayout';
 
@@ -14,6 +15,7 @@ export const router = createBrowserRouter([
       { index: true, element: <HomePage /> },
       { path: 'straits/:slug', element: <StraitDetailPage /> },
       { path: 'water-bodies/:slug', element: <WaterBodyDetailPage /> },
+      { path: 'countries/:slug', element: <CountryDetailPage /> },
       { path: '*', element: <NotFoundPage /> },
     ],
   },

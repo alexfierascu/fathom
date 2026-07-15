@@ -1,3 +1,5 @@
+import { useMemo } from 'react';
+
 import { Link, useOutletContext, useParams } from 'react-router';
 
 import { getEntity, getRelated, entityId } from '@fathom/data';
@@ -5,7 +7,7 @@ import { getEntity, getRelated, entityId } from '@fathom/data';
 import type { LayoutContext } from '../../../app/RootLayout';
 import { Breadcrumbs, type BreadcrumbItem } from '../components/Breadcrumbs';
 import { StraitCard } from '../components/StraitCard';
-import { WaterBodyMap } from '../components/WaterBodyMap';
+import { StraitsMap } from '../components/StraitsMap';
 import { findWaterBodyBySlug } from '../lib/navigation';
 import { buildWaterBodySeo } from '../lib/seo';
 
@@ -23,7 +25,22 @@ export function WaterBodyDetailPage() {
   const { tileStyle } = useOutletContext<LayoutContext>();
   const waterBody = findWaterBodyBySlug(slug);
 
-  if (!waterBody) {
+  const related = useMemo(() => {
+    if (!waterBody) return null;
+    const node = getEntity(entityId('water-body', waterBody.id));
+    if (node?.type !== 'water-body') return null;
+    const straits = getRelated(node, 'straits');
+    return {
+      parent: getRelated(node, 'parent'),
+      children: getRelated(node, 'children'),
+      straits,
+      straitDocs: straits.map((strait) => strait.data),
+      countries: getRelated(node, 'countries'),
+      sources: getRelated(node, 'sources'),
+    };
+  }, [waterBody]);
+
+  if (!waterBody || !related) {
     return (
       <div className="empty">
         No waters charted at this address. <Link to="/">Return to the chart.</Link>
@@ -31,16 +48,7 @@ export function WaterBodyDetailPage() {
     );
   }
 
-  const node = getEntity(entityId('water-body', waterBody.id));
-  if (node?.type !== 'water-body') {
-    throw new Error(`Water body node missing for "${waterBody.id}"`);
-  }
-
-  const parent = getRelated(node, 'parent');
-  const children = getRelated(node, 'children');
-  const straits = getRelated(node, 'straits');
-  const countries = getRelated(node, 'countries');
-  const sources = getRelated(node, 'sources');
+  const { parent, children, straits, straitDocs, countries, sources } = related;
 
   const crumbs: BreadcrumbItem[] = [{ label: 'Home', to: '/' }];
   if (parent) crumbs.push({ label: parent.name, to: `/water-bodies/${parent.id}` });
@@ -91,19 +99,15 @@ export function WaterBodyDetailPage() {
             <div className="eyebrow">Bordered by</div>
             <div className="pills">
               {countries.map((country) => (
-                <span key={country.id} className="pill">
+                <Link key={country.id} className="pill" to={`/countries/${country.id}`}>
                   {country.name}
-                </span>
+                </Link>
               ))}
             </div>
           </section>
         )}
 
-        <WaterBodyMap
-          waterBody={waterBody}
-          straits={straits.map((strait) => strait.data)}
-          tileStyle={tileStyle}
-        />
+        <StraitsMap straits={straitDocs} tileStyle={tileStyle} />
 
         {straits.length > 0 && (
           <section className="detail-section">
