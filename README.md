@@ -59,7 +59,7 @@ fathom/
 └── pnpm-workspace.yaml   # Workspace package globs
 ```
 
-See [docs/architecture.md](docs/architecture.md) for the reasoning behind this layout and
+See [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md) for the reasoning behind this layout and
 the conventions to follow when adding code.
 
 ## Continuous integration
