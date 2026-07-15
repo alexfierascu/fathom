@@ -712,6 +712,39 @@ a.card {
   border-color: color-mix(in srgb, var(--text) 25%, transparent);
 }
 
+/* ---------- Water body detail ---------- */
+
+.detail-section {
+  margin-top: 24px;
+}
+.connects a {
+  color: var(--accent-2);
+  text-decoration: none;
+}
+.connects a:hover {
+  text-decoration: underline;
+}
+a.pill {
+  text-decoration: none;
+  transition: all 0.15s ease;
+}
+a.pill:hover {
+  color: var(--text);
+  border-color: color-mix(in srgb, var(--text) 25%, transparent);
+}
+.sources {
+  list-style: none;
+  margin: 0;
+  padding: 10px 0 0;
+  border-top: 1px solid var(--border);
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.72rem;
+  color: var(--text-muted);
+}
+.sources li {
+  margin-bottom: 4px;
+}
+
 footer {
   margin-top: 50px;
   padding-top: 20px;

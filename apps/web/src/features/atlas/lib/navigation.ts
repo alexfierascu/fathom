@@ -1,10 +1,26 @@
-import { loadAllStraits, loadStrait, type Strait } from '@fathom/data';
+import {
+  loadAllStraits,
+  loadStrait,
+  loadWaterBody,
+  type Strait,
+  type WaterBody,
+} from '@fathom/data';
 
 /** Slug-based lookup for routes; returns null instead of throwing. */
 export function findStraitBySlug(slug: string | undefined): Strait | null {
   if (!slug) return null;
   try {
     return loadStrait(slug);
+  } catch {
+    return null;
+  }
+}
+
+/** Slug-based water body lookup for routes; returns null instead of throwing. */
+export function findWaterBodyBySlug(slug: string | undefined): WaterBody | null {
+  if (!slug) return null;
+  try {
+    return loadWaterBody(slug);
   } catch {
     return null;
   }

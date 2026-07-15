@@ -6,7 +6,7 @@ import { formatLat, formatLon } from '../lib/format';
 
 interface StraitCardProps {
   strait: Strait;
-  onHover: (id: string | null) => void;
+  onHover?: (id: string | null) => void;
 }
 
 export function StraitCard({ strait, onHover }: StraitCardProps) {
@@ -20,10 +20,10 @@ export function StraitCard({ strait, onHover }: StraitCardProps) {
       className="card"
       data-id={strait.id}
       onMouseEnter={() => {
-        onHover(strait.id);
+        onHover?.(strait.id);
       }}
       onMouseLeave={() => {
-        onHover(null);
+        onHover?.(null);
       }}
     >
       <div className="eyebrow">{region?.name ?? strait.region}</div>

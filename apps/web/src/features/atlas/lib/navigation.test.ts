@@ -1,6 +1,6 @@
 import { loadAllStraits } from '@fathom/data';
 
-import { findStraitBySlug, getAdjacentStraits } from './navigation';
+import { findStraitBySlug, findWaterBodyBySlug, getAdjacentStraits } from './navigation';
 
 describe('findStraitBySlug', () => {
   it('returns the strait for a known slug', () => {
@@ -10,6 +10,17 @@ describe('findStraitBySlug', () => {
   it('returns null for unknown or missing slugs', () => {
     expect(findStraitBySlug('atlantis')).toBeNull();
     expect(findStraitBySlug(undefined)).toBeNull();
+  });
+});
+
+describe('findWaterBodyBySlug', () => {
+  it('returns the water body for a known slug', () => {
+    expect(findWaterBodyBySlug('mediterranean-sea')?.type).toBe('sea');
+  });
+
+  it('returns null for unknown or missing slugs', () => {
+    expect(findWaterBodyBySlug('sea-of-atlantis')).toBeNull();
+    expect(findWaterBodyBySlug(undefined)).toBeNull();
   });
 });
 

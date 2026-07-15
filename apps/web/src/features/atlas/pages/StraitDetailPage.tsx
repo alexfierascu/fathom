@@ -4,6 +4,7 @@ import { getRelated, getStraitEntity } from '@fathom/data';
 
 import type { LayoutContext } from '../../../app/RootLayout';
 import { Breadcrumbs } from '../components/Breadcrumbs';
+import { ConnectsLine } from '../components/ConnectsLine';
 import { StraitMap } from '../components/StraitMap';
 import { StraitPager } from '../components/StraitPager';
 import { formatLat, formatLon } from '../lib/format';
@@ -56,7 +57,7 @@ export function StraitDetailPage() {
             </span>
           ))}
         </div>
-        <div className="connects">{strait.connects}</div>
+        <ConnectsLine strait={strait} />
         <div className="note">{strait.note}</div>
         <div className="coords">
           {formatLat(strait.lat)}, {formatLon(strait.lon)}
