@@ -1,0 +1,48 @@
+[
+  {
+    "id": "channel-tunnel",
+    "name": "Channel Tunnel",
+    "crosses": {
+      "type": "strait",
+      "id": "dover"
+    },
+    "connects": [
+      {
+        "type": "country",
+        "id": "united-kingdom"
+      },
+      {
+        "type": "country",
+        "id": "france"
+      }
+    ],
+    "mode": "rail",
+    "operationalStatus": "operational",
+    "opened": "1994",
+    "summary": "The undersea rail tunnel beneath the Strait of Dover linking Britain and France.",
+    "sourceIds": ["getlink"]
+  },
+  {
+    "id": "seikan-tunnel",
+    "name": "Seikan Tunnel",
+    "crosses": {
+      "type": "strait",
+      "id": "tsugaru"
+    },
+    "connects": [
+      {
+        "type": "island",
+        "id": "honshu"
+      },
+      {
+        "type": "island",
+        "id": "hokkaido"
+      }
+    ],
+    "mode": "rail",
+    "operationalStatus": "operational",
+    "opened": "1988",
+    "summary": "The undersea rail tunnel beneath the Tsugaru Strait joining Honshu and Hokkaido.",
+    "sourceIds": ["britannica-seikan"]
+  }
+]

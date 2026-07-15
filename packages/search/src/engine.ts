@@ -13,6 +13,8 @@ export const SEARCHABLE_TYPES = [
   'canal',
   'bridge',
   'tunnel',
+  'island',
+  'maritime-route',
 ] as const;
 export type SearchableType = (typeof SEARCHABLE_TYPES)[number];
 

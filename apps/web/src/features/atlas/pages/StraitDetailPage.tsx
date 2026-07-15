@@ -7,6 +7,7 @@ import { Breadcrumbs } from '../components/Breadcrumbs';
 import { ConnectsLine } from '../components/ConnectsLine';
 import { EntityPills } from '../components/EntityPills';
 import { SeoTags } from '../components/SeoTags';
+import { Section } from '../components/Section';
 import { StraitMap } from '../components/StraitMap';
 import { StraitPager } from '../components/StraitPager';
 import { formatLat, formatLon } from '../lib/format';
@@ -31,6 +32,10 @@ export function StraitDetailPage() {
   const region = getRelated(entity, 'region');
   const countries = getRelated(entity, 'countries');
   const regionName = region?.name ?? strait.region;
+  const crossings = getRelated(entity, 'crossings');
+  const islands = getRelated(entity, 'islands');
+  const ports = getRelated(entity, 'ports');
+  const routes = getRelated(entity, 'routes');
   const seo = buildStraitSeo(strait);
 
   return (
@@ -72,6 +77,30 @@ export function StraitDetailPage() {
         <div className="coords">
           {formatLat(strait.lat)}, {formatLon(strait.lon)}
         </div>
+
+        {crossings.length > 0 && (
+          <Section label="Crossings">
+            <EntityPills entities={crossings} />
+          </Section>
+        )}
+
+        {islands.length > 0 && (
+          <Section label="Islands">
+            <EntityPills entities={islands} />
+          </Section>
+        )}
+
+        {ports.length > 0 && (
+          <Section label="Ports">
+            <EntityPills entities={ports} />
+          </Section>
+        )}
+
+        {routes.length > 0 && (
+          <Section label="Routes through">
+            <EntityPills entities={routes} />
+          </Section>
+        )}
 
         <StraitMap strait={strait} tileStyle={tileStyle} />
 

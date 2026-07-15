@@ -30,6 +30,25 @@ export {
 } from './knowledge';
 export type { HistoricalEvent, Image, Source, Statistic, Tag, Wildlife } from './knowledge';
 
+export {
+  BridgeSchema,
+  CanalSchema,
+  IslandSchema,
+  MaritimeRouteSchema,
+  PortSchema,
+  StructureStatusSchema,
+  TunnelSchema,
+} from './maritime';
+export type {
+  Bridge,
+  Canal,
+  Island,
+  MaritimeRoute,
+  Port,
+  StructureStatus,
+  Tunnel,
+} from './maritime';
+
 export { CountriesIndexSchema, CountryIndexEntrySchema, CountrySchema } from './country';
 export type { CountriesIndex, Country, CountryIndexEntry } from './country';
 

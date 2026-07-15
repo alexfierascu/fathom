@@ -2,6 +2,14 @@ import { loadAllCountries, loadCountry } from './countries';
 import { derivedRegistries, slugifyName, type RegionEntity } from './derived';
 import { loadHistoricalEvents, loadImages, loadSources, loadTags, loadWildlife } from './entities';
 import { loadAllStraits, loadStrait } from './loader';
+import {
+  loadBridges,
+  loadCanals,
+  loadIslands,
+  loadMaritimeRoutes,
+  loadPorts,
+  loadTunnels,
+} from './maritime';
 import { loadAllWaterBodies, loadWaterBody } from './water-bodies';
 import { loadStatisticsFor } from './resolve';
 import {
@@ -12,9 +20,15 @@ import {
   type Image,
   type Source,
   type Statistic,
+  type Bridge,
+  type Canal,
   type Country,
+  type Island,
+  type MaritimeRoute,
+  type Port,
   type Strait,
   type Tag,
+  type Tunnel,
   type WaterBody,
   type Wildlife,
 } from './schema';
@@ -33,6 +47,12 @@ export interface EntityDataMap {
   country: Country;
   'water-body': WaterBody;
   region: RegionEntity;
+  port: Port;
+  canal: Canal;
+  bridge: Bridge;
+  tunnel: Tunnel;
+  island: Island;
+  'maritime-route': MaritimeRoute;
   source: Source;
   image: Image;
   'historical-event': HistoricalEvent;
@@ -77,6 +97,12 @@ const eventNode = (event: HistoricalEvent) => node('historical-event', event.id,
 const wildlifeNode = (species: Wildlife) =>
   node('wildlife', species.id, species.commonName, species);
 const tagNode = (tag: Tag) => node('tag', tag.id, tag.label, tag);
+const portNode = (port: Port) => node('port', port.id, port.name, port);
+const canalNode = (canal: Canal) => node('canal', canal.id, canal.name, canal);
+const bridgeNode = (bridge: Bridge) => node('bridge', bridge.id, bridge.name, bridge);
+const tunnelNode = (tunnel: Tunnel) => node('tunnel', tunnel.id, tunnel.name, tunnel);
+const islandNode = (island: Island) => node('island', island.id, island.name, island);
+const routeNode = (route: MaritimeRoute) => node('maritime-route', route.id, route.name, route);
 
 /**
  * Relationships per entity type, with their cardinality. Single-valued
@@ -97,6 +123,11 @@ export interface RelationshipMap {
     tags: readonly EntityNode<'tag'>[];
     /** Statistics are values about the strait, not nodes (DATA_MODEL.md). */
     statistics: readonly Statistic[];
+    /** Bridges over and tunnels under the strait. */
+    crossings: readonly EntityNode[];
+    islands: readonly EntityNode<'island'>[];
+    ports: readonly EntityNode<'port'>[];
+    routes: readonly EntityNode<'maritime-route'>[];
   };
   country: {
     straits: readonly EntityNode<'strait'>[];
@@ -104,6 +135,11 @@ export interface RelationshipMap {
     /** Countries sharing at least one strait with this one. */
     neighbors: readonly EntityNode<'country'>[];
     sources: readonly EntityNode<'source'>[];
+    ports: readonly EntityNode<'port'>[];
+    canals: readonly EntityNode<'canal'>[];
+    islands: readonly EntityNode<'island'>[];
+    /** Bridges and tunnels touching the country. */
+    crossings: readonly EntityNode[];
   };
   'water-body': {
     straits: readonly EntityNode<'strait'>[];
@@ -113,11 +149,44 @@ export interface RelationshipMap {
     parent: EntityNode<'water-body'> | null;
     children: readonly EntityNode<'water-body'>[];
     sources: readonly EntityNode<'source'>[];
+    canals: readonly EntityNode<'canal'>[];
+    islands: readonly EntityNode<'island'>[];
+    ports: readonly EntityNode<'port'>[];
   };
   region: {
     straits: readonly EntityNode<'strait'>[];
     waterBodies: readonly EntityNode<'water-body'>[];
     countries: readonly EntityNode<'country'>[];
+  };
+  port: {
+    country: EntityNode<'country'> | null;
+    opensOnto: EntityNode | null;
+    sources: readonly EntityNode<'source'>[];
+  };
+  canal: {
+    waterBodies: readonly EntityNode[];
+    countries: readonly EntityNode<'country'>[];
+    sources: readonly EntityNode<'source'>[];
+  };
+  bridge: {
+    crosses: EntityNode | null;
+    connects: readonly EntityNode[];
+    sources: readonly EntityNode<'source'>[];
+  };
+  tunnel: {
+    crosses: EntityNode | null;
+    connects: readonly EntityNode[];
+    sources: readonly EntityNode<'source'>[];
+  };
+  island: {
+    waterBody: EntityNode | null;
+    country: EntityNode | null;
+    straits: readonly EntityNode<'strait'>[];
+    sources: readonly EntityNode<'source'>[];
+  };
+  'maritime-route': {
+    waypoints: readonly EntityNode[];
+    sources: readonly EntityNode<'source'>[];
   };
   image: { depicts: readonly EntityNode[] };
   source: { citedBy: readonly EntityNode<'strait'>[] };
@@ -141,6 +210,12 @@ function straitsOfIds(ids: readonly string[] | undefined): readonly EntityNode<'
     return strait ? [straitNode(strait)] : [];
   });
 }
+
+const sourcesOf = (ids: readonly string[]): readonly EntityNode<'source'>[] =>
+  ids.flatMap((id) => {
+    const source = loadSources().find((src) => src.id === id);
+    return source ? [sourceNode(source)] : [];
+  });
 
 function refNodes(refs: readonly EntityRef[]): readonly EntityNode[] {
   return refs.flatMap((ref) => {
@@ -184,11 +259,7 @@ const RESOLVERS: {
           return image ? [imageNode(image)] : [];
         }),
       ]),
-    sources: (n) =>
-      (n.data.sourceIds ?? []).flatMap((id) => {
-        const source = loadSources().find((s) => s.id === id);
-        return source ? [sourceNode(source)] : [];
-      }),
+    sources: (n) => sourcesOf(n.data.sourceIds ?? []),
     events: (n) =>
       dedupeById([
         ...loadHistoricalEvents()
@@ -215,6 +286,26 @@ const RESOLVERS: {
         return tag ? [tagNode(tag)] : [];
       }),
     statistics: (n) => loadStatisticsFor({ type: 'strait', id: n.id }),
+    crossings: (n) => [
+      ...loadBridges()
+        .filter((b) => b.crosses.type === 'strait' && b.crosses.id === n.id)
+        .map(bridgeNode),
+      ...loadTunnels()
+        .filter((t) => t.crosses.type === 'strait' && t.crosses.id === n.id)
+        .map(tunnelNode),
+    ],
+    islands: (n) =>
+      loadIslands()
+        .filter((island) => island.flanksStraitIds?.includes(n.id) ?? false)
+        .map(islandNode),
+    ports: (n) =>
+      loadPorts()
+        .filter((port) => port.opensOnto.type === 'strait' && port.opensOnto.id === n.id)
+        .map(portNode),
+    routes: (n) =>
+      loadMaritimeRoutes()
+        .filter((route) => route.waypoints.some((w) => w.type === 'strait' && w.id === n.id))
+        .map(routeNode),
   },
   country: {
     straits: (n) => straitsOfIds(derivedRegistries().straitIdsByCountryId.get(n.id)),
@@ -230,11 +321,27 @@ const RESOLVERS: {
           RESOLVERS.strait.countries(strait),
         ),
       ).filter((country) => country.id !== n.id),
-    sources: (n) =>
-      n.data.sourceIds.flatMap((id) => {
-        const source = loadSources().find((src) => src.id === id);
-        return source ? [sourceNode(source)] : [];
-      }),
+    sources: (n) => sourcesOf(n.data.sourceIds),
+    ports: (n) =>
+      loadPorts()
+        .filter((port) => port.countryId === n.id)
+        .map(portNode),
+    canals: (n) =>
+      loadCanals()
+        .filter((canal) => canal.countryIds.includes(n.id))
+        .map(canalNode),
+    islands: (n) =>
+      loadIslands()
+        .filter((island) => island.countryId === n.id)
+        .map(islandNode),
+    crossings: (n) => [
+      ...loadBridges()
+        .filter((b) => b.connects.some((ref) => ref.type === 'country' && ref.id === n.id))
+        .map(bridgeNode),
+      ...loadTunnels()
+        .filter((t) => t.connects.some((ref) => ref.type === 'country' && ref.id === n.id))
+        .map(tunnelNode),
+    ],
   },
   'water-body': {
     straits: (n) => straitsOfIds(derivedRegistries().straitIdsByWaterBodyId.get(n.id)),
@@ -261,11 +368,21 @@ const RESOLVERS: {
       loadAllWaterBodies()
         .filter((wb) => wb.parentId === n.id)
         .map(waterBodyNode),
-    sources: (n) =>
-      n.data.sourceIds.flatMap((id) => {
-        const source = loadSources().find((src) => src.id === id);
-        return source ? [sourceNode(source)] : [];
-      }),
+    sources: (n) => sourcesOf(n.data.sourceIds),
+    canals: (n) =>
+      loadCanals()
+        .filter((canal) =>
+          canal.connects.some((ref) => ref.type === 'water-body' && ref.id === n.id),
+        )
+        .map(canalNode),
+    islands: (n) =>
+      loadIslands()
+        .filter((island) => island.waterBodyId === n.id)
+        .map(islandNode),
+    ports: (n) =>
+      loadPorts()
+        .filter((port) => port.opensOnto.type === 'water-body' && port.opensOnto.id === n.id)
+        .map(portNode),
   },
   region: {
     straits: (n) => straitsOfIds(derivedRegistries().straitIdsByRegionId.get(n.id)),
@@ -281,6 +398,44 @@ const RESOLVERS: {
           RESOLVERS.strait.countries(strait),
         ),
       ),
+  },
+  port: {
+    country: (n) => {
+      const country = loadAllCountries().find((c) => c.id === n.data.countryId);
+      return country ? countryNode(country) : null;
+    },
+    opensOnto: (n) => refNodes([n.data.opensOnto])[0] ?? null,
+    sources: (n) => sourcesOf(n.data.sourceIds),
+  },
+  canal: {
+    waterBodies: (n) => refNodes(n.data.connects),
+    countries: (n) =>
+      n.data.countryIds.flatMap((id) => {
+        const country = loadAllCountries().find((c) => c.id === id);
+        return country ? [countryNode(country)] : [];
+      }),
+    sources: (n) => sourcesOf(n.data.sourceIds),
+  },
+  bridge: {
+    crosses: (n) => refNodes([n.data.crosses])[0] ?? null,
+    connects: (n) => refNodes(n.data.connects),
+    sources: (n) => sourcesOf(n.data.sourceIds),
+  },
+  tunnel: {
+    crosses: (n) => refNodes([n.data.crosses])[0] ?? null,
+    connects: (n) => refNodes(n.data.connects),
+    sources: (n) => sourcesOf(n.data.sourceIds),
+  },
+  island: {
+    waterBody: (n) => refNodes([{ type: 'water-body', id: n.data.waterBodyId }])[0] ?? null,
+    country: (n) =>
+      n.data.countryId ? (refNodes([{ type: 'country', id: n.data.countryId }])[0] ?? null) : null,
+    straits: (n) => straitsOfIds(n.data.flanksStraitIds),
+    sources: (n) => sourcesOf(n.data.sourceIds),
+  },
+  'maritime-route': {
+    waypoints: (n) => refNodes(n.data.waypoints),
+    sources: (n) => sourcesOf(n.data.sourceIds),
   },
   image: { depicts: (n) => refNodes(n.data.depicts) },
   source: {
@@ -336,6 +491,30 @@ export function getEntity(id: string): EntityNode | null {
     case 'region': {
       const region = derivedRegistries().regionsById.get(token);
       return region ? regionNode(region) : null;
+    }
+    case 'port': {
+      const port = loadPorts().find((p) => p.id === token);
+      return port ? portNode(port) : null;
+    }
+    case 'canal': {
+      const canal = loadCanals().find((c) => c.id === token);
+      return canal ? canalNode(canal) : null;
+    }
+    case 'bridge': {
+      const bridge = loadBridges().find((b) => b.id === token);
+      return bridge ? bridgeNode(bridge) : null;
+    }
+    case 'tunnel': {
+      const tunnel = loadTunnels().find((t) => t.id === token);
+      return tunnel ? tunnelNode(tunnel) : null;
+    }
+    case 'island': {
+      const island = loadIslands().find((i) => i.id === token);
+      return island ? islandNode(island) : null;
+    }
+    case 'maritime-route': {
+      const route = loadMaritimeRoutes().find((r) => r.id === token);
+      return route ? routeNode(route) : null;
     }
     case 'source': {
       const source = loadSources().find((s) => s.id === token);

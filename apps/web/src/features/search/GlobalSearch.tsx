@@ -19,6 +19,8 @@ const TYPE_LABELS: Record<SearchableType, string> = {
   canal: 'Canal',
   bridge: 'Bridge',
   tunnel: 'Tunnel',
+  island: 'Island',
+  'maritime-route': 'Route',
 };
 
 const GROUP_LABELS: Record<SearchableType, string> = {
@@ -30,6 +32,8 @@ const GROUP_LABELS: Record<SearchableType, string> = {
   canal: 'Canals',
   bridge: 'Bridges',
   tunnel: 'Tunnels',
+  island: 'Islands',
+  'maritime-route': 'Routes',
 };
 
 const TYPE_ICONS: Record<SearchableType, string> = {
@@ -41,6 +45,8 @@ const TYPE_ICONS: Record<SearchableType, string> = {
   canal: '⌇',
   bridge: '⌒',
   tunnel: '∩',
+  island: '△',
+  'maritime-route': '⇢',
 };
 
 function Highlighted({ text, ranges }: { text: string; ranges: readonly MatchRange[] }) {

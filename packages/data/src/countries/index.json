@@ -198,5 +198,15 @@
     "id": "argentina",
     "name": "Argentina",
     "code": "AR"
+  },
+  {
+    "id": "egypt",
+    "name": "Egypt",
+    "code": "EG"
+  },
+  {
+    "id": "panama",
+    "name": "Panama",
+    "code": "PA"
   }
 ]

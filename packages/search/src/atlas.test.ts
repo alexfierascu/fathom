@@ -8,8 +8,24 @@ describe('buildAtlasSearchDocuments', () => {
     const byType = (type: string) => documents.filter((doc) => doc.type === type).length;
     expect(byType('strait')).toBe(42);
     expect(byType('water-body')).toBe(46);
-    expect(byType('country')).toBe(40);
+    expect(byType('country')).toBe(42);
     expect(byType('region')).toBe(5);
+    expect(byType('port')).toBe(1);
+    expect(byType('canal')).toBe(2);
+    expect(byType('bridge')).toBe(1);
+    expect(byType('tunnel')).toBe(2);
+    expect(byType('island')).toBe(4);
+    expect(byType('maritime-route')).toBe(1);
+  });
+
+  it('finds the seeded maritime entities', () => {
+    const index = atlasSearchIndex();
+    expect(index.search('suez')[0]?.document.entityId).toBe('canal:suez-canal');
+    expect(index.search('seikan')[0]?.document.entityId).toBe('tunnel:seikan-tunnel');
+    expect(index.search('sicily')[0]?.document.entityId).toBe('island:sicily');
+    expect(index.search('northern sea')[0]?.document.entityId).toBe(
+      'maritime-route:northern-sea-route',
+    );
   });
 });
 

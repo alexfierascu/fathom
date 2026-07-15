@@ -1,0 +1,23 @@
+[
+  {
+    "id": "northern-sea-route",
+    "name": "Northern Sea Route",
+    "routeType": "trade-lane",
+    "waypoints": [
+      {
+        "type": "water-body",
+        "id": "kara-sea"
+      },
+      {
+        "type": "strait",
+        "id": "vilkitsky"
+      },
+      {
+        "type": "water-body",
+        "id": "laptev-sea"
+      }
+    ],
+    "summary": "Russia's Arctic shipping route along the Siberian coast, threading the Vilkitsky Strait.",
+    "sourceIds": ["britannica-nsr"]
+  }
+]

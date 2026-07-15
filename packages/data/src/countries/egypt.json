@@ -1,0 +1,7 @@
+{
+  "id": "egypt",
+  "name": "Egypt",
+  "code": "EG",
+  "summary": "Holds both banks of the Suez Canal, the shortcut between the Mediterranean and the Red Sea.",
+  "sourceIds": ["iso-3166-country-codes"]
+}

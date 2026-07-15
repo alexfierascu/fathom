@@ -8,6 +8,14 @@ import {
   loadWildlife,
 } from './entities';
 import { loadAllCountries } from './countries';
+import {
+  loadBridges,
+  loadCanals,
+  loadIslands,
+  loadMaritimeRoutes,
+  loadPorts,
+  loadTunnels,
+} from './maritime';
 import { connectedWaterBodyNames, slugifyName } from './derived';
 import { loadAllStraits } from './loader';
 import { loadAllWaterBodies } from './water-bodies';
@@ -17,8 +25,14 @@ import {
   type HistoricalEvent,
   type Image,
   type Source,
+  type Bridge,
+  type Canal,
   type Country,
+  type Island,
+  type MaritimeRoute,
+  type Port,
   type Statistic,
+  type Tunnel,
   type Strait,
   type Tag,
   type WaterBody,
@@ -30,6 +44,12 @@ export interface AtlasDataset {
   straits: readonly Strait[];
   waterBodies: readonly WaterBody[];
   countries: readonly Country[];
+  ports: readonly Port[];
+  canals: readonly Canal[];
+  bridges: readonly Bridge[];
+  tunnels: readonly Tunnel[];
+  islands: readonly Island[];
+  maritimeRoutes: readonly MaritimeRoute[];
   sources: readonly Source[];
   images: readonly Image[];
   events: readonly HistoricalEvent[];
@@ -43,6 +63,12 @@ export function loadAtlasDataset(): AtlasDataset {
     straits: loadAllStraits(),
     waterBodies: loadAllWaterBodies(),
     countries: loadAllCountries(),
+    ports: loadPorts(),
+    canals: loadCanals(),
+    bridges: loadBridges(),
+    tunnels: loadTunnels(),
+    islands: loadIslands(),
+    maritimeRoutes: loadMaritimeRoutes(),
     sources: loadSources(),
     images: loadImages(),
     events: loadHistoricalEvents(),
@@ -81,6 +107,12 @@ export function findBrokenReferences(
     country: new Set(dataset.countries.map((c) => c.id)),
     'water-body': new Set(dataset.waterBodies.map((wb) => wb.id)),
     region: new Set(derived.regionsById.keys()),
+    port: new Set(dataset.ports.map((p) => p.id)),
+    canal: new Set(dataset.canals.map((c) => c.id)),
+    bridge: new Set(dataset.bridges.map((b) => b.id)),
+    tunnel: new Set(dataset.tunnels.map((t) => t.id)),
+    island: new Set(dataset.islands.map((i) => i.id)),
+    'maritime-route': new Set(dataset.maritimeRoutes.map((r) => r.id)),
     source: new Set(dataset.sources.map((s) => s.id)),
     image: new Set(dataset.images.map((i) => i.id)),
     'historical-event': new Set(dataset.events.map((e) => e.id)),
@@ -145,6 +177,43 @@ export function findBrokenReferences(
       checkRef(from, 'parentId', { type: 'water-body', id: waterBody.parentId });
     }
     checkIds(from, 'sourceIds', 'source', waterBody.sourceIds);
+  }
+
+  for (const port of dataset.ports) {
+    const from = entityId('port', port.id);
+    checkRef(from, 'countryId', { type: 'country', id: port.countryId });
+    checkRef(from, 'opensOnto', port.opensOnto);
+    if (port.islandId) checkRef(from, 'islandId', { type: 'island', id: port.islandId });
+    checkIds(from, 'sourceIds', 'source', port.sourceIds);
+  }
+
+  for (const canal of dataset.canals) {
+    const from = entityId('canal', canal.id);
+    for (const ref of canal.connects) checkRef(from, 'connects', ref);
+    checkIds(from, 'countryIds', 'country', canal.countryIds);
+    checkIds(from, 'sourceIds', 'source', canal.sourceIds);
+  }
+
+  for (const crossing of [...dataset.bridges, ...dataset.tunnels]) {
+    const type = dataset.bridges.some((b) => b === crossing) ? 'bridge' : 'tunnel';
+    const from = entityId(type, crossing.id);
+    checkRef(from, 'crosses', crossing.crosses);
+    for (const ref of crossing.connects) checkRef(from, 'connects', ref);
+    checkIds(from, 'sourceIds', 'source', crossing.sourceIds);
+  }
+
+  for (const island of dataset.islands) {
+    const from = entityId('island', island.id);
+    checkRef(from, 'waterBodyId', { type: 'water-body', id: island.waterBodyId });
+    if (island.countryId) checkRef(from, 'countryId', { type: 'country', id: island.countryId });
+    checkIds(from, 'flanksStraitIds', 'strait', island.flanksStraitIds);
+    checkIds(from, 'sourceIds', 'source', island.sourceIds);
+  }
+
+  for (const route of dataset.maritimeRoutes) {
+    const from = entityId('maritime-route', route.id);
+    for (const ref of route.waypoints) checkRef(from, 'waypoints', ref);
+    checkIds(from, 'sourceIds', 'source', route.sourceIds);
   }
 
   for (const image of dataset.images) {

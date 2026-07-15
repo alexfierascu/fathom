@@ -13,5 +13,93 @@
     "title": "ISO 3166-1 Country Codes",
     "publisher": "International Organization for Standardization",
     "locator": "ISO 3166-1:2020"
+  },
+  {
+    "id": "suez-canal-authority",
+    "type": "institution",
+    "title": "Suez Canal Authority",
+    "publisher": "Suez Canal Authority",
+    "locator": "https://www.suezcanal.gov.eg",
+    "accessedOn": "2026-07-16"
+  },
+  {
+    "id": "panama-canal-authority",
+    "type": "institution",
+    "title": "Panama Canal Authority",
+    "publisher": "Autoridad del Canal de Panamá",
+    "locator": "https://pancanal.com",
+    "accessedOn": "2026-07-16"
+  },
+  {
+    "id": "oresundsbron",
+    "type": "institution",
+    "title": "Øresundsbron",
+    "publisher": "Øresundsbro Konsortiet",
+    "locator": "https://www.oresundsbron.com",
+    "accessedOn": "2026-07-16"
+  },
+  {
+    "id": "getlink",
+    "type": "institution",
+    "title": "Getlink — The Channel Tunnel",
+    "publisher": "Getlink SE",
+    "locator": "https://www.getlinkgroup.com",
+    "accessedOn": "2026-07-16"
+  },
+  {
+    "id": "britannica-seikan",
+    "type": "website",
+    "title": "Seikan Tunnel",
+    "publisher": "Encyclopaedia Britannica",
+    "locator": "https://www.britannica.com/topic/Seikan-Tunnel",
+    "accessedOn": "2026-07-16"
+  },
+  {
+    "id": "mpa-singapore",
+    "type": "institution",
+    "title": "Maritime and Port Authority of Singapore",
+    "publisher": "MPA Singapore",
+    "locator": "https://www.mpa.gov.sg",
+    "accessedOn": "2026-07-16"
+  },
+  {
+    "id": "britannica-isle-of-wight",
+    "type": "website",
+    "title": "Isle of Wight",
+    "publisher": "Encyclopaedia Britannica",
+    "locator": "https://www.britannica.com/place/Isle-of-Wight",
+    "accessedOn": "2026-07-16"
+  },
+  {
+    "id": "britannica-sicily",
+    "type": "website",
+    "title": "Sicily",
+    "publisher": "Encyclopaedia Britannica",
+    "locator": "https://www.britannica.com/place/Sicily",
+    "accessedOn": "2026-07-16"
+  },
+  {
+    "id": "britannica-honshu",
+    "type": "website",
+    "title": "Honshu",
+    "publisher": "Encyclopaedia Britannica",
+    "locator": "https://www.britannica.com/place/Honshu",
+    "accessedOn": "2026-07-16"
+  },
+  {
+    "id": "britannica-hokkaido",
+    "type": "website",
+    "title": "Hokkaido",
+    "publisher": "Encyclopaedia Britannica",
+    "locator": "https://www.britannica.com/place/Hokkaido",
+    "accessedOn": "2026-07-16"
+  },
+  {
+    "id": "britannica-nsr",
+    "type": "website",
+    "title": "Northern Sea Route",
+    "publisher": "Encyclopaedia Britannica",
+    "locator": "https://www.britannica.com/topic/Northern-Sea-Route",
+    "accessedOn": "2026-07-16"
   }
 ]

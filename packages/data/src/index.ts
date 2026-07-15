@@ -10,6 +10,8 @@
 
 // Schemas and inferred types
 export {
+  BridgeSchema,
+  CanalSchema,
   CountriesIndexSchema,
   CountryIndexEntrySchema,
   CountrySchema,
@@ -35,14 +37,21 @@ export {
   StraitIndexEntrySchema,
   StraitRegionSchema,
   StraitSchema,
+  IslandSchema,
+  MaritimeRouteSchema,
+  PortSchema,
   StraitsIndexSchema,
+  StructureStatusSchema,
   TagSchema,
+  TunnelSchema,
   TokenSchema,
   WildlifeSchema,
   entityId,
   parseEntityId,
 } from './schema';
 export type {
+  Bridge,
+  Canal,
   CountriesIndex,
   Country,
   CountryIndexEntry,
@@ -56,8 +65,13 @@ export type {
   Name,
   Source,
   Statistic,
+  Island,
+  MaritimeRoute,
+  Port,
   Strait,
   StraitDimensions,
+  StructureStatus,
+  Tunnel,
   StraitIndexEntry,
   StraitRegion,
   StraitsIndex,
@@ -74,6 +88,16 @@ export { loadAllStraits, loadStrait, loadStraitsIndex } from './loader';
 
 // Country loaders
 export { loadAllCountries, loadCountriesIndex, loadCountry } from './countries';
+
+// Maritime entity loaders
+export {
+  loadBridges,
+  loadCanals,
+  loadIslands,
+  loadMaritimeRoutes,
+  loadPorts,
+  loadTunnels,
+} from './maritime';
 
 // Water body loaders
 export { loadAllWaterBodies, loadWaterBodiesIndex, loadWaterBody } from './water-bodies';

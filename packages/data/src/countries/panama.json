@@ -1,0 +1,7 @@
+{
+  "id": "panama",
+  "name": "Panama",
+  "code": "PA",
+  "summary": "The isthmus nation whose canal joins the Atlantic and Pacific oceans.",
+  "sourceIds": ["iso-3166-country-codes"]
+}

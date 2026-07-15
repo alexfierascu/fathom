@@ -1,0 +1,38 @@
+[
+  {
+    "id": "isle-of-wight",
+    "name": "Isle of Wight",
+    "waterBodyId": "english-channel",
+    "countryId": "united-kingdom",
+    "flanksStraitIds": ["solent"],
+    "summary": "The island off England's south coast, separated from the mainland by the Solent.",
+    "sourceIds": ["britannica-isle-of-wight"]
+  },
+  {
+    "id": "sicily",
+    "name": "Sicily",
+    "waterBodyId": "mediterranean-sea",
+    "countryId": "italy",
+    "flanksStraitIds": ["messina"],
+    "summary": "The largest Mediterranean island, split from mainland Italy by the Strait of Messina.",
+    "sourceIds": ["britannica-sicily"]
+  },
+  {
+    "id": "honshu",
+    "name": "Honshu",
+    "waterBodyId": "sea-of-japan",
+    "countryId": "japan",
+    "flanksStraitIds": ["tsugaru"],
+    "summary": "Japan's main island, facing Hokkaido across the Tsugaru Strait.",
+    "sourceIds": ["britannica-honshu"]
+  },
+  {
+    "id": "hokkaido",
+    "name": "Hokkaido",
+    "waterBodyId": "sea-of-japan",
+    "countryId": "japan",
+    "flanksStraitIds": ["tsugaru", "laperouse"],
+    "summary": "Japan's northern island, between the Tsugaru Strait and La Pérouse Strait.",
+    "sourceIds": ["britannica-hokkaido"]
+  }
+]

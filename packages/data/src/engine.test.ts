@@ -139,3 +139,58 @@ describe('hierarchy', () => {
     ]);
   });
 });
+
+describe('maritime entity relationships', () => {
+  it('straits know their crossings, islands, ports, and routes', () => {
+    const oresund = getStraitEntity(loadStrait('oresund'));
+    expect(getRelated(oresund, 'crossings').map((c) => c.entityId)).toEqual([
+      'bridge:oresund-bridge',
+    ]);
+
+    const tsugaru = getStraitEntity(loadStrait('tsugaru'));
+    expect(getRelated(tsugaru, 'crossings').map((c) => c.entityId)).toEqual([
+      'tunnel:seikan-tunnel',
+    ]);
+    expect(getRelated(tsugaru, 'islands').map((i) => i.id)).toEqual(['honshu', 'hokkaido']);
+
+    const singapore = getStraitEntity(loadStrait('singapore'));
+    expect(getRelated(singapore, 'ports').map((p) => p.id)).toEqual(['port-of-singapore']);
+
+    const vilkitsky = getStraitEntity(loadStrait('vilkitsky'));
+    expect(getRelated(vilkitsky, 'routes').map((r) => r.id)).toEqual(['northern-sea-route']);
+  });
+
+  it('water bodies know their canals and islands', () => {
+    const redSea = getEntity('water-body:red-sea');
+    if (redSea?.type !== 'water-body') throw new Error('missing water body');
+    expect(getRelated(redSea, 'canals').map((c) => c.id)).toEqual(['suez-canal']);
+
+    const channel = getEntity('water-body:english-channel');
+    if (channel?.type !== 'water-body') throw new Error('missing water body');
+    expect(getRelated(channel, 'islands').map((i) => i.id)).toEqual(['isle-of-wight']);
+  });
+
+  it('countries know their infrastructure', () => {
+    const egypt = getEntity('country:egypt');
+    if (egypt?.type !== 'country') throw new Error('missing country');
+    expect(getRelated(egypt, 'canals').map((c) => c.id)).toEqual(['suez-canal']);
+
+    const japan = getEntity('country:japan');
+    if (japan?.type !== 'country') throw new Error('missing country');
+    expect(getRelated(japan, 'islands').map((i) => i.id)).toEqual(['honshu', 'hokkaido']);
+
+    const denmark = getEntity('country:denmark');
+    if (denmark?.type !== 'country') throw new Error('missing country');
+    expect(getRelated(denmark, 'crossings').map((c) => c.id)).toEqual(['oresund-bridge']);
+  });
+
+  it('routes resolve ordered waypoints across entity kinds', () => {
+    const route = getEntity('maritime-route:northern-sea-route');
+    if (route?.type !== 'maritime-route') throw new Error('missing route');
+    expect(getRelated(route, 'waypoints').map((w) => w.entityId)).toEqual([
+      'water-body:kara-sea',
+      'strait:vilkitsky',
+      'water-body:laptev-sea',
+    ]);
+  });
+});

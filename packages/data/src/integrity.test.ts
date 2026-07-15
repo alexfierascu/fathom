@@ -54,6 +54,12 @@ const baseDataset: AtlasDataset = {
   straits: [testStrait],
   waterBodies: testWaterBodies,
   countries: testCountries,
+  ports: [],
+  canals: [],
+  bridges: [],
+  tunnels: [],
+  islands: [],
+  maritimeRoutes: [],
   sources: [testSource],
   images: [],
   events: [],
@@ -131,13 +137,13 @@ describe('findBrokenReferences', () => {
   it('reports not-yet-modeled entity types distinctly', () => {
     const dataset: AtlasDataset = {
       ...baseDataset,
-      straits: [{ ...testStrait, separates: [{ type: 'island', id: 'isle-of-wight' }] }],
+      straits: [{ ...testStrait, separates: [{ type: 'infrastructure', id: 'test-lighthouse' }] }],
     };
     expect(findBrokenReferences(dataset)).toEqual([
       {
         from: 'strait:test-strait',
         field: 'separates',
-        ref: 'island:isle-of-wight',
+        ref: 'infrastructure:test-lighthouse',
         reason: 'unresolvable-type',
       },
     ]);

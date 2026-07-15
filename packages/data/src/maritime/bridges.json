@@ -1,0 +1,24 @@
+[
+  {
+    "id": "oresund-bridge",
+    "name": "Øresund Bridge",
+    "crosses": {
+      "type": "strait",
+      "id": "oresund"
+    },
+    "connects": [
+      {
+        "type": "country",
+        "id": "denmark"
+      },
+      {
+        "type": "country",
+        "id": "sweden"
+      }
+    ],
+    "operationalStatus": "operational",
+    "opened": "2000",
+    "summary": "The combined rail and road bridge across the Öresund, linking Copenhagen with Malmö.",
+    "sourceIds": ["oresundsbron"]
+  }
+]

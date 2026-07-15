@@ -24,8 +24,6 @@ const WATER_GROUPS: readonly { type: WaterBodyType; label: string }[] = [
   { type: 'bay', label: 'Bays' },
 ];
 
-const INFRASTRUCTURE_LABELS = ['Ports', 'Canals', 'Bridges', 'Tunnels'];
-
 export function CountryDetailPage() {
   const { slug } = useParams();
   const { tileStyle } = useOutletContext<LayoutContext>();
@@ -41,6 +39,10 @@ export function CountryDetailPage() {
       straitDocs: straits.map((strait) => strait.data),
       waterBodies: getRelated(node, 'waterBodies'),
       neighbors: getRelated(node, 'neighbors'),
+      ports: getRelated(node, 'ports'),
+      canals: getRelated(node, 'canals'),
+      islands: getRelated(node, 'islands'),
+      crossings: getRelated(node, 'crossings'),
       sources: getRelated(node, 'sources'),
     };
   }, [country]);
@@ -53,7 +55,17 @@ export function CountryDetailPage() {
     );
   }
 
-  const { straits, straitDocs, waterBodies, neighbors, sources } = related;
+  const {
+    straits,
+    straitDocs,
+    waterBodies,
+    neighbors,
+    ports,
+    canals,
+    islands,
+    crossings,
+    sources,
+  } = related;
   const waterGroups = WATER_GROUPS.map((group) => ({
     ...group,
     bodies: waterBodies.filter((waterBody) => waterBody.data.type === group.type),
@@ -69,9 +81,16 @@ export function CountryDetailPage() {
         : '—',
     },
     { label: 'EEZ', value: '—' },
-    { label: 'Charted ports', value: '0' },
+    { label: 'Charted ports', value: String(ports.length) },
     { label: 'Connected straits', value: String(straits.length) },
   ];
+
+  const infrastructure = [
+    { label: 'Ports', entities: ports },
+    { label: 'Canals', entities: canals },
+    { label: 'Bridges & tunnels', entities: crossings },
+    { label: 'Islands', entities: islands },
+  ].filter((group) => group.entities.length > 0);
 
   return (
     <>
@@ -106,16 +125,17 @@ export function CountryDetailPage() {
           </Section>
         ))}
 
-        <Section label="Infrastructure">
-          <div className="facts">
-            {INFRASTRUCTURE_LABELS.map((label) => (
-              <div key={label} className="fact">
-                <div className="fact-label">{label}</div>
-                <div className="fact-value">—</div>
-              </div>
-            ))}
-          </div>
-        </Section>
+        {infrastructure.length > 0 ? (
+          infrastructure.map((group) => (
+            <Section key={group.label} label={group.label}>
+              <EntityPills entities={group.entities} />
+            </Section>
+          ))
+        ) : (
+          <Section label="Infrastructure">
+            <div className="note">No ports, canals, bridges, or tunnels charted yet.</div>
+          </Section>
+        )}
 
         <Section label="Statistics">
           <div className="facts">

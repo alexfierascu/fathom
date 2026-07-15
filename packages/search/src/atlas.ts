@@ -3,7 +3,13 @@ import {
   loadAllCountries,
   loadAllStraits,
   loadAllWaterBodies,
+  loadBridges,
+  loadCanals,
+  loadIslands,
+  loadMaritimeRoutes,
+  loadPorts,
   loadTags,
+  loadTunnels,
   slugifyName,
 } from '@fathom/data';
 
@@ -57,6 +63,70 @@ export function buildAtlasSearchDocuments(): readonly SearchDocument[] {
       path: `/countries/${country.id}`,
       summary: country.summary,
       keywords: [country.code ?? '', 'country', ...(country.names ?? []).map((n) => n.value)],
+    });
+  }
+
+  const countryName = (id: string) =>
+    loadAllCountries().find((country) => country.id === id)?.name ?? '';
+
+  for (const port of loadPorts()) {
+    documents.push({
+      entityId: `port:${port.id}`,
+      type: 'port',
+      name: port.name,
+      path: `/ports/${port.id}`,
+      summary: port.summary,
+      keywords: ['port', countryName(port.countryId), ...(port.functions ?? [])],
+    });
+  }
+  for (const canal of loadCanals()) {
+    documents.push({
+      entityId: `canal:${canal.id}`,
+      type: 'canal',
+      name: canal.name,
+      path: `/canals/${canal.id}`,
+      summary: canal.summary,
+      keywords: ['canal', ...canal.countryIds.map(countryName)],
+    });
+  }
+  for (const bridge of loadBridges()) {
+    documents.push({
+      entityId: `bridge:${bridge.id}`,
+      type: 'bridge',
+      name: bridge.name,
+      path: `/bridges/${bridge.id}`,
+      summary: bridge.summary,
+      keywords: ['bridge'],
+    });
+  }
+  for (const tunnel of loadTunnels()) {
+    documents.push({
+      entityId: `tunnel:${tunnel.id}`,
+      type: 'tunnel',
+      name: tunnel.name,
+      path: `/tunnels/${tunnel.id}`,
+      summary: tunnel.summary,
+      keywords: ['tunnel', tunnel.mode ?? ''],
+    });
+  }
+  for (const island of loadIslands()) {
+    documents.push({
+      entityId: `island:${island.id}`,
+      type: 'island',
+      name: island.name,
+      path: `/islands/${island.id}`,
+      summary: island.summary,
+      keywords: ['island', island.countryId ? countryName(island.countryId) : ''],
+    });
+  }
+  for (const route of loadMaritimeRoutes()) {
+    documents.push({
+      entityId: `maritime-route:${route.id}`,
+      type: 'maritime-route',
+      name: route.name,
+      path: `/routes/${route.id}`,
+      summary: route.summary,
+      keywords: ['route', route.routeType],
     });
   }
 

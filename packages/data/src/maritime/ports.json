@@ -1,0 +1,14 @@
+[
+  {
+    "id": "port-of-singapore",
+    "name": "Port of Singapore",
+    "countryId": "singapore",
+    "opensOnto": {
+      "type": "strait",
+      "id": "singapore"
+    },
+    "functions": ["container", "cargo"],
+    "summary": "One of the world's busiest container ports, commanding the Singapore Strait.",
+    "sourceIds": ["mpa-singapore"]
+  }
+]

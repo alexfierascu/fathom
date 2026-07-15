@@ -1,0 +1,40 @@
+[
+  {
+    "id": "suez-canal",
+    "name": "Suez Canal",
+    "connects": [
+      {
+        "type": "water-body",
+        "id": "mediterranean-sea"
+      },
+      {
+        "type": "water-body",
+        "id": "red-sea"
+      }
+    ],
+    "countryIds": ["egypt"],
+    "operationalStatus": "operational",
+    "opened": "1869",
+    "summary": "The sea-level canal linking the Mediterranean with the Red Sea, sparing ships the passage around Africa.",
+    "sourceIds": ["suez-canal-authority"]
+  },
+  {
+    "id": "panama-canal",
+    "name": "Panama Canal",
+    "connects": [
+      {
+        "type": "water-body",
+        "id": "atlantic-ocean"
+      },
+      {
+        "type": "water-body",
+        "id": "pacific-ocean"
+      }
+    ],
+    "countryIds": ["panama"],
+    "operationalStatus": "operational",
+    "opened": "1914",
+    "summary": "The lock canal across the Isthmus of Panama joining the Atlantic and Pacific oceans.",
+    "sourceIds": ["panama-canal-authority"]
+  }
+]

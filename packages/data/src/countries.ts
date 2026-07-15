@@ -11,6 +11,7 @@ import rawChile from './countries/chile.json';
 import rawChina from './countries/china.json';
 import rawCuba from './countries/cuba.json';
 import rawDenmark from './countries/denmark.json';
+import rawEgypt from './countries/egypt.json';
 import rawDjibouti from './countries/djibouti.json';
 import rawEritrea from './countries/eritrea.json';
 import rawFrance from './countries/france.json';
@@ -28,6 +29,7 @@ import rawMozambique from './countries/mozambique.json';
 import rawNewZealand from './countries/new-zealand.json';
 import rawNorway from './countries/norway.json';
 import rawOman from './countries/oman.json';
+import rawPanama from './countries/panama.json';
 import rawPapuaNewGuinea from './countries/papua-new-guinea.json';
 import rawPhilippines from './countries/philippines.json';
 import rawRussia from './countries/russia.json';
@@ -58,6 +60,7 @@ const RAW_COUNTRY_DOCUMENTS: readonly unknown[] = [
   rawChina,
   rawCuba,
   rawDenmark,
+  rawEgypt,
   rawDjibouti,
   rawEritrea,
   rawFrance,
@@ -75,6 +78,7 @@ const RAW_COUNTRY_DOCUMENTS: readonly unknown[] = [
   rawNewZealand,
   rawNorway,
   rawOman,
+  rawPanama,
   rawPapuaNewGuinea,
   rawPhilippines,
   rawRussia,

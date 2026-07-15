@@ -40,6 +40,9 @@ export function WaterBodyDetailPage() {
       straits,
       straitDocs: straits.map((strait) => strait.data),
       countries: getRelated(node, 'countries'),
+      canals: getRelated(node, 'canals'),
+      islands: getRelated(node, 'islands'),
+      ports: getRelated(node, 'ports'),
       sources: getRelated(node, 'sources'),
     };
   }, [waterBody]);
@@ -52,7 +55,8 @@ export function WaterBodyDetailPage() {
     );
   }
 
-  const { parent, children, straits, straitDocs, countries, sources } = related;
+  const { parent, children, straits, straitDocs, countries, canals, islands, ports, sources } =
+    related;
 
   const crumbs: BreadcrumbItem[] = [{ label: 'Home', to: '/' }];
   if (parent) crumbs.push({ label: parent.name, to: `/water-bodies/${parent.id}` });
@@ -98,6 +102,24 @@ export function WaterBodyDetailPage() {
         {countries.length > 0 && (
           <Section label="Bordered by">
             <EntityPills entities={countries} />
+          </Section>
+        )}
+
+        {canals.length > 0 && (
+          <Section label="Canals">
+            <EntityPills entities={canals} />
+          </Section>
+        )}
+
+        {islands.length > 0 && (
+          <Section label="Islands">
+            <EntityPills entities={islands} />
+          </Section>
+        )}
+
+        {ports.length > 0 && (
+          <Section label="Ports">
+            <EntityPills entities={ports} />
           </Section>
         )}
 
