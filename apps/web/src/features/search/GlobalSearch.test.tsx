@@ -89,8 +89,6 @@ describe('GlobalSearch', () => {
     await user.type(screen.getByRole('combobox'), 'east asia');
     await user.click(screen.getByRole('option', { name: /East Asia & Oceania Region/ }));
 
-    expect(screen.getByTestId('location')).toHaveTextContent(
-      '/?region=East%20Asia%20%26%20Oceania',
-    );
+    expect(screen.getByTestId('location')).toHaveTextContent('/regions/east-asia-oceania');
   });
 });

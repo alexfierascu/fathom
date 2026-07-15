@@ -36,6 +36,6 @@ describe('atlasSearchIndex', () => {
 
   it('gives region documents a navigable path', () => {
     const europe = index.search('europe').find((r) => r.document.type === 'region');
-    expect(europe?.document.path).toBe('/?region=Europe');
+    expect(europe?.document.path).toBe('/regions/europe');
   });
 });

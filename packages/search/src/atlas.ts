@@ -67,7 +67,7 @@ export function buildAtlasSearchDocuments(): readonly SearchDocument[] {
       entityId: `region:${slugifyName(region)}`,
       type: 'region',
       name: region,
-      path: `/?region=${encodeURIComponent(region)}`,
+      path: `/regions/${slugifyName(region)}`,
       summary: `${String(count)} straits charted in this region.`,
       keywords: ['region'],
     });

@@ -49,14 +49,18 @@ export function StraitDetailPage() {
           }),
           breadcrumbsJsonLd([
             { name: 'Home', path: '/' },
-            { name: regionName },
+            ...(region ? [{ name: region.name, path: `/regions/${region.id}` }] : []),
             { name: strait.name, path: seo.path },
           ]),
         ]}
       />
 
       <Breadcrumbs
-        items={[{ label: 'Home', to: '/' }, { label: regionName }, { label: strait.name }]}
+        items={[
+          { label: 'Home', to: '/' },
+          region ? { label: region.name, to: `/regions/${region.id}` } : { label: regionName },
+          { label: strait.name },
+        ]}
       />
 
       <article className="detail">
