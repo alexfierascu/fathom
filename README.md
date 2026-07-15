@@ -79,4 +79,5 @@ Pages with these settings:
 - **Build output directory:** `apps/web/dist`
 - **Node version:** from `.nvmrc`; pnpm is picked up from the `packageManager` field
 
-No redirect rules are needed — the app is a single page.
+Client-side routes (e.g. `/straits/gibraltar`) are served by the SPA fallback in
+`apps/web/public/_redirects`, so deep links and reloads work on any route.
