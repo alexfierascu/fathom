@@ -1,11 +1,11 @@
-import { useMemo, useRef, useState } from 'react';
+import { useMemo, useState } from 'react';
 
 import { useOutletContext } from 'react-router';
 
 import { loadAllStraits } from '@fathom/data';
 
 import type { LayoutContext } from '../../../app/RootLayout';
-import { MapPanel, type MapPanelHandle } from '../components/MapPanel';
+import { MapPanel } from '../components/MapPanel';
 import { RegionChips } from '../components/RegionChips';
 import { ResultsGrid } from '../components/ResultsGrid';
 import { SearchBar } from '../components/SearchBar';
@@ -18,7 +18,6 @@ export function HomePage() {
   const [query, setQuery] = useState('');
   const [activeRegion, setActiveRegion] = useState<RegionFilter>('All');
   const [hoveredId, setHoveredId] = useState<string | null>(null);
-  const mapRef = useRef<MapPanelHandle>(null);
 
   const filtered = useMemo(
     () => filterStraits(STRAITS, activeRegion, query),
@@ -42,7 +41,6 @@ export function HomePage() {
       </div>
 
       <MapPanel
-        ref={mapRef}
         straits={STRAITS}
         filteredIds={filteredIds}
         hoveredId={hoveredId}
@@ -54,7 +52,6 @@ export function HomePage() {
         straits={filtered}
         totalCount={STRAITS.length}
         query={query}
-        onSelect={(id) => mapRef.current?.focusStrait(id)}
         onHover={setHoveredId}
       />
     </>

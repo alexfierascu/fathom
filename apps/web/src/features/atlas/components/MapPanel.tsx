@@ -1,4 +1,4 @@
-import { useEffect, useImperativeHandle, useRef, type Ref } from 'react';
+import { useEffect, useRef } from 'react';
 
 import type L from 'leaflet';
 
@@ -15,10 +15,6 @@ import {
   type TileManager,
 } from '../lib/map';
 
-export interface MapPanelHandle {
-  focusStrait: (id: string) => void;
-}
-
 interface MapPanelProps {
   straits: readonly Strait[];
   /** Ids passing the active filters, or null when nothing is filtered. */
@@ -26,7 +22,6 @@ interface MapPanelProps {
   hoveredId: string | null;
   visibleCount: number;
   tileStyle: TileStyle;
-  ref?: Ref<MapPanelHandle>;
 }
 
 export function MapPanel({
@@ -35,14 +30,11 @@ export function MapPanel({
   hoveredId,
   visibleCount,
   tileStyle,
-  ref,
 }: MapPanelProps) {
-  const panelRef = useRef<HTMLDivElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
   const mapRef = useRef<L.Map | null>(null);
   const tilesRef = useRef<TileManager | null>(null);
   const markersRef = useRef(new Map<string, L.Marker>());
-  const popupTimerRef = useRef<number | undefined>(undefined);
 
   useEffect(() => {
     const container = containerRef.current;
@@ -61,7 +53,6 @@ export function MapPanel({
 
     return () => {
       stopObserving();
-      window.clearTimeout(popupTimerRef.current);
       map.remove();
       mapRef.current = null;
       tilesRef.current = null;
@@ -96,26 +87,8 @@ export function MapPanel({
     };
   }, [hoveredId]);
 
-  useImperativeHandle(
-    ref,
-    () => ({
-      focusStrait(id: string) {
-        const map = mapRef.current;
-        const strait = straits.find((s) => s.id === id);
-        if (!map || !strait) return;
-        panelRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        map.flyTo([strait.lat, strait.lon], 7, { duration: 0.9 });
-        window.clearTimeout(popupTimerRef.current);
-        popupTimerRef.current = window.setTimeout(() => {
-          markersRef.current.get(id)?.openPopup();
-        }, 750);
-      },
-    }),
-    [straits],
-  );
-
   return (
-    <div className="map-panel" ref={panelRef}>
+    <div className="map-panel">
       <div className="cap">
         <span>WORLD MAP</span>
         <div className="cap-right">

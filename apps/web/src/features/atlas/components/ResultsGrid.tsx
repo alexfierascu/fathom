@@ -6,11 +6,10 @@ interface ResultsGridProps {
   straits: readonly Strait[];
   totalCount: number;
   query: string;
-  onSelect: (id: string) => void;
   onHover: (id: string | null) => void;
 }
 
-export function ResultsGrid({ straits, totalCount, query, onSelect, onHover }: ResultsGridProps) {
+export function ResultsGrid({ straits, totalCount, query, onHover }: ResultsGridProps) {
   return (
     <section>
       <h2 id="resultsHeading" className="sr-only" aria-live="polite">
@@ -23,9 +22,7 @@ export function ResultsGrid({ straits, totalCount, query, onSelect, onHover }: R
             “Malacca.”
           </div>
         ) : (
-          straits.map((strait) => (
-            <StraitCard key={strait.id} strait={strait} onSelect={onSelect} onHover={onHover} />
-          ))
+          straits.map((strait) => <StraitCard key={strait.id} strait={strait} onHover={onHover} />)
         )}
       </div>
     </section>

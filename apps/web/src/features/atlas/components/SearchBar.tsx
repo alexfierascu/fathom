@@ -53,8 +53,7 @@ export function SearchBar({ query, onQueryChange }: SearchBarProps) {
         </button>
       </div>
       <p className="hint">
-        Try <b>Hormuz</b>, <b>Indonesia</b>, or <b>Turkey</b>. Click any result to fly there on the
-        map.
+        Try <b>Hormuz</b>, <b>Indonesia</b>, or <b>Turkey</b>. Click any result to open its page.
       </p>
     </>
   );

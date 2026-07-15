@@ -564,6 +564,12 @@ button:focus-visible,
   border-color: color-mix(in srgb, var(--accent-2) 50%, transparent);
   background: var(--panel-2);
 }
+/* Cards are links since the detail pages arrived; keep their look unchanged. */
+a.card {
+  display: block;
+  color: inherit;
+  text-decoration: none;
+}
 
 .card .eyebrow {
   font-family: 'IBM Plex Mono', monospace;

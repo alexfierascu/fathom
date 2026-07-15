@@ -1,35 +1,25 @@
+import { Link } from 'react-router';
+
 import type { Strait } from '@fathom/data';
 
 import { formatLat, formatLon } from '../lib/format';
 
 interface StraitCardProps {
   strait: Strait;
-  onSelect: (id: string) => void;
   onHover: (id: string | null) => void;
 }
 
-export function StraitCard({ strait, onSelect, onHover }: StraitCardProps) {
+export function StraitCard({ strait, onHover }: StraitCardProps) {
   return (
-    <div
+    <Link
+      to={`/straits/${strait.id}`}
       className="card"
       data-id={strait.id}
-      tabIndex={0}
-      role="button"
-      aria-label={`Fly to ${strait.name} on the map`}
       onMouseEnter={() => {
         onHover(strait.id);
       }}
       onMouseLeave={() => {
         onHover(null);
-      }}
-      onClick={() => {
-        onSelect(strait.id);
-      }}
-      onKeyDown={(event) => {
-        if (event.key === 'Enter' || event.key === ' ') {
-          event.preventDefault();
-          onSelect(strait.id);
-        }
       }}
     >
       <div className="eyebrow">{strait.region}</div>
@@ -46,6 +36,6 @@ export function StraitCard({ strait, onSelect, onHover }: StraitCardProps) {
       <div className="coords">
         {formatLat(strait.lat)}, {formatLon(strait.lon)}
       </div>
-    </div>
+    </Link>
   );
 }
