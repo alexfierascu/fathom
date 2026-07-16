@@ -7,16 +7,16 @@ import type { Image } from '@fathom/data';
  * media pipeline; browsers fall back to the original when a variant is
  * missing.
  */
-export const MEDIA_WIDTHS = [480, 960, 1600] as const;
-
 export function mediaUrl(file: string): string {
   return `/media/${file}`;
 }
 
+/**
+ * Until a width-variant pipeline exists, the original is the only srcset
+ * candidate — a 404ing variant would break the image entirely.
+ */
 export function mediaSrcSet(file: string): string {
-  return MEDIA_WIDTHS.map((width) => `/media/${String(width)}/${file} ${String(width)}w`).join(
-    ', ',
-  );
+  return `/media/${file} 1280w`;
 }
 
 /** The image shown first: the representative one, else the first. */

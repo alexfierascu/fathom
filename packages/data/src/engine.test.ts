@@ -112,8 +112,9 @@ describe('hierarchy', () => {
     expect(children.some((c) => c.type === 'water-body')).toBe(true);
   });
 
-  it('straits have no child content while knowledge collections are empty', () => {
-    expect(getChildren(getStraitEntity(loadStrait('gibraltar')))).toEqual([]);
+  it('strait children are their attached knowledge content', () => {
+    const children = getChildren(getStraitEntity(loadStrait('gibraltar')));
+    expect(children.map((child) => child.entityId)).toContain('image:gibraltar-satellite');
   });
 
   it('water bodies follow the document hierarchy for parents and children', () => {

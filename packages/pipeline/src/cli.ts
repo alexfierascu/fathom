@@ -1,4 +1,4 @@
-import { readFile } from 'node:fs/promises';
+import { readFile, readdir, writeFile } from 'node:fs/promises';
 import { join } from 'node:path';
 import { parseArgs } from 'node:util';
 
@@ -83,6 +83,54 @@ async function main() {
     return;
   }
 
+  if (command === 'review' || command === 'promote') {
+    const perFile = ['straits', 'water-bodies', 'countries'];
+    const arrays = [
+      'maritime/ports.json',
+      'maritime/canals.json',
+      'maritime/bridges.json',
+      'maritime/tunnels.json',
+      'maritime/islands.json',
+      'maritime/routes.json',
+    ];
+    const drafts: { where: string; id: string }[] = [];
+
+    for (const dir of perFile) {
+      for (const file of await readdir(join(DATA_SRC, dir))) {
+        if (!file.endsWith('.json') || file === 'index.json') continue;
+        const path = join(DATA_SRC, dir, file);
+        const doc = JSON.parse(await readFile(path, 'utf8')) as Record<string, unknown>;
+        if (doc.status !== 'draft') continue;
+        if (command === 'promote') {
+          delete doc.status;
+          await writeFile(path, JSON.stringify(doc, null, 2) + '\n');
+        }
+        drafts.push({ where: `${dir}/${file}`, id: String(doc.id) });
+      }
+    }
+    for (const file of arrays) {
+      const path = join(DATA_SRC, file);
+      const docs = JSON.parse(await readFile(path, 'utf8')) as Record<string, unknown>[];
+      let changed = false;
+      for (const doc of docs) {
+        if (doc.status !== 'draft') continue;
+        if (command === 'promote') {
+          delete doc.status;
+          changed = true;
+        }
+        drafts.push({ where: file, id: String(doc.id) });
+      }
+      if (changed) await writeFile(path, JSON.stringify(docs, null, 2) + '\n');
+    }
+
+    const verb = command === 'promote' ? 'Promoted' : 'Draft';
+    console.log(`${verb} document${drafts.length === 1 ? '' : 's'}: ${String(drafts.length)}`);
+    for (const draft of drafts.slice(0, 40)) console.log(`  ${draft.where.padEnd(28)} ${draft.id}`);
+    if (drafts.length > 40) console.log(`  … and ${String(drafts.length - 40)} more`);
+    if (command === 'promote') console.log('\nRun pnpm format && pnpm test to finish.');
+    return;
+  }
+
   if (command === 'apply') {
     const bundlePath = join(values.from ?? 'out', 'staged.json');
     const bundle = JSON.parse(await readFile(bundlePath, 'utf8')) as {
@@ -98,6 +146,8 @@ async function main() {
 
   console.log('Usage: tsx src/cli.ts run [--adapters a,b] [--types t,u] [--limit n] [--out dir]');
   console.log('       tsx src/cli.ts apply [--from dir]');
+  console.log('       tsx src/cli.ts review          # list draft documents');
+  console.log('       tsx src/cli.ts promote        # publish all reviewed drafts');
   process.exitCode = 1;
 }
 

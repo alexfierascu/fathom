@@ -36,7 +36,7 @@ describe('MediaGallery', () => {
     render(<MediaGallery images={fixtures} />);
     const hero = screen.getByAltText('Aerial view of a strait');
     expect(hero).toHaveAttribute('loading', 'lazy');
-    expect(hero).toHaveAttribute('srcset', expect.stringContaining('/media/480/'));
+    expect(hero).toHaveAttribute('srcset', expect.stringContaining('/media/straits/test-hero.jpg'));
     expect(screen.getByText('A. Photographer · CC BY-SA 4.0')).toBeInTheDocument();
   });
 

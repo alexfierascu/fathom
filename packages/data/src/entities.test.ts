@@ -18,6 +18,7 @@ describe('knowledge collections', () => {
   it('loads the populated knowledge collections', () => {
     expect(loadTags().map((tag) => tag.id)).toContain('chokepoint');
     expect(loadHistoricalEvents().map((event) => event.id)).toContain('gallipoli-campaign');
+    expect(loadImages().map((image) => image.id)).toContain('gibraltar-satellite');
   });
 
   it('loads the still-empty collections as empty', () => {

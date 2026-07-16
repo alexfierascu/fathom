@@ -37,10 +37,12 @@ describe('resolveRefs', () => {
 });
 
 describe('attachment loaders', () => {
-  it('return empty results while collections are empty', () => {
-    expect(loadSourcesFor(loadStrait('gibraltar'))).toEqual([]);
+  it('resolve attachments where they exist and stay empty elsewhere', () => {
     expect(loadSourcesFor({ sourceIds: ['unknown'] })).toEqual([]);
-    expect(loadImagesFor({ type: 'strait', id: 'gibraltar' })).toEqual([]);
+    expect(loadImagesFor({ type: 'strait', id: 'gibraltar' }).map((image) => image.id)).toContain(
+      'gibraltar-satellite',
+    );
+    expect(loadImagesFor({ type: 'strait', id: 'solent' })).toEqual([]);
     expect(loadStatisticsFor({ type: 'strait', id: 'hormuz' })).toEqual([]);
   });
 });

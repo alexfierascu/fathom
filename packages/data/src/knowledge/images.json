@@ -1,1 +1,47 @@
-[]
+[
+  {
+    "id": "gibraltar-satellite",
+    "file": "straits/gibraltar.jpg",
+    "license": "CC BY-SA 2.0",
+    "credit": "Alexander Gerst",
+    "alt": "Satellite view of the Strait of Gibraltar",
+    "role": "representative",
+    "sourceId": "commons-gibraltar",
+    "depicts": [
+      {
+        "type": "strait",
+        "id": "gibraltar"
+      }
+    ]
+  },
+  {
+    "id": "bosporus-satellite",
+    "file": "straits/bosporus.jpg",
+    "license": "Public domain",
+    "credit": "NASA",
+    "alt": "Satellite view of the Bosporus",
+    "role": "representative",
+    "sourceId": "commons-bosporus",
+    "depicts": [
+      {
+        "type": "strait",
+        "id": "bosporus"
+      }
+    ]
+  },
+  {
+    "id": "hormuz-satellite",
+    "file": "straits/hormuz.jpg",
+    "license": "Public domain",
+    "credit": "NASA Earth Observatory images by Wanmei Liang, using Landsat data from the U.S. ",
+    "alt": "Satellite view of the Strait of Hormuz",
+    "role": "representative",
+    "sourceId": "commons-hormuz",
+    "depicts": [
+      {
+        "type": "strait",
+        "id": "hormuz"
+      }
+    ]
+  }
+]

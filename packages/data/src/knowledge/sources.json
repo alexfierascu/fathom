@@ -3605,5 +3605,32 @@
     "publisher": "Encyclopaedia Britannica",
     "locator": "https://www.britannica.com/place/Northwest-Passage",
     "accessedOn": "2026-07-17"
+  },
+  {
+    "id": "commons-gibraltar",
+    "type": "website",
+    "title": "File:Gibraltar (Satellite picture).jpg",
+    "publisher": "Wikimedia Commons",
+    "locator": "https://commons.wikimedia.org/wiki/File:Gibraltar_(Satellite_picture).jpg",
+    "accessedOn": "2026-07-17",
+    "license": "CC BY-SA 2.0"
+  },
+  {
+    "id": "commons-bosporus",
+    "type": "website",
+    "title": "File:2004 satellite picture of Istanbul and the Bosphorus.jpg",
+    "publisher": "Wikimedia Commons",
+    "locator": "https://commons.wikimedia.org/wiki/File:2004_satellite_picture_of_Istanbul_and_the_Bosphorus.jpg",
+    "accessedOn": "2026-07-17",
+    "license": "Public domain"
+  },
+  {
+    "id": "commons-hormuz",
+    "type": "website",
+    "title": "File:A Swirl of a Day for Phytoplankton (154086).jpg",
+    "publisher": "Wikimedia Commons",
+    "locator": "https://commons.wikimedia.org/wiki/File:A_Swirl_of_a_Day_for_Phytoplankton_(154086).jpg",
+    "accessedOn": "2026-07-17",
+    "license": "Public domain"
   }
 ]
