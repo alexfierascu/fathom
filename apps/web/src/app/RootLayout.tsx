@@ -6,6 +6,8 @@ import { loadAllStraits } from '@fathom/data';
 
 import { AtlasFooter } from '../features/atlas/components/AtlasFooter';
 import { AtlasHeader } from '../features/atlas/components/AtlasHeader';
+import { LocaleSwitcher } from '../features/i18n/LocaleSwitcher';
+import { useT } from '../features/i18n/locale';
 import { ThemeSwitcher } from '../features/theme/ThemeSwitcher';
 import { THEMES, type TileStyle } from '../features/theme/themes';
 import { useTheme } from '../features/theme/useTheme';
@@ -18,6 +20,7 @@ const straitCount = loadAllStraits().length;
 
 export function RootLayout() {
   const { theme, setTheme } = useTheme();
+  const t = useT();
   const context = useMemo<LayoutContext>(() => ({ tileStyle: THEMES[theme].tile }), [theme]);
   const location = useLocation();
   const mainRef = useRef<HTMLElement>(null);
@@ -42,9 +45,10 @@ export function RootLayout() {
   return (
     <div className="wrap">
       <a className="skip-link" href="#main">
-        Skip to content
+        {t('skip.content')}
       </a>
       <AtlasHeader straitCount={straitCount}>
+        <LocaleSwitcher />
         <ThemeSwitcher theme={theme} onChange={setTheme} />
       </AtlasHeader>
       <main id="main" ref={mainRef} tabIndex={-1}>

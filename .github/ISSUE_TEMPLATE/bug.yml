@@ -1,0 +1,34 @@
+name: Bug report
+description: Something in the atlas is broken or behaving unexpectedly
+title: '[Bug] '
+labels: [bug]
+body:
+  - type: textarea
+    id: what-happened
+    attributes:
+      label: What happened?
+      description: What did you do, and what went wrong?
+      placeholder: Searching for "bosporus" and pressing Enter opens the wrong page…
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: What did you expect?
+    validations:
+      required: true
+  - type: input
+    id: url
+    attributes:
+      label: Page URL
+      placeholder: /straits/bosporus
+  - type: input
+    id: environment
+    attributes:
+      label: Browser and device
+      placeholder: Firefox 143 on macOS / Safari on iPhone 15
+  - type: textarea
+    id: extra
+    attributes:
+      label: Anything else?
+      description: Screenshots, console errors, or steps that make it reproducible.

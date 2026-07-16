@@ -1625,3 +1625,32 @@ a.fact:hover {
   line-height: 1.6;
   margin: 0;
 }
+
+/* ---------- Locale switcher ---------- */
+
+.locale-switcher {
+  display: inline-flex;
+  gap: 2px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 2px;
+  background: var(--panel);
+}
+.locale-btn {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.62rem;
+  letter-spacing: 0.08em;
+  color: var(--text-muted);
+  background: transparent;
+  border: none;
+  border-radius: calc(var(--radius) - 3px);
+  padding: 4px 8px;
+  cursor: pointer;
+}
+.locale-btn.is-active {
+  background: var(--panel-2);
+  color: var(--accent-2);
+}
+.locale-btn:hover {
+  color: var(--text);
+}

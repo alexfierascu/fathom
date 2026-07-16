@@ -1,9 +1,10 @@
+import { useT } from '../../i18n/locale';
+
 interface AtlasFooterProps {
   straitCount: number;
 }
 
 export function AtlasFooter({ straitCount }: AtlasFooterProps) {
-  return (
-    <footer>Fathom — {straitCount} of the world's key straits, plotted for the curious.</footer>
-  );
+  const t = useT();
+  return <footer>{t('footer.line', { count: straitCount })}</footer>;
 }

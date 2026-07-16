@@ -1,0 +1,36 @@
+name: Data correction
+description: A fact in the atlas is wrong, outdated, or missing
+title: '[Data] '
+labels: [data]
+body:
+  - type: input
+    id: entity
+    attributes:
+      label: Which entity?
+      description: The page or document the error appears on.
+      placeholder: Strait of Hormuz (/straits/hormuz)
+    validations:
+      required: true
+  - type: textarea
+    id: error
+    attributes:
+      label: What is wrong?
+      placeholder: The atlas says the strait connects X and Y, but…
+    validations:
+      required: true
+  - type: textarea
+    id: correction
+    attributes:
+      label: What is the correct value?
+    validations:
+      required: true
+  - type: textarea
+    id: source
+    attributes:
+      label: Authoritative source
+      description: >-
+        Fathom only records facts that trace to authoritative sources (official bodies,
+        IHO, encyclopedias, peer-reviewed work). Link the source backing the correction.
+      placeholder: https://…
+    validations:
+      required: true
