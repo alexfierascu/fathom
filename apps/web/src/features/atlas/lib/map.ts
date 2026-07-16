@@ -70,6 +70,12 @@ const OPENTOPO = {
   attribution:
     'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, SRTM | Style &copy; <a href="https://opentopomap.org">OpenTopoMap</a> (CC-BY-SA)',
 };
+const GEBCO_WMS = {
+  url: 'https://wms.gebco.net/mapserv',
+  layers: 'GEBCO_LATEST',
+  attribution:
+    'Imagery reproduced from the GEBCO Grid, <a href="https://www.gebco.net">GEBCO Compilation Group</a>',
+};
 
 /** Compact factory for small custom Leaflet controls. */
 function makeControl(
@@ -200,9 +206,9 @@ function addMeasureControl(map: L.Map): void {
 
 /**
  * Full map chrome: the themed chart base layer (URL-swapped on theme
- * change), satellite and relief base layers with a layer control, and the
- * fullscreen, coordinate, and measure controls. Returns the tile manager
- * that follows the app theme.
+ * change), satellite, relief, and GEBCO ocean-depth base layers with a
+ * layer control, and the fullscreen, coordinate, and measure controls.
+ * Returns the tile manager that follows the app theme.
  */
 export function setupMapChrome(
   map: L.Map,
@@ -219,11 +225,19 @@ export function setupMapChrome(
     maxZoom: 19,
   });
   const relief = L.tileLayer(OPENTOPO.url, { attribution: OPENTOPO.attribution, maxZoom: 17 });
+  const bathymetry = L.tileLayer.wms(GEBCO_WMS.url, {
+    layers: GEBCO_WMS.layers,
+    attribution: GEBCO_WMS.attribution,
+    format: 'image/png',
+    maxZoom: 12,
+  });
 
   L.control
-    .layers({ Chart: chart, Satellite: satellite, Relief: relief }, undefined, {
-      position: 'topright',
-    })
+    .layers(
+      { Chart: chart, Satellite: satellite, Relief: relief, 'Ocean depth': bathymetry },
+      undefined,
+      { position: 'topright' },
+    )
     .addTo(map);
   if (panel) addFullscreenControl(map, panel);
   addCoordinatesControl(map);
@@ -236,6 +250,41 @@ export function setupMapChrome(
       chart.setUrl(TILE_STYLES[style].url);
       current = style;
     },
+  };
+}
+
+/** Parses a `view=lat,lon,zoom` search value into a map position. */
+export function parseViewParam(
+  value: string | null,
+): { center: L.LatLngTuple; zoom: number } | null {
+  if (!value) return null;
+  const [lat, lon, zoom] = value.split(',').map(Number);
+  if (lat === undefined || lon === undefined || zoom === undefined) return null;
+  if (!Number.isFinite(lat) || !Number.isFinite(lon) || !Number.isFinite(zoom)) return null;
+  if (Math.abs(lat) > 90 || Math.abs(lon) > 360) return null;
+  return { center: [lat, lon], zoom: Math.min(Math.max(Math.round(zoom), 2), 18) };
+}
+
+/** Serializes a map position for the shareable `view` parameter. */
+export function formatViewParam(map: L.Map): string {
+  const center = map.getCenter();
+  return `${center.lat.toFixed(4)},${center.lng.toFixed(4)},${String(map.getZoom())}`;
+}
+
+/**
+ * Mirrors the map position into `?view=` via history.replaceState — the
+ * URL stays shareable without touching the router or re-rendering.
+ * Returns a cleanup function.
+ */
+export function syncViewToUrl(map: L.Map): () => void {
+  const write = () => {
+    const url = new URL(window.location.href);
+    url.searchParams.set('view', formatViewParam(map));
+    window.history.replaceState(window.history.state, '', url);
+  };
+  map.on('moveend', write);
+  return () => {
+    map.off('moveend', write);
   };
 }
 

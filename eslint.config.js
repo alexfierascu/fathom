@@ -18,6 +18,14 @@ export default defineConfig([
     },
   },
 
+  // Service worker (worker global scope, not window)
+  {
+    files: ['apps/web/public/sw.js'],
+    languageOptions: {
+      globals: globals.serviceworker,
+    },
+  },
+
   // TypeScript with type-aware linting
   {
     files: ['**/*.{ts,tsx}'],

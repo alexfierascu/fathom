@@ -23,7 +23,11 @@ const slugify = (name) =>
     .replace(/[^a-z0-9]+/g, '-')
     .replace(/^-+|-+$/g, '');
 
-const paths = ['/'];
+const paths = ['/', '/tours', '/timeline', '/quiz', '/compare'];
+
+for (const tag of readJson('knowledge/tags.json')) paths.push(`/tags/${tag.id}`);
+for (const tour of ['oil-chokepoints', 'arctic-passages', 'mediterranean-gates'])
+  paths.push(`/tours/${tour}`);
 
 for (const entry of readJson('straits/index.json')) paths.push(`/straits/${entry.id}`);
 for (const entry of readJson('water-bodies/index.json')) paths.push(`/water-bodies/${entry.id}`);

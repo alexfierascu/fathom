@@ -12,7 +12,9 @@ import {
   bindStraitMarker,
   createStraitMap,
   observeMapSize,
+  parseViewParam,
   setupMapChrome,
+  syncViewToUrl,
   type TileManager,
 } from '../lib/map';
 
@@ -42,9 +44,16 @@ export function MapPanel({
     const container = containerRef.current;
     if (!container) return;
 
-    const map = createStraitMap(container, WORLD_CENTER, WORLD_ZOOM);
+    // A shared ?view=lat,lon,zoom restores the exact chart position.
+    const shared = parseViewParam(new URLSearchParams(window.location.search).get('view'));
+    const map = createStraitMap(
+      container,
+      shared?.center ?? WORLD_CENTER,
+      shared?.zoom ?? WORLD_ZOOM,
+    );
     mapRef.current = map;
     tilesRef.current = setupMapChrome(map, panelRef.current);
+    const stopSyncing = syncViewToUrl(map);
 
     const cluster = L.markerClusterGroup({
       maxClusterRadius: 45,
@@ -66,6 +75,7 @@ export function MapPanel({
     const stopObserving = observeMapSize(map);
 
     return () => {
+      stopSyncing();
       stopObserving();
       map.remove();
       mapRef.current = null;

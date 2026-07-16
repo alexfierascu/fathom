@@ -1575,3 +1575,53 @@ a.fact:hover {
     gap: 12px;
   }
 }
+
+/* ---------- Embed pages ---------- */
+
+.embed {
+  min-height: 100vh;
+  background: var(--bg);
+  padding: 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+.embed-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 16px;
+}
+.embed-title {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 1.6rem;
+  margin: 2px 0 4px;
+}
+.embed-brand {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.72rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  text-decoration: none;
+  white-space: nowrap;
+  padding-top: 6px;
+}
+.embed-brand span {
+  color: var(--accent-2);
+}
+.embed-brand:hover {
+  color: var(--accent-2);
+}
+.embed .map-panel {
+  margin: 0;
+}
+.embed #map {
+  height: 340px;
+}
+.embed-note {
+  color: var(--text-muted);
+  font-size: 0.9rem;
+  line-height: 1.6;
+  margin: 0;
+}

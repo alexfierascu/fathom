@@ -83,4 +83,13 @@ export const router = createBrowserRouter([
       { path: '*', element: <NotFoundPage /> },
     ],
   },
+  {
+    // Chrome-free page for third-party iframes; deliberately outside
+    // RootLayout so embeds carry no header, nav, or footer.
+    path: '/embed/straits/:slug',
+    lazy: () =>
+      import('../features/atlas/pages/EmbedStraitPage').then((m) => ({
+        Component: m.EmbedStraitPage,
+      })),
+  },
 ]);

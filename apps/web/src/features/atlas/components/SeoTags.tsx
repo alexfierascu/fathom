@@ -14,6 +14,7 @@ interface SeoTagsProps {
  */
 export function SeoTags({ title, description, path, ogType = 'article', jsonLd }: SeoTagsProps) {
   const canonical = new URL(path, window.location.origin).href;
+  const ogImage = new URL('/og.png', window.location.origin).href;
   const jsonLdBlocks = jsonLd === undefined ? [] : Array.isArray(jsonLd) ? jsonLd : [jsonLd];
 
   return (
@@ -26,9 +27,13 @@ export function SeoTags({ title, description, path, ogType = 'article', jsonLd }
       <meta property="og:type" content={ogType} />
       <meta property="og:url" content={canonical} />
       <meta property="og:site_name" content="Fathom" />
-      <meta name="twitter:card" content="summary" />
+      <meta property="og:image" content={ogImage} />
+      <meta property="og:image:width" content="1200" />
+      <meta property="og:image:height" content="630" />
+      <meta name="twitter:card" content="summary_large_image" />
       <meta name="twitter:title" content={title} />
       <meta name="twitter:description" content={description} />
+      <meta name="twitter:image" content={ogImage} />
       {jsonLdBlocks.map((block, position) => (
         <script key={position} type="application/ld+json">
           {JSON.stringify(block)}
