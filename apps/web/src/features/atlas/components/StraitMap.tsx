@@ -8,8 +8,8 @@ import {
   STRAIT_ZOOM,
   bindStraitMarker,
   createStraitMap,
-  createTileManager,
   observeMapSize,
+  setupMapChrome,
   type TileManager,
 } from '../lib/map';
 
@@ -20,6 +20,7 @@ interface StraitMapProps {
 
 /** Interactive map centered on a single strait, for the detail page. */
 export function StraitMap({ strait, tileStyle }: StraitMapProps) {
+  const panelRef = useRef<HTMLDivElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
   const tilesRef = useRef<TileManager | null>(null);
 
@@ -28,7 +29,7 @@ export function StraitMap({ strait, tileStyle }: StraitMapProps) {
     if (!container) return;
 
     const map = createStraitMap(container, [strait.lat, strait.lon], STRAIT_ZOOM);
-    tilesRef.current = createTileManager(map);
+    tilesRef.current = setupMapChrome(map, panelRef.current);
     bindStraitMarker(map, strait);
     const stopObserving = observeMapSize(map);
 
@@ -46,7 +47,7 @@ export function StraitMap({ strait, tileStyle }: StraitMapProps) {
   });
 
   return (
-    <div className="map-panel">
+    <div className="map-panel" ref={panelRef}>
       <div className="cap">
         <span>LOCATION</span>
         <div className="cap-right">

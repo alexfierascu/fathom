@@ -10,8 +10,8 @@ import {
   WORLD_ZOOM,
   bindStraitMarker,
   createStraitMap,
-  createTileManager,
   observeMapSize,
+  setupMapChrome,
   type TileManager,
 } from '../lib/map';
 
@@ -26,6 +26,7 @@ interface StraitsMapProps {
 
 /** Interactive map fitted to a set of strait markers. */
 export function StraitsMap({ straits, tileStyle }: StraitsMapProps) {
+  const panelRef = useRef<HTMLDivElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
   const tilesRef = useRef<TileManager | null>(null);
 
@@ -34,7 +35,7 @@ export function StraitsMap({ straits, tileStyle }: StraitsMapProps) {
     if (!container) return;
 
     const map = createStraitMap(container, WORLD_CENTER, WORLD_ZOOM);
-    tilesRef.current = createTileManager(map);
+    tilesRef.current = setupMapChrome(map, panelRef.current);
     for (const strait of straits) {
       bindStraitMarker(map, strait);
     }
@@ -58,7 +59,7 @@ export function StraitsMap({ straits, tileStyle }: StraitsMapProps) {
   });
 
   return (
-    <div className="map-panel">
+    <div className="map-panel" ref={panelRef}>
       <div className="cap">
         <span>LOCATION</span>
         <div className="cap-right">

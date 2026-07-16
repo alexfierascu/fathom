@@ -1050,3 +1050,70 @@ footer {
   right: 20px;
   top: 50%;
 }
+
+/* ---------- Maps 2.0 ---------- */
+
+.map-ctl-btn {
+  display: block;
+  width: 30px;
+  height: 30px;
+  background: var(--panel);
+  color: var(--text);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  line-height: 1;
+}
+.map-ctl-btn:hover {
+  background: var(--panel-2);
+}
+.map-ctl-btn.is-active {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+.map-coords {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.65rem;
+  color: var(--text-muted);
+  background: color-mix(in srgb, var(--panel) 85%, transparent);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  padding: 3px 8px;
+}
+.leaflet-control-layers {
+  background: var(--panel) !important;
+  color: var(--text) !important;
+  border: 1px solid var(--border) !important;
+  border-radius: 6px !important;
+  font-family: 'Inter', system-ui, sans-serif;
+}
+.leaflet-control-layers-toggle {
+  filter: grayscale(1);
+}
+.strait-cluster span {
+  display: grid;
+  place-items: center;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: var(--panel);
+  border: 2px solid var(--accent-2);
+  color: var(--text);
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.75rem;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.4);
+}
+.map-panel--fullscreen {
+  position: fixed;
+  inset: 0;
+  z-index: 1250;
+  margin: 0;
+  border-radius: 0;
+  display: flex;
+  flex-direction: column;
+}
+.map-panel--fullscreen #map {
+  flex: 1;
+  height: auto;
+}

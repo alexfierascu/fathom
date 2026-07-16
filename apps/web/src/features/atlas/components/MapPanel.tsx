@@ -1,6 +1,7 @@
 import { useEffect, useRef } from 'react';
 
-import type L from 'leaflet';
+import L from 'leaflet';
+import 'leaflet.markercluster';
 
 import type { Strait } from '@fathom/data';
 
@@ -10,8 +11,8 @@ import {
   WORLD_ZOOM,
   bindStraitMarker,
   createStraitMap,
-  createTileManager,
   observeMapSize,
+  setupMapChrome,
   type TileManager,
 } from '../lib/map';
 
@@ -31,6 +32,7 @@ export function MapPanel({
   visibleCount,
   tileStyle,
 }: MapPanelProps) {
+  const panelRef = useRef<HTMLDivElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
   const mapRef = useRef<L.Map | null>(null);
   const tilesRef = useRef<TileManager | null>(null);
@@ -42,12 +44,24 @@ export function MapPanel({
 
     const map = createStraitMap(container, WORLD_CENTER, WORLD_ZOOM);
     mapRef.current = map;
-    tilesRef.current = createTileManager(map);
+    tilesRef.current = setupMapChrome(map, panelRef.current);
 
+    const cluster = L.markerClusterGroup({
+      maxClusterRadius: 45,
+      disableClusteringAtZoom: 7,
+      showCoverageOnHover: false,
+      iconCreateFunction: (group) =>
+        L.divIcon({
+          className: 'strait-cluster',
+          html: `<span>${String(group.getChildCount())}</span>`,
+          iconSize: [30, 30],
+        }),
+    });
     const markers = markersRef.current;
     for (const strait of straits) {
-      markers.set(strait.id, bindStraitMarker(map, strait));
+      markers.set(strait.id, bindStraitMarker(cluster, strait));
     }
+    map.addLayer(cluster);
 
     const stopObserving = observeMapSize(map);
 
@@ -88,7 +102,7 @@ export function MapPanel({
   }, [hoveredId]);
 
   return (
-    <div className="map-panel">
+    <div className="map-panel" ref={panelRef}>
       <div className="cap">
         <span>WORLD MAP</span>
         <div className="cap-right">
