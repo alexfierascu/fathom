@@ -1143,3 +1143,85 @@ footer {
   border-color: var(--accent);
   color: var(--accent-contrast);
 }
+
+/* ---------- Strait-first refocus ---------- */
+
+.wordmark a {
+  color: inherit;
+  text-decoration: none;
+}
+.site-nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 18px;
+  margin-top: 14px;
+}
+.site-nav a {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.7rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  text-decoration: none;
+  transition: color 0.15s ease;
+}
+.site-nav a:hover {
+  color: var(--accent-2);
+}
+.card-row {
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: minmax(250px, 1fr);
+  gap: 14px;
+  overflow-x: auto;
+  padding-bottom: 6px;
+  scrollbar-width: thin;
+}
+.controls + .detail-section,
+.map-panel + .detail-section {
+  margin-top: 0;
+}
+section + .detail-section,
+.detail-section + .detail-section,
+div + .detail-section {
+  margin-top: 36px;
+}
+a.fact {
+  text-decoration: none;
+  transition:
+    border-color 0.15s ease,
+    background 0.15s ease;
+}
+a.fact:hover {
+  border-color: color-mix(in srgb, var(--accent-2) 50%, transparent);
+  background: var(--panel-2);
+}
+.fact-quotes {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 14px;
+}
+.fact-quote {
+  margin: 0;
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-left: 3px solid var(--accent-2);
+  border-radius: var(--radius);
+  padding: 16px 18px;
+}
+.fact-quote p {
+  margin: 0 0 10px;
+  font-size: 0.9rem;
+}
+.fact-quote footer {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.7rem;
+  color: var(--text-muted);
+}
+.fact-quote a {
+  color: var(--accent-2);
+  text-decoration: none;
+}
+.fact-quote a:hover {
+  text-decoration: underline;
+}

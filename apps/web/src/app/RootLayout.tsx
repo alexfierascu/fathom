@@ -33,6 +33,12 @@ export function RootLayout() {
     mainRef.current?.focus({ preventScroll: true });
   }, [location.pathname]);
 
+  // Primary-nav hash targets (e.g. /#explore-seas) scroll into view.
+  useEffect(() => {
+    if (!location.hash) return;
+    document.querySelector(location.hash)?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }, [location.hash]);
+
   return (
     <div className="wrap">
       <a className="skip-link" href="#main">

@@ -120,6 +120,18 @@ export function CountryDetailPage() {
         </div>
         <div className="note">{country.summary}</div>
 
+        <Section label={`Straits of ${country.name}`}>
+          {straits.length > 0 ? (
+            <div className="grid">
+              {straits.map((strait) => (
+                <StraitCard key={strait.id} strait={strait.data} />
+              ))}
+            </div>
+          ) : (
+            <div className="note">No charted straits touch {country.name}'s coasts yet.</div>
+          )}
+        </Section>
+
         {waterGroups.map((group) => (
           <Section key={group.type} label={group.label}>
             <EntityPills entities={group.bodies} />
@@ -149,17 +161,7 @@ export function CountryDetailPage() {
           </div>
         </Section>
 
-        <StraitsMap straits={straitDocs} tileStyle={tileStyle} />
-
-        {straits.length > 0 && (
-          <Section label={`Straits of ${country.name}`}>
-            <div className="grid">
-              {straits.map((strait) => (
-                <StraitCard key={strait.id} strait={strait.data} />
-              ))}
-            </div>
-          </Section>
-        )}
+        {straitDocs.length > 0 && <StraitsMap straits={straitDocs} tileStyle={tileStyle} />}
 
         {neighbors.length > 0 && (
           <Section label="Neighbors across the water">

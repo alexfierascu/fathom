@@ -41,6 +41,7 @@ export function WaterBodyDetailPage() {
       straits,
       straitDocs: straits.map((strait) => strait.data),
       countries: getRelated(node, 'countries'),
+      routes: getRelated(node, 'routes'),
       canals: getRelated(node, 'canals'),
       islands: getRelated(node, 'islands'),
       ports: getRelated(node, 'ports'),
@@ -56,8 +57,18 @@ export function WaterBodyDetailPage() {
     );
   }
 
-  const { parent, children, straits, straitDocs, countries, canals, islands, ports, sources } =
-    related;
+  const {
+    parent,
+    children,
+    straits,
+    straitDocs,
+    countries,
+    routes,
+    canals,
+    islands,
+    ports,
+    sources,
+  } = related;
 
   const crumbs: BreadcrumbItem[] = [{ label: 'Home', to: '/' }];
   if (parent) crumbs.push({ label: parent.name, to: `/water-bodies/${parent.id}` });
@@ -94,6 +105,24 @@ export function WaterBodyDetailPage() {
           </div>
         )}
 
+        <Section label="Straits linking these waters to the world">
+          {straits.length > 0 ? (
+            <div className="grid">
+              {straits.map((strait) => (
+                <StraitCard key={strait.id} strait={strait.data} />
+              ))}
+            </div>
+          ) : (
+            <div className="note">No charted straits connect these waters yet.</div>
+          )}
+        </Section>
+
+        {routes.length > 0 && (
+          <Section label="Routes through these waters">
+            <EntityPills entities={routes} />
+          </Section>
+        )}
+
         {children.length > 0 && (
           <Section label="Contains">
             <EntityPills entities={children} />
@@ -125,16 +154,6 @@ export function WaterBodyDetailPage() {
         )}
 
         <StraitsMap straits={straitDocs} tileStyle={tileStyle} />
-
-        {straits.length > 0 && (
-          <Section label="Straits of these waters">
-            <div className="grid">
-              {straits.map((strait) => (
-                <StraitCard key={strait.id} strait={strait.data} />
-              ))}
-            </div>
-          </Section>
-        )}
 
         <EntityGallery entity={{ type: 'water-body', id: waterBody.id }} />
 

@@ -7,6 +7,12 @@ import { loadAllStraits } from '@fathom/data';
 import type { LayoutContext } from '../../../app/RootLayout';
 import { MapPanel } from '../components/MapPanel';
 import { GlobalSearch } from '../../search/GlobalSearch';
+import {
+  Chokepoints,
+  ExploreSections,
+  InterestingFacts,
+  RecentlyCharted,
+} from '../components/HomeSections';
 import { SeoTags } from '../components/SeoTags';
 import { RegionChips } from '../components/RegionChips';
 import { ResultsGrid } from '../components/ResultsGrid';
@@ -51,8 +57,8 @@ export function HomePage() {
   return (
     <>
       <SeoTags
-        title="Fathom — A Chart of the World's Straits"
-        description="A chart of the world's straits — the narrow waters where oceans meet and history turns. Searchable, mapped, and sourced."
+        title="Fathom — The Definitive Atlas of the World's Straits"
+        description="The definitive interactive atlas of the world's straits — the narrow waters where oceans meet and history turns. Searchable, mapped, and sourced."
         path="/"
         ogType="website"
       />
@@ -65,6 +71,8 @@ export function HomePage() {
           onRegionChange={setActiveRegion}
         />
       </div>
+
+      <Chokepoints />
 
       <MapPanel
         straits={STRAITS}
@@ -80,6 +88,10 @@ export function HomePage() {
         query={query}
         onHover={setHoveredId}
       />
+
+      <ExploreSections />
+      <InterestingFacts />
+      <RecentlyCharted />
     </>
   );
 }

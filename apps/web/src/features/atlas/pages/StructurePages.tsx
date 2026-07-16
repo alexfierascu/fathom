@@ -151,14 +151,21 @@ export function PortDetailPage() {
         const port = asNode(node, 'port');
         const country = getRelated(port, 'country');
         const opensOnto = getRelated(port, 'opensOnto');
+        const nearbyStraits =
+          opensOnto?.type === 'water-body' ? getRelated(opensOnto, 'straits') : [];
         return [
           { label: 'Country', entities: country ? [country] : [] },
           { label: 'Opens onto', entities: opensOnto ? [opensOnto] : [] },
+          { label: 'Straits of these waters', entities: nearbyStraits },
         ];
       }}
       mapStraits={(node) => {
         const opensOnto = getRelated(asNode(node, 'port'), 'opensOnto');
-        return opensOnto ? straitDocsOf([opensOnto]) : [];
+        if (!opensOnto) return [];
+        if (opensOnto.type === 'strait') return [opensOnto.data];
+        if (opensOnto.type === 'water-body')
+          return getRelated(opensOnto, 'straits').map((strait) => strait.data);
+        return [];
       }}
       sources={(node) => getRelated(asNode(node, 'port'), 'sources')}
     />

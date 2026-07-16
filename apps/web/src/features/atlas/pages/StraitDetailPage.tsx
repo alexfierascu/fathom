@@ -1,6 +1,6 @@
 import { Link, useOutletContext, useParams } from 'react-router';
 
-import { getRelated, getStraitEntity } from '@fathom/data';
+import { getRelated, getStraitEntity, nearestStraits } from '@fathom/data';
 
 import { EntityGallery } from '../../media/MediaGallery';
 import type { LayoutContext } from '../../../app/RootLayout';
@@ -39,6 +39,7 @@ export function StraitDetailPage() {
   const ports = getRelated(entity, 'ports');
   const routes = getRelated(entity, 'routes');
   const sources = getRelated(entity, 'sources');
+  const nearby = nearestStraits(strait.lat, strait.lon, { limit: 5, excludeId: strait.id });
   const seo = buildStraitSeo(strait);
 
   return (
@@ -102,6 +103,18 @@ export function StraitDetailPage() {
         {routes.length > 0 && (
           <Section label="Routes through">
             <EntityPills entities={routes} />
+          </Section>
+        )}
+
+        {nearby.length > 0 && (
+          <Section label="Nearby straits">
+            <div className="pills">
+              {nearby.map((neighbor) => (
+                <Link key={neighbor.id} className="pill" to={`/straits/${neighbor.id}`}>
+                  {neighbor.name}
+                </Link>
+              ))}
+            </div>
           </Section>
         )}
 
