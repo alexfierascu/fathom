@@ -1,9 +1,10 @@
-import { createBrowserRouter } from 'react-router';
+import { createBrowserRouter, Navigate } from 'react-router';
 
 import { HomePage } from '../features/atlas/pages/HomePage';
 import { NotFoundPage } from '../features/atlas/pages/NotFoundPage';
 import { pageChunks } from './prefetch';
 import { RootLayout } from './RootLayout';
+import { TourRedirect } from './TourRedirect';
 
 /**
  * The homepage ships in the main bundle; every detail page is a lazy
@@ -65,13 +66,15 @@ export const router = createBrowserRouter([
         lazy: () => pageChunks.discovery().then((m) => ({ Component: m.ComparePage })),
       },
       {
-        path: 'tours',
-        lazy: () => pageChunks.discovery().then((m) => ({ Component: m.ToursPage })),
+        path: 'journeys',
+        lazy: () => pageChunks.journeys().then((m) => ({ Component: m.JourneysPage })),
       },
       {
-        path: 'tours/:slug',
-        lazy: () => pageChunks.discovery().then((m) => ({ Component: m.TourDetailPage })),
+        path: 'journeys/:slug',
+        lazy: () => pageChunks.journeys().then((m) => ({ Component: m.JourneyDetailPage })),
       },
+      { path: 'tours', element: <Navigate to="/journeys" replace /> },
+      { path: 'tours/:slug', element: <TourRedirect /> },
       {
         path: 'quiz',
         lazy: () => pageChunks.discovery().then((m) => ({ Component: m.QuizPage })),

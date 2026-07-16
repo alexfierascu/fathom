@@ -28,7 +28,7 @@ export function AtlasHeader({ straitCount, children }: AtlasHeaderProps) {
           <Link to="/#explore-regions">{t('nav.regions')}</Link>
           <Link to="/#explore-seas">{t('nav.seas')}</Link>
           <Link to="/#explore-countries">{t('nav.countries')}</Link>
-          <Link to="/tours">{t('nav.tours')}</Link>
+          <Link to="/journeys">{t('nav.journeys')}</Link>
           <Link to="/timeline">{t('nav.timeline')}</Link>
           <Link to="/quiz">{t('nav.quiz')}</Link>
           <button

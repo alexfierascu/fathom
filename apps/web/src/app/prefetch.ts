@@ -10,6 +10,7 @@ export const pageChunks = {
   region: () => import('../features/atlas/pages/RegionDetailPage'),
   structures: () => import('../features/atlas/pages/StructurePages'),
   discovery: () => import('../features/atlas/pages/DiscoveryPages'),
+  journeys: () => import('../features/journeys/JourneyPages'),
 };
 
 const CHUNK_BY_TYPE: Record<string, keyof typeof pageChunks> = {

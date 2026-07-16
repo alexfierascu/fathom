@@ -23,7 +23,6 @@ import { SeoTags } from '../components/SeoTags';
 import { StraitCard } from '../components/StraitCard';
 import { formatDateValue, formatLat, formatLon } from '../lib/format';
 import { buildQuiz, type QuizQuestion } from '../lib/quiz';
-import { findTour, tourStraits, TOURS } from '../lib/tours';
 
 // --- Tags -----------------------------------------------------------------
 
@@ -171,90 +170,6 @@ export function ComparePage() {
           <CompareColumn strait={left} />
           <CompareColumn strait={right} />
         </div>
-      </article>
-    </>
-  );
-}
-
-// --- Tours ------------------------------------------------------------------
-
-export function ToursPage() {
-  return (
-    <>
-      <SeoTags
-        title="Tours — Fathom"
-        description="Curated journeys through the world's straits."
-        path="/tours"
-      />
-      <Breadcrumbs items={[{ label: 'Home', to: '/' }, { label: 'Tours' }]} />
-      <article className="detail">
-        <header className="strait-hero">
-          <div className="eyebrow">Guided tours</div>
-          <h2 className="detail-title detail-title--hero">Journeys through the narrows</h2>
-          <p className="note note--lede">
-            Curated sequences of straits, each telling one story of the world's waters.
-          </p>
-        </header>
-        <div className="grid">
-          {TOURS.map((tour) => (
-            <Link key={tour.id} className="card" to={`/tours/${tour.id}`}>
-              <div className="eyebrow">
-                {tour.straitIds.length} stop{tour.straitIds.length === 1 ? '' : 's'}
-              </div>
-              <h3>{tour.title}</h3>
-              <div className="note">{tour.tagline}</div>
-            </Link>
-          ))}
-        </div>
-      </article>
-    </>
-  );
-}
-
-export function TourDetailPage() {
-  const { slug } = useParams();
-  const tour = findTour(slug);
-
-  if (!tour) {
-    return (
-      <div className="empty">
-        No such tour. <Link to="/tours">Browse the tours.</Link>
-      </div>
-    );
-  }
-
-  const stops = tourStraits(tour);
-
-  return (
-    <>
-      <SeoTags
-        title={`${tour.title} — Fathom`}
-        description={tour.tagline}
-        path={`/tours/${tour.id}`}
-      />
-      <Breadcrumbs
-        items={[
-          { label: 'Home', to: '/' },
-          { label: 'Tours', to: '/tours' },
-          { label: tour.title },
-        ]}
-      />
-      <article className="detail">
-        <header className="strait-hero">
-          <div className="eyebrow">Guided tour</div>
-          <h2 className="detail-title detail-title--hero">{tour.title}</h2>
-          <p className="note note--lede">{tour.intro}</p>
-        </header>
-        <ol className="tour-stops">
-          {stops.map((strait, index) => (
-            <li key={strait.id} className="tour-stop">
-              <div className="tour-stop-number">{index + 1}</div>
-              <div className="tour-stop-body">
-                <StraitCard strait={strait} />
-              </div>
-            </li>
-          ))}
-        </ol>
       </article>
     </>
   );
