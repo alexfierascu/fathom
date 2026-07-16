@@ -238,6 +238,16 @@ export function QuizPage() {
                   >
                     <i className="quiz-letter">{'ABCD'[index]}</i>
                     {option}
+                    {picked !== null && option === question.answer && (
+                      <span className="quiz-mark" aria-hidden="true">
+                        ✓
+                      </span>
+                    )}
+                    {picked === option && option !== question.answer && (
+                      <span className="quiz-mark" aria-hidden="true">
+                        ✕
+                      </span>
+                    )}
                   </button>
                 );
               })}

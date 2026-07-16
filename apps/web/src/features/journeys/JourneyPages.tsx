@@ -112,6 +112,16 @@ function QuizBlock({ quiz }: { quiz: JourneyQuiz }) {
             >
               <i className="quiz-letter">{'ABCD'[index]}</i>
               {option}
+              {picked !== null && option === quiz.answer && (
+                <span className="quiz-mark" aria-hidden="true">
+                  ✓
+                </span>
+              )}
+              {picked === option && option !== quiz.answer && (
+                <span className="quiz-mark" aria-hidden="true">
+                  ✕
+                </span>
+              )}
             </button>
           );
         })}
