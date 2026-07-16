@@ -1,0 +1,8 @@
+{
+  "id": "zimbabwe",
+  "name": "Zimbabwe",
+  "code": "ZW",
+  "summary": "sovereign state in southern Africa",
+  "sourceIds": ["wikidata-q954"],
+  "status": "draft"
+}

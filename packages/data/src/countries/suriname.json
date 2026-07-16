@@ -1,0 +1,8 @@
+{
+  "id": "suriname",
+  "name": "Suriname",
+  "code": "SR",
+  "summary": "country in South America",
+  "sourceIds": ["wikidata-q730"],
+  "status": "draft"
+}

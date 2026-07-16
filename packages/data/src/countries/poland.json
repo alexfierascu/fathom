@@ -1,0 +1,8 @@
+{
+  "id": "poland",
+  "name": "Poland",
+  "code": "PL",
+  "summary": "country in Central Europe",
+  "sourceIds": ["wikidata-q36"],
+  "status": "draft"
+}

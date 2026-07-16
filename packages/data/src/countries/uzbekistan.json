@@ -1,0 +1,8 @@
+{
+  "id": "uzbekistan",
+  "name": "Uzbekistan",
+  "code": "UZ",
+  "summary": "sovereign state in Central Asia",
+  "sourceIds": ["wikidata-q265"],
+  "status": "draft"
+}

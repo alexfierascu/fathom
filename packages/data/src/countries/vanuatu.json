@@ -1,0 +1,8 @@
+{
+  "id": "vanuatu",
+  "name": "Vanuatu",
+  "code": "VU",
+  "summary": "island country in Oceania",
+  "sourceIds": ["wikidata-q686"],
+  "status": "draft"
+}

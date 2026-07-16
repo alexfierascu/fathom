@@ -1,0 +1,8 @@
+{
+  "id": "finland",
+  "name": "Finland",
+  "code": "FI",
+  "summary": "country in Northern Europe",
+  "sourceIds": ["wikidata-q33"],
+  "status": "draft"
+}

@@ -1,0 +1,8 @@
+{
+  "id": "seychelles",
+  "name": "Seychelles",
+  "code": "SC",
+  "summary": "island sovereign state off the eastern coast of Africa",
+  "sourceIds": ["wikidata-q1042"],
+  "status": "draft"
+}

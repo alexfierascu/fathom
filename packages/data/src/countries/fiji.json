@@ -1,0 +1,8 @@
+{
+  "id": "fiji",
+  "name": "Fiji",
+  "code": "FJ",
+  "summary": "island sovereign state in Oceania",
+  "sourceIds": ["wikidata-q712"],
+  "status": "draft"
+}

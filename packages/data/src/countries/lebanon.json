@@ -1,0 +1,8 @@
+{
+  "id": "lebanon",
+  "name": "Lebanon",
+  "code": "LB",
+  "summary": "country in West Asia",
+  "sourceIds": ["wikidata-q822"],
+  "status": "draft"
+}

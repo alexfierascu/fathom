@@ -1,0 +1,8 @@
+{
+  "id": "croatia",
+  "name": "Croatia",
+  "code": "HR",
+  "summary": "country in Central Europe",
+  "sourceIds": ["wikidata-q224"],
+  "status": "draft"
+}

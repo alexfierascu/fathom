@@ -1,0 +1,8 @@
+{
+  "id": "tuvalu",
+  "name": "Tuvalu",
+  "code": "TV",
+  "summary": "country in Oceania",
+  "sourceIds": ["wikidata-q672"],
+  "status": "draft"
+}

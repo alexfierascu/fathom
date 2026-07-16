@@ -1,0 +1,8 @@
+{
+  "id": "israel",
+  "name": "Israel",
+  "code": "IL",
+  "summary": "country in West Asia",
+  "sourceIds": ["wikidata-q801"],
+  "status": "draft"
+}

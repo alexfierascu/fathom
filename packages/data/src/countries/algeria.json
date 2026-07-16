@@ -1,0 +1,8 @@
+{
+  "id": "algeria",
+  "name": "Algeria",
+  "code": "DZ",
+  "summary": "country in North Africa",
+  "sourceIds": ["wikidata-q262"],
+  "status": "draft"
+}

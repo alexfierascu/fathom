@@ -1,0 +1,8 @@
+{
+  "id": "turkmenistan",
+  "name": "Turkmenistan",
+  "code": "TM",
+  "summary": "country in Central Asia",
+  "sourceIds": ["wikidata-q874"],
+  "status": "draft"
+}

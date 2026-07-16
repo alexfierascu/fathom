@@ -1,0 +1,8 @@
+{
+  "id": "latvia",
+  "name": "Latvia",
+  "code": "LV",
+  "summary": "sovereign state in northeastern Europe",
+  "sourceIds": ["wikidata-q211"],
+  "status": "draft"
+}

@@ -1,0 +1,8 @@
+{
+  "id": "bulgaria",
+  "name": "Bulgaria",
+  "code": "BG",
+  "summary": "country in southeast Europe",
+  "sourceIds": ["wikidata-q219"],
+  "status": "draft"
+}

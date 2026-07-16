@@ -1,0 +1,8 @@
+{
+  "id": "belize",
+  "name": "Belize",
+  "code": "BZ",
+  "summary": "sovereign state in Central America",
+  "sourceIds": ["wikidata-q242"],
+  "status": "draft"
+}

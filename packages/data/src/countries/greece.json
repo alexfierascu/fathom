@@ -1,0 +1,8 @@
+{
+  "id": "greece",
+  "name": "Greece",
+  "code": "GR",
+  "summary": "country in Southeast Europe",
+  "sourceIds": ["wikidata-q41"],
+  "status": "draft"
+}

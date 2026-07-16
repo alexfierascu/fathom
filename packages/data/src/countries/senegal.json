@@ -1,0 +1,8 @@
+{
+  "id": "senegal",
+  "name": "Senegal",
+  "code": "SN",
+  "summary": "country on the coast of West Africa",
+  "sourceIds": ["wikidata-q1041"],
+  "status": "draft"
+}

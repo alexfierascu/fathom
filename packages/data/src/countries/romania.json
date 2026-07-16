@@ -1,0 +1,8 @@
+{
+  "id": "romania",
+  "name": "Romania",
+  "code": "RO",
+  "summary": "country in Southeast Europe",
+  "sourceIds": ["wikidata-q218"],
+  "status": "draft"
+}

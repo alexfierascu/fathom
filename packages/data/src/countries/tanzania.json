@@ -1,0 +1,8 @@
+{
+  "id": "tanzania",
+  "name": "Tanzania",
+  "code": "TZ",
+  "summary": "country in East Africa",
+  "sourceIds": ["wikidata-q924"],
+  "status": "draft"
+}

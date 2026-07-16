@@ -1,0 +1,8 @@
+{
+  "id": "maldives",
+  "name": "Maldives",
+  "code": "MV",
+  "summary": "sovereign state in South Asia, situated on an archipelago in the Arabian Sea",
+  "sourceIds": ["wikidata-q826"],
+  "status": "draft"
+}

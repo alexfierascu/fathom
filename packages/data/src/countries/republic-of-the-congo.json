@@ -1,0 +1,8 @@
+{
+  "id": "republic-of-the-congo",
+  "name": "Republic of the Congo",
+  "code": "CG",
+  "summary": "country in Central Africa, capital Brazzaville",
+  "sourceIds": ["wikidata-q971"],
+  "status": "draft"
+}

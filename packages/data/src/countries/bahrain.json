@@ -1,0 +1,8 @@
+{
+  "id": "bahrain",
+  "name": "Bahrain",
+  "code": "BH",
+  "summary": "country in the Persian Gulf",
+  "sourceIds": ["wikidata-q398"],
+  "status": "draft"
+}

@@ -1,0 +1,8 @@
+{
+  "id": "andorra",
+  "name": "Andorra",
+  "code": "AD",
+  "summary": "sovereign microstate between France and Spain, in Western Europe",
+  "sourceIds": ["wikidata-q228"],
+  "status": "draft"
+}

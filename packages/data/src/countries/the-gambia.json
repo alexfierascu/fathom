@@ -1,0 +1,8 @@
+{
+  "id": "the-gambia",
+  "name": "The Gambia",
+  "code": "GM",
+  "summary": "sovereign state in West Africa",
+  "sourceIds": ["wikidata-q1005"],
+  "status": "draft"
+}

@@ -1,0 +1,8 @@
+{
+  "id": "bosnia-and-herzegovina",
+  "name": "Bosnia and Herzegovina",
+  "code": "BA",
+  "summary": "country in Southeast Europe",
+  "sourceIds": ["wikidata-q225"],
+  "status": "draft"
+}

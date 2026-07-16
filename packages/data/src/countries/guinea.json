@@ -1,0 +1,8 @@
+{
+  "id": "guinea",
+  "name": "Guinea",
+  "code": "GN",
+  "summary": "sovereign state in West Africa",
+  "sourceIds": ["wikidata-q1006"],
+  "status": "draft"
+}

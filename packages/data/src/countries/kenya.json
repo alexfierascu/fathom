@@ -1,0 +1,8 @@
+{
+  "id": "kenya",
+  "name": "Kenya",
+  "code": "KE",
+  "summary": "country in Eastern Africa",
+  "sourceIds": ["wikidata-q114"],
+  "status": "draft"
+}

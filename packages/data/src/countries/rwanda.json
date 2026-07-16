@@ -1,0 +1,8 @@
+{
+  "id": "rwanda",
+  "name": "Rwanda",
+  "code": "RW",
+  "summary": "country in East Africa",
+  "sourceIds": ["wikidata-q1037"],
+  "status": "draft"
+}

@@ -1,0 +1,8 @@
+{
+  "id": "qatar",
+  "name": "Qatar",
+  "code": "QA",
+  "summary": "country in West Asia",
+  "sourceIds": ["wikidata-q846"],
+  "status": "draft"
+}

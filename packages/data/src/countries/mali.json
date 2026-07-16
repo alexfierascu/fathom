@@ -1,0 +1,8 @@
+{
+  "id": "mali",
+  "name": "Mali",
+  "code": "ML",
+  "summary": "country in West Africa",
+  "sourceIds": ["wikidata-q912"],
+  "status": "draft"
+}

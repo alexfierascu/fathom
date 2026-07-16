@@ -1,0 +1,8 @@
+{
+  "id": "tunisia",
+  "name": "Tunisia",
+  "code": "TN",
+  "summary": "country in North Africa",
+  "sourceIds": ["wikidata-q948"],
+  "status": "draft"
+}

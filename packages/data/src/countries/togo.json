@@ -1,0 +1,8 @@
+{
+  "id": "togo",
+  "name": "Togo",
+  "code": "TG",
+  "summary": "country in West Africa",
+  "sourceIds": ["wikidata-q945"],
+  "status": "draft"
+}

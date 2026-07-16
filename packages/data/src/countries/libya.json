@@ -1,0 +1,8 @@
+{
+  "id": "libya",
+  "name": "Libya",
+  "code": "LY",
+  "summary": "sovereign state in North Africa",
+  "sourceIds": ["wikidata-q1016"],
+  "status": "draft"
+}

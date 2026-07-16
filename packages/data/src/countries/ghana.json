@@ -1,0 +1,8 @@
+{
+  "id": "ghana",
+  "name": "Ghana",
+  "code": "GH",
+  "summary": "country in West Africa",
+  "sourceIds": ["wikidata-q117"],
+  "status": "draft"
+}

@@ -1,0 +1,8 @@
+{
+  "id": "brazil",
+  "name": "Brazil",
+  "code": "BR",
+  "summary": "country in South America",
+  "sourceIds": ["wikidata-q155"],
+  "status": "draft"
+}

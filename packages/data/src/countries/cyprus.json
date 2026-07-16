@@ -1,0 +1,8 @@
+{
+  "id": "cyprus",
+  "name": "Cyprus",
+  "code": "CY",
+  "summary": "country in the Mediterranean Sea",
+  "sourceIds": ["wikidata-q229"],
+  "status": "draft"
+}

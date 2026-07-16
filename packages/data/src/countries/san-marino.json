@@ -1,0 +1,8 @@
+{
+  "id": "san-marino",
+  "name": "San Marino",
+  "code": "SM",
+  "summary": "sovereign state in southern Europe, enclaved within Italy",
+  "sourceIds": ["wikidata-q238"],
+  "status": "draft"
+}

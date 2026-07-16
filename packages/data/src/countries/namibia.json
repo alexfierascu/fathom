@@ -1,0 +1,8 @@
+{
+  "id": "namibia",
+  "name": "Namibia",
+  "code": "NA",
+  "summary": "country in Southern Africa",
+  "sourceIds": ["wikidata-q1030"],
+  "status": "draft"
+}

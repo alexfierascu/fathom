@@ -1,0 +1,8 @@
+{
+  "id": "georgia",
+  "name": "Georgia",
+  "code": "GE",
+  "summary": "country in the Caucasus region of Europe and Asia",
+  "sourceIds": ["wikidata-q230"],
+  "status": "draft"
+}

@@ -1,0 +1,8 @@
+{
+  "id": "ethiopia",
+  "name": "Ethiopia",
+  "code": "ET",
+  "summary": "country in the Horn of Africa",
+  "sourceIds": ["wikidata-q115"],
+  "status": "draft"
+}

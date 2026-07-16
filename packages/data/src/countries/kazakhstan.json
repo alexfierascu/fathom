@@ -1,0 +1,8 @@
+{
+  "id": "kazakhstan",
+  "name": "Kazakhstan",
+  "code": "KZ",
+  "summary": "sovereign state in Eastern Europe and Central Asia",
+  "sourceIds": ["wikidata-q232"],
+  "status": "draft"
+}

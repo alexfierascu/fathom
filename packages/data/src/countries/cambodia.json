@@ -1,0 +1,8 @@
+{
+  "id": "cambodia",
+  "name": "Cambodia",
+  "code": "KH",
+  "summary": "country in Southeast Asia",
+  "sourceIds": ["wikidata-q424"],
+  "status": "draft"
+}

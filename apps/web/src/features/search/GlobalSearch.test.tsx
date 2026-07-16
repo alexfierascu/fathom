@@ -55,10 +55,10 @@ describe('GlobalSearch', () => {
     const user = userEvent.setup();
     render(<Harness />);
 
-    await user.type(screen.getByRole('combobox'), 'gibraltar');
+    await user.type(screen.getByRole('combobox'), 'hormuz');
     await user.keyboard('{Enter}');
 
-    expect(screen.getByTestId('location')).toHaveTextContent('/straits/gibraltar');
+    expect(screen.getByTestId('location')).toHaveTextContent('/straits/hormuz');
   });
 
   it('closes on Escape, then clears on a second Escape', async () => {

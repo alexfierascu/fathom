@@ -1,0 +1,8 @@
+{
+  "id": "uganda",
+  "name": "Uganda",
+  "code": "UG",
+  "summary": "country in East Africa",
+  "sourceIds": ["wikidata-q1036"],
+  "status": "draft"
+}

@@ -1,0 +1,8 @@
+{
+  "id": "montenegro",
+  "name": "Montenegro",
+  "code": "ME",
+  "summary": "country in southeastern Europe",
+  "sourceIds": ["wikidata-q236"],
+  "status": "draft"
+}

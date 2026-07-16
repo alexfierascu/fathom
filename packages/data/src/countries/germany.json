@@ -1,0 +1,8 @@
+{
+  "id": "germany",
+  "name": "Germany",
+  "code": "DE",
+  "summary": "country in Central Europe",
+  "sourceIds": ["wikidata-q183", "wikidata-q183"],
+  "status": "draft"
+}

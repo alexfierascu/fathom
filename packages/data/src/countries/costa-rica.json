@@ -1,0 +1,8 @@
+{
+  "id": "costa-rica",
+  "name": "Costa Rica",
+  "code": "CR",
+  "summary": "country in Central America",
+  "sourceIds": ["wikidata-q800"],
+  "status": "draft"
+}

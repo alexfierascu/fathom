@@ -1,0 +1,8 @@
+{
+  "id": "peru",
+  "name": "Peru",
+  "code": "PE",
+  "summary": "sovereign state in South America",
+  "sourceIds": ["wikidata-q419"],
+  "status": "draft"
+}

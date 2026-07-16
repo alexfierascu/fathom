@@ -1,0 +1,8 @@
+{
+  "id": "honduras",
+  "name": "Honduras",
+  "code": "HN",
+  "summary": "sovereign state in Central America",
+  "sourceIds": ["wikidata-q783"],
+  "status": "draft"
+}

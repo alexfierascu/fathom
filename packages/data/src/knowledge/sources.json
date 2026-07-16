@@ -1433,5 +1433,1418 @@
     "locator": "https://www.wikidata.org/wiki/Q3045395",
     "accessedOn": "2026-07-16",
     "license": "CC0 1.0"
+  },
+  {
+    "id": "wikidata-q183",
+    "type": "dataset",
+    "title": "Wikidata: Germany (Q183)",
+    "publisher": "Wikimedia Foundation",
+    "locator": "https://www.wikidata.org/wiki/Q183",
+    "accessedOn": "2026-07-16",
+    "license": "CC0 1.0"
+  },
+  {
+    "id": "wikidata-q33",
+    "type": "dataset",
+    "title": "Wikidata: Finland (Q33)",
+    "publisher": "Wikimedia Foundation",
+    "locator": "https://www.wikidata.org/wiki/Q33",
+    "accessedOn": "2026-07-16",
+    "license": "CC0 1.0"
+  },
+  {
+    "id": "wikidata-q96",
+    "type": "dataset",
+    "title": "Wikidata: Mexico (Q96)",
+    "publisher": "Wikimedia Foundation",
+    "locator": "https://www.wikidata.org/wiki/Q96",
+    "accessedOn": "2026-07-16",
+    "license": "CC0 1.0"
+  },
+  {
+    "id": "wikidata-q36",
+    "type": "dataset",
+    "title": "Wikidata: Poland (Q36)",
+    "publisher": "Wikimedia Foundation",
+    "locator": "https://www.wikidata.org/wiki/Q36",
+    "accessedOn": "2026-07-16",
+    "license": "CC0 1.0"
+  },
+  {
+    "id": "wikidata-q155",
+    "type": "dataset",
+    "title": "Wikidata: Brazil (Q155)",
+    "publisher": "Wikimedia Foundation",
+    "locator": "https://www.wikidata.org/wiki/Q155",
+    "accessedOn": "2026-07-16",
+    "license": "CC0 1.0"
+  },
+  {
+    "id": "wikidata-q39",
+    "type": "dataset",
+    "title": "Wikidata: Switzerland (Q39)",
+    "publisher": "Wikimedia Foundation",
+    "locator": "https://www.wikidata.org/wiki/Q39",
+    "accessedOn": "2026-07-16",
+    "license": "CC0 1.0"
+  },
+  {
+    "id": "wikidata-q41",
+    "type": "dataset",
+    "title": "Wikidata: Greece (Q41)",
+    "publisher": "Wikimedia Foundation",
+    "locator": "https://www.wikidata.org/wiki/Q41",
+    "accessedOn": "2026-07-16",
+    "license": "CC0 1.0"
+  },
+  {
+    "id": "wikidata-q801",
+    "type": "dataset",
+    "title": "Wikidata: Israel (Q801)",
+    "publisher": "Wikimedia Foundation",
+    "locator": "https://www.wikidata.org/wiki/Q801",
+    "accessedOn": "2026-07-16",
+    "license": "CC0 1.0"
+  },
+  {
+    "id": "wikidata-q31",
+    "type": "dataset",
+    "title": "Wikidata: Belgium (Q31)",
+    "publisher": "Wikimedia Foundation",
+    "locator": "https://www.wikidata.org/wiki/Q31",
+    "accessedOn": "2026-07-16",
+    "license": "CC0 1.0"
+  },
+  {
+    "id": "wikidata-q262",
+    "type": "dataset",
+    "title": "Wikidata: Algeria (Q262)",
+    "publisher": "Wikimedia Foundation",
+    "locator": "https://www.wikidata.org/wiki/Q262",
+    "accessedOn": "2026-07-16",
+    "license": "CC0 1.0"
+  },
+  {
+    "id": "wikidata-q40",
+    "type": "dataset",
+    "title": "Wikidata: Austria (Q40)",
+    "publisher": "Wikimedia Foundation",
+    "locator": "https://www.wikidata.org/wiki/Q40",
+    "accessedOn": "2026-07-16",
+    "license": "CC0 1.0"
+  },
+  {
+    "id": "wikidata-q45",
+    "type": "dataset",
+    "title": "Wikidata: Portugal (Q45)",
+    "publisher": "Wikimedia Foundation",
+    "locator": "https://www.wikidata.org/wiki/Q45",
+    "accessedOn": "2026-07-16",
+    "license": "CC0 1.0"
+  },
+  {
+    "id": "wikidata-q881",
+    "type": "dataset",
+    "title": "Wikidata: Vietnam (Q881)",
+    "publisher": "Wikimedia Foundation",
+    "locator": "https://www.wikidata.org/wiki/Q881",
+    "accessedOn": "2026-07-16",
+    "license": "CC0 1.0"
+  },
+  {
+    "id": "wikidata-q258",
+    "type": "dataset",
+    "title": "Wikidata: South Africa (Q258)",
+    "publisher": "Wikimedia Foundation",
+    "locator": "https://www.wikidata.org/wiki/Q258",
+    "accessedOn": "2026-07-16",
+    "license": "CC0 1.0"
+  },
+  {
+    "id": "wikidata-q739",
+    "type": "dataset",
+    "title": "Wikidata: Colombia (Q739)",
+    "publisher": "Wikimedia Foundation",
+    "locator": "https://www.wikidata.org/wiki/Q739",
+    "accessedOn": "2026-07-16",
+    "license": "CC0 1.0"
+  },
+  {
+    "id": "wikidata-q219",
+    "type": "dataset",
+    "title": "Wikidata: Bulgaria (Q219)",
+    "publisher": "Wikimedia Foundation",
+    "locator": "https://www.wikidata.org/wiki/Q219",
+    "accessedOn": "2026-07-16",
+    "license": "CC0 1.0"
+  },
+  {
+    "id": "wikidata-q227",
+    "type": "dataset",
+    "title": "Wikidata: Azerbaijan (Q227)",
+    "publisher": "Wikimedia Foundation",
+    "locator": "https://www.wikidata.org/wiki/Q227",
+    "accessedOn": "2026-07-16",
+    "license": "CC0 1.0"
+  },
+  {
+    "id": "wikidata-q889",
+    "type": "dataset",
+    "title": "Wikidata: Afghanistan (Q889)",
+    "publisher": "Wikimedia Foundation",
+    "locator": "https://www.wikidata.org/wiki/Q889",
+    "accessedOn": "2026-07-16",
+    "license": "CC0 1.0"
+  },
+  {
+    "id": "wikidata-q28",
+    "type": "dataset",
+    "title": "Wikidata: Hungary (Q28)",
+    "publisher": "Wikimedia Foundation",
+    "locator": "https://www.wikidata.org/wiki/Q28",
+    "accessedOn": "2026-07-16",
+    "license": "CC0 1.0"
+  },
+  {
+    "id": "wikidata-q184",
+    "type": "dataset",
+    "title": "Wikidata: Belarus (Q184)",
+    "publisher": "Wikimedia Foundation",
+    "locator": "https://www.wikidata.org/wiki/Q184",
+    "accessedOn": "2026-07-16",
+    "license": "CC0 1.0"
+  },
+  {
+    "id": "wikidata-q213",
+    "type": "dataset",
+    "title": "Wikidata: Czech Republic (Q213)",
+    "publisher": "Wikimedia Foundation",
+    "locator": "https://www.wikidata.org/wiki/Q213",
+    "accessedOn": "2026-07-16",
+    "license": "CC0 1.0"
+  },
+  {
+    "id": "wikidata-q224",
+    "type": "dataset",
+    "title": "Wikidata: Croatia (Q224)",
+    "publisher": "Wikimedia Foundation",
+    "locator": "https://www.wikidata.org/wiki/Q224",
+    "accessedOn": "2026-07-16",
+    "license": "CC0 1.0"
+  },
+  {
+    "id": "wikidata-q843",
+    "type": "dataset",
+    "title": "Wikidata: Pakistan (Q843)",
+    "publisher": "Wikimedia Foundation",
+    "locator": "https://www.wikidata.org/wiki/Q843",
+    "accessedOn": "2026-07-16",
+    "license": "CC0 1.0"
+  },
+  {
+    "id": "wikidata-q191",
+    "type": "dataset",
+    "title": "Wikidata: Estonia (Q191)",
+    "publisher": "Wikimedia Foundation",
+    "locator": "https://www.wikidata.org/wiki/Q191",
+    "accessedOn": "2026-07-16",
+    "license": "CC0 1.0"
+  },
+  {
+    "id": "wikidata-q869",
+    "type": "dataset",
+    "title": "Wikidata: Thailand (Q869)",
+    "publisher": "Wikimedia Foundation",
+    "locator": "https://www.wikidata.org/wiki/Q869",
+    "accessedOn": "2026-07-16",
+    "license": "CC0 1.0"
+  },
+  {
+    "id": "wikidata-q37",
+    "type": "dataset",
+    "title": "Wikidata: Lithuania (Q37)",
+    "publisher": "Wikimedia Foundation",
+    "locator": "https://www.wikidata.org/wiki/Q37",
+    "accessedOn": "2026-07-16",
+    "license": "CC0 1.0"
+  },
+  {
+    "id": "wikidata-q403",
+    "type": "dataset",
+    "title": "Wikidata: Serbia (Q403)",
+    "publisher": "Wikimedia Foundation",
+    "locator": "https://www.wikidata.org/wiki/Q403",
+    "accessedOn": "2026-07-16",
+    "license": "CC0 1.0"
+  },
+  {
+    "id": "wikidata-q399",
+    "type": "dataset",
+    "title": "Wikidata: Armenia (Q399)",
+    "publisher": "Wikimedia Foundation",
+    "locator": "https://www.wikidata.org/wiki/Q399",
+    "accessedOn": "2026-07-16",
+    "license": "CC0 1.0"
+  },
+  {
+    "id": "wikidata-q1033",
+    "type": "dataset",
+    "title": "Wikidata: Nigeria (Q1033)",
+    "publisher": "Wikimedia Foundation",
+    "locator": "https://www.wikidata.org/wiki/Q1033",
+    "accessedOn": "2026-07-16",
+    "license": "CC0 1.0"
+  },
+  {
+    "id": "wikidata-q796",
+    "type": "dataset",
+    "title": "Wikidata: Iraq (Q796)",
+    "publisher": "Wikimedia Foundation",
+    "locator": "https://www.wikidata.org/wiki/Q796",
+    "accessedOn": "2026-07-16",
+    "license": "CC0 1.0"
+  },
+  {
+    "id": "wikidata-q232",
+    "type": "dataset",
+    "title": "Wikidata: Kazakhstan (Q232)",
+    "publisher": "Wikimedia Foundation",
+    "locator": "https://www.wikidata.org/wiki/Q232",
+    "accessedOn": "2026-07-16",
+    "license": "CC0 1.0"
+  },
+  {
+    "id": "wikidata-q218",
+    "type": "dataset",
+    "title": "Wikidata: Romania (Q218)",
+    "publisher": "Wikimedia Foundation",
+    "locator": "https://www.wikidata.org/wiki/Q218",
+    "accessedOn": "2026-07-16",
+    "license": "CC0 1.0"
+  },
+  {
+    "id": "wikidata-q851",
+    "type": "dataset",
+    "title": "Wikidata: Saudi Arabia (Q851)",
+    "publisher": "Wikimedia Foundation",
+    "locator": "https://www.wikidata.org/wiki/Q851",
+    "accessedOn": "2026-07-16",
+    "license": "CC0 1.0"
+  },
+  {
+    "id": "wikidata-q115",
+    "type": "dataset",
+    "title": "Wikidata: Ethiopia (Q115)",
+    "publisher": "Wikimedia Foundation",
+    "locator": "https://www.wikidata.org/wiki/Q115",
+    "accessedOn": "2026-07-16",
+    "license": "CC0 1.0"
+  },
+  {
+    "id": "wikidata-q230",
+    "type": "dataset",
+    "title": "Wikidata: Georgia (Q230)",
+    "publisher": "Wikimedia Foundation",
+    "locator": "https://www.wikidata.org/wiki/Q230",
+    "accessedOn": "2026-07-16",
+    "license": "CC0 1.0"
+  },
+  {
+    "id": "wikidata-q902",
+    "type": "dataset",
+    "title": "Wikidata: Bangladesh (Q902)",
+    "publisher": "Wikimedia Foundation",
+    "locator": "https://www.wikidata.org/wiki/Q902",
+    "accessedOn": "2026-07-16",
+    "license": "CC0 1.0"
+  },
+  {
+    "id": "wikidata-q717",
+    "type": "dataset",
+    "title": "Wikidata: Venezuela (Q717)",
+    "publisher": "Wikimedia Foundation",
+    "locator": "https://www.wikidata.org/wiki/Q717",
+    "accessedOn": "2026-07-16",
+    "license": "CC0 1.0"
+  },
+  {
+    "id": "wikidata-q225",
+    "type": "dataset",
+    "title": "Wikidata: Bosnia and Herzegovina (Q225)",
+    "publisher": "Wikimedia Foundation",
+    "locator": "https://www.wikidata.org/wiki/Q225",
+    "accessedOn": "2026-07-16",
+    "license": "CC0 1.0"
+  },
+  {
+    "id": "wikidata-q27",
+    "type": "dataset",
+    "title": "Wikidata: Ireland (Q27)",
+    "publisher": "Wikimedia Foundation",
+    "locator": "https://www.wikidata.org/wiki/Q27",
+    "accessedOn": "2026-07-16",
+    "license": "CC0 1.0"
+  },
+  {
+    "id": "wikidata-q214",
+    "type": "dataset",
+    "title": "Wikidata: Slovakia (Q214)",
+    "publisher": "Wikimedia Foundation",
+    "locator": "https://www.wikidata.org/wiki/Q214",
+    "accessedOn": "2026-07-16",
+    "license": "CC0 1.0"
+  },
+  {
+    "id": "wikidata-q237",
+    "type": "dataset",
+    "title": "Wikidata: Vatican City (Q237)",
+    "publisher": "Wikimedia Foundation",
+    "locator": "https://www.wikidata.org/wiki/Q237",
+    "accessedOn": "2026-07-16",
+    "license": "CC0 1.0"
+  },
+  {
+    "id": "wikidata-q211",
+    "type": "dataset",
+    "title": "Wikidata: Latvia (Q211)",
+    "publisher": "Wikimedia Foundation",
+    "locator": "https://www.wikidata.org/wiki/Q211",
+    "accessedOn": "2026-07-16",
+    "license": "CC0 1.0"
+  },
+  {
+    "id": "wikidata-q32",
+    "type": "dataset",
+    "title": "Wikidata: Luxembourg (Q32)",
+    "publisher": "Wikimedia Foundation",
+    "locator": "https://www.wikidata.org/wiki/Q32",
+    "accessedOn": "2026-07-16",
+    "license": "CC0 1.0"
+  },
+  {
+    "id": "wikidata-q114",
+    "type": "dataset",
+    "title": "Wikidata: Kenya (Q114)",
+    "publisher": "Wikimedia Foundation",
+    "locator": "https://www.wikidata.org/wiki/Q114",
+    "accessedOn": "2026-07-16",
+    "license": "CC0 1.0"
+  },
+  {
+    "id": "wikidata-q858",
+    "type": "dataset",
+    "title": "Wikidata: Syria (Q858)",
+    "publisher": "Wikimedia Foundation",
+    "locator": "https://www.wikidata.org/wiki/Q858",
+    "accessedOn": "2026-07-16",
+    "license": "CC0 1.0"
+  },
+  {
+    "id": "wikidata-q419",
+    "type": "dataset",
+    "title": "Wikidata: Peru (Q419)",
+    "publisher": "Wikimedia Foundation",
+    "locator": "https://www.wikidata.org/wiki/Q419",
+    "accessedOn": "2026-07-16",
+    "license": "CC0 1.0"
+  },
+  {
+    "id": "wikidata-q1049",
+    "type": "dataset",
+    "title": "Wikidata: Sudan (Q1049)",
+    "publisher": "Wikimedia Foundation",
+    "locator": "https://www.wikidata.org/wiki/Q1049",
+    "accessedOn": "2026-07-16",
+    "license": "CC0 1.0"
+  },
+  {
+    "id": "wikidata-q228",
+    "type": "dataset",
+    "title": "Wikidata: Andorra (Q228)",
+    "publisher": "Wikimedia Foundation",
+    "locator": "https://www.wikidata.org/wiki/Q228",
+    "accessedOn": "2026-07-16",
+    "license": "CC0 1.0"
+  },
+  {
+    "id": "wikidata-q974",
+    "type": "dataset",
+    "title": "Wikidata: Democratic Republic of the Congo (Q974)",
+    "publisher": "Wikimedia Foundation",
+    "locator": "https://www.wikidata.org/wiki/Q974",
+    "accessedOn": "2026-07-16",
+    "license": "CC0 1.0"
+  },
+  {
+    "id": "wikidata-q1016",
+    "type": "dataset",
+    "title": "Wikidata: Libya (Q1016)",
+    "publisher": "Wikimedia Foundation",
+    "locator": "https://www.wikidata.org/wiki/Q1016",
+    "accessedOn": "2026-07-16",
+    "license": "CC0 1.0"
+  },
+  {
+    "id": "wikidata-q215",
+    "type": "dataset",
+    "title": "Wikidata: Slovenia (Q215)",
+    "publisher": "Wikimedia Foundation",
+    "locator": "https://www.wikidata.org/wiki/Q215",
+    "accessedOn": "2026-07-16",
+    "license": "CC0 1.0"
+  },
+  {
+    "id": "wikidata-q424",
+    "type": "dataset",
+    "title": "Wikidata: Cambodia (Q424)",
+    "publisher": "Wikimedia Foundation",
+    "locator": "https://www.wikidata.org/wiki/Q424",
+    "accessedOn": "2026-07-16",
+    "license": "CC0 1.0"
+  },
+  {
+    "id": "wikidata-q217",
+    "type": "dataset",
+    "title": "Wikidata: Moldova (Q217)",
+    "publisher": "Wikimedia Foundation",
+    "locator": "https://www.wikidata.org/wiki/Q217",
+    "accessedOn": "2026-07-16",
+    "license": "CC0 1.0"
+  },
+  {
+    "id": "wikidata-q822",
+    "type": "dataset",
+    "title": "Wikidata: Lebanon (Q822)",
+    "publisher": "Wikimedia Foundation",
+    "locator": "https://www.wikidata.org/wiki/Q822",
+    "accessedOn": "2026-07-16",
+    "license": "CC0 1.0"
+  },
+  {
+    "id": "wikidata-q948",
+    "type": "dataset",
+    "title": "Wikidata: Tunisia (Q948)",
+    "publisher": "Wikimedia Foundation",
+    "locator": "https://www.wikidata.org/wiki/Q948",
+    "accessedOn": "2026-07-16",
+    "license": "CC0 1.0"
+  },
+  {
+    "id": "wikidata-q233",
+    "type": "dataset",
+    "title": "Wikidata: Malta (Q233)",
+    "publisher": "Wikimedia Foundation",
+    "locator": "https://www.wikidata.org/wiki/Q233",
+    "accessedOn": "2026-07-16",
+    "license": "CC0 1.0"
+  },
+  {
+    "id": "wikidata-q221",
+    "type": "dataset",
+    "title": "Wikidata: North Macedonia (Q221)",
+    "publisher": "Wikimedia Foundation",
+    "locator": "https://www.wikidata.org/wiki/Q221",
+    "accessedOn": "2026-07-16",
+    "license": "CC0 1.0"
+  },
+  {
+    "id": "wikidata-q117",
+    "type": "dataset",
+    "title": "Wikidata: Ghana (Q117)",
+    "publisher": "Wikimedia Foundation",
+    "locator": "https://www.wikidata.org/wiki/Q117",
+    "accessedOn": "2026-07-16",
+    "license": "CC0 1.0"
+  },
+  {
+    "id": "wikidata-q236",
+    "type": "dataset",
+    "title": "Wikidata: Montenegro (Q236)",
+    "publisher": "Wikimedia Foundation",
+    "locator": "https://www.wikidata.org/wiki/Q236",
+    "accessedOn": "2026-07-16",
+    "license": "CC0 1.0"
+  },
+  {
+    "id": "wikidata-q229",
+    "type": "dataset",
+    "title": "Wikidata: Cyprus (Q229)",
+    "publisher": "Wikimedia Foundation",
+    "locator": "https://www.wikidata.org/wiki/Q229",
+    "accessedOn": "2026-07-16",
+    "license": "CC0 1.0"
+  },
+  {
+    "id": "wikidata-q1045",
+    "type": "dataset",
+    "title": "Wikidata: Somalia (Q1045)",
+    "publisher": "Wikimedia Foundation",
+    "locator": "https://www.wikidata.org/wiki/Q1045",
+    "accessedOn": "2026-07-16",
+    "license": "CC0 1.0"
+  },
+  {
+    "id": "wikidata-q77",
+    "type": "dataset",
+    "title": "Wikidata: Uruguay (Q77)",
+    "publisher": "Wikimedia Foundation",
+    "locator": "https://www.wikidata.org/wiki/Q77",
+    "accessedOn": "2026-07-16",
+    "license": "CC0 1.0"
+  },
+  {
+    "id": "wikidata-q837",
+    "type": "dataset",
+    "title": "Wikidata: Nepal (Q837)",
+    "publisher": "Wikimedia Foundation",
+    "locator": "https://www.wikidata.org/wiki/Q837",
+    "accessedOn": "2026-07-16",
+    "license": "CC0 1.0"
+  },
+  {
+    "id": "wikidata-q916",
+    "type": "dataset",
+    "title": "Wikidata: Angola (Q916)",
+    "publisher": "Wikimedia Foundation",
+    "locator": "https://www.wikidata.org/wiki/Q916",
+    "accessedOn": "2026-07-16",
+    "license": "CC0 1.0"
+  },
+  {
+    "id": "wikidata-q235",
+    "type": "dataset",
+    "title": "Wikidata: Monaco (Q235)",
+    "publisher": "Wikimedia Foundation",
+    "locator": "https://www.wikidata.org/wiki/Q235",
+    "accessedOn": "2026-07-16",
+    "license": "CC0 1.0"
+  },
+  {
+    "id": "wikidata-q954",
+    "type": "dataset",
+    "title": "Wikidata: Zimbabwe (Q954)",
+    "publisher": "Wikimedia Foundation",
+    "locator": "https://www.wikidata.org/wiki/Q954",
+    "accessedOn": "2026-07-16",
+    "license": "CC0 1.0"
+  },
+  {
+    "id": "wikidata-q711",
+    "type": "dataset",
+    "title": "Wikidata: Mongolia (Q711)",
+    "publisher": "Wikimedia Foundation",
+    "locator": "https://www.wikidata.org/wiki/Q711",
+    "accessedOn": "2026-07-16",
+    "license": "CC0 1.0"
+  },
+  {
+    "id": "wikidata-q924",
+    "type": "dataset",
+    "title": "Wikidata: Tanzania (Q924)",
+    "publisher": "Wikimedia Foundation",
+    "locator": "https://www.wikidata.org/wiki/Q924",
+    "accessedOn": "2026-07-16",
+    "license": "CC0 1.0"
+  },
+  {
+    "id": "wikidata-q813",
+    "type": "dataset",
+    "title": "Wikidata: Kyrgyzstan (Q813)",
+    "publisher": "Wikimedia Foundation",
+    "locator": "https://www.wikidata.org/wiki/Q813",
+    "accessedOn": "2026-07-16",
+    "license": "CC0 1.0"
+  },
+  {
+    "id": "wikidata-q347",
+    "type": "dataset",
+    "title": "Wikidata: Liechtenstein (Q347)",
+    "publisher": "Wikimedia Foundation",
+    "locator": "https://www.wikidata.org/wiki/Q347",
+    "accessedOn": "2026-07-16",
+    "license": "CC0 1.0"
+  },
+  {
+    "id": "wikidata-q657",
+    "type": "dataset",
+    "title": "Wikidata: Chad (Q657)",
+    "publisher": "Wikimedia Foundation",
+    "locator": "https://www.wikidata.org/wiki/Q657",
+    "accessedOn": "2026-07-16",
+    "license": "CC0 1.0"
+  },
+  {
+    "id": "wikidata-q836",
+    "type": "dataset",
+    "title": "Wikidata: Myanmar (Q836)",
+    "publisher": "Wikimedia Foundation",
+    "locator": "https://www.wikidata.org/wiki/Q836",
+    "accessedOn": "2026-07-16",
+    "license": "CC0 1.0"
+  },
+  {
+    "id": "wikidata-q878",
+    "type": "dataset",
+    "title": "Wikidata: United Arab Emirates (Q878)",
+    "publisher": "Wikimedia Foundation",
+    "locator": "https://www.wikidata.org/wiki/Q878",
+    "accessedOn": "2026-07-16",
+    "license": "CC0 1.0"
+  },
+  {
+    "id": "wikidata-q1030",
+    "type": "dataset",
+    "title": "Wikidata: Namibia (Q1030)",
+    "publisher": "Wikimedia Foundation",
+    "locator": "https://www.wikidata.org/wiki/Q1030",
+    "accessedOn": "2026-07-16",
+    "license": "CC0 1.0"
+  },
+  {
+    "id": "wikidata-q736",
+    "type": "dataset",
+    "title": "Wikidata: Ecuador (Q736)",
+    "publisher": "Wikimedia Foundation",
+    "locator": "https://www.wikidata.org/wiki/Q736",
+    "accessedOn": "2026-07-16",
+    "license": "CC0 1.0"
+  },
+  {
+    "id": "wikidata-q819",
+    "type": "dataset",
+    "title": "Wikidata: Laos (Q819)",
+    "publisher": "Wikimedia Foundation",
+    "locator": "https://www.wikidata.org/wiki/Q819",
+    "accessedOn": "2026-07-16",
+    "license": "CC0 1.0"
+  },
+  {
+    "id": "wikidata-q810",
+    "type": "dataset",
+    "title": "Wikidata: Jordan (Q810)",
+    "publisher": "Wikimedia Foundation",
+    "locator": "https://www.wikidata.org/wiki/Q810",
+    "accessedOn": "2026-07-16",
+    "license": "CC0 1.0"
+  },
+  {
+    "id": "wikidata-q963",
+    "type": "dataset",
+    "title": "Wikidata: Botswana (Q963)",
+    "publisher": "Wikimedia Foundation",
+    "locator": "https://www.wikidata.org/wiki/Q963",
+    "accessedOn": "2026-07-16",
+    "license": "CC0 1.0"
+  },
+  {
+    "id": "wikidata-q1009",
+    "type": "dataset",
+    "title": "Wikidata: Cameroon (Q1009)",
+    "publisher": "Wikimedia Foundation",
+    "locator": "https://www.wikidata.org/wiki/Q1009",
+    "accessedOn": "2026-07-16",
+    "license": "CC0 1.0"
+  },
+  {
+    "id": "wikidata-q912",
+    "type": "dataset",
+    "title": "Wikidata: Mali (Q912)",
+    "publisher": "Wikimedia Foundation",
+    "locator": "https://www.wikidata.org/wiki/Q912",
+    "accessedOn": "2026-07-16",
+    "license": "CC0 1.0"
+  },
+  {
+    "id": "wikidata-q238",
+    "type": "dataset",
+    "title": "Wikidata: San Marino (Q238)",
+    "publisher": "Wikimedia Foundation",
+    "locator": "https://www.wikidata.org/wiki/Q238",
+    "accessedOn": "2026-07-16",
+    "license": "CC0 1.0"
+  },
+  {
+    "id": "wikidata-q1036",
+    "type": "dataset",
+    "title": "Wikidata: Uganda (Q1036)",
+    "publisher": "Wikimedia Foundation",
+    "locator": "https://www.wikidata.org/wiki/Q1036",
+    "accessedOn": "2026-07-16",
+    "license": "CC0 1.0"
+  },
+  {
+    "id": "wikidata-q750",
+    "type": "dataset",
+    "title": "Wikidata: Bolivia (Q750)",
+    "publisher": "Wikimedia Foundation",
+    "locator": "https://www.wikidata.org/wiki/Q750",
+    "accessedOn": "2026-07-16",
+    "license": "CC0 1.0"
+  },
+  {
+    "id": "wikidata-q1008",
+    "type": "dataset",
+    "title": "Wikidata: Ivory Coast (Q1008)",
+    "publisher": "Wikimedia Foundation",
+    "locator": "https://www.wikidata.org/wiki/Q1008",
+    "accessedOn": "2026-07-16",
+    "license": "CC0 1.0"
+  },
+  {
+    "id": "wikidata-q423",
+    "type": "dataset",
+    "title": "Wikidata: North Korea (Q423)",
+    "publisher": "Wikimedia Foundation",
+    "locator": "https://www.wikidata.org/wiki/Q423",
+    "accessedOn": "2026-07-16",
+    "license": "CC0 1.0"
+  },
+  {
+    "id": "wikidata-q733",
+    "type": "dataset",
+    "title": "Wikidata: Paraguay (Q733)",
+    "publisher": "Wikimedia Foundation",
+    "locator": "https://www.wikidata.org/wiki/Q733",
+    "accessedOn": "2026-07-16",
+    "license": "CC0 1.0"
+  },
+  {
+    "id": "wikidata-q265",
+    "type": "dataset",
+    "title": "Wikidata: Uzbekistan (Q265)",
+    "publisher": "Wikimedia Foundation",
+    "locator": "https://www.wikidata.org/wiki/Q265",
+    "accessedOn": "2026-07-16",
+    "license": "CC0 1.0"
+  },
+  {
+    "id": "wikidata-q965",
+    "type": "dataset",
+    "title": "Wikidata: Burkina Faso (Q965)",
+    "publisher": "Wikimedia Foundation",
+    "locator": "https://www.wikidata.org/wiki/Q965",
+    "accessedOn": "2026-07-16",
+    "license": "CC0 1.0"
+  },
+  {
+    "id": "wikidata-q1041",
+    "type": "dataset",
+    "title": "Wikidata: Senegal (Q1041)",
+    "publisher": "Wikimedia Foundation",
+    "locator": "https://www.wikidata.org/wiki/Q1041",
+    "accessedOn": "2026-07-16",
+    "license": "CC0 1.0"
+  },
+  {
+    "id": "wikidata-q953",
+    "type": "dataset",
+    "title": "Wikidata: Zambia (Q953)",
+    "publisher": "Wikimedia Foundation",
+    "locator": "https://www.wikidata.org/wiki/Q953",
+    "accessedOn": "2026-07-16",
+    "license": "CC0 1.0"
+  },
+  {
+    "id": "wikidata-q962",
+    "type": "dataset",
+    "title": "Wikidata: Benin (Q962)",
+    "publisher": "Wikimedia Foundation",
+    "locator": "https://www.wikidata.org/wiki/Q962",
+    "accessedOn": "2026-07-16",
+    "license": "CC0 1.0"
+  },
+  {
+    "id": "wikidata-q863",
+    "type": "dataset",
+    "title": "Wikidata: Tajikistan (Q863)",
+    "publisher": "Wikimedia Foundation",
+    "locator": "https://www.wikidata.org/wiki/Q863",
+    "accessedOn": "2026-07-16",
+    "license": "CC0 1.0"
+  },
+  {
+    "id": "wikidata-q817",
+    "type": "dataset",
+    "title": "Wikidata: Kuwait (Q817)",
+    "publisher": "Wikimedia Foundation",
+    "locator": "https://www.wikidata.org/wiki/Q817",
+    "accessedOn": "2026-07-16",
+    "license": "CC0 1.0"
+  },
+  {
+    "id": "wikidata-q1025",
+    "type": "dataset",
+    "title": "Wikidata: Mauritania (Q1025)",
+    "publisher": "Wikimedia Foundation",
+    "locator": "https://www.wikidata.org/wiki/Q1025",
+    "accessedOn": "2026-07-16",
+    "license": "CC0 1.0"
+  },
+  {
+    "id": "wikidata-q1037",
+    "type": "dataset",
+    "title": "Wikidata: Rwanda (Q1037)",
+    "publisher": "Wikimedia Foundation",
+    "locator": "https://www.wikidata.org/wiki/Q1037",
+    "accessedOn": "2026-07-16",
+    "license": "CC0 1.0"
+  },
+  {
+    "id": "wikidata-q398",
+    "type": "dataset",
+    "title": "Wikidata: Bahrain (Q398)",
+    "publisher": "Wikimedia Foundation",
+    "locator": "https://www.wikidata.org/wiki/Q398",
+    "accessedOn": "2026-07-16",
+    "license": "CC0 1.0"
+  },
+  {
+    "id": "wikidata-q917",
+    "type": "dataset",
+    "title": "Wikidata: Bhutan (Q917)",
+    "publisher": "Wikimedia Foundation",
+    "locator": "https://www.wikidata.org/wiki/Q917",
+    "accessedOn": "2026-07-16",
+    "license": "CC0 1.0"
+  },
+  {
+    "id": "wikidata-q1032",
+    "type": "dataset",
+    "title": "Wikidata: Niger (Q1032)",
+    "publisher": "Wikimedia Foundation",
+    "locator": "https://www.wikidata.org/wiki/Q1032",
+    "accessedOn": "2026-07-16",
+    "license": "CC0 1.0"
+  },
+  {
+    "id": "wikidata-q800",
+    "type": "dataset",
+    "title": "Wikidata: Costa Rica (Q800)",
+    "publisher": "Wikimedia Foundation",
+    "locator": "https://www.wikidata.org/wiki/Q800",
+    "accessedOn": "2026-07-16",
+    "license": "CC0 1.0"
+  },
+  {
+    "id": "wikidata-q945",
+    "type": "dataset",
+    "title": "Wikidata: Togo (Q945)",
+    "publisher": "Wikimedia Foundation",
+    "locator": "https://www.wikidata.org/wiki/Q945",
+    "accessedOn": "2026-07-16",
+    "license": "CC0 1.0"
+  },
+  {
+    "id": "wikidata-q929",
+    "type": "dataset",
+    "title": "Wikidata: Central African Republic (Q929)",
+    "publisher": "Wikimedia Foundation",
+    "locator": "https://www.wikidata.org/wiki/Q929",
+    "accessedOn": "2026-07-16",
+    "license": "CC0 1.0"
+  },
+  {
+    "id": "wikidata-q967",
+    "type": "dataset",
+    "title": "Wikidata: Burundi (Q967)",
+    "publisher": "Wikimedia Foundation",
+    "locator": "https://www.wikidata.org/wiki/Q967",
+    "accessedOn": "2026-07-16",
+    "license": "CC0 1.0"
+  },
+  {
+    "id": "wikidata-q971",
+    "type": "dataset",
+    "title": "Wikidata: Republic of the Congo (Q971)",
+    "publisher": "Wikimedia Foundation",
+    "locator": "https://www.wikidata.org/wiki/Q971",
+    "accessedOn": "2026-07-16",
+    "license": "CC0 1.0"
+  },
+  {
+    "id": "wikidata-q1006",
+    "type": "dataset",
+    "title": "Wikidata: Guinea (Q1006)",
+    "publisher": "Wikimedia Foundation",
+    "locator": "https://www.wikidata.org/wiki/Q1006",
+    "accessedOn": "2026-07-16",
+    "license": "CC0 1.0"
+  },
+  {
+    "id": "wikidata-q1005",
+    "type": "dataset",
+    "title": "Wikidata: The Gambia (Q1005)",
+    "publisher": "Wikimedia Foundation",
+    "locator": "https://www.wikidata.org/wiki/Q1005",
+    "accessedOn": "2026-07-16",
+    "license": "CC0 1.0"
+  },
+  {
+    "id": "wikidata-q874",
+    "type": "dataset",
+    "title": "Wikidata: Turkmenistan (Q874)",
+    "publisher": "Wikimedia Foundation",
+    "locator": "https://www.wikidata.org/wiki/Q874",
+    "accessedOn": "2026-07-16",
+    "license": "CC0 1.0"
+  },
+  {
+    "id": "wikidata-q921",
+    "type": "dataset",
+    "title": "Wikidata: Brunei (Q921)",
+    "publisher": "Wikimedia Foundation",
+    "locator": "https://www.wikidata.org/wiki/Q921",
+    "accessedOn": "2026-07-16",
+    "license": "CC0 1.0"
+  },
+  {
+    "id": "wikidata-q1007",
+    "type": "dataset",
+    "title": "Wikidata: Guinea-Bissau (Q1007)",
+    "publisher": "Wikimedia Foundation",
+    "locator": "https://www.wikidata.org/wiki/Q1007",
+    "accessedOn": "2026-07-16",
+    "license": "CC0 1.0"
+  },
+  {
+    "id": "wikidata-q1020",
+    "type": "dataset",
+    "title": "Wikidata: Malawi (Q1020)",
+    "publisher": "Wikimedia Foundation",
+    "locator": "https://www.wikidata.org/wiki/Q1020",
+    "accessedOn": "2026-07-16",
+    "license": "CC0 1.0"
+  },
+  {
+    "id": "wikidata-q783",
+    "type": "dataset",
+    "title": "Wikidata: Honduras (Q783)",
+    "publisher": "Wikimedia Foundation",
+    "locator": "https://www.wikidata.org/wiki/Q783",
+    "accessedOn": "2026-07-16",
+    "license": "CC0 1.0"
+  },
+  {
+    "id": "wikidata-q1000",
+    "type": "dataset",
+    "title": "Wikidata: Gabon (Q1000)",
+    "publisher": "Wikimedia Foundation",
+    "locator": "https://www.wikidata.org/wiki/Q1000",
+    "accessedOn": "2026-07-16",
+    "license": "CC0 1.0"
+  },
+  {
+    "id": "wikidata-q1044",
+    "type": "dataset",
+    "title": "Wikidata: Sierra Leone (Q1044)",
+    "publisher": "Wikimedia Foundation",
+    "locator": "https://www.wikidata.org/wiki/Q1044",
+    "accessedOn": "2026-07-16",
+    "license": "CC0 1.0"
+  },
+  {
+    "id": "wikidata-q1014",
+    "type": "dataset",
+    "title": "Wikidata: Liberia (Q1014)",
+    "publisher": "Wikimedia Foundation",
+    "locator": "https://www.wikidata.org/wiki/Q1014",
+    "accessedOn": "2026-07-16",
+    "license": "CC0 1.0"
+  },
+  {
+    "id": "wikidata-q790",
+    "type": "dataset",
+    "title": "Wikidata: Haiti (Q790)",
+    "publisher": "Wikimedia Foundation",
+    "locator": "https://www.wikidata.org/wiki/Q790",
+    "accessedOn": "2026-07-16",
+    "license": "CC0 1.0"
+  },
+  {
+    "id": "wikidata-q574",
+    "type": "dataset",
+    "title": "Wikidata: Timor-Leste (Q574)",
+    "publisher": "Wikimedia Foundation",
+    "locator": "https://www.wikidata.org/wiki/Q574",
+    "accessedOn": "2026-07-16",
+    "license": "CC0 1.0"
+  },
+  {
+    "id": "wikidata-q1011",
+    "type": "dataset",
+    "title": "Wikidata: Cape Verde (Q1011)",
+    "publisher": "Wikimedia Foundation",
+    "locator": "https://www.wikidata.org/wiki/Q1011",
+    "accessedOn": "2026-07-16",
+    "license": "CC0 1.0"
+  },
+  {
+    "id": "wikidata-q826",
+    "type": "dataset",
+    "title": "Wikidata: Maldives (Q826)",
+    "publisher": "Wikimedia Foundation",
+    "locator": "https://www.wikidata.org/wiki/Q826",
+    "accessedOn": "2026-07-16",
+    "license": "CC0 1.0"
+  },
+  {
+    "id": "wikidata-q846",
+    "type": "dataset",
+    "title": "Wikidata: Qatar (Q846)",
+    "publisher": "Wikimedia Foundation",
+    "locator": "https://www.wikidata.org/wiki/Q846",
+    "accessedOn": "2026-07-16",
+    "license": "CC0 1.0"
+  },
+  {
+    "id": "wikidata-q792",
+    "type": "dataset",
+    "title": "Wikidata: El Salvador (Q792)",
+    "publisher": "Wikimedia Foundation",
+    "locator": "https://www.wikidata.org/wiki/Q792",
+    "accessedOn": "2026-07-16",
+    "license": "CC0 1.0"
+  },
+  {
+    "id": "wikidata-q730",
+    "type": "dataset",
+    "title": "Wikidata: Suriname (Q730)",
+    "publisher": "Wikimedia Foundation",
+    "locator": "https://www.wikidata.org/wiki/Q730",
+    "accessedOn": "2026-07-16",
+    "license": "CC0 1.0"
+  },
+  {
+    "id": "wikidata-q1050",
+    "type": "dataset",
+    "title": "Wikidata: Eswatini (Q1050)",
+    "publisher": "Wikimedia Foundation",
+    "locator": "https://www.wikidata.org/wiki/Q1050",
+    "accessedOn": "2026-07-16",
+    "license": "CC0 1.0"
+  },
+  {
+    "id": "wikidata-q734",
+    "type": "dataset",
+    "title": "Wikidata: Guyana (Q734)",
+    "publisher": "Wikimedia Foundation",
+    "locator": "https://www.wikidata.org/wiki/Q734",
+    "accessedOn": "2026-07-16",
+    "license": "CC0 1.0"
+  },
+  {
+    "id": "wikidata-q983",
+    "type": "dataset",
+    "title": "Wikidata: Equatorial Guinea (Q983)",
+    "publisher": "Wikimedia Foundation",
+    "locator": "https://www.wikidata.org/wiki/Q983",
+    "accessedOn": "2026-07-16",
+    "license": "CC0 1.0"
+  },
+  {
+    "id": "wikidata-q970",
+    "type": "dataset",
+    "title": "Wikidata: Comoros (Q970)",
+    "publisher": "Wikimedia Foundation",
+    "locator": "https://www.wikidata.org/wiki/Q970",
+    "accessedOn": "2026-07-16",
+    "license": "CC0 1.0"
+  },
+  {
+    "id": "wikidata-q1027",
+    "type": "dataset",
+    "title": "Wikidata: Mauritius (Q1027)",
+    "publisher": "Wikimedia Foundation",
+    "locator": "https://www.wikidata.org/wiki/Q1027",
+    "accessedOn": "2026-07-16",
+    "license": "CC0 1.0"
+  },
+  {
+    "id": "wikidata-q1246",
+    "type": "dataset",
+    "title": "Wikidata: Kosovo (Q1246)",
+    "publisher": "Wikimedia Foundation",
+    "locator": "https://www.wikidata.org/wiki/Q1246",
+    "accessedOn": "2026-07-16",
+    "license": "CC0 1.0"
+  },
+  {
+    "id": "wikidata-q786",
+    "type": "dataset",
+    "title": "Wikidata: Dominican Republic (Q786)",
+    "publisher": "Wikimedia Foundation",
+    "locator": "https://www.wikidata.org/wiki/Q786",
+    "accessedOn": "2026-07-16",
+    "license": "CC0 1.0"
+  },
+  {
+    "id": "wikidata-q766",
+    "type": "dataset",
+    "title": "Wikidata: Jamaica (Q766)",
+    "publisher": "Wikimedia Foundation",
+    "locator": "https://www.wikidata.org/wiki/Q766",
+    "accessedOn": "2026-07-16",
+    "license": "CC0 1.0"
+  },
+  {
+    "id": "wikidata-q774",
+    "type": "dataset",
+    "title": "Wikidata: Guatemala (Q774)",
+    "publisher": "Wikimedia Foundation",
+    "locator": "https://www.wikidata.org/wiki/Q774",
+    "accessedOn": "2026-07-16",
+    "license": "CC0 1.0"
+  },
+  {
+    "id": "wikidata-q958",
+    "type": "dataset",
+    "title": "Wikidata: South Sudan (Q958)",
+    "publisher": "Wikimedia Foundation",
+    "locator": "https://www.wikidata.org/wiki/Q958",
+    "accessedOn": "2026-07-16",
+    "license": "CC0 1.0"
+  },
+  {
+    "id": "wikidata-q811",
+    "type": "dataset",
+    "title": "Wikidata: Nicaragua (Q811)",
+    "publisher": "Wikimedia Foundation",
+    "locator": "https://www.wikidata.org/wiki/Q811",
+    "accessedOn": "2026-07-16",
+    "license": "CC0 1.0"
+  },
+  {
+    "id": "wikidata-q242",
+    "type": "dataset",
+    "title": "Wikidata: Belize (Q242)",
+    "publisher": "Wikimedia Foundation",
+    "locator": "https://www.wikidata.org/wiki/Q242",
+    "accessedOn": "2026-07-16",
+    "license": "CC0 1.0"
+  },
+  {
+    "id": "wikidata-q1013",
+    "type": "dataset",
+    "title": "Wikidata: Lesotho (Q1013)",
+    "publisher": "Wikimedia Foundation",
+    "locator": "https://www.wikidata.org/wiki/Q1013",
+    "accessedOn": "2026-07-16",
+    "license": "CC0 1.0"
+  },
+  {
+    "id": "wikidata-q712",
+    "type": "dataset",
+    "title": "Wikidata: Fiji (Q712)",
+    "publisher": "Wikimedia Foundation",
+    "locator": "https://www.wikidata.org/wiki/Q712",
+    "accessedOn": "2026-07-16",
+    "license": "CC0 1.0"
+  },
+  {
+    "id": "wikidata-q1042",
+    "type": "dataset",
+    "title": "Wikidata: Seychelles (Q1042)",
+    "publisher": "Wikimedia Foundation",
+    "locator": "https://www.wikidata.org/wiki/Q1042",
+    "accessedOn": "2026-07-16",
+    "license": "CC0 1.0"
+  },
+  {
+    "id": "wikidata-q244",
+    "type": "dataset",
+    "title": "Wikidata: Barbados (Q244)",
+    "publisher": "Wikimedia Foundation",
+    "locator": "https://www.wikidata.org/wiki/Q244",
+    "accessedOn": "2026-07-16",
+    "license": "CC0 1.0"
+  },
+  {
+    "id": "wikidata-q1039",
+    "type": "dataset",
+    "title": "Wikidata: São Tomé and Príncipe (Q1039)",
+    "publisher": "Wikimedia Foundation",
+    "locator": "https://www.wikidata.org/wiki/Q1039",
+    "accessedOn": "2026-07-16",
+    "license": "CC0 1.0"
+  },
+  {
+    "id": "wikidata-q781",
+    "type": "dataset",
+    "title": "Wikidata: Antigua and Barbuda (Q781)",
+    "publisher": "Wikimedia Foundation",
+    "locator": "https://www.wikidata.org/wiki/Q781",
+    "accessedOn": "2026-07-16",
+    "license": "CC0 1.0"
+  },
+  {
+    "id": "wikidata-q784",
+    "type": "dataset",
+    "title": "Wikidata: Dominica (Q784)",
+    "publisher": "Wikimedia Foundation",
+    "locator": "https://www.wikidata.org/wiki/Q784",
+    "accessedOn": "2026-07-16",
+    "license": "CC0 1.0"
+  },
+  {
+    "id": "wikidata-q686",
+    "type": "dataset",
+    "title": "Wikidata: Vanuatu (Q686)",
+    "publisher": "Wikimedia Foundation",
+    "locator": "https://www.wikidata.org/wiki/Q686",
+    "accessedOn": "2026-07-16",
+    "license": "CC0 1.0"
+  },
+  {
+    "id": "wikidata-q697",
+    "type": "dataset",
+    "title": "Wikidata: Nauru (Q697)",
+    "publisher": "Wikimedia Foundation",
+    "locator": "https://www.wikidata.org/wiki/Q697",
+    "accessedOn": "2026-07-16",
+    "license": "CC0 1.0"
+  },
+  {
+    "id": "wikidata-q683",
+    "type": "dataset",
+    "title": "Wikidata: Samoa (Q683)",
+    "publisher": "Wikimedia Foundation",
+    "locator": "https://www.wikidata.org/wiki/Q683",
+    "accessedOn": "2026-07-16",
+    "license": "CC0 1.0"
+  },
+  {
+    "id": "wikidata-q678",
+    "type": "dataset",
+    "title": "Wikidata: Tonga (Q678)",
+    "publisher": "Wikimedia Foundation",
+    "locator": "https://www.wikidata.org/wiki/Q678",
+    "accessedOn": "2026-07-16",
+    "license": "CC0 1.0"
+  },
+  {
+    "id": "wikidata-q695",
+    "type": "dataset",
+    "title": "Wikidata: Palau (Q695)",
+    "publisher": "Wikimedia Foundation",
+    "locator": "https://www.wikidata.org/wiki/Q695",
+    "accessedOn": "2026-07-16",
+    "license": "CC0 1.0"
+  },
+  {
+    "id": "wikidata-q672",
+    "type": "dataset",
+    "title": "Wikidata: Tuvalu (Q672)",
+    "publisher": "Wikimedia Foundation",
+    "locator": "https://www.wikidata.org/wiki/Q672",
+    "accessedOn": "2026-07-16",
+    "license": "CC0 1.0"
+  },
+  {
+    "id": "wikidata-q769",
+    "type": "dataset",
+    "title": "Wikidata: Grenada (Q769)",
+    "publisher": "Wikimedia Foundation",
+    "locator": "https://www.wikidata.org/wiki/Q769",
+    "accessedOn": "2026-07-16",
+    "license": "CC0 1.0"
+  },
+  {
+    "id": "wikidata-q754",
+    "type": "dataset",
+    "title": "Wikidata: Trinidad and Tobago (Q754)",
+    "publisher": "Wikimedia Foundation",
+    "locator": "https://www.wikidata.org/wiki/Q754",
+    "accessedOn": "2026-07-16",
+    "license": "CC0 1.0"
+  },
+  {
+    "id": "wikidata-q710",
+    "type": "dataset",
+    "title": "Wikidata: Kiribati (Q710)",
+    "publisher": "Wikimedia Foundation",
+    "locator": "https://www.wikidata.org/wiki/Q710",
+    "accessedOn": "2026-07-16",
+    "license": "CC0 1.0"
+  },
+  {
+    "id": "wikidata-q685",
+    "type": "dataset",
+    "title": "Wikidata: Solomon Islands (Q685)",
+    "publisher": "Wikimedia Foundation",
+    "locator": "https://www.wikidata.org/wiki/Q685",
+    "accessedOn": "2026-07-16",
+    "license": "CC0 1.0"
+  },
+  {
+    "id": "wikidata-q763",
+    "type": "dataset",
+    "title": "Wikidata: Saint Kitts and Nevis (Q763)",
+    "publisher": "Wikimedia Foundation",
+    "locator": "https://www.wikidata.org/wiki/Q763",
+    "accessedOn": "2026-07-16",
+    "license": "CC0 1.0"
+  },
+  {
+    "id": "wikidata-q757",
+    "type": "dataset",
+    "title": "Wikidata: Saint Vincent and the Grenadines (Q757)",
+    "publisher": "Wikimedia Foundation",
+    "locator": "https://www.wikidata.org/wiki/Q757",
+    "accessedOn": "2026-07-16",
+    "license": "CC0 1.0"
+  },
+  {
+    "id": "wikidata-q709",
+    "type": "dataset",
+    "title": "Wikidata: Marshall Islands (Q709)",
+    "publisher": "Wikimedia Foundation",
+    "locator": "https://www.wikidata.org/wiki/Q709",
+    "accessedOn": "2026-07-16",
+    "license": "CC0 1.0"
+  },
+  {
+    "id": "wikidata-q760",
+    "type": "dataset",
+    "title": "Wikidata: Saint Lucia (Q760)",
+    "publisher": "Wikimedia Foundation",
+    "locator": "https://www.wikidata.org/wiki/Q760",
+    "accessedOn": "2026-07-16",
+    "license": "CC0 1.0"
+  },
+  {
+    "id": "wikidata-q219060",
+    "type": "dataset",
+    "title": "Wikidata: Palestine (Q219060)",
+    "publisher": "Wikimedia Foundation",
+    "locator": "https://www.wikidata.org/wiki/Q219060",
+    "accessedOn": "2026-07-16",
+    "license": "CC0 1.0"
+  },
+  {
+    "id": "wikidata-q702",
+    "type": "dataset",
+    "title": "Wikidata: Federated States of Micronesia (Q702)",
+    "publisher": "Wikimedia Foundation",
+    "locator": "https://www.wikidata.org/wiki/Q702",
+    "accessedOn": "2026-07-16",
+    "license": "CC0 1.0"
+  },
+  {
+    "id": "wikidata-q1410",
+    "type": "dataset",
+    "title": "Wikidata: Gibraltar (Q1410)",
+    "publisher": "Wikimedia Foundation",
+    "locator": "https://www.wikidata.org/wiki/Q1410",
+    "accessedOn": "2026-07-16",
+    "license": "CC0 1.0"
+  },
+  {
+    "id": "wikidata-q29999",
+    "type": "dataset",
+    "title": "Wikidata: Kingdom of the Netherlands (Q29999)",
+    "publisher": "Wikimedia Foundation",
+    "locator": "https://www.wikidata.org/wiki/Q29999",
+    "accessedOn": "2026-07-16",
+    "license": "CC0 1.0"
   }
 ]

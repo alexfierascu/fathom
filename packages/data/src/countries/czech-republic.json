@@ -1,0 +1,8 @@
+{
+  "id": "czech-republic",
+  "name": "Czech Republic",
+  "code": "CZ",
+  "summary": "country in Central Europe",
+  "sourceIds": ["wikidata-q213"],
+  "status": "draft"
+}

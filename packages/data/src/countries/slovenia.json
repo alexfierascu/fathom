@@ -1,0 +1,8 @@
+{
+  "id": "slovenia",
+  "name": "Slovenia",
+  "code": "SI",
+  "summary": "country in Central Europe",
+  "sourceIds": ["wikidata-q215"],
+  "status": "draft"
+}

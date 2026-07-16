@@ -1,0 +1,8 @@
+{
+  "id": "grenada",
+  "name": "Grenada",
+  "code": "GD",
+  "summary": "island sovereign state in the Caribbean Sea",
+  "sourceIds": ["wikidata-q769"],
+  "status": "draft"
+}

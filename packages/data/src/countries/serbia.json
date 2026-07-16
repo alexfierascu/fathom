@@ -1,0 +1,8 @@
+{
+  "id": "serbia",
+  "name": "Serbia",
+  "code": "RS",
+  "summary": "country in Southeast Europe",
+  "sourceIds": ["wikidata-q403"],
+  "status": "draft"
+}

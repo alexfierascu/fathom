@@ -1,0 +1,8 @@
+{
+  "id": "belarus",
+  "name": "Belarus",
+  "code": "BY",
+  "summary": "country in Eastern Europe",
+  "sourceIds": ["wikidata-q184"],
+  "status": "draft"
+}

@@ -1,0 +1,8 @@
+{
+  "id": "dominican-republic",
+  "name": "Dominican Republic",
+  "code": "DO",
+  "summary": "island sovereign state in the Caribbean Sea",
+  "sourceIds": ["wikidata-q786"],
+  "status": "draft"
+}

@@ -1,0 +1,8 @@
+{
+  "id": "burkina-faso",
+  "name": "Burkina Faso",
+  "code": "BF",
+  "summary": "sovereign state in Africa",
+  "sourceIds": ["wikidata-q965"],
+  "status": "draft"
+}

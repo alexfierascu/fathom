@@ -1,0 +1,8 @@
+{
+  "id": "belgium",
+  "name": "Belgium",
+  "code": "BE",
+  "summary": "country in western Europe",
+  "sourceIds": ["wikidata-q31"],
+  "status": "draft"
+}

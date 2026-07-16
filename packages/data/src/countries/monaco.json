@@ -1,0 +1,8 @@
+{
+  "id": "monaco",
+  "name": "Monaco",
+  "code": "MC",
+  "summary": "microstate in Western Europe",
+  "sourceIds": ["wikidata-q235"],
+  "status": "draft"
+}

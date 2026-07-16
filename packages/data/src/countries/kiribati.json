@@ -1,0 +1,8 @@
+{
+  "id": "kiribati",
+  "name": "Kiribati",
+  "code": "KI",
+  "summary": "island sovereign state in the central Pacific Ocean",
+  "sourceIds": ["wikidata-q710"],
+  "status": "draft"
+}

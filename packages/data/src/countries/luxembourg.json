@@ -1,0 +1,8 @@
+{
+  "id": "luxembourg",
+  "name": "Luxembourg",
+  "code": "LU",
+  "summary": "country in Western Europe",
+  "sourceIds": ["wikidata-q32"],
+  "status": "draft"
+}

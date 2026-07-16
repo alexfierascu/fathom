@@ -1,0 +1,8 @@
+{
+  "id": "iraq",
+  "name": "Iraq",
+  "code": "IQ",
+  "summary": "sovereign state in Western Asia",
+  "sourceIds": ["wikidata-q796"],
+  "status": "draft"
+}

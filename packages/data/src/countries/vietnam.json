@@ -1,0 +1,8 @@
+{
+  "id": "vietnam",
+  "name": "Vietnam",
+  "code": "VN",
+  "summary": "country in Southeast Asia",
+  "sourceIds": ["wikidata-q881"],
+  "status": "draft"
+}

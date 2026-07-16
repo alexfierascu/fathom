@@ -1,0 +1,8 @@
+{
+  "id": "north-macedonia",
+  "name": "North Macedonia",
+  "code": "MK",
+  "summary": "country in southeastern Europe",
+  "sourceIds": ["wikidata-q221"],
+  "status": "draft"
+}

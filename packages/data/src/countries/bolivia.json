@@ -1,0 +1,8 @@
+{
+  "id": "bolivia",
+  "name": "Bolivia",
+  "code": "BO",
+  "summary": "sovereign state in South America",
+  "sourceIds": ["wikidata-q750"],
+  "status": "draft"
+}

@@ -1,0 +1,8 @@
+{
+  "id": "vatican-city",
+  "name": "Vatican City",
+  "code": "VA",
+  "summary": "Holy See's independent state, an enclave within Rome, Italy",
+  "sourceIds": ["wikidata-q237"],
+  "status": "draft"
+}

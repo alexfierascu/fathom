@@ -1,0 +1,8 @@
+{
+  "id": "syria",
+  "name": "Syria",
+  "code": "SY",
+  "summary": "country in West Asia",
+  "sourceIds": ["wikidata-q858"],
+  "status": "draft"
+}

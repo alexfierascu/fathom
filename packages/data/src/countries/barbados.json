@@ -1,0 +1,8 @@
+{
+  "id": "barbados",
+  "name": "Barbados",
+  "code": "BB",
+  "summary": "island nation in the Caribbean",
+  "sourceIds": ["wikidata-q244"],
+  "status": "draft"
+}

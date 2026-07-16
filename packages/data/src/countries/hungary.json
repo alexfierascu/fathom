@@ -1,0 +1,8 @@
+{
+  "id": "hungary",
+  "name": "Hungary",
+  "code": "HU",
+  "summary": "country in Central Europe",
+  "sourceIds": ["wikidata-q28"],
+  "status": "draft"
+}

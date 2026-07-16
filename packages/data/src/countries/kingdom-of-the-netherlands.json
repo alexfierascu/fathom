@@ -1,0 +1,8 @@
+{
+  "id": "kingdom-of-the-netherlands",
+  "name": "Kingdom of the Netherlands",
+  "code": "NL",
+  "summary": "transcontinental sovereign state and constitutional monarchy",
+  "sourceIds": ["wikidata-q29999"],
+  "status": "draft"
+}

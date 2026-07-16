@@ -1,0 +1,8 @@
+{
+  "id": "palestine",
+  "name": "Palestine",
+  "code": "PS",
+  "summary": "state in West Asia",
+  "sourceIds": ["wikidata-q219060"],
+  "status": "draft"
+}

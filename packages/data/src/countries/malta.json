@@ -1,0 +1,8 @@
+{
+  "id": "malta",
+  "name": "Malta",
+  "code": "MT",
+  "summary": "country in Southern Europe situated on an archipelago in the Mediterranean Sea",
+  "sourceIds": ["wikidata-q233"],
+  "status": "draft"
+}

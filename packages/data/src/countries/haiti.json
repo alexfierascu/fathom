@@ -1,0 +1,8 @@
+{
+  "id": "haiti",
+  "name": "Haiti",
+  "code": "HT",
+  "summary": "country in the Caribbean Sea",
+  "sourceIds": ["wikidata-q790"],
+  "status": "draft"
+}

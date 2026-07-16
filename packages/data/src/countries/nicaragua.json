@@ -1,0 +1,8 @@
+{
+  "id": "nicaragua",
+  "name": "Nicaragua",
+  "code": "NI",
+  "summary": "sovereign state in Central America",
+  "sourceIds": ["wikidata-q811"],
+  "status": "draft"
+}

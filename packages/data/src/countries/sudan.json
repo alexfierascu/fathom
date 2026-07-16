@@ -1,0 +1,8 @@
+{
+  "id": "sudan",
+  "name": "Sudan",
+  "code": "SD",
+  "summary": "country in Northeast Africa",
+  "sourceIds": ["wikidata-q1049"],
+  "status": "draft"
+}

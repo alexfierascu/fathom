@@ -1,0 +1,8 @@
+{
+  "id": "bhutan",
+  "name": "Bhutan",
+  "code": "BT",
+  "summary": "sovereign state in South Asia",
+  "sourceIds": ["wikidata-q917"],
+  "status": "draft"
+}

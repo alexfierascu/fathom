@@ -1,0 +1,8 @@
+{
+  "id": "mexico",
+  "name": "Mexico",
+  "code": "MX",
+  "summary": "country in North America",
+  "sourceIds": ["wikidata-q96"],
+  "status": "draft"
+}

@@ -1,0 +1,8 @@
+{
+  "id": "niger",
+  "name": "Niger",
+  "code": "NE",
+  "summary": "sovereign state in western Africa",
+  "sourceIds": ["wikidata-q1032"],
+  "status": "draft"
+}

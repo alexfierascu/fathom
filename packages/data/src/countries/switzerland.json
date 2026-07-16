@@ -1,0 +1,8 @@
+{
+  "id": "switzerland",
+  "name": "Switzerland",
+  "code": "CH",
+  "summary": "country in Central Europe",
+  "sourceIds": ["wikidata-q39"],
+  "status": "draft"
+}

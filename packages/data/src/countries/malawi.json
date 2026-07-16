@@ -1,0 +1,8 @@
+{
+  "id": "malawi",
+  "name": "Malawi",
+  "code": "MW",
+  "summary": "sovereign state in Africa",
+  "sourceIds": ["wikidata-q1020"],
+  "status": "draft"
+}

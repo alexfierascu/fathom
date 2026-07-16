@@ -1,0 +1,8 @@
+{
+  "id": "jordan",
+  "name": "Jordan",
+  "code": "JO",
+  "summary": "country in West Asia",
+  "sourceIds": ["wikidata-q810"],
+  "status": "draft"
+}

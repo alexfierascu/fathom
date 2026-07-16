@@ -1,0 +1,8 @@
+{
+  "id": "paraguay",
+  "name": "Paraguay",
+  "code": "PY",
+  "summary": "sovereign state in South America",
+  "sourceIds": ["wikidata-q733"],
+  "status": "draft"
+}

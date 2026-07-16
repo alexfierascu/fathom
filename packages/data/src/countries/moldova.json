@@ -1,0 +1,8 @@
+{
+  "id": "moldova",
+  "name": "Moldova",
+  "code": "MD",
+  "summary": "country in Eastern Europe",
+  "sourceIds": ["wikidata-q217"],
+  "status": "draft"
+}

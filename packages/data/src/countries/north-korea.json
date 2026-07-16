@@ -1,0 +1,8 @@
+{
+  "id": "north-korea",
+  "name": "North Korea",
+  "code": "KP",
+  "summary": "sovereign state in East Asia",
+  "sourceIds": ["wikidata-q423"],
+  "status": "draft"
+}

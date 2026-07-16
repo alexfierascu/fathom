@@ -1,0 +1,8 @@
+{
+  "id": "laos",
+  "name": "Laos",
+  "code": "LA",
+  "summary": "country in Southeast Asia",
+  "sourceIds": ["wikidata-q819"],
+  "status": "draft"
+}

@@ -1,0 +1,8 @@
+{
+  "id": "kosovo",
+  "name": "Kosovo",
+  "code": "XK",
+  "summary": "country in southeastern Europe",
+  "sourceIds": ["wikidata-q1246"],
+  "status": "draft"
+}

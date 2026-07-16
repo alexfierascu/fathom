@@ -1,0 +1,8 @@
+{
+  "id": "botswana",
+  "name": "Botswana",
+  "code": "BW",
+  "summary": "sovereign state in Southern Africa",
+  "sourceIds": ["wikidata-q963"],
+  "status": "draft"
+}

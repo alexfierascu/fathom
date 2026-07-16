@@ -1,0 +1,8 @@
+{
+  "id": "angola",
+  "name": "Angola",
+  "code": "AO",
+  "summary": "country on the west coast of Southern Africa",
+  "sourceIds": ["wikidata-q916"],
+  "status": "draft"
+}

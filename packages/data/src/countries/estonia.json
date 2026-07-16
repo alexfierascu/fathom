@@ -1,0 +1,8 @@
+{
+  "id": "estonia",
+  "name": "Estonia",
+  "code": "EE",
+  "summary": "country in Northern Europe",
+  "sourceIds": ["wikidata-q191"],
+  "status": "draft"
+}

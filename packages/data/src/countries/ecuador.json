@@ -1,0 +1,8 @@
+{
+  "id": "ecuador",
+  "name": "Ecuador",
+  "code": "EC",
+  "summary": "sovereign state in South America",
+  "sourceIds": ["wikidata-q736"],
+  "status": "draft"
+}

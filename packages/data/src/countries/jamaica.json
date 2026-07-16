@@ -1,0 +1,8 @@
+{
+  "id": "jamaica",
+  "name": "Jamaica",
+  "code": "JM",
+  "summary": "island state in the Caribbean Sea",
+  "sourceIds": ["wikidata-q766"],
+  "status": "draft"
+}

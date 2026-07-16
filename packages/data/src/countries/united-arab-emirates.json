@@ -1,0 +1,8 @@
+{
+  "id": "united-arab-emirates",
+  "name": "United Arab Emirates",
+  "code": "AE",
+  "summary": "country in Western Asia",
+  "sourceIds": ["wikidata-q878"],
+  "status": "draft"
+}

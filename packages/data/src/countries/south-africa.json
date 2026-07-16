@@ -1,0 +1,8 @@
+{
+  "id": "south-africa",
+  "name": "South Africa",
+  "code": "ZA",
+  "summary": "country in southern Africa",
+  "sourceIds": ["wikidata-q258"],
+  "status": "draft"
+}

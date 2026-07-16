@@ -1,0 +1,8 @@
+{
+  "id": "burundi",
+  "name": "Burundi",
+  "code": "BI",
+  "summary": "sovereign state in Africa",
+  "sourceIds": ["wikidata-q967"],
+  "status": "draft"
+}

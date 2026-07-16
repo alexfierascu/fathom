@@ -1,0 +1,8 @@
+{
+  "id": "portugal",
+  "name": "Portugal",
+  "code": "PT",
+  "summary": "country in Southwestern Europe",
+  "sourceIds": ["wikidata-q45"],
+  "status": "draft"
+}

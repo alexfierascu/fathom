@@ -1,0 +1,8 @@
+{
+  "id": "pakistan",
+  "name": "Pakistan",
+  "code": "PK",
+  "summary": "sovereign state in South Asia",
+  "sourceIds": ["wikidata-q843"],
+  "status": "draft"
+}

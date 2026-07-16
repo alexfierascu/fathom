@@ -1,0 +1,8 @@
+{
+  "id": "austria",
+  "name": "Austria",
+  "code": "AT",
+  "summary": "country in Central Europe",
+  "sourceIds": ["wikidata-q40"],
+  "status": "draft"
+}

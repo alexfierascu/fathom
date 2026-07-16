@@ -1,0 +1,8 @@
+{
+  "id": "ireland",
+  "name": "Ireland",
+  "code": "IE",
+  "summary": "sovereign state in Northwestern Europe",
+  "sourceIds": ["wikidata-q27"],
+  "status": "draft"
+}

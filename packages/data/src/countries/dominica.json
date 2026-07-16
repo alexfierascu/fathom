@@ -1,0 +1,8 @@
+{
+  "id": "dominica",
+  "name": "Dominica",
+  "code": "DM",
+  "summary": "island sovereign state in the Caribbean Sea",
+  "sourceIds": ["wikidata-q784"],
+  "status": "draft"
+}

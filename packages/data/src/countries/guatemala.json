@@ -1,0 +1,8 @@
+{
+  "id": "guatemala",
+  "name": "Guatemala",
+  "code": "GT",
+  "summary": "sovereign state in Central America",
+  "sourceIds": ["wikidata-q774"],
+  "status": "draft"
+}

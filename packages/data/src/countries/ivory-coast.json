@@ -1,0 +1,8 @@
+{
+  "id": "ivory-coast",
+  "name": "Ivory Coast",
+  "code": "CI",
+  "summary": "sovereign state in West Africa",
+  "sourceIds": ["wikidata-q1008"],
+  "status": "draft"
+}

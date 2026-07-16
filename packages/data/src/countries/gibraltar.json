@@ -1,0 +1,8 @@
+{
+  "id": "gibraltar",
+  "name": "Gibraltar",
+  "code": "GI",
+  "summary": "British overseas territory on the southern end of the Iberian Peninsula",
+  "sourceIds": ["wikidata-q1410"],
+  "status": "draft"
+}

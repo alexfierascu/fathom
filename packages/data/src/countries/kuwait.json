@@ -1,0 +1,8 @@
+{
+  "id": "kuwait",
+  "name": "Kuwait",
+  "code": "KW",
+  "summary": "sovereign state in Western Asia",
+  "sourceIds": ["wikidata-q817"],
+  "status": "draft"
+}

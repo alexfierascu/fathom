@@ -1,0 +1,8 @@
+{
+  "id": "liechtenstein",
+  "name": "Liechtenstein",
+  "code": "LI",
+  "summary": "country in Central Europe",
+  "sourceIds": ["wikidata-q347"],
+  "status": "draft"
+}

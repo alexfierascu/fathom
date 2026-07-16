@@ -1,0 +1,8 @@
+{
+  "id": "afghanistan",
+  "name": "Afghanistan",
+  "code": "AF",
+  "summary": "country in Central and South Asia",
+  "sourceIds": ["wikidata-q889"],
+  "status": "draft"
+}

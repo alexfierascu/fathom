@@ -1,0 +1,8 @@
+{
+  "id": "mongolia",
+  "name": "Mongolia",
+  "code": "MN",
+  "summary": "country in East Asia",
+  "sourceIds": ["wikidata-q711"],
+  "status": "draft"
+}

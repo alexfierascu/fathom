@@ -1,0 +1,8 @@
+{
+  "id": "gabon",
+  "name": "Gabon",
+  "code": "GA",
+  "summary": "country on the Atlantic coast of Central Africa",
+  "sourceIds": ["wikidata-q1000"],
+  "status": "draft"
+}

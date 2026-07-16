@@ -1,0 +1,8 @@
+{
+  "id": "nigeria",
+  "name": "Nigeria",
+  "code": "NG",
+  "summary": "sovereign state in West Africa",
+  "sourceIds": ["wikidata-q1033"],
+  "status": "draft"
+}
