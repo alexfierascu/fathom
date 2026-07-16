@@ -11,22 +11,46 @@ import {
   loadTags,
   loadTunnels,
   slugifyName,
+  type Bridge,
+  type Canal,
+  type Country,
+  type Island,
+  type MaritimeRoute,
+  type Port,
+  type Strait,
+  type Tag,
+  type Tunnel,
+  type WaterBody,
 } from '@fathom/data';
 
 import { createSearchIndex, type SearchDocument, type SearchIndex } from './engine';
 
-/**
- * Builds search documents for everything currently charted in the atlas.
- * Ports, canals, bridges, and tunnels are supported types with no data yet;
- * they contribute documents the moment their collections gain entries.
- */
-export function buildAtlasSearchDocuments(): readonly SearchDocument[] {
-  const documents: SearchDocument[] = [];
-  const tags = loadTags();
+/** Everything searchable, as plain collections — no loaders involved. */
+export interface AtlasContent {
+  straits: readonly Strait[];
+  waterBodies: readonly WaterBody[];
+  countries: readonly Country[];
+  ports: readonly Port[];
+  canals: readonly Canal[];
+  bridges: readonly Bridge[];
+  tunnels: readonly Tunnel[];
+  islands: readonly Island[];
+  maritimeRoutes: readonly MaritimeRoute[];
+  tags: readonly Tag[];
+}
 
-  for (const strait of loadAllStraits()) {
+/**
+ * Pure search-document builder over atlas content. The web app feeds it
+ * the loaded dataset; the data pipeline feeds it staged imports.
+ */
+export function buildSearchDocuments(content: AtlasContent): readonly SearchDocument[] {
+  const documents: SearchDocument[] = [];
+  const countryName = (id: string) =>
+    content.countries.find((country) => country.id === id)?.name ?? '';
+
+  for (const strait of content.straits) {
     const tagLabels = (strait.tagIds ?? []).flatMap(
-      (id) => tags.find((tag) => tag.id === id)?.label ?? [],
+      (id) => content.tags.find((tag) => tag.id === id)?.label ?? [],
     );
     documents.push({
       entityId: `strait:${strait.id}`,
@@ -44,7 +68,7 @@ export function buildAtlasSearchDocuments(): readonly SearchDocument[] {
     });
   }
 
-  for (const waterBody of loadAllWaterBodies()) {
+  for (const waterBody of content.waterBodies) {
     documents.push({
       entityId: `water-body:${waterBody.id}`,
       type: 'water-body',
@@ -55,7 +79,7 @@ export function buildAtlasSearchDocuments(): readonly SearchDocument[] {
     });
   }
 
-  for (const country of loadAllCountries()) {
+  for (const country of content.countries) {
     documents.push({
       entityId: `country:${country.id}`,
       type: 'country',
@@ -66,10 +90,7 @@ export function buildAtlasSearchDocuments(): readonly SearchDocument[] {
     });
   }
 
-  const countryName = (id: string) =>
-    loadAllCountries().find((country) => country.id === id)?.name ?? '';
-
-  for (const port of loadPorts()) {
+  for (const port of content.ports) {
     documents.push({
       entityId: `port:${port.id}`,
       type: 'port',
@@ -79,7 +100,7 @@ export function buildAtlasSearchDocuments(): readonly SearchDocument[] {
       keywords: ['port', countryName(port.countryId), ...(port.functions ?? [])],
     });
   }
-  for (const canal of loadCanals()) {
+  for (const canal of content.canals) {
     documents.push({
       entityId: `canal:${canal.id}`,
       type: 'canal',
@@ -89,7 +110,7 @@ export function buildAtlasSearchDocuments(): readonly SearchDocument[] {
       keywords: ['canal', ...canal.countryIds.map(countryName)],
     });
   }
-  for (const bridge of loadBridges()) {
+  for (const bridge of content.bridges) {
     documents.push({
       entityId: `bridge:${bridge.id}`,
       type: 'bridge',
@@ -99,7 +120,7 @@ export function buildAtlasSearchDocuments(): readonly SearchDocument[] {
       keywords: ['bridge'],
     });
   }
-  for (const tunnel of loadTunnels()) {
+  for (const tunnel of content.tunnels) {
     documents.push({
       entityId: `tunnel:${tunnel.id}`,
       type: 'tunnel',
@@ -109,7 +130,7 @@ export function buildAtlasSearchDocuments(): readonly SearchDocument[] {
       keywords: ['tunnel', tunnel.mode ?? ''],
     });
   }
-  for (const island of loadIslands()) {
+  for (const island of content.islands) {
     documents.push({
       entityId: `island:${island.id}`,
       type: 'island',
@@ -119,7 +140,7 @@ export function buildAtlasSearchDocuments(): readonly SearchDocument[] {
       keywords: ['island', island.countryId ? countryName(island.countryId) : ''],
     });
   }
-  for (const route of loadMaritimeRoutes()) {
+  for (const route of content.maritimeRoutes) {
     documents.push({
       entityId: `maritime-route:${route.id}`,
       type: 'maritime-route',
@@ -130,9 +151,8 @@ export function buildAtlasSearchDocuments(): readonly SearchDocument[] {
     });
   }
 
-  const straits = loadAllStraits();
   for (const region of STRAIT_REGIONS) {
-    const count = straits.filter((strait) => strait.region === region).length;
+    const count = content.straits.filter((strait) => strait.region === region).length;
     documents.push({
       entityId: `region:${slugifyName(region)}`,
       type: 'region',
@@ -144,6 +164,26 @@ export function buildAtlasSearchDocuments(): readonly SearchDocument[] {
   }
 
   return documents;
+}
+
+/** The loaded atlas as AtlasContent. */
+export function loadedAtlasContent(): AtlasContent {
+  return {
+    straits: loadAllStraits(),
+    waterBodies: loadAllWaterBodies(),
+    countries: loadAllCountries(),
+    ports: loadPorts(),
+    canals: loadCanals(),
+    bridges: loadBridges(),
+    tunnels: loadTunnels(),
+    islands: loadIslands(),
+    maritimeRoutes: loadMaritimeRoutes(),
+    tags: loadTags(),
+  };
+}
+
+export function buildAtlasSearchDocuments(): readonly SearchDocument[] {
+  return buildSearchDocuments(loadedAtlasContent());
 }
 
 let cached: SearchIndex | null = null;

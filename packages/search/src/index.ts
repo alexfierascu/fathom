@@ -24,4 +24,11 @@ export type {
   SearchableType,
 } from './engine';
 
-export { atlasSearchIndex, atlasSuggestions, buildAtlasSearchDocuments } from './atlas';
+export {
+  atlasSearchIndex,
+  atlasSuggestions,
+  buildAtlasSearchDocuments,
+  buildSearchDocuments,
+  loadedAtlasContent,
+} from './atlas';
+export type { AtlasContent } from './atlas';
