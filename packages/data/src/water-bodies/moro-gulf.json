@@ -1,0 +1,9 @@
+{
+  "id": "moro-gulf",
+  "name": "Moro Gulf",
+  "type": "gulf",
+  "summary": "gulf in the Philippines",
+  "parentId": "celebes-sea",
+  "sourceIds": ["wikidata-q1536345"],
+  "status": "draft"
+}

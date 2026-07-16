@@ -1,0 +1,9 @@
+{
+  "id": "balearic-sea",
+  "name": "Balearic Sea",
+  "type": "sea",
+  "summary": "sea that is part of the Mediterranean Sea",
+  "parentId": "mediterranean-sea",
+  "sourceIds": ["wikidata-q200712"],
+  "status": "draft"
+}

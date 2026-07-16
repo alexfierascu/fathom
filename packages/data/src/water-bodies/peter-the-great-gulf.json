@@ -1,0 +1,9 @@
+{
+  "id": "peter-the-great-gulf",
+  "name": "Peter the Great Gulf",
+  "type": "gulf",
+  "summary": "bay of the Sea of Japan",
+  "parentId": "sea-of-japan",
+  "sourceIds": ["wikidata-q494927", "wikidata-q494927"],
+  "status": "draft"
+}

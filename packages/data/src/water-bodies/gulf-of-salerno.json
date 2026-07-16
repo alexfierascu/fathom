@@ -1,0 +1,9 @@
+{
+  "id": "gulf-of-salerno",
+  "name": "Gulf of Salerno",
+  "type": "gulf",
+  "summary": "gulf of the Tyrrhenian Sea",
+  "parentId": "tyrrhenian-sea",
+  "sourceIds": ["wikidata-q828574"],
+  "status": "draft"
+}

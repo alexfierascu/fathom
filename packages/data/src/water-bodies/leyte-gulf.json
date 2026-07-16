@@ -1,0 +1,9 @@
+{
+  "id": "leyte-gulf",
+  "name": "Leyte Gulf",
+  "type": "gulf",
+  "summary": "gulf located east of the island of Leyte in the Philippines",
+  "parentId": "philippine-sea",
+  "sourceIds": ["wikidata-q240753"],
+  "status": "draft"
+}

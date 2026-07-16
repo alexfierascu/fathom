@@ -1,0 +1,9 @@
+{
+  "id": "laccadive-sea",
+  "name": "Laccadive Sea",
+  "type": "sea",
+  "summary": "sea",
+  "parentId": "indian-ocean",
+  "sourceIds": ["wikidata-q544914"],
+  "status": "draft"
+}

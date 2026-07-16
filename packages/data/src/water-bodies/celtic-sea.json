@@ -1,0 +1,9 @@
+{
+  "id": "celtic-sea",
+  "name": "Celtic Sea",
+  "type": "sea",
+  "summary": "sea west of the English Channel",
+  "parentId": "atlantic-ocean",
+  "sourceIds": ["wikidata-q81499"],
+  "status": "draft"
+}

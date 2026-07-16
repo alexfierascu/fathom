@@ -1,0 +1,9 @@
+{
+  "id": "ross-sea",
+  "name": "Ross Sea",
+  "type": "sea",
+  "summary": "deep sea of the Southern Ocean in Antarctica",
+  "parentId": "southern-ocean",
+  "sourceIds": ["wikidata-q164466"],
+  "status": "draft"
+}

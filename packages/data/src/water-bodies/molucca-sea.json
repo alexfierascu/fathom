@@ -1,0 +1,9 @@
+{
+  "id": "molucca-sea",
+  "name": "Molucca Sea",
+  "type": "sea",
+  "summary": "sea in Indonesia located in the western Pacific Ocean",
+  "parentId": "pacific-ocean",
+  "sourceIds": ["wikidata-q185291"],
+  "status": "draft"
+}

@@ -1,0 +1,9 @@
+{
+  "id": "gulf-of-bahrain",
+  "name": "Gulf of Bahrain",
+  "type": "gulf",
+  "summary": "inlet in the Persian Gulf",
+  "parentId": "persian-gulf",
+  "sourceIds": ["wikidata-q2074118"],
+  "status": "draft"
+}

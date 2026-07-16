@@ -1,0 +1,9 @@
+{
+  "id": "beaufort-sea",
+  "name": "Beaufort Sea",
+  "type": "sea",
+  "summary": "marginal sea of the Arctic Ocean",
+  "parentId": "arctic-ocean",
+  "sourceIds": ["wikidata-q131274"],
+  "status": "draft"
+}

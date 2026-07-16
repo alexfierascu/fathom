@@ -1,0 +1,9 @@
+{
+  "id": "gulf-of-alaska",
+  "name": "Gulf of Alaska",
+  "type": "gulf",
+  "summary": "gulf in the northern Pacific Ocean",
+  "parentId": "pacific-ocean",
+  "sourceIds": ["wikidata-q180531"],
+  "status": "draft"
+}

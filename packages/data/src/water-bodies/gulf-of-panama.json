@@ -1,0 +1,9 @@
+{
+  "id": "gulf-of-panama",
+  "name": "Gulf of Panama",
+  "type": "gulf",
+  "summary": "gulf in the Pacific Ocean",
+  "parentId": "pacific-ocean",
+  "sourceIds": ["wikidata-q645012"],
+  "status": "draft"
+}

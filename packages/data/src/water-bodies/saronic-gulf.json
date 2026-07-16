@@ -1,0 +1,9 @@
+{
+  "id": "saronic-gulf",
+  "name": "Saronic Gulf",
+  "type": "gulf",
+  "summary": "gulf of the Aegean sea, on the shores of Attica, Argolis and Corinthia, Greece",
+  "parentId": "aegean-sea",
+  "sourceIds": ["wikidata-q211779"],
+  "status": "draft"
+}

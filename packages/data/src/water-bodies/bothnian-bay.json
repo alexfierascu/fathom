@@ -1,0 +1,9 @@
+{
+  "id": "bothnian-bay",
+  "name": "Bothnian Bay",
+  "type": "gulf",
+  "summary": "northernmost part of the Gulf of Bothnia",
+  "parentId": "gulf-of-bothnia",
+  "sourceIds": ["wikidata-q13234218"],
+  "status": "draft"
+}

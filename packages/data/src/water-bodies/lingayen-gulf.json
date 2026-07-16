@@ -1,0 +1,9 @@
+{
+  "id": "lingayen-gulf",
+  "name": "Lingayen Gulf",
+  "type": "gulf",
+  "summary": "extension of the South China Sea on Luzon in the Philippines",
+  "parentId": "south-china-sea",
+  "sourceIds": ["wikidata-q41891"],
+  "status": "draft"
+}

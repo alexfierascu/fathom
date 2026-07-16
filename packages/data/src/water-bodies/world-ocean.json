@@ -1,0 +1,8 @@
+{
+  "id": "world-ocean",
+  "name": "World Ocean",
+  "type": "ocean",
+  "summary": "The ocean is the body of salt water that covers approximately 70.8% of Earth.",
+  "sourceIds": ["wikidata-q715269", "wikipedia-ocean"],
+  "status": "draft"
+}

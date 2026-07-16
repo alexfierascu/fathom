@@ -1,0 +1,9 @@
+{
+  "id": "flores-sea",
+  "name": "Flores Sea",
+  "type": "sea",
+  "summary": "sea in Indonesia",
+  "parentId": "pacific-ocean",
+  "sourceIds": ["wikidata-q150370"],
+  "status": "draft"
+}

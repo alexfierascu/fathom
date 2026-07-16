@@ -1,0 +1,9 @@
+{
+  "id": "gulf-st-vincent",
+  "name": "Gulf St. Vincent",
+  "type": "gulf",
+  "summary": "gulf in South Australia, Australia",
+  "parentId": "indian-ocean",
+  "sourceIds": ["wikidata-q1323629"],
+  "status": "draft"
+}

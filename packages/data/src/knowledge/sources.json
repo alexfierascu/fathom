@@ -101,5 +101,428 @@
     "publisher": "Encyclopaedia Britannica",
     "locator": "https://www.britannica.com/topic/Northern-Sea-Route",
     "accessedOn": "2026-07-16"
+  },
+  {
+    "id": "wikidata-q715269",
+    "type": "dataset",
+    "title": "Wikidata: World Ocean (Q715269)",
+    "publisher": "Wikimedia Foundation",
+    "locator": "https://www.wikidata.org/wiki/Q715269",
+    "accessedOn": "2026-07-16",
+    "license": "CC0 1.0"
+  },
+  {
+    "id": "wikipedia-ocean",
+    "type": "website",
+    "title": "Ocean — Wikipedia",
+    "publisher": "Wikimedia Foundation",
+    "locator": "https://en.wikipedia.org/wiki/Ocean",
+    "accessedOn": "2026-07-16",
+    "license": "CC BY-SA 4.0"
+  },
+  {
+    "id": "wikidata-q12355425",
+    "type": "dataset",
+    "title": "Wikidata: South Pacific Ocean (Q12355425)",
+    "publisher": "Wikimedia Foundation",
+    "locator": "https://www.wikidata.org/wiki/Q12355425",
+    "accessedOn": "2026-07-16",
+    "license": "CC0 1.0"
+  },
+  {
+    "id": "wikidata-q58705",
+    "type": "dataset",
+    "title": "Wikidata: Arabian Sea (Q58705)",
+    "publisher": "Wikimedia Foundation",
+    "locator": "https://www.wikidata.org/wiki/Q58705",
+    "accessedOn": "2026-07-16",
+    "license": "CC0 1.0"
+  },
+  {
+    "id": "wikidata-q44725",
+    "type": "dataset",
+    "title": "Wikidata: Bering Sea (Q44725)",
+    "publisher": "Wikimedia Foundation",
+    "locator": "https://www.wikidata.org/wiki/Q44725",
+    "accessedOn": "2026-07-16",
+    "license": "CC0 1.0"
+  },
+  {
+    "id": "wikipedia-bering-sea",
+    "type": "website",
+    "title": "Bering Sea — Wikipedia",
+    "publisher": "Wikimedia Foundation",
+    "locator": "https://en.wikipedia.org/wiki/Bering_Sea",
+    "accessedOn": "2026-07-16",
+    "license": "CC BY-SA 4.0"
+  },
+  {
+    "id": "wikidata-q41735",
+    "type": "dataset",
+    "title": "Wikidata: Irish Sea (Q41735)",
+    "publisher": "Wikimedia Foundation",
+    "locator": "https://www.wikidata.org/wiki/Q41735",
+    "accessedOn": "2026-07-16",
+    "license": "CC0 1.0"
+  },
+  {
+    "id": "wikidata-q14686",
+    "type": "dataset",
+    "title": "Wikidata: Gulf of Finland (Q14686)",
+    "publisher": "Wikimedia Foundation",
+    "locator": "https://www.wikidata.org/wiki/Q14686",
+    "accessedOn": "2026-07-16",
+    "license": "CC0 1.0"
+  },
+  {
+    "id": "wikipedia-gulf-of-finland",
+    "type": "website",
+    "title": "Gulf of Finland — Wikipedia",
+    "publisher": "Wikimedia Foundation",
+    "locator": "https://en.wikipedia.org/wiki/Gulf_of_Finland",
+    "accessedOn": "2026-07-16",
+    "license": "CC BY-SA 4.0"
+  },
+  {
+    "id": "wikidata-q159252",
+    "type": "dataset",
+    "title": "Wikidata: Chukchi Sea (Q159252)",
+    "publisher": "Wikimedia Foundation",
+    "locator": "https://www.wikidata.org/wiki/Q159252",
+    "accessedOn": "2026-07-16",
+    "license": "CC0 1.0"
+  },
+  {
+    "id": "wikipedia-chukchi-sea",
+    "type": "website",
+    "title": "Chukchi Sea — Wikipedia",
+    "publisher": "Wikimedia Foundation",
+    "locator": "https://en.wikipedia.org/wiki/Chukchi_Sea",
+    "accessedOn": "2026-07-16",
+    "license": "CC BY-SA 4.0"
+  },
+  {
+    "id": "wikidata-q163434",
+    "type": "dataset",
+    "title": "Wikidata: East Siberian Sea (Q163434)",
+    "publisher": "Wikimedia Foundation",
+    "locator": "https://www.wikidata.org/wiki/Q163434",
+    "accessedOn": "2026-07-16",
+    "license": "CC0 1.0"
+  },
+  {
+    "id": "wikidata-q131274",
+    "type": "dataset",
+    "title": "Wikidata: Beaufort Sea (Q131274)",
+    "publisher": "Wikimedia Foundation",
+    "locator": "https://www.wikidata.org/wiki/Q131274",
+    "accessedOn": "2026-07-16",
+    "license": "CC0 1.0"
+  },
+  {
+    "id": "wikidata-q81499",
+    "type": "dataset",
+    "title": "Wikidata: Celtic Sea (Q81499)",
+    "publisher": "Wikimedia Foundation",
+    "locator": "https://www.wikidata.org/wiki/Q81499",
+    "accessedOn": "2026-07-16",
+    "license": "CC0 1.0"
+  },
+  {
+    "id": "wikidata-q131418",
+    "type": "dataset",
+    "title": "Wikidata: Timor Sea (Q131418)",
+    "publisher": "Wikimedia Foundation",
+    "locator": "https://www.wikidata.org/wiki/Q131418",
+    "accessedOn": "2026-07-16",
+    "license": "CC0 1.0"
+  },
+  {
+    "id": "wikidata-q164466",
+    "type": "dataset",
+    "title": "Wikidata: Ross Sea (Q164466)",
+    "publisher": "Wikimedia Foundation",
+    "locator": "https://www.wikidata.org/wiki/Q164466",
+    "accessedOn": "2026-07-16",
+    "license": "CC0 1.0"
+  },
+  {
+    "id": "wikidata-q160194",
+    "type": "dataset",
+    "title": "Wikidata: Sulu Sea (Q160194)",
+    "publisher": "Wikimedia Foundation",
+    "locator": "https://www.wikidata.org/wiki/Q160194",
+    "accessedOn": "2026-07-16",
+    "license": "CC0 1.0"
+  },
+  {
+    "id": "wikipedia-sulu-sea",
+    "type": "website",
+    "title": "Sulu Sea — Wikipedia",
+    "publisher": "Wikimedia Foundation",
+    "locator": "https://en.wikipedia.org/wiki/Sulu_Sea",
+    "accessedOn": "2026-07-16",
+    "license": "CC BY-SA 4.0"
+  },
+  {
+    "id": "wikidata-q150370",
+    "type": "dataset",
+    "title": "Wikidata: Flores Sea (Q150370)",
+    "publisher": "Wikimedia Foundation",
+    "locator": "https://www.wikidata.org/wiki/Q150370",
+    "accessedOn": "2026-07-16",
+    "license": "CC0 1.0"
+  },
+  {
+    "id": "wikidata-q185291",
+    "type": "dataset",
+    "title": "Wikidata: Molucca Sea (Q185291)",
+    "publisher": "Wikimedia Foundation",
+    "locator": "https://www.wikidata.org/wiki/Q185291",
+    "accessedOn": "2026-07-16",
+    "license": "CC0 1.0"
+  },
+  {
+    "id": "wikidata-q199479",
+    "type": "dataset",
+    "title": "Wikidata: Solomon Sea (Q199479)",
+    "publisher": "Wikimedia Foundation",
+    "locator": "https://www.wikidata.org/wiki/Q199479",
+    "accessedOn": "2026-07-16",
+    "license": "CC0 1.0"
+  },
+  {
+    "id": "wikidata-q544914",
+    "type": "dataset",
+    "title": "Wikidata: Laccadive Sea (Q544914)",
+    "publisher": "Wikimedia Foundation",
+    "locator": "https://www.wikidata.org/wiki/Q544914",
+    "accessedOn": "2026-07-16",
+    "license": "CC0 1.0"
+  },
+  {
+    "id": "wikidata-q200712",
+    "type": "dataset",
+    "title": "Wikidata: Balearic Sea (Q200712)",
+    "publisher": "Wikimedia Foundation",
+    "locator": "https://www.wikidata.org/wiki/Q200712",
+    "accessedOn": "2026-07-16",
+    "license": "CC0 1.0"
+  },
+  {
+    "id": "wikidata-q277014",
+    "type": "dataset",
+    "title": "Wikidata: Bali Sea (Q277014)",
+    "publisher": "Wikimedia Foundation",
+    "locator": "https://www.wikidata.org/wiki/Q277014",
+    "accessedOn": "2026-07-16",
+    "license": "CC0 1.0"
+  },
+  {
+    "id": "wikidata-q193149",
+    "type": "dataset",
+    "title": "Wikidata: Sea of Crete (Q193149)",
+    "publisher": "Wikimedia Foundation",
+    "locator": "https://www.wikidata.org/wiki/Q193149",
+    "accessedOn": "2026-07-16",
+    "license": "CC0 1.0"
+  },
+  {
+    "id": "wikidata-q122574",
+    "type": "dataset",
+    "title": "Wikidata: Gulf of Bothnia (Q122574)",
+    "publisher": "Wikimedia Foundation",
+    "locator": "https://www.wikidata.org/wiki/Q122574",
+    "accessedOn": "2026-07-16",
+    "license": "CC0 1.0"
+  },
+  {
+    "id": "wikidata-q180531",
+    "type": "dataset",
+    "title": "Wikidata: Gulf of Alaska (Q180531)",
+    "publisher": "Wikimedia Foundation",
+    "locator": "https://www.wikidata.org/wiki/Q180531",
+    "accessedOn": "2026-07-16",
+    "license": "CC0 1.0"
+  },
+  {
+    "id": "wikidata-q180844",
+    "type": "dataset",
+    "title": "Wikidata: Gulf of Carpentaria (Q180844)",
+    "publisher": "Wikimedia Foundation",
+    "locator": "https://www.wikidata.org/wiki/Q180844",
+    "accessedOn": "2026-07-16",
+    "license": "CC0 1.0"
+  },
+  {
+    "id": "wikidata-q168277",
+    "type": "dataset",
+    "title": "Wikidata: Gulf of Suez (Q168277)",
+    "publisher": "Wikimedia Foundation",
+    "locator": "https://www.wikidata.org/wiki/Q168277",
+    "accessedOn": "2026-07-16",
+    "license": "CC0 1.0"
+  },
+  {
+    "id": "wikidata-q212428",
+    "type": "dataset",
+    "title": "Wikidata: Gulf of Tonkin (Q212428)",
+    "publisher": "Wikimedia Foundation",
+    "locator": "https://www.wikidata.org/wiki/Q212428",
+    "accessedOn": "2026-07-16",
+    "license": "CC0 1.0"
+  },
+  {
+    "id": "wikidata-q844917",
+    "type": "dataset",
+    "title": "Wikidata: Gulf of Kutch (Q844917)",
+    "publisher": "Wikimedia Foundation",
+    "locator": "https://www.wikidata.org/wiki/Q844917",
+    "accessedOn": "2026-07-16",
+    "license": "CC0 1.0"
+  },
+  {
+    "id": "wikidata-q192738",
+    "type": "dataset",
+    "title": "Wikidata: Gulf of Taranto (Q192738)",
+    "publisher": "Wikimedia Foundation",
+    "locator": "https://www.wikidata.org/wiki/Q192738",
+    "accessedOn": "2026-07-16",
+    "license": "CC0 1.0"
+  },
+  {
+    "id": "wikidata-q211779",
+    "type": "dataset",
+    "title": "Wikidata: Saronic Gulf (Q211779)",
+    "publisher": "Wikimedia Foundation",
+    "locator": "https://www.wikidata.org/wiki/Q211779",
+    "accessedOn": "2026-07-16",
+    "license": "CC0 1.0"
+  },
+  {
+    "id": "wikidata-q210118",
+    "type": "dataset",
+    "title": "Wikidata: Gulf of Lion (Q210118)",
+    "publisher": "Wikimedia Foundation",
+    "locator": "https://www.wikidata.org/wiki/Q210118",
+    "accessedOn": "2026-07-16",
+    "license": "CC0 1.0"
+  },
+  {
+    "id": "wikidata-q645012",
+    "type": "dataset",
+    "title": "Wikidata: Gulf of Panama (Q645012)",
+    "publisher": "Wikimedia Foundation",
+    "locator": "https://www.wikidata.org/wiki/Q645012",
+    "accessedOn": "2026-07-16",
+    "license": "CC0 1.0"
+  },
+  {
+    "id": "wikidata-q828574",
+    "type": "dataset",
+    "title": "Wikidata: Gulf of Salerno (Q828574)",
+    "publisher": "Wikimedia Foundation",
+    "locator": "https://www.wikidata.org/wiki/Q828574",
+    "accessedOn": "2026-07-16",
+    "license": "CC0 1.0"
+  },
+  {
+    "id": "wikidata-q1138929",
+    "type": "dataset",
+    "title": "Wikidata: Gulf of Guayaquil (Q1138929)",
+    "publisher": "Wikimedia Foundation",
+    "locator": "https://www.wikidata.org/wiki/Q1138929",
+    "accessedOn": "2026-07-16",
+    "license": "CC0 1.0"
+  },
+  {
+    "id": "wikidata-q1143820",
+    "type": "dataset",
+    "title": "Wikidata: Gulf of Tunis (Q1143820)",
+    "publisher": "Wikimedia Foundation",
+    "locator": "https://www.wikidata.org/wiki/Q1143820",
+    "accessedOn": "2026-07-16",
+    "license": "CC0 1.0"
+  },
+  {
+    "id": "wikidata-q1536345",
+    "type": "dataset",
+    "title": "Wikidata: Moro Gulf (Q1536345)",
+    "publisher": "Wikimedia Foundation",
+    "locator": "https://www.wikidata.org/wiki/Q1536345",
+    "accessedOn": "2026-07-16",
+    "license": "CC0 1.0"
+  },
+  {
+    "id": "wikidata-q494927",
+    "type": "dataset",
+    "title": "Wikidata: Peter the Great Gulf (Q494927)",
+    "publisher": "Wikimedia Foundation",
+    "locator": "https://www.wikidata.org/wiki/Q494927",
+    "accessedOn": "2026-07-16",
+    "license": "CC0 1.0"
+  },
+  {
+    "id": "wikidata-q13234218",
+    "type": "dataset",
+    "title": "Wikidata: Bothnian Bay (Q13234218)",
+    "publisher": "Wikimedia Foundation",
+    "locator": "https://www.wikidata.org/wiki/Q13234218",
+    "accessedOn": "2026-07-16",
+    "license": "CC0 1.0"
+  },
+  {
+    "id": "wikidata-q2074118",
+    "type": "dataset",
+    "title": "Wikidata: Gulf of Bahrain (Q2074118)",
+    "publisher": "Wikimedia Foundation",
+    "locator": "https://www.wikidata.org/wiki/Q2074118",
+    "accessedOn": "2026-07-16",
+    "license": "CC0 1.0"
+  },
+  {
+    "id": "wikidata-q41891",
+    "type": "dataset",
+    "title": "Wikidata: Lingayen Gulf (Q41891)",
+    "publisher": "Wikimedia Foundation",
+    "locator": "https://www.wikidata.org/wiki/Q41891",
+    "accessedOn": "2026-07-16",
+    "license": "CC0 1.0"
+  },
+  {
+    "id": "wikidata-q1323629",
+    "type": "dataset",
+    "title": "Wikidata: Gulf St. Vincent (Q1323629)",
+    "publisher": "Wikimedia Foundation",
+    "locator": "https://www.wikidata.org/wiki/Q1323629",
+    "accessedOn": "2026-07-16",
+    "license": "CC0 1.0"
+  },
+  {
+    "id": "wikidata-q155282",
+    "type": "dataset",
+    "title": "Wikidata: Taz Estuary (Q155282)",
+    "publisher": "Wikimedia Foundation",
+    "locator": "https://www.wikidata.org/wiki/Q155282",
+    "accessedOn": "2026-07-16",
+    "license": "CC0 1.0"
+  },
+  {
+    "id": "wikidata-q648317",
+    "type": "dataset",
+    "title": "Wikidata: Argolic Gulf (Q648317)",
+    "publisher": "Wikimedia Foundation",
+    "locator": "https://www.wikidata.org/wiki/Q648317",
+    "accessedOn": "2026-07-16",
+    "license": "CC0 1.0"
+  },
+  {
+    "id": "wikidata-q240753",
+    "type": "dataset",
+    "title": "Wikidata: Leyte Gulf (Q240753)",
+    "publisher": "Wikimedia Foundation",
+    "locator": "https://www.wikidata.org/wiki/Q240753",
+    "accessedOn": "2026-07-16",
+    "license": "CC0 1.0"
   }
 ]

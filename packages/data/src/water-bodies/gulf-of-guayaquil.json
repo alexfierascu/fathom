@@ -1,0 +1,9 @@
+{
+  "id": "gulf-of-guayaquil",
+  "name": "Gulf of Guayaquil",
+  "type": "gulf",
+  "summary": "body of water of the Pacific Ocean in western South America",
+  "parentId": "pacific-ocean",
+  "sourceIds": ["wikidata-q1138929"],
+  "status": "draft"
+}

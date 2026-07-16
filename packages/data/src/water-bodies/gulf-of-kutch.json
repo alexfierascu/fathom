@@ -1,0 +1,9 @@
+{
+  "id": "gulf-of-kutch",
+  "name": "Gulf of Kutch",
+  "type": "gulf",
+  "summary": "gulf",
+  "parentId": "arabian-sea",
+  "sourceIds": ["wikidata-q844917"],
+  "status": "draft"
+}

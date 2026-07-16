@@ -1,0 +1,9 @@
+{
+  "id": "bali-sea",
+  "name": "Bali Sea",
+  "type": "sea",
+  "summary": "Interisland Sea in the Pacific Ocean",
+  "parentId": "pacific-ocean",
+  "sourceIds": ["wikidata-q277014"],
+  "status": "draft"
+}

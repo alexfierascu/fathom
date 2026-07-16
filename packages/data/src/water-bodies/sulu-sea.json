@@ -1,0 +1,9 @@
+{
+  "id": "sulu-sea",
+  "name": "Sulu Sea",
+  "type": "sea",
+  "summary": "The Sulu Sea is a body of water in the southwestern area of the Philippines, separated from the South China Sea in the northwest by Palawan and from the Celebes Sea in the southeast by the Sulu Archipelago.",
+  "parentId": "pacific-ocean",
+  "sourceIds": ["wikidata-q160194", "wikipedia-sulu-sea"],
+  "status": "draft"
+}

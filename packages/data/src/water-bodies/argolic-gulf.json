@@ -1,0 +1,9 @@
+{
+  "id": "argolic-gulf",
+  "name": "Argolic Gulf",
+  "type": "gulf",
+  "summary": "gulf in east Peloponnese, Greece",
+  "parentId": "aegean-sea",
+  "sourceIds": ["wikidata-q648317"],
+  "status": "draft"
+}

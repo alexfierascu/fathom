@@ -1,0 +1,9 @@
+{
+  "id": "taz-estuary",
+  "name": "Taz Estuary",
+  "type": "gulf",
+  "summary": "gulf of the Kara Sea, Russia",
+  "parentId": "kara-sea",
+  "sourceIds": ["wikidata-q155282"],
+  "status": "draft"
+}

@@ -1,0 +1,9 @@
+{
+  "id": "east-siberian-sea",
+  "name": "East Siberian Sea",
+  "type": "sea",
+  "summary": "sea in the Arctic Ocean",
+  "parentId": "arctic-ocean",
+  "sourceIds": ["wikidata-q163434"],
+  "status": "draft"
+}

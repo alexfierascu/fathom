@@ -1,0 +1,9 @@
+{
+  "id": "gulf-of-taranto",
+  "name": "Gulf of Taranto",
+  "type": "gulf",
+  "summary": "bay",
+  "parentId": "ionian-sea",
+  "sourceIds": ["wikidata-q192738"],
+  "status": "draft"
+}

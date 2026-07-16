@@ -5,6 +5,9 @@ const USER_AGENT = 'FathomAtlas-DataPipeline/0.1 (open-source maritime atlas)';
 
 interface QueryTarget {
   classId: string;
+  /** Match direct instances only — required for classes too large for
+   *  subclass traversal within the WDQS timeout. */
+  direct?: boolean;
   /** Water body kind for water-body targets. */
   kind?: string;
   /** Extra required WHERE fragments. */
@@ -26,23 +29,26 @@ const TARGETS: Partial<Record<ImportableType, readonly QueryTarget[]>> = {
   strait: [{ classId: 'Q37901', requires: ['countries', 'twoWaters'] }],
   'water-body': [
     { classId: 'Q9430', kind: 'ocean' },
-    { classId: 'Q165', kind: 'sea', withParent: true, excludeClass: 'Q9430' },
-    { classId: 'Q1322134', kind: 'gulf', withParent: true },
-    { classId: 'Q39594', kind: 'bay', withParent: true },
+    { classId: 'Q165', kind: 'sea', direct: true, withParent: true, excludeClass: 'Q9430' },
+    { classId: 'Q1322134', kind: 'gulf', direct: true, withParent: true },
+    { classId: 'Q39594', kind: 'bay', direct: true, withParent: true },
   ],
   country: [{ classId: 'Q3624078', withIso: true }],
-  port: [{ classId: 'Q44782', requires: ['countries', 'waters'] }],
-  canal: [{ classId: 'Q12284', requires: ['countries', 'twoWaters'] }],
-  bridge: [{ classId: 'Q12280', requires: ['countries', 'crossesStrait'] }],
-  tunnel: [{ classId: 'Q44377', requires: ['countries', 'crossesStrait'] }],
-  island: [{ classId: 'Q23442', requires: ['countries', 'waters'] }],
+  port: [{ classId: 'Q44782', direct: true, requires: ['countries', 'waters'] }],
+  canal: [{ classId: 'Q12284', direct: true, requires: ['countries', 'twoWaters'] }],
+  bridge: [{ classId: 'Q12280', direct: true, requires: ['countries', 'crossesStrait'] }],
+  tunnel: [{ classId: 'Q44377', direct: true, requires: ['countries', 'crossesStrait'] }],
+  island: [{ classId: 'Q23442', direct: true, requires: ['countries', 'waters'] }],
   'maritime-route': [{ classId: 'Q1259617' }],
 };
 
 function buildQuery(target: QueryTarget, limit: number): string {
   const requires = new Set(target.requires ?? []);
+  const instanceLine = target.direct
+    ? `?item wdt:P31 wd:${target.classId} .`
+    : `?item wdt:P31/wdt:P279* wd:${target.classId} .`;
   const lines: string[] = [
-    `?item wdt:P31/wdt:P279* wd:${target.classId} .`,
+    instanceLine,
     '?item wikibase:sitelinks ?sitelinks .',
     '?item p:P625 ?coordStatement .',
     '?coordStatement psv:P625 ?coordValue .',
@@ -168,20 +174,29 @@ export const wikidataAdapter: ProviderAdapter = {
   provides: Object.keys(TARGETS) as ImportableType[],
   async fetchRecords(scope: ImportScope) {
     const records: ProviderRecord[] = [];
+    const failures: string[] = [];
     for (const type of scope.types) {
       for (const target of TARGETS[type] ?? []) {
-        const url = `${ENDPOINT}?format=json&query=${encodeURIComponent(
-          buildQuery(target, scope.limit ?? 25),
-        )}`;
-        const response = await fetch(url, { headers: { 'user-agent': USER_AGENT } });
-        if (!response.ok) {
-          throw new Error(
-            `Wikidata query for ${type}/${target.classId} failed: HTTP ${String(response.status)}`,
-          );
+        try {
+          const url = `${ENDPOINT}?format=json&query=${encodeURIComponent(
+            buildQuery(target, scope.limit ?? 25),
+          )}`;
+          const response = await fetch(url, { headers: { 'user-agent': USER_AGENT } });
+          if (!response.ok) {
+            throw new Error(`HTTP ${String(response.status)}`);
+          }
+          const body = (await response.json()) as { results: { bindings: SparqlBinding[] } };
+          records.push(...parseWikidataResults(body.results.bindings, type, target.kind));
+        } catch (error) {
+          // One heavy class must not sink the whole batch.
+          const message = error instanceof Error ? error.message : String(error);
+          failures.push(`${type}/${target.classId}: ${message}`);
+          console.warn(`wikidata target failed — ${type}/${target.classId}: ${message}`);
         }
-        const body = (await response.json()) as { results: { bindings: SparqlBinding[] } };
-        records.push(...parseWikidataResults(body.results.bindings, type, target.kind));
       }
+    }
+    if (records.length === 0 && failures.length > 0) {
+      throw new Error(`All targets failed (${failures.join('; ')})`);
     }
     return records;
   },

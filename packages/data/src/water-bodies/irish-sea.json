@@ -1,0 +1,9 @@
+{
+  "id": "irish-sea",
+  "name": "Irish Sea",
+  "type": "sea",
+  "summary": "sea that separates the islands of Ireland and Great Britain",
+  "parentId": "atlantic-ocean",
+  "sourceIds": ["wikidata-q41735"],
+  "status": "draft"
+}

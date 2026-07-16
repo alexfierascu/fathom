@@ -1,0 +1,9 @@
+{
+  "id": "sea-of-crete",
+  "name": "Sea of Crete",
+  "type": "sea",
+  "summary": "southern portion of the Aegean Sea",
+  "parentId": "aegean-sea",
+  "sourceIds": ["wikidata-q193149"],
+  "status": "draft"
+}

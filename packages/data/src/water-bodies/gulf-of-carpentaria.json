@@ -1,0 +1,9 @@
+{
+  "id": "gulf-of-carpentaria",
+  "name": "Gulf of Carpentaria",
+  "type": "gulf",
+  "summary": "large, shallow sea enclosed on three sides by northern Australia and bounded on the north by the Arafura Sea",
+  "parentId": "arafura-sea",
+  "sourceIds": ["wikidata-q180844"],
+  "status": "draft"
+}

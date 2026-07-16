@@ -1,0 +1,9 @@
+{
+  "id": "timor-sea",
+  "name": "Timor Sea",
+  "type": "sea",
+  "summary": "sea",
+  "parentId": "indian-ocean",
+  "sourceIds": ["wikidata-q131418"],
+  "status": "draft"
+}

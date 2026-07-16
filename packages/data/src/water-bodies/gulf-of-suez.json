@@ -1,0 +1,9 @@
+{
+  "id": "gulf-of-suez",
+  "name": "Gulf of Suez",
+  "type": "gulf",
+  "summary": "gulf of the Red Sea separating African Egypt from the Sinai Peninsula",
+  "parentId": "red-sea",
+  "sourceIds": ["wikidata-q168277"],
+  "status": "draft"
+}

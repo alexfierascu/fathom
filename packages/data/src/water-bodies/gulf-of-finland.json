@@ -1,0 +1,9 @@
+{
+  "id": "gulf-of-finland",
+  "name": "Gulf of Finland",
+  "type": "sea",
+  "summary": "The Gulf of Finland is the easternmost arm of the Baltic Sea.",
+  "parentId": "baltic-sea",
+  "sourceIds": ["wikidata-q14686", "wikipedia-gulf-of-finland"],
+  "status": "draft"
+}

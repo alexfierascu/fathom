@@ -228,5 +228,215 @@
     "id": "laptev-sea",
     "name": "Laptev Sea",
     "type": "sea"
+  },
+  {
+    "id": "world-ocean",
+    "name": "World Ocean",
+    "type": "ocean"
+  },
+  {
+    "id": "south-pacific-ocean",
+    "name": "South Pacific Ocean",
+    "type": "ocean"
+  },
+  {
+    "id": "arabian-sea",
+    "name": "Arabian Sea",
+    "type": "sea"
+  },
+  {
+    "id": "bering-sea",
+    "name": "Bering Sea",
+    "type": "sea"
+  },
+  {
+    "id": "irish-sea",
+    "name": "Irish Sea",
+    "type": "sea"
+  },
+  {
+    "id": "gulf-of-finland",
+    "name": "Gulf of Finland",
+    "type": "sea"
+  },
+  {
+    "id": "chukchi-sea",
+    "name": "Chukchi Sea",
+    "type": "sea"
+  },
+  {
+    "id": "east-siberian-sea",
+    "name": "East Siberian Sea",
+    "type": "sea"
+  },
+  {
+    "id": "beaufort-sea",
+    "name": "Beaufort Sea",
+    "type": "sea"
+  },
+  {
+    "id": "celtic-sea",
+    "name": "Celtic Sea",
+    "type": "sea"
+  },
+  {
+    "id": "timor-sea",
+    "name": "Timor Sea",
+    "type": "sea"
+  },
+  {
+    "id": "ross-sea",
+    "name": "Ross Sea",
+    "type": "sea"
+  },
+  {
+    "id": "sulu-sea",
+    "name": "Sulu Sea",
+    "type": "sea"
+  },
+  {
+    "id": "flores-sea",
+    "name": "Flores Sea",
+    "type": "sea"
+  },
+  {
+    "id": "molucca-sea",
+    "name": "Molucca Sea",
+    "type": "sea"
+  },
+  {
+    "id": "solomon-sea",
+    "name": "Solomon Sea",
+    "type": "sea"
+  },
+  {
+    "id": "laccadive-sea",
+    "name": "Laccadive Sea",
+    "type": "sea"
+  },
+  {
+    "id": "balearic-sea",
+    "name": "Balearic Sea",
+    "type": "sea"
+  },
+  {
+    "id": "bali-sea",
+    "name": "Bali Sea",
+    "type": "sea"
+  },
+  {
+    "id": "sea-of-crete",
+    "name": "Sea of Crete",
+    "type": "sea"
+  },
+  {
+    "id": "gulf-of-bothnia",
+    "name": "Gulf of Bothnia",
+    "type": "gulf"
+  },
+  {
+    "id": "gulf-of-alaska",
+    "name": "Gulf of Alaska",
+    "type": "gulf"
+  },
+  {
+    "id": "gulf-of-carpentaria",
+    "name": "Gulf of Carpentaria",
+    "type": "gulf"
+  },
+  {
+    "id": "gulf-of-suez",
+    "name": "Gulf of Suez",
+    "type": "gulf"
+  },
+  {
+    "id": "gulf-of-tonkin",
+    "name": "Gulf of Tonkin",
+    "type": "gulf"
+  },
+  {
+    "id": "gulf-of-kutch",
+    "name": "Gulf of Kutch",
+    "type": "gulf"
+  },
+  {
+    "id": "gulf-of-taranto",
+    "name": "Gulf of Taranto",
+    "type": "gulf"
+  },
+  {
+    "id": "saronic-gulf",
+    "name": "Saronic Gulf",
+    "type": "gulf"
+  },
+  {
+    "id": "gulf-of-lion",
+    "name": "Gulf of Lion",
+    "type": "gulf"
+  },
+  {
+    "id": "gulf-of-panama",
+    "name": "Gulf of Panama",
+    "type": "gulf"
+  },
+  {
+    "id": "gulf-of-salerno",
+    "name": "Gulf of Salerno",
+    "type": "gulf"
+  },
+  {
+    "id": "gulf-of-guayaquil",
+    "name": "Gulf of Guayaquil",
+    "type": "gulf"
+  },
+  {
+    "id": "gulf-of-tunis",
+    "name": "Gulf of Tunis",
+    "type": "gulf"
+  },
+  {
+    "id": "moro-gulf",
+    "name": "Moro Gulf",
+    "type": "gulf"
+  },
+  {
+    "id": "peter-the-great-gulf",
+    "name": "Peter the Great Gulf",
+    "type": "gulf"
+  },
+  {
+    "id": "bothnian-bay",
+    "name": "Bothnian Bay",
+    "type": "gulf"
+  },
+  {
+    "id": "gulf-of-bahrain",
+    "name": "Gulf of Bahrain",
+    "type": "gulf"
+  },
+  {
+    "id": "lingayen-gulf",
+    "name": "Lingayen Gulf",
+    "type": "gulf"
+  },
+  {
+    "id": "gulf-st-vincent",
+    "name": "Gulf St. Vincent",
+    "type": "gulf"
+  },
+  {
+    "id": "taz-estuary",
+    "name": "Taz Estuary",
+    "type": "gulf"
+  },
+  {
+    "id": "argolic-gulf",
+    "name": "Argolic Gulf",
+    "type": "gulf"
+  },
+  {
+    "id": "leyte-gulf",
+    "name": "Leyte Gulf",
+    "type": "gulf"
   }
 ]

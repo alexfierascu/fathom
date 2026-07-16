@@ -1,0 +1,8 @@
+{
+  "id": "south-pacific-ocean",
+  "name": "South Pacific Ocean",
+  "type": "ocean",
+  "summary": "region of the Pacific Ocean south of the equator",
+  "sourceIds": ["wikidata-q12355425"],
+  "status": "draft"
+}

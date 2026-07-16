@@ -1,0 +1,9 @@
+{
+  "id": "gulf-of-bothnia",
+  "name": "Gulf of Bothnia",
+  "type": "gulf",
+  "summary": "the northernmost arm of the Baltic Sea",
+  "parentId": "baltic-sea",
+  "sourceIds": ["wikidata-q122574"],
+  "status": "draft"
+}

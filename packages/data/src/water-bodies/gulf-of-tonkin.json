@@ -1,0 +1,9 @@
+{
+  "id": "gulf-of-tonkin",
+  "name": "Gulf of Tonkin",
+  "type": "gulf",
+  "summary": "body of water located off the coast of northern Vietnam and southern China, northern arm of the South China Sea",
+  "parentId": "south-china-sea",
+  "sourceIds": ["wikidata-q212428"],
+  "status": "draft"
+}
