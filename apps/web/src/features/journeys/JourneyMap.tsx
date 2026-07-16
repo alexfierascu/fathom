@@ -3,7 +3,7 @@ import { useEffect, useRef } from 'react';
 import L from 'leaflet';
 
 import type { Journey } from '@fathom/discovery';
-import { resolveWaypoint } from '@fathom/discovery';
+import { journeyCourse } from '@fathom/discovery';
 
 import type { TileStyle } from '../theme/themes';
 import {
@@ -22,44 +22,6 @@ interface JourneyMapProps {
   tileStyle: TileStyle;
 }
 
-interface CoursePoint {
-  lat: number;
-  lon: number;
-  /** Present when the point is a numbered stop, not a sea-lane bend. */
-  stopIndex?: number;
-  name?: string;
-}
-
-/**
- * The drawn course: every stop with coordinates plus each leg's authored
- * sea-lane via points, longitudes unwrapped so a voyage crossing the
- * antimeridian (the Arctic journey) stays one continuous line instead of
- * streaking across the whole chart.
- */
-function courseOf(journey: Journey): CoursePoint[] {
-  const raw: CoursePoint[] = [];
-  journey.waypoints.forEach((waypoint, stopIndex) => {
-    for (const bend of waypoint.via ?? []) {
-      raw.push({ lat: bend.lat, lon: bend.lon });
-    }
-    const node = resolveWaypoint(waypoint);
-    if (node?.lat !== undefined && node.lon !== undefined) {
-      raw.push({ lat: node.lat, lon: node.lon, stopIndex, name: node.name });
-    }
-  });
-
-  let previous: number | null = null;
-  return raw.map((point) => {
-    let lon = point.lon;
-    if (previous !== null) {
-      while (lon - previous > 180) lon -= 360;
-      while (lon - previous < -180) lon += 360;
-    }
-    previous = lon;
-    return { ...point, lon };
-  });
-}
-
 /**
  * The voyage chart: numbered markers for every locatable stop, a dashed
  * course line that follows sea lanes through the authored via points,
@@ -76,7 +38,7 @@ export function JourneyMap({ journey, currentStop, travelling, tileStyle }: Jour
     const container = containerRef.current;
     if (!container) return;
 
-    const course = courseOf(journey);
+    const course = journeyCourse(journey);
     const map = createStraitMap(container, [20, 10], 2);
     mapRef.current = map;
     tilesRef.current = setupMapChrome(map, panelRef.current);
@@ -110,6 +72,9 @@ export function JourneyMap({ journey, currentStop, travelling, tileStyle }: Jour
     if (course.length > 0) {
       map.fitBounds(line.getBounds(), { padding: [40, 40], maxZoom: 5 });
     }
+    map.attributionControl.addAttribution(
+      'Sea routes: <a href="https://github.com/genthalili/searoute-py">searoute</a> · MARNET',
+    );
     const stopObserving = observeMapSize(map);
 
     return () => {
@@ -142,7 +107,9 @@ export function JourneyMap({ journey, currentStop, travelling, tileStyle }: Jour
     }
   }, [currentStop, travelling, journey]);
 
-  const chartedStops = courseOf(journey).filter((point) => point.stopIndex !== undefined).length;
+  const chartedStops = journeyCourse(journey).filter(
+    (point) => point.stopIndex !== undefined,
+  ).length;
 
   return (
     <div className="map-panel journey-map" ref={panelRef}>

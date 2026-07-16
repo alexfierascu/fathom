@@ -47,3 +47,6 @@ export type {
 } from './journeys';
 
 export { findJourney, loadJourneys } from './catalog';
+
+export { courseLengthKm, journeyCourse } from './course';
+export type { CoursePoint } from './course';
