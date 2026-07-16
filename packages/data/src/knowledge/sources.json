@@ -3632,5 +3632,374 @@
     "locator": "https://commons.wikimedia.org/wiki/File:A_Swirl_of_a_Day_for_Phytoplankton_(154086).jpg",
     "accessedOn": "2026-07-17",
     "license": "Public domain"
+  },
+  {
+    "id": "commons-messina",
+    "type": "website",
+    "title": "File:MessinaStrait.jpg",
+    "publisher": "Wikimedia Commons",
+    "locator": "https://commons.wikimedia.org/wiki/File:MessinaStrait.jpg",
+    "accessedOn": "2026-07-16",
+    "license": "Public domain"
+  },
+  {
+    "id": "commons-bonifacio",
+    "type": "website",
+    "title": "File:Santa_Teresa_Gallura_-_Bocche_di_Bonifacio_(04).JPG",
+    "publisher": "Wikimedia Commons",
+    "locator": "https://commons.wikimedia.org/wiki/File:Santa_Teresa_Gallura_-_Bocche_di_Bonifacio_(04).JPG",
+    "accessedOn": "2026-07-16",
+    "license": "CC BY-SA 3.0"
+  },
+  {
+    "id": "commons-kerch",
+    "type": "website",
+    "title": "File:Kerch_Strait,_Ukraine,_Russia,_near_natural_colors_satellite_image,_LandSat-5,_2011-08-30.jpg",
+    "publisher": "Wikimedia Commons",
+    "locator": "https://commons.wikimedia.org/wiki/File:Kerch_Strait,_Ukraine,_Russia,_near_natural_colors_satellite_image,_LandSat-5,_2011-08-30.jpg",
+    "accessedOn": "2026-07-16",
+    "license": "Public domain"
+  },
+  {
+    "id": "commons-bab-el-mandeb",
+    "type": "website",
+    "title": "File:Bab-el-Mandeb,_outer_space.jpg",
+    "publisher": "Wikimedia Commons",
+    "locator": "https://commons.wikimedia.org/wiki/File:Bab-el-Mandeb,_outer_space.jpg",
+    "accessedOn": "2026-07-16",
+    "license": "Public domain"
+  },
+  {
+    "id": "commons-singapore",
+    "type": "website",
+    "title": "File:Singapore_Strait_IMG_9134.jpg",
+    "publisher": "Wikimedia Commons",
+    "locator": "https://commons.wikimedia.org/wiki/File:Singapore_Strait_IMG_9134.jpg",
+    "accessedOn": "2026-07-16",
+    "license": "CC BY-SA 4.0"
+  },
+  {
+    "id": "commons-lombok",
+    "type": "website",
+    "title": "File:ISS059-E-75321_-_View_of_Indonesia.jpg",
+    "publisher": "Wikimedia Commons",
+    "locator": "https://commons.wikimedia.org/wiki/File:ISS059-E-75321_-_View_of_Indonesia.jpg",
+    "accessedOn": "2026-07-16",
+    "license": "Public domain"
+  },
+  {
+    "id": "commons-laperouse",
+    "type": "website",
+    "title": "File:Karafuto_SakhalinISLAND.JPG",
+    "publisher": "Wikimedia Commons",
+    "locator": "https://commons.wikimedia.org/wiki/File:Karafuto_SakhalinISLAND.JPG",
+    "accessedOn": "2026-07-16",
+    "license": "CC BY-SA 3.0"
+  },
+  {
+    "id": "commons-bering",
+    "type": "website",
+    "title": "File:Bering_Strait.jpeg",
+    "publisher": "Wikimedia Commons",
+    "locator": "https://commons.wikimedia.org/wiki/File:Bering_Strait.jpeg",
+    "accessedOn": "2026-07-16",
+    "license": "Public domain"
+  },
+  {
+    "id": "commons-juandefuca",
+    "type": "website",
+    "title": "File:Strait_of_Juan_de_Fuca_by_Sentinel-2,_2018-09-28_(small_version).jpg",
+    "publisher": "Wikimedia Commons",
+    "locator": "https://commons.wikimedia.org/wiki/File:Strait_of_Juan_de_Fuca_by_Sentinel-2,_2018-09-28_(small_version).jpg",
+    "accessedOn": "2026-07-16",
+    "license": "CC BY-SA 3.0 igo"
+  },
+  {
+    "id": "commons-georgia",
+    "type": "website",
+    "title": "File:Vancouver_Island_by_Aqua,_2020-07-26_(cropped_to_Salish_Sea).jpg",
+    "publisher": "Wikimedia Commons",
+    "locator": "https://commons.wikimedia.org/wiki/File:Vancouver_Island_by_Aqua,_2020-07-26_(cropped_to_Salish_Sea).jpg",
+    "accessedOn": "2026-07-16",
+    "license": "Public domain"
+  },
+  {
+    "id": "commons-belleisle",
+    "type": "website",
+    "title": "File:Point_Amour_Lighthouse.JPG",
+    "publisher": "Wikimedia Commons",
+    "locator": "https://commons.wikimedia.org/wiki/File:Point_Amour_Lighthouse.JPG",
+    "accessedOn": "2026-07-16",
+    "license": "CC BY-SA 3.0"
+  },
+  {
+    "id": "commons-florida",
+    "type": "website",
+    "title": "File:Straits_of_florida.png",
+    "publisher": "Wikimedia Commons",
+    "locator": "https://commons.wikimedia.org/wiki/File:Straits_of_florida.png",
+    "accessedOn": "2026-07-16",
+    "license": "Public domain"
+  },
+  {
+    "id": "commons-magellan",
+    "type": "website",
+    "title": "File:StraitOfMagellan.jpg",
+    "publisher": "Wikimedia Commons",
+    "locator": "https://commons.wikimedia.org/wiki/File:StraitOfMagellan.jpg",
+    "accessedOn": "2026-07-16",
+    "license": "Public domain"
+  },
+  {
+    "id": "commons-yekaterina-strait",
+    "type": "website",
+    "title": "File:Кінбурнська_коса_восени.jpg",
+    "publisher": "Wikimedia Commons",
+    "locator": "https://commons.wikimedia.org/wiki/File:Кінбурнська_коса_восени.jpg",
+    "accessedOn": "2026-07-16",
+    "license": "CC BY-SA 4.0"
+  },
+  {
+    "id": "commons-mindoro-strait",
+    "type": "website",
+    "title": "File:Apo_reef.jpg",
+    "publisher": "Wikimedia Commons",
+    "locator": "https://commons.wikimedia.org/wiki/File:Apo_reef.jpg",
+    "accessedOn": "2026-07-16",
+    "license": "CC BY-SA 3.0"
+  },
+  {
+    "id": "commons-kanmon-straits",
+    "type": "website",
+    "title": "File:Kanmon_Straits_from_space_cropped_rotated_90_degrees_CCW.jpg",
+    "publisher": "Wikimedia Commons",
+    "locator": "https://commons.wikimedia.org/wiki/File:Kanmon_Straits_from_space_cropped_rotated_90_degrees_CCW.jpg",
+    "accessedOn": "2026-07-16",
+    "license": "Public domain"
+  },
+  {
+    "id": "commons-tanon-strait",
+    "type": "website",
+    "title": "File:Osmeña_Peak,_Cebu,_Philippines.jpg",
+    "publisher": "Wikimedia Commons",
+    "locator": "https://commons.wikimedia.org/wiki/File:Osmeña_Peak,_Cebu,_Philippines.jpg",
+    "accessedOn": "2026-07-16",
+    "license": "CC BY-SA 4.0"
+  },
+  {
+    "id": "commons-cebu-strait",
+    "type": "website",
+    "title": "File:Cebu_Strait.JPG",
+    "publisher": "Wikimedia Commons",
+    "locator": "https://commons.wikimedia.org/wiki/File:Cebu_Strait.JPG",
+    "accessedOn": "2026-07-16",
+    "license": "CC BY-SA 3.0"
+  },
+  {
+    "id": "commons-dover",
+    "type": "website",
+    "title": "File:Strait of dover STS106-718-28.jpg",
+    "publisher": "Wikimedia Commons",
+    "locator": "https://commons.wikimedia.org/wiki/File:Strait_of_dover_STS106-718-28.jpg",
+    "accessedOn": "2026-07-16",
+    "license": "Public domain"
+  },
+  {
+    "id": "commons-otranto",
+    "type": "website",
+    "title": "File:Otranto porto2.jpg",
+    "publisher": "Wikimedia Commons",
+    "locator": "https://commons.wikimedia.org/wiki/File:Otranto_porto2.jpg",
+    "accessedOn": "2026-07-16",
+    "license": "CC BY-SA 3.0"
+  },
+  {
+    "id": "commons-dardanelles",
+    "type": "website",
+    "title": "File:Dardanelles landsat.jpg",
+    "publisher": "Wikimedia Commons",
+    "locator": "https://commons.wikimedia.org/wiki/File:Dardanelles_landsat.jpg",
+    "accessedOn": "2026-07-16",
+    "license": "Public domain"
+  },
+  {
+    "id": "commons-skagerrak",
+    "type": "website",
+    "title": "File:Skagerrak-2005-IV-13 ubt.jpeg",
+    "publisher": "Wikimedia Commons",
+    "locator": "https://commons.wikimedia.org/wiki/File:Skagerrak-2005-IV-13_ubt.jpeg",
+    "accessedOn": "2026-07-16",
+    "license": "CC BY 3.0"
+  },
+  {
+    "id": "commons-kattegat",
+    "type": "website",
+    "title": "File:Anholt Havmøllepark.jpg",
+    "publisher": "Wikimedia Commons",
+    "locator": "https://commons.wikimedia.org/wiki/File:Anholt_Havmøllepark.jpg",
+    "accessedOn": "2026-07-16",
+    "license": "CC BY-SA 4.0"
+  },
+  {
+    "id": "commons-oresund",
+    "type": "website",
+    "title": "File:KronborgCastleDenmarkOct152022 07.jpg",
+    "publisher": "Wikimedia Commons",
+    "locator": "https://commons.wikimedia.org/wiki/File:KronborgCastleDenmarkOct152022_07.jpg",
+    "accessedOn": "2026-07-16",
+    "license": "CC BY-SA 4.0"
+  },
+  {
+    "id": "commons-mozambique",
+    "type": "website",
+    "title": "File:Satellite image of Mozambique in September 2002.jpg",
+    "publisher": "Wikimedia Commons",
+    "locator": "https://commons.wikimedia.org/wiki/File:Satellite_image_of_Mozambique_in_September_2002.jpg",
+    "accessedOn": "2026-07-16",
+    "license": "Public domain"
+  },
+  {
+    "id": "commons-palk",
+    "type": "website",
+    "title": "File:AdamsBridge02-NASA.jpg",
+    "publisher": "Wikimedia Commons",
+    "locator": "https://commons.wikimedia.org/wiki/File:AdamsBridge02-NASA.jpg",
+    "accessedOn": "2026-07-16",
+    "license": "Public domain"
+  },
+  {
+    "id": "commons-malacca",
+    "type": "website",
+    "title": "File:Strait of Malacca (36759635615).jpg",
+    "publisher": "Wikimedia Commons",
+    "locator": "https://commons.wikimedia.org/wiki/File:Strait_of_Malacca_(36759635615).jpg",
+    "accessedOn": "2026-07-16",
+    "license": "CC BY 2.0"
+  },
+  {
+    "id": "commons-sunda",
+    "type": "website",
+    "title": "File:Straat van soenda.jpg",
+    "publisher": "Wikimedia Commons",
+    "locator": "https://commons.wikimedia.org/wiki/File:Straat_van_soenda.jpg",
+    "accessedOn": "2026-07-16",
+    "license": "CC BY-SA 3.0"
+  },
+  {
+    "id": "commons-taiwan",
+    "type": "website",
+    "title": "File:Xiamen Island, Lieyu Island and Kinmen Island.jpg",
+    "publisher": "Wikimedia Commons",
+    "locator": "https://commons.wikimedia.org/wiki/File:Xiamen_Island,_Lieyu_Island_and_Kinmen_Island.jpg",
+    "accessedOn": "2026-07-16",
+    "license": "CC BY-SA 3.0"
+  },
+  {
+    "id": "commons-tsugaru",
+    "type": "website",
+    "title": "File:Tsugaru Strait (51971873627).jpg",
+    "publisher": "Wikimedia Commons",
+    "locator": "https://commons.wikimedia.org/wiki/File:Tsugaru_Strait_(51971873627).jpg",
+    "accessedOn": "2026-07-16",
+    "license": "CC BY 2.0"
+  },
+  {
+    "id": "commons-torres",
+    "type": "website",
+    "title": "File:Torres Strait Islands air photo.jpg",
+    "publisher": "Wikimedia Commons",
+    "locator": "https://commons.wikimedia.org/wiki/File:Torres_Strait_Islands_air_photo.jpg",
+    "accessedOn": "2026-07-16",
+    "license": "CC BY-SA 3.0"
+  },
+  {
+    "id": "commons-cook",
+    "type": "website",
+    "title": "File:Cook Strait and Marlborough Sounds from Mount Kaukau.jpg",
+    "publisher": "Wikimedia Commons",
+    "locator": "https://commons.wikimedia.org/wiki/File:Cook_Strait_and_Marlborough_Sounds_from_Mount_Kaukau.jpg",
+    "accessedOn": "2026-07-16",
+    "license": "CC BY 2.0"
+  },
+  {
+    "id": "commons-northumberland",
+    "type": "website",
+    "title": "File:MV Holiday Island 2006.jpg",
+    "publisher": "Wikimedia Commons",
+    "locator": "https://commons.wikimedia.org/wiki/File:MV_Holiday_Island_2006.jpg",
+    "accessedOn": "2026-07-16",
+    "license": "CC BY-SA 4.0"
+  },
+  {
+    "id": "commons-hudson",
+    "type": "website",
+    "title": "File:Salisbury Island, Nunavut.jpg",
+    "publisher": "Wikimedia Commons",
+    "locator": "https://commons.wikimedia.org/wiki/File:Salisbury_Island,_Nunavut.jpg",
+    "accessedOn": "2026-07-16",
+    "license": "CC BY 2.0"
+  },
+  {
+    "id": "commons-davis",
+    "type": "website",
+    "title": "File:Davis Strait Icebergs.jpg",
+    "publisher": "Wikimedia Commons",
+    "locator": "https://commons.wikimedia.org/wiki/File:Davis_Strait_Icebergs.jpg",
+    "accessedOn": "2026-07-16",
+    "license": "CC BY 2.0"
+  },
+  {
+    "id": "commons-denmark",
+    "type": "website",
+    "title": "File:Iceberg mist.jpg",
+    "publisher": "Wikimedia Commons",
+    "locator": "https://commons.wikimedia.org/wiki/File:Iceberg_mist.jpg",
+    "accessedOn": "2026-07-16",
+    "license": "CC BY-SA 4.0"
+  },
+  {
+    "id": "commons-vilkitsky",
+    "type": "website",
+    "title": "File:SevernayaZemlya.jpg",
+    "publisher": "Wikimedia Commons",
+    "locator": "https://commons.wikimedia.org/wiki/File:SevernayaZemlya.jpg",
+    "accessedOn": "2026-07-16",
+    "license": "Public domain"
+  },
+  {
+    "id": "commons-foveaux-strait",
+    "type": "website",
+    "title": "File:Mount Anglem on Rakiura over Foveaux Strait.jpg",
+    "publisher": "Wikimedia Commons",
+    "locator": "https://commons.wikimedia.org/wiki/File:Mount_Anglem_on_Rakiura_over_Foveaux_Strait.jpg",
+    "accessedOn": "2026-07-16",
+    "license": "CC BY-SA 4.0"
+  },
+  {
+    "id": "commons-kara-strait",
+    "type": "website",
+    "title": "File:Kara Gates (MODIS 2016225).jpg",
+    "publisher": "Wikimedia Commons",
+    "locator": "https://commons.wikimedia.org/wiki/File:Kara_Gates_(MODIS_2016225).jpg",
+    "accessedOn": "2026-07-16",
+    "license": "Public domain"
+  },
+  {
+    "id": "commons-san-bernardino-strait",
+    "type": "website",
+    "title": "File:US Navy 061104-N-5067K-143 USS Essex (LHD 2) passes Mt. Bulusan a volcano located on the southern end of the Island of Luzon as it transits through the San Bernardino Straits.jpg",
+    "publisher": "Wikimedia Commons",
+    "locator": "https://commons.wikimedia.org/wiki/File:US_Navy_061104-N-5067K-143_USS_Essex_(LHD_2)_passes_Mt._Bulusan_a_volcano_located_on_the_southern_end_of_the_Island_of_Luzon_as_it_transits_through_the_San_Bernardino_Straits.jpg",
+    "accessedOn": "2026-07-16",
+    "license": "Public domain"
+  },
+  {
+    "id": "commons-canigao-channel",
+    "type": "website",
+    "title": "File:Canigao2023PANO.png",
+    "publisher": "Wikimedia Commons",
+    "locator": "https://commons.wikimedia.org/wiki/File:Canigao2023PANO.png",
+    "accessedOn": "2026-07-16",
+    "license": "CC BY-SA 4.0"
   }
 ]

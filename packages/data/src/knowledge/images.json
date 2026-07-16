@@ -43,5 +43,620 @@
         "id": "hormuz"
       }
     ]
+  },
+  {
+    "id": "messina-view",
+    "file": "straits/messina.jpg",
+    "license": "Public domain",
+    "credit": "Unknown author",
+    "alt": "View of the Strait of Messina",
+    "role": "representative",
+    "sourceId": "commons-messina",
+    "depicts": [
+      {
+        "type": "strait",
+        "id": "messina"
+      }
+    ]
+  },
+  {
+    "id": "bonifacio-view",
+    "file": "straits/bonifacio.jpg",
+    "license": "CC BY-SA 3.0",
+    "credit": "Gianni Careddu",
+    "alt": "View of the Strait of Bonifacio",
+    "role": "representative",
+    "sourceId": "commons-bonifacio",
+    "depicts": [
+      {
+        "type": "strait",
+        "id": "bonifacio"
+      }
+    ]
+  },
+  {
+    "id": "kerch-view",
+    "file": "straits/kerch.jpg",
+    "license": "Public domain",
+    "credit": "NASA",
+    "alt": "View of the Kerch Strait",
+    "role": "representative",
+    "sourceId": "commons-kerch",
+    "depicts": [
+      {
+        "type": "strait",
+        "id": "kerch"
+      }
+    ]
+  },
+  {
+    "id": "bab-el-mandeb-view",
+    "file": "straits/bab-el-mandeb.jpg",
+    "license": "Public domain",
+    "credit": "Earth Science and Remote Sensing Unit, NASA Johnson Space Center",
+    "alt": "View of the Bab-el-Mandeb",
+    "role": "representative",
+    "sourceId": "commons-bab-el-mandeb",
+    "depicts": [
+      {
+        "type": "strait",
+        "id": "bab-el-mandeb"
+      }
+    ]
+  },
+  {
+    "id": "singapore-view",
+    "file": "straits/singapore.jpg",
+    "license": "CC BY-SA 4.0",
+    "credit": "Bjoertvedt",
+    "alt": "Ships riding at anchor in the Singapore Strait",
+    "role": "representative",
+    "sourceId": "commons-singapore",
+    "depicts": [
+      {
+        "type": "strait",
+        "id": "singapore"
+      }
+    ]
+  },
+  {
+    "id": "lombok-view",
+    "file": "straits/lombok.jpg",
+    "license": "Public domain",
+    "credit": "Earth Science and Remote Sensing Unit, NASA Johnson Space Center",
+    "alt": "View of the Lombok Strait",
+    "role": "representative",
+    "sourceId": "commons-lombok",
+    "depicts": [
+      {
+        "type": "strait",
+        "id": "lombok"
+      }
+    ]
+  },
+  {
+    "id": "laperouse-view",
+    "file": "straits/laperouse.jpg",
+    "license": "CC BY-SA 3.0",
+    "credit": "100yen",
+    "alt": "View of the La Pérouse Strait",
+    "role": "representative",
+    "sourceId": "commons-laperouse",
+    "depicts": [
+      {
+        "type": "strait",
+        "id": "laperouse"
+      }
+    ]
+  },
+  {
+    "id": "bering-view",
+    "file": "straits/bering.jpeg",
+    "license": "Public domain",
+    "credit": "NASA/GSFC/JPL/MISR-Team",
+    "alt": "View of the Bering Strait",
+    "role": "representative",
+    "sourceId": "commons-bering",
+    "depicts": [
+      {
+        "type": "strait",
+        "id": "bering"
+      }
+    ]
+  },
+  {
+    "id": "juandefuca-view",
+    "file": "straits/juandefuca.jpg",
+    "license": "CC BY-SA 3.0 igo",
+    "credit": "Copernicus Sentinel-2, ESA",
+    "alt": "View of the Strait of Juan de Fuca",
+    "role": "representative",
+    "sourceId": "commons-juandefuca",
+    "depicts": [
+      {
+        "type": "strait",
+        "id": "juandefuca"
+      }
+    ]
+  },
+  {
+    "id": "georgia-view",
+    "file": "straits/georgia.jpg",
+    "license": "Public domain",
+    "credit": "NASA",
+    "alt": "View of the Strait of Georgia",
+    "role": "representative",
+    "sourceId": "commons-georgia",
+    "depicts": [
+      {
+        "type": "strait",
+        "id": "georgia"
+      }
+    ]
+  },
+  {
+    "id": "belleisle-view",
+    "file": "straits/belleisle.jpg",
+    "license": "CC BY-SA 3.0",
+    "credit": "Acunsolo",
+    "alt": "The Point Amour lighthouse on the Strait of Belle Isle",
+    "role": "representative",
+    "sourceId": "commons-belleisle",
+    "depicts": [
+      {
+        "type": "strait",
+        "id": "belleisle"
+      }
+    ]
+  },
+  {
+    "id": "florida-view",
+    "file": "straits/florida.png",
+    "license": "Public domain",
+    "credit": "Jacques Descloitres, MODIS Rapid Response Team, NASA/GSFC cropped, and labelled",
+    "alt": "View of the Florida Straits",
+    "role": "representative",
+    "sourceId": "commons-florida",
+    "depicts": [
+      {
+        "type": "strait",
+        "id": "florida"
+      }
+    ]
+  },
+  {
+    "id": "magellan-view",
+    "file": "straits/magellan.jpg",
+    "license": "Public domain",
+    "credit": "Jacques Descloitres, MODIS Rapid Response Team, NASA/GSFC",
+    "alt": "View of the Strait of Magellan",
+    "role": "representative",
+    "sourceId": "commons-magellan",
+    "depicts": [
+      {
+        "type": "strait",
+        "id": "magellan"
+      }
+    ]
+  },
+  {
+    "id": "yekaterina-strait-view",
+    "file": "straits/yekaterina-strait.jpg",
+    "license": "CC BY-SA 4.0",
+    "credit": "Анна Стрижекінь",
+    "alt": "View of the Yekaterina Strait",
+    "role": "representative",
+    "sourceId": "commons-yekaterina-strait",
+    "depicts": [
+      {
+        "type": "strait",
+        "id": "yekaterina-strait"
+      }
+    ]
+  },
+  {
+    "id": "mindoro-strait-view",
+    "file": "straits/mindoro-strait.jpg",
+    "license": "CC BY-SA 3.0",
+    "credit": "Tomacruz (talk) (Uploads)",
+    "alt": "View of the Mindoro Strait",
+    "role": "representative",
+    "sourceId": "commons-mindoro-strait",
+    "depicts": [
+      {
+        "type": "strait",
+        "id": "mindoro-strait"
+      }
+    ]
+  },
+  {
+    "id": "kanmon-straits-view",
+    "file": "straits/kanmon-straits.jpg",
+    "license": "Public domain",
+    "credit": "Image Science and Analysis Laboratory, NASA-Johnson Space Center",
+    "alt": "View of the Kanmon Straits",
+    "role": "representative",
+    "sourceId": "commons-kanmon-straits",
+    "depicts": [
+      {
+        "type": "strait",
+        "id": "kanmon-straits"
+      }
+    ]
+  },
+  {
+    "id": "tanon-strait-view",
+    "file": "straits/tanon-strait.jpg",
+    "license": "CC BY-SA 4.0",
+    "credit": "Tyrll Adolf Itong",
+    "alt": "View of the Tañon Strait",
+    "role": "representative",
+    "sourceId": "commons-tanon-strait",
+    "depicts": [
+      {
+        "type": "strait",
+        "id": "tanon-strait"
+      }
+    ]
+  },
+  {
+    "id": "cebu-strait-view",
+    "file": "straits/cebu-strait.jpg",
+    "license": "CC BY-SA 3.0",
+    "credit": "P199",
+    "alt": "View of the Cebu Strait",
+    "role": "representative",
+    "sourceId": "commons-cebu-strait",
+    "depicts": [
+      {
+        "type": "strait",
+        "id": "cebu-strait"
+      }
+    ]
+  },
+  {
+    "id": "dover-view",
+    "file": "straits/dover.jpg",
+    "license": "Public domain",
+    "credit": "NASA",
+    "alt": "View of the Strait of Dover",
+    "role": "representative",
+    "sourceId": "commons-dover",
+    "depicts": [
+      {
+        "type": "strait",
+        "id": "dover"
+      }
+    ]
+  },
+  {
+    "id": "otranto-view",
+    "file": "straits/otranto.jpg",
+    "license": "CC BY-SA 3.0",
+    "credit": "Freddyballo",
+    "alt": "View of the Strait of Otranto",
+    "role": "representative",
+    "sourceId": "commons-otranto",
+    "depicts": [
+      {
+        "type": "strait",
+        "id": "otranto"
+      }
+    ]
+  },
+  {
+    "id": "dardanelles-view",
+    "file": "straits/dardanelles.jpg",
+    "license": "Public domain",
+    "credit": "NASA",
+    "alt": "View of the Dardanelles",
+    "role": "representative",
+    "sourceId": "commons-dardanelles",
+    "depicts": [
+      {
+        "type": "strait",
+        "id": "dardanelles"
+      }
+    ]
+  },
+  {
+    "id": "skagerrak-view",
+    "file": "straits/skagerrak.jpeg",
+    "license": "CC BY 3.0",
+    "credit": "Photo © 2005 by Tomasz Sienicki [user: tsca, mail: tomasz.sienicki at gmail.com]",
+    "alt": "View of the Skagerrak",
+    "role": "representative",
+    "sourceId": "commons-skagerrak",
+    "depicts": [
+      {
+        "type": "strait",
+        "id": "skagerrak"
+      }
+    ]
+  },
+  {
+    "id": "kattegat-view",
+    "file": "straits/kattegat.jpg",
+    "license": "CC BY-SA 4.0",
+    "credit": "Old Dane",
+    "alt": "The Anholt offshore wind farm in the Kattegat",
+    "role": "representative",
+    "sourceId": "commons-kattegat",
+    "depicts": [
+      {
+        "type": "strait",
+        "id": "kattegat"
+      }
+    ]
+  },
+  {
+    "id": "oresund-view",
+    "file": "straits/oresund.jpg",
+    "license": "CC BY-SA 4.0",
+    "credit": "Hagai Agmon-Snir حچاي اچمون-سنير חגי אגמון-שניר",
+    "alt": "Kronborg Castle overlooking the Öresund",
+    "role": "representative",
+    "sourceId": "commons-oresund",
+    "depicts": [
+      {
+        "type": "strait",
+        "id": "oresund"
+      }
+    ]
+  },
+  {
+    "id": "mozambique-view",
+    "file": "straits/mozambique.jpg",
+    "license": "Public domain",
+    "credit": "Jacques Descloitres, MODIS Land Rapid Response Team, NASA/GSFC",
+    "alt": "View of the Mozambique Channel",
+    "role": "representative",
+    "sourceId": "commons-mozambique",
+    "depicts": [
+      {
+        "type": "strait",
+        "id": "mozambique"
+      }
+    ]
+  },
+  {
+    "id": "palk-view",
+    "file": "straits/palk.jpg",
+    "license": "Public domain",
+    "credit": "National Aeronautics & Space Administration",
+    "alt": "Adam's Bridge and the Palk Strait from orbit",
+    "role": "representative",
+    "sourceId": "commons-palk",
+    "depicts": [
+      {
+        "type": "strait",
+        "id": "palk"
+      }
+    ]
+  },
+  {
+    "id": "malacca-view",
+    "file": "straits/malacca.jpg",
+    "license": "CC BY 2.0",
+    "credit": "dronepicr",
+    "alt": "View of the Strait of Malacca",
+    "role": "representative",
+    "sourceId": "commons-malacca",
+    "depicts": [
+      {
+        "type": "strait",
+        "id": "malacca"
+      }
+    ]
+  },
+  {
+    "id": "sunda-view",
+    "file": "straits/sunda.jpg",
+    "license": "CC BY-SA 3.0",
+    "credit": "Hullie",
+    "alt": "View of the Sunda Strait",
+    "role": "representative",
+    "sourceId": "commons-sunda",
+    "depicts": [
+      {
+        "type": "strait",
+        "id": "sunda"
+      }
+    ]
+  },
+  {
+    "id": "taiwan-view",
+    "file": "straits/taiwan.jpg",
+    "license": "CC BY-SA 3.0",
+    "credit": "BreakdownDiode",
+    "alt": "Islands of the Taiwan Strait near Xiamen and Kinmen",
+    "role": "representative",
+    "sourceId": "commons-taiwan",
+    "depicts": [
+      {
+        "type": "strait",
+        "id": "taiwan"
+      }
+    ]
+  },
+  {
+    "id": "tsugaru-view",
+    "file": "straits/tsugaru.jpg",
+    "license": "CC BY 2.0",
+    "credit": "Raita Futo from Tokyo, Japan",
+    "alt": "View of the Tsugaru Strait",
+    "role": "representative",
+    "sourceId": "commons-tsugaru",
+    "depicts": [
+      {
+        "type": "strait",
+        "id": "tsugaru"
+      }
+    ]
+  },
+  {
+    "id": "torres-view",
+    "file": "straits/torres.jpg",
+    "license": "CC BY-SA 3.0",
+    "credit": "PeterTHarris",
+    "alt": "View of the Torres Strait",
+    "role": "representative",
+    "sourceId": "commons-torres",
+    "depicts": [
+      {
+        "type": "strait",
+        "id": "torres"
+      }
+    ]
+  },
+  {
+    "id": "cook-view",
+    "file": "straits/cook.jpg",
+    "license": "CC BY 2.0",
+    "credit": "Phillip Capper from Wellington, New Zealand",
+    "alt": "View of the Cook Strait",
+    "role": "representative",
+    "sourceId": "commons-cook",
+    "depicts": [
+      {
+        "type": "strait",
+        "id": "cook"
+      }
+    ]
+  },
+  {
+    "id": "northumberland-view",
+    "file": "straits/northumberland.jpg",
+    "license": "CC BY-SA 4.0",
+    "credit": "Qyd",
+    "alt": "The ferry MV Holiday Island on the Northumberland Strait",
+    "role": "representative",
+    "sourceId": "commons-northumberland",
+    "depicts": [
+      {
+        "type": "strait",
+        "id": "northumberland"
+      }
+    ]
+  },
+  {
+    "id": "hudson-view",
+    "file": "straits/hudson.jpg",
+    "license": "CC BY 2.0",
+    "credit": "Doc Searls from Santa Barbara, USA",
+    "alt": "Salisbury Island in the Hudson Strait",
+    "role": "representative",
+    "sourceId": "commons-hudson",
+    "depicts": [
+      {
+        "type": "strait",
+        "id": "hudson"
+      }
+    ]
+  },
+  {
+    "id": "davis-view",
+    "file": "straits/davis.jpg",
+    "license": "CC BY 2.0",
+    "credit": "David Stanley",
+    "alt": "Icebergs in the Davis Strait",
+    "role": "representative",
+    "sourceId": "commons-davis",
+    "depicts": [
+      {
+        "type": "strait",
+        "id": "davis"
+      }
+    ]
+  },
+  {
+    "id": "denmark-view",
+    "file": "straits/denmark.jpg",
+    "license": "CC BY-SA 4.0",
+    "credit": "Akigka",
+    "alt": "An iceberg in the mist of the Denmark Strait",
+    "role": "representative",
+    "sourceId": "commons-denmark",
+    "depicts": [
+      {
+        "type": "strait",
+        "id": "denmark"
+      }
+    ]
+  },
+  {
+    "id": "vilkitsky-view",
+    "file": "straits/vilkitsky.jpg",
+    "license": "Public domain",
+    "credit": "Jacques Descloitres, MODIS Land Rapid Response Team, NASA/GSFC",
+    "alt": "Severnaya Zemlya flanking the Vilkitsky Strait",
+    "role": "representative",
+    "sourceId": "commons-vilkitsky",
+    "depicts": [
+      {
+        "type": "strait",
+        "id": "vilkitsky"
+      }
+    ]
+  },
+  {
+    "id": "foveaux-strait-view",
+    "file": "straits/foveaux-strait.jpg",
+    "license": "CC BY-SA 4.0",
+    "credit": "Du Hugin Skulblaka",
+    "alt": "View of the Foveaux Strait",
+    "role": "representative",
+    "sourceId": "commons-foveaux-strait",
+    "depicts": [
+      {
+        "type": "strait",
+        "id": "foveaux-strait"
+      }
+    ]
+  },
+  {
+    "id": "kara-strait-view",
+    "file": "straits/kara-strait.jpg",
+    "license": "Public domain",
+    "credit": "NASA",
+    "alt": "View of the Kara Strait",
+    "role": "representative",
+    "sourceId": "commons-kara-strait",
+    "depicts": [
+      {
+        "type": "strait",
+        "id": "kara-strait"
+      }
+    ]
+  },
+  {
+    "id": "san-bernardino-strait-view",
+    "file": "straits/san-bernardino-strait.jpg",
+    "license": "Public domain",
+    "credit": "U.S. Navy photo by Mass Communication Specialist 1st Class Michael D. Kennedy",
+    "alt": "View of the San Bernardino Strait",
+    "role": "representative",
+    "sourceId": "commons-san-bernardino-strait",
+    "depicts": [
+      {
+        "type": "strait",
+        "id": "san-bernardino-strait"
+      }
+    ]
+  },
+  {
+    "id": "canigao-channel-view",
+    "file": "straits/canigao-channel.png",
+    "license": "CC BY-SA 4.0",
+    "credit": "LokiMikael1",
+    "alt": "View of the Canigao Channel",
+    "role": "representative",
+    "sourceId": "commons-canigao-channel",
+    "depicts": [
+      {
+        "type": "strait",
+        "id": "canigao-channel"
+      }
+    ]
   }
 ]
