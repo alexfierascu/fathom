@@ -2249,3 +2249,83 @@ a.journey-btn:hover {
   margin-top: 14px;
   text-align: center;
 }
+
+/* ---------- Redesign: strait hero imagery ---------- */
+
+.strait-hero--image {
+  position: relative;
+  overflow: hidden;
+  padding: clamp(48px, 8vw, 96px) 32px 28px;
+}
+.strait-hero-media {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  opacity: 0.42;
+}
+.strait-hero--image::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    transparent,
+    color-mix(in srgb, var(--bg) 78%, transparent) 82%
+  );
+}
+.strait-hero-content {
+  position: relative;
+  z-index: 1;
+}
+
+/* ---------- Redesign: rhythm, type, and motion ---------- */
+
+body {
+  line-height: 1.65;
+}
+section + .detail-section,
+.detail-section + .detail-section,
+div + .detail-section {
+  margin-top: 56px;
+}
+.detail-section > .eyebrow {
+  margin-bottom: 18px;
+}
+.detail-title {
+  letter-spacing: -0.01em;
+}
+.grid {
+  gap: 18px;
+}
+.card {
+  padding: 22px;
+}
+footer {
+  margin-top: 72px;
+  padding: 28px 0 8px;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .detail-section,
+  .home-hero,
+  .mode-cards,
+  .cinematic,
+  .one-fact,
+  .journey-mode {
+    animation: fade-up 0.5s ease both;
+  }
+  .journey-stop-panel {
+    animation: fade-up 0.35s ease both;
+  }
+}
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}

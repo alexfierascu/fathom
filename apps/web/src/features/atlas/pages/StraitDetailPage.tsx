@@ -1,9 +1,11 @@
 import { Link, useOutletContext, useParams } from 'react-router';
 
-import { getRelated, getStraitEntity } from '@fathom/data';
+import { getRelated, getStraitEntity, loadImagesFor } from '@fathom/data';
+import { journeyVisits, loadJourneys } from '@fathom/discovery';
 
 import { ContinueExploring } from '../../explore/ContinueExploring';
 import { EntityGallery } from '../../media/MediaGallery';
+import { mediaUrl } from '../../media/media';
 import type { LayoutContext } from '../../../app/RootLayout';
 import { Breadcrumbs } from '../components/Breadcrumbs';
 import { ConnectsLine } from '../components/ConnectsLine';
@@ -17,6 +19,12 @@ import { formatDateValue, formatLat, formatLon } from '../lib/format';
 import { findStraitBySlug, getAdjacentStraits } from '../lib/navigation';
 import { breadcrumbsJsonLd, buildStraitSeo, placeJsonLd } from '../lib/seo';
 
+/**
+ * The strait article, ordered as a story: the hero (with imagery when
+ * the strait has any), the chart, why it matters, the facts, its
+ * history, its role in navigation, and then onward — the gallery,
+ * exploration, and journeys that pass this way.
+ */
 export function StraitDetailPage() {
   const { slug } = useParams();
   const { tileStyle } = useOutletContext<LayoutContext>();
@@ -46,6 +54,10 @@ export function StraitDetailPage() {
       (Number.parseInt(a.data.date.value, 10) || 0) - (Number.parseInt(b.data.date.value, 10) || 0),
   );
   const sources = getRelated(entity, 'sources');
+  const heroImage = loadImagesFor({ type: 'strait', id: strait.id })[0];
+  const journeys = loadJourneys().filter((journey) =>
+    journeyVisits(journey, `strait:${strait.id}`),
+  );
   const seo = buildStraitSeo(strait);
 
   const quickFacts = [
@@ -56,6 +68,9 @@ export function StraitDetailPage() {
     ...(crossings.length > 0 ? [{ label: 'Crossings', value: String(crossings.length) }] : []),
     ...(routes.length > 0 ? [{ label: 'Routes through', value: String(routes.length) }] : []),
   ];
+
+  const hasNavigation =
+    routes.length > 0 || crossings.length > 0 || ports.length > 0 || islands.length > 0;
 
   return (
     <>
@@ -88,21 +103,35 @@ export function StraitDetailPage() {
       />
 
       <article className="detail strait-article">
-        <header className="strait-hero">
-          <div className="eyebrow">{regionName}</div>
-          <h2 className="detail-title detail-title--hero">{strait.name}</h2>
-          <EntityPills entities={countries} />
-          <ConnectsLine strait={strait} />
-          {tags.length > 0 && (
-            <div className="pills pills--tags">
-              {tags.map((tag) => (
-                <Link key={tag.id} className="pill pill--tag" to={`/tags/${tag.id}`}>
-                  {tag.name}
-                </Link>
-              ))}
-            </div>
+        <header className={heroImage ? 'strait-hero strait-hero--image' : 'strait-hero'}>
+          {heroImage && (
+            <div
+              className="strait-hero-media"
+              style={{ backgroundImage: `url(${mediaUrl(heroImage.file)})` }}
+            />
           )}
+          <div className="strait-hero-content">
+            <div className="eyebrow">{regionName}</div>
+            <h2 className="detail-title detail-title--hero">{strait.name}</h2>
+            <EntityPills entities={countries} />
+            <ConnectsLine strait={strait} />
+            {tags.length > 0 && (
+              <div className="pills pills--tags">
+                {tags.map((tag) => (
+                  <Link key={tag.id} className="pill pill--tag" to={`/tags/${tag.id}`}>
+                    {tag.name}
+                  </Link>
+                ))}
+              </div>
+            )}
+          </div>
         </header>
+
+        <StraitMap strait={strait} tileStyle={tileStyle} />
+
+        <Section label="Why it matters">
+          <p className="note note--lede">{strait.note}</p>
+        </Section>
 
         <Section label="Quick facts">
           <div className="facts">
@@ -114,43 +143,6 @@ export function StraitDetailPage() {
             ))}
           </div>
         </Section>
-
-        <Section label="Overview">
-          <p className="note note--lede">{strait.note}</p>
-        </Section>
-
-        <StraitMap strait={strait} tileStyle={tileStyle} />
-
-        {(islands.length > 0 || ports.length > 0 || crossings.length > 0) && (
-          <Section label="Geography">
-            <div className="geo-groups">
-              {islands.length > 0 && (
-                <div>
-                  <div className="geo-label">Islands</div>
-                  <EntityPills entities={islands} />
-                </div>
-              )}
-              {ports.length > 0 && (
-                <div>
-                  <div className="geo-label">Ports</div>
-                  <EntityPills entities={ports} />
-                </div>
-              )}
-              {crossings.length > 0 && (
-                <div>
-                  <div className="geo-label">Crossings</div>
-                  <EntityPills entities={crossings} />
-                </div>
-              )}
-            </div>
-          </Section>
-        )}
-
-        {routes.length > 0 && (
-          <Section label="Routes through">
-            <EntityPills entities={routes} />
-          </Section>
-        )}
 
         {events.length > 0 && (
           <Section label="History">
@@ -171,17 +163,65 @@ export function StraitDetailPage() {
           </Section>
         )}
 
+        {hasNavigation && (
+          <Section label="Its place in navigation">
+            <div className="geo-groups">
+              {routes.length > 0 && (
+                <div>
+                  <div className="geo-label">Shipping routes through</div>
+                  <EntityPills entities={routes} />
+                </div>
+              )}
+              {crossings.length > 0 && (
+                <div>
+                  <div className="geo-label">Crossings over and under</div>
+                  <EntityPills entities={crossings} />
+                </div>
+              )}
+              {ports.length > 0 && (
+                <div>
+                  <div className="geo-label">Ports on its shores</div>
+                  <EntityPills entities={ports} />
+                </div>
+              )}
+              {islands.length > 0 && (
+                <div>
+                  <div className="geo-label">Islands in the narrows</div>
+                  <EntityPills entities={islands} />
+                </div>
+              )}
+            </div>
+          </Section>
+        )}
+
         <EntityGallery entity={{ type: 'strait', id: strait.id }} />
-
-        <SourcesList sources={sources} />
-
-        <StraitPager previous={previous} next={next} />
 
         <ContinueExploring entityId={`strait:${strait.id}`} entityName={strait.name}>
           <Link className="pill pill--action" to={`/compare/${strait.id}`}>
             Compare this strait ⇄
           </Link>
         </ContinueExploring>
+
+        {journeys.length > 0 && (
+          <Section label="Journeys that pass this way">
+            <div className="grid">
+              {journeys.map((journey) => (
+                <Link key={journey.id} className="card" to={`/journeys/${journey.id}`}>
+                  <div className="eyebrow">
+                    {String(journey.waypoints.length)} stops · ~{String(journey.estimatedMinutes)}{' '}
+                    min
+                  </div>
+                  <h3>{journey.title}</h3>
+                  <div className="note">{journey.subtitle}</div>
+                </Link>
+              ))}
+            </div>
+          </Section>
+        )}
+
+        <SourcesList sources={sources} />
+
+        <StraitPager previous={previous} next={next} />
       </article>
     </>
   );

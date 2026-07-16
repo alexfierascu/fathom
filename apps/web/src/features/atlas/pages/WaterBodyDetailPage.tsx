@@ -3,6 +3,7 @@ import { useMemo } from 'react';
 import { Link, useOutletContext, useParams } from 'react-router';
 
 import { entityId, getEntity, getRelated } from '@fathom/data';
+import { journeyVisits, loadJourneys } from '@fathom/discovery';
 
 import { ContinueExploring } from '../../explore/ContinueExploring';
 import { EntityGallery } from '../../media/MediaGallery';
@@ -76,6 +77,9 @@ export function WaterBodyDetailPage() {
   crumbs.push({ label: waterBody.name });
 
   const seo = buildWaterBodySeo(waterBody);
+  const journeys = loadJourneys().filter((journey) =>
+    journeyVisits(journey, `water-body:${waterBody.id}`),
+  );
 
   return (
     <>
@@ -157,6 +161,23 @@ export function WaterBodyDetailPage() {
         <StraitsMap straits={straitDocs} tileStyle={tileStyle} />
 
         <EntityGallery entity={{ type: 'water-body', id: waterBody.id }} />
+
+        {journeys.length > 0 && (
+          <Section label="Journeys through these waters">
+            <div className="grid">
+              {journeys.map((journey) => (
+                <Link key={journey.id} className="card" to={`/journeys/${journey.id}`}>
+                  <div className="eyebrow">
+                    {String(journey.waypoints.length)} stops · ~{String(journey.estimatedMinutes)}{' '}
+                    min
+                  </div>
+                  <h3>{journey.title}</h3>
+                  <div className="note">{journey.subtitle}</div>
+                </Link>
+              ))}
+            </div>
+          </Section>
+        )}
 
         <SourcesList sources={sources} />
 
