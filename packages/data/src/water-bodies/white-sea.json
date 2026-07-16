@@ -1,0 +1,8 @@
+{
+  "id": "white-sea",
+  "name": "White Sea",
+  "type": "sea",
+  "summary": "The almost landlocked Russian sea south of the Barents Sea, iced over much of the year.",
+  "parentId": "arctic-ocean",
+  "sourceIds": ["iho-limits-of-oceans-and-seas"]
+}

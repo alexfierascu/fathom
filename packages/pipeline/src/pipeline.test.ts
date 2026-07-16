@@ -12,7 +12,7 @@ const tiran: ProviderRecord = {
   lon: 34.46,
   summary: 'The narrow passages between the Sinai and Arabian peninsulas.',
   countryNames: ['Egypt'],
-  connectsNames: ['Red Sea', 'Gulf of Aqaba'],
+  connectsNames: ['Red Sea', 'Gulf of Nowhere'],
   source: {
     id: 'fake-tiran',
     type: 'dataset',
@@ -61,7 +61,7 @@ describe('runPipeline', () => {
     expect(staged?.id).toBe('straits-of-tiran');
     expect(staged?.document.status).toBe('draft');
     expect(staged?.document.region).toBe('Middle East & Africa');
-    expect(staged?.document.connects).toBe('Red Sea ↔ Gulf of Aqaba');
+    expect(staged?.document.connects).toBe('Red Sea ↔ Gulf of Nowhere');
 
     // Cited sources ride along for apply.
     expect(result.stagedSources.map((s) => s.id)).toContain('fake-tiran');
@@ -70,11 +70,11 @@ describe('runPipeline', () => {
     const search = result.searchDocuments as { entityId: string }[];
     expect(search.some((doc) => doc.entityId === 'strait:straits-of-tiran')).toBe(true);
 
-    // Gulf of Aqaba is not charted: surfaced as a warning, and the staged
-    // strait itself is valid (connects is prose, not a reference).
+    // The fictional gulf is not charted: surfaced as a warning, and the
+    // staged strait itself is valid (connects is prose, not a reference).
     expect(
       result.report.issues.some(
-        (issue) => issue.severity === 'warning' && issue.message.includes('Gulf of Aqaba'),
+        (issue) => issue.severity === 'warning' && issue.message.includes('Gulf of Nowhere'),
       ),
     ).toBe(true);
   });

@@ -1,0 +1,8 @@
+{
+  "id": "tokyo-bay",
+  "name": "Tokyo Bay",
+  "type": "bay",
+  "summary": "The bay serving Tokyo and Yokohama, among the busiest harbor waters in the world.",
+  "parentId": "pacific-ocean",
+  "sourceIds": ["iho-limits-of-oceans-and-seas"]
+}

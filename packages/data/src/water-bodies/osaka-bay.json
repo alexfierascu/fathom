@@ -1,0 +1,8 @@
+{
+  "id": "osaka-bay",
+  "name": "Osaka Bay",
+  "type": "bay",
+  "summary": "The eastern arm of the Seto Inland Sea, fronting Osaka and Kobe.",
+  "parentId": "seto-inland-sea",
+  "sourceIds": ["iho-limits-of-oceans-and-seas"]
+}

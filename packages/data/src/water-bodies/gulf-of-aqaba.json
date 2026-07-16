@@ -1,0 +1,8 @@
+{
+  "id": "gulf-of-aqaba",
+  "name": "Gulf of Aqaba",
+  "type": "gulf",
+  "summary": "The Red Sea's eastern arm, reached through the Straits of Tiran.",
+  "parentId": "red-sea",
+  "sourceIds": ["iho-limits-of-oceans-and-seas"]
+}

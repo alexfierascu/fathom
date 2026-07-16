@@ -45,15 +45,15 @@ describe('resolveRelationships', () => {
           lat: 28.0,
           lon: 34.46,
           countryNames: ['Egypt'],
-          connectsNames: ['Red Sea', 'Gulf of Aqaba'],
+          connectsNames: ['Red Sea', 'Gulf of Nowhere'],
         }),
       ],
       atlas,
     );
-    expect(resolved[0]?.connects).toBe('Red Sea ↔ Gulf of Aqaba');
+    expect(resolved[0]?.connects).toBe('Red Sea ↔ Gulf of Nowhere');
     expect(resolved[0]?.region).toBe('Middle East & Africa');
     expect(issues.some((i) => i.message.includes('review'))).toBe(true);
-    expect(issues.some((i) => i.message.includes('Gulf of Aqaba'))).toBe(true);
+    expect(issues.some((i) => i.message.includes('Gulf of Nowhere'))).toBe(true);
   });
 
   it('does not warn about charted countries and waters', () => {

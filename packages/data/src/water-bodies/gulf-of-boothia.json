@@ -1,0 +1,8 @@
+{
+  "id": "gulf-of-boothia",
+  "name": "Gulf of Boothia",
+  "type": "gulf",
+  "summary": "The Arctic gulf between the Boothia Peninsula and Baffin Island.",
+  "parentId": "arctic-ocean",
+  "sourceIds": ["iho-limits-of-oceans-and-seas"]
+}

@@ -2,8 +2,7 @@
   "id": "visayan-sea",
   "name": "Visayan Sea",
   "type": "sea",
-  "summary": "sea in the Philippines",
+  "summary": "The shallow sea at the heart of the Philippine Visayas.",
   "parentId": "pacific-ocean",
-  "sourceIds": ["wikidata-q474708"],
-  "status": "draft"
+  "sourceIds": ["iho-limits-of-oceans-and-seas"]
 }

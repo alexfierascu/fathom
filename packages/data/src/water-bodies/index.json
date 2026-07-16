@@ -893,5 +893,75 @@
     "id": "costa-artabra",
     "name": "Costa Ártabra",
     "type": "gulf"
+  },
+  {
+    "id": "barents-sea",
+    "name": "Barents Sea",
+    "type": "sea"
+  },
+  {
+    "id": "white-sea",
+    "name": "White Sea",
+    "type": "sea"
+  },
+  {
+    "id": "seto-inland-sea",
+    "name": "Seto Inland Sea",
+    "type": "sea"
+  },
+  {
+    "id": "tokyo-bay",
+    "name": "Tokyo Bay",
+    "type": "bay"
+  },
+  {
+    "id": "osaka-bay",
+    "name": "Osaka Bay",
+    "type": "bay"
+  },
+  {
+    "id": "ise-bay",
+    "name": "Ise Bay",
+    "type": "bay"
+  },
+  {
+    "id": "levantine-sea",
+    "name": "Levantine Sea",
+    "type": "sea"
+  },
+  {
+    "id": "gulf-of-aqaba",
+    "name": "Gulf of Aqaba",
+    "type": "gulf"
+  },
+  {
+    "id": "bohol-sea",
+    "name": "Bohol Sea",
+    "type": "sea"
+  },
+  {
+    "id": "camotes-sea",
+    "name": "Camotes Sea",
+    "type": "sea"
+  },
+  {
+    "id": "samar-sea",
+    "name": "Samar Sea",
+    "type": "sea"
+  },
+  {
+    "id": "gulf-of-boothia",
+    "name": "Gulf of Boothia",
+    "type": "gulf"
+  },
+  {
+    "id": "foxe-basin",
+    "name": "Foxe Basin",
+    "type": "sea"
+  },
+  {
+    "id": "foxe-channel",
+    "name": "Foxe Channel",
+    "type": "sea"
   }
 ]

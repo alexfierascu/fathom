@@ -19,13 +19,16 @@ import rawBaliSea from './bali-sea.json';
 import rawBalticApproaches from './baltic-approaches.json';
 import rawBalticSea from './baltic-sea.json';
 import rawBandaSea from './banda-sea.json';
+import rawBarentsSea from './barents-sea.json';
 import rawBayOfBengal from './bay-of-bengal.json';
 import rawBeaufortSea from './beaufort-sea.json';
 import rawBeringSea from './bering-sea.json';
 import rawBismarckSea from './bismarck-sea.json';
 import rawBlackSea from './black-sea.json';
+import rawBoholSea from './bohol-sea.json';
 import rawBothnianBay from './bothnian-bay.json';
 import rawCambridgeGulf from './cambridge-gulf.json';
+import rawCamotesSea from './camotes-sea.json';
 import rawCaspianSea from './caspian-sea.json';
 import rawCatalanSea from './catalan-sea.json';
 import rawCelebesSea from './celebes-sea.json';
@@ -47,14 +50,18 @@ import rawEnglishChannel from './english-channel.json';
 import rawErythraeanSea from './erythraean-sea.json';
 import rawFijiSea from './fiji-sea.json';
 import rawFloresSea from './flores-sea.json';
+import rawFoxeBasin from './foxe-basin.json';
+import rawFoxeChannel from './foxe-channel.json';
 import rawGolfoDiGioia from './golfo-di-gioia.json';
 import rawGolfoDiSantEufemia from './golfo-di-sant-eufemia.json';
 import rawGrauSea from './grau-sea.json';
 import rawGreenlandSea from './greenland-sea.json';
 import rawGulfOfAden from './gulf-of-aden.json';
 import rawGulfOfAlaska from './gulf-of-alaska.json';
+import rawGulfOfAqaba from './gulf-of-aqaba.json';
 import rawGulfOfArgostoli from './gulf-of-argostoli.json';
 import rawGulfOfBahrain from './gulf-of-bahrain.json';
+import rawGulfOfBoothia from './gulf-of-boothia.json';
 import rawGulfOfBothnia from './gulf-of-bothnia.json';
 import rawGulfOfBoughrara from './gulf-of-boughrara.json';
 import rawGulfOfCandarl from './gulf-of-candarl.json';
@@ -95,6 +102,7 @@ import rawIcelandSea from './iceland-sea.json';
 import rawIndianOcean from './indian-ocean.json';
 import rawIonianSea from './ionian-sea.json';
 import rawIrishSea from './irish-sea.json';
+import rawIseBay from './ise-bay.json';
 import rawJavaSea from './java-sea.json';
 import rawJosephBonaparteGulf from './joseph-bonaparte-gulf.json';
 import rawKamchatkaBay from './kamchatka-bay.json';
@@ -111,6 +119,7 @@ import rawLaccadiveSea from './laccadive-sea.json';
 import rawLaconianGulf from './laconian-gulf.json';
 import rawLaptevSea from './laptev-sea.json';
 import rawLazarevSea from './lazarev-sea.json';
+import rawLevantineSea from './levantine-sea.json';
 import rawLeyteGulf from './leyte-gulf.json';
 import rawLincolnSea from './lincoln-sea.json';
 import rawLingayenGulf from './lingayen-gulf.json';
@@ -129,6 +138,7 @@ import rawMyrtoanSea from './myrtoan-sea.json';
 import rawNatunaSea from './natuna-sea.json';
 import rawNorthNatunaSea from './north-natuna-sea.json';
 import rawNorthSea from './north-sea.json';
+import rawOsakaBay from './osaka-bay.json';
 import rawPacificOcean from './pacific-ocean.json';
 import rawPagaseticGulf from './pagasetic-gulf.json';
 import rawPalkBay from './palk-bay.json';
@@ -140,6 +150,7 @@ import rawPrinceGustavAdolfSea from './prince-gustav-adolf-sea.json';
 import rawRedSea from './red-sea.json';
 import rawRossSea from './ross-sea.json';
 import rawSalishSea from './salish-sea.json';
+import rawSamarSea from './samar-sea.json';
 import rawSaronicGulf from './saronic-gulf.json';
 import rawSavuSea from './savu-sea.json';
 import rawSeaOfAzov from './sea-of-azov.json';
@@ -150,6 +161,7 @@ import rawSeaOfOkhotsk from './sea-of-okhotsk.json';
 import rawSeaOfSicily from './sea-of-sicily.json';
 import rawSeaOfZanj from './sea-of-zanj.json';
 import rawSeramSea from './seram-sea.json';
+import rawSetoInlandSea from './seto-inland-sea.json';
 import rawShantarSea from './shantar-sea.json';
 import rawSimsaBay from './simsa-bay.json';
 import rawSingiticGulf from './singitic-gulf.json';
@@ -168,6 +180,7 @@ import rawTemryukBay from './temryuk-bay.json';
 import rawThracianSea from './thracian-sea.json';
 import rawTimorGap from './timor-gap.json';
 import rawTimorSea from './timor-sea.json';
+import rawTokyoBay from './tokyo-bay.json';
 import rawToronaicGulf from './toronaic-gulf.json';
 import rawTugurBay from './tugur-bay.json';
 import rawTurkmenbasyGulf from './turkmenbasy-gulf.json';
@@ -181,6 +194,7 @@ import rawVostokBay from './vostok-bay.json';
 import rawVyborgBay from './vyborg-bay.json';
 import rawWandelSea from './wandel-sea.json';
 import rawWestPhilippineSea from './west-philippine-sea.json';
+import rawWhiteSea from './white-sea.json';
 import rawWorldOcean from './world-ocean.json';
 
 export const RAW_WATER_BODY_DOCUMENTS: readonly unknown[] = [
@@ -200,13 +214,16 @@ export const RAW_WATER_BODY_DOCUMENTS: readonly unknown[] = [
   rawBalticApproaches,
   rawBalticSea,
   rawBandaSea,
+  rawBarentsSea,
   rawBayOfBengal,
   rawBeaufortSea,
   rawBeringSea,
   rawBismarckSea,
   rawBlackSea,
+  rawBoholSea,
   rawBothnianBay,
   rawCambridgeGulf,
+  rawCamotesSea,
   rawCaspianSea,
   rawCatalanSea,
   rawCelebesSea,
@@ -228,14 +245,18 @@ export const RAW_WATER_BODY_DOCUMENTS: readonly unknown[] = [
   rawErythraeanSea,
   rawFijiSea,
   rawFloresSea,
+  rawFoxeBasin,
+  rawFoxeChannel,
   rawGolfoDiGioia,
   rawGolfoDiSantEufemia,
   rawGrauSea,
   rawGreenlandSea,
   rawGulfOfAden,
   rawGulfOfAlaska,
+  rawGulfOfAqaba,
   rawGulfOfArgostoli,
   rawGulfOfBahrain,
+  rawGulfOfBoothia,
   rawGulfOfBothnia,
   rawGulfOfBoughrara,
   rawGulfOfCandarl,
@@ -276,6 +297,7 @@ export const RAW_WATER_BODY_DOCUMENTS: readonly unknown[] = [
   rawIndianOcean,
   rawIonianSea,
   rawIrishSea,
+  rawIseBay,
   rawJavaSea,
   rawJosephBonaparteGulf,
   rawKamchatkaBay,
@@ -292,6 +314,7 @@ export const RAW_WATER_BODY_DOCUMENTS: readonly unknown[] = [
   rawLaconianGulf,
   rawLaptevSea,
   rawLazarevSea,
+  rawLevantineSea,
   rawLeyteGulf,
   rawLincolnSea,
   rawLingayenGulf,
@@ -310,6 +333,7 @@ export const RAW_WATER_BODY_DOCUMENTS: readonly unknown[] = [
   rawNatunaSea,
   rawNorthNatunaSea,
   rawNorthSea,
+  rawOsakaBay,
   rawPacificOcean,
   rawPagaseticGulf,
   rawPalkBay,
@@ -321,6 +345,7 @@ export const RAW_WATER_BODY_DOCUMENTS: readonly unknown[] = [
   rawRedSea,
   rawRossSea,
   rawSalishSea,
+  rawSamarSea,
   rawSaronicGulf,
   rawSavuSea,
   rawSeaOfAzov,
@@ -331,6 +356,7 @@ export const RAW_WATER_BODY_DOCUMENTS: readonly unknown[] = [
   rawSeaOfSicily,
   rawSeaOfZanj,
   rawSeramSea,
+  rawSetoInlandSea,
   rawShantarSea,
   rawSimsaBay,
   rawSingiticGulf,
@@ -349,6 +375,7 @@ export const RAW_WATER_BODY_DOCUMENTS: readonly unknown[] = [
   rawThracianSea,
   rawTimorGap,
   rawTimorSea,
+  rawTokyoBay,
   rawToronaicGulf,
   rawTugurBay,
   rawTurkmenbasyGulf,
@@ -362,5 +389,6 @@ export const RAW_WATER_BODY_DOCUMENTS: readonly unknown[] = [
   rawVyborgBay,
   rawWandelSea,
   rawWestPhilippineSea,
+  rawWhiteSea,
   rawWorldOcean,
 ];

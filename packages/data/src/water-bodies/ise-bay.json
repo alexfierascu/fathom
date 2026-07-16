@@ -1,0 +1,8 @@
+{
+  "id": "ise-bay",
+  "name": "Ise Bay",
+  "type": "bay",
+  "summary": "The bay serving Nagoya on Honshu's Pacific coast.",
+  "parentId": "pacific-ocean",
+  "sourceIds": ["iho-limits-of-oceans-and-seas"]
+}

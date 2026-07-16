@@ -1,0 +1,8 @@
+{
+  "id": "samar-sea",
+  "name": "Samar Sea",
+  "type": "sea",
+  "summary": "The sea between Samar and the Bicol Peninsula in the Philippines.",
+  "parentId": "pacific-ocean",
+  "sourceIds": ["iho-limits-of-oceans-and-seas"]
+}

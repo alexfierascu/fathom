@@ -1,0 +1,8 @@
+{
+  "id": "bohol-sea",
+  "name": "Bohol Sea",
+  "type": "sea",
+  "summary": "The sea between the Visayas and Mindanao in the southern Philippines.",
+  "parentId": "pacific-ocean",
+  "sourceIds": ["iho-limits-of-oceans-and-seas"]
+}

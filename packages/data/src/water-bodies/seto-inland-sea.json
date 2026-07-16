@@ -1,0 +1,8 @@
+{
+  "id": "seto-inland-sea",
+  "name": "Seto Inland Sea",
+  "type": "sea",
+  "summary": "The island-strewn sea between Honshu, Shikoku, and Kyushu, entered at the Kanmon narrows.",
+  "parentId": "pacific-ocean",
+  "sourceIds": ["iho-limits-of-oceans-and-seas"]
+}
