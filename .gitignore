@@ -8,6 +8,9 @@ dist/
 # Test coverage
 coverage/
 
+# Pipeline staging output
+packages/pipeline/out/
+
 # Logs
 logs/
 *.log
