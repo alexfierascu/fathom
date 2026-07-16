@@ -12,6 +12,7 @@ import {
   ExploreSections,
   InterestingFacts,
   RecentlyCharted,
+  StraitOfTheDay,
 } from '../components/HomeSections';
 import { SeoTags } from '../components/SeoTags';
 import { RegionChips } from '../components/RegionChips';
@@ -72,8 +73,6 @@ export function HomePage() {
         />
       </div>
 
-      <Chokepoints />
-
       <MapPanel
         straits={STRAITS}
         filteredIds={filteredIds}
@@ -81,6 +80,9 @@ export function HomePage() {
         visibleCount={filtering ? filtered.length : STRAITS.length}
         tileStyle={tileStyle}
       />
+
+      <StraitOfTheDay />
+      <Chokepoints />
 
       <ResultsGrid
         straits={filtered}

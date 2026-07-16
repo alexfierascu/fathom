@@ -1,6 +1,8 @@
 import type { ReactNode } from 'react';
 
-import { Link } from 'react-router';
+import { Link, useNavigate } from 'react-router';
+
+import { randomStrait } from '../lib/discovery';
 
 interface AtlasHeaderProps {
   straitCount: number;
@@ -9,6 +11,7 @@ interface AtlasHeaderProps {
 }
 
 export function AtlasHeader({ straitCount, children }: AtlasHeaderProps) {
+  const navigate = useNavigate();
   return (
     <header className="topbar">
       <div>
@@ -26,6 +29,16 @@ export function AtlasHeader({ straitCount, children }: AtlasHeaderProps) {
           <Link to="/#explore-regions">Regions</Link>
           <Link to="/#explore-seas">Seas</Link>
           <Link to="/#explore-countries">Countries</Link>
+          <button
+            type="button"
+            className="nav-random"
+            onClick={() => {
+              const strait = randomStrait();
+              if (strait) void navigate(`/straits/${strait.id}`);
+            }}
+          >
+            Random ⚄
+          </button>
         </nav>
       </div>
       <div className="header-controls">
