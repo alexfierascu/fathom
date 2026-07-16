@@ -1654,3 +1654,17 @@ a.fact:hover {
 .locale-btn:hover {
   color: var(--text);
 }
+
+/* ---------- Continue exploring ---------- */
+
+.explore-groups {
+  display: grid;
+  gap: 16px;
+}
+.pill--surprise {
+  border-color: color-mix(in srgb, var(--accent) 55%, transparent);
+  color: var(--accent);
+}
+.pill--surprise:hover {
+  background: color-mix(in srgb, var(--accent) 14%, var(--panel-2));
+}

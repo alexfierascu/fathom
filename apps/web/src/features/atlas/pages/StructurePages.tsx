@@ -11,6 +11,7 @@ import {
   type Strait,
 } from '@fathom/data';
 
+import { ContinueExploring } from '../../explore/ContinueExploring';
 import { EntityGallery } from '../../media/MediaGallery';
 import type { LayoutContext } from '../../../app/RootLayout';
 import { Breadcrumbs } from '../components/Breadcrumbs';
@@ -128,6 +129,8 @@ function StructurePage({
         <EntityGallery entity={{ type: node.type, id: node.id }} />
 
         <SourcesList sources={resolved.sources} />
+
+        <ContinueExploring entityId={node.entityId} entityName={node.name} />
       </article>
     </>
   );

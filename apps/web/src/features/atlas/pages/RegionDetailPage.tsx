@@ -5,6 +5,7 @@ import { Link, useOutletContext, useParams } from 'react-router';
 import { getEntity, getRelated } from '@fathom/data';
 
 import type { LayoutContext } from '../../../app/RootLayout';
+import { ContinueExploring } from '../../explore/ContinueExploring';
 import { Breadcrumbs } from '../components/Breadcrumbs';
 import { EntityPills } from '../components/EntityPills';
 import { Section } from '../components/Section';
@@ -112,6 +113,8 @@ export function RegionDetailPage() {
             </div>
           </Section>
         )}
+
+        <ContinueExploring entityId={node.entityId} entityName={node.name} />
       </article>
     </>
   );

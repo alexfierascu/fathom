@@ -1,7 +1,8 @@
 import { Link, useOutletContext, useParams } from 'react-router';
 
-import { getRelated, getStraitEntity, nearestStraits } from '@fathom/data';
+import { getRelated, getStraitEntity } from '@fathom/data';
 
+import { ContinueExploring } from '../../explore/ContinueExploring';
 import { EntityGallery } from '../../media/MediaGallery';
 import type { LayoutContext } from '../../../app/RootLayout';
 import { Breadcrumbs } from '../components/Breadcrumbs';
@@ -10,10 +11,8 @@ import { EntityPills } from '../components/EntityPills';
 import { SeoTags } from '../components/SeoTags';
 import { Section } from '../components/Section';
 import { SourcesList } from '../components/SourcesList';
-import { StraitCard } from '../components/StraitCard';
 import { StraitMap } from '../components/StraitMap';
 import { StraitPager } from '../components/StraitPager';
-import { relatedStraits } from '../lib/discovery';
 import { formatDateValue, formatLat, formatLon } from '../lib/format';
 import { findStraitBySlug, getAdjacentStraits } from '../lib/navigation';
 import { breadcrumbsJsonLd, buildStraitSeo, placeJsonLd } from '../lib/seo';
@@ -47,8 +46,6 @@ export function StraitDetailPage() {
       (Number.parseInt(a.data.date.value, 10) || 0) - (Number.parseInt(b.data.date.value, 10) || 0),
   );
   const sources = getRelated(entity, 'sources');
-  const nearby = nearestStraits(strait.lat, strait.lon, { limit: 5, excludeId: strait.id });
-  const continueExploring = relatedStraits(strait, 3);
   const seo = buildStraitSeo(strait);
 
   const quickFacts = [
@@ -174,36 +171,17 @@ export function StraitDetailPage() {
           </Section>
         )}
 
-        {nearby.length > 0 && (
-          <Section label="Nearby straits">
-            <div className="pills">
-              {nearby.map((neighbor) => (
-                <Link key={neighbor.id} className="pill" to={`/straits/${neighbor.id}`}>
-                  {neighbor.name}
-                </Link>
-              ))}
-              <Link className="pill pill--action" to={`/compare/${strait.id}`}>
-                Compare this strait ⇄
-              </Link>
-            </div>
-          </Section>
-        )}
-
         <EntityGallery entity={{ type: 'strait', id: strait.id }} />
 
         <SourcesList sources={sources} />
 
         <StraitPager previous={previous} next={next} />
 
-        {continueExploring.length > 0 && (
-          <Section label="Continue exploring">
-            <div className="grid">
-              {continueExploring.map((suggestion) => (
-                <StraitCard key={suggestion.id} strait={suggestion} />
-              ))}
-            </div>
-          </Section>
-        )}
+        <ContinueExploring entityId={`strait:${strait.id}`} entityName={strait.name}>
+          <Link className="pill pill--action" to={`/compare/${strait.id}`}>
+            Compare this strait ⇄
+          </Link>
+        </ContinueExploring>
       </article>
     </>
   );

@@ -4,6 +4,7 @@ import { Link, useOutletContext, useParams } from 'react-router';
 
 import { entityId, getEntity, getRelated } from '@fathom/data';
 
+import { ContinueExploring } from '../../explore/ContinueExploring';
 import { EntityGallery } from '../../media/MediaGallery';
 import type { LayoutContext } from '../../../app/RootLayout';
 import { Breadcrumbs, type BreadcrumbItem } from '../components/Breadcrumbs';
@@ -158,6 +159,8 @@ export function WaterBodyDetailPage() {
         <EntityGallery entity={{ type: 'water-body', id: waterBody.id }} />
 
         <SourcesList sources={sources} />
+
+        <ContinueExploring entityId={`water-body:${waterBody.id}`} entityName={waterBody.name} />
       </article>
     </>
   );

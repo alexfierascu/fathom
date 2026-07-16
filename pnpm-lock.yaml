@@ -41,6 +41,9 @@ importers:
       '@fathom/data':
         specifier: workspace:*
         version: link:../../packages/data
+      '@fathom/discovery':
+        specifier: workspace:*
+        version: link:../../packages/discovery
       '@fathom/search':
         specifier: workspace:*
         version: link:../../packages/search

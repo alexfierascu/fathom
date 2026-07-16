@@ -13,6 +13,7 @@
   },
   "dependencies": {
     "@fathom/data": "workspace:*",
+    "@fathom/discovery": "workspace:*",
     "@fathom/search": "workspace:*",
     "leaflet": "^1.9.4",
     "leaflet.markercluster": "^1.5.3",
