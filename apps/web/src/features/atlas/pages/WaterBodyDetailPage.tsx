@@ -7,6 +7,7 @@ import { journeyVisits, loadJourneys } from '@fathom/discovery';
 
 import { ContinueExploring } from '../../explore/ContinueExploring';
 import { EntityGallery } from '../../media/MediaGallery';
+import { FlowDiagram } from '../components/FlowDiagram';
 import type { LayoutContext } from '../../../app/RootLayout';
 import { Breadcrumbs, type BreadcrumbItem } from '../components/Breadcrumbs';
 import { EntityPills } from '../components/EntityPills';
@@ -109,6 +110,8 @@ export function WaterBodyDetailPage() {
             Part of <Link to={`/water-bodies/${parent.id}`}>{parent.name}</Link>
           </div>
         )}
+
+        <FlowDiagram waterBodyId={waterBody.id} name={waterBody.name} />
 
         <Section label="Straits linking these waters to the world">
           {straits.length > 0 ? (

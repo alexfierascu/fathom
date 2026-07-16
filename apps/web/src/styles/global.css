@@ -4,20 +4,24 @@
  */
 
 :root {
-  --bg: #0a1b2a;
-  --panel: #122a3d;
-  --panel-2: #16324a;
-  --text: #eaf2f5;
-  --text-muted: #7c93a3;
-  --accent: #ff6b35;
-  --accent-2: #2fb8a6;
-  --border: rgba(234, 242, 245, 0.08);
-  --accent-contrast: #0a1b2a;
-  --pin-ring: #eaf2f5;
+  /* The ocean system: gold is the way forward, teal is the fleet. */
+  --bg: #071e3d;
+  --panel: #0d2b4e;
+  --panel-2: #123560;
+  --text: #f5f1e8;
+  --text-muted: rgba(245, 241, 232, 0.6);
+  --accent: #e0654f;
+  --accent-2: #e7b75f;
+  --teal: #2faea0;
+  --border: rgba(245, 241, 232, 0.1);
+  --accent-contrast: #14243d;
+  --pin-ring: #041427;
   --radius: 8px;
+  --font-display: 'Iowan Old Style', 'Palatino Linotype', Palatino, 'Book Antiqua', Georgia, serif;
 }
 
 html[data-theme='parchment'] {
+  --teal: #2e6e62;
   --bg: #f1e9d2;
   --panel: #e8dfc0;
   --panel-2: #dfd4ae;
@@ -31,6 +35,7 @@ html[data-theme='parchment'] {
 }
 
 html[data-theme='midnight'] {
+  --teal: #00b5a1;
   --bg: #06090d;
   --panel: #10151c;
   --panel-2: #161d26;
@@ -44,6 +49,7 @@ html[data-theme='midnight'] {
 }
 
 html[data-theme='daylight'] {
+  --teal: #0e7c86;
   --bg: #f4f7f8;
   --panel: #ffffff;
   --panel-2: #edf2f4;
@@ -488,7 +494,7 @@ button:focus-visible,
   height: 11px;
   margin: -5.5px 0 0 -5.5px;
   border-radius: 50%;
-  background: var(--accent-2);
+  background: var(--teal);
   border: 2px solid var(--pin-ring);
   box-shadow: 0 1px 4px rgba(0, 0, 0, 0.4);
   transition:
@@ -2294,6 +2300,8 @@ div + .detail-section {
 }
 .detail-title {
   letter-spacing: -0.01em;
+  font-family: var(--font-display);
+  font-weight: 500;
 }
 .grid {
   gap: 18px;
@@ -2328,4 +2336,211 @@ footer {
     opacity: 1;
     transform: none;
   }
+}
+
+/* ---------- Ocean design system (design direction v1) ---------- */
+
+/* Editorial serif carries every display moment. */
+.home-hero-title,
+.cinematic-title,
+.mode-card h3,
+.card h3,
+.explore-tile h3,
+.journey-stop-title,
+.quiz-prompt,
+.timeline-body h3,
+.compare-column h3,
+.one-fact blockquote p,
+.fact-quote p {
+  font-family: var(--font-display);
+  font-weight: 500;
+}
+
+/* The way forward is a warm pill, not a mono stamp. */
+.hero-btn,
+.journey-btn {
+  font-family: 'Inter', sans-serif;
+  font-weight: 600;
+  font-size: 0.85rem;
+  letter-spacing: 0.01em;
+  text-transform: none;
+  border-radius: 999px;
+  padding: 12px 24px;
+}
+.journey-btn {
+  padding: 10px 20px;
+  font-size: 0.8rem;
+}
+
+/* Wordmark: FATHOM over a letterspaced ATLAS. */
+.wordmark small {
+  display: block;
+  font-family: 'IBM Plex Mono', monospace;
+  font-weight: 400;
+  font-size: 0.42rem;
+  letter-spacing: 0.42em;
+  color: var(--text-muted);
+  margin-top: 1px;
+}
+
+/* Tags and connection labels speak teal; gold stays reserved for action. */
+.pill--tag {
+  border-color: color-mix(in srgb, var(--teal) 45%, transparent);
+  color: var(--teal);
+}
+.rail-tag,
+.journey-stop-type {
+  color: var(--teal);
+}
+
+/* Quick facts as a chartroom line: hairlines, not boxes. */
+.facts--line {
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 24px;
+}
+.facts--line .fact {
+  background: transparent;
+  border: none;
+  border-left: 1px solid var(--border);
+  border-radius: 0;
+  padding: 2px 0 2px 16px;
+}
+.facts--line .fact-value {
+  font-family: var(--font-display);
+  font-weight: 500;
+}
+
+/* Section heading for the homepage's mode cards. */
+.mode-heading {
+  text-align: center;
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: 1.65rem;
+  margin: 0 0 28px;
+}
+.mode-card {
+  position: relative;
+  padding-bottom: 58px;
+}
+.mode-arrow {
+  position: absolute;
+  left: 30px;
+  bottom: 22px;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: color-mix(in srgb, var(--accent-2) 14%, transparent);
+  color: var(--accent-2);
+  display: grid;
+  place-items: center;
+  font-size: 15px;
+}
+
+/* Quiz options carry their letter. */
+.quiz-letter {
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  border: 1px solid var(--border);
+  display: inline-grid;
+  place-items: center;
+  font-family: 'IBM Plex Mono', monospace;
+  font-style: normal;
+  font-size: 0.7rem;
+  margin-right: 12px;
+  flex: none;
+  vertical-align: middle;
+}
+.quiz-option {
+  display: flex;
+  align-items: center;
+}
+.quiz-option--correct .quiz-letter {
+  background: var(--accent-2);
+  border-color: transparent;
+  color: var(--accent-contrast);
+  font-weight: 700;
+}
+.quiz-option--wrong .quiz-letter {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+/* The flow: how water moves through a sea. */
+.flow {
+  display: flex;
+  align-items: flex-start;
+  padding: 34px 26px 22px;
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: calc(var(--radius) * 2);
+  overflow-x: auto;
+}
+.flow-node {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  min-width: 108px;
+  text-decoration: none;
+  text-align: center;
+}
+.flow-glyph {
+  width: 16px;
+  height: 16px;
+  flex: none;
+}
+.flow-node--sea .flow-glyph {
+  border-radius: 50%;
+  border: 2px solid #1c6ea4;
+}
+.flow-node--strait .flow-glyph {
+  background: var(--accent-2);
+  transform: rotate(45deg);
+}
+.flow-node--here .flow-glyph {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: var(--teal);
+  box-shadow: 0 0 0 7px color-mix(in srgb, var(--teal) 20%, transparent);
+}
+.flow-name {
+  font-family: var(--font-display);
+  font-size: 0.95rem;
+  color: var(--text-muted);
+}
+.flow-node--strait .flow-name {
+  color: var(--accent-2);
+}
+.flow-node--here .flow-name {
+  color: var(--text);
+  font-weight: 600;
+}
+.flow-kind {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.53rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+a.flow-node:hover .flow-name {
+  color: var(--accent-2);
+}
+.flow-link {
+  flex: 1;
+  min-width: 28px;
+  height: 2px;
+  margin-top: 8px;
+  background: linear-gradient(
+    90deg,
+    color-mix(in srgb, var(--accent-2) 15%, transparent),
+    color-mix(in srgb, var(--accent-2) 60%, transparent),
+    color-mix(in srgb, var(--accent-2) 15%, transparent)
+  );
+}
+.flow-gates {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 12px;
 }

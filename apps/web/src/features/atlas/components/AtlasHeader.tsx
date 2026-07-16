@@ -21,7 +21,7 @@ export function AtlasHeader({ onSearchOpen, children }: AtlasHeaderProps) {
     <header className="topbar">
       <h1 className="wordmark">
         <Link to="/">
-          FATHOM<span>.</span>
+          FATHOM<small>ATLAS</small>
         </Link>
       </h1>
       <nav className="site-nav" aria-label="Primary">

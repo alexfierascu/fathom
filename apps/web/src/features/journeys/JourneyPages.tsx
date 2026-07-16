@@ -91,7 +91,7 @@ function QuizBlock({ quiz }: { quiz: JourneyQuiz }) {
       <div className="geo-label">Quick quiz</div>
       <p className="quiz-prompt">{quiz.prompt}</p>
       <div className="quiz-options">
-        {quiz.options.map((option) => {
+        {quiz.options.map((option, index) => {
           const state =
             picked === null
               ? ''
@@ -110,6 +110,7 @@ function QuizBlock({ quiz }: { quiz: JourneyQuiz }) {
                 setPicked(option);
               }}
             >
+              <i className="quiz-letter">{'ABCD'[index]}</i>
               {option}
             </button>
           );

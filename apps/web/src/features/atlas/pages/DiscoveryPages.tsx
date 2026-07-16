@@ -216,7 +216,7 @@ export function QuizPage() {
           <div className="quiz-panel">
             <p className="quiz-prompt">{question.prompt}</p>
             <div className="quiz-options">
-              {question.options.map((option) => {
+              {question.options.map((option, index) => {
                 const state =
                   picked === null
                     ? ''
@@ -236,6 +236,7 @@ export function QuizPage() {
                       if (option === question.answer) setScore((s) => s + 1);
                     }}
                   >
+                    <i className="quiz-letter">{'ABCD'[index]}</i>
                     {option}
                   </button>
                 );

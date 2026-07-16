@@ -134,7 +134,7 @@ export function StraitDetailPage() {
         </Section>
 
         <Section label="Quick facts">
-          <div className="facts">
+          <div className="facts facts--line">
             {quickFacts.map((fact) => (
               <div key={fact.label} className="fact">
                 <div className="fact-label">{fact.label}</div>

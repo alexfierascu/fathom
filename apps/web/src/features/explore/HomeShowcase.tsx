@@ -58,19 +58,31 @@ export function HomeHero() {
 
 export function ModeCards() {
   return (
-    <section className="mode-cards" aria-label="Ways to explore">
-      <Link className="mode-card" to="/explore">
-        <h3>Explore</h3>
-        <p>Browse the world's waterways.</p>
-      </Link>
-      <Link className="mode-card" to="/journeys">
-        <h3>Journeys</h3>
-        <p>Follow curated expeditions.</p>
-      </Link>
-      <Link className="mode-card" to="/learn">
-        <h3>Learn</h3>
-        <p>Collections, quizzes, and stories.</p>
-      </Link>
+    <section aria-label="Ways to explore" style={{ marginBottom: 56 }}>
+      <h3 className="mode-heading">Where will curiosity take you?</h3>
+      <div className="mode-cards" style={{ marginBottom: 0 }}>
+        <Link className="mode-card" to="/explore">
+          <h3>Explore</h3>
+          <p>Browse the world's waterways.</p>
+          <span className="mode-arrow" aria-hidden="true">
+            →
+          </span>
+        </Link>
+        <Link className="mode-card" to="/journeys">
+          <h3>Journeys</h3>
+          <p>Follow curated expeditions.</p>
+          <span className="mode-arrow" aria-hidden="true">
+            →
+          </span>
+        </Link>
+        <Link className="mode-card" to="/learn">
+          <h3>Learn</h3>
+          <p>Collections, quizzes, and stories.</p>
+          <span className="mode-arrow" aria-hidden="true">
+            →
+          </span>
+        </Link>
+      </div>
     </section>
   );
 }
