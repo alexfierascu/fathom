@@ -11,7 +11,6 @@ import {
   slugifyName,
 } from '@fathom/data';
 
-import { straitOfTheDay } from '../lib/discovery';
 import { Section } from './Section';
 import { StraitCard } from './StraitCard';
 
@@ -32,18 +31,6 @@ const straitsByCount = <T extends { id: string; name: string }>(
     .filter((entry) => entry.straits > 0)
     .sort((a, b) => b.straits - a.straits || a.entity.name.localeCompare(b.entity.name))
     .slice(0, take);
-
-export function StraitOfTheDay() {
-  const strait = straitOfTheDay();
-  if (!strait) return null;
-  return (
-    <Section label="Strait of the day">
-      <div className="feature-card">
-        <StraitCard strait={strait} />
-      </div>
-    </Section>
-  );
-}
 
 export function Chokepoints() {
   const straits = CHOKEPOINT_IDS.map((id) => loadStrait(id));

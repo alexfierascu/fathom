@@ -1,12 +1,11 @@
 import { useSyncExternalStore } from 'react';
 
-import { Link, useNavigate } from 'react-router';
+import { Link } from 'react-router';
 
 import { loadAllStraits, loadTags } from '@fathom/data';
-import { loadJourneys, randomEntity } from '@fathom/discovery';
+import { loadJourneys } from '@fathom/discovery';
 
 import { Section } from '../atlas/components/Section';
-import { entityPath } from '../atlas/lib/entityPaths';
 import { loadRecentlyViewed } from './recentlyViewed';
 
 /**
@@ -14,66 +13,6 @@ import { loadRecentlyViewed } from './recentlyViewed';
  * to go somewhere — all destinations come from the discovery engine and
  * the dataset, never from hardcoded lists.
  */
-
-/** Deterministic daily pick from the journey catalog. */
-function journeyOfTheDay() {
-  const journeys = loadJourneys();
-  const day = Math.floor(Date.now() / 86_400_000);
-  return journeys[day % journeys.length];
-}
-
-export function StartExploring() {
-  const navigate = useNavigate();
-  const surprise = () => {
-    const pick = randomEntity();
-    const path = pick ? entityPath(pick) : null;
-    if (path) void navigate(path);
-  };
-
-  return (
-    <Section label="Start exploring">
-      <div className="explore-tiles">
-        <Link className="explore-tile" to="/journeys">
-          <div className="explore-tile-glyph">⛵</div>
-          <h3>Take a journey</h3>
-          <p>Guided voyages, stop by stop, across the maritime world.</p>
-        </Link>
-        <button type="button" className="explore-tile" onClick={surprise}>
-          <div className="explore-tile-glyph">⚄</div>
-          <h3>Surprise me</h3>
-          <p>A random strait, sea, port, or passage — wherever the tide goes.</p>
-        </button>
-        <Link className="explore-tile" to="/quiz">
-          <div className="explore-tile-glyph">?</div>
-          <h3>Know your narrows</h3>
-          <p>A quiz drawn from the charts themselves.</p>
-        </Link>
-        <Link className="explore-tile" to="/timeline">
-          <div className="explore-tile-glyph">⌛</div>
-          <h3>Travel through time</h3>
-          <p>The history the straits have carried, in order.</p>
-        </Link>
-      </div>
-    </Section>
-  );
-}
-
-export function FeaturedJourney() {
-  const journey = journeyOfTheDay();
-  if (!journey) return null;
-  return (
-    <Section label="Featured journey">
-      <Link className="card feature-card journey-feature" to={`/journeys/${journey.id}`}>
-        <div className="eyebrow">
-          {String(journey.waypoints.length)} stops · ~{String(journey.estimatedMinutes)} min
-        </div>
-        <h3>{journey.title}</h3>
-        <div className="note">{journey.subtitle}</div>
-        <div className="connects">Start the journey →</div>
-      </Link>
-    </Section>
-  );
-}
 
 export function PopularTags() {
   const straits = loadAllStraits();

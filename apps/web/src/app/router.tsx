@@ -18,6 +18,18 @@ export const router = createBrowserRouter([
     children: [
       { index: true, element: <HomePage /> },
       {
+        path: 'explore',
+        lazy: () => pageChunks.hubs().then((m) => ({ Component: m.ExplorePage })),
+      },
+      {
+        path: 'map',
+        lazy: () => pageChunks.hubs().then((m) => ({ Component: m.MapPage })),
+      },
+      {
+        path: 'learn',
+        lazy: () => pageChunks.hubs().then((m) => ({ Component: m.LearnPage })),
+      },
+      {
         path: 'straits/:slug',
         lazy: () => pageChunks.strait().then((m) => ({ Component: m.StraitDetailPage })),
       },

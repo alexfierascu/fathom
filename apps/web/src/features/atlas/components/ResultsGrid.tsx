@@ -6,7 +6,7 @@ interface ResultsGridProps {
   straits: readonly Strait[];
   totalCount: number;
   query: string;
-  onHover: (id: string | null) => void;
+  onHover?: (id: string | null) => void;
 }
 
 export function ResultsGrid({ straits, totalCount, query, onHover }: ResultsGridProps) {
