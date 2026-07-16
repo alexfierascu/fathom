@@ -9,6 +9,7 @@ import { ConnectsLine } from '../components/ConnectsLine';
 import { EntityPills } from '../components/EntityPills';
 import { SeoTags } from '../components/SeoTags';
 import { Section } from '../components/Section';
+import { SourcesList } from '../components/SourcesList';
 import { StraitMap } from '../components/StraitMap';
 import { StraitPager } from '../components/StraitPager';
 import { formatLat, formatLon } from '../lib/format';
@@ -37,6 +38,7 @@ export function StraitDetailPage() {
   const islands = getRelated(entity, 'islands');
   const ports = getRelated(entity, 'ports');
   const routes = getRelated(entity, 'routes');
+  const sources = getRelated(entity, 'sources');
   const seo = buildStraitSeo(strait);
 
   return (
@@ -106,6 +108,8 @@ export function StraitDetailPage() {
         <StraitMap strait={strait} tileStyle={tileStyle} />
 
         <EntityGallery entity={{ type: 'strait', id: strait.id }} />
+
+        <SourcesList sources={sources} />
 
         <StraitPager previous={previous} next={next} />
       </article>
