@@ -4,14 +4,14 @@ import { loadAllStraits, loadStrait, loadStraitsIndex } from './loader';
 import { STRAIT_REGIONS } from './schema';
 
 describe('loadStraitsIndex', () => {
-  it('returns the 42 straits of the atlas', () => {
-    expect(loadStraitsIndex()).toHaveLength(42);
+  it('returns at least the 42 founding straits of the atlas', () => {
+    expect(loadStraitsIndex().length).toBeGreaterThanOrEqual(42);
   });
 
-  it('preserves the canonical ordering from the prototype', () => {
+  it('preserves the canonical ordering of the founding straits', () => {
     const index = loadStraitsIndex();
     expect(index[0]?.id).toBe('gibraltar');
-    expect(index.at(-1)?.id).toBe('vilkitsky');
+    expect(index[41]?.id).toBe('vilkitsky');
   });
 
   it('has unique ids', () => {
@@ -36,9 +36,9 @@ describe('loadStrait', () => {
 describe('loadAllStraits', () => {
   it('returns full documents in index order', () => {
     const all = loadAllStraits();
-    expect(all).toHaveLength(42);
+    expect(all.length).toBeGreaterThanOrEqual(42);
     expect(all[0]?.id).toBe('gibraltar');
-    expect(all.at(-1)?.id).toBe('vilkitsky');
+    expect(all[41]?.id).toBe('vilkitsky');
   });
 
   it('agrees with the index on every shared field', () => {

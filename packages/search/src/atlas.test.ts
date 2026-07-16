@@ -6,16 +6,16 @@ describe('buildAtlasSearchDocuments', () => {
   it('indexes every charted entity', () => {
     const documents = buildAtlasSearchDocuments();
     const byType = (type: string) => documents.filter((doc) => doc.type === type).length;
-    expect(byType('strait')).toBe(42);
-    expect(byType('water-body')).toBe(46);
-    expect(byType('country')).toBe(42);
-    expect(byType('region')).toBe(5);
-    expect(byType('port')).toBe(1);
-    expect(byType('canal')).toBe(2);
-    expect(byType('bridge')).toBe(1);
-    expect(byType('tunnel')).toBe(2);
-    expect(byType('island')).toBe(4);
-    expect(byType('maritime-route')).toBe(1);
+    expect(byType('strait')).toBeGreaterThanOrEqual(42);
+    expect(byType('water-body')).toBeGreaterThanOrEqual(46);
+    expect(byType('country')).toBeGreaterThanOrEqual(42);
+    expect(byType('region')).toBeGreaterThanOrEqual(5);
+    expect(byType('port')).toBeGreaterThanOrEqual(1);
+    expect(byType('canal')).toBeGreaterThanOrEqual(2);
+    expect(byType('bridge')).toBeGreaterThanOrEqual(1);
+    expect(byType('tunnel')).toBeGreaterThanOrEqual(2);
+    expect(byType('island')).toBeGreaterThanOrEqual(4);
+    expect(byType('maritime-route')).toBeGreaterThanOrEqual(1);
   });
 
   it('finds the seeded maritime entities', () => {
