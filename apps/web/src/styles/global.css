@@ -1893,3 +1893,54 @@ a.journey-btn:hover {
     overflow-x: auto;
   }
 }
+
+/* ---------- Homepage discovery ---------- */
+
+.explore-tiles {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+  gap: 14px;
+}
+.explore-tile {
+  display: block;
+  text-align: left;
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 18px;
+  color: var(--text);
+  text-decoration: none;
+  cursor: pointer;
+  font: inherit;
+  transition:
+    border-color 0.15s ease,
+    transform 0.15s ease;
+}
+.explore-tile:hover {
+  border-color: color-mix(in srgb, var(--accent-2) 50%, transparent);
+  transform: translateY(-2px);
+}
+@media (prefers-reduced-motion: reduce) {
+  .explore-tile:hover {
+    transform: none;
+  }
+}
+.explore-tile-glyph {
+  font-size: 1.4rem;
+  color: var(--accent-2);
+  margin-bottom: 10px;
+}
+.explore-tile h3 {
+  margin: 0 0 6px;
+  font-size: 1.05rem;
+}
+.explore-tile p {
+  margin: 0;
+  color: var(--text-muted);
+  font-size: 0.85rem;
+  line-height: 1.5;
+}
+.journey-feature .connects {
+  margin-top: 12px;
+  color: var(--accent-2);
+}

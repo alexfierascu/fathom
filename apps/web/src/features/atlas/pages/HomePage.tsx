@@ -5,6 +5,13 @@ import { useOutletContext, useSearchParams } from 'react-router';
 import { loadAllStraits } from '@fathom/data';
 
 import type { LayoutContext } from '../../../app/RootLayout';
+import {
+  Collections,
+  ContinueReading,
+  FeaturedJourney,
+  PopularTags,
+  StartExploring,
+} from '../../explore/HomeDiscovery';
 import { MapPanel } from '../components/MapPanel';
 import { GlobalSearch } from '../../search/GlobalSearch';
 import {
@@ -81,6 +88,8 @@ export function HomePage() {
         tileStyle={tileStyle}
       />
 
+      <StartExploring />
+      <FeaturedJourney />
       <StraitOfTheDay />
       <Chokepoints />
 
@@ -92,7 +101,10 @@ export function HomePage() {
       />
 
       <ExploreSections />
+      <PopularTags />
+      <Collections />
       <InterestingFacts />
+      <ContinueReading />
       <RecentlyCharted />
     </>
   );

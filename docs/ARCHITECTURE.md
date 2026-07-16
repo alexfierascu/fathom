@@ -10,11 +10,45 @@ The repository is a pnpm workspace with two package roots:
 
 - **`apps/*`** — deployable applications. Each app owns its build output and deployment
   concerns. `apps/web` (`@fathom/web`) is the Vite + React front end.
-- **`packages/*`** — shared libraries consumed by apps and by other packages (for example
-  a design system, API client, or shared domain types). Currently empty; the directory is
-  reserved so shared code has an obvious home from day one.
+- **`packages/*`** — shared libraries consumed by apps and by other packages:
+  - `@fathom/data` — the entity documents, Zod schemas, validated loaders, and the typed
+    single-hop relationship engine. The single authority on what the atlas knows.
+  - `@fathom/discovery` — the exploration engine: the maritime graph, traversal,
+    similarity scoring, recommendations, random exploration, and the Journey model.
+  - `@fathom/search` — the search index and ranking engine.
+  - `@fathom/pipeline` — the data-ingestion pipeline (provider adapters, normalization,
+    review-first staging).
 
 All workspace packages are named under the `@fathom/` scope and marked `private`.
+Internal packages ship TypeScript source directly (`exports` points at `src/index.ts`);
+apps compile them through their own build. None of the packages knows React exists.
+
+## The discovery engine (`packages/discovery`)
+
+The exploration layer is deliberately split from both the data layer and the UI:
+
+```
+@fathom/data          @fathom/discovery              apps/web
+documents, schemas →  maritime graph (generated) →   ContinueExploring renders groups
+loaders, engine       similarity + recommendations   Journey pages render journeys
+                      journeys + random exploration  hooks hold UI state only
+```
+
+- **The maritime graph is derived, never stored.** `buildMaritimeGraph()` reads the same
+  loaders the rest of the app uses and emits nodes for every entity and typed edges
+  (`connected_to`, `borders`, `flows_into`, `crosses`, `belongs_to`, `part_of`,
+  `adjacent_to`, `contains`, `nearby`) — no relationship exists in two places. The graph
+  is memoized once per process.
+- **`@fathom/data`'s engine stays single-hop** (its cycle-safety guarantee); multi-hop
+  traversal, path-finding, and scoring live in `@fathom/discovery`, built on top of the
+  graph.
+- **Recommendations are explainable.** The similarity engine scores straits with weighted
+  signals (shared waters, countries, tags, routes, events, region, proximity,
+  connectivity) and every recommendation carries the reason it was made. Deterministic
+  recommendation groups are cached per entity; random picks are drawn fresh per call.
+- **React only renders.** No component computes recommendations, walks the graph, or
+  scores similarity; UI state (journey progress, the recently-viewed trail) lives in
+  hooks and localStorage.
 
 ## Tooling: configured once, at the root
 
