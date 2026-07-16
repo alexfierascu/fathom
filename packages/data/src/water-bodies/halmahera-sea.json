@@ -1,0 +1,9 @@
+{
+  "id": "halmahera-sea",
+  "name": "Halmahera Sea",
+  "type": "sea",
+  "summary": "sea in Indonesia",
+  "parentId": "pacific-ocean",
+  "sourceIds": ["wikidata-q212083"],
+  "status": "draft"
+}

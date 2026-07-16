@@ -1,0 +1,9 @@
+{
+  "id": "karaginsky-gulf",
+  "name": "Karaginsky Gulf",
+  "type": "gulf",
+  "summary": "bay of the Bering Sea, Russia",
+  "parentId": "bering-sea",
+  "sourceIds": ["wikidata-q2391874"],
+  "status": "draft"
+}

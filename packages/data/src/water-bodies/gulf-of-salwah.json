@@ -1,0 +1,9 @@
+{
+  "id": "gulf-of-salwah",
+  "name": "Gulf of Salwah",
+  "type": "gulf",
+  "summary": "southern portion of the Gulf of Bahrain",
+  "parentId": "gulf-of-bahrain",
+  "sourceIds": ["wikidata-q5617583", "wikidata-q5617583", "wikidata-q5617583"],
+  "status": "draft"
+}

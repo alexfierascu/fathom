@@ -1,0 +1,9 @@
+{
+  "id": "uda-bay",
+  "name": "Uda Bay",
+  "type": "gulf",
+  "summary": "bay in Khabarovsk Krai, Russia",
+  "parentId": "sea-of-okhotsk",
+  "sourceIds": ["wikidata-q1141758", "wikidata-q1141758"],
+  "status": "draft"
+}

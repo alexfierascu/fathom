@@ -1,0 +1,9 @@
+{
+  "id": "thracian-sea",
+  "name": "Thracian Sea",
+  "type": "sea",
+  "summary": "northeastern part of the Aegean Sea",
+  "parentId": "aegean-sea",
+  "sourceIds": ["wikidata-q379063"],
+  "status": "draft"
+}

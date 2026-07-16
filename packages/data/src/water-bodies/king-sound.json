@@ -1,0 +1,9 @@
+{
+  "id": "king-sound",
+  "name": "King Sound",
+  "type": "gulf",
+  "summary": "gulf in Kimberley region of Western Australia",
+  "parentId": "indian-ocean",
+  "sourceIds": ["wikidata-q1140493"],
+  "status": "draft"
+}

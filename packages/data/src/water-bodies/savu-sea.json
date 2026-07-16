@@ -1,0 +1,9 @@
+{
+  "id": "savu-sea",
+  "name": "Savu Sea",
+  "type": "sea",
+  "summary": "sea in Indonesia",
+  "parentId": "indian-ocean",
+  "sourceIds": ["wikidata-q193465"],
+  "status": "draft"
+}

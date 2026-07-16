@@ -1,0 +1,9 @@
+{
+  "id": "gulf-of-izmir",
+  "name": "Gulf of İzmir",
+  "type": "gulf",
+  "summary": "gulf of the Aegean Sea",
+  "parentId": "aegean-sea",
+  "sourceIds": ["wikidata-q1536377"],
+  "status": "draft"
+}

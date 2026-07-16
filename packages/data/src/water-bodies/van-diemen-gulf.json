@@ -1,0 +1,9 @@
+{
+  "id": "van-diemen-gulf",
+  "name": "Van Diemen Gulf",
+  "type": "gulf",
+  "summary": "gulf in northern Australia",
+  "parentId": "timor-sea",
+  "sourceIds": ["wikidata-q55442244", "wikidata-q55442244"],
+  "status": "draft"
+}

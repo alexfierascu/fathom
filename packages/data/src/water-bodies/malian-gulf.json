@@ -1,0 +1,9 @@
+{
+  "id": "malian-gulf",
+  "name": "Malian Gulf",
+  "type": "gulf",
+  "summary": "bay east of Lamia, Central Greece",
+  "parentId": "aegean-sea",
+  "sourceIds": ["wikidata-q549658"],
+  "status": "draft"
+}

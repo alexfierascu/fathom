@@ -1,0 +1,9 @@
+{
+  "id": "middendorff-bay",
+  "name": "Middendorff Bay",
+  "type": "gulf",
+  "summary": "bay in the shores of the Taymyr Peninsula",
+  "parentId": "kara-sea",
+  "sourceIds": ["wikidata-q2990544", "wikidata-q2990544"],
+  "status": "draft"
+}

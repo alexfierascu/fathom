@@ -1,0 +1,9 @@
+{
+  "id": "hauraki-gulf-tikapa-moana",
+  "name": "Hauraki Gulf / Tīkapa Moana",
+  "type": "gulf",
+  "summary": "gulf in New Zealand",
+  "parentId": "pacific-ocean",
+  "sourceIds": ["wikidata-q767824"],
+  "status": "draft"
+}

@@ -1,0 +1,9 @@
+{
+  "id": "singitic-gulf",
+  "name": "Singitic Gulf",
+  "type": "gulf",
+  "summary": "gulf in Northeastern Greece",
+  "parentId": "aegean-sea",
+  "sourceIds": ["wikidata-q1332013"],
+  "status": "draft"
+}

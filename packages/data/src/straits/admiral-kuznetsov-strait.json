@@ -1,0 +1,12 @@
+{
+  "id": "admiral-kuznetsov-strait",
+  "name": "Admiral Kuznetsov Strait",
+  "countries": ["Russia"],
+  "region": "East Asia & Oceania",
+  "connects": "Bering Sea ↔ Pacific Ocean",
+  "lat": 54.78,
+  "lon": 167.11,
+  "note": "strait between Bering Sea and Pacific Ocean",
+  "sourceIds": ["wikidata-q4380564"],
+  "status": "draft"
+}

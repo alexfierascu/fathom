@@ -1,0 +1,12 @@
+{
+  "id": "fram-strait",
+  "name": "Fram Strait",
+  "countries": ["Greenland", "Norway"],
+  "region": "Americas & Arctic",
+  "connects": "Greenland Sea ↔ Arctic Ocean",
+  "lat": 80,
+  "lon": 0,
+  "note": "The Fram Strait is the passage between Greenland and Svalbard, located roughly between 77°N and 81°N latitudes and centered on the prime meridian.",
+  "sourceIds": ["wikidata-q82344", "wikipedia-fram-strait"],
+  "status": "draft"
+}

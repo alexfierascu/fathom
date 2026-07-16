@@ -1,0 +1,9 @@
+{
+  "id": "kamchatka-bay",
+  "name": "Kamchatka Bay",
+  "type": "gulf",
+  "summary": "gulf of the Bering Sea",
+  "parentId": "bering-sea",
+  "sourceIds": ["wikidata-q2450069"],
+  "status": "draft"
+}

@@ -1,0 +1,9 @@
+{
+  "id": "wandel-sea",
+  "name": "Wandel Sea",
+  "type": "sea",
+  "summary": "body of water in the Arctic Ocean from northeast of Greenland to Svalbard",
+  "parentId": "arctic-ocean",
+  "sourceIds": ["wikidata-q259929"],
+  "status": "draft"
+}

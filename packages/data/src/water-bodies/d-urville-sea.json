@@ -1,0 +1,9 @@
+{
+  "id": "d-urville-sea",
+  "name": "D'Urville Sea",
+  "type": "sea",
+  "summary": "sea",
+  "parentId": "southern-ocean",
+  "sourceIds": ["wikidata-q1391243"],
+  "status": "draft"
+}

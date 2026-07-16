@@ -1,0 +1,9 @@
+{
+  "id": "gulf-of-policastro",
+  "name": "Gulf of Policastro",
+  "type": "gulf",
+  "summary": "gulf in southern Italy",
+  "parentId": "tyrrhenian-sea",
+  "sourceIds": ["wikidata-q1124711", "wikidata-q1124711"],
+  "status": "draft"
+}

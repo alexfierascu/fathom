@@ -1,0 +1,9 @@
+{
+  "id": "kronotsky-gulf",
+  "name": "Kronotsky Gulf",
+  "type": "gulf",
+  "summary": "gulf of the Pacific Ocean, Russia",
+  "parentId": "pacific-ocean",
+  "sourceIds": ["wikidata-q2326240"],
+  "status": "draft"
+}

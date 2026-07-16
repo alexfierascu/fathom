@@ -1,0 +1,9 @@
+{
+  "id": "gulf-of-saint-malo",
+  "name": "Gulf of Saint-Malo",
+  "type": "gulf",
+  "summary": "part of the south-western English Channel to the south of Jersey",
+  "parentId": "english-channel",
+  "sourceIds": ["wikidata-q4027101"],
+  "status": "draft"
+}

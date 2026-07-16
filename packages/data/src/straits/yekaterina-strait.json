@@ -1,0 +1,12 @@
+{
+  "id": "yekaterina-strait",
+  "name": "Yekaterina Strait",
+  "countries": ["Russia"],
+  "region": "East Asia & Oceania",
+  "connects": "Sea of Okhotsk ↔ Pacific Ocean",
+  "lat": 44.42,
+  "lon": 146.75,
+  "note": "strait between Kunashir and Iturup, Kuril Islands, Russia",
+  "sourceIds": ["wikidata-q659608"],
+  "status": "draft"
+}

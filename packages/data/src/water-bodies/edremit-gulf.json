@@ -1,0 +1,9 @@
+{
+  "id": "edremit-gulf",
+  "name": "Edremit Gulf",
+  "type": "gulf",
+  "summary": "gulf in Balıkesir İli, Turkey",
+  "parentId": "aegean-sea",
+  "sourceIds": ["wikidata-q1089476"],
+  "status": "draft"
+}

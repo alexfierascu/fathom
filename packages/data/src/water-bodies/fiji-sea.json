@@ -1,0 +1,9 @@
+{
+  "id": "fiji-sea",
+  "name": "Fiji Sea",
+  "type": "sea",
+  "summary": "sea",
+  "parentId": "south-pacific-ocean",
+  "sourceIds": ["wikidata-q2355931"],
+  "status": "draft"
+}

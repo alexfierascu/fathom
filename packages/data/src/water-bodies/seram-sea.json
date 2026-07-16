@@ -1,0 +1,9 @@
+{
+  "id": "seram-sea",
+  "name": "Seram Sea",
+  "type": "sea",
+  "summary": "sea in Indonesia",
+  "parentId": "pacific-ocean",
+  "sourceIds": ["wikidata-q210855"],
+  "status": "draft"
+}

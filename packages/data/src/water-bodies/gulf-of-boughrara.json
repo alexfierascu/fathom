@@ -1,0 +1,9 @@
+{
+  "id": "gulf-of-boughrara",
+  "name": "Gulf of Boughrara",
+  "type": "gulf",
+  "summary": "bay",
+  "parentId": "mediterranean-sea",
+  "sourceIds": ["wikidata-q2921569"],
+  "status": "draft"
+}

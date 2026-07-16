@@ -1,0 +1,12 @@
+{
+  "id": "foveaux-strait",
+  "name": "Foveaux Strait",
+  "countries": ["New Zealand"],
+  "region": "East Asia & Oceania",
+  "connects": "Tasman Sea ↔ Pacific Ocean",
+  "lat": -46.67,
+  "lon": 168.19,
+  "note": "strait in New Zealand between Stewart Island / Rakiura and South Island / Te Waipounamu",
+  "sourceIds": ["wikidata-q1043467"],
+  "status": "draft"
+}

@@ -1,0 +1,9 @@
+{
+  "id": "vostok-bay",
+  "name": "Vostok Bay",
+  "type": "gulf",
+  "summary": "bay of the Sea of Japan",
+  "parentId": "peter-the-great-gulf",
+  "sourceIds": ["wikidata-q2374928"],
+  "status": "draft"
+}

@@ -1,0 +1,9 @@
+{
+  "id": "gulf-of-tendra",
+  "name": "Gulf of Tendra",
+  "type": "gulf",
+  "summary": "body of water",
+  "parentId": "black-sea",
+  "sourceIds": ["wikidata-q2392966"],
+  "status": "draft"
+}

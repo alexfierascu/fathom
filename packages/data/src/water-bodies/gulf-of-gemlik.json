@@ -1,0 +1,9 @@
+{
+  "id": "gulf-of-gemlik",
+  "name": "Gulf of Gemlik",
+  "type": "gulf",
+  "summary": "inlet of the Sea of Marmara, Turkey",
+  "parentId": "sea-of-marmara",
+  "sourceIds": ["wikidata-q1936352", "wikidata-q1936352"],
+  "status": "draft"
+}

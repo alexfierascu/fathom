@@ -1,0 +1,9 @@
+{
+  "id": "west-philippine-sea",
+  "name": "West Philippine Sea",
+  "type": "sea",
+  "summary": "designation for parts of the South China Sea claimed by the Philippines",
+  "parentId": "south-china-sea",
+  "sourceIds": ["wikidata-q3306193"],
+  "status": "draft"
+}

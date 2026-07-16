@@ -1,0 +1,9 @@
+{
+  "id": "tugur-bay",
+  "name": "Tugur Bay",
+  "type": "gulf",
+  "summary": "large bay in eastern Russia",
+  "parentId": "sea-of-okhotsk",
+  "sourceIds": ["wikidata-q4464931"],
+  "status": "draft"
+}

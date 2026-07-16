@@ -1,0 +1,9 @@
+{
+  "id": "gulf-of-roses",
+  "name": "Gulf of Roses",
+  "type": "gulf",
+  "summary": "golf located on the coast of the Alt Empordà",
+  "parentId": "mediterranean-sea",
+  "sourceIds": ["wikidata-q1440916"],
+  "status": "draft"
+}

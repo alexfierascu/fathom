@@ -1,0 +1,12 @@
+{
+  "id": "vries-strait",
+  "name": "Vries Strait",
+  "countries": ["Russia"],
+  "region": "East Asia & Oceania",
+  "connects": "Sea of Okhotsk ↔ Pacific Ocean",
+  "lat": 45.51,
+  "lon": 149.18,
+  "note": "strait between Urup and Iturup, Kuril Islands",
+  "sourceIds": ["wikidata-q1462361"],
+  "status": "draft"
+}

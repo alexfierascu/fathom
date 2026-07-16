@@ -1,0 +1,9 @@
+{
+  "id": "gulf-of-squillace",
+  "name": "Gulf of Squillace",
+  "type": "gulf",
+  "summary": "inlet of the Ionian Sea off the coast of Italy",
+  "parentId": "ionian-sea",
+  "sourceIds": ["wikidata-q249550"],
+  "status": "draft"
+}

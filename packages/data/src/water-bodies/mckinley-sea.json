@@ -1,0 +1,9 @@
+{
+  "id": "mckinley-sea",
+  "name": "McKinley Sea",
+  "type": "sea",
+  "summary": "sea",
+  "parentId": "arctic-ocean",
+  "sourceIds": ["wikidata-q24828473"],
+  "status": "draft"
+}

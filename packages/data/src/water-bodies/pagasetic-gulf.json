@@ -1,0 +1,9 @@
+{
+  "id": "pagasetic-gulf",
+  "name": "Pagasetic Gulf",
+  "type": "gulf",
+  "summary": "bay in Thessaly, Greece",
+  "parentId": "aegean-sea",
+  "sourceIds": ["wikidata-q1185210"],
+  "status": "draft"
+}

@@ -1,0 +1,9 @@
+{
+  "id": "costa-artabra",
+  "name": "Costa Ártabra",
+  "type": "gulf",
+  "summary": "coastal area of Galicia, Spain",
+  "parentId": "atlantic-ocean",
+  "sourceIds": ["wikidata-q3327628"],
+  "status": "draft"
+}

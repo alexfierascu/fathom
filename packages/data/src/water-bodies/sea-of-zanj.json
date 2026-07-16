@@ -1,0 +1,9 @@
+{
+  "id": "sea-of-zanj",
+  "name": "Sea of Zanj",
+  "type": "sea",
+  "summary": "sea in Madagascar",
+  "parentId": "indian-ocean",
+  "sourceIds": ["wikidata-q3306215"],
+  "status": "draft"
+}

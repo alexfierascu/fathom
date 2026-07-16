@@ -1,0 +1,9 @@
+{
+  "id": "golfo-di-gioia",
+  "name": "Golfo di Gioia",
+  "type": "gulf",
+  "summary": "body of water in Calabria, Italy",
+  "parentId": "tyrrhenian-sea",
+  "sourceIds": ["wikidata-q1010579", "wikidata-q1010579"],
+  "status": "draft"
+}

@@ -1,0 +1,12 @@
+{
+  "id": "mindoro-strait",
+  "name": "Mindoro Strait",
+  "countries": ["Philippines"],
+  "region": "South & Southeast Asia",
+  "connects": "West Philippine Sea ↔ Sulu Sea",
+  "lat": 12.33,
+  "lon": 120.67,
+  "note": "The Mindoro Strait is one of the straits connecting the South China Sea with the Sulu Sea in the Philippines.",
+  "sourceIds": ["wikidata-q1936516", "wikipedia-mindoro-strait"],
+  "status": "draft"
+}

@@ -1,0 +1,9 @@
+{
+  "id": "south-china-and-eastern-archipelagic-seas",
+  "name": "South China and Eastern Archipelagic Seas",
+  "type": "sea",
+  "summary": "general Sea Area",
+  "parentId": "world-ocean",
+  "sourceIds": ["wikidata-q111384093"],
+  "status": "draft"
+}

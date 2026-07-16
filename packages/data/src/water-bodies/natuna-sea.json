@@ -1,0 +1,9 @@
+{
+  "id": "natuna-sea",
+  "name": "Natuna Sea",
+  "type": "sea",
+  "summary": "marginal sea of the Pacific Ocean",
+  "parentId": "south-china-sea",
+  "sourceIds": ["wikidata-q10829960"],
+  "status": "draft"
+}

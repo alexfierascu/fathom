@@ -1,0 +1,9 @@
+{
+  "id": "laconian-gulf",
+  "name": "Laconian Gulf",
+  "type": "gulf",
+  "summary": "gulf in the south-eastern Peloponnese, in Greece",
+  "parentId": "ionian-sea",
+  "sourceIds": ["wikidata-q589877"],
+  "status": "draft"
+}

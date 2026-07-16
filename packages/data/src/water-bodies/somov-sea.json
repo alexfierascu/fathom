@@ -1,0 +1,9 @@
+{
+  "id": "somov-sea",
+  "name": "Somov Sea",
+  "type": "sea",
+  "summary": "Antarctic sea",
+  "parentId": "southern-ocean",
+  "sourceIds": ["wikidata-q1404920"],
+  "status": "draft"
+}

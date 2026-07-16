@@ -438,5 +438,460 @@
     "id": "leyte-gulf",
     "name": "Leyte Gulf",
     "type": "gulf"
+  },
+  {
+    "id": "caspian-sea",
+    "name": "Caspian Sea",
+    "type": "sea"
+  },
+  {
+    "id": "banda-sea",
+    "name": "Banda Sea",
+    "type": "sea"
+  },
+  {
+    "id": "lincoln-sea",
+    "name": "Lincoln Sea",
+    "type": "sea"
+  },
+  {
+    "id": "bismarck-sea",
+    "name": "Bismarck Sea",
+    "type": "sea"
+  },
+  {
+    "id": "savu-sea",
+    "name": "Savu Sea",
+    "type": "sea"
+  },
+  {
+    "id": "halmahera-sea",
+    "name": "Halmahera Sea",
+    "type": "sea"
+  },
+  {
+    "id": "seram-sea",
+    "name": "Seram Sea",
+    "type": "sea"
+  },
+  {
+    "id": "koro-sea",
+    "name": "Koro Sea",
+    "type": "sea"
+  },
+  {
+    "id": "visayan-sea",
+    "name": "Visayan Sea",
+    "type": "sea"
+  },
+  {
+    "id": "myrtoan-sea",
+    "name": "Myrtoan Sea",
+    "type": "sea"
+  },
+  {
+    "id": "wandel-sea",
+    "name": "Wandel Sea",
+    "type": "sea"
+  },
+  {
+    "id": "d-urville-sea",
+    "name": "D'Urville Sea",
+    "type": "sea"
+  },
+  {
+    "id": "davis-sea",
+    "name": "Davis Sea",
+    "type": "sea"
+  },
+  {
+    "id": "thracian-sea",
+    "name": "Thracian Sea",
+    "type": "sea"
+  },
+  {
+    "id": "cosmonauts-sea",
+    "name": "Cosmonauts Sea",
+    "type": "sea"
+  },
+  {
+    "id": "lazarev-sea",
+    "name": "Lazarev Sea",
+    "type": "sea"
+  },
+  {
+    "id": "somov-sea",
+    "name": "Somov Sea",
+    "type": "sea"
+  },
+  {
+    "id": "mawson-sea",
+    "name": "Mawson Sea",
+    "type": "sea"
+  },
+  {
+    "id": "vainameri",
+    "name": "Väinameri",
+    "type": "sea"
+  },
+  {
+    "id": "west-philippine-sea",
+    "name": "West Philippine Sea",
+    "type": "sea"
+  },
+  {
+    "id": "king-haakon-vii-sea",
+    "name": "King Haakon VII Sea",
+    "type": "sea"
+  },
+  {
+    "id": "prince-gustav-adolf-sea",
+    "name": "Prince Gustav Adolf Sea",
+    "type": "sea"
+  },
+  {
+    "id": "chilean-sea",
+    "name": "Chilean Sea",
+    "type": "sea"
+  },
+  {
+    "id": "erythraean-sea",
+    "name": "Erythraean Sea",
+    "type": "sea"
+  },
+  {
+    "id": "icarian-sea",
+    "name": "Icarian Sea",
+    "type": "sea"
+  },
+  {
+    "id": "fiji-sea",
+    "name": "Fiji Sea",
+    "type": "sea"
+  },
+  {
+    "id": "grau-sea",
+    "name": "Grau Sea",
+    "type": "sea"
+  },
+  {
+    "id": "natuna-sea",
+    "name": "Natuna Sea",
+    "type": "sea"
+  },
+  {
+    "id": "iceland-sea",
+    "name": "Iceland Sea",
+    "type": "sea"
+  },
+  {
+    "id": "champlain-sea",
+    "name": "Champlain Sea",
+    "type": "sea"
+  },
+  {
+    "id": "shantar-sea",
+    "name": "Shantar Sea",
+    "type": "sea"
+  },
+  {
+    "id": "sea-of-zanj",
+    "name": "Sea of Zanj",
+    "type": "sea"
+  },
+  {
+    "id": "cyprus-sea",
+    "name": "Cyprus sea",
+    "type": "sea"
+  },
+  {
+    "id": "north-natuna-sea",
+    "name": "North Natuna Sea",
+    "type": "sea"
+  },
+  {
+    "id": "somali-sea",
+    "name": "Somali Sea",
+    "type": "sea"
+  },
+  {
+    "id": "timor-gap",
+    "name": "Timor Gap",
+    "type": "sea"
+  },
+  {
+    "id": "murter-sea",
+    "name": "Murter Sea",
+    "type": "sea"
+  },
+  {
+    "id": "sea-of-sicily",
+    "name": "Sea of Sicily",
+    "type": "sea"
+  },
+  {
+    "id": "catalan-sea",
+    "name": "Catalan Sea",
+    "type": "sea"
+  },
+  {
+    "id": "mckinley-sea",
+    "name": "McKinley Sea",
+    "type": "sea"
+  },
+  {
+    "id": "south-china-and-eastern-archipelagic-seas",
+    "name": "South China and Eastern Archipelagic Seas",
+    "type": "sea"
+  },
+  {
+    "id": "mediterranean-sea-area",
+    "name": "Mediterranean Sea Area",
+    "type": "sea"
+  },
+  {
+    "id": "gulf-of-gabes",
+    "name": "Gulf of Gabès",
+    "type": "gulf"
+  },
+  {
+    "id": "hauraki-gulf-tikapa-moana",
+    "name": "Hauraki Gulf / Tīkapa Moana",
+    "type": "gulf"
+  },
+  {
+    "id": "gulf-of-izmit",
+    "name": "Gulf of İzmit",
+    "type": "gulf"
+  },
+  {
+    "id": "pagasetic-gulf",
+    "name": "Pagasetic Gulf",
+    "type": "gulf"
+  },
+  {
+    "id": "gulf-of-izmir",
+    "name": "Gulf of İzmir",
+    "type": "gulf"
+  },
+  {
+    "id": "vyborg-bay",
+    "name": "Vyborg Bay",
+    "type": "gulf"
+  },
+  {
+    "id": "laconian-gulf",
+    "name": "Laconian Gulf",
+    "type": "gulf"
+  },
+  {
+    "id": "gulf-of-saros",
+    "name": "Gulf of Saros",
+    "type": "gulf"
+  },
+  {
+    "id": "malian-gulf",
+    "name": "Malian Gulf",
+    "type": "gulf"
+  },
+  {
+    "id": "uda-bay",
+    "name": "Uda Bay",
+    "type": "gulf"
+  },
+  {
+    "id": "joseph-bonaparte-gulf",
+    "name": "Joseph Bonaparte Gulf",
+    "type": "gulf"
+  },
+  {
+    "id": "karaginsky-gulf",
+    "name": "Karaginsky Gulf",
+    "type": "gulf"
+  },
+  {
+    "id": "turkmenbasy-gulf",
+    "name": "Türkmenbaşy Gulf",
+    "type": "gulf"
+  },
+  {
+    "id": "van-diemen-gulf",
+    "name": "Van Diemen Gulf",
+    "type": "gulf"
+  },
+  {
+    "id": "kolyma-gulf",
+    "name": "Kolyma Gulf",
+    "type": "gulf"
+  },
+  {
+    "id": "gulf-of-squillace",
+    "name": "Gulf of Squillace",
+    "type": "gulf"
+  },
+  {
+    "id": "davao-gulf",
+    "name": "Davao Gulf",
+    "type": "gulf"
+  },
+  {
+    "id": "gulf-of-saint-malo",
+    "name": "Gulf of Saint-Malo",
+    "type": "gulf"
+  },
+  {
+    "id": "king-sound",
+    "name": "King Sound",
+    "type": "gulf"
+  },
+  {
+    "id": "singitic-gulf",
+    "name": "Singitic Gulf",
+    "type": "gulf"
+  },
+  {
+    "id": "gulf-of-roses",
+    "name": "Gulf of Roses",
+    "type": "gulf"
+  },
+  {
+    "id": "toronaic-gulf",
+    "name": "Toronaic Gulf",
+    "type": "gulf"
+  },
+  {
+    "id": "kamchatka-bay",
+    "name": "Kamchatka Bay",
+    "type": "gulf"
+  },
+  {
+    "id": "middendorff-bay",
+    "name": "Middendorff Bay",
+    "type": "gulf"
+  },
+  {
+    "id": "gulf-of-catania",
+    "name": "Gulf of Catania",
+    "type": "gulf"
+  },
+  {
+    "id": "tugur-bay",
+    "name": "Tugur Bay",
+    "type": "gulf"
+  },
+  {
+    "id": "gulf-of-candarl",
+    "name": "Gulf of Çandarlı",
+    "type": "gulf"
+  },
+  {
+    "id": "temryuk-bay",
+    "name": "Temryuk Bay",
+    "type": "gulf"
+  },
+  {
+    "id": "gulf-of-policastro",
+    "name": "Gulf of Policastro",
+    "type": "gulf"
+  },
+  {
+    "id": "albay-gulf",
+    "name": "Albay Gulf",
+    "type": "gulf"
+  },
+  {
+    "id": "panay-gulf",
+    "name": "Panay Gulf",
+    "type": "gulf"
+  },
+  {
+    "id": "gulf-of-gemlik",
+    "name": "Gulf of Gemlik",
+    "type": "gulf"
+  },
+  {
+    "id": "kronotsky-gulf",
+    "name": "Kronotsky Gulf",
+    "type": "gulf"
+  },
+  {
+    "id": "edremit-gulf",
+    "name": "Edremit Gulf",
+    "type": "gulf"
+  },
+  {
+    "id": "mangyshlak-bay",
+    "name": "Mangyshlak Bay",
+    "type": "gulf"
+  },
+  {
+    "id": "gulf-of-tendra",
+    "name": "Gulf of Tendra",
+    "type": "gulf"
+  },
+  {
+    "id": "gulf-of-salwah",
+    "name": "Gulf of Salwah",
+    "type": "gulf"
+  },
+  {
+    "id": "gulf-of-castellammare",
+    "name": "Gulf of Castellammare",
+    "type": "gulf"
+  },
+  {
+    "id": "vostok-bay",
+    "name": "Vostok Bay",
+    "type": "gulf"
+  },
+  {
+    "id": "gulf-of-follonica",
+    "name": "Gulf of Follonica",
+    "type": "gulf"
+  },
+  {
+    "id": "avacha-gulf",
+    "name": "Avacha Gulf",
+    "type": "gulf"
+  },
+  {
+    "id": "cambridge-gulf",
+    "name": "Cambridge Gulf",
+    "type": "gulf"
+  },
+  {
+    "id": "simsa-bay",
+    "name": "Simsa Bay",
+    "type": "gulf"
+  },
+  {
+    "id": "gulf-of-boughrara",
+    "name": "Gulf of Boughrara",
+    "type": "gulf"
+  },
+  {
+    "id": "golfo-di-sant-eufemia",
+    "name": "Golfo di Sant'Eufemia",
+    "type": "gulf"
+  },
+  {
+    "id": "golfo-di-gioia",
+    "name": "Golfo di Gioia",
+    "type": "gulf"
+  },
+  {
+    "id": "gulf-of-argostoli",
+    "name": "Gulf of Argostoli",
+    "type": "gulf"
+  },
+  {
+    "id": "ul-banskiy-bay",
+    "name": "Ul'banskiy Bay",
+    "type": "gulf"
+  },
+  {
+    "id": "costa-artabra",
+    "name": "Costa Ártabra",
+    "type": "gulf"
   }
 ]

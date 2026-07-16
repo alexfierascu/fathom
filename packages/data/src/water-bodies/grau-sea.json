@@ -1,0 +1,9 @@
+{
+  "id": "grau-sea",
+  "name": "Grau Sea",
+  "type": "sea",
+  "summary": "area of the southeast Pacific Ocean near Peru",
+  "parentId": "south-pacific-ocean",
+  "sourceIds": ["wikidata-q2835799"],
+  "status": "draft"
+}

@@ -1,0 +1,9 @@
+{
+  "id": "mangyshlak-bay",
+  "name": "Mangyshlak Bay",
+  "type": "gulf",
+  "summary": "bay",
+  "parentId": "caspian-sea",
+  "sourceIds": ["wikidata-q648369"],
+  "status": "draft"
+}

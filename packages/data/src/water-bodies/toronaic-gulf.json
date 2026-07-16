@@ -1,0 +1,9 @@
+{
+  "id": "toronaic-gulf",
+  "name": "Toronaic Gulf",
+  "type": "gulf",
+  "summary": "gulf in Chalkidike, Greece",
+  "parentId": "aegean-sea",
+  "sourceIds": ["wikidata-q2444383"],
+  "status": "draft"
+}

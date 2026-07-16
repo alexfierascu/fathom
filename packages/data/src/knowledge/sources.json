@@ -524,5 +524,914 @@
     "locator": "https://www.wikidata.org/wiki/Q240753",
     "accessedOn": "2026-07-16",
     "license": "CC0 1.0"
+  },
+  {
+    "id": "wikidata-q82344",
+    "type": "dataset",
+    "title": "Wikidata: Fram Strait (Q82344)",
+    "publisher": "Wikimedia Foundation",
+    "locator": "https://www.wikidata.org/wiki/Q82344",
+    "accessedOn": "2026-07-16",
+    "license": "CC0 1.0"
+  },
+  {
+    "id": "wikipedia-fram-strait",
+    "type": "website",
+    "title": "Fram Strait — Wikipedia",
+    "publisher": "Wikimedia Foundation",
+    "locator": "https://en.wikipedia.org/wiki/Fram_Strait",
+    "accessedOn": "2026-07-16",
+    "license": "CC BY-SA 4.0"
+  },
+  {
+    "id": "wikidata-q1043467",
+    "type": "dataset",
+    "title": "Wikidata: Foveaux Strait (Q1043467)",
+    "publisher": "Wikimedia Foundation",
+    "locator": "https://www.wikidata.org/wiki/Q1043467",
+    "accessedOn": "2026-07-16",
+    "license": "CC0 1.0"
+  },
+  {
+    "id": "wikidata-q1462361",
+    "type": "dataset",
+    "title": "Wikidata: Vries Strait (Q1462361)",
+    "publisher": "Wikimedia Foundation",
+    "locator": "https://www.wikidata.org/wiki/Q1462361",
+    "accessedOn": "2026-07-16",
+    "license": "CC0 1.0"
+  },
+  {
+    "id": "wikidata-q659608",
+    "type": "dataset",
+    "title": "Wikidata: Yekaterina Strait (Q659608)",
+    "publisher": "Wikimedia Foundation",
+    "locator": "https://www.wikidata.org/wiki/Q659608",
+    "accessedOn": "2026-07-16",
+    "license": "CC0 1.0"
+  },
+  {
+    "id": "wikidata-q4380564",
+    "type": "dataset",
+    "title": "Wikidata: Admiral Kuznetsov Strait (Q4380564)",
+    "publisher": "Wikimedia Foundation",
+    "locator": "https://www.wikidata.org/wiki/Q4380564",
+    "accessedOn": "2026-07-16",
+    "license": "CC0 1.0"
+  },
+  {
+    "id": "wikidata-q5484",
+    "type": "dataset",
+    "title": "Wikidata: Caspian Sea (Q5484)",
+    "publisher": "Wikimedia Foundation",
+    "locator": "https://www.wikidata.org/wiki/Q5484",
+    "accessedOn": "2026-07-16",
+    "license": "CC0 1.0"
+  },
+  {
+    "id": "wikidata-q171510",
+    "type": "dataset",
+    "title": "Wikidata: Banda Sea (Q171510)",
+    "publisher": "Wikimedia Foundation",
+    "locator": "https://www.wikidata.org/wiki/Q171510",
+    "accessedOn": "2026-07-16",
+    "license": "CC0 1.0"
+  },
+  {
+    "id": "wikipedia-banda-sea",
+    "type": "website",
+    "title": "Banda Sea — Wikipedia",
+    "publisher": "Wikimedia Foundation",
+    "locator": "https://en.wikipedia.org/wiki/Banda_Sea",
+    "accessedOn": "2026-07-16",
+    "license": "CC BY-SA 4.0"
+  },
+  {
+    "id": "wikidata-q243125",
+    "type": "dataset",
+    "title": "Wikidata: Lincoln Sea (Q243125)",
+    "publisher": "Wikimedia Foundation",
+    "locator": "https://www.wikidata.org/wiki/Q243125",
+    "accessedOn": "2026-07-16",
+    "license": "CC0 1.0"
+  },
+  {
+    "id": "wikidata-q199436",
+    "type": "dataset",
+    "title": "Wikidata: Bismarck Sea (Q199436)",
+    "publisher": "Wikimedia Foundation",
+    "locator": "https://www.wikidata.org/wiki/Q199436",
+    "accessedOn": "2026-07-16",
+    "license": "CC0 1.0"
+  },
+  {
+    "id": "wikidata-q193465",
+    "type": "dataset",
+    "title": "Wikidata: Savu Sea (Q193465)",
+    "publisher": "Wikimedia Foundation",
+    "locator": "https://www.wikidata.org/wiki/Q193465",
+    "accessedOn": "2026-07-16",
+    "license": "CC0 1.0"
+  },
+  {
+    "id": "wikidata-q212083",
+    "type": "dataset",
+    "title": "Wikidata: Halmahera Sea (Q212083)",
+    "publisher": "Wikimedia Foundation",
+    "locator": "https://www.wikidata.org/wiki/Q212083",
+    "accessedOn": "2026-07-16",
+    "license": "CC0 1.0"
+  },
+  {
+    "id": "wikidata-q210855",
+    "type": "dataset",
+    "title": "Wikidata: Seram Sea (Q210855)",
+    "publisher": "Wikimedia Foundation",
+    "locator": "https://www.wikidata.org/wiki/Q210855",
+    "accessedOn": "2026-07-16",
+    "license": "CC0 1.0"
+  },
+  {
+    "id": "wikidata-q315954",
+    "type": "dataset",
+    "title": "Wikidata: Koro Sea (Q315954)",
+    "publisher": "Wikimedia Foundation",
+    "locator": "https://www.wikidata.org/wiki/Q315954",
+    "accessedOn": "2026-07-16",
+    "license": "CC0 1.0"
+  },
+  {
+    "id": "wikidata-q474708",
+    "type": "dataset",
+    "title": "Wikidata: Visayan Sea (Q474708)",
+    "publisher": "Wikimedia Foundation",
+    "locator": "https://www.wikidata.org/wiki/Q474708",
+    "accessedOn": "2026-07-16",
+    "license": "CC0 1.0"
+  },
+  {
+    "id": "wikidata-q840427",
+    "type": "dataset",
+    "title": "Wikidata: Myrtoan Sea (Q840427)",
+    "publisher": "Wikimedia Foundation",
+    "locator": "https://www.wikidata.org/wiki/Q840427",
+    "accessedOn": "2026-07-16",
+    "license": "CC0 1.0"
+  },
+  {
+    "id": "wikidata-q259929",
+    "type": "dataset",
+    "title": "Wikidata: Wandel Sea (Q259929)",
+    "publisher": "Wikimedia Foundation",
+    "locator": "https://www.wikidata.org/wiki/Q259929",
+    "accessedOn": "2026-07-16",
+    "license": "CC0 1.0"
+  },
+  {
+    "id": "wikidata-q1391243",
+    "type": "dataset",
+    "title": "Wikidata: D'Urville Sea (Q1391243)",
+    "publisher": "Wikimedia Foundation",
+    "locator": "https://www.wikidata.org/wiki/Q1391243",
+    "accessedOn": "2026-07-16",
+    "license": "CC0 1.0"
+  },
+  {
+    "id": "wikidata-q509321",
+    "type": "dataset",
+    "title": "Wikidata: Davis Sea (Q509321)",
+    "publisher": "Wikimedia Foundation",
+    "locator": "https://www.wikidata.org/wiki/Q509321",
+    "accessedOn": "2026-07-16",
+    "license": "CC0 1.0"
+  },
+  {
+    "id": "wikidata-q379063",
+    "type": "dataset",
+    "title": "Wikidata: Thracian Sea (Q379063)",
+    "publisher": "Wikimedia Foundation",
+    "locator": "https://www.wikidata.org/wiki/Q379063",
+    "accessedOn": "2026-07-16",
+    "license": "CC0 1.0"
+  },
+  {
+    "id": "wikidata-q1509546",
+    "type": "dataset",
+    "title": "Wikidata: Cosmonauts Sea (Q1509546)",
+    "publisher": "Wikimedia Foundation",
+    "locator": "https://www.wikidata.org/wiki/Q1509546",
+    "accessedOn": "2026-07-16",
+    "license": "CC0 1.0"
+  },
+  {
+    "id": "wikidata-q1576063",
+    "type": "dataset",
+    "title": "Wikidata: Lazarev Sea (Q1576063)",
+    "publisher": "Wikimedia Foundation",
+    "locator": "https://www.wikidata.org/wiki/Q1576063",
+    "accessedOn": "2026-07-16",
+    "license": "CC0 1.0"
+  },
+  {
+    "id": "wikidata-q1404920",
+    "type": "dataset",
+    "title": "Wikidata: Somov Sea (Q1404920)",
+    "publisher": "Wikimedia Foundation",
+    "locator": "https://www.wikidata.org/wiki/Q1404920",
+    "accessedOn": "2026-07-16",
+    "license": "CC0 1.0"
+  },
+  {
+    "id": "wikidata-q1902276",
+    "type": "dataset",
+    "title": "Wikidata: Mawson Sea (Q1902276)",
+    "publisher": "Wikimedia Foundation",
+    "locator": "https://www.wikidata.org/wiki/Q1902276",
+    "accessedOn": "2026-07-16",
+    "license": "CC0 1.0"
+  },
+  {
+    "id": "wikidata-q2067956",
+    "type": "dataset",
+    "title": "Wikidata: Väinameri (Q2067956)",
+    "publisher": "Wikimedia Foundation",
+    "locator": "https://www.wikidata.org/wiki/Q2067956",
+    "accessedOn": "2026-07-16",
+    "license": "CC0 1.0"
+  },
+  {
+    "id": "wikidata-q3306193",
+    "type": "dataset",
+    "title": "Wikidata: West Philippine Sea (Q3306193)",
+    "publisher": "Wikimedia Foundation",
+    "locator": "https://www.wikidata.org/wiki/Q3306193",
+    "accessedOn": "2026-07-16",
+    "license": "CC0 1.0"
+  },
+  {
+    "id": "wikidata-q1393536",
+    "type": "dataset",
+    "title": "Wikidata: King Haakon VII Sea (Q1393536)",
+    "publisher": "Wikimedia Foundation",
+    "locator": "https://www.wikidata.org/wiki/Q1393536",
+    "accessedOn": "2026-07-16",
+    "license": "CC0 1.0"
+  },
+  {
+    "id": "wikidata-q2322479",
+    "type": "dataset",
+    "title": "Wikidata: Prince Gustav Adolf Sea (Q2322479)",
+    "publisher": "Wikimedia Foundation",
+    "locator": "https://www.wikidata.org/wiki/Q2322479",
+    "accessedOn": "2026-07-16",
+    "license": "CC0 1.0"
+  },
+  {
+    "id": "wikidata-q1251080",
+    "type": "dataset",
+    "title": "Wikidata: Chilean Sea (Q1251080)",
+    "publisher": "Wikimedia Foundation",
+    "locator": "https://www.wikidata.org/wiki/Q1251080",
+    "accessedOn": "2026-07-16",
+    "license": "CC0 1.0"
+  },
+  {
+    "id": "wikidata-q1363807",
+    "type": "dataset",
+    "title": "Wikidata: Erythraean Sea (Q1363807)",
+    "publisher": "Wikimedia Foundation",
+    "locator": "https://www.wikidata.org/wiki/Q1363807",
+    "accessedOn": "2026-07-16",
+    "license": "CC0 1.0"
+  },
+  {
+    "id": "wikidata-q1640853",
+    "type": "dataset",
+    "title": "Wikidata: Icarian Sea (Q1640853)",
+    "publisher": "Wikimedia Foundation",
+    "locator": "https://www.wikidata.org/wiki/Q1640853",
+    "accessedOn": "2026-07-16",
+    "license": "CC0 1.0"
+  },
+  {
+    "id": "wikidata-q2355931",
+    "type": "dataset",
+    "title": "Wikidata: Fiji Sea (Q2355931)",
+    "publisher": "Wikimedia Foundation",
+    "locator": "https://www.wikidata.org/wiki/Q2355931",
+    "accessedOn": "2026-07-16",
+    "license": "CC0 1.0"
+  },
+  {
+    "id": "wikidata-q2835799",
+    "type": "dataset",
+    "title": "Wikidata: Grau Sea (Q2835799)",
+    "publisher": "Wikimedia Foundation",
+    "locator": "https://www.wikidata.org/wiki/Q2835799",
+    "accessedOn": "2026-07-16",
+    "license": "CC0 1.0"
+  },
+  {
+    "id": "wikidata-q10829960",
+    "type": "dataset",
+    "title": "Wikidata: Natuna Sea (Q10829960)",
+    "publisher": "Wikimedia Foundation",
+    "locator": "https://www.wikidata.org/wiki/Q10829960",
+    "accessedOn": "2026-07-16",
+    "license": "CC0 1.0"
+  },
+  {
+    "id": "wikidata-q10537328",
+    "type": "dataset",
+    "title": "Wikidata: Iceland Sea (Q10537328)",
+    "publisher": "Wikimedia Foundation",
+    "locator": "https://www.wikidata.org/wiki/Q10537328",
+    "accessedOn": "2026-07-16",
+    "license": "CC0 1.0"
+  },
+  {
+    "id": "wikidata-q1061490",
+    "type": "dataset",
+    "title": "Wikidata: Champlain Sea (Q1061490)",
+    "publisher": "Wikimedia Foundation",
+    "locator": "https://www.wikidata.org/wiki/Q1061490",
+    "accessedOn": "2026-07-16",
+    "license": "CC0 1.0"
+  },
+  {
+    "id": "wikidata-q13402972",
+    "type": "dataset",
+    "title": "Wikidata: Shantar Sea (Q13402972)",
+    "publisher": "Wikimedia Foundation",
+    "locator": "https://www.wikidata.org/wiki/Q13402972",
+    "accessedOn": "2026-07-16",
+    "license": "CC0 1.0"
+  },
+  {
+    "id": "wikidata-q3306215",
+    "type": "dataset",
+    "title": "Wikidata: Sea of Zanj (Q3306215)",
+    "publisher": "Wikimedia Foundation",
+    "locator": "https://www.wikidata.org/wiki/Q3306215",
+    "accessedOn": "2026-07-16",
+    "license": "CC0 1.0"
+  },
+  {
+    "id": "wikidata-q2068404",
+    "type": "dataset",
+    "title": "Wikidata: Cyprus sea (Q2068404)",
+    "publisher": "Wikimedia Foundation",
+    "locator": "https://www.wikidata.org/wiki/Q2068404",
+    "accessedOn": "2026-07-16",
+    "license": "CC0 1.0"
+  },
+  {
+    "id": "wikidata-q104018603",
+    "type": "dataset",
+    "title": "Wikidata: North Natuna Sea (Q104018603)",
+    "publisher": "Wikimedia Foundation",
+    "locator": "https://www.wikidata.org/wiki/Q104018603",
+    "accessedOn": "2026-07-16",
+    "license": "CC0 1.0"
+  },
+  {
+    "id": "wikidata-q60038397",
+    "type": "dataset",
+    "title": "Wikidata: Somali Sea (Q60038397)",
+    "publisher": "Wikimedia Foundation",
+    "locator": "https://www.wikidata.org/wiki/Q60038397",
+    "accessedOn": "2026-07-16",
+    "license": "CC0 1.0"
+  },
+  {
+    "id": "wikidata-q1423108",
+    "type": "dataset",
+    "title": "Wikidata: Timor Gap (Q1423108)",
+    "publisher": "Wikimedia Foundation",
+    "locator": "https://www.wikidata.org/wiki/Q1423108",
+    "accessedOn": "2026-07-16",
+    "license": "CC0 1.0"
+  },
+  {
+    "id": "wikidata-q3240274",
+    "type": "dataset",
+    "title": "Wikidata: Murter Sea (Q3240274)",
+    "publisher": "Wikimedia Foundation",
+    "locator": "https://www.wikidata.org/wiki/Q3240274",
+    "accessedOn": "2026-07-16",
+    "license": "CC0 1.0"
+  },
+  {
+    "id": "wikidata-q3306208",
+    "type": "dataset",
+    "title": "Wikidata: Sea of Sicily (Q3306208)",
+    "publisher": "Wikimedia Foundation",
+    "locator": "https://www.wikidata.org/wiki/Q3306208",
+    "accessedOn": "2026-07-16",
+    "license": "CC0 1.0"
+  },
+  {
+    "id": "wikidata-q11935054",
+    "type": "dataset",
+    "title": "Wikidata: Catalan Sea (Q11935054)",
+    "publisher": "Wikimedia Foundation",
+    "locator": "https://www.wikidata.org/wiki/Q11935054",
+    "accessedOn": "2026-07-16",
+    "license": "CC0 1.0"
+  },
+  {
+    "id": "wikidata-q24828473",
+    "type": "dataset",
+    "title": "Wikidata: McKinley Sea (Q24828473)",
+    "publisher": "Wikimedia Foundation",
+    "locator": "https://www.wikidata.org/wiki/Q24828473",
+    "accessedOn": "2026-07-16",
+    "license": "CC0 1.0"
+  },
+  {
+    "id": "wikidata-q111384093",
+    "type": "dataset",
+    "title": "Wikidata: South China and Eastern Archipelagic Seas (Q111384093)",
+    "publisher": "Wikimedia Foundation",
+    "locator": "https://www.wikidata.org/wiki/Q111384093",
+    "accessedOn": "2026-07-16",
+    "license": "CC0 1.0"
+  },
+  {
+    "id": "wikidata-q111384107",
+    "type": "dataset",
+    "title": "Wikidata: Mediterranean Sea Area (Q111384107)",
+    "publisher": "Wikimedia Foundation",
+    "locator": "https://www.wikidata.org/wiki/Q111384107",
+    "accessedOn": "2026-07-16",
+    "license": "CC0 1.0"
+  },
+  {
+    "id": "wikidata-q323760",
+    "type": "dataset",
+    "title": "Wikidata: Gulf of Gabès (Q323760)",
+    "publisher": "Wikimedia Foundation",
+    "locator": "https://www.wikidata.org/wiki/Q323760",
+    "accessedOn": "2026-07-16",
+    "license": "CC0 1.0"
+  },
+  {
+    "id": "wikidata-q767824",
+    "type": "dataset",
+    "title": "Wikidata: Hauraki Gulf / Tīkapa Moana (Q767824)",
+    "publisher": "Wikimedia Foundation",
+    "locator": "https://www.wikidata.org/wiki/Q767824",
+    "accessedOn": "2026-07-16",
+    "license": "CC0 1.0"
+  },
+  {
+    "id": "wikidata-q4198699",
+    "type": "dataset",
+    "title": "Wikidata: Gulf of İzmit (Q4198699)",
+    "publisher": "Wikimedia Foundation",
+    "locator": "https://www.wikidata.org/wiki/Q4198699",
+    "accessedOn": "2026-07-16",
+    "license": "CC0 1.0"
+  },
+  {
+    "id": "wikidata-q1185210",
+    "type": "dataset",
+    "title": "Wikidata: Pagasetic Gulf (Q1185210)",
+    "publisher": "Wikimedia Foundation",
+    "locator": "https://www.wikidata.org/wiki/Q1185210",
+    "accessedOn": "2026-07-16",
+    "license": "CC0 1.0"
+  },
+  {
+    "id": "wikidata-q1536377",
+    "type": "dataset",
+    "title": "Wikidata: Gulf of İzmir (Q1536377)",
+    "publisher": "Wikimedia Foundation",
+    "locator": "https://www.wikidata.org/wiki/Q1536377",
+    "accessedOn": "2026-07-16",
+    "license": "CC0 1.0"
+  },
+  {
+    "id": "wikidata-q1807328",
+    "type": "dataset",
+    "title": "Wikidata: Vyborg Bay (Q1807328)",
+    "publisher": "Wikimedia Foundation",
+    "locator": "https://www.wikidata.org/wiki/Q1807328",
+    "accessedOn": "2026-07-16",
+    "license": "CC0 1.0"
+  },
+  {
+    "id": "wikidata-q589877",
+    "type": "dataset",
+    "title": "Wikidata: Laconian Gulf (Q589877)",
+    "publisher": "Wikimedia Foundation",
+    "locator": "https://www.wikidata.org/wiki/Q589877",
+    "accessedOn": "2026-07-16",
+    "license": "CC0 1.0"
+  },
+  {
+    "id": "wikidata-q2474092",
+    "type": "dataset",
+    "title": "Wikidata: Gulf of Saros (Q2474092)",
+    "publisher": "Wikimedia Foundation",
+    "locator": "https://www.wikidata.org/wiki/Q2474092",
+    "accessedOn": "2026-07-16",
+    "license": "CC0 1.0"
+  },
+  {
+    "id": "wikidata-q549658",
+    "type": "dataset",
+    "title": "Wikidata: Malian Gulf (Q549658)",
+    "publisher": "Wikimedia Foundation",
+    "locator": "https://www.wikidata.org/wiki/Q549658",
+    "accessedOn": "2026-07-16",
+    "license": "CC0 1.0"
+  },
+  {
+    "id": "wikidata-q1141758",
+    "type": "dataset",
+    "title": "Wikidata: Uda Bay (Q1141758)",
+    "publisher": "Wikimedia Foundation",
+    "locator": "https://www.wikidata.org/wiki/Q1141758",
+    "accessedOn": "2026-07-16",
+    "license": "CC0 1.0"
+  },
+  {
+    "id": "wikidata-q1706655",
+    "type": "dataset",
+    "title": "Wikidata: Joseph Bonaparte Gulf (Q1706655)",
+    "publisher": "Wikimedia Foundation",
+    "locator": "https://www.wikidata.org/wiki/Q1706655",
+    "accessedOn": "2026-07-16",
+    "license": "CC0 1.0"
+  },
+  {
+    "id": "wikidata-q2391874",
+    "type": "dataset",
+    "title": "Wikidata: Karaginsky Gulf (Q2391874)",
+    "publisher": "Wikimedia Foundation",
+    "locator": "https://www.wikidata.org/wiki/Q2391874",
+    "accessedOn": "2026-07-16",
+    "license": "CC0 1.0"
+  },
+  {
+    "id": "wikidata-q3917992",
+    "type": "dataset",
+    "title": "Wikidata: Türkmenbaşy Gulf (Q3917992)",
+    "publisher": "Wikimedia Foundation",
+    "locator": "https://www.wikidata.org/wiki/Q3917992",
+    "accessedOn": "2026-07-16",
+    "license": "CC0 1.0"
+  },
+  {
+    "id": "wikidata-q55442244",
+    "type": "dataset",
+    "title": "Wikidata: Van Diemen Gulf (Q55442244)",
+    "publisher": "Wikimedia Foundation",
+    "locator": "https://www.wikidata.org/wiki/Q55442244",
+    "accessedOn": "2026-07-16",
+    "license": "CC0 1.0"
+  },
+  {
+    "id": "wikidata-q2483319",
+    "type": "dataset",
+    "title": "Wikidata: Kolyma Gulf (Q2483319)",
+    "publisher": "Wikimedia Foundation",
+    "locator": "https://www.wikidata.org/wiki/Q2483319",
+    "accessedOn": "2026-07-16",
+    "license": "CC0 1.0"
+  },
+  {
+    "id": "wikidata-q249550",
+    "type": "dataset",
+    "title": "Wikidata: Gulf of Squillace (Q249550)",
+    "publisher": "Wikimedia Foundation",
+    "locator": "https://www.wikidata.org/wiki/Q249550",
+    "accessedOn": "2026-07-16",
+    "license": "CC0 1.0"
+  },
+  {
+    "id": "wikidata-q1536317",
+    "type": "dataset",
+    "title": "Wikidata: Davao Gulf (Q1536317)",
+    "publisher": "Wikimedia Foundation",
+    "locator": "https://www.wikidata.org/wiki/Q1536317",
+    "accessedOn": "2026-07-16",
+    "license": "CC0 1.0"
+  },
+  {
+    "id": "wikidata-q4027101",
+    "type": "dataset",
+    "title": "Wikidata: Gulf of Saint-Malo (Q4027101)",
+    "publisher": "Wikimedia Foundation",
+    "locator": "https://www.wikidata.org/wiki/Q4027101",
+    "accessedOn": "2026-07-16",
+    "license": "CC0 1.0"
+  },
+  {
+    "id": "wikidata-q1140493",
+    "type": "dataset",
+    "title": "Wikidata: King Sound (Q1140493)",
+    "publisher": "Wikimedia Foundation",
+    "locator": "https://www.wikidata.org/wiki/Q1140493",
+    "accessedOn": "2026-07-16",
+    "license": "CC0 1.0"
+  },
+  {
+    "id": "wikidata-q1332013",
+    "type": "dataset",
+    "title": "Wikidata: Singitic Gulf (Q1332013)",
+    "publisher": "Wikimedia Foundation",
+    "locator": "https://www.wikidata.org/wiki/Q1332013",
+    "accessedOn": "2026-07-16",
+    "license": "CC0 1.0"
+  },
+  {
+    "id": "wikidata-q1440916",
+    "type": "dataset",
+    "title": "Wikidata: Gulf of Roses (Q1440916)",
+    "publisher": "Wikimedia Foundation",
+    "locator": "https://www.wikidata.org/wiki/Q1440916",
+    "accessedOn": "2026-07-16",
+    "license": "CC0 1.0"
+  },
+  {
+    "id": "wikidata-q2444383",
+    "type": "dataset",
+    "title": "Wikidata: Toronaic Gulf (Q2444383)",
+    "publisher": "Wikimedia Foundation",
+    "locator": "https://www.wikidata.org/wiki/Q2444383",
+    "accessedOn": "2026-07-16",
+    "license": "CC0 1.0"
+  },
+  {
+    "id": "wikidata-q2450069",
+    "type": "dataset",
+    "title": "Wikidata: Kamchatka Bay (Q2450069)",
+    "publisher": "Wikimedia Foundation",
+    "locator": "https://www.wikidata.org/wiki/Q2450069",
+    "accessedOn": "2026-07-16",
+    "license": "CC0 1.0"
+  },
+  {
+    "id": "wikidata-q2990544",
+    "type": "dataset",
+    "title": "Wikidata: Middendorff Bay (Q2990544)",
+    "publisher": "Wikimedia Foundation",
+    "locator": "https://www.wikidata.org/wiki/Q2990544",
+    "accessedOn": "2026-07-16",
+    "license": "CC0 1.0"
+  },
+  {
+    "id": "wikidata-q3773151",
+    "type": "dataset",
+    "title": "Wikidata: Gulf of Catania (Q3773151)",
+    "publisher": "Wikimedia Foundation",
+    "locator": "https://www.wikidata.org/wiki/Q3773151",
+    "accessedOn": "2026-07-16",
+    "license": "CC0 1.0"
+  },
+  {
+    "id": "wikidata-q4464931",
+    "type": "dataset",
+    "title": "Wikidata: Tugur Bay (Q4464931)",
+    "publisher": "Wikimedia Foundation",
+    "locator": "https://www.wikidata.org/wiki/Q4464931",
+    "accessedOn": "2026-07-16",
+    "license": "CC0 1.0"
+  },
+  {
+    "id": "wikidata-q999074",
+    "type": "dataset",
+    "title": "Wikidata: Gulf of Çandarlı (Q999074)",
+    "publisher": "Wikimedia Foundation",
+    "locator": "https://www.wikidata.org/wiki/Q999074",
+    "accessedOn": "2026-07-16",
+    "license": "CC0 1.0"
+  },
+  {
+    "id": "wikidata-q931885",
+    "type": "dataset",
+    "title": "Wikidata: Temryuk Bay (Q931885)",
+    "publisher": "Wikimedia Foundation",
+    "locator": "https://www.wikidata.org/wiki/Q931885",
+    "accessedOn": "2026-07-16",
+    "license": "CC0 1.0"
+  },
+  {
+    "id": "wikidata-q1124711",
+    "type": "dataset",
+    "title": "Wikidata: Gulf of Policastro (Q1124711)",
+    "publisher": "Wikimedia Foundation",
+    "locator": "https://www.wikidata.org/wiki/Q1124711",
+    "accessedOn": "2026-07-16",
+    "license": "CC0 1.0"
+  },
+  {
+    "id": "wikidata-q657779",
+    "type": "dataset",
+    "title": "Wikidata: Albay Gulf (Q657779)",
+    "publisher": "Wikimedia Foundation",
+    "locator": "https://www.wikidata.org/wiki/Q657779",
+    "accessedOn": "2026-07-16",
+    "license": "CC0 1.0"
+  },
+  {
+    "id": "wikidata-q1162236",
+    "type": "dataset",
+    "title": "Wikidata: Panay Gulf (Q1162236)",
+    "publisher": "Wikimedia Foundation",
+    "locator": "https://www.wikidata.org/wiki/Q1162236",
+    "accessedOn": "2026-07-16",
+    "license": "CC0 1.0"
+  },
+  {
+    "id": "wikidata-q1936352",
+    "type": "dataset",
+    "title": "Wikidata: Gulf of Gemlik (Q1936352)",
+    "publisher": "Wikimedia Foundation",
+    "locator": "https://www.wikidata.org/wiki/Q1936352",
+    "accessedOn": "2026-07-16",
+    "license": "CC0 1.0"
+  },
+  {
+    "id": "wikidata-q2326240",
+    "type": "dataset",
+    "title": "Wikidata: Kronotsky Gulf (Q2326240)",
+    "publisher": "Wikimedia Foundation",
+    "locator": "https://www.wikidata.org/wiki/Q2326240",
+    "accessedOn": "2026-07-16",
+    "license": "CC0 1.0"
+  },
+  {
+    "id": "wikidata-q1089476",
+    "type": "dataset",
+    "title": "Wikidata: Edremit Gulf (Q1089476)",
+    "publisher": "Wikimedia Foundation",
+    "locator": "https://www.wikidata.org/wiki/Q1089476",
+    "accessedOn": "2026-07-16",
+    "license": "CC0 1.0"
+  },
+  {
+    "id": "wikidata-q648369",
+    "type": "dataset",
+    "title": "Wikidata: Mangyshlak Bay (Q648369)",
+    "publisher": "Wikimedia Foundation",
+    "locator": "https://www.wikidata.org/wiki/Q648369",
+    "accessedOn": "2026-07-16",
+    "license": "CC0 1.0"
+  },
+  {
+    "id": "wikidata-q2392966",
+    "type": "dataset",
+    "title": "Wikidata: Gulf of Tendra (Q2392966)",
+    "publisher": "Wikimedia Foundation",
+    "locator": "https://www.wikidata.org/wiki/Q2392966",
+    "accessedOn": "2026-07-16",
+    "license": "CC0 1.0"
+  },
+  {
+    "id": "wikidata-q5617583",
+    "type": "dataset",
+    "title": "Wikidata: Gulf of Salwah (Q5617583)",
+    "publisher": "Wikimedia Foundation",
+    "locator": "https://www.wikidata.org/wiki/Q5617583",
+    "accessedOn": "2026-07-16",
+    "license": "CC0 1.0"
+  },
+  {
+    "id": "wikidata-q3773150",
+    "type": "dataset",
+    "title": "Wikidata: Gulf of Castellammare (Q3773150)",
+    "publisher": "Wikimedia Foundation",
+    "locator": "https://www.wikidata.org/wiki/Q3773150",
+    "accessedOn": "2026-07-16",
+    "license": "CC0 1.0"
+  },
+  {
+    "id": "wikidata-q2374928",
+    "type": "dataset",
+    "title": "Wikidata: Vostok Bay (Q2374928)",
+    "publisher": "Wikimedia Foundation",
+    "locator": "https://www.wikidata.org/wiki/Q2374928",
+    "accessedOn": "2026-07-16",
+    "license": "CC0 1.0"
+  },
+  {
+    "id": "wikidata-q3773155",
+    "type": "dataset",
+    "title": "Wikidata: Gulf of Follonica (Q3773155)",
+    "publisher": "Wikimedia Foundation",
+    "locator": "https://www.wikidata.org/wiki/Q3773155",
+    "accessedOn": "2026-07-16",
+    "license": "CC0 1.0"
+  },
+  {
+    "id": "wikidata-q4055420",
+    "type": "dataset",
+    "title": "Wikidata: Avacha Gulf (Q4055420)",
+    "publisher": "Wikimedia Foundation",
+    "locator": "https://www.wikidata.org/wiki/Q4055420",
+    "accessedOn": "2026-07-16",
+    "license": "CC0 1.0"
+  },
+  {
+    "id": "wikidata-q1028302",
+    "type": "dataset",
+    "title": "Wikidata: Cambridge Gulf (Q1028302)",
+    "publisher": "Wikimedia Foundation",
+    "locator": "https://www.wikidata.org/wiki/Q1028302",
+    "accessedOn": "2026-07-16",
+    "license": "CC0 1.0"
+  },
+  {
+    "id": "wikidata-q1112066",
+    "type": "dataset",
+    "title": "Wikidata: Simsa Bay (Q1112066)",
+    "publisher": "Wikimedia Foundation",
+    "locator": "https://www.wikidata.org/wiki/Q1112066",
+    "accessedOn": "2026-07-16",
+    "license": "CC0 1.0"
+  },
+  {
+    "id": "wikidata-q2921569",
+    "type": "dataset",
+    "title": "Wikidata: Gulf of Boughrara (Q2921569)",
+    "publisher": "Wikimedia Foundation",
+    "locator": "https://www.wikidata.org/wiki/Q2921569",
+    "accessedOn": "2026-07-16",
+    "license": "CC0 1.0"
+  },
+  {
+    "id": "wikidata-q722915",
+    "type": "dataset",
+    "title": "Wikidata: Golfo di Sant'Eufemia (Q722915)",
+    "publisher": "Wikimedia Foundation",
+    "locator": "https://www.wikidata.org/wiki/Q722915",
+    "accessedOn": "2026-07-16",
+    "license": "CC0 1.0"
+  },
+  {
+    "id": "wikidata-q1010579",
+    "type": "dataset",
+    "title": "Wikidata: Golfo di Gioia (Q1010579)",
+    "publisher": "Wikimedia Foundation",
+    "locator": "https://www.wikidata.org/wiki/Q1010579",
+    "accessedOn": "2026-07-16",
+    "license": "CC0 1.0"
+  },
+  {
+    "id": "wikidata-q5617561",
+    "type": "dataset",
+    "title": "Wikidata: Gulf of Argostoli (Q5617561)",
+    "publisher": "Wikimedia Foundation",
+    "locator": "https://www.wikidata.org/wiki/Q5617561",
+    "accessedOn": "2026-07-16",
+    "license": "CC0 1.0"
+  },
+  {
+    "id": "wikidata-q16897510",
+    "type": "dataset",
+    "title": "Wikidata: Ul'banskiy Bay (Q16897510)",
+    "publisher": "Wikimedia Foundation",
+    "locator": "https://www.wikidata.org/wiki/Q16897510",
+    "accessedOn": "2026-07-16",
+    "license": "CC0 1.0"
+  },
+  {
+    "id": "wikidata-q3327628",
+    "type": "dataset",
+    "title": "Wikidata: Costa Ártabra (Q3327628)",
+    "publisher": "Wikimedia Foundation",
+    "locator": "https://www.wikidata.org/wiki/Q3327628",
+    "accessedOn": "2026-07-16",
+    "license": "CC0 1.0"
+  },
+  {
+    "id": "wikidata-q1936516",
+    "type": "dataset",
+    "title": "Wikidata: Mindoro Strait (Q1936516)",
+    "publisher": "Wikimedia Foundation",
+    "locator": "https://www.wikidata.org/wiki/Q1936516",
+    "accessedOn": "2026-07-16",
+    "license": "CC0 1.0"
+  },
+  {
+    "id": "wikipedia-mindoro-strait",
+    "type": "website",
+    "title": "Mindoro Strait — Wikipedia",
+    "publisher": "Wikimedia Foundation",
+    "locator": "https://en.wikipedia.org/wiki/Mindoro_Strait",
+    "accessedOn": "2026-07-16",
+    "license": "CC BY-SA 4.0"
+  },
+  {
+    "id": "wikidata-q3045395",
+    "type": "dataset",
+    "title": "Wikidata: Dundas Strait (Q3045395)",
+    "publisher": "Wikimedia Foundation",
+    "locator": "https://www.wikidata.org/wiki/Q3045395",
+    "accessedOn": "2026-07-16",
+    "license": "CC0 1.0"
   }
 ]

@@ -1,0 +1,9 @@
+{
+  "id": "shantar-sea",
+  "name": "Shantar Sea",
+  "type": "sea",
+  "summary": "part of Okhotsk sea",
+  "parentId": "sea-of-okhotsk",
+  "sourceIds": ["wikidata-q13402972"],
+  "status": "draft"
+}

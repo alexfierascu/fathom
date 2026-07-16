@@ -1,0 +1,9 @@
+{
+  "id": "banda-sea",
+  "name": "Banda Sea",
+  "type": "sea",
+  "summary": "The Banda Sea is one of four seas that surround the Maluku Islands of Indonesia, connected to the Pacific Ocean, but surrounded by hundreds of islands, including Timor, as well as the Halmahera and Ceram Seas.",
+  "parentId": "south-china-and-eastern-archipelagic-seas",
+  "sourceIds": ["wikidata-q171510", "wikipedia-banda-sea"],
+  "status": "draft"
+}

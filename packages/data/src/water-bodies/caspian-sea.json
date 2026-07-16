@@ -1,0 +1,9 @@
+{
+  "id": "caspian-sea",
+  "name": "Caspian Sea",
+  "type": "sea",
+  "summary": "largest landlocked salt lake, located between Europe and Asia",
+  "parentId": "mediterranean-sea-area",
+  "sourceIds": ["wikidata-q5484"],
+  "status": "draft"
+}

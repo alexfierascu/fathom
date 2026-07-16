@@ -1,0 +1,9 @@
+{
+  "id": "champlain-sea",
+  "name": "Champlain Sea",
+  "type": "sea",
+  "summary": "sea",
+  "parentId": "atlantic-ocean",
+  "sourceIds": ["wikidata-q1061490"],
+  "status": "draft"
+}

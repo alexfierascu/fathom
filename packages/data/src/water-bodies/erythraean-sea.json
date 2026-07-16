@@ -1,0 +1,9 @@
+{
+  "id": "erythraean-sea",
+  "name": "Erythraean Sea",
+  "type": "sea",
+  "summary": "ancient name of water between the Horn of Africa and the Arabian peninsula",
+  "parentId": "indian-ocean",
+  "sourceIds": ["wikidata-q1363807"],
+  "status": "draft"
+}

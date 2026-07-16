@@ -1,0 +1,9 @@
+{
+  "id": "albay-gulf",
+  "name": "Albay Gulf",
+  "type": "gulf",
+  "summary": "gulf in the Philippines",
+  "parentId": "philippine-sea",
+  "sourceIds": ["wikidata-q657779"],
+  "status": "draft"
+}

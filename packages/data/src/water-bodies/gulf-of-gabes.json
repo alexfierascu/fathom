@@ -1,0 +1,9 @@
+{
+  "id": "gulf-of-gabes",
+  "name": "Gulf of Gabès",
+  "type": "gulf",
+  "summary": "bay in Tunisia",
+  "parentId": "sea-of-sicily",
+  "sourceIds": ["wikidata-q323760"],
+  "status": "draft"
+}

@@ -1,0 +1,9 @@
+{
+  "id": "lincoln-sea",
+  "name": "Lincoln Sea",
+  "type": "sea",
+  "summary": "part of the Arctic Ocean",
+  "parentId": "arctic-ocean",
+  "sourceIds": ["wikidata-q243125"],
+  "status": "draft"
+}

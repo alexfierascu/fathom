@@ -1,0 +1,9 @@
+{
+  "id": "vyborg-bay",
+  "name": "Vyborg Bay",
+  "type": "gulf",
+  "summary": "bay in the Gulf of Finland",
+  "parentId": "gulf-of-finland",
+  "sourceIds": ["wikidata-q1807328"],
+  "status": "draft"
+}

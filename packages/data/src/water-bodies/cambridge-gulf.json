@@ -1,0 +1,9 @@
+{
+  "id": "cambridge-gulf",
+  "name": "Cambridge Gulf",
+  "type": "gulf",
+  "summary": "Gulf in Kimberley region of Western Australia",
+  "parentId": "timor-sea",
+  "sourceIds": ["wikidata-q1028302"],
+  "status": "draft"
+}

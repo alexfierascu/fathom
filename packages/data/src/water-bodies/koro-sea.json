@@ -1,0 +1,9 @@
+{
+  "id": "koro-sea",
+  "name": "Koro Sea",
+  "type": "sea",
+  "summary": "Interisland Sea in the Pacific Ocean",
+  "parentId": "pacific-ocean",
+  "sourceIds": ["wikidata-q315954"],
+  "status": "draft"
+}

@@ -1,0 +1,9 @@
+{
+  "id": "somali-sea",
+  "name": "Somali Sea",
+  "type": "sea",
+  "summary": "body of water off the eastern coast of Somalia",
+  "parentId": "indian-ocean",
+  "sourceIds": ["wikidata-q60038397"],
+  "status": "draft"
+}

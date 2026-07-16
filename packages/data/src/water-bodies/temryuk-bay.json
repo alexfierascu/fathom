@@ -1,0 +1,9 @@
+{
+  "id": "temryuk-bay",
+  "name": "Temryuk Bay",
+  "type": "gulf",
+  "summary": "bay",
+  "parentId": "sea-of-azov",
+  "sourceIds": ["wikidata-q931885", "wikidata-q931885"],
+  "status": "draft"
+}

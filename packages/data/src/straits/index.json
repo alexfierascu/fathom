@@ -334,5 +334,61 @@
     "countries": ["Russia"],
     "lat": 77.9,
     "lon": 103.5
+  },
+  {
+    "id": "fram-strait",
+    "name": "Fram Strait",
+    "region": "Americas & Arctic",
+    "countries": ["Greenland", "Norway"],
+    "lat": 80,
+    "lon": 0
+  },
+  {
+    "id": "foveaux-strait",
+    "name": "Foveaux Strait",
+    "region": "East Asia & Oceania",
+    "countries": ["New Zealand"],
+    "lat": -46.67,
+    "lon": 168.19
+  },
+  {
+    "id": "vries-strait",
+    "name": "Vries Strait",
+    "region": "East Asia & Oceania",
+    "countries": ["Russia"],
+    "lat": 45.51,
+    "lon": 149.18
+  },
+  {
+    "id": "yekaterina-strait",
+    "name": "Yekaterina Strait",
+    "region": "East Asia & Oceania",
+    "countries": ["Russia"],
+    "lat": 44.42,
+    "lon": 146.75
+  },
+  {
+    "id": "admiral-kuznetsov-strait",
+    "name": "Admiral Kuznetsov Strait",
+    "region": "East Asia & Oceania",
+    "countries": ["Russia"],
+    "lat": 54.78,
+    "lon": 167.11
+  },
+  {
+    "id": "mindoro-strait",
+    "name": "Mindoro Strait",
+    "region": "South & Southeast Asia",
+    "countries": ["Philippines"],
+    "lat": 12.33,
+    "lon": 120.67
+  },
+  {
+    "id": "dundas-strait",
+    "name": "Dundas Strait",
+    "region": "East Asia & Oceania",
+    "countries": ["Australia"],
+    "lat": -11.33,
+    "lon": 131.58
   }
 ]

@@ -1,0 +1,9 @@
+{
+  "id": "lazarev-sea",
+  "name": "Lazarev Sea",
+  "type": "sea",
+  "summary": "sea",
+  "parentId": "southern-ocean",
+  "sourceIds": ["wikidata-q1576063"],
+  "status": "draft"
+}

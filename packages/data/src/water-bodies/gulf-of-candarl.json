@@ -1,0 +1,9 @@
+{
+  "id": "gulf-of-candarl",
+  "name": "Gulf of Çandarlı",
+  "type": "gulf",
+  "summary": "bay",
+  "parentId": "aegean-sea",
+  "sourceIds": ["wikidata-q999074"],
+  "status": "draft"
+}

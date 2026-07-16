@@ -1,0 +1,9 @@
+{
+  "id": "turkmenbasy-gulf",
+  "name": "Türkmenbaşy Gulf",
+  "type": "gulf",
+  "summary": "bay of the Caspian Sea in the coast of Turkmenistan",
+  "parentId": "caspian-sea",
+  "sourceIds": ["wikidata-q3917992", "wikidata-q3917992"],
+  "status": "draft"
+}

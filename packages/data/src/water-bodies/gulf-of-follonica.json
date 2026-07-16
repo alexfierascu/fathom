@@ -1,0 +1,9 @@
+{
+  "id": "gulf-of-follonica",
+  "name": "Gulf of Follonica",
+  "type": "gulf",
+  "summary": "gulf in Tuscany, Italy",
+  "parentId": "tyrrhenian-sea",
+  "sourceIds": ["wikidata-q3773155"],
+  "status": "draft"
+}

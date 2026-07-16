@@ -1,0 +1,9 @@
+{
+  "id": "joseph-bonaparte-gulf",
+  "name": "Joseph Bonaparte Gulf",
+  "type": "gulf",
+  "summary": "body of water off the coast of the Northern Territory and Western Australia",
+  "parentId": "timor-sea",
+  "sourceIds": ["wikidata-q1706655"],
+  "status": "draft"
+}

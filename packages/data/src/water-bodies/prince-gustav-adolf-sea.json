@@ -1,0 +1,9 @@
+{
+  "id": "prince-gustav-adolf-sea",
+  "name": "Prince Gustav Adolf Sea",
+  "type": "sea",
+  "summary": "marginal sea of the Arctic Ocean located in Qikiqtaaluk Region, Nunavut, Canada",
+  "parentId": "arctic-ocean",
+  "sourceIds": ["wikidata-q2322479"],
+  "status": "draft"
+}

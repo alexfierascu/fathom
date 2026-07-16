@@ -1,0 +1,9 @@
+{
+  "id": "myrtoan-sea",
+  "name": "Myrtoan Sea",
+  "type": "sea",
+  "summary": "sea southeast of Peloponnese, Greece",
+  "parentId": "aegean-sea",
+  "sourceIds": ["wikidata-q840427"],
+  "status": "draft"
+}

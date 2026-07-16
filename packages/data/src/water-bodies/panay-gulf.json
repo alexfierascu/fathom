@@ -1,0 +1,9 @@
+{
+  "id": "panay-gulf",
+  "name": "Panay Gulf",
+  "type": "gulf",
+  "summary": "gulf in the Philippines",
+  "parentId": "sulu-sea",
+  "sourceIds": ["wikidata-q1162236"],
+  "status": "draft"
+}

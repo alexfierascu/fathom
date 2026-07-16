@@ -1,0 +1,9 @@
+{
+  "id": "sea-of-sicily",
+  "name": "Sea of Sicily",
+  "type": "sea",
+  "summary": "sea",
+  "parentId": "mediterranean-sea",
+  "sourceIds": ["wikidata-q3306208"],
+  "status": "draft"
+}

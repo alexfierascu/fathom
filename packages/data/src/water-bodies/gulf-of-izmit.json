@@ -1,0 +1,9 @@
+{
+  "id": "gulf-of-izmit",
+  "name": "Gulf of İzmit",
+  "type": "gulf",
+  "summary": "gulf at the Marmara Sea, Turkey",
+  "parentId": "sea-of-marmara",
+  "sourceIds": ["wikidata-q4198699"],
+  "status": "draft"
+}

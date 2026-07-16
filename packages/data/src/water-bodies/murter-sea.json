@@ -1,0 +1,9 @@
+{
+  "id": "murter-sea",
+  "name": "Murter Sea",
+  "type": "sea",
+  "summary": "sea area in Croatia",
+  "parentId": "adriatic-sea",
+  "sourceIds": ["wikidata-q3240274"],
+  "status": "draft"
+}

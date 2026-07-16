@@ -1,0 +1,9 @@
+{
+  "id": "north-natuna-sea",
+  "name": "North Natuna Sea",
+  "type": "sea",
+  "summary": "sea in the northern Natuna Regency",
+  "parentId": "south-china-sea",
+  "sourceIds": ["wikidata-q104018603"],
+  "status": "draft"
+}

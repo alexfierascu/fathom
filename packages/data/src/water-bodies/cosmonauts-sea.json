@@ -1,0 +1,9 @@
+{
+  "id": "cosmonauts-sea",
+  "name": "Cosmonauts Sea",
+  "type": "sea",
+  "summary": "sea of Antarctica",
+  "parentId": "southern-ocean",
+  "sourceIds": ["wikidata-q1509546"],
+  "status": "draft"
+}

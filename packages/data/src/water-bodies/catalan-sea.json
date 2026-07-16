@@ -1,0 +1,9 @@
+{
+  "id": "catalan-sea",
+  "name": "Catalan Sea",
+  "type": "sea",
+  "summary": "sea",
+  "parentId": "balearic-sea",
+  "sourceIds": ["wikidata-q11935054"],
+  "status": "draft"
+}

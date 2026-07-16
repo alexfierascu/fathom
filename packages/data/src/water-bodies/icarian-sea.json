@@ -1,0 +1,9 @@
+{
+  "id": "icarian-sea",
+  "name": "Icarian Sea",
+  "type": "sea",
+  "summary": "marginal sea of the Mediterranean Sea",
+  "parentId": "aegean-sea",
+  "sourceIds": ["wikidata-q1640853"],
+  "status": "draft"
+}

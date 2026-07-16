@@ -1,0 +1,9 @@
+{
+  "id": "golfo-di-sant-eufemia",
+  "name": "Golfo di Sant'Eufemia",
+  "type": "gulf",
+  "summary": "body of water",
+  "parentId": "tyrrhenian-sea",
+  "sourceIds": ["wikidata-q722915"],
+  "status": "draft"
+}

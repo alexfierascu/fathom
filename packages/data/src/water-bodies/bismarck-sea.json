@@ -1,0 +1,9 @@
+{
+  "id": "bismarck-sea",
+  "name": "Bismarck Sea",
+  "type": "sea",
+  "summary": "Interisland Sea in the Pacific Ocean",
+  "parentId": "south-pacific-ocean",
+  "sourceIds": ["wikidata-q199436"],
+  "status": "draft"
+}

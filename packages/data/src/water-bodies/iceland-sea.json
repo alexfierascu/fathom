@@ -1,0 +1,9 @@
+{
+  "id": "iceland-sea",
+  "name": "Iceland Sea",
+  "type": "sea",
+  "summary": "sea",
+  "parentId": "arctic-ocean",
+  "sourceIds": ["wikidata-q10537328"],
+  "status": "draft"
+}

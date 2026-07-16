@@ -1,0 +1,9 @@
+{
+  "id": "ul-banskiy-bay",
+  "name": "Ul'banskiy Bay",
+  "type": "gulf",
+  "summary": "body of water",
+  "parentId": "sea-of-okhotsk",
+  "sourceIds": ["wikidata-q16897510", "wikidata-q16897510"],
+  "status": "draft"
+}

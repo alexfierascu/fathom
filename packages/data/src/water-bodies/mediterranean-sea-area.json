@@ -1,0 +1,9 @@
+{
+  "id": "mediterranean-sea-area",
+  "name": "Mediterranean Sea Area",
+  "type": "sea",
+  "summary": "general sea area",
+  "parentId": "world-ocean",
+  "sourceIds": ["wikidata-q111384107"],
+  "status": "draft"
+}

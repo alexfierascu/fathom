@@ -1,0 +1,9 @@
+{
+  "id": "chilean-sea",
+  "name": "Chilean Sea",
+  "type": "sea",
+  "summary": "portion of the Pacific Ocean lying west of the Chilean mainland",
+  "parentId": "south-pacific-ocean",
+  "sourceIds": ["wikidata-q1251080"],
+  "status": "draft"
+}

@@ -1,0 +1,9 @@
+{
+  "id": "gulf-of-catania",
+  "name": "Gulf of Catania",
+  "type": "gulf",
+  "summary": "inlet in the Mediterranean Sea",
+  "parentId": "ionian-sea",
+  "sourceIds": ["wikidata-q3773151"],
+  "status": "draft"
+}

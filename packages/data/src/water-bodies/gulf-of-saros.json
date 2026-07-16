@@ -1,0 +1,9 @@
+{
+  "id": "gulf-of-saros",
+  "name": "Gulf of Saros",
+  "type": "gulf",
+  "summary": "bay in Turkey",
+  "parentId": "aegean-sea",
+  "sourceIds": ["wikidata-q2474092"],
+  "status": "draft"
+}

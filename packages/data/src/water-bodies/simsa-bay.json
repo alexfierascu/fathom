@@ -1,0 +1,9 @@
+{
+  "id": "simsa-bay",
+  "name": "Simsa Bay",
+  "type": "gulf",
+  "summary": "bay",
+  "parentId": "laptev-sea",
+  "sourceIds": ["wikidata-q1112066"],
+  "status": "draft"
+}

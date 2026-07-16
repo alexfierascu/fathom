@@ -1,0 +1,9 @@
+{
+  "id": "king-haakon-vii-sea",
+  "name": "King Haakon VII Sea",
+  "type": "sea",
+  "summary": "sea",
+  "parentId": "southern-ocean",
+  "sourceIds": ["wikidata-q1393536"],
+  "status": "draft"
+}

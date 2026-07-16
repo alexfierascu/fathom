@@ -1,0 +1,9 @@
+{
+  "id": "davao-gulf",
+  "name": "Davao Gulf",
+  "type": "gulf",
+  "summary": "gulf in the Philippines",
+  "parentId": "philippine-sea",
+  "sourceIds": ["wikidata-q1536317"],
+  "status": "draft"
+}

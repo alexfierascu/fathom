@@ -1,0 +1,9 @@
+{
+  "id": "gulf-of-argostoli",
+  "name": "Gulf of Argostoli",
+  "type": "gulf",
+  "summary": "gulf in Greece",
+  "parentId": "ionian-sea",
+  "sourceIds": ["wikidata-q5617561"],
+  "status": "draft"
+}

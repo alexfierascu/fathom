@@ -1,0 +1,9 @@
+{
+  "id": "avacha-gulf",
+  "name": "Avacha Gulf",
+  "type": "gulf",
+  "summary": "Pacific Ocean gulf on the south-eastern coast of the Kamchatka Peninsula",
+  "parentId": "bering-sea",
+  "sourceIds": ["wikidata-q4055420"],
+  "status": "draft"
+}

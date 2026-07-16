@@ -1,0 +1,9 @@
+{
+  "id": "gulf-of-castellammare",
+  "name": "Gulf of Castellammare",
+  "type": "gulf",
+  "summary": "body of water",
+  "parentId": "mediterranean-sea",
+  "sourceIds": ["wikidata-q3773150", "wikidata-q3773150"],
+  "status": "draft"
+}

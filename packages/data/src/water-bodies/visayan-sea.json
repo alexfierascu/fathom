@@ -1,0 +1,9 @@
+{
+  "id": "visayan-sea",
+  "name": "Visayan Sea",
+  "type": "sea",
+  "summary": "sea in the Philippines",
+  "parentId": "pacific-ocean",
+  "sourceIds": ["wikidata-q474708"],
+  "status": "draft"
+}

@@ -1,0 +1,9 @@
+{
+  "id": "vainameri",
+  "name": "Väinameri",
+  "type": "sea",
+  "summary": "part of the Baltic Sea",
+  "parentId": "baltic-sea",
+  "sourceIds": ["wikidata-q2067956"],
+  "status": "draft"
+}

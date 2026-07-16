@@ -1,0 +1,9 @@
+{
+  "id": "kolyma-gulf",
+  "name": "Kolyma Gulf",
+  "type": "gulf",
+  "summary": "gulf of the East Siberian Sea",
+  "parentId": "east-siberian-sea",
+  "sourceIds": ["wikidata-q2483319"],
+  "status": "draft"
+}

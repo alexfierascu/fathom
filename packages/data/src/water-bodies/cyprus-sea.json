@@ -1,0 +1,9 @@
+{
+  "id": "cyprus-sea",
+  "name": "Cyprus sea",
+  "type": "sea",
+  "summary": "sea",
+  "parentId": "mediterranean-sea",
+  "sourceIds": ["wikidata-q2068404"],
+  "status": "draft"
+}

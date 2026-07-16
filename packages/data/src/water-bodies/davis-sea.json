@@ -1,0 +1,9 @@
+{
+  "id": "davis-sea",
+  "name": "Davis Sea",
+  "type": "sea",
+  "summary": "sea along the coast of East Antarctica",
+  "parentId": "southern-ocean",
+  "sourceIds": ["wikidata-q509321"],
+  "status": "draft"
+}

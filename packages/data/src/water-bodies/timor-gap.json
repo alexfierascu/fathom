@@ -1,0 +1,9 @@
+{
+  "id": "timor-gap",
+  "name": "Timor Gap",
+  "type": "sea",
+  "summary": "area of the Timor Sea between Australia and Timor Island",
+  "parentId": "timor-sea",
+  "sourceIds": ["wikidata-q1423108"],
+  "status": "draft"
+}
