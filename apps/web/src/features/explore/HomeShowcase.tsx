@@ -1,10 +1,9 @@
 import { Link } from 'react-router';
 
-import { loadImages, loadImagesFor, loadStrait, type Image } from '@fathom/data';
+import { loadAllStraits, loadImages, loadImagesFor, loadStrait, type Image } from '@fathom/data';
 import { loadJourneys } from '@fathom/discovery';
 
 import { straitOfTheDay } from '../atlas/lib/discovery';
-import { useT } from '../i18n/locale';
 import { attributionOf, mediaUrl } from '../media/media';
 
 /**
@@ -20,7 +19,7 @@ function Attribution({ image }: { image: Image }) {
 }
 
 export function HomeHero() {
-  const t = useT();
+  const straitCount = loadAllStraits().length;
   const hero = loadImagesFor({ type: 'strait', id: 'gibraltar' })[0];
   return (
     <section className="home-hero">
@@ -39,7 +38,10 @@ export function HomeHero() {
           <br />
           and history turns.
         </h2>
-        <p className="home-hero-lede">{t('tagline')}</p>
+        <p className="home-hero-lede">
+          {straitCount} narrow waterways, mapped and sourced — explore how the world's oceans,
+          countries, and centuries connect through them.
+        </p>
         <div className="home-hero-actions">
           <Link className="hero-btn hero-btn--primary" to="/explore">
             Start exploring
