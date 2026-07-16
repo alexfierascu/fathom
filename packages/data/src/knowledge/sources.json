@@ -3287,5 +3287,275 @@
     "locator": "https://en.wikipedia.org/wiki/South_Island",
     "accessedOn": "2026-07-16",
     "license": "CC BY-SA 4.0"
+  },
+  {
+    "id": "wikidata-q194398",
+    "type": "dataset",
+    "title": "Wikidata: Kara Strait (Q194398)",
+    "publisher": "Wikimedia Foundation",
+    "locator": "https://www.wikidata.org/wiki/Q194398",
+    "accessedOn": "2026-07-16",
+    "license": "CC0 1.0"
+  },
+  {
+    "id": "wikipedia-kara-strait",
+    "type": "website",
+    "title": "Kara Strait — Wikipedia",
+    "publisher": "Wikimedia Foundation",
+    "locator": "https://en.wikipedia.org/wiki/Kara_Strait",
+    "accessedOn": "2026-07-16",
+    "license": "CC BY-SA 4.0"
+  },
+  {
+    "id": "wikidata-q908356",
+    "type": "dataset",
+    "title": "Wikidata: Matochkin Strait (Q908356)",
+    "publisher": "Wikimedia Foundation",
+    "locator": "https://www.wikidata.org/wiki/Q908356",
+    "accessedOn": "2026-07-16",
+    "license": "CC0 1.0"
+  },
+  {
+    "id": "wikipedia-matochkin-strait",
+    "type": "website",
+    "title": "Matochkin Strait — Wikipedia",
+    "publisher": "Wikimedia Foundation",
+    "locator": "https://en.wikipedia.org/wiki/Matochkin_Strait",
+    "accessedOn": "2026-07-16",
+    "license": "CC BY-SA 4.0"
+  },
+  {
+    "id": "wikidata-q494894",
+    "type": "dataset",
+    "title": "Wikidata: Kanmon Straits (Q494894)",
+    "publisher": "Wikimedia Foundation",
+    "locator": "https://www.wikidata.org/wiki/Q494894",
+    "accessedOn": "2026-07-16",
+    "license": "CC0 1.0"
+  },
+  {
+    "id": "wikidata-q1422973",
+    "type": "dataset",
+    "title": "Wikidata: Yugorsky Strait (Q1422973)",
+    "publisher": "Wikimedia Foundation",
+    "locator": "https://www.wikidata.org/wiki/Q1422973",
+    "accessedOn": "2026-07-16",
+    "license": "CC0 1.0"
+  },
+  {
+    "id": "wikipedia-yugorsky-strait",
+    "type": "website",
+    "title": "Yugorsky Strait — Wikipedia",
+    "publisher": "Wikimedia Foundation",
+    "locator": "https://en.wikipedia.org/wiki/Yugorsky_Strait",
+    "accessedOn": "2026-07-16",
+    "license": "CC BY-SA 4.0"
+  },
+  {
+    "id": "wikidata-q1576377",
+    "type": "dataset",
+    "title": "Wikidata: San Bernardino Strait (Q1576377)",
+    "publisher": "Wikimedia Foundation",
+    "locator": "https://www.wikidata.org/wiki/Q1576377",
+    "accessedOn": "2026-07-16",
+    "license": "CC0 1.0"
+  },
+  {
+    "id": "wikipedia-san-bernardino-strait",
+    "type": "website",
+    "title": "San Bernardino Strait — Wikipedia",
+    "publisher": "Wikimedia Foundation",
+    "locator": "https://en.wikipedia.org/wiki/San_Bernardino_Strait",
+    "accessedOn": "2026-07-16",
+    "license": "CC BY-SA 4.0"
+  },
+  {
+    "id": "wikidata-q691945",
+    "type": "dataset",
+    "title": "Wikidata: Fury and Hecla Strait (Q691945)",
+    "publisher": "Wikimedia Foundation",
+    "locator": "https://www.wikidata.org/wiki/Q691945",
+    "accessedOn": "2026-07-16",
+    "license": "CC0 1.0"
+  },
+  {
+    "id": "wikidata-q735021",
+    "type": "dataset",
+    "title": "Wikidata: Tañon Strait (Q735021)",
+    "publisher": "Wikimedia Foundation",
+    "locator": "https://www.wikidata.org/wiki/Q735021",
+    "accessedOn": "2026-07-16",
+    "license": "CC0 1.0"
+  },
+  {
+    "id": "wikipedia-ta-on-strait",
+    "type": "website",
+    "title": "Tañon Strait — Wikipedia",
+    "publisher": "Wikimedia Foundation",
+    "locator": "https://en.wikipedia.org/wiki/Ta%C3%B1on_Strait",
+    "accessedOn": "2026-07-16",
+    "license": "CC BY-SA 4.0"
+  },
+  {
+    "id": "wikidata-q1454050",
+    "type": "dataset",
+    "title": "Wikidata: Cebu Strait (Q1454050)",
+    "publisher": "Wikimedia Foundation",
+    "locator": "https://www.wikidata.org/wiki/Q1454050",
+    "accessedOn": "2026-07-16",
+    "license": "CC0 1.0"
+  },
+  {
+    "id": "wikipedia-cebu-strait",
+    "type": "website",
+    "title": "Cebu Strait — Wikipedia",
+    "publisher": "Wikimedia Foundation",
+    "locator": "https://en.wikipedia.org/wiki/Cebu_Strait",
+    "accessedOn": "2026-07-16",
+    "license": "CC BY-SA 4.0"
+  },
+  {
+    "id": "wikidata-q672777",
+    "type": "dataset",
+    "title": "Wikidata: Canigao Channel (Q672777)",
+    "publisher": "Wikimedia Foundation",
+    "locator": "https://www.wikidata.org/wiki/Q672777",
+    "accessedOn": "2026-07-16",
+    "license": "CC0 1.0"
+  },
+  {
+    "id": "wikipedia-canigao-channel",
+    "type": "website",
+    "title": "Canigao Channel — Wikipedia",
+    "publisher": "Wikimedia Foundation",
+    "locator": "https://en.wikipedia.org/wiki/Canigao_Channel",
+    "accessedOn": "2026-07-16",
+    "license": "CC BY-SA 4.0"
+  },
+  {
+    "id": "wikidata-q2632950",
+    "type": "dataset",
+    "title": "Wikidata: Maliku Kandu (Q2632950)",
+    "publisher": "Wikimedia Foundation",
+    "locator": "https://www.wikidata.org/wiki/Q2632950",
+    "accessedOn": "2026-07-16",
+    "license": "CC0 1.0"
+  },
+  {
+    "id": "wikipedia-maliku-kandu",
+    "type": "website",
+    "title": "Maliku Kandu — Wikipedia",
+    "publisher": "Wikimedia Foundation",
+    "locator": "https://en.wikipedia.org/wiki/Maliku_Kandu",
+    "accessedOn": "2026-07-16",
+    "license": "CC BY-SA 4.0"
+  },
+  {
+    "id": "wikidata-q2975999",
+    "type": "dataset",
+    "title": "Wikidata: Port of Beirut (Q2975999)",
+    "publisher": "Wikimedia Foundation",
+    "locator": "https://www.wikidata.org/wiki/Q2975999",
+    "accessedOn": "2026-07-16",
+    "license": "CC0 1.0"
+  },
+  {
+    "id": "wikipedia-port-of-beirut",
+    "type": "website",
+    "title": "Port of Beirut — Wikipedia",
+    "publisher": "Wikimedia Foundation",
+    "locator": "https://en.wikipedia.org/wiki/Port_of_Beirut",
+    "accessedOn": "2026-07-16",
+    "license": "CC BY-SA 4.0"
+  },
+  {
+    "id": "wikidata-q2915417",
+    "type": "dataset",
+    "title": "Wikidata: Port of Eilat (Q2915417)",
+    "publisher": "Wikimedia Foundation",
+    "locator": "https://www.wikidata.org/wiki/Q2915417",
+    "accessedOn": "2026-07-16",
+    "license": "CC0 1.0"
+  },
+  {
+    "id": "wikipedia-port-of-eilat",
+    "type": "website",
+    "title": "Port of Eilat — Wikipedia",
+    "publisher": "Wikimedia Foundation",
+    "locator": "https://en.wikipedia.org/wiki/Port_of_Eilat",
+    "accessedOn": "2026-07-16",
+    "license": "CC BY-SA 4.0"
+  },
+  {
+    "id": "wikidata-q1336906",
+    "type": "dataset",
+    "title": "Wikidata: Port of Kobe (Q1336906)",
+    "publisher": "Wikimedia Foundation",
+    "locator": "https://www.wikidata.org/wiki/Q1336906",
+    "accessedOn": "2026-07-16",
+    "license": "CC0 1.0"
+  },
+  {
+    "id": "wikipedia-port-of-kobe",
+    "type": "website",
+    "title": "Port of Kobe — Wikipedia",
+    "publisher": "Wikimedia Foundation",
+    "locator": "https://en.wikipedia.org/wiki/Port_of_Kobe",
+    "accessedOn": "2026-07-16",
+    "license": "CC BY-SA 4.0"
+  },
+  {
+    "id": "wikidata-q1190021",
+    "type": "dataset",
+    "title": "Wikidata: Port of Yokohama (Q1190021)",
+    "publisher": "Wikimedia Foundation",
+    "locator": "https://www.wikidata.org/wiki/Q1190021",
+    "accessedOn": "2026-07-16",
+    "license": "CC0 1.0"
+  },
+  {
+    "id": "wikipedia-port-of-yokohama",
+    "type": "website",
+    "title": "Port of Yokohama — Wikipedia",
+    "publisher": "Wikimedia Foundation",
+    "locator": "https://en.wikipedia.org/wiki/Port_of_Yokohama",
+    "accessedOn": "2026-07-16",
+    "license": "CC BY-SA 4.0"
+  },
+  {
+    "id": "wikidata-q1189542",
+    "type": "dataset",
+    "title": "Wikidata: Port of Nagoya (Q1189542)",
+    "publisher": "Wikimedia Foundation",
+    "locator": "https://www.wikidata.org/wiki/Q1189542",
+    "accessedOn": "2026-07-16",
+    "license": "CC0 1.0"
+  },
+  {
+    "id": "wikipedia-port-of-nagoya",
+    "type": "website",
+    "title": "Port of Nagoya — Wikipedia",
+    "publisher": "Wikimedia Foundation",
+    "locator": "https://en.wikipedia.org/wiki/Port_of_Nagoya",
+    "accessedOn": "2026-07-16",
+    "license": "CC BY-SA 4.0"
+  },
+  {
+    "id": "wikidata-q7231144",
+    "type": "dataset",
+    "title": "Wikidata: Port of Gaza (Q7231144)",
+    "publisher": "Wikimedia Foundation",
+    "locator": "https://www.wikidata.org/wiki/Q7231144",
+    "accessedOn": "2026-07-16",
+    "license": "CC0 1.0"
+  },
+  {
+    "id": "wikidata-q7231171",
+    "type": "dataset",
+    "title": "Wikidata: Port of Kolkata (Q7231171)",
+    "publisher": "Wikimedia Foundation",
+    "locator": "https://www.wikidata.org/wiki/Q7231171",
+    "accessedOn": "2026-07-16",
+    "license": "CC0 1.0"
   }
 ]

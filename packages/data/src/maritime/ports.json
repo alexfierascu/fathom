@@ -214,5 +214,89 @@
     "summary": "port",
     "sourceIds": ["wikidata-q1567835"],
     "status": "draft"
+  },
+  {
+    "id": "port-of-beirut",
+    "name": "Port of Beirut",
+    "countryId": "lebanon",
+    "opensOnto": {
+      "type": "water-body",
+      "id": "levantine-sea"
+    },
+    "summary": "The Port of Beirut is the main port in Lebanon on the eastern part of the Saint George Bay on Beirut's northern Mediterranean coast, west of the Beirut River.",
+    "sourceIds": ["wikidata-q2975999", "wikipedia-port-of-beirut"],
+    "status": "draft"
+  },
+  {
+    "id": "port-of-eilat",
+    "name": "Port of Eilat",
+    "countryId": "israel",
+    "opensOnto": {
+      "type": "water-body",
+      "id": "gulf-of-aqaba"
+    },
+    "summary": "The Port of Eilat was the only Israeli port on the Red Sea, located at the northern tip of the Gulf of Aqaba.",
+    "sourceIds": ["wikidata-q2915417", "wikipedia-port-of-eilat"],
+    "status": "draft"
+  },
+  {
+    "id": "port-of-kobe",
+    "name": "Port of Kobe",
+    "countryId": "japan",
+    "opensOnto": {
+      "type": "water-body",
+      "id": "osaka-bay"
+    },
+    "summary": "The Port of Kobe is a Japanese maritime port in Kobe, Hyōgo in the Keihanshin area, backgrounded by the Hanshin Industrial Region.",
+    "sourceIds": ["wikidata-q1336906", "wikipedia-port-of-kobe"],
+    "status": "draft"
+  },
+  {
+    "id": "port-of-yokohama",
+    "name": "Port of Yokohama",
+    "countryId": "japan",
+    "opensOnto": {
+      "type": "water-body",
+      "id": "tokyo-bay"
+    },
+    "summary": "The Port of Yokohama is operated by the Port and Harbor Bureau of the City of Yokohama in Japan.",
+    "sourceIds": ["wikidata-q1190021", "wikipedia-port-of-yokohama"],
+    "status": "draft"
+  },
+  {
+    "id": "port-of-nagoya",
+    "name": "Port of Nagoya",
+    "countryId": "japan",
+    "opensOnto": {
+      "type": "water-body",
+      "id": "ise-bay"
+    },
+    "summary": "The Port of Nagoya , located in Ise Bay, is the largest and busiest trading port in Japan, accounting for about 10% of the total trade value of Japan.",
+    "sourceIds": ["wikidata-q1189542", "wikipedia-port-of-nagoya"],
+    "status": "draft"
+  },
+  {
+    "id": "port-of-gaza",
+    "name": "Port of Gaza",
+    "countryId": "palestine",
+    "opensOnto": {
+      "type": "water-body",
+      "id": "levantine-sea"
+    },
+    "summary": "Port in State of Palestine",
+    "sourceIds": ["wikidata-q7231144"],
+    "status": "draft"
+  },
+  {
+    "id": "port-of-kolkata",
+    "name": "Port of Kolkata",
+    "countryId": "india",
+    "opensOnto": {
+      "type": "water-body",
+      "id": "indian-ocean"
+    },
+    "summary": "port in India",
+    "sourceIds": ["wikidata-q7231171"],
+    "status": "draft"
   }
 ]

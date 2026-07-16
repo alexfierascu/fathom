@@ -1,0 +1,12 @@
+{
+  "id": "fury-and-hecla-strait",
+  "name": "Fury and Hecla Strait",
+  "countries": ["Canada"],
+  "region": "Americas & Arctic",
+  "connects": "Gulf of Boothia ↔ Foxe Basin",
+  "lat": 69.83,
+  "lon": -83,
+  "note": "Arctic strait below northwest Baffin Island, Nunavut, Canada",
+  "sourceIds": ["wikidata-q691945"],
+  "status": "draft"
+}

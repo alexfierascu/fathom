@@ -1,0 +1,12 @@
+{
+  "id": "maliku-kandu",
+  "name": "Maliku Kandu",
+  "countries": ["Maldives", "India"],
+  "region": "South & Southeast Asia",
+  "connects": "Laccadive Sea ↔ Arabian Sea",
+  "lat": 8,
+  "lon": 73,
+  "note": "Maliku Kandu and Māmalē Kandu Divehi are the traditional names of the broad Minicoy Channel between Minicoy and Ihavandippolhu in the north of the Maldives.",
+  "sourceIds": ["wikidata-q2632950", "wikipedia-maliku-kandu"],
+  "status": "draft"
+}

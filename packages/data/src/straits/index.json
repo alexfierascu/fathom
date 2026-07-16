@@ -390,5 +390,85 @@
     "countries": ["Australia"],
     "lat": -11.33,
     "lon": 131.58
+  },
+  {
+    "id": "kara-strait",
+    "name": "Kara Strait",
+    "region": "Americas & Arctic",
+    "countries": ["Russia"],
+    "lat": 70.51,
+    "lon": 57.98
+  },
+  {
+    "id": "matochkin-strait",
+    "name": "Matochkin Strait",
+    "region": "Americas & Arctic",
+    "countries": ["Russia"],
+    "lat": 73.39,
+    "lon": 55.22
+  },
+  {
+    "id": "kanmon-straits",
+    "name": "Kanmon Straits",
+    "region": "East Asia & Oceania",
+    "countries": ["Japan"],
+    "lat": 33.95,
+    "lon": 130.95
+  },
+  {
+    "id": "yugorsky-strait",
+    "name": "Yugorsky Strait",
+    "region": "Americas & Arctic",
+    "countries": ["Russia"],
+    "lat": 69.75,
+    "lon": 60.5
+  },
+  {
+    "id": "san-bernardino-strait",
+    "name": "San Bernardino Strait",
+    "region": "South & Southeast Asia",
+    "countries": ["Philippines"],
+    "lat": 12.59,
+    "lon": 124.2
+  },
+  {
+    "id": "fury-and-hecla-strait",
+    "name": "Fury and Hecla Strait",
+    "region": "Americas & Arctic",
+    "countries": ["Canada"],
+    "lat": 69.83,
+    "lon": -83
+  },
+  {
+    "id": "tanon-strait",
+    "name": "Tañon Strait",
+    "region": "South & Southeast Asia",
+    "countries": ["Philippines"],
+    "lat": 10.2,
+    "lon": 123.4
+  },
+  {
+    "id": "cebu-strait",
+    "name": "Cebu Strait",
+    "region": "South & Southeast Asia",
+    "countries": ["Philippines"],
+    "lat": 9.83,
+    "lon": 123.67
+  },
+  {
+    "id": "canigao-channel",
+    "name": "Canigao Channel",
+    "region": "South & Southeast Asia",
+    "countries": ["Philippines"],
+    "lat": 10.17,
+    "lon": 124.67
+  },
+  {
+    "id": "maliku-kandu",
+    "name": "Maliku Kandu",
+    "region": "South & Southeast Asia",
+    "countries": ["Maldives", "India"],
+    "lat": 8,
+    "lon": 73
   }
 ]

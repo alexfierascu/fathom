@@ -1,0 +1,12 @@
+{
+  "id": "yugorsky-strait",
+  "name": "Yugorsky Strait",
+  "countries": ["Russia"],
+  "region": "Americas & Arctic",
+  "connects": "Barents Sea ↔ Kara Sea",
+  "lat": 69.75,
+  "lon": 60.5,
+  "note": "The Yugorsky Strait or Yugor Strait is a narrow sound between the Kara Sea and the Pechora Sea.",
+  "sourceIds": ["wikidata-q1422973", "wikipedia-yugorsky-strait"],
+  "status": "draft"
+}

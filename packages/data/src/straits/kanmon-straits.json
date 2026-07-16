@@ -1,0 +1,12 @@
+{
+  "id": "kanmon-straits",
+  "name": "Kanmon Straits",
+  "countries": ["Japan"],
+  "region": "East Asia & Oceania",
+  "connects": "Seto Inland Sea ↔ Sea of Japan",
+  "lat": 33.95,
+  "lon": 130.95,
+  "note": "the stretch of water separating the islands Honshu and Kyushu in Japan",
+  "sourceIds": ["wikidata-q494894"],
+  "status": "draft"
+}

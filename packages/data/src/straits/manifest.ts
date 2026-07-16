@@ -10,6 +10,8 @@ import rawBelleisle from './belleisle.json';
 import rawBering from './bering.json';
 import rawBonifacio from './bonifacio.json';
 import rawBosporus from './bosporus.json';
+import rawCanigaoChannel from './canigao-channel.json';
+import rawCebuStrait from './cebu-strait.json';
 import rawCook from './cook.json';
 import rawDardanelles from './dardanelles.json';
 import rawDavis from './davis.json';
@@ -19,11 +21,14 @@ import rawDundasStrait from './dundas-strait.json';
 import rawFlorida from './florida.json';
 import rawFoveauxStrait from './foveaux-strait.json';
 import rawFramStrait from './fram-strait.json';
+import rawFuryAndHeclaStrait from './fury-and-hecla-strait.json';
 import rawGeorgia from './georgia.json';
 import rawGibraltar from './gibraltar.json';
 import rawHormuz from './hormuz.json';
 import rawHudson from './hudson.json';
 import rawJuandefuca from './juandefuca.json';
+import rawKanmonStraits from './kanmon-straits.json';
+import rawKaraStrait from './kara-strait.json';
 import rawKarimata from './karimata.json';
 import rawKattegat from './kattegat.json';
 import rawKerch from './kerch.json';
@@ -34,6 +39,8 @@ import rawLuzon from './luzon.json';
 import rawMagellan from './magellan.json';
 import rawMakassar from './makassar.json';
 import rawMalacca from './malacca.json';
+import rawMalikuKandu from './maliku-kandu.json';
+import rawMatochkinStrait from './matochkin-strait.json';
 import rawMessina from './messina.json';
 import rawMindoroStrait from './mindoro-strait.json';
 import rawMozambique from './mozambique.json';
@@ -42,16 +49,19 @@ import rawNorthumberland from './northumberland.json';
 import rawOresund from './oresund.json';
 import rawOtranto from './otranto.json';
 import rawPalk from './palk.json';
+import rawSanBernardinoStrait from './san-bernardino-strait.json';
 import rawSingapore from './singapore.json';
 import rawSkagerrak from './skagerrak.json';
 import rawSolent from './solent.json';
 import rawSunda from './sunda.json';
 import rawTaiwan from './taiwan.json';
+import rawTanonStrait from './tanon-strait.json';
 import rawTorres from './torres.json';
 import rawTsugaru from './tsugaru.json';
 import rawVilkitsky from './vilkitsky.json';
 import rawVriesStrait from './vries-strait.json';
 import rawYekaterinaStrait from './yekaterina-strait.json';
+import rawYugorskyStrait from './yugorsky-strait.json';
 
 export const RAW_STRAIT_DOCUMENTS: readonly unknown[] = [
   rawAdmiralKuznetsovStrait,
@@ -61,6 +71,8 @@ export const RAW_STRAIT_DOCUMENTS: readonly unknown[] = [
   rawBering,
   rawBonifacio,
   rawBosporus,
+  rawCanigaoChannel,
+  rawCebuStrait,
   rawCook,
   rawDardanelles,
   rawDavis,
@@ -70,11 +82,14 @@ export const RAW_STRAIT_DOCUMENTS: readonly unknown[] = [
   rawFlorida,
   rawFoveauxStrait,
   rawFramStrait,
+  rawFuryAndHeclaStrait,
   rawGeorgia,
   rawGibraltar,
   rawHormuz,
   rawHudson,
   rawJuandefuca,
+  rawKanmonStraits,
+  rawKaraStrait,
   rawKarimata,
   rawKattegat,
   rawKerch,
@@ -85,6 +100,8 @@ export const RAW_STRAIT_DOCUMENTS: readonly unknown[] = [
   rawMagellan,
   rawMakassar,
   rawMalacca,
+  rawMalikuKandu,
+  rawMatochkinStrait,
   rawMessina,
   rawMindoroStrait,
   rawMozambique,
@@ -93,14 +110,17 @@ export const RAW_STRAIT_DOCUMENTS: readonly unknown[] = [
   rawOresund,
   rawOtranto,
   rawPalk,
+  rawSanBernardinoStrait,
   rawSingapore,
   rawSkagerrak,
   rawSolent,
   rawSunda,
   rawTaiwan,
+  rawTanonStrait,
   rawTorres,
   rawTsugaru,
   rawVilkitsky,
   rawVriesStrait,
   rawYekaterinaStrait,
+  rawYugorskyStrait,
 ];

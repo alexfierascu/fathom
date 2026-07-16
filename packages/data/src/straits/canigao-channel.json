@@ -1,0 +1,12 @@
+{
+  "id": "canigao-channel",
+  "name": "Canigao Channel",
+  "countries": ["Philippines"],
+  "region": "South & Southeast Asia",
+  "connects": "Bohol Sea ↔ Camotes Sea",
+  "lat": 10.17,
+  "lon": 124.67,
+  "note": "Canigao Channel is a strait in the Central Visayan and Eastern Visayan regions in the Philippines.",
+  "sourceIds": ["wikidata-q672777", "wikipedia-canigao-channel"],
+  "status": "draft"
+}

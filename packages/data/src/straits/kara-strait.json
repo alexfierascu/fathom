@@ -1,0 +1,12 @@
+{
+  "id": "kara-strait",
+  "name": "Kara Strait",
+  "countries": ["Russia"],
+  "region": "Americas & Arctic",
+  "connects": "Barents Sea ↔ Kara Sea",
+  "lat": 70.51,
+  "lon": 57.98,
+  "note": "The Kara Strait or Kara Gates is a 56 km (35 mi) wide channel of water between the southern end of Novaya Zemlya and the northern tip of Vaygach Island.",
+  "sourceIds": ["wikidata-q194398", "wikipedia-kara-strait"],
+  "status": "draft"
+}

@@ -1,0 +1,12 @@
+{
+  "id": "san-bernardino-strait",
+  "name": "San Bernardino Strait",
+  "countries": ["Philippines"],
+  "region": "South & Southeast Asia",
+  "connects": "Samar Sea ↔ Philippine Sea",
+  "lat": 12.59,
+  "lon": 124.2,
+  "note": "The San Bernardino Strait is a strait in the Philippines, connecting the Samar Sea with the Philippine Sea.",
+  "sourceIds": ["wikidata-q1576377", "wikipedia-san-bernardino-strait"],
+  "status": "draft"
+}

@@ -1,0 +1,12 @@
+{
+  "id": "tanon-strait",
+  "name": "Tañon Strait",
+  "countries": ["Philippines"],
+  "region": "South & Southeast Asia",
+  "connects": "Bohol Sea ↔ Visayan Sea",
+  "lat": 10.2,
+  "lon": 123.4,
+  "note": "The Tañon Strait is a body of water, separating the islands of Negros and Cebu in the Visayas, Philippines.",
+  "sourceIds": ["wikidata-q735021", "wikipedia-ta-on-strait"],
+  "status": "draft"
+}
