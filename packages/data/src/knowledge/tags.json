@@ -1,1 +1,32 @@
-[]
+[
+  {
+    "id": "chokepoint",
+    "label": "Chokepoint",
+    "definition": "A strait whose closure would materially disrupt global shipping."
+  },
+  {
+    "id": "unesco-listed",
+    "label": "UNESCO-listed",
+    "definition": "Waters or shores inscribed on UNESCO World Heritage or protected-reserve lists."
+  },
+  {
+    "id": "polar",
+    "label": "Polar",
+    "definition": "Lies within or at the edge of the polar regions."
+  },
+  {
+    "id": "historic-trade",
+    "label": "Historic trade",
+    "definition": "Central to historically documented trade routes."
+  },
+  {
+    "id": "crossed",
+    "label": "Crossed",
+    "definition": "Spanned by a bridge or an undersea tunnel."
+  },
+  {
+    "id": "wallace-line",
+    "label": "Wallace Line",
+    "definition": "Marks part of the biogeographic divide between Asian and Australasian wildlife."
+  }
+]

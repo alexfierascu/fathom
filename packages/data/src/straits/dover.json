@@ -6,5 +6,6 @@
   "connects": "English Channel ↔ North Sea",
   "lat": 51,
   "lon": 1.4,
-  "note": "The narrowest point of the Channel — the far coast is visible on a clear day."
+  "note": "The narrowest point of the Channel — the far coast is visible on a clear day.",
+  "tagIds": ["chokepoint", "crossed"]
 }

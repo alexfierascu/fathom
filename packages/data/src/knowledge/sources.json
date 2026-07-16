@@ -3557,5 +3557,53 @@
     "locator": "https://www.wikidata.org/wiki/Q7231171",
     "accessedOn": "2026-07-16",
     "license": "CC0 1.0"
+  },
+  {
+    "id": "britannica-gallipoli",
+    "type": "website",
+    "title": "Gallipoli Campaign",
+    "publisher": "Encyclopaedia Britannica",
+    "locator": "https://www.britannica.com/event/Gallipoli-Campaign",
+    "accessedOn": "2026-07-17"
+  },
+  {
+    "id": "britannica-magellan",
+    "type": "website",
+    "title": "Ferdinand Magellan",
+    "publisher": "Encyclopaedia Britannica",
+    "locator": "https://www.britannica.com/biography/Ferdinand-Magellan",
+    "accessedOn": "2026-07-17"
+  },
+  {
+    "id": "britannica-kiel-canal",
+    "type": "website",
+    "title": "Kiel Canal",
+    "publisher": "Encyclopaedia Britannica",
+    "locator": "https://www.britannica.com/topic/Kiel-Canal",
+    "accessedOn": "2026-07-17"
+  },
+  {
+    "id": "britannica-corinth-canal",
+    "type": "website",
+    "title": "Corinth Canal",
+    "publisher": "Encyclopaedia Britannica",
+    "locator": "https://www.britannica.com/topic/Corinth-Canal",
+    "accessedOn": "2026-07-17"
+  },
+  {
+    "id": "britannica-suez-canal",
+    "type": "website",
+    "title": "Suez Canal",
+    "publisher": "Encyclopaedia Britannica",
+    "locator": "https://www.britannica.com/topic/Suez-Canal",
+    "accessedOn": "2026-07-17"
+  },
+  {
+    "id": "britannica-northwest-passage",
+    "type": "website",
+    "title": "Northwest Passage",
+    "publisher": "Encyclopaedia Britannica",
+    "locator": "https://www.britannica.com/place/Northwest-Passage",
+    "accessedOn": "2026-07-17"
   }
 ]

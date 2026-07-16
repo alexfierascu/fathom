@@ -6,5 +6,6 @@
   "connects": "Baltic Sea ↔ Kattegat",
   "lat": 55.63,
   "lon": 12.7,
-  "note": "Crossed by the Öresund Bridge linking Copenhagen and Malmö."
+  "note": "Crossed by the Öresund Bridge linking Copenhagen and Malmö.",
+  "tagIds": ["crossed"]
 }

@@ -6,5 +6,6 @@
   "connects": "Persian Gulf ↔ Gulf of Oman",
   "lat": 26.57,
   "lon": 56.25,
-  "note": "Roughly a fifth of the world's oil supply passes through here."
+  "note": "Roughly a fifth of the world's oil supply passes through here.",
+  "tagIds": ["chokepoint", "historic-trade"]
 }

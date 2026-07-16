@@ -6,5 +6,6 @@
   "connects": "Arctic Ocean ↔ Baffin Bay",
   "lat": 80,
   "lon": -70,
-  "note": "One of the northernmost straits on Earth."
+  "note": "One of the northernmost straits on Earth.",
+  "tagIds": ["polar"]
 }

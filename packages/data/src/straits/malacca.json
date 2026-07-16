@@ -6,5 +6,6 @@
   "connects": "Andaman Sea ↔ South China Sea",
   "lat": 2.5,
   "lon": 101,
-  "note": "Carries roughly a quarter of the world's traded goods by sea."
+  "note": "Carries roughly a quarter of the world's traded goods by sea.",
+  "tagIds": ["chokepoint", "historic-trade"]
 }

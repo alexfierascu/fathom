@@ -6,5 +6,6 @@
   "connects": "Malacca Strait ↔ South China Sea",
   "lat": 1.2,
   "lon": 103.8,
-  "note": "One of the busiest shipping lanes on Earth."
+  "note": "One of the busiest shipping lanes on Earth.",
+  "tagIds": ["historic-trade"]
 }

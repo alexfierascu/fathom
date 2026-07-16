@@ -6,5 +6,6 @@
   "connects": "Atlantic Ocean ↔ Pacific Ocean",
   "lat": -53.5,
   "lon": -70,
-  "note": "Ferdinand Magellan's 1520 passage that gave it its name."
+  "note": "Ferdinand Magellan's 1520 passage that gave it its name.",
+  "tagIds": ["historic-trade"]
 }

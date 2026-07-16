@@ -1,1 +1,111 @@
-[]
+[
+  {
+    "id": "gallipoli-campaign",
+    "name": "Gallipoli Campaign",
+    "date": {
+      "value": "1915",
+      "end": "1916"
+    },
+    "category": "battle",
+    "summary": "The First World War campaign fought for control of the Dardanelles.",
+    "involves": [
+      {
+        "type": "strait",
+        "id": "dardanelles"
+      }
+    ],
+    "sourceIds": ["britannica-gallipoli"]
+  },
+  {
+    "id": "magellan-passage",
+    "name": "Magellan's passage of the strait",
+    "date": {
+      "value": "1520"
+    },
+    "category": "expedition",
+    "summary": "Ferdinand Magellan's expedition threaded the strait that now bears his name, opening a route between the oceans.",
+    "involves": [
+      {
+        "type": "strait",
+        "id": "magellan"
+      }
+    ],
+    "sourceIds": ["britannica-magellan"]
+  },
+  {
+    "id": "suez-canal-opening",
+    "name": "Opening of the Suez Canal",
+    "date": {
+      "value": "1869"
+    },
+    "category": "construction",
+    "summary": "The canal opened, joining the Mediterranean and the Red Sea and reshaping world trade routes.",
+    "involves": [
+      {
+        "type": "canal",
+        "id": "suez-canal"
+      }
+    ],
+    "sourceIds": ["suez-canal-authority"]
+  },
+  {
+    "id": "seikan-tunnel-opening",
+    "name": "Opening of the Seikan Tunnel",
+    "date": {
+      "value": "1988"
+    },
+    "category": "construction",
+    "summary": "The undersea rail tunnel beneath the Tsugaru Strait opened, joining Honshu and Hokkaido.",
+    "involves": [
+      {
+        "type": "tunnel",
+        "id": "seikan-tunnel"
+      },
+      {
+        "type": "strait",
+        "id": "tsugaru"
+      }
+    ],
+    "sourceIds": ["britannica-seikan"]
+  },
+  {
+    "id": "channel-tunnel-opening",
+    "name": "Opening of the Channel Tunnel",
+    "date": {
+      "value": "1994"
+    },
+    "category": "construction",
+    "summary": "The rail tunnel beneath the Strait of Dover opened, linking Britain and France.",
+    "involves": [
+      {
+        "type": "tunnel",
+        "id": "channel-tunnel"
+      },
+      {
+        "type": "strait",
+        "id": "dover"
+      }
+    ],
+    "sourceIds": ["getlink"]
+  },
+  {
+    "id": "oresund-bridge-opening",
+    "name": "Opening of the Øresund Bridge",
+    "date": {
+      "value": "2000"
+    },
+    "category": "construction",
+    "summary": "The combined rail and road bridge across the Öresund opened, linking Copenhagen and Malmö.",
+    "involves": [
+      {
+        "type": "bridge",
+        "id": "oresund-bridge"
+      },
+      {
+        "type": "strait",
+        "id": "oresund"
+      }
+    ],
+    "sourceIds": ["oresundsbron"]
+  }
+]

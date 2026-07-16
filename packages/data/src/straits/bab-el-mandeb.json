@@ -6,5 +6,6 @@
   "connects": "Red Sea ↔ Gulf of Aden",
   "lat": 12.58,
   "lon": 43.33,
-  "note": "Arabic for 'Gate of Grief,' named for its dangerous currents."
+  "note": "Arabic for 'Gate of Grief,' named for its dangerous currents.",
+  "tagIds": ["chokepoint"]
 }

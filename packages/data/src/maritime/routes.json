@@ -19,5 +19,67 @@
     ],
     "summary": "Russia's Arctic shipping route along the Siberian coast, threading the Vilkitsky Strait.",
     "sourceIds": ["britannica-nsr"]
+  },
+  {
+    "id": "europe-asia-via-suez",
+    "name": "Europe–Asia via Suez",
+    "routeType": "trade-lane",
+    "waypoints": [
+      {
+        "type": "strait",
+        "id": "gibraltar"
+      },
+      {
+        "type": "water-body",
+        "id": "mediterranean-sea"
+      },
+      {
+        "type": "canal",
+        "id": "suez-canal"
+      },
+      {
+        "type": "water-body",
+        "id": "red-sea"
+      },
+      {
+        "type": "strait",
+        "id": "bab-el-mandeb"
+      },
+      {
+        "type": "water-body",
+        "id": "indian-ocean"
+      },
+      {
+        "type": "strait",
+        "id": "malacca"
+      },
+      {
+        "type": "water-body",
+        "id": "south-china-sea"
+      }
+    ],
+    "summary": "The main Europe–Asia trade lane, threading Gibraltar, Suez, Bab-el-Mandeb, and Malacca.",
+    "sourceIds": ["britannica-suez-canal"]
+  },
+  {
+    "id": "northwest-passage",
+    "name": "Northwest Passage",
+    "routeType": "trade-lane",
+    "waypoints": [
+      {
+        "type": "strait",
+        "id": "davis"
+      },
+      {
+        "type": "water-body",
+        "id": "baffin-bay"
+      },
+      {
+        "type": "strait",
+        "id": "bering"
+      }
+    ],
+    "summary": "The Arctic sea route across the Canadian archipelago between the Atlantic and the Pacific.",
+    "sourceIds": ["britannica-northwest-passage"]
   }
 ]

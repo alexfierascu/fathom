@@ -6,5 +6,6 @@
   "connects": "Java Sea ↔ Indian Ocean",
   "lat": -8.45,
   "lon": 115.7,
-  "note": "Marks part of the Wallace Line dividing Asian and Australian wildlife."
+  "note": "Marks part of the Wallace Line dividing Asian and Australian wildlife.",
+  "tagIds": ["wallace-line"]
 }

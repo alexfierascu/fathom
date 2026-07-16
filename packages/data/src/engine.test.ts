@@ -40,13 +40,15 @@ describe('getRelated: strait relationships', () => {
     expect(getRelated(solent, 'waterBodies')).toEqual([]);
   });
 
-  it('returns empty knowledge attachments while collections are empty', () => {
-    expect(getRelated(gibraltar, 'images')).toEqual([]);
-    expect(getRelated(gibraltar, 'sources')).toEqual([]);
-    expect(getRelated(gibraltar, 'events')).toEqual([]);
+  it('resolves knowledge attachments where they exist', () => {
+    expect(getRelated(gibraltar, 'tags').map((tag) => tag.id)).toContain('chokepoint');
     expect(getRelated(gibraltar, 'wildlife')).toEqual([]);
     expect(getRelated(gibraltar, 'statistics')).toEqual([]);
-    expect(getRelated(gibraltar, 'tags')).toEqual([]);
+
+    const dardanelles = getStraitEntity(loadStrait('dardanelles'));
+    expect(getRelated(dardanelles, 'events').map((event) => event.id)).toContain(
+      'gallipoli-campaign',
+    );
   });
 });
 

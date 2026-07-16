@@ -6,5 +6,6 @@
   "connects": "Black Sea ↔ Sea of Marmara",
   "lat": 41.12,
   "lon": 29.07,
-  "note": "Splits Istanbul in two; forms half of the Turkish Straits."
+  "note": "Splits Istanbul in two; forms half of the Turkish Straits.",
+  "tagIds": ["chokepoint", "crossed"]
 }

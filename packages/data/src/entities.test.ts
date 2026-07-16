@@ -15,11 +15,13 @@ describe('knowledge collections', () => {
     expect(ids).toContain('iho-limits-of-oceans-and-seas');
   });
 
+  it('loads the populated knowledge collections', () => {
+    expect(loadTags().map((tag) => tag.id)).toContain('chokepoint');
+    expect(loadHistoricalEvents().map((event) => event.id)).toContain('gallipoli-campaign');
+  });
+
   it('loads the still-empty collections as empty', () => {
-    expect(loadImages()).toEqual([]);
-    expect(loadHistoricalEvents()).toEqual([]);
     expect(loadWildlife()).toEqual([]);
     expect(loadStatistics()).toEqual([]);
-    expect(loadTags()).toEqual([]);
   });
 });

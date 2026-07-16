@@ -6,5 +6,6 @@
   "connects": "Separates Corsica from Sardinia",
   "lat": 41.31,
   "lon": 9.18,
-  "note": "A UNESCO-listed marine reserve known for treacherous currents."
+  "note": "A UNESCO-listed marine reserve known for treacherous currents.",
+  "tagIds": ["unesco-listed"]
 }
