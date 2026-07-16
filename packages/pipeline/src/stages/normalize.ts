@@ -54,6 +54,9 @@ export function normalize(records: readonly ProviderRecord[]): {
         countryNames: dedupe(record.countryNames ?? []),
         connectsNames: dedupe(record.connectsNames ?? []),
         waterBodyType: record.waterBodyType,
+        parentName: record.parentName,
+        isoCode: record.isoCode,
+        crossesName: record.crossesName,
         providers: [{ provider: record.provider, providerId: record.providerId }],
         sources: [record.source],
       });
@@ -73,6 +76,9 @@ export function normalize(records: readonly ProviderRecord[]): {
           ? existing.connectsNames
           : dedupe(record.connectsNames ?? []),
       waterBodyType: existing.waterBodyType ?? record.waterBodyType,
+      parentName: existing.parentName ?? record.parentName,
+      isoCode: existing.isoCode ?? record.isoCode,
+      crossesName: existing.crossesName ?? record.crossesName,
       providers: [
         ...existing.providers,
         { provider: record.provider, providerId: record.providerId },

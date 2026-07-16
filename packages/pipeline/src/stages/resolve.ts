@@ -9,7 +9,7 @@ import type { Issue, NormalizedRecord } from '../types';
  * the boxes are editorial, not authoritative.
  */
 export function assignRegion(lat: number, lon: number): (typeof STRAIT_REGIONS)[number] {
-  if (lat >= 70) return 'Americas & Arctic';
+  if (lat >= 66) return 'Americas & Arctic';
   if (lon <= -25) return 'Americas & Arctic';
   if (lat >= 35 && lon <= 45) return 'Europe';
   if (lon >= 115 && (lat >= 15 || lat <= -9.5)) return 'East Asia & Oceania';

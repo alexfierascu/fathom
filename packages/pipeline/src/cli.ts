@@ -32,6 +32,7 @@ async function main() {
       limit: { type: 'string', default: '25' },
       out: { type: 'string', default: join(import.meta.dirname, '../out') },
       enrich: { type: 'string', default: 'wikipedia' },
+      'enrich-limit': { type: 'string', default: '40' },
       from: { type: 'string', default: join(import.meta.dirname, '../out') },
     },
   });
@@ -45,7 +46,9 @@ async function main() {
       return adapter;
     });
     const types = (values.types ?? '').split(',').filter(Boolean) as ImportableType[];
-    const enrichers = values.enrich?.includes('wikipedia') ? [wikipediaEnricher()] : [];
+    const enrichers = values.enrich?.includes('wikipedia')
+      ? [wikipediaEnricher({ maxLookups: Number(values['enrich-limit']) })]
+      : [];
 
     const result = await runPipeline(adapters, enrichers, {
       types,

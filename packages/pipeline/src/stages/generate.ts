@@ -1,8 +1,12 @@
 import {
+  BridgeSchema,
+  CanalSchema,
   CountrySchema,
   IslandSchema,
+  MaritimeRouteSchema,
   PortSchema,
   StraitSchema,
+  TunnelSchema,
   WaterBodySchema,
   slugifyName,
   validateEntity,
@@ -15,6 +19,20 @@ import type { z } from 'zod';
 import type { Issue, NormalizedRecord, StagedEntity } from '../types';
 
 const WATER_BODY_KINDS = new Set(['ocean', 'sea', 'channel', 'strait', 'gulf', 'bay']);
+
+/**
+ * Order-insensitive name key: "Strait of Kerch" and "Kerch Strait" fold to
+ * the same key, as do "Saint"/"St." variants. Catches name-variant
+ * duplicates that slug equality misses.
+ */
+export function nameKey(name: string): string {
+  return slugifyName(name)
+    .split('-')
+    .map((word) => (word === 'saint' ? 'st' : word))
+    .filter((word) => word !== 'the' && word !== 'of')
+    .sort()
+    .join('-');
+}
 
 /**
  * Stage 6 — Generate entity JSON. Builds documents in Fathom's exact
@@ -36,13 +54,23 @@ export function generateEntities(
   let duplicatesOfAtlas = 0;
   let rejected = 0;
 
-  const existingIds: Partial<Record<NormalizedRecord['entityType'], ReadonlySet<string>>> = {
-    strait: new Set(atlas.straits.map((s) => s.id)),
-    'water-body': new Set(atlas.waterBodies.map((w) => w.id)),
-    country: new Set(atlas.countries.map((c) => c.id)),
-    port: new Set(atlas.ports.map((p) => p.id)),
-    island: new Set(atlas.islands.map((i) => i.id)),
+  const keysOf = (entries: readonly { id: string; name: string }[]) =>
+    new Set(entries.flatMap((entry) => [entry.id, nameKey(entry.name)]));
+  const existingKeys: Partial<Record<NormalizedRecord['entityType'], ReadonlySet<string>>> = {
+    strait: keysOf(atlas.straits),
+    'water-body': keysOf(atlas.waterBodies),
+    country: keysOf(atlas.countries),
+    port: keysOf(atlas.ports),
+    canal: keysOf(atlas.canals),
+    bridge: keysOf(atlas.bridges),
+    tunnel: keysOf(atlas.tunnels),
+    island: keysOf(atlas.islands),
+    'maritime-route': keysOf(atlas.maritimeRoutes),
   };
+
+  /** Straits within ~0.6° combined delta of an existing strait are duplicates. */
+  const nearExistingStrait = (lat: number, lon: number) =>
+    atlas.straits.find((strait) => Math.abs(strait.lat - lat) + Math.abs(strait.lon - lon) < 0.6);
 
   const reject = (record: NormalizedRecord, message: string) => {
     rejected += 1;
@@ -68,15 +96,29 @@ export function generateEntities(
   };
 
   for (const record of records) {
-    if (existingIds[record.entityType]?.has(record.id)) {
+    const keys = existingKeys[record.entityType];
+    if (keys?.has(record.id) || keys?.has(nameKey(record.name))) {
       duplicatesOfAtlas += 1;
       issues.push({
         severity: 'warning',
         stage: 'generate',
         subject: `${record.entityType}:${record.id}`,
-        message: 'Already charted in the atlas — skipped as duplicate',
+        message: 'Already charted in the atlas (id or name variant) — skipped as duplicate',
       });
       continue;
+    }
+    if (record.entityType === 'strait' && record.lat !== undefined && record.lon !== undefined) {
+      const near = nearExistingStrait(record.lat, record.lon);
+      if (near) {
+        duplicatesOfAtlas += 1;
+        issues.push({
+          severity: 'warning',
+          stage: 'generate',
+          subject: `strait:${record.id}`,
+          message: `Coordinates within 0.6° of charted strait:${near.id} — skipped as duplicate`,
+        });
+        continue;
+      }
     }
     const sourceIds = record.sources.map((source) => source.id);
 
@@ -126,8 +168,7 @@ export function generateEntities(
           reject(record, 'Missing summary');
           break;
         }
-        const parentName = record.connectsNames[0];
-        const parentId = parentName ? slugifyName(parentName) : undefined;
+        const parentId = record.parentName ? slugifyName(record.parentName) : undefined;
         if (kind !== 'ocean' && !parentId) {
           reject(record, 'Non-ocean water body needs a parent — editorial assignment required');
           break;
@@ -152,6 +193,84 @@ export function generateEntities(
         stage(record, CountrySchema, {
           id: record.id,
           name: record.name,
+          ...(record.isoCode && /^[A-Z]{2}$/.test(record.isoCode) ? { code: record.isoCode } : {}),
+          summary: record.summary,
+          sourceIds,
+          status: 'draft',
+        });
+        break;
+      }
+      case 'canal': {
+        const waters = record.connectsNames.slice(0, 2);
+        if (waters.length < 2 || !record.summary || record.countryNames.length === 0) {
+          reject(record, 'Canal needs two connected waters, countries, and a summary');
+          break;
+        }
+        issues.push({
+          severity: 'warning',
+          stage: 'generate',
+          subject: `canal:${record.id}`,
+          message: 'Operational status assumed "operational" — review',
+        });
+        stage(record, CanalSchema, {
+          id: record.id,
+          name: record.name,
+          connects: waters.map((name) => ({ type: 'water-body', id: slugifyName(name) })),
+          countryIds: record.countryNames.map(slugifyName),
+          operationalStatus: 'operational',
+          summary: record.summary,
+          sourceIds,
+          status: 'draft',
+        });
+        break;
+      }
+      case 'bridge':
+      case 'tunnel': {
+        if (!record.crossesName || !record.summary || record.countryNames.length < 2) {
+          reject(
+            record,
+            'Crossing needs the strait it crosses, at least two countries, and a summary',
+          );
+          break;
+        }
+        issues.push({
+          severity: 'warning',
+          stage: 'generate',
+          subject: `${record.entityType}:${record.id}`,
+          message: 'Operational status assumed "operational" — review',
+        });
+        stage(record, record.entityType === 'bridge' ? BridgeSchema : TunnelSchema, {
+          id: record.id,
+          name: record.name,
+          crosses: { type: 'strait', id: slugifyName(record.crossesName) },
+          connects: record.countryNames.map((name) => ({
+            type: 'country',
+            id: slugifyName(name),
+          })),
+          operationalStatus: 'operational',
+          summary: record.summary,
+          sourceIds,
+          status: 'draft',
+        });
+        break;
+      }
+      case 'maritime-route': {
+        const waypoints = record.connectsNames;
+        if (waypoints.length < 2 || !record.summary) {
+          reject(record, 'Route needs at least two sourced waypoints and a summary');
+          break;
+        }
+        issues.push({
+          severity: 'warning',
+          stage: 'generate',
+          subject: `maritime-route:${record.id}`,
+          message: 'Route type assumed "trade-lane" — review',
+        });
+        stage(record, MaritimeRouteSchema, {
+          id: record.id,
+          name: record.name,
+          routeType: 'trade-lane',
+          waypoints: waypoints.map((name) => ({ type: 'water-body', id: slugifyName(name) })),
           summary: record.summary,
           sourceIds,
           status: 'draft',
@@ -159,7 +278,11 @@ export function generateEntities(
         break;
       }
       case 'island': {
-        const waterName = record.connectsNames[0];
+        const chartedStraits = new Set(atlas.straits.map((strait) => strait.id));
+        const flanks = record.connectsNames.map(slugifyName).filter((id) => chartedStraits.has(id));
+        const waterName = record.connectsNames.find(
+          (name) => !chartedStraits.has(slugifyName(name)),
+        );
         if (!waterName) {
           reject(record, 'Island needs its water body');
           break;
@@ -173,6 +296,7 @@ export function generateEntities(
           name: record.name,
           waterBodyId: slugifyName(waterName),
           ...(record.countryNames[0] ? { countryId: slugifyName(record.countryNames[0]) } : {}),
+          ...(flanks.length > 0 ? { flanksStraitIds: flanks } : {}),
           summary: record.summary,
           sourceIds,
           status: 'draft',
@@ -197,8 +321,6 @@ export function generateEntities(
         });
         break;
       }
-      default:
-        reject(record, `Generation for type "${record.entityType}" is not implemented yet`);
     }
   }
 

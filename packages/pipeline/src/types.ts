@@ -49,6 +49,12 @@ export interface ProviderRecord {
   connectsNames?: readonly string[];
   /** Water body kind hint (ocean, sea, gulf, bay, …). */
   waterBodyType?: string;
+  /** Parent water body name (seas → oceans), when the provider knows. */
+  parentName?: string;
+  /** ISO 3166-1 alpha-2 code for countries. */
+  isoCode?: string;
+  /** For bridges and tunnels: the strait they cross. */
+  crossesName?: string;
   source: SourceDraft;
 }
 
@@ -75,6 +81,9 @@ export interface NormalizedRecord {
   countryNames: readonly string[];
   connectsNames: readonly string[];
   waterBodyType?: string;
+  parentName?: string;
+  isoCode?: string;
+  crossesName?: string;
   providers: readonly { provider: string; providerId: string }[];
   sources: readonly SourceDraft[];
   /** Filled by the resolve stage. */
