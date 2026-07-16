@@ -27,6 +27,9 @@ export const StructureStatusSchema = z.enum([
 export type StructureStatus = z.infer<typeof StructureStatusSchema>;
 
 const expansion = {
+  /** Representative map coordinates, for plotting journeys and charts. */
+  lat: z.number().min(-90).max(90).optional(),
+  lon: z.number().min(-180).max(180).optional(),
   slug: SlugSchema.optional(),
   names: z.array(NameSchema).optional(),
   description: z.string().min(1).optional(),

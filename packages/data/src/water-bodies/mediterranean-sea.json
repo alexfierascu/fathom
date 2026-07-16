@@ -4,5 +4,7 @@
   "type": "sea",
   "summary": "An intercontinental sea between Europe, Africa, and Asia, connected to the Atlantic at Gibraltar.",
   "parentId": "atlantic-ocean",
-  "sourceIds": ["iho-limits-of-oceans-and-seas"]
+  "sourceIds": ["iho-limits-of-oceans-and-seas"],
+  "lat": 35.0,
+  "lon": 18.0
 }

@@ -221,7 +221,12 @@ export function JourneyDetailPage() {
           </div>
         </header>
 
-        <JourneyMap journey={journey} currentStop={progress.stop} tileStyle={tileStyle} />
+        <JourneyMap
+          journey={journey}
+          currentStop={progress.stop}
+          travelling={travelling}
+          tileStyle={tileStyle}
+        />
 
         <div className="journey-mode">
           <ol className="journey-stops" aria-label="Journey progress">

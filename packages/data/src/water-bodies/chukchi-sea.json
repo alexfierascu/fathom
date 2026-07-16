@@ -5,5 +5,7 @@
   "summary": "The Chukchi Sea, sometimes referred to as the Chuuk Sea, Chukotsk Sea or the Sea of Chukotsk, is a marginal sea of the Arctic Ocean.",
   "parentId": "arctic-ocean",
   "sourceIds": ["wikidata-q159252", "wikipedia-chukchi-sea"],
-  "status": "draft"
+  "status": "draft",
+  "lat": 69.5,
+  "lon": -171.5
 }

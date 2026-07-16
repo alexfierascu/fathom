@@ -4,5 +4,7 @@
   "type": "sea",
   "summary": "The great marginal sea of Southeast Asia, crossed by more shipping than any comparable water.",
   "parentId": "pacific-ocean",
-  "sourceIds": ["iho-limits-of-oceans-and-seas"]
+  "sourceIds": ["iho-limits-of-oceans-and-seas"],
+  "lat": 13.0,
+  "lon": 114.0
 }

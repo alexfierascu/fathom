@@ -4,5 +4,7 @@
   "type": "sea",
   "summary": "The island-studded sea between Greece and Turkey.",
   "parentId": "mediterranean-sea",
-  "sourceIds": ["iho-limits-of-oceans-and-seas"]
+  "sourceIds": ["iho-limits-of-oceans-and-seas"],
+  "lat": 38.5,
+  "lon": 25.2
 }

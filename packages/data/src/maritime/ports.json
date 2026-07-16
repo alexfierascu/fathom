@@ -9,7 +9,9 @@
     },
     "functions": ["container", "cargo"],
     "summary": "One of the world's busiest container ports, commanding the Singapore Strait.",
-    "sourceIds": ["mpa-singapore"]
+    "sourceIds": ["mpa-singapore"],
+    "lat": 1.26,
+    "lon": 103.84
   },
   {
     "id": "shoreham-by-sea",
@@ -189,7 +191,9 @@
     },
     "summary": "port near Bandar Abbas, Iran",
     "sourceIds": ["wikidata-q16049128"],
-    "status": "draft"
+    "status": "draft",
+    "lat": 27.11,
+    "lon": 56.06
   },
   {
     "id": "apra-harbor",

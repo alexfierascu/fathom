@@ -120,6 +120,8 @@ export function buildMaritimeGraph(): MaritimeGraph {
       type: 'water-body',
       id: body.id,
       name: body.name,
+      lat: body.lat,
+      lon: body.lon,
     });
   }
   for (const country of countries) {
@@ -144,7 +146,14 @@ export function buildMaritimeGraph(): MaritimeGraph {
     }
   }
   for (const port of loadPorts()) {
-    addNode({ entityId: entityId('port', port.id), type: 'port', id: port.id, name: port.name });
+    addNode({
+      entityId: entityId('port', port.id),
+      type: 'port',
+      id: port.id,
+      name: port.name,
+      lat: port.lat,
+      lon: port.lon,
+    });
   }
   for (const canal of loadCanals()) {
     addNode({
@@ -152,6 +161,8 @@ export function buildMaritimeGraph(): MaritimeGraph {
       type: 'canal',
       id: canal.id,
       name: canal.name,
+      lat: canal.lat,
+      lon: canal.lon,
     });
   }
   for (const bridge of loadBridges()) {

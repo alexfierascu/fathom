@@ -16,7 +16,9 @@
     "operationalStatus": "operational",
     "opened": "1869",
     "summary": "The sea-level canal linking the Mediterranean with the Red Sea, sparing ships the passage around Africa.",
-    "sourceIds": ["suez-canal-authority"]
+    "sourceIds": ["suez-canal-authority"],
+    "lat": 30.45,
+    "lon": 32.35
   },
   {
     "id": "panama-canal",
@@ -35,7 +37,9 @@
     "operationalStatus": "operational",
     "opened": "1914",
     "summary": "The lock canal across the Isthmus of Panama joining the Atlantic and Pacific oceans.",
-    "sourceIds": ["panama-canal-authority"]
+    "sourceIds": ["panama-canal-authority"],
+    "lat": 9.08,
+    "lon": -79.68
   },
   {
     "id": "kiel-canal",
@@ -54,7 +58,9 @@
     "operationalStatus": "operational",
     "opened": "1895",
     "summary": "The canal across Schleswig-Holstein linking the North Sea with the Baltic, sparing ships the passage around Denmark.",
-    "sourceIds": ["britannica-kiel-canal"]
+    "sourceIds": ["britannica-kiel-canal"],
+    "lat": 54.07,
+    "lon": 9.65
   },
   {
     "id": "corinth-canal",
@@ -73,6 +79,8 @@
     "operationalStatus": "operational",
     "opened": "1893",
     "summary": "The narrow cut through the Isthmus of Corinth joining the Ionian and Aegean seas.",
-    "sourceIds": ["britannica-corinth-canal"]
+    "sourceIds": ["britannica-corinth-canal"],
+    "lat": 37.93,
+    "lon": 22.98
   }
 ]

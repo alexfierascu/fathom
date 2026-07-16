@@ -4,5 +4,7 @@
   "type": "sea",
   "summary": "The small inland sea between the Bosporus and the Dardanelles, lying entirely within Turkey.",
   "parentId": "mediterranean-sea",
-  "sourceIds": ["iho-limits-of-oceans-and-seas"]
+  "sourceIds": ["iho-limits-of-oceans-and-seas"],
+  "lat": 40.72,
+  "lon": 28.2
 }

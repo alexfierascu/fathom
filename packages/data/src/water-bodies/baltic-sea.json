@@ -4,5 +4,7 @@
   "type": "sea",
   "summary": "A brackish inland sea of northern Europe, reached only through the Danish straits.",
   "parentId": "atlantic-ocean",
-  "sourceIds": ["iho-limits-of-oceans-and-seas"]
+  "sourceIds": ["iho-limits-of-oceans-and-seas"],
+  "lat": 55.5,
+  "lon": 16.5
 }

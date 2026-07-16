@@ -4,5 +4,7 @@
   "type": "sea",
   "summary": "The great inland sea between Europe and Asia, reached only through the Turkish Straits.",
   "parentId": "mediterranean-sea",
-  "sourceIds": ["iho-limits-of-oceans-and-seas"]
+  "sourceIds": ["iho-limits-of-oceans-and-seas"],
+  "lat": 43.4,
+  "lon": 34.0
 }

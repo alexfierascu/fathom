@@ -25,6 +25,12 @@ export interface JourneyWaypoint {
   /** A small task for the traveller ("find X on the map"). */
   challenge?: string;
   quiz?: JourneyQuiz;
+  /**
+   * Cartographic bend points for the leg ARRIVING at this stop, in
+   * travel order — chosen so the drawn course keeps to sea lanes
+   * instead of cutting across land. Pure drawing data, not facts.
+   */
+  via?: readonly { lat: number; lon: number }[];
 }
 
 export interface Journey {
