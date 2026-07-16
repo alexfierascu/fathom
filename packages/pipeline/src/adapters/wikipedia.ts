@@ -52,7 +52,7 @@ export function wikipediaEnricher(options?: { maxLookups?: number }): Enricher {
       if (remaining <= 0) return record;
       remaining -= 1;
       const summary = await fetchSummary(record.name);
-      const extract = summary?.extract?.trim();
+      const extract = summary?.extract?.trim().replace(/\s+/g, ' ');
       if (!summary || !extract) return record;
       const firstSentence = /^.+?[.!?](?=\s|$)/.exec(extract)?.[0] ?? extract;
       const pageUrl =
@@ -96,7 +96,9 @@ export function wikipediaAdapter(
           name: summary.title,
           lat: summary.coordinates?.lat,
           lon: summary.coordinates?.lon,
-          summary: /^.+?[.!?](?=\s|$)/.exec(summary.extract)?.[0] ?? summary.extract,
+          summary:
+            /^.+?[.!?](?=\s|$)/.exec(summary.extract.trim().replace(/\s+/g, ' '))?.[0] ??
+            summary.extract,
           source: wikipediaSource(summary.title, pageUrl),
         });
       }

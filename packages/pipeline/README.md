@@ -49,3 +49,15 @@ The validation report covers duplicates (in-batch and against the atlas),
 missing coordinates, summaries, and sources (rejected with reasons),
 unresolved relationships (warnings), invalid slugs, and broken references
 across existing + staged content via the data package's integrity checker.
+
+## Review findings that shape usage
+
+- **Import waters before straits.** A strait's `connects` names become
+  water-body references; staging straits whose waters are uncharted leaves
+  broken references in the report until the waters are imported.
+- **Slug dedup misses name variants** ("Strait of Kerch" vs the charted
+  `kerch`). Review the staged list against the atlas before applying;
+  coordinate-proximity duplicate detection is a planned improvement.
+- **Coarse region assignment is reviewable by design** — every assignment
+  carries a warning, and Arctic-adjacent Russian straits are the known
+  weak spot of the current boxes.

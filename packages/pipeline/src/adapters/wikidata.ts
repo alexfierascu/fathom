@@ -22,6 +22,11 @@ interface SparqlBinding {
   description?: { value: string };
 }
 
+/**
+ * Records must carry country (P17) and at least two connected waters
+ * (P206) to be stage-ready; incomplete items are left for future passes
+ * rather than imported and rejected.
+ */
 function query(classId: string, limit: number): string {
   return `
 SELECT ?item ?itemLabel ?lat ?lon ?description
@@ -32,12 +37,13 @@ WHERE {
   ?item p:P625 ?coordStatement .
   ?coordStatement psv:P625 ?coordValue .
   ?coordValue wikibase:geoLatitude ?lat ; wikibase:geoLongitude ?lon .
-  OPTIONAL { ?item wdt:P17 ?country . ?country rdfs:label ?countryLabel FILTER(LANG(?countryLabel) = "en") }
-  OPTIONAL { ?item wdt:P206 ?water . ?water rdfs:label ?waterLabel FILTER(LANG(?waterLabel) = "en") }
+  ?item wdt:P17 ?country . ?country rdfs:label ?countryLabel FILTER(LANG(?countryLabel) = "en")
+  ?item wdt:P206 ?water . ?water rdfs:label ?waterLabel FILTER(LANG(?waterLabel) = "en")
   OPTIONAL { ?item schema:description ?description FILTER(LANG(?description) = "en") }
   SERVICE wikibase:label { bd:serviceParam wikibase:language "en". }
 }
 GROUP BY ?item ?itemLabel ?lat ?lon ?description
+HAVING (COUNT(DISTINCT ?water) >= 2)
 LIMIT ${String(limit)}`;
 }
 
