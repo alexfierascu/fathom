@@ -39,7 +39,9 @@ const TARGETS: Partial<Record<ImportableType, readonly QueryTarget[]>> = {
   bridge: [{ classId: 'Q12280', direct: true, requires: ['countries', 'crossesStrait'] }],
   tunnel: [{ classId: 'Q44377', direct: true, requires: ['countries', 'crossesStrait'] }],
   island: [{ classId: 'Q23442', direct: true, requires: ['countries', 'waters'] }],
-  'maritime-route': [{ classId: 'Q1259617' }],
+  // Maritime routes have no reliable Wikidata class with structured
+  // waypoints (Q1259617 matches roads); curated Wikipedia title lists are
+  // the import path for routes.
 };
 
 function buildQuery(target: QueryTarget, limit: number): string {

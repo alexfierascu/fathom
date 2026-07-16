@@ -34,5 +34,185 @@
     "flanksStraitIds": ["tsugaru", "laperouse"],
     "summary": "Japan's northern island, between the Tsugaru Strait and La Pérouse Strait.",
     "sourceIds": ["britannica-hokkaido"]
+  },
+  {
+    "id": "guam",
+    "name": "Guam",
+    "waterBodyId": "pacific-ocean",
+    "countryId": "united-states",
+    "summary": "unincorporated territory of the United States of America",
+    "sourceIds": ["wikidata-q16635"],
+    "status": "draft"
+  },
+  {
+    "id": "easter-island",
+    "name": "Easter Island",
+    "waterBodyId": "pacific-ocean",
+    "countryId": "chile",
+    "summary": "Polynesian island and special territory of Chile",
+    "sourceIds": ["wikidata-q14452"],
+    "status": "draft"
+  },
+  {
+    "id": "sumatra",
+    "name": "Sumatra",
+    "waterBodyId": "indian-ocean",
+    "countryId": "indonesia",
+    "summary": "island in western Indonesia, westernmost of the Sunda Islands",
+    "sourceIds": ["wikidata-q3492"],
+    "status": "draft"
+  },
+  {
+    "id": "christmas-island",
+    "name": "Christmas Island",
+    "waterBodyId": "indian-ocean",
+    "countryId": "australia",
+    "summary": "island and external territory of Australia, located in the Indian Ocean",
+    "sourceIds": ["wikidata-q31063"],
+    "status": "draft"
+  },
+  {
+    "id": "kyushu",
+    "name": "Kyushu",
+    "waterBodyId": "east-china-sea",
+    "countryId": "japan",
+    "summary": "Kyushu is the third-largest and most southerly of Japan's four main islands.",
+    "sourceIds": ["wikidata-q13987", "wikipedia-kyushu"],
+    "status": "draft"
+  },
+  {
+    "id": "sulawesi",
+    "name": "Sulawesi",
+    "waterBodyId": "banda-sea",
+    "countryId": "indonesia",
+    "summary": "one of the four Greater Sunda Islands, governed by Indonesia",
+    "sourceIds": ["wikidata-q3812"],
+    "status": "draft"
+  },
+  {
+    "id": "mallorca",
+    "name": "Mallorca",
+    "waterBodyId": "mediterranean-sea",
+    "countryId": "spain",
+    "summary": "Mallorca, also spelled Majorca in English, is the largest of Spain's Balearic Islands, and the seventh largest island in the Mediterranean Sea.",
+    "sourceIds": ["wikidata-q8828", "wikipedia-mallorca"],
+    "status": "draft"
+  },
+  {
+    "id": "tahiti",
+    "name": "Tahiti",
+    "waterBodyId": "pacific-ocean",
+    "countryId": "france",
+    "summary": "Tahiti is the largest island of the Windward group of the Society Islands in French Polynesia, an overseas collectivity of France.",
+    "sourceIds": ["wikidata-q42000", "wikipedia-tahiti"],
+    "status": "draft"
+  },
+  {
+    "id": "hispaniola",
+    "name": "Hispaniola",
+    "waterBodyId": "atlantic-ocean",
+    "countryId": "haiti",
+    "summary": "Hispaniola is an island in the Greater Antilles of the Caribbean, located between Cuba and Puerto Rico.",
+    "sourceIds": ["wikidata-q25277", "wikipedia-hispaniola"],
+    "status": "draft"
+  },
+  {
+    "id": "luzon",
+    "name": "Luzon",
+    "waterBodyId": "pacific-ocean",
+    "countryId": "philippines",
+    "summary": "Luzon is the largest and most populous island in the Philippines.",
+    "sourceIds": ["wikidata-q125384", "wikipedia-luzon"],
+    "status": "draft"
+  },
+  {
+    "id": "jan-mayen",
+    "name": "Jan Mayen",
+    "waterBodyId": "greenland-sea",
+    "countryId": "norway",
+    "summary": "island in the Arctic Ocean, part of Norway",
+    "sourceIds": ["wikidata-q14056"],
+    "status": "draft"
+  },
+  {
+    "id": "mindanao",
+    "name": "Mindanao",
+    "waterBodyId": "sulu-sea",
+    "countryId": "philippines",
+    "summary": "second largest island of the Philippines",
+    "sourceIds": ["wikidata-q124873"],
+    "status": "draft"
+  },
+  {
+    "id": "ibiza",
+    "name": "Ibiza",
+    "waterBodyId": "mediterranean-sea",
+    "countryId": "spain",
+    "summary": "Ibiza, or Iviza, is a Spanish island in the Mediterranean Sea off the eastern coast of the Iberian Peninsula.",
+    "sourceIds": ["wikidata-q52631", "wikipedia-ibiza"],
+    "status": "draft"
+  },
+  {
+    "id": "gotland",
+    "name": "Gotland",
+    "waterBodyId": "baltic-sea",
+    "countryId": "sweden",
+    "summary": "Gotland, also historically spelled Gottland or Gothland, is Sweden's largest island.",
+    "sourceIds": ["wikidata-q1027830", "wikipedia-gotland"],
+    "status": "draft"
+  },
+  {
+    "id": "timor",
+    "name": "Timor",
+    "waterBodyId": "timor-sea",
+    "countryId": "timor-leste",
+    "summary": "island bordering the south of maritime Southeast Asia and the north of the Australian continental plate",
+    "sourceIds": ["wikidata-q83067", "wikidata-q83067"],
+    "status": "draft"
+  },
+  {
+    "id": "bali-island",
+    "name": "Bali Island",
+    "waterBodyId": "bali-sea",
+    "countryId": "indonesia",
+    "summary": "island in Bali Province, Indonesia",
+    "sourceIds": ["wikidata-q4648"],
+    "status": "draft"
+  },
+  {
+    "id": "bouvet-island",
+    "name": "Bouvet Island",
+    "waterBodyId": "atlantic-ocean",
+    "countryId": "norway",
+    "summary": "Norwegian uninhabited subantarctic volcanic island",
+    "sourceIds": ["wikidata-q23408"],
+    "status": "draft"
+  },
+  {
+    "id": "corfu",
+    "name": "Corfu",
+    "waterBodyId": "ionian-sea",
+    "countryId": "greece",
+    "summary": "Greek island in the Ionian Sea",
+    "sourceIds": ["wikidata-q121378"],
+    "status": "draft"
+  },
+  {
+    "id": "north-island",
+    "name": "North Island",
+    "waterBodyId": "pacific-ocean",
+    "countryId": "new-zealand",
+    "summary": "more northern, and smaller, of the two main islands of New Zealand",
+    "sourceIds": ["wikidata-q118863"],
+    "status": "draft"
+  },
+  {
+    "id": "south-island",
+    "name": "South Island",
+    "waterBodyId": "tasman-sea",
+    "countryId": "new-zealand",
+    "summary": "The South Island is the larger of the two main islands of New Zealand by surface area, the other being the smaller but more populous North Island.",
+    "sourceIds": ["wikidata-q120755", "wikipedia-south-island"],
+    "status": "draft"
   }
 ]

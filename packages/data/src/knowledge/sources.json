@@ -2846,5 +2846,446 @@
     "locator": "https://www.wikidata.org/wiki/Q29999",
     "accessedOn": "2026-07-16",
     "license": "CC0 1.0"
+  },
+  {
+    "id": "wikidata-q770599",
+    "type": "dataset",
+    "title": "Wikidata: Shoreham-by-Sea (Q770599)",
+    "publisher": "Wikimedia Foundation",
+    "locator": "https://www.wikidata.org/wiki/Q770599",
+    "accessedOn": "2026-07-16",
+    "license": "CC0 1.0"
+  },
+  {
+    "id": "wikidata-q2917500",
+    "type": "dataset",
+    "title": "Wikidata: Poti Sea Port (Q2917500)",
+    "publisher": "Wikimedia Foundation",
+    "locator": "https://www.wikidata.org/wiki/Q2917500",
+    "accessedOn": "2026-07-16",
+    "license": "CC0 1.0"
+  },
+  {
+    "id": "wikipedia-poti-sea-port",
+    "type": "website",
+    "title": "Poti Sea Port — Wikipedia",
+    "publisher": "Wikimedia Foundation",
+    "locator": "https://en.wikipedia.org/wiki/Poti_Sea_Port",
+    "accessedOn": "2026-07-16",
+    "license": "CC BY-SA 4.0"
+  },
+  {
+    "id": "wikidata-q4331470",
+    "type": "dataset",
+    "title": "Wikidata: Port of Odesa (Q4331470)",
+    "publisher": "Wikimedia Foundation",
+    "locator": "https://www.wikidata.org/wiki/Q4331470",
+    "accessedOn": "2026-07-16",
+    "license": "CC0 1.0"
+  },
+  {
+    "id": "wikipedia-port-of-odesa",
+    "type": "website",
+    "title": "Port of Odesa — Wikipedia",
+    "publisher": "Wikimedia Foundation",
+    "locator": "https://en.wikipedia.org/wiki/Port_of_Odesa",
+    "accessedOn": "2026-07-16",
+    "license": "CC BY-SA 4.0"
+  },
+  {
+    "id": "wikidata-q1376739",
+    "type": "dataset",
+    "title": "Wikidata: Port of Haifa (Q1376739)",
+    "publisher": "Wikimedia Foundation",
+    "locator": "https://www.wikidata.org/wiki/Q1376739",
+    "accessedOn": "2026-07-16",
+    "license": "CC0 1.0"
+  },
+  {
+    "id": "wikidata-q2889387",
+    "type": "dataset",
+    "title": "Wikidata: Tel Aviv Port (Q2889387)",
+    "publisher": "Wikimedia Foundation",
+    "locator": "https://www.wikidata.org/wiki/Q2889387",
+    "accessedOn": "2026-07-16",
+    "license": "CC0 1.0"
+  },
+  {
+    "id": "wikipedia-tel-aviv-port",
+    "type": "website",
+    "title": "Tel Aviv Port — Wikipedia",
+    "publisher": "Wikimedia Foundation",
+    "locator": "https://en.wikipedia.org/wiki/Tel_Aviv_Port",
+    "accessedOn": "2026-07-16",
+    "license": "CC BY-SA 4.0"
+  },
+  {
+    "id": "wikidata-q4075924",
+    "type": "dataset",
+    "title": "Wikidata: Port of Baku (Q4075924)",
+    "publisher": "Wikimedia Foundation",
+    "locator": "https://www.wikidata.org/wiki/Q4075924",
+    "accessedOn": "2026-07-16",
+    "license": "CC0 1.0"
+  },
+  {
+    "id": "wikipedia-port-of-baku",
+    "type": "website",
+    "title": "Port of Baku — Wikipedia",
+    "publisher": "Wikimedia Foundation",
+    "locator": "https://en.wikipedia.org/wiki/Port_of_Baku",
+    "accessedOn": "2026-07-16",
+    "license": "CC BY-SA 4.0"
+  },
+  {
+    "id": "wikidata-q2914934",
+    "type": "dataset",
+    "title": "Wikidata: Port of Ashdod (Q2914934)",
+    "publisher": "Wikimedia Foundation",
+    "locator": "https://www.wikidata.org/wiki/Q2914934",
+    "accessedOn": "2026-07-16",
+    "license": "CC0 1.0"
+  },
+  {
+    "id": "wikidata-q1344739",
+    "type": "dataset",
+    "title": "Wikidata: Alexandria Port (Q1344739)",
+    "publisher": "Wikimedia Foundation",
+    "locator": "https://www.wikidata.org/wiki/Q1344739",
+    "accessedOn": "2026-07-16",
+    "license": "CC0 1.0"
+  },
+  {
+    "id": "wikidata-q1567799",
+    "type": "dataset",
+    "title": "Wikidata: Port of Klaipėda (Q1567799)",
+    "publisher": "Wikimedia Foundation",
+    "locator": "https://www.wikidata.org/wiki/Q1567799",
+    "accessedOn": "2026-07-16",
+    "license": "CC0 1.0"
+  },
+  {
+    "id": "wikidata-q4281590",
+    "type": "dataset",
+    "title": "Wikidata: Port of Mariupol (Q4281590)",
+    "publisher": "Wikimedia Foundation",
+    "locator": "https://www.wikidata.org/wiki/Q4281590",
+    "accessedOn": "2026-07-16",
+    "license": "CC0 1.0"
+  },
+  {
+    "id": "wikidata-q478048",
+    "type": "dataset",
+    "title": "Wikidata: Port of Koper (Q478048)",
+    "publisher": "Wikimedia Foundation",
+    "locator": "https://www.wikidata.org/wiki/Q478048",
+    "accessedOn": "2026-07-16",
+    "license": "CC0 1.0"
+  },
+  {
+    "id": "wikidata-q822981",
+    "type": "dataset",
+    "title": "Wikidata: Port of Constanța (Q822981)",
+    "publisher": "Wikimedia Foundation",
+    "locator": "https://www.wikidata.org/wiki/Q822981",
+    "accessedOn": "2026-07-16",
+    "license": "CC0 1.0"
+  },
+  {
+    "id": "wikidata-q3303198",
+    "type": "dataset",
+    "title": "Wikidata: Port of Durrës (Q3303198)",
+    "publisher": "Wikimedia Foundation",
+    "locator": "https://www.wikidata.org/wiki/Q3303198",
+    "accessedOn": "2026-07-16",
+    "license": "CC0 1.0"
+  },
+  {
+    "id": "wikidata-q1842361",
+    "type": "dataset",
+    "title": "Wikidata: Port of Karachi (Q1842361)",
+    "publisher": "Wikimedia Foundation",
+    "locator": "https://www.wikidata.org/wiki/Q1842361",
+    "accessedOn": "2026-07-16",
+    "license": "CC0 1.0"
+  },
+  {
+    "id": "wikidata-q16049128",
+    "type": "dataset",
+    "title": "Wikidata: Shahid Rajai Port (Q16049128)",
+    "publisher": "Wikimedia Foundation",
+    "locator": "https://www.wikidata.org/wiki/Q16049128",
+    "accessedOn": "2026-07-16",
+    "license": "CC0 1.0"
+  },
+  {
+    "id": "wikidata-q621760",
+    "type": "dataset",
+    "title": "Wikidata: Apra Harbor (Q621760)",
+    "publisher": "Wikimedia Foundation",
+    "locator": "https://www.wikidata.org/wiki/Q621760",
+    "accessedOn": "2026-07-16",
+    "license": "CC0 1.0"
+  },
+  {
+    "id": "wikidata-q1567835",
+    "type": "dataset",
+    "title": "Wikidata: Port of Rijeka (Q1567835)",
+    "publisher": "Wikimedia Foundation",
+    "locator": "https://www.wikidata.org/wiki/Q1567835",
+    "accessedOn": "2026-07-16",
+    "license": "CC0 1.0"
+  },
+  {
+    "id": "wikidata-q16635",
+    "type": "dataset",
+    "title": "Wikidata: Guam (Q16635)",
+    "publisher": "Wikimedia Foundation",
+    "locator": "https://www.wikidata.org/wiki/Q16635",
+    "accessedOn": "2026-07-16",
+    "license": "CC0 1.0"
+  },
+  {
+    "id": "wikidata-q14452",
+    "type": "dataset",
+    "title": "Wikidata: Easter Island (Q14452)",
+    "publisher": "Wikimedia Foundation",
+    "locator": "https://www.wikidata.org/wiki/Q14452",
+    "accessedOn": "2026-07-16",
+    "license": "CC0 1.0"
+  },
+  {
+    "id": "wikidata-q3492",
+    "type": "dataset",
+    "title": "Wikidata: Sumatra (Q3492)",
+    "publisher": "Wikimedia Foundation",
+    "locator": "https://www.wikidata.org/wiki/Q3492",
+    "accessedOn": "2026-07-16",
+    "license": "CC0 1.0"
+  },
+  {
+    "id": "wikidata-q31063",
+    "type": "dataset",
+    "title": "Wikidata: Christmas Island (Q31063)",
+    "publisher": "Wikimedia Foundation",
+    "locator": "https://www.wikidata.org/wiki/Q31063",
+    "accessedOn": "2026-07-16",
+    "license": "CC0 1.0"
+  },
+  {
+    "id": "wikidata-q13987",
+    "type": "dataset",
+    "title": "Wikidata: Kyushu (Q13987)",
+    "publisher": "Wikimedia Foundation",
+    "locator": "https://www.wikidata.org/wiki/Q13987",
+    "accessedOn": "2026-07-16",
+    "license": "CC0 1.0"
+  },
+  {
+    "id": "wikipedia-kyushu",
+    "type": "website",
+    "title": "Kyushu — Wikipedia",
+    "publisher": "Wikimedia Foundation",
+    "locator": "https://en.wikipedia.org/wiki/Kyushu",
+    "accessedOn": "2026-07-16",
+    "license": "CC BY-SA 4.0"
+  },
+  {
+    "id": "wikidata-q3812",
+    "type": "dataset",
+    "title": "Wikidata: Sulawesi (Q3812)",
+    "publisher": "Wikimedia Foundation",
+    "locator": "https://www.wikidata.org/wiki/Q3812",
+    "accessedOn": "2026-07-16",
+    "license": "CC0 1.0"
+  },
+  {
+    "id": "wikidata-q8828",
+    "type": "dataset",
+    "title": "Wikidata: Mallorca (Q8828)",
+    "publisher": "Wikimedia Foundation",
+    "locator": "https://www.wikidata.org/wiki/Q8828",
+    "accessedOn": "2026-07-16",
+    "license": "CC0 1.0"
+  },
+  {
+    "id": "wikipedia-mallorca",
+    "type": "website",
+    "title": "Mallorca — Wikipedia",
+    "publisher": "Wikimedia Foundation",
+    "locator": "https://en.wikipedia.org/wiki/Mallorca",
+    "accessedOn": "2026-07-16",
+    "license": "CC BY-SA 4.0"
+  },
+  {
+    "id": "wikidata-q42000",
+    "type": "dataset",
+    "title": "Wikidata: Tahiti (Q42000)",
+    "publisher": "Wikimedia Foundation",
+    "locator": "https://www.wikidata.org/wiki/Q42000",
+    "accessedOn": "2026-07-16",
+    "license": "CC0 1.0"
+  },
+  {
+    "id": "wikipedia-tahiti",
+    "type": "website",
+    "title": "Tahiti — Wikipedia",
+    "publisher": "Wikimedia Foundation",
+    "locator": "https://en.wikipedia.org/wiki/Tahiti",
+    "accessedOn": "2026-07-16",
+    "license": "CC BY-SA 4.0"
+  },
+  {
+    "id": "wikidata-q25277",
+    "type": "dataset",
+    "title": "Wikidata: Hispaniola (Q25277)",
+    "publisher": "Wikimedia Foundation",
+    "locator": "https://www.wikidata.org/wiki/Q25277",
+    "accessedOn": "2026-07-16",
+    "license": "CC0 1.0"
+  },
+  {
+    "id": "wikipedia-hispaniola",
+    "type": "website",
+    "title": "Hispaniola — Wikipedia",
+    "publisher": "Wikimedia Foundation",
+    "locator": "https://en.wikipedia.org/wiki/Hispaniola",
+    "accessedOn": "2026-07-16",
+    "license": "CC BY-SA 4.0"
+  },
+  {
+    "id": "wikidata-q125384",
+    "type": "dataset",
+    "title": "Wikidata: Luzon (Q125384)",
+    "publisher": "Wikimedia Foundation",
+    "locator": "https://www.wikidata.org/wiki/Q125384",
+    "accessedOn": "2026-07-16",
+    "license": "CC0 1.0"
+  },
+  {
+    "id": "wikipedia-luzon",
+    "type": "website",
+    "title": "Luzon — Wikipedia",
+    "publisher": "Wikimedia Foundation",
+    "locator": "https://en.wikipedia.org/wiki/Luzon",
+    "accessedOn": "2026-07-16",
+    "license": "CC BY-SA 4.0"
+  },
+  {
+    "id": "wikidata-q14056",
+    "type": "dataset",
+    "title": "Wikidata: Jan Mayen (Q14056)",
+    "publisher": "Wikimedia Foundation",
+    "locator": "https://www.wikidata.org/wiki/Q14056",
+    "accessedOn": "2026-07-16",
+    "license": "CC0 1.0"
+  },
+  {
+    "id": "wikidata-q124873",
+    "type": "dataset",
+    "title": "Wikidata: Mindanao (Q124873)",
+    "publisher": "Wikimedia Foundation",
+    "locator": "https://www.wikidata.org/wiki/Q124873",
+    "accessedOn": "2026-07-16",
+    "license": "CC0 1.0"
+  },
+  {
+    "id": "wikidata-q52631",
+    "type": "dataset",
+    "title": "Wikidata: Ibiza (Q52631)",
+    "publisher": "Wikimedia Foundation",
+    "locator": "https://www.wikidata.org/wiki/Q52631",
+    "accessedOn": "2026-07-16",
+    "license": "CC0 1.0"
+  },
+  {
+    "id": "wikipedia-ibiza",
+    "type": "website",
+    "title": "Ibiza — Wikipedia",
+    "publisher": "Wikimedia Foundation",
+    "locator": "https://en.wikipedia.org/wiki/Ibiza",
+    "accessedOn": "2026-07-16",
+    "license": "CC BY-SA 4.0"
+  },
+  {
+    "id": "wikidata-q1027830",
+    "type": "dataset",
+    "title": "Wikidata: Gotland (Q1027830)",
+    "publisher": "Wikimedia Foundation",
+    "locator": "https://www.wikidata.org/wiki/Q1027830",
+    "accessedOn": "2026-07-16",
+    "license": "CC0 1.0"
+  },
+  {
+    "id": "wikipedia-gotland",
+    "type": "website",
+    "title": "Gotland — Wikipedia",
+    "publisher": "Wikimedia Foundation",
+    "locator": "https://en.wikipedia.org/wiki/Gotland",
+    "accessedOn": "2026-07-16",
+    "license": "CC BY-SA 4.0"
+  },
+  {
+    "id": "wikidata-q83067",
+    "type": "dataset",
+    "title": "Wikidata: Timor (Q83067)",
+    "publisher": "Wikimedia Foundation",
+    "locator": "https://www.wikidata.org/wiki/Q83067",
+    "accessedOn": "2026-07-16",
+    "license": "CC0 1.0"
+  },
+  {
+    "id": "wikidata-q4648",
+    "type": "dataset",
+    "title": "Wikidata: Bali Island (Q4648)",
+    "publisher": "Wikimedia Foundation",
+    "locator": "https://www.wikidata.org/wiki/Q4648",
+    "accessedOn": "2026-07-16",
+    "license": "CC0 1.0"
+  },
+  {
+    "id": "wikidata-q23408",
+    "type": "dataset",
+    "title": "Wikidata: Bouvet Island (Q23408)",
+    "publisher": "Wikimedia Foundation",
+    "locator": "https://www.wikidata.org/wiki/Q23408",
+    "accessedOn": "2026-07-16",
+    "license": "CC0 1.0"
+  },
+  {
+    "id": "wikidata-q121378",
+    "type": "dataset",
+    "title": "Wikidata: Corfu (Q121378)",
+    "publisher": "Wikimedia Foundation",
+    "locator": "https://www.wikidata.org/wiki/Q121378",
+    "accessedOn": "2026-07-16",
+    "license": "CC0 1.0"
+  },
+  {
+    "id": "wikidata-q118863",
+    "type": "dataset",
+    "title": "Wikidata: North Island (Q118863)",
+    "publisher": "Wikimedia Foundation",
+    "locator": "https://www.wikidata.org/wiki/Q118863",
+    "accessedOn": "2026-07-16",
+    "license": "CC0 1.0"
+  },
+  {
+    "id": "wikidata-q120755",
+    "type": "dataset",
+    "title": "Wikidata: South Island (Q120755)",
+    "publisher": "Wikimedia Foundation",
+    "locator": "https://www.wikidata.org/wiki/Q120755",
+    "accessedOn": "2026-07-16",
+    "license": "CC0 1.0"
+  },
+  {
+    "id": "wikipedia-south-island",
+    "type": "website",
+    "title": "South Island — Wikipedia",
+    "publisher": "Wikimedia Foundation",
+    "locator": "https://en.wikipedia.org/wiki/South_Island",
+    "accessedOn": "2026-07-16",
+    "license": "CC BY-SA 4.0"
   }
 ]

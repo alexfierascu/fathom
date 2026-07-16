@@ -10,5 +10,209 @@
     "functions": ["container", "cargo"],
     "summary": "One of the world's busiest container ports, commanding the Singapore Strait.",
     "sourceIds": ["mpa-singapore"]
+  },
+  {
+    "id": "shoreham-by-sea",
+    "name": "Shoreham-by-Sea",
+    "countryId": "united-kingdom",
+    "opensOnto": {
+      "type": "water-body",
+      "id": "english-channel"
+    },
+    "summary": "seaside town and port in West Sussex, England",
+    "sourceIds": ["wikidata-q770599"],
+    "status": "draft"
+  },
+  {
+    "id": "poti-sea-port",
+    "name": "Poti Sea Port",
+    "countryId": "georgia",
+    "opensOnto": {
+      "type": "water-body",
+      "id": "black-sea"
+    },
+    "summary": "The Poti Sea Port is a major seaport and harbor off the eastern Black Sea coast at the mouth of the Rioni River in Poti, Georgia.",
+    "sourceIds": ["wikidata-q2917500", "wikipedia-poti-sea-port"],
+    "status": "draft"
+  },
+  {
+    "id": "port-of-odesa",
+    "name": "Port of Odesa",
+    "countryId": "ukraine",
+    "opensOnto": {
+      "type": "water-body",
+      "id": "black-sea"
+    },
+    "summary": "The Port of Odesa or Odesa Commercial Seaport, located near Odesa, is the largest Ukrainian seaport and one of the largest ports in the Black Sea basin, with a total annual traffic capacity of 40 million tonnes, the only port of Ukraine capable of accepting Panamax class vessels.",
+    "sourceIds": ["wikidata-q4331470", "wikipedia-port-of-odesa"],
+    "status": "draft"
+  },
+  {
+    "id": "port-of-haifa",
+    "name": "Port of Haifa",
+    "countryId": "israel",
+    "opensOnto": {
+      "type": "water-body",
+      "id": "mediterranean-sea"
+    },
+    "summary": "seaport in Haifa, Israel, on the Mediterranean Sea",
+    "sourceIds": ["wikidata-q1376739"],
+    "status": "draft"
+  },
+  {
+    "id": "tel-aviv-port",
+    "name": "Tel Aviv Port",
+    "countryId": "israel",
+    "opensOnto": {
+      "type": "water-body",
+      "id": "mediterranean-sea"
+    },
+    "summary": "The Tel Aviv Port is a commercial and entertainment district in northwest Tel Aviv, Israel along the Mediterranean Sea.",
+    "sourceIds": ["wikidata-q2889387", "wikipedia-tel-aviv-port"],
+    "status": "draft"
+  },
+  {
+    "id": "port-of-baku",
+    "name": "Port of Baku",
+    "countryId": "azerbaijan",
+    "opensOnto": {
+      "type": "water-body",
+      "id": "caspian-sea"
+    },
+    "summary": "Port of Baku, located on the ancient Silk Road connecting Europe and Asia, is a prime transport and logistics hub of Eurasia.",
+    "sourceIds": ["wikidata-q4075924", "wikipedia-port-of-baku"],
+    "status": "draft"
+  },
+  {
+    "id": "port-of-ashdod",
+    "name": "Port of Ashdod",
+    "countryId": "israel",
+    "opensOnto": {
+      "type": "water-body",
+      "id": "mediterranean-sea"
+    },
+    "summary": "port in Israel",
+    "sourceIds": ["wikidata-q2914934", "wikidata-q2914934"],
+    "status": "draft"
+  },
+  {
+    "id": "alexandria-port",
+    "name": "Alexandria Port",
+    "countryId": "egypt",
+    "opensOnto": {
+      "type": "water-body",
+      "id": "mediterranean-sea"
+    },
+    "summary": "port in Alexandria, Egypt",
+    "sourceIds": ["wikidata-q1344739"],
+    "status": "draft"
+  },
+  {
+    "id": "port-of-klaipeda",
+    "name": "Port of Klaipėda",
+    "countryId": "lithuania",
+    "opensOnto": {
+      "type": "water-body",
+      "id": "baltic-sea"
+    },
+    "summary": "port",
+    "sourceIds": ["wikidata-q1567799"],
+    "status": "draft"
+  },
+  {
+    "id": "port-of-mariupol",
+    "name": "Port of Mariupol",
+    "countryId": "ukraine",
+    "opensOnto": {
+      "type": "water-body",
+      "id": "sea-of-azov"
+    },
+    "summary": "port in Ukraine",
+    "sourceIds": ["wikidata-q4281590"],
+    "status": "draft"
+  },
+  {
+    "id": "port-of-koper",
+    "name": "Port of Koper",
+    "countryId": "slovenia",
+    "opensOnto": {
+      "type": "water-body",
+      "id": "adriatic-sea"
+    },
+    "summary": "port",
+    "sourceIds": ["wikidata-q478048"],
+    "status": "draft"
+  },
+  {
+    "id": "port-of-constanta",
+    "name": "Port of Constanța",
+    "countryId": "romania",
+    "opensOnto": {
+      "type": "water-body",
+      "id": "black-sea"
+    },
+    "summary": "port to Black Sea in Romania",
+    "sourceIds": ["wikidata-q822981"],
+    "status": "draft"
+  },
+  {
+    "id": "port-of-durres",
+    "name": "Port of Durrës",
+    "countryId": "albania",
+    "opensOnto": {
+      "type": "water-body",
+      "id": "adriatic-sea"
+    },
+    "summary": "largest sea port of Albania, on the Adriatic Sea near the Strait of Otranto",
+    "sourceIds": ["wikidata-q3303198"],
+    "status": "draft"
+  },
+  {
+    "id": "port-of-karachi",
+    "name": "Port of Karachi",
+    "countryId": "pakistan",
+    "opensOnto": {
+      "type": "water-body",
+      "id": "arabian-sea"
+    },
+    "summary": "port in Pakistan",
+    "sourceIds": ["wikidata-q1842361"],
+    "status": "draft"
+  },
+  {
+    "id": "shahid-rajai-port",
+    "name": "Shahid Rajai Port",
+    "countryId": "iran",
+    "opensOnto": {
+      "type": "water-body",
+      "id": "persian-gulf"
+    },
+    "summary": "port near Bandar Abbas, Iran",
+    "sourceIds": ["wikidata-q16049128"],
+    "status": "draft"
+  },
+  {
+    "id": "apra-harbor",
+    "name": "Apra Harbor",
+    "countryId": "united-states",
+    "opensOnto": {
+      "type": "water-body",
+      "id": "pacific-ocean"
+    },
+    "summary": "seaport in Guam",
+    "sourceIds": ["wikidata-q621760"],
+    "status": "draft"
+  },
+  {
+    "id": "port-of-rijeka",
+    "name": "Port of Rijeka",
+    "countryId": "croatia",
+    "opensOnto": {
+      "type": "water-body",
+      "id": "adriatic-sea"
+    },
+    "summary": "port",
+    "sourceIds": ["wikidata-q1567835"],
+    "status": "draft"
   }
 ]
