@@ -30,8 +30,11 @@ describe('GlobalSearch', () => {
 
     await user.type(screen.getByRole('combobox'), 'denmark');
 
-    expect(screen.getByText('Countries')).toBeInTheDocument();
-    expect(screen.getByText('Straits')).toBeInTheDocument();
+    const groupLabels = [...document.querySelectorAll('.search-group-label')].map(
+      (el) => el.textContent,
+    );
+    expect(groupLabels).toContain('Countries');
+    expect(groupLabels).toContain('Straits');
     const option = screen.getByRole('option', { name: /Denmark Country/ });
     expect(option).toBeInTheDocument();
     expect(option.querySelector('mark')?.textContent).toBe('Denmark');
@@ -74,11 +77,40 @@ describe('GlobalSearch', () => {
     expect(input).toHaveValue('');
   });
 
+  it('shows suggestions when focused with an empty query', async () => {
+    const user = userEvent.setup();
+    render(<Harness />);
+
+    await user.click(screen.getByRole('combobox'));
+    expect(screen.getByText('Try exploring')).toBeInTheDocument();
+    expect(screen.getByRole('option', { name: /Strait of Hormuz/ })).toBeInTheDocument();
+  });
+
+  it('filters results by entity type', async () => {
+    const user = userEvent.setup();
+    render(<Harness />);
+
+    await user.type(screen.getByRole('combobox'), 'denmark');
+    expect(document.getElementById('search-option-strait:oresund')).not.toBeNull();
+
+    await user.click(screen.getByRole('button', { name: 'Countries' }));
+    expect(document.getElementById('search-option-strait:oresund')).toBeNull();
+    expect(screen.getByRole('option', { name: /Denmark Country/ })).toBeInTheDocument();
+  });
+
+  it('finds entities despite typos', async () => {
+    const user = userEvent.setup();
+    render(<Harness />);
+
+    await user.type(screen.getByRole('combobox'), 'gibralter');
+    expect(screen.getByRole('option', { name: /Strait of Gibraltar/ })).toBeInTheDocument();
+  });
+
   it('shows the no-results state', async () => {
     const user = userEvent.setup();
     render(<Harness />);
 
-    await user.type(screen.getByRole('combobox'), 'atlantis');
+    await user.type(screen.getByRole('combobox'), 'xqzzky');
     expect(screen.getByText(/Nothing charted for/)).toBeInTheDocument();
   });
 

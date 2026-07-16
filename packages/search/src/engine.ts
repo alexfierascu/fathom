@@ -43,8 +43,14 @@ export interface SearchResult {
   nameMatches: readonly MatchRange[];
 }
 
+export interface SearchOptions {
+  limit?: number;
+  /** Restrict results to these entity types. */
+  types?: readonly SearchableType[];
+}
+
 export interface SearchIndex {
-  search: (query: string, options?: { limit?: number }) => readonly SearchResult[];
+  search: (query: string, options?: SearchOptions) => readonly SearchResult[];
   readonly documents: readonly SearchDocument[];
 }
 
@@ -73,7 +79,47 @@ interface IndexedDocument {
   foldedName: string;
   foldedKeywords: readonly string[];
   foldedSummary: string;
+  /** Unique folded words from name and keywords, for fuzzy matching. */
+  fuzzyNameWords: readonly string[];
+  fuzzyKeywordWords: readonly string[];
 }
+
+/**
+ * Bounded optimal-string-alignment (Damerau-Levenshtein) distance check:
+ * substitutions, insertions, deletions, and adjacent transpositions each
+ * cost one. Returns true when the distance is within `max`.
+ */
+export function withinEditDistance(a: string, b: string, max: number): boolean {
+  if (Math.abs(a.length - b.length) > max) return false;
+  const rows: number[][] = [];
+  for (let i = 0; i <= a.length; i += 1) {
+    const row: number[] = [i];
+    rows.push(row);
+    if (i === 0) {
+      for (let j = 1; j <= b.length; j += 1) row.push(j);
+      continue;
+    }
+    let rowMin = Infinity;
+    for (let j = 1; j <= b.length; j += 1) {
+      const cost = a[i - 1] === b[j - 1] ? 0 : 1;
+      let value = Math.min(
+        (rows[i - 1]?.[j] ?? Infinity) + 1,
+        (row[j - 1] ?? Infinity) + 1,
+        (rows[i - 1]?.[j - 1] ?? Infinity) + cost,
+      );
+      if (i > 1 && j > 1 && a[i - 1] === b[j - 2] && a[i - 2] === b[j - 1]) {
+        value = Math.min(value, (rows[i - 2]?.[j - 2] ?? Infinity) + 1);
+      }
+      row.push(value);
+      if (value < rowMin) rowMin = value;
+    }
+    if (rowMin > max) return false;
+  }
+  return (rows[a.length]?.[b.length] ?? Infinity) <= max;
+}
+
+/** Typo budget by token length: none under 5, one to 7, two from 8. */
+const fuzzyBudget = (token: string) => (token.length >= 8 ? 2 : token.length >= 5 ? 1 : 0);
 
 const isWordStart = (haystack: string, position: number) =>
   position === 0 || !/[a-z0-9]/.test(haystack.charAt(position - 1));
@@ -91,6 +137,15 @@ function scoreToken(entry: IndexedDocument, token: string): number {
     if (inKeyword >= 0) return 30;
   }
   if (foldedSummary.includes(token)) return 10;
+  const budget = fuzzyBudget(token);
+  if (budget > 0) {
+    for (const word of entry.fuzzyNameWords) {
+      if (withinEditDistance(token, word, budget)) return 45;
+    }
+    for (const word of entry.fuzzyKeywordWords) {
+      if (withinEditDistance(token, word, budget)) return 20;
+    }
+  }
   return 0;
 }
 
@@ -119,22 +174,33 @@ function nameMatchRanges(foldedName: string, tokens: readonly string[]): MatchRa
 }
 
 export function createSearchIndex(documents: readonly SearchDocument[]): SearchIndex {
-  const indexed: readonly IndexedDocument[] = documents.map((document) => ({
-    document,
-    foldedName: foldForSearch(document.name),
-    foldedKeywords: document.keywords.map(foldForSearch),
-    foldedSummary: foldForSearch(document.summary),
-  }));
+  const words = (values: readonly string[]) => [
+    ...new Set(values.flatMap((value) => value.split(/[^a-z0-9]+/).filter(Boolean))),
+  ];
+  const indexed: readonly IndexedDocument[] = documents.map((document) => {
+    const foldedName = foldForSearch(document.name);
+    const foldedKeywords = document.keywords.map(foldForSearch);
+    return {
+      document,
+      foldedName,
+      foldedKeywords,
+      foldedSummary: foldForSearch(document.summary),
+      fuzzyNameWords: words([foldedName]),
+      fuzzyKeywordWords: words(foldedKeywords),
+    };
+  });
 
   return {
     documents,
     search(query, options) {
       const limit = options?.limit ?? 15;
+      const types = options?.types;
       const tokens = foldForSearch(query).split(/\s+/).filter(Boolean);
       if (tokens.length === 0) return [];
 
       const results: SearchResult[] = [];
       for (const entry of indexed) {
+        if (types && !types.includes(entry.document.type)) continue;
         let score = 0;
         let allMatched = true;
         for (const token of tokens) {

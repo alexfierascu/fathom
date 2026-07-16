@@ -7,14 +7,21 @@
  * engine.
  */
 
-export { SEARCHABLE_TYPES, createSearchIndex, foldForSearch, groupResults } from './engine';
+export {
+  SEARCHABLE_TYPES,
+  createSearchIndex,
+  foldForSearch,
+  groupResults,
+  withinEditDistance,
+} from './engine';
 export type {
   MatchRange,
   SearchDocument,
   SearchIndex,
+  SearchOptions,
   SearchResult,
   SearchResultGroup,
   SearchableType,
 } from './engine';
 
-export { atlasSearchIndex, buildAtlasSearchDocuments } from './atlas';
+export { atlasSearchIndex, atlasSuggestions, buildAtlasSearchDocuments } from './atlas';

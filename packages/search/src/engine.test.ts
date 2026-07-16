@@ -81,6 +81,23 @@ describe('createSearchIndex', () => {
   });
 });
 
+describe('fuzzy matching', () => {
+  it('tolerates typos scaled to token length', () => {
+    expect(index.search('dovre')[0]?.document.entityId).toBe('strait:dover');
+    expect(index.search('denmerk')[0]?.document.entityId).toBe('country:denmark');
+    expect(index.search('dvr')).toHaveLength(0);
+  });
+});
+
+describe('type filters', () => {
+  it('restricts results to the requested types', () => {
+    const all = index.search('denmark');
+    expect(all.length).toBeGreaterThan(1);
+    const countriesOnly = index.search('denmark', { types: ['country'] });
+    expect(countriesOnly.map((r) => r.document.type)).toEqual(['country']);
+  });
+});
+
 describe('groupResults', () => {
   it('groups by type with the best-matching group first', () => {
     const groups = groupResults(index.search('denmark'));

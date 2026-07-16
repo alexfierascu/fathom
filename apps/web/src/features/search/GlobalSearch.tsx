@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router';
 
 import {
   atlasSearchIndex,
+  atlasSuggestions,
   groupResults,
   type MatchRange,
   type SearchResult,
@@ -78,16 +79,48 @@ export function GlobalSearch({ query, onQueryChange }: GlobalSearchProps) {
   const inputRef = useRef<HTMLInputElement>(null);
   const [open, setOpen] = useState(false);
   const [activeIndex, setActiveIndex] = useState(-1);
+  const [typeFilter, setTypeFilter] = useState<SearchableType | null>(null);
 
   const trimmed = query.trim();
+  const availableTypes = useMemo(
+    () =>
+      trimmed
+        ? [
+            ...new Set(
+              atlasSearchIndex()
+                .search(trimmed, { limit: 50 })
+                .map((r) => r.document.type),
+            ),
+          ]
+        : [],
+    [trimmed],
+  );
   const groups = useMemo(
-    () => (trimmed ? groupResults(atlasSearchIndex().search(trimmed, { limit: 12 })) : []),
+    () =>
+      trimmed
+        ? groupResults(
+            atlasSearchIndex().search(trimmed, {
+              limit: 12,
+              types: typeFilter ? [typeFilter] : undefined,
+            }),
+          )
+        : [],
+    [trimmed, typeFilter],
+  );
+  const suggestions = useMemo<readonly SearchResult[]>(
+    () =>
+      trimmed === ''
+        ? atlasSuggestions().map((document) => ({ document, score: 0, nameMatches: [] }))
+        : [],
     [trimmed],
   );
   // Keyboard order must match the grouped visual order, not score order.
-  const flat = useMemo(() => groups.flatMap((group) => group.results), [groups]);
+  const flat = useMemo(
+    () => (trimmed === '' ? suggestions : groups.flatMap((group) => group.results)),
+    [trimmed, suggestions, groups],
+  );
 
-  const showResults = open && trimmed !== '';
+  const showResults = open;
   const active = activeIndex >= 0 ? flat[activeIndex] : undefined;
 
   useEffect(() => {
@@ -107,6 +140,7 @@ export function GlobalSearch({ query, onQueryChange }: GlobalSearchProps) {
     onQueryChange('');
     setOpen(false);
     setActiveIndex(-1);
+    setTypeFilter(null);
   };
 
   const clear = () => {
@@ -149,7 +183,7 @@ export function GlobalSearch({ query, onQueryChange }: GlobalSearchProps) {
             setActiveIndex(-1);
           }}
           onFocus={() => {
-            if (trimmed) setOpen(true);
+            setOpen(true);
           }}
           onKeyDown={(event) => {
             if (event.key === 'ArrowDown') {
@@ -187,7 +221,68 @@ export function GlobalSearch({ query, onQueryChange }: GlobalSearchProps) {
         </button>
         {showResults && (
           <div className="search-results" id="search-results" role="listbox">
-            {flat.length === 0 ? (
+            {trimmed !== '' && availableTypes.length > 1 && (
+              <div className="search-filters" role="group" aria-label="Filter results by type">
+                <button
+                  type="button"
+                  className="search-filter"
+                  aria-pressed={typeFilter === null}
+                  onClick={() => {
+                    setTypeFilter(null);
+                    setActiveIndex(-1);
+                  }}
+                >
+                  All
+                </button>
+                {availableTypes.map((type) => (
+                  <button
+                    key={type}
+                    type="button"
+                    className="search-filter"
+                    aria-pressed={typeFilter === type}
+                    onClick={() => {
+                      setTypeFilter(typeFilter === type ? null : type);
+                      setActiveIndex(-1);
+                    }}
+                  >
+                    {GROUP_LABELS[type]}
+                  </button>
+                ))}
+              </div>
+            )}
+            {trimmed === '' && flat.length > 0 && (
+              <div>
+                <div className="search-group-label">Try exploring</div>
+                {suggestions.map((result) => (
+                  <button
+                    key={result.document.entityId}
+                    id={optionId(result)}
+                    type="button"
+                    role="option"
+                    aria-selected={active?.document.entityId === result.document.entityId}
+                    className="search-result"
+                    onMouseEnter={() => {
+                      setActiveIndex(flat.indexOf(result));
+                    }}
+                    onClick={() => {
+                      openResult(result);
+                    }}
+                  >
+                    <span className="search-result-icon" aria-hidden="true">
+                      {TYPE_ICONS[result.document.type]}
+                    </span>
+                    <span>
+                      <span className="search-result-name">{result.document.name}</span>{' '}
+                      <span className="search-result-meta">
+                        {TYPE_LABELS[result.document.type]}
+                      </span>
+                      <span className="search-result-summary">{result.document.summary}</span>
+                    </span>
+                  </button>
+                ))}
+              </div>
+            )}
+            {trimmed !== '' && flat.length === 0 ? (
               <div className="search-no-results">
                 Nothing charted for “<b>{trimmed}</b>”. Try a strait, a sea, or a country.
               </div>

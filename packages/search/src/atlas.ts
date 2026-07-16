@@ -153,3 +153,20 @@ export function atlasSearchIndex(): SearchIndex {
   cached ??= createSearchIndex(buildAtlasSearchDocuments());
   return cached;
 }
+
+/** Curated entry points shown when the search box is focused and empty. */
+const SUGGESTED_IDS = [
+  'strait:hormuz',
+  'strait:gibraltar',
+  'water-body:mediterranean-sea',
+  'country:japan',
+  'canal:suez-canal',
+  'region:europe',
+];
+
+export function atlasSuggestions(): readonly SearchDocument[] {
+  const { documents } = atlasSearchIndex();
+  return SUGGESTED_IDS.flatMap(
+    (id) => documents.find((document) => document.entityId === id) ?? [],
+  );
+}
