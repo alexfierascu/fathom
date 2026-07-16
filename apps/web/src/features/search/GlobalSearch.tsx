@@ -2,6 +2,8 @@ import { useEffect, useMemo, useRef, useState } from 'react';
 
 import { useNavigate } from 'react-router';
 
+import { prefetchEntityPage } from '../../app/prefetch';
+
 import {
   atlasSearchIndex,
   atlasSuggestions,
@@ -300,6 +302,7 @@ export function GlobalSearch({ query, onQueryChange }: GlobalSearchProps) {
                       className="search-result"
                       onMouseEnter={() => {
                         setActiveIndex(flat.indexOf(result));
+                        prefetchEntityPage(result.document.type);
                       }}
                       onClick={() => {
                         openResult(result);

@@ -4,6 +4,7 @@ import { Link } from 'react-router';
 
 import { getRelated, getStraitEntity, type Strait } from '@fathom/data';
 
+import { prefetchEntityPage } from '../../../app/prefetch';
 import { formatLat, formatLon } from '../lib/format';
 
 interface StraitCardProps {
@@ -23,6 +24,7 @@ export const StraitCard = memo(function StraitCard({ strait, onHover }: StraitCa
       data-id={strait.id}
       onMouseEnter={() => {
         onHover?.(strait.id);
+        prefetchEntityPage('strait');
       }}
       onMouseLeave={() => {
         onHover?.(null);
