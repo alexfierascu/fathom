@@ -51,7 +51,8 @@ fathom/
 │       ├── public/       # Static assets served as-is
 │       └── src/          # Application source
 ├── packages/
-│   └── data/             # @fathom/data — shared datasets and domain types
+│   ├── data/             # @fathom/data — documents, schemas, relationship engine
+│   └── search/           # @fathom/search — the reusable search engine
 ├── legacy/               # Original single-file prototype (permanent reference)
 ├── docs/                 # Vision, data model, architecture, decision records
 ├── .github/workflows/    # CI pipeline
@@ -78,6 +79,8 @@ Pages with these settings:
 - **Build command:** `pnpm build`
 - **Build output directory:** `apps/web/dist`
 - **Node version:** from `.nvmrc`; pnpm is picked up from the `packageManager` field
+- **Environment:** set `VITE_SITE_URL` to the production origin so
+  `sitemap.xml`, `robots.txt`, and canonical URLs carry the right domain
 
 Client-side routes (e.g. `/straits/gibraltar`) are served by the SPA fallback in
 `apps/web/public/_redirects`, so deep links and reloads work on any route.
