@@ -152,6 +152,7 @@ export interface RelationshipMap {
     canals: readonly EntityNode<'canal'>[];
     islands: readonly EntityNode<'island'>[];
     ports: readonly EntityNode<'port'>[];
+    routes: readonly EntityNode<'maritime-route'>[];
   };
   region: {
     straits: readonly EntityNode<'strait'>[];
@@ -383,6 +384,10 @@ const RESOLVERS: {
       loadPorts()
         .filter((port) => port.opensOnto.type === 'water-body' && port.opensOnto.id === n.id)
         .map(portNode),
+    routes: (n) =>
+      loadMaritimeRoutes()
+        .filter((route) => route.waypoints.some((w) => w.type === 'water-body' && w.id === n.id))
+        .map(routeNode),
   },
   region: {
     straits: (n) => straitsOfIds(derivedRegistries().straitIdsByRegionId.get(n.id)),

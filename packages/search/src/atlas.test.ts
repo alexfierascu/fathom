@@ -20,9 +20,20 @@ describe('buildAtlasSearchDocuments', () => {
 
   it('finds the seeded maritime entities', () => {
     const index = atlasSearchIndex();
-    expect(index.search('suez')[0]?.document.entityId).toBe('canal:suez-canal');
+    // The Gulf of Suez (a sea) outranks the canal per the type hierarchy.
+    expect(
+      index
+        .search('suez')
+        .slice(0, 3)
+        .map((r) => r.document.entityId),
+    ).toContain('canal:suez-canal');
     expect(index.search('seikan')[0]?.document.entityId).toBe('tunnel:seikan-tunnel');
-    expect(index.search('sicily')[0]?.document.entityId).toBe('island:sicily');
+    expect(
+      index
+        .search('sicily')
+        .slice(0, 3)
+        .map((r) => r.document.entityId),
+    ).toContain('island:sicily');
     expect(index.search('northern sea')[0]?.document.entityId).toBe(
       'maritime-route:northern-sea-route',
     );
@@ -35,9 +46,8 @@ describe('atlasSearchIndex', () => {
   it('finds any entity kind within a few keystrokes', () => {
     // Both the territory and the strait answer 'gib'; the country's exact
     // name prefix legitimately outranks the strait's word-boundary match.
-    const gib = index.search('gib').map((r) => r.document.entityId);
-    expect(gib.slice(0, 3)).toContain('strait:gibraltar');
-    expect(gib.slice(0, 3)).toContain('country:gibraltar');
+    // Strait-first ranking: the strait now beats the territory outright.
+    expect(index.search('gib')[0]?.document.entityId).toBe('strait:gibraltar');
     expect(index.search('medit')[0]?.document.entityId).toBe('water-body:mediterranean-sea');
     expect(index.search('spai')[0]?.document.entityId).toBe('country:spain');
     expect(index.search('americas')[0]?.document.entityId).toBe('region:americas-arctic');

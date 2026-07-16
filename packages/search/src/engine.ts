@@ -121,6 +121,36 @@ export function withinEditDistance(a: string, b: string, max: number): boolean {
 /** Typo budget by token length: none under 5, one to 7, two from 8. */
 const fuzzyBudget = (token: string) => (token.length >= 8 ? 2 : token.length >= 5 ? 1 : 0);
 
+/**
+ * Straits are the product; results are ranked strait-first, then seas,
+ * regions, and countries. Exact name matches still beat weaker matches of
+ * a higher-priority type, so "mediterr" opens the sea, not a strait that
+ * merely mentions it.
+ */
+const TYPE_BOOST: Partial<Record<SearchableType, number>> = {
+  strait: 30,
+  'water-body': 20,
+  region: 15,
+  country: 10,
+};
+
+const TYPE_PRIORITY: readonly SearchableType[] = [
+  'strait',
+  'water-body',
+  'region',
+  'country',
+  'port',
+  'canal',
+  'bridge',
+  'tunnel',
+  'island',
+  'maritime-route',
+];
+const priorityOf = (type: SearchableType) => {
+  const index = TYPE_PRIORITY.indexOf(type);
+  return index === -1 ? TYPE_PRIORITY.length : index;
+};
+
 const isWordStart = (haystack: string, position: number) =>
   position === 0 || !/[a-z0-9]/.test(haystack.charAt(position - 1));
 
@@ -214,12 +244,17 @@ export function createSearchIndex(documents: readonly SearchDocument[]): SearchI
         if (!allMatched) continue;
         results.push({
           document: entry.document,
-          score,
+          score: score + (TYPE_BOOST[entry.document.type] ?? 0),
           nameMatches: nameMatchRanges(entry.foldedName, tokens),
         });
       }
 
-      results.sort((a, b) => b.score - a.score || a.document.name.localeCompare(b.document.name));
+      results.sort(
+        (a, b) =>
+          b.score - a.score ||
+          priorityOf(a.document.type) - priorityOf(b.document.type) ||
+          a.document.name.localeCompare(b.document.name),
+      );
       return results.slice(0, limit);
     },
   };

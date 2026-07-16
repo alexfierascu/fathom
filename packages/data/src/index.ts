@@ -112,6 +112,9 @@ export {
   loadWildlife,
 } from './entities';
 
+// Geography utilities
+export { distanceKm, nearestStraits } from './geo';
+
 // Relationship engine
 export { getChildren, getEntity, getParents, getRelated, getStraitEntity } from './engine';
 export type { EntityDataMap, EntityNode, NodeType, RelationshipMap } from './engine';
