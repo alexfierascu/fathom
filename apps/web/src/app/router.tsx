@@ -56,6 +56,30 @@ export const router = createBrowserRouter([
         path: 'routes/:slug',
         lazy: () => pageChunks.structures().then((m) => ({ Component: m.MaritimeRouteDetailPage })),
       },
+      {
+        path: 'tags/:slug',
+        lazy: () => pageChunks.discovery().then((m) => ({ Component: m.TagDetailPage })),
+      },
+      {
+        path: 'compare/:a?/:b?',
+        lazy: () => pageChunks.discovery().then((m) => ({ Component: m.ComparePage })),
+      },
+      {
+        path: 'tours',
+        lazy: () => pageChunks.discovery().then((m) => ({ Component: m.ToursPage })),
+      },
+      {
+        path: 'tours/:slug',
+        lazy: () => pageChunks.discovery().then((m) => ({ Component: m.TourDetailPage })),
+      },
+      {
+        path: 'quiz',
+        lazy: () => pageChunks.discovery().then((m) => ({ Component: m.QuizPage })),
+      },
+      {
+        path: 'timeline',
+        lazy: () => pageChunks.discovery().then((m) => ({ Component: m.TimelinePage })),
+      },
       { path: '*', element: <NotFoundPage /> },
     ],
   },

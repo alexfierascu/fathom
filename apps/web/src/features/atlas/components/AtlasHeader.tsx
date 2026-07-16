@@ -29,6 +29,9 @@ export function AtlasHeader({ straitCount, children }: AtlasHeaderProps) {
           <Link to="/#explore-regions">Regions</Link>
           <Link to="/#explore-seas">Seas</Link>
           <Link to="/#explore-countries">Countries</Link>
+          <Link to="/tours">Tours</Link>
+          <Link to="/timeline">Timeline</Link>
+          <Link to="/quiz">Quiz</Link>
           <button
             type="button"
             className="nav-random"

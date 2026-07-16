@@ -1351,3 +1351,227 @@ a.fact:hover {
     grid-template-columns: 1fr;
   }
 }
+
+/* ---------- Discovery: tags, compare, tours, quiz, timeline ---------- */
+
+.pills--tags {
+  margin-top: 12px;
+}
+.pill--tag {
+  border-color: color-mix(in srgb, var(--accent-2) 45%, transparent);
+  color: var(--accent-2);
+}
+.pill--action {
+  border-style: dashed;
+  color: var(--accent-2);
+}
+
+.compare-pickers {
+  display: flex;
+  gap: 12px;
+  margin: 14px 0 10px;
+  flex-wrap: wrap;
+}
+.compare-pickers select {
+  background: var(--panel-2);
+  color: var(--text);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 8px 12px;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.8rem;
+}
+.compare-vs {
+  color: var(--text-muted);
+  font-size: 0.6em;
+  font-family: 'IBM Plex Mono', monospace;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 0 6px;
+}
+.compare-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 14px;
+}
+.compare-column {
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 20px 22px;
+}
+.compare-column h3 {
+  margin: 0 0 4px;
+  font-size: 1.3rem;
+}
+.compare-column h3 a {
+  color: var(--text);
+  text-decoration: none;
+}
+.compare-column h3 a:hover {
+  color: var(--accent-2);
+}
+.compare-facts {
+  margin: 16px 0;
+  display: grid;
+  gap: 4px;
+}
+.compare-facts dt {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.62rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-top: 10px;
+}
+.compare-facts dd {
+  margin: 2px 0 0;
+  font-size: 0.9rem;
+}
+
+.tour-stops {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 18px;
+}
+.tour-stop {
+  display: grid;
+  grid-template-columns: 44px 1fr;
+  gap: 14px;
+  align-items: start;
+}
+.tour-stop-number {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 1.1rem;
+  color: var(--accent-2);
+  border: 1px solid var(--border);
+  border-radius: 50%;
+  width: 44px;
+  height: 44px;
+  display: grid;
+  place-items: center;
+  background: var(--panel);
+  margin-top: 4px;
+}
+
+.quiz-panel {
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 24px 26px;
+  max-width: 640px;
+}
+.quiz-prompt {
+  font-size: 1.1rem;
+  margin: 0 0 18px;
+  line-height: 1.6;
+}
+.quiz-options {
+  display: grid;
+  gap: 10px;
+}
+.quiz-option {
+  text-align: left;
+  background: var(--panel-2);
+  color: var(--text);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 12px 16px;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition:
+    border-color 0.15s ease,
+    background 0.15s ease;
+}
+.quiz-option:hover:enabled {
+  border-color: color-mix(in srgb, var(--accent-2) 50%, transparent);
+}
+.quiz-option:disabled {
+  cursor: default;
+  opacity: 0.85;
+}
+.quiz-option--correct {
+  border-color: var(--accent-2);
+  background: color-mix(in srgb, var(--accent-2) 16%, var(--panel-2));
+  opacity: 1 !important;
+}
+.quiz-option--wrong {
+  border-color: var(--accent);
+  background: color-mix(in srgb, var(--accent) 14%, var(--panel-2));
+}
+.quiz-followup {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 14px;
+  margin-top: 18px;
+  flex-wrap: wrap;
+}
+.quiz-followup a {
+  color: var(--accent-2);
+  text-decoration: none;
+  font-size: 0.85rem;
+}
+.quiz-followup a:hover {
+  text-decoration: underline;
+}
+
+.timeline {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 0;
+}
+.timeline-event {
+  display: grid;
+  grid-template-columns: 110px 1fr;
+  gap: 18px;
+  padding: 18px 0;
+  border-bottom: 1px solid var(--border);
+}
+.timeline-event:last-child {
+  border-bottom: none;
+}
+.timeline-year {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.95rem;
+  color: var(--accent-2);
+  text-align: right;
+  padding-top: 2px;
+}
+.timeline-body h3 {
+  margin: 0 0 6px;
+  font-size: 1.05rem;
+}
+.timeline-body .note {
+  margin: 0 0 10px;
+}
+.timeline--compact .timeline-event {
+  padding: 12px 0;
+}
+.more-link {
+  display: inline-block;
+  margin-top: 14px;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.75rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--accent-2);
+  text-decoration: none;
+}
+.more-link:hover {
+  color: var(--accent);
+}
+
+@media (max-width: 640px) {
+  .compare-grid {
+    grid-template-columns: 1fr;
+  }
+  .timeline-event {
+    grid-template-columns: 74px 1fr;
+    gap: 12px;
+  }
+}

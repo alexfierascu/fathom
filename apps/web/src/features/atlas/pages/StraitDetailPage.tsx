@@ -14,7 +14,7 @@ import { StraitCard } from '../components/StraitCard';
 import { StraitMap } from '../components/StraitMap';
 import { StraitPager } from '../components/StraitPager';
 import { relatedStraits } from '../lib/discovery';
-import { formatLat, formatLon } from '../lib/format';
+import { formatDateValue, formatLat, formatLon } from '../lib/format';
 import { findStraitBySlug, getAdjacentStraits } from '../lib/navigation';
 import { breadcrumbsJsonLd, buildStraitSeo, placeJsonLd } from '../lib/seo';
 
@@ -41,6 +41,11 @@ export function StraitDetailPage() {
   const islands = getRelated(entity, 'islands');
   const ports = getRelated(entity, 'ports');
   const routes = getRelated(entity, 'routes');
+  const tags = getRelated(entity, 'tags');
+  const events = [...getRelated(entity, 'events')].sort(
+    (a, b) =>
+      (Number.parseInt(a.data.date.value, 10) || 0) - (Number.parseInt(b.data.date.value, 10) || 0),
+  );
   const sources = getRelated(entity, 'sources');
   const nearby = nearestStraits(strait.lat, strait.lon, { limit: 5, excludeId: strait.id });
   const continueExploring = relatedStraits(strait, 3);
@@ -91,6 +96,15 @@ export function StraitDetailPage() {
           <h2 className="detail-title detail-title--hero">{strait.name}</h2>
           <EntityPills entities={countries} />
           <ConnectsLine strait={strait} />
+          {tags.length > 0 && (
+            <div className="pills pills--tags">
+              {tags.map((tag) => (
+                <Link key={tag.id} className="pill pill--tag" to={`/tags/${tag.id}`}>
+                  {tag.name}
+                </Link>
+              ))}
+            </div>
+          )}
         </header>
 
         <Section label="Quick facts">
@@ -141,6 +155,25 @@ export function StraitDetailPage() {
           </Section>
         )}
 
+        {events.length > 0 && (
+          <Section label="History">
+            <ol className="timeline timeline--compact">
+              {events.map((event) => (
+                <li key={event.id} className="timeline-event">
+                  <div className="timeline-year">{formatDateValue(event.data.date)}</div>
+                  <div className="timeline-body">
+                    <h3>{event.name}</h3>
+                    <p className="note">{event.data.summary}</p>
+                  </div>
+                </li>
+              ))}
+            </ol>
+            <Link className="more-link" to="/timeline">
+              Full timeline →
+            </Link>
+          </Section>
+        )}
+
         {nearby.length > 0 && (
           <Section label="Nearby straits">
             <div className="pills">
@@ -149,6 +182,9 @@ export function StraitDetailPage() {
                   {neighbor.name}
                 </Link>
               ))}
+              <Link className="pill pill--action" to={`/compare/${strait.id}`}>
+                Compare this strait ⇄
+              </Link>
             </div>
           </Section>
         )}
