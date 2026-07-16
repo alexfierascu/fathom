@@ -7,6 +7,7 @@ import { loadAllStraits } from '@fathom/data';
 import type { LayoutContext } from '../../../app/RootLayout';
 import { MapPanel } from '../components/MapPanel';
 import { GlobalSearch } from '../../search/GlobalSearch';
+import { SeoTags } from '../components/SeoTags';
 import { RegionChips } from '../components/RegionChips';
 import { ResultsGrid } from '../components/ResultsGrid';
 import { filterStraits, isFiltering, type RegionFilter } from '../lib/filtering';
@@ -49,6 +50,13 @@ export function HomePage() {
 
   return (
     <>
+      <SeoTags
+        title="Fathom — A Chart of the World's Straits"
+        description="A chart of the world's straits — the narrow waters where oceans meet and history turns. Searchable, mapped, and sourced."
+        path="/"
+        ogType="website"
+      />
+
       <div className="controls">
         <GlobalSearch query={query} onQueryChange={setQuery} />
         <RegionChips
