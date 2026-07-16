@@ -658,5 +658,110 @@
         "id": "canigao-channel"
       }
     ]
+  },
+  {
+    "id": "matochkin-strait-view",
+    "file": "straits/matochkin-strait.jpg",
+    "license": "Public domain",
+    "credit": "Unknown author",
+    "alt": "The polar station at Matochkin Shar in the early 1930s",
+    "role": "representative",
+    "sourceId": "commons-matochkin-strait",
+    "depicts": [
+      {
+        "type": "strait",
+        "id": "matochkin-strait"
+      }
+    ]
+  },
+  {
+    "id": "karimata-view",
+    "file": "straits/karimata.jpg",
+    "license": "CC BY 3.0",
+    "credit": "---=XEON=---",
+    "alt": "The sea off Karimata Island",
+    "role": "representative",
+    "sourceId": "commons-karimata",
+    "depicts": [
+      {
+        "type": "strait",
+        "id": "karimata"
+      }
+    ]
+  },
+  {
+    "id": "luzon-view",
+    "file": "straits/luzon.png",
+    "license": "Public domain",
+    "credit": "Anonymous United States Marine Corps photographer",
+    "alt": "USS Boxer transiting the Luzon Strait",
+    "role": "representative",
+    "sourceId": "commons-luzon",
+    "depicts": [
+      {
+        "type": "strait",
+        "id": "luzon"
+      }
+    ]
+  },
+  {
+    "id": "bass-view",
+    "file": "straits/bass.jpg",
+    "license": "Public domain",
+    "credit": "MODIS Land Rapid Response Team, NASA GSFC",
+    "alt": "A phytoplankton bloom colouring the Bass Strait",
+    "role": "representative",
+    "sourceId": "commons-bass",
+    "depicts": [
+      {
+        "type": "strait",
+        "id": "bass"
+      }
+    ]
+  },
+  {
+    "id": "solent-view",
+    "file": "straits/solent.jpg",
+    "license": "CC BY-SA 2.0",
+    "credit": "Lewis Clarke",
+    "alt": "A navigation beacon in the Solent",
+    "role": "representative",
+    "sourceId": "commons-solent",
+    "depicts": [
+      {
+        "type": "strait",
+        "id": "solent"
+      }
+    ]
+  },
+  {
+    "id": "nares-view",
+    "file": "straits/nares.jpg",
+    "license": "Public domain",
+    "credit": "MODIS Land Rapid Response Team, NASA GSFC",
+    "alt": "The ice arch of the Nares Strait from orbit",
+    "role": "representative",
+    "sourceId": "commons-nares",
+    "depicts": [
+      {
+        "type": "strait",
+        "id": "nares"
+      }
+    ]
+  },
+  {
+    "id": "korea-view",
+    "file": "straits/korea.jpg",
+    "license": "Public domain",
+    "credit": "NASA",
+    "alt": "The Korea Strait between the night lights of Busan and Fukuoka",
+    "role": "representative",
+    "sourceId": "nasa-korea-strait",
+    "depicts": [
+      {
+        "type": "strait",
+        "id": "korea"
+      }
+    ]
   }
 ]

@@ -4001,5 +4001,68 @@
     "locator": "https://commons.wikimedia.org/wiki/File:Canigao2023PANO.png",
     "accessedOn": "2026-07-16",
     "license": "CC BY-SA 4.0"
+  },
+  {
+    "id": "commons-matochkin-strait",
+    "type": "website",
+    "title": "File:Полярная почта ПР-5 СССР-Л2183.jpg",
+    "publisher": "Wikimedia Commons",
+    "locator": "https://commons.wikimedia.org/wiki/File:Полярная_почта_ПР-5_СССР-Л2183.jpg",
+    "accessedOn": "2026-07-16",
+    "license": "Public domain"
+  },
+  {
+    "id": "commons-karimata",
+    "type": "website",
+    "title": "File:Karimata Island - panoramio.jpg",
+    "publisher": "Wikimedia Commons",
+    "locator": "https://commons.wikimedia.org/wiki/File:Karimata_Island_-_panoramio.jpg",
+    "accessedOn": "2026-07-16",
+    "license": "CC BY 3.0"
+  },
+  {
+    "id": "commons-luzon",
+    "type": "website",
+    "title": "File:USS Boxer (LHD-4) in Luzon Strait 8 October 2024.png",
+    "publisher": "Wikimedia Commons",
+    "locator": "https://commons.wikimedia.org/wiki/File:USS_Boxer_(LHD-4)_in_Luzon_Strait_8_October_2024.png",
+    "accessedOn": "2026-07-16",
+    "license": "Public domain"
+  },
+  {
+    "id": "commons-bass",
+    "type": "website",
+    "title": "File:Bloom in the Bass Strait (MODIS 2025-09-06).jpg",
+    "publisher": "Wikimedia Commons",
+    "locator": "https://commons.wikimedia.org/wiki/File:Bloom_in_the_Bass_Strait_(MODIS_2025-09-06).jpg",
+    "accessedOn": "2026-07-16",
+    "license": "Public domain"
+  },
+  {
+    "id": "commons-solent",
+    "type": "website",
+    "title": "File:The Solent , Beacon in the Sea - geograph.org.uk - 2880305.jpg",
+    "publisher": "Wikimedia Commons",
+    "locator": "https://commons.wikimedia.org/wiki/File:The_Solent_,_Beacon_in_the_Sea_-_geograph.org.uk_-_2880305.jpg",
+    "accessedOn": "2026-07-16",
+    "license": "CC BY-SA 2.0"
+  },
+  {
+    "id": "commons-nares",
+    "type": "website",
+    "title": "File:Ice arch in the Nares Strait (MODIS 2020-06-29).jpg",
+    "publisher": "Wikimedia Commons",
+    "locator": "https://commons.wikimedia.org/wiki/File:Ice_arch_in_the_Nares_Strait_(MODIS_2020-06-29).jpg",
+    "accessedOn": "2026-07-16",
+    "license": "Public domain"
+  },
+  {
+    "id": "nasa-korea-strait",
+    "type": "website",
+    "title": "The Korea Strait separates Busan, Korea, and Fukuoka, Japan",
+    "publisher": "NASA Image and Video Library",
+    "locator": "https://images.nasa.gov/details/iss072e436132",
+    "accessedOn": "2026-07-16",
+    "license": "Public domain"
   }
 ]

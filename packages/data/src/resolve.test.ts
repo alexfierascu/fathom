@@ -42,7 +42,7 @@ describe('attachment loaders', () => {
     expect(loadImagesFor({ type: 'strait', id: 'gibraltar' }).map((image) => image.id)).toContain(
       'gibraltar-satellite',
     );
-    expect(loadImagesFor({ type: 'strait', id: 'solent' })).toEqual([]);
+    expect(loadImagesFor({ type: 'strait', id: 'vries-strait' })).toEqual([]);
     expect(loadStatisticsFor({ type: 'strait', id: 'hormuz' })).toEqual([]);
   });
 });
