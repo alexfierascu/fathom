@@ -16,11 +16,13 @@ test('homepage is a minimal four-mode launcher', async ({ page }) => {
   // Only a search icon and an avatar float on the right.
   await expect(page.locator('.launch-icon')).toBeVisible();
   await expect(page.locator('.avatar-button')).toBeVisible();
-  // The search icon expands into the live field.
+  // The search icon opens the Chart Room over the blurred homepage.
   await page.locator('.launch-icon').click();
-  await expect(page.locator('.launch-search-field #search')).toBeFocused();
+  await expect(page.locator('.chartroom')).toBeVisible();
+  await expect(page.locator('.chartroom-input')).toBeFocused();
+  await expect(page.locator('.panel')).toHaveCount(4); // homepage never disappears
   await page.keyboard.press('Escape');
-  await expect(page.locator('.launch-search-field')).toHaveCount(0);
+  await expect(page.locator('.chartroom')).toHaveCount(0);
   // The avatar opens the profile panel with working appearance + language.
   await page.locator('.avatar-button').click();
   await expect(page.locator('.profile-menu')).toBeVisible();
@@ -87,12 +89,19 @@ test('quiz reveals answers in green and red', async ({ page }) => {
   await expect(page.locator('.quiz-option--correct')).toHaveCount(1);
 });
 
-test('search is summonable everywhere and finds straits', async ({ page }) => {
+test('the Chart Room is summonable everywhere and finds straits', async ({ page }) => {
   await page.goto('/learn');
   await page.locator('.search-trigger').click();
-  await expect(page.locator('.search-overlay')).toBeVisible();
-  await page.locator('#search').fill('bosporus');
-  await expect(page.locator('#search-results [role="option"]').first()).toContainText('Bosporus');
+  await expect(page.locator('.chartroom')).toBeVisible();
+  // With no query it invites, not a bare input.
+  await expect(page.locator('.chartroom')).toContainText('Featured destinations');
+  await page.locator('.chartroom-input').fill('bosporus');
+  await expect(page.locator('.cr-card-name').first()).toContainText('Bosporus');
+  // A no-match query encourages discovery rather than dead-ending.
+  await page.locator('.chartroom-input').fill('zzzxxq');
+  await expect(page.locator('.cr-empty')).toContainText('explore instead');
+  await page.keyboard.press('Escape');
+  await expect(page.locator('.chartroom')).toHaveCount(0);
 });
 
 test('map page offers the chart with its toggles', async ({ page }) => {

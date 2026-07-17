@@ -34,7 +34,6 @@ import {
   type Appearance,
 } from '../../theme/appearance';
 import type { ThemeKey } from '../../theme/themes';
-import { GlobalSearch } from '../../search/GlobalSearch';
 import { SeoTags } from '../components/SeoTags';
 
 /**
@@ -184,66 +183,6 @@ function SearchGlyph() {
   );
 }
 
-/** Collapsed to a circle, it expands into the live search on click. */
-function LauncherSearch({ label }: { label: string }) {
-  const [open, setOpen] = useState(false);
-  const [query, setQuery] = useState('');
-  const rootRef = useRef<HTMLDivElement>(null);
-
-  const close = useCallback(() => {
-    setOpen(false);
-    setQuery('');
-  }, []);
-
-  useEffect(() => {
-    if (!open) return;
-    const focusTimer = window.setTimeout(() => {
-      document.getElementById('search')?.focus();
-    }, 20);
-    const onKey = (event: globalThis.KeyboardEvent) => {
-      if (event.key === 'Escape') close();
-    };
-    const onDown = (event: globalThis.PointerEvent) => {
-      if (!rootRef.current?.contains(event.target as Node)) close();
-    };
-    document.addEventListener('keydown', onKey);
-    document.addEventListener('pointerdown', onDown);
-    return () => {
-      window.clearTimeout(focusTimer);
-      document.removeEventListener('keydown', onKey);
-      document.removeEventListener('pointerdown', onDown);
-    };
-  }, [open, close]);
-
-  return (
-    <div ref={rootRef} className={open ? 'launch-search is-open' : 'launch-search'}>
-      {open ? (
-        <div
-          className="launch-search-field"
-          onBlur={(event) => {
-            if (!rootRef.current?.contains(event.relatedTarget) && query.trim() === '') {
-              close();
-            }
-          }}
-        >
-          <GlobalSearch query={query} onQueryChange={setQuery} />
-        </div>
-      ) : (
-        <button
-          type="button"
-          className="launch-icon"
-          aria-label={label}
-          onClick={() => {
-            setOpen(true);
-          }}
-        >
-          <SearchGlyph />
-        </button>
-      )}
-    </div>
-  );
-}
-
 function ProfileMenu({
   identity,
   theme,
@@ -368,7 +307,7 @@ function ProfileMenu({
 }
 
 export function HomePage() {
-  const { theme, setTheme } = useOutletContext<LayoutContext>();
+  const { theme, setTheme, openSearch } = useOutletContext<LayoutContext>();
   const t = useT();
   const navigate = useNavigate();
 
@@ -468,7 +407,14 @@ export function HomePage() {
             <span className="portal-logo-sub">{t('home.platform')}</span>
           </Link>
           <div className="portal-utils">
-            <LauncherSearch label={t('search.open')} />
+            <button
+              type="button"
+              className="launch-icon"
+              aria-label={t('search.open')}
+              onClick={openSearch}
+            >
+              <SearchGlyph />
+            </button>
             <div className="avatar-wrap">
               <button
                 type="button"
