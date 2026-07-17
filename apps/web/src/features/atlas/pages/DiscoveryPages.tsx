@@ -22,6 +22,7 @@ import { Section } from '../components/Section';
 import { SeoTags } from '../components/SeoTags';
 import { StraitCard } from '../components/StraitCard';
 import { formatDateValue, formatLat, formatLon } from '../lib/format';
+import { formatDistance } from '../lib/units';
 import { buildQuiz, type QuizQuestion } from '../lib/quiz';
 
 // --- Tags -----------------------------------------------------------------
@@ -169,7 +170,7 @@ export function ComparePage() {
               ))}
             </select>
           </div>
-          <div className="connects">{Math.round(separation).toLocaleString()} km apart</div>
+          <div className="connects">{formatDistance(separation)} apart</div>
         </header>
         <div className="compare-grid">
           <CompareColumn strait={left} />
@@ -288,12 +289,57 @@ export function QuizPage() {
               <button type="button" className="nav-random" onClick={restart}>
                 Play again
               </button>
+              <button
+                type="button"
+                className="journey-btn"
+                onClick={() => {
+                  shareQuizResult(score, quiz.length);
+                }}
+              >
+                Share result ↓
+              </button>
             </div>
           </div>
         )}
       </article>
     </>
   );
+}
+
+/** Renders a shareable score card and downloads it. */
+function shareQuizResult(score: number, total: number): void {
+  const canvas = document.createElement('canvas');
+  canvas.width = 1200;
+  canvas.height = 630;
+  const ctx = canvas.getContext('2d');
+  if (!ctx) return;
+  ctx.fillStyle = '#071e3d';
+  ctx.fillRect(0, 0, 1200, 630);
+  ctx.fillStyle = 'rgba(231, 183, 95, 0.12)';
+  ctx.beginPath();
+  ctx.arc(1050, 90, 260, 0, Math.PI * 2);
+  ctx.fill();
+  ctx.fillStyle = '#f5f1e8';
+  ctx.font = '800 30px -apple-system, sans-serif';
+  ctx.fillText('F A T H O M', 70, 90);
+  ctx.fillStyle = '#e7b75f';
+  ctx.font = '500 190px "Iowan Old Style", Palatino, Georgia, serif';
+  ctx.fillText(`${String(score)} / ${String(total)}`, 70, 350);
+  ctx.fillStyle = '#f5f1e8';
+  ctx.font = '500 52px "Iowan Old Style", Palatino, Georgia, serif';
+  ctx.fillText('Know your narrows', 70, 460);
+  ctx.fillStyle = 'rgba(245, 241, 232, 0.6)';
+  ctx.font = '26px Menlo, monospace';
+  ctx.fillText('fathom-atlas.pages.dev/quiz', 70, 540);
+  canvas.toBlob((blob) => {
+    if (!blob) return;
+    const url = URL.createObjectURL(blob);
+    const link = document.createElement('a');
+    link.href = url;
+    link.download = `fathom-quiz-${String(score)}-of-${String(total)}.png`;
+    link.click();
+    URL.revokeObjectURL(url);
+  }, 'image/png');
 }
 
 // --- Timeline -------------------------------------------------------------------

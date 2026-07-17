@@ -3391,3 +3391,38 @@ a.flow-node:hover .flow-name {
   background: color-mix(in srgb, var(--teal) 55%, transparent);
   align-self: center;
 }
+
+/* ---------- Command palette actions ---------- */
+
+.palette-actions {
+  margin-top: 8px;
+  background: rgba(13, 43, 78, 0.96);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 6px;
+  display: grid;
+  gap: 2px;
+}
+.palette-action {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  text-align: left;
+  background: transparent;
+  border: none;
+  border-radius: calc(var(--radius) - 3px);
+  padding: 9px 12px;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.72rem;
+  letter-spacing: 0.06em;
+  color: var(--text-muted);
+  cursor: pointer;
+}
+.palette-action:hover {
+  background: var(--panel-2);
+  color: var(--accent-2);
+}
+.palette-action span {
+  color: var(--accent-2);
+}

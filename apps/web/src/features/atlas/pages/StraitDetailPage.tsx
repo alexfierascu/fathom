@@ -56,6 +56,7 @@ export function StraitDetailPage() {
     (a, b) =>
       (Number.parseInt(a.data.date.value, 10) || 0) - (Number.parseInt(b.data.date.value, 10) || 0),
   );
+  const wildlife = getRelated(entity, 'wildlife');
   const sources = getRelated(entity, 'sources');
   const heroImage = loadImagesFor({ type: 'strait', id: strait.id })[0];
   const statistics = getRelated(entity, 'statistics');
@@ -64,9 +65,15 @@ export function StraitDetailPage() {
   );
   const seo = buildStraitSeo(strait);
 
+  const dims = strait.dimensions;
+  const dimension = (m: { value: number; unit: string } | undefined, label: string) =>
+    m ? [{ label, value: `${String(m.value)} ${m.unit}` }] : [];
   const quickFacts = [
     { label: 'Region', value: regionName },
     { label: 'Coordinates', value: `${formatLat(strait.lat)}, ${formatLon(strait.lon)}` },
+    ...dimension(dims?.length, 'Length'),
+    ...dimension(dims?.widthMin, 'Narrowest'),
+    ...dimension(dims?.depthMin, 'Least depth'),
     { label: 'Countries', value: String(countries.length) },
     { label: 'Connected waters', value: String(Math.max(waterBodies.length, 1)) },
     ...(crossings.length > 0 ? [{ label: 'Crossings', value: String(crossings.length) }] : []),
@@ -82,6 +89,7 @@ export function StraitDetailPage() {
         title={seo.title}
         description={seo.description}
         path={seo.path}
+        image={heroImage ? `/og/straits/${strait.id}.jpg` : undefined}
         jsonLd={[
           placeJsonLd({
             name: strait.name,
@@ -217,6 +225,26 @@ export function StraitDetailPage() {
                       <EntityPills entities={islands} />
                     </div>
                   )}
+                </div>
+              </Section>
+            )}
+
+            {wildlife.length > 0 && (
+              <Section label="Wildlife of the narrows">
+                <div className="grid">
+                  {wildlife.map((species) => (
+                    <div key={species.id} className="card" style={{ cursor: 'default' }}>
+                      <div className="eyebrow">
+                        {species.data.scientificName}
+                        {species.data.conservationStatus ? ' · at risk' : ''}
+                      </div>
+                      <h3>{species.data.commonName}</h3>
+                      <div className="note">{species.data.summary}</div>
+                      {species.data.seasonality && (
+                        <div className="coords">{species.data.seasonality}</div>
+                      )}
+                    </div>
+                  ))}
                 </div>
               </Section>
             )}

@@ -1,5 +1,6 @@
 import { loadImagesFor, type EntityType } from '@fathom/data';
 
+import { formatDistance } from '../atlas/lib/units';
 import { mediaUrl } from '../media/media';
 
 interface NextStopStripProps {
@@ -31,10 +32,7 @@ export function NextStopStrip({
     entityType === 'journey'
       ? undefined
       : loadImagesFor({ type: entityType as EntityType, id: entityId })[0];
-  const meta = [
-    km !== null ? `${km.toLocaleString()} km` : null,
-    bearing ? `heading ${bearing}` : null,
-  ]
+  const meta = [km !== null ? formatDistance(km) : null, bearing ? `heading ${bearing}` : null]
     .filter(Boolean)
     .join(' · ');
 

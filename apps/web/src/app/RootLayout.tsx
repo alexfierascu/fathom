@@ -118,7 +118,14 @@ export function RootLayout() {
         <LocaleSwitcher />
         <ThemeSwitcher theme={theme} onChange={setTheme} />
       </AtlasHeader>
-      <SearchOverlay open={searchOpen} onClose={closeSearch} />
+      <SearchOverlay
+        open={searchOpen}
+        onClose={closeSearch}
+        onCycleTheme={() => {
+          const order = ['abyss', 'parchment', 'midnight', 'daylight'] as const;
+          setTheme(order[(order.indexOf(theme) + 1) % order.length] ?? 'abyss');
+        }}
+      />
       <main id="main" ref={mainRef} tabIndex={-1}>
         <Outlet context={context} />
       </main>

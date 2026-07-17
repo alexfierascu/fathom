@@ -10,6 +10,7 @@ import { Collections, ContinueReading, PopularTags } from '../../explore/HomeDis
 import { GlobalSearch } from '../../search/GlobalSearch';
 import { MapPanel } from '../components/MapPanel';
 import { Breadcrumbs } from '../components/Breadcrumbs';
+import { Section } from '../components/Section';
 import {
   Chokepoints,
   ExploreSections,
@@ -162,6 +163,49 @@ export function MapPage() {
   );
 }
 
+/** Records drawn only from straits with sourced dimensions. */
+function Records() {
+  const measured = STRAITS.filter((strait) => strait.dimensions);
+  if (measured.length === 0) return null;
+  const narrowest = [...measured]
+    .filter((strait) => strait.dimensions?.widthMin)
+    .sort((a, b) => {
+      const metres = (m?: { value: number; unit: string }) =>
+        m ? (m.unit === 'm' ? m.value : m.value * 1000) : Infinity;
+      return metres(a.dimensions?.widthMin) - metres(b.dimensions?.widthMin);
+    })[0];
+  const longest = [...measured]
+    .filter((strait) => strait.dimensions?.length)
+    .sort((a, b) => (b.dimensions?.length?.value ?? 0) - (a.dimensions?.length?.value ?? 0))[0];
+
+  return (
+    <Section label="Records — among straits with charted dimensions">
+      <div className="grid">
+        {narrowest?.dimensions?.widthMin && (
+          <Link viewTransition className="card" to={`/straits/${narrowest.id}`}>
+            <div className="eyebrow">Narrowest charted</div>
+            <h3>{narrowest.name}</h3>
+            <div className="note">
+              {String(narrowest.dimensions.widthMin.value)} {narrowest.dimensions.widthMin.unit} at
+              its narrowest.
+            </div>
+          </Link>
+        )}
+        {longest?.dimensions?.length && (
+          <Link viewTransition className="card" to={`/straits/${longest.id}`}>
+            <div className="eyebrow">Longest charted</div>
+            <h3>{longest.name}</h3>
+            <div className="note">
+              {String(longest.dimensions.length.value)} {longest.dimensions.length.unit} from end to
+              end.
+            </div>
+          </Link>
+        )}
+      </div>
+    </Section>
+  );
+}
+
 /**
  * Learn — the educational shelf: quizzes, the timeline, collections, and
  * the comparison tool. One question: "what did I learn?"
@@ -216,6 +260,8 @@ export function LearnPage() {
             <p>Your journeys, quizzes, and challenges — stamped.</p>
           </Link>
         </div>
+
+        <Records />
 
         <Collections />
         <InterestingFacts />

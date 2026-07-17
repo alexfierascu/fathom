@@ -4,6 +4,8 @@ interface SeoTagsProps {
   /** Site-relative path; the canonical origin is resolved at render time. */
   path: string;
   ogType?: 'website' | 'article';
+  /** Site-relative share image; falls back to the brand card. */
+  image?: string;
   /** JSON-LD structured data object(s). */
   jsonLd?: object | readonly object[];
 }
@@ -12,9 +14,16 @@ interface SeoTagsProps {
  * The full metadata set for a page: title, description, canonical URL,
  * Open Graph, Twitter card, and JSON-LD. React 19 hoists the head tags.
  */
-export function SeoTags({ title, description, path, ogType = 'article', jsonLd }: SeoTagsProps) {
+export function SeoTags({
+  title,
+  description,
+  path,
+  ogType = 'article',
+  image,
+  jsonLd,
+}: SeoTagsProps) {
   const canonical = new URL(path, window.location.origin).href;
-  const ogImage = new URL('/og.png', window.location.origin).href;
+  const ogImage = new URL(image ?? '/og.png', window.location.origin).href;
   const jsonLdBlocks = jsonLd === undefined ? [] : Array.isArray(jsonLd) ? jsonLd : [jsonLd];
 
   return (
