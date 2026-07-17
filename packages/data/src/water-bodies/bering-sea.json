@@ -5,5 +5,7 @@
   "summary": "The Bering Sea is a marginal sea of the Northern Pacific Ocean.",
   "parentId": "pacific-ocean",
   "sourceIds": ["wikidata-q44725", "wikipedia-bering-sea"],
-  "status": "draft"
+  "status": "draft",
+  "lat": 57.5,
+  "lon": -175.0
 }

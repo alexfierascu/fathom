@@ -1,1 +1,51 @@
-[]
+[
+  {
+    "subject": {
+      "type": "strait",
+      "id": "hormuz"
+    },
+    "metric": "oil-transit",
+    "value": 20.9,
+    "unit": "million barrels per day",
+    "period": "2023",
+    "method": "estimated",
+    "sourceIds": ["eia-chokepoints"]
+  },
+  {
+    "subject": {
+      "type": "strait",
+      "id": "malacca"
+    },
+    "metric": "oil-transit",
+    "value": 23.7,
+    "unit": "million barrels per day",
+    "period": "2023",
+    "method": "estimated",
+    "sourceIds": ["eia-chokepoints"]
+  },
+  {
+    "subject": {
+      "type": "strait",
+      "id": "bab-el-mandeb"
+    },
+    "metric": "oil-transit",
+    "value": 8.8,
+    "unit": "million barrels per day",
+    "period": "2023",
+    "method": "estimated",
+    "sourceIds": ["eia-chokepoints"]
+  },
+  {
+    "subject": {
+      "type": "canal",
+      "id": "suez-canal"
+    },
+    "metric": "oil-transit",
+    "value": 9.2,
+    "unit": "million barrels per day",
+    "period": "2023",
+    "method": "estimated",
+    "notes": "Combined Suez Canal and SUMED pipeline flows.",
+    "sourceIds": ["eia-chokepoints"]
+  }
+]

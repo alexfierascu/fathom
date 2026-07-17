@@ -4,5 +4,7 @@
   "type": "gulf",
   "summary": "The gulf connecting the Persian Gulf with the Arabian Sea, entered at Hormuz.",
   "parentId": "indian-ocean",
-  "sourceIds": ["iho-limits-of-oceans-and-seas"]
+  "sourceIds": ["iho-limits-of-oceans-and-seas"],
+  "lat": 24.7,
+  "lon": 58.3
 }

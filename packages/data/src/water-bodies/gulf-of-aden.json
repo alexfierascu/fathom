@@ -4,5 +4,7 @@
   "type": "gulf",
   "summary": "The gulf between Yemen and the Horn of Africa, linking the Red Sea with the wider Indian Ocean.",
   "parentId": "indian-ocean",
-  "sourceIds": ["iho-limits-of-oceans-and-seas"]
+  "sourceIds": ["iho-limits-of-oceans-and-seas"],
+  "lat": 12.5,
+  "lon": 47.5
 }

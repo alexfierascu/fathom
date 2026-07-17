@@ -4,5 +4,7 @@
   "type": "sea",
   "summary": "The Arctic shelf sea north of Norway and Russia, gateway to the Northern Sea Route.",
   "parentId": "arctic-ocean",
-  "sourceIds": ["iho-limits-of-oceans-and-seas"]
+  "sourceIds": ["iho-limits-of-oceans-and-seas"],
+  "lat": 73.5,
+  "lon": 40.0
 }

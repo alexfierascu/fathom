@@ -4,5 +4,7 @@
   "type": "gulf",
   "summary": "The shallow gulf between Arabia and Iran, carrying much of the world's seaborne oil.",
   "parentId": "indian-ocean",
-  "sourceIds": ["iho-limits-of-oceans-and-seas"]
+  "sourceIds": ["iho-limits-of-oceans-and-seas"],
+  "lat": 26.8,
+  "lon": 51.5
 }

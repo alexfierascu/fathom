@@ -1,6 +1,6 @@
 import { Link, useOutletContext, useParams } from 'react-router';
 
-import { getRelated, getStraitEntity, loadImagesFor } from '@fathom/data';
+import { getRelated, getStraitEntity, loadImagesFor, loadSourcesFor } from '@fathom/data';
 import { journeyVisits, loadJourneys } from '@fathom/discovery';
 
 import { ContinueExploring } from '../../explore/ContinueExploring';
@@ -58,6 +58,7 @@ export function StraitDetailPage() {
   );
   const sources = getRelated(entity, 'sources');
   const heroImage = loadImagesFor({ type: 'strait', id: strait.id })[0];
+  const statistics = getRelated(entity, 'statistics');
   const journeys = loadJourneys().filter((journey) =>
     journeyVisits(journey, `strait:${strait.id}`),
   );
@@ -148,6 +149,22 @@ export function StraitDetailPage() {
                 ))}
               </div>
             </Section>
+            {statistics.length > 0 && (
+              <Section label="Numbers that matter">
+                <div className="stat-cards">
+                  {statistics.map((stat) => (
+                    <div key={`${stat.metric}-${stat.period}`} className="stat-card">
+                      <div className="stat-value">{stat.value}</div>
+                      <div className="stat-unit">{stat.unit}</div>
+                      <div className="geo-label">
+                        {stat.metric === 'oil-transit' ? 'Oil moved through' : stat.metric} ·{' '}
+                        {stat.period} · {loadSourcesFor(stat)[0]?.publisher ?? 'sourced'}
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </Section>
+            )}
           </aside>
           <div className="chart-story">
             <Section label="Why it matters">

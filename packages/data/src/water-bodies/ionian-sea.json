@@ -4,5 +4,7 @@
   "type": "sea",
   "summary": "The deep Mediterranean basin between southern Italy and Greece.",
   "parentId": "mediterranean-sea",
-  "sourceIds": ["iho-limits-of-oceans-and-seas"]
+  "sourceIds": ["iho-limits-of-oceans-and-seas"],
+  "lat": 37.5,
+  "lon": 18.5
 }

@@ -4,5 +4,7 @@
   "type": "sea",
   "summary": "The cold marginal sea between Sakhalin, the Kuril Islands, and Kamchatka.",
   "parentId": "pacific-ocean",
-  "sourceIds": ["iho-limits-of-oceans-and-seas"]
+  "sourceIds": ["iho-limits-of-oceans-and-seas"],
+  "lat": 51.0,
+  "lon": 149.0
 }

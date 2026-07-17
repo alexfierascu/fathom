@@ -4,5 +4,7 @@
   "type": "sea",
   "summary": "The shallow sea between Denmark and Sweden, on the way from the Skagerrak to the Baltic.",
   "parentId": "north-sea",
-  "sourceIds": ["iho-limits-of-oceans-and-seas"]
+  "sourceIds": ["iho-limits-of-oceans-and-seas"],
+  "lat": 56.9,
+  "lon": 11.4
 }

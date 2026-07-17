@@ -4,5 +4,7 @@
   "type": "sea",
   "summary": "The shelf sea between China, Korea, Japan, and Taiwan.",
   "parentId": "pacific-ocean",
-  "sourceIds": ["iho-limits-of-oceans-and-seas"]
+  "sourceIds": ["iho-limits-of-oceans-and-seas"],
+  "lat": 28.5,
+  "lon": 124.5
 }

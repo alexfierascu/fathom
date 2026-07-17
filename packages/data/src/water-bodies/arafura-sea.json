@@ -4,5 +4,7 @@
   "type": "sea",
   "summary": "The shallow sea between northern Australia and New Guinea.",
   "parentId": "pacific-ocean",
-  "sourceIds": ["iho-limits-of-oceans-and-seas"]
+  "sourceIds": ["iho-limits-of-oceans-and-seas"],
+  "lat": -9.5,
+  "lon": 135.5
 }

@@ -4,5 +4,7 @@
   "type": "sea",
   "summary": "The sea east of the Andaman Islands, fronting Myanmar and Thailand and leading to Malacca.",
   "parentId": "indian-ocean",
-  "sourceIds": ["iho-limits-of-oceans-and-seas"]
+  "sourceIds": ["iho-limits-of-oceans-and-seas"],
+  "lat": 10.0,
+  "lon": 96.0
 }

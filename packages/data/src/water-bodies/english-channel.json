@@ -4,5 +4,7 @@
   "type": "channel",
   "summary": "The arm of the Atlantic separating southern England from northern France, narrowing at Dover.",
   "parentId": "atlantic-ocean",
-  "sourceIds": ["iho-limits-of-oceans-and-seas"]
+  "sourceIds": ["iho-limits-of-oceans-and-seas"],
+  "lat": 49.9,
+  "lon": -2.5
 }

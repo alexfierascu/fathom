@@ -3,5 +3,7 @@
   "name": "Atlantic Ocean",
   "type": "ocean",
   "summary": "The second-largest ocean, stretching between the Americas on one side and Europe and Africa on the other.",
-  "sourceIds": ["iho-limits-of-oceans-and-seas"]
+  "sourceIds": ["iho-limits-of-oceans-and-seas"],
+  "lat": 38.0,
+  "lon": -25.0
 }

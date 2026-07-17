@@ -50,4 +50,6 @@ export type {
 export { findJourney, loadJourneys } from './catalog';
 
 export { bearingWord, courseLengthKm, journeyCourse, legBetween } from './course';
+export { chartChallengeFor } from './challenge';
+export type { ChallengeTarget, ChartChallenge } from './challenge';
 export type { CoursePoint } from './course';

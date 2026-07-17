@@ -2,7 +2,7 @@ import { useEffect, useRef } from 'react';
 
 import L from 'leaflet';
 
-import type { Journey } from '@fathom/discovery';
+import type { ChartChallenge, Journey } from '@fathom/discovery';
 import { journeyCourse } from '@fathom/discovery';
 
 import type { TileStyle } from '../theme/themes';
@@ -21,6 +21,12 @@ interface JourneyMapProps {
   travelling: boolean;
   /** Clicking a stop pin jumps the voyage there. */
   onSelectStop?: (index: number) => void;
+  /** An active chart challenge: labeled water targets to click. */
+  challenge?: {
+    spec: ChartChallenge;
+    solved: readonly string[];
+    onHit: (id: string, correct: boolean) => void;
+  } | null;
   tileStyle: TileStyle;
 }
 
@@ -34,6 +40,7 @@ export function JourneyMap({
   currentStop,
   travelling,
   onSelectStop,
+  challenge,
   tileStyle,
 }: JourneyMapProps) {
   const panelRef = useRef<HTMLDivElement>(null);
@@ -42,8 +49,10 @@ export function JourneyMap({
   const tilesRef = useRef<TileManager | null>(null);
   const markersRef = useRef(new Map<number, L.Marker>());
   const onSelectStopRef = useRef(onSelectStop);
+  const challengeRef = useRef(challenge);
   useEffect(() => {
     onSelectStopRef.current = onSelectStop;
+    challengeRef.current = challenge;
   });
 
   useEffect(() => {
@@ -107,6 +116,45 @@ export function JourneyMap({
   useEffect(() => {
     tilesRef.current?.set(tileStyle);
   });
+
+  // Chart challenge layer: labeled water targets, rebuilt whenever the
+  // challenge or its solved set changes.
+  const challengeSpec = challenge?.spec ?? null;
+  const challengeSolved = challenge?.solved ?? null;
+  useEffect(() => {
+    const map = mapRef.current;
+    if (!map || !challengeSpec || !challengeSolved) return;
+    const layer = L.layerGroup().addTo(map);
+    for (const target of challengeSpec.targets) {
+      const solved = challengeSolved.includes(target.id);
+      const marker = L.marker([target.lat, target.lon], {
+        icon: L.divIcon({
+          className: solved ? 'water-pin is-solved' : 'water-pin',
+          html: `<span>${solved ? '✓ ' : ''}${target.label}</span>`,
+        }),
+        zIndexOffset: 1000,
+      }).addTo(layer);
+      marker.on('click', () => {
+        const current = challengeRef.current;
+        if (!current || current.solved.includes(target.id)) return;
+        if (!target.correct) {
+          const element = marker.getElement();
+          element?.classList.add('is-wrong');
+          window.setTimeout(() => element?.classList.remove('is-wrong'), 700);
+        }
+        current.onHit(target.id, target.correct);
+      });
+    }
+    const bounds = L.latLngBounds(
+      challengeSpec.targets.map((target) => [target.lat, target.lon] as L.LatLngTuple),
+    );
+    const stopMarker = markersRef.current.get(currentStop);
+    if (stopMarker) bounds.extend(stopMarker.getLatLng());
+    map.fitBounds(bounds, { padding: [50, 50], maxZoom: 6 });
+    return () => {
+      layer.remove();
+    };
+  }, [challengeSpec, challengeSolved, currentStop]);
 
   // While travelling, follow the traveller and highlight their pin;
   // before departure the chart shows the whole course. The stop card's

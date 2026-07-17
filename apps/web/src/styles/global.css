@@ -3114,3 +3114,129 @@ a.flow-node:hover .flow-name {
     box-shadow: 0 0 0 12px transparent;
   }
 }
+
+/* ---------- Chart challenges, voyage log, numbers ---------- */
+
+.water-pin {
+  background: transparent;
+  border: none;
+}
+.water-pin span {
+  display: inline-block;
+  transform: translate(-50%, -50%);
+  white-space: nowrap;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.62rem;
+  letter-spacing: 0.06em;
+  color: var(--text);
+  background: color-mix(in srgb, var(--bg) 82%, transparent);
+  border: 1.5px solid var(--teal);
+  border-radius: 999px;
+  padding: 5px 11px;
+  cursor: pointer;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.4);
+  transition:
+    background 0.15s ease,
+    border-color 0.15s ease;
+}
+.water-pin span:hover {
+  background: color-mix(in srgb, var(--teal) 20%, var(--bg));
+}
+.water-pin.is-solved span {
+  background: var(--ok);
+  border-color: transparent;
+  color: #08150f;
+  font-weight: 700;
+}
+.water-pin.is-wrong span {
+  border-color: var(--bad);
+  color: var(--bad);
+  animation: pin-shake 0.4s ease;
+}
+@keyframes pin-shake {
+  0%,
+  100% {
+    transform: translate(-50%, -50%);
+  }
+  25% {
+    transform: translate(-54%, -50%);
+  }
+  75% {
+    transform: translate(-46%, -50%);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .water-pin.is-wrong span {
+    animation: none;
+  }
+}
+
+.stat-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(170px, 1fr));
+  gap: 10px;
+}
+.stat-card {
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 14px 16px;
+  background: color-mix(in srgb, var(--panel-2) 45%, transparent);
+}
+.stat-value {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: 1.9rem;
+  line-height: 1.1;
+  color: var(--accent-2);
+}
+.stat-unit {
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  margin: 2px 0 8px;
+}
+.stat-notes {
+  margin: 8px 0 0;
+  font-size: 0.7rem;
+  color: var(--text-muted);
+  line-height: 1.45;
+}
+
+.log-tally {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-bottom: 14px;
+}
+.log-rows {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 8px;
+}
+.log-rows li {
+  border-left: 2px solid color-mix(in srgb, var(--teal) 50%, transparent);
+  padding: 2px 0 2px 12px;
+}
+.log-rows b {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: 0.92rem;
+  display: block;
+}
+.log-rows span {
+  font-size: 0.76rem;
+  color: var(--text-muted);
+  line-height: 1.45;
+}
+.log-ahead {
+  margin: 14px 0 0;
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  border-top: 1px solid var(--border);
+  padding-top: 12px;
+}
+.stop-challenge .journey-btn,
+.stop-challenge .chip {
+  margin-top: 10px;
+}

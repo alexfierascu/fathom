@@ -5,5 +5,7 @@
   "summary": "marginal sea of the northern Indian Ocean",
   "parentId": "indian-ocean",
   "sourceIds": ["wikidata-q58705"],
-  "status": "draft"
+  "status": "draft",
+  "lat": 15.0,
+  "lon": 64.0
 }

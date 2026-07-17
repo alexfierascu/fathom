@@ -4,5 +4,7 @@
   "type": "sea",
   "summary": "The sea between Greenland and Svalbard, a main gateway between the Arctic and the Atlantic.",
   "parentId": "arctic-ocean",
-  "sourceIds": ["iho-limits-of-oceans-and-seas"]
+  "sourceIds": ["iho-limits-of-oceans-and-seas"],
+  "lat": 75.5,
+  "lon": -6.0
 }

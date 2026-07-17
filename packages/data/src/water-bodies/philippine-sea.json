@@ -4,5 +4,7 @@
   "type": "sea",
   "summary": "The vast western Pacific basin east of the Philippines and Taiwan.",
   "parentId": "pacific-ocean",
-  "sourceIds": ["iho-limits-of-oceans-and-seas"]
+  "sourceIds": ["iho-limits-of-oceans-and-seas"],
+  "lat": 17.0,
+  "lon": 128.0
 }

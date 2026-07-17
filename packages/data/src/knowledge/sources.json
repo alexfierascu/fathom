@@ -4064,5 +4064,13 @@
     "locator": "https://images.nasa.gov/details/iss072e436132",
     "accessedOn": "2026-07-16",
     "license": "Public domain"
+  },
+  {
+    "id": "eia-chokepoints",
+    "type": "website",
+    "title": "World Oil Transit Chokepoints",
+    "publisher": "U.S. Energy Information Administration",
+    "locator": "https://www.eia.gov/international/analysis/special-topics/World_Oil_Transit_Chokepoints",
+    "accessedOn": "2026-07-17"
   }
 ]

@@ -4,5 +4,7 @@
   "type": "sea",
   "summary": "The Pacific sea off northeastern Australia, home of the Great Barrier Reef.",
   "parentId": "pacific-ocean",
-  "sourceIds": ["iho-limits-of-oceans-and-seas"]
+  "sourceIds": ["iho-limits-of-oceans-and-seas"],
+  "lat": -15.0,
+  "lon": 150.0
 }

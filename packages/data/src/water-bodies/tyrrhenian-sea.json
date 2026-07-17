@@ -4,5 +4,7 @@
   "type": "sea",
   "summary": "The part of the Mediterranean west of the Italian peninsula, enclosed by Sardinia, Corsica, and Sicily.",
   "parentId": "mediterranean-sea",
-  "sourceIds": ["iho-limits-of-oceans-and-seas"]
+  "sourceIds": ["iho-limits-of-oceans-and-seas"],
+  "lat": 39.8,
+  "lon": 12.2
 }

@@ -4,5 +4,7 @@
   "type": "sea",
   "summary": "The marginal sea enclosed by the Japanese archipelago, Korea, and the Russian Far East.",
   "parentId": "pacific-ocean",
-  "sourceIds": ["iho-limits-of-oceans-and-seas"]
+  "sourceIds": ["iho-limits-of-oceans-and-seas"],
+  "lat": 39.5,
+  "lon": 134.5
 }

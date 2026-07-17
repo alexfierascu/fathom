@@ -19,10 +19,10 @@ describe('knowledge collections', () => {
     expect(loadTags().map((tag) => tag.id)).toContain('chokepoint');
     expect(loadHistoricalEvents().map((event) => event.id)).toContain('gallipoli-campaign');
     expect(loadImages().map((image) => image.id)).toContain('gibraltar-satellite');
+    expect(loadStatistics().map((stat) => stat.metric)).toContain('oil-transit');
   });
 
   it('loads the still-empty collections as empty', () => {
     expect(loadWildlife()).toEqual([]);
-    expect(loadStatistics()).toEqual([]);
   });
 });

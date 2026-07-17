@@ -4,5 +4,7 @@
   "type": "sea",
   "summary": "The Siberian shelf sea east of the Taymyr Peninsula, icebound for most of the year.",
   "parentId": "arctic-ocean",
-  "sourceIds": ["iho-limits-of-oceans-and-seas"]
+  "sourceIds": ["iho-limits-of-oceans-and-seas"],
+  "lat": 75.5,
+  "lon": 125.0
 }

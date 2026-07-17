@@ -58,3 +58,20 @@ describe('leg geometry', () => {
     expect(bearingWord({ lat: 35.95, lon: -5.59 }, { lat: 51, lon: 1.4 })).toBe('north');
   });
 });
+
+describe('chartChallengeFor', () => {
+  it('builds a two-answer challenge with decoys for anchored straits', async () => {
+    const { chartChallengeFor } = await import('./challenge');
+    const challenge = chartChallengeFor({ type: 'strait', id: 'hormuz' });
+    expect(challenge).not.toBeNull();
+    const correct = challenge?.targets.filter((target) => target.correct).map((t) => t.id) ?? [];
+    expect(correct.sort()).toEqual(['gulf-of-oman', 'persian-gulf']);
+    expect(challenge?.targets.length).toBeGreaterThanOrEqual(3);
+    expect(chartChallengeFor({ type: 'strait', id: 'hormuz' })).toEqual(challenge);
+  });
+
+  it('returns null for non-straits', async () => {
+    const { chartChallengeFor } = await import('./challenge');
+    expect(chartChallengeFor({ type: 'canal', id: 'suez-canal' })).toBeNull();
+  });
+});

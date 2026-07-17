@@ -4,5 +4,7 @@
   "type": "bay",
   "summary": "The ice-prone bay between Baffin Island and Greenland.",
   "parentId": "arctic-ocean",
-  "sourceIds": ["iho-limits-of-oceans-and-seas"]
+  "sourceIds": ["iho-limits-of-oceans-and-seas"],
+  "lat": 73.5,
+  "lon": -66.0
 }

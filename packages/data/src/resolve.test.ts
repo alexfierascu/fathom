@@ -43,6 +43,9 @@ describe('attachment loaders', () => {
       'gibraltar-satellite',
     );
     expect(loadImagesFor({ type: 'strait', id: 'vries-strait' })).toEqual([]);
-    expect(loadStatisticsFor({ type: 'strait', id: 'hormuz' })).toEqual([]);
+    expect(
+      loadStatisticsFor({ type: 'strait', id: 'hormuz' }).map((stat) => stat.metric),
+    ).toContain('oil-transit');
+    expect(loadStatisticsFor({ type: 'strait', id: 'solent' })).toEqual([]);
   });
 });

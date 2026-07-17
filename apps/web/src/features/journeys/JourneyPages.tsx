@@ -8,10 +8,13 @@ import {
   loadHistoricalEvents,
   loadImages,
   loadImagesFor,
+  loadSourcesFor,
+  loadStatisticsFor,
   loadStrait,
 } from '@fathom/data';
 import {
   bearingWord,
+  chartChallengeFor,
   eventYearQuiz,
   legBetween,
   loadJourneys,
@@ -37,6 +40,7 @@ import { Tabs, type TabSpec } from '../expedition/Tabs';
 import { EntityGallery } from '../media/MediaGallery';
 import { attributionOf, mediaUrl } from '../media/media';
 import { JourneyMap } from './JourneyMap';
+import { useJourneyLog } from './useJourneyLog';
 import { useJourneyProgress } from './useJourneyProgress';
 
 const DIFFICULTY_LABELS: Record<Journey['difficulty'], string> = {
@@ -106,7 +110,13 @@ export function JourneysPage() {
 
 // --- Journey detail + Journey Mode ------------------------------------------
 
-function QuizBlock({ quiz }: { quiz: JourneyQuiz }) {
+function QuizBlock({
+  quiz,
+  onResult,
+}: {
+  quiz: JourneyQuiz;
+  onResult?: (correct: boolean) => void;
+}) {
   const [picked, setPicked] = useState<string | null>(null);
   return (
     <div className="stop-quiz">
@@ -130,6 +140,7 @@ function QuizBlock({ quiz }: { quiz: JourneyQuiz }) {
               disabled={picked !== null}
               onClick={() => {
                 setPicked(option);
+                onResult?.(option === quiz.answer);
               }}
             >
               <i className="quiz-letter">{'ABCD'[index]}</i>
@@ -161,6 +172,10 @@ function stopContext(waypoint: JourneyWaypoint): string | null {
   if (typeof data.summary === 'string') return data.summary;
   return null;
 }
+
+const METRIC_LABELS: Record<string, string> = {
+  'oil-transit': 'Oil moved through',
+};
 
 const TYPE_LABELS: Record<string, string> = {
   strait: 'Strait',
@@ -198,6 +213,8 @@ export function JourneyDetailPage() {
     },
     [scrollToCourse],
   );
+  const { log, logQuiz, logChallenge, resetLog } = useJourneyLog(slug ?? 'unknown');
+  const [challengeRun, setChallengeRun] = useState<{ stop: number; solved: string[] } | null>(null);
 
   if (!journey) {
     return (
@@ -253,6 +270,64 @@ export function JourneyDetailPage() {
           : ('ahead' as const),
   }));
 
+  const nextWaypoint = journey.waypoints[progress.stop + 1];
+  const nextNode = nextWaypoint ? resolveWaypoint(nextWaypoint) : null;
+  const nextPreview =
+    nextWaypoint && nextNode
+      ? {
+          name: nextNode.name,
+          type: nextWaypoint.entity.type,
+          id: nextWaypoint.entity.id,
+          teaser: nextWaypoint.summary,
+          km: legBetween(journey.id, progress.stop, progress.stop + 1).km,
+          bearing:
+            stopNode?.lat !== undefined &&
+            stopNode.lon !== undefined &&
+            nextNode.lat !== undefined &&
+            nextNode.lon !== undefined
+              ? bearingWord(
+                  { lat: stopNode.lat, lon: stopNode.lon },
+                  { lat: nextNode.lat, lon: nextNode.lon },
+                )
+              : null,
+        }
+      : null;
+
+  const chartChallenge = waypoint ? chartChallengeFor(waypoint.entity) : null;
+  const challengeDone = log.challenges[String(progress.stop)] === true;
+  const challengeActive =
+    chartChallenge !== null && challengeRun !== null && challengeRun.stop === progress.stop;
+  const correctIds = chartChallenge
+    ? chartChallenge.targets.filter((target) => target.correct).map((target) => target.id)
+    : [];
+  const challengeProp =
+    challengeActive && chartChallenge && challengeRun
+      ? {
+          spec: chartChallenge,
+          solved: challengeRun.solved,
+          onHit: (id: string, correct: boolean) => {
+            if (!correct) return;
+            const solved = [...challengeRun.solved, id];
+            setChallengeRun({ stop: progress.stop, solved });
+            if (correctIds.every((target) => solved.includes(target))) {
+              logChallenge(progress.stop);
+              window.setTimeout(() => {
+                setChallengeRun(null);
+              }, 1500);
+            }
+          },
+        }
+      : null;
+  const beginFresh = travel(() => {
+    resetLog();
+    setChallengeRun(null);
+    start();
+  });
+
+  const stopStats = waypoint
+    ? loadStatisticsFor({ type: waypoint.entity.type, id: waypoint.entity.id })
+    : [];
+
   const stopTabs: TabSpec[] = [];
   if (waypoint && stopNode && stopKey) {
     stopTabs.push({
@@ -279,13 +354,39 @@ export function JourneyDetailPage() {
           <p className="journey-leg">{waypoint.summary}</p>
           {stopContext(waypoint) && <p className="note">{stopContext(waypoint)}</p>}
           {waypoint.note && <p className="note">{waypoint.note}</p>}
-          {waypoint.challenge && (
+          {(chartChallenge ?? waypoint.challenge) && (
             <div className="stop-challenge">
               <div className="geo-label">Challenge</div>
-              <p className="note">{waypoint.challenge}</p>
+              <p className="note">{chartChallenge ? chartChallenge.prompt : waypoint.challenge}</p>
+              {chartChallenge &&
+                (challengeDone ? (
+                  <span className="chip chip--teal">Completed on the chart ✓</span>
+                ) : challengeActive ? (
+                  <span className="chip chip--on">
+                    Look at the chart — {String(challengeRun?.solved.length ?? 0)} of{' '}
+                    {String(correctIds.length)} found
+                  </span>
+                ) : (
+                  <button
+                    type="button"
+                    className="journey-btn"
+                    onClick={() => {
+                      setChallengeRun({ stop: progress.stop, solved: [] });
+                    }}
+                  >
+                    Try it on the chart →
+                  </button>
+                ))}
             </div>
           )}
-          {waypoint.quiz && <QuizBlock quiz={waypoint.quiz} />}
+          {waypoint.quiz && (
+            <QuizBlock
+              quiz={waypoint.quiz}
+              onResult={(correct) => {
+                logQuiz(`${String(progress.stop)}:story`, correct);
+              }}
+            />
+          )}
           {stopPath && (
             <Link viewTransition className="more-link" to={stopPath}>
               Read the full article →
@@ -316,7 +417,14 @@ export function JourneyDetailPage() {
                 </li>
               ))}
             </ol>
-            {historyQuiz && <QuizBlock quiz={historyQuiz} />}
+            {historyQuiz && (
+              <QuizBlock
+                quiz={historyQuiz}
+                onResult={(correct) => {
+                  logQuiz(`${String(progress.stop)}:history`, correct);
+                }}
+              />
+            )}
           </>
         ),
       });
@@ -335,31 +443,67 @@ export function JourneyDetailPage() {
         content: <EntityGallery entity={{ type: waypoint.entity.type, id: waypoint.entity.id }} />,
       });
     }
+    if (stopStats.length > 0) {
+      stopTabs.push({
+        key: 'numbers',
+        label: 'Numbers',
+        content: (
+          <div className="stat-cards">
+            {stopStats.map((stat) => (
+              <div key={`${stat.metric}-${stat.period}`} className="stat-card">
+                <div className="stat-value">{stat.value}</div>
+                <div className="stat-unit">{stat.unit}</div>
+                <div className="geo-label">
+                  {METRIC_LABELS[stat.metric] ?? stat.metric} · {stat.period} ·{' '}
+                  {loadSourcesFor(stat)[0]?.publisher ?? 'sourced'}
+                </div>
+                {stat.notes && <p className="stat-notes">{stat.notes}</p>}
+              </div>
+            ))}
+          </div>
+        ),
+      });
+    }
+    {
+      const quizEntries = Object.values(log.quiz);
+      const quizCorrect = quizEntries.filter(Boolean).length;
+      const challengesDone = Object.keys(log.challenges).length;
+      stopTabs.push({
+        key: 'notes',
+        label: 'Notes',
+        content: (
+          <div>
+            <div className="log-tally">
+              <span className="chip">
+                Stops {String(progress.stop + 1)} / {String(stopCount)}
+              </span>
+              <span className="chip chip--teal">
+                Quizzes {String(quizCorrect)} / {String(quizEntries.length)}
+              </span>
+              <span className="chip chip--on">Chart challenges {String(challengesDone)}</span>
+            </div>
+            <ol className="log-rows">
+              {journey.waypoints.slice(0, progress.stop + 1).map((stop) => {
+                const node = resolveWaypoint(stop);
+                return (
+                  <li key={`${stop.entity.type}:${stop.entity.id}`}>
+                    <b>{node?.name ?? stop.entity.id}</b>
+                    <span>{stopContext(stop) ?? stop.summary}</span>
+                  </li>
+                );
+              })}
+            </ol>
+            {nextPreview && (
+              <p className="log-ahead">
+                Ahead: <b>{nextPreview.name}</b> — {nextPreview.teaser}
+              </p>
+            )}
+          </div>
+        ),
+      });
+    }
   }
   const stopMinutes = Math.min(stopTabs.length + 1, 5);
-
-  const nextWaypoint = journey.waypoints[progress.stop + 1];
-  const nextNode = nextWaypoint ? resolveWaypoint(nextWaypoint) : null;
-  const nextPreview =
-    nextWaypoint && nextNode
-      ? {
-          name: nextNode.name,
-          type: nextWaypoint.entity.type,
-          id: nextWaypoint.entity.id,
-          teaser: nextWaypoint.summary,
-          km: legBetween(journey.id, progress.stop, progress.stop + 1).km,
-          bearing:
-            stopNode?.lat !== undefined &&
-            stopNode.lon !== undefined &&
-            nextNode.lat !== undefined &&
-            nextNode.lon !== undefined
-              ? bearingWord(
-                  { lat: stopNode.lat, lon: stopNode.lon },
-                  { lat: nextNode.lat, lon: nextNode.lon },
-                )
-              : null,
-        }
-      : null;
 
   return (
     <>
@@ -395,7 +539,7 @@ export function JourneyDetailPage() {
               <button
                 type="button"
                 className="journey-btn journey-btn--primary"
-                onClick={travel(start)}
+                onClick={beginFresh}
               >
                 Start journey
               </button>
@@ -409,7 +553,7 @@ export function JourneyDetailPage() {
                 >
                   Resume at stop {String(progress.stop + 1)}
                 </button>
-                <button type="button" className="journey-btn" onClick={travel(start)}>
+                <button type="button" className="journey-btn" onClick={beginFresh}>
                   Start over
                 </button>
               </>
@@ -523,7 +667,7 @@ export function JourneyDetailPage() {
                       <button
                         type="button"
                         className="journey-btn journey-btn--primary"
-                        onClick={travel(start)}
+                        onClick={beginFresh}
                       >
                         Travel again
                       </button>
@@ -577,6 +721,7 @@ export function JourneyDetailPage() {
                     jumpTo(index);
                   })();
                 }}
+                challenge={challengeProp}
                 tileStyle={tileStyle}
               />
             </aside>
