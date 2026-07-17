@@ -4,6 +4,7 @@ import { loadAllStraits, loadImages, loadImagesFor, loadStrait, type Image } fro
 import { loadJourneys } from '@fathom/discovery';
 
 import { straitOfTheDay } from '../atlas/lib/discovery';
+import { useT } from '../i18n/locale';
 import { attributionOf, mediaUrl } from '../media/media';
 
 /**
@@ -19,6 +20,7 @@ function Attribution({ image }: { image: Image }) {
 }
 
 export function HomeHero() {
+  const t = useT();
   const straitCount = loadAllStraits().length;
   const hero = loadImagesFor({ type: 'strait', id: 'gibraltar' })[0];
   return (
@@ -38,16 +40,13 @@ export function HomeHero() {
           <br />
           and history turns.
         </h2>
-        <p className="home-hero-lede">
-          {straitCount} narrow waterways, mapped and sourced — explore how the world's oceans,
-          countries, and centuries connect through them.
-        </p>
+        <p className="home-hero-lede">{t('hero.lede', { count: straitCount })}</p>
         <div className="home-hero-actions">
           <Link viewTransition className="hero-btn hero-btn--primary" to="/explore">
-            Start exploring
+            {t('hero.start')}
           </Link>
           <Link viewTransition className="hero-btn" to="/map">
-            Open the map
+            {t('hero.map')}
           </Link>
         </div>
       </div>
@@ -57,31 +56,25 @@ export function HomeHero() {
 }
 
 export function ModeCards() {
+  const t = useT();
+  const cards = [
+    { to: '/explore', title: t('mode.explore'), line: t('mode.explore.line') },
+    { to: '/journeys', title: t('mode.journeys'), line: t('mode.journeys.line') },
+    { to: '/learn', title: t('mode.learn'), line: t('mode.learn.line') },
+  ];
   return (
     <section aria-label="Ways to explore" style={{ marginBottom: 56 }}>
       <h3 className="mode-heading">Where will curiosity take you?</h3>
       <div className="mode-cards" style={{ marginBottom: 0 }}>
-        <Link viewTransition className="mode-card" to="/explore">
-          <h3>Explore</h3>
-          <p>Browse the world's waterways.</p>
-          <span className="mode-arrow" aria-hidden="true">
-            →
-          </span>
-        </Link>
-        <Link viewTransition className="mode-card" to="/journeys">
-          <h3>Journeys</h3>
-          <p>Follow curated expeditions.</p>
-          <span className="mode-arrow" aria-hidden="true">
-            →
-          </span>
-        </Link>
-        <Link viewTransition className="mode-card" to="/learn">
-          <h3>Learn</h3>
-          <p>Collections, quizzes, and stories.</p>
-          <span className="mode-arrow" aria-hidden="true">
-            →
-          </span>
-        </Link>
+        {cards.map((card) => (
+          <Link viewTransition key={card.to} className="mode-card" to={card.to}>
+            <h3>{card.title}</h3>
+            <p>{card.line}</p>
+            <span className="mode-arrow" aria-hidden="true">
+              →
+            </span>
+          </Link>
+        ))}
       </div>
     </section>
   );

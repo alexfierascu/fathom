@@ -4,7 +4,7 @@ import type { EntityRef, Image } from '@fathom/data';
 import { loadImagesFor } from '@fathom/data';
 
 import { Section } from '../atlas/components/Section';
-import { attributionOf, heroImage, mediaSrcSet, mediaUrl } from './media';
+import { MEDIA_SIZES, attributionOf, heroImage, mediaSrcSet, mediaUrl } from './media';
 
 function MediaImage({ image, sizes }: { image: Image; sizes: string }) {
   const [loaded, setLoaded] = useState(false);
@@ -13,7 +13,7 @@ function MediaImage({ image, sizes }: { image: Image; sizes: string }) {
       <img
         src={mediaUrl(image.file)}
         srcSet={mediaSrcSet(image.file)}
-        sizes={sizes}
+        sizes={sizes ?? MEDIA_SIZES}
         alt={image.alt}
         loading="lazy"
         decoding="async"

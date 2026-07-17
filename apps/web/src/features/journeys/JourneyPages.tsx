@@ -38,6 +38,7 @@ import { ConnectionCards } from '../expedition/ConnectionCards';
 import { JourneyChain } from '../expedition/JourneyChain';
 import { NextStopStrip } from '../expedition/NextStopStrip';
 import { Tabs, type TabSpec } from '../expedition/Tabs';
+import { useT } from '../i18n/locale';
 import { EntityGallery } from '../media/MediaGallery';
 import { attributionOf, mediaUrl } from '../media/media';
 import { JourneyMap } from './JourneyMap';
@@ -259,6 +260,7 @@ export function JourneyExperience({
   initialStop,
 }: JourneyExperienceProps) {
   const { tileStyle } = useOutletContext<LayoutContext>();
+  const t = useT();
   const stopCount = journey.waypoints.length;
   const { progress, start, resume, pause, next, previous, jumpTo, finish, reset } =
     useJourneyProgress(journeyKey, stopCount, initialStop);
@@ -641,7 +643,7 @@ export function JourneyExperience({
                 className="journey-btn journey-btn--primary"
                 onClick={beginFresh}
               >
-                Start journey
+                {t('journey.start')}
               </button>
             )}
             {!progress.started && (progress.stop > 0 || progress.finished) && (
@@ -651,10 +653,10 @@ export function JourneyExperience({
                   className="journey-btn journey-btn--primary"
                   onClick={travel(resume)}
                 >
-                  Resume at stop {String(progress.stop + 1)}
+                  {t('journey.resume', { n: progress.stop + 1 })}
                 </button>
                 <button type="button" className="journey-btn" onClick={beginFresh}>
-                  Start over
+                  {t('journey.startOver')}
                 </button>
               </>
             )}
@@ -671,7 +673,7 @@ export function JourneyExperience({
             <section className="voyage-card" aria-label="Journey mode">
               <header className="voyage-head">
                 <button type="button" className="voyage-exit" onClick={pause}>
-                  ‹ Overview
+                  {t('journey.overview')}
                 </button>
                 <span className="k-title">{journey.title}</span>
                 <button
@@ -835,7 +837,7 @@ export function JourneyExperience({
                       className="journey-btn"
                       onClick={travel(previous)}
                       disabled={progress.stop === 0}
-                      aria-label="Previous stop"
+                      aria-label={t('journey.previous')}
                     >
                       ←
                     </button>

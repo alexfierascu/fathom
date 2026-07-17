@@ -11,13 +11,13 @@ export function mediaUrl(file: string): string {
   return `/media/${file}`;
 }
 
-/**
- * Until a width-variant pipeline exists, the original is the only srcset
- * candidate — a 404ing variant would break the image entirely.
- */
+/** Width variants live under /media/480 and /media/960 (built at authoring time). */
 export function mediaSrcSet(file: string): string {
-  return `/media/${file} 1280w`;
+  return `/media/480/${file} 480w, /media/960/${file} 960w, /media/${file} 1400w`;
 }
+
+/** Default sizes hint for hero-width imagery. */
+export const MEDIA_SIZES = '(max-width: 640px) 100vw, 720px';
 
 /** The image shown first: the representative one, else the first. */
 export function heroImage(images: readonly Image[]): Image | undefined {
