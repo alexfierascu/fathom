@@ -4149,3 +4149,401 @@ html.route-uncharted body {
     transition: none !important;
   }
 }
+
+/* ------------------------------------------------------------------ */
+/* Home — the four portals (full-screen entry experience)              */
+
+/* On the homepage the shell collapses to one screen: full-bleed panels
+   below the nav, no footer, no scroll. The class is toggled by the
+   page while it is mounted. */
+html.route-portal,
+html.route-portal body {
+  overflow: hidden;
+  overscroll-behavior: none;
+}
+.route-portal .wrap {
+  max-width: none;
+  padding: 0;
+  height: 100vh;
+  height: 100dvh;
+  display: flex;
+  flex-direction: column;
+}
+.route-portal header.topbar {
+  flex: none;
+  margin: 0;
+  padding: clamp(10px, 1.7vh, 18px) clamp(20px, 4vw, 44px);
+}
+.route-portal main {
+  flex: 1 1 auto;
+  min-height: 0;
+  display: flex;
+}
+.route-portal footer {
+  display: none;
+}
+
+.portal-wrap {
+  position: relative;
+  flex: 1 1 auto;
+  display: flex;
+  min-height: 0;
+  width: 100%;
+}
+.portal {
+  flex: 1 1 auto;
+  display: flex;
+  min-height: 0;
+  width: 100%;
+}
+
+.panel {
+  position: relative;
+  flex: 1 1 0;
+  min-width: 0;
+  overflow: hidden;
+  isolation: isolate;
+  transition: flex-grow 0.72s cubic-bezier(0.4, 0, 0.1, 1);
+}
+.panel + .panel {
+  border-left: 1px solid color-mix(in srgb, var(--bg) 55%, transparent);
+}
+.panel.is-active {
+  flex-grow: 7;
+}
+.panel.is-collapsed {
+  flex-grow: 1;
+}
+
+.panel-bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+  filter: brightness(0.82) saturate(0.92);
+  transition: filter 0.8s ease;
+  animation: portal-drift 26s ease-in-out infinite alternate;
+}
+.panel-bg img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transform: scale(1.06);
+  transition: transform 1.2s cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+.panel.is-active .panel-bg {
+  filter: brightness(0.94) saturate(1);
+}
+.panel.is-active .panel-bg img {
+  transform: scale(1.14);
+}
+.panel.is-collapsed .panel-bg {
+  filter: brightness(0.48) saturate(0.85);
+}
+.panel-tint {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(
+      to top,
+      color-mix(in srgb, var(--bg) 94%, transparent) 0%,
+      color-mix(in srgb, var(--bg) 55%, transparent) 32%,
+      transparent 68%
+    ),
+    linear-gradient(to right, color-mix(in srgb, var(--bg) 42%, transparent), transparent 60%);
+}
+
+.panel-rail {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.5s ease;
+}
+.panel.is-collapsed .panel-rail {
+  opacity: 1;
+  transition-delay: 0.18s;
+}
+.panel-rail-title {
+  writing-mode: vertical-rl;
+  text-orientation: mixed;
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: clamp(1.05rem, 1.5vw, 1.5rem);
+  letter-spacing: 0.08em;
+  color: var(--text);
+  text-shadow: 0 2px 20px color-mix(in srgb, var(--bg) 80%, transparent);
+}
+
+.panel-face {
+  position: absolute;
+  z-index: 2;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  padding: clamp(20px, 3vw, 44px);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: clamp(6px, 1vh, 12px);
+  opacity: 1;
+  transition: opacity 0.5s ease;
+}
+.panel.is-collapsed .panel-face {
+  opacity: 0;
+  pointer-events: none;
+}
+.panel-index {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.62rem;
+  letter-spacing: 0.28em;
+  color: color-mix(in srgb, var(--accent-2) 92%, transparent);
+}
+.panel-title {
+  margin: 0;
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: clamp(1.7rem, min(3.4vw, 6vh), 3.1rem);
+  line-height: 1.02;
+  letter-spacing: -0.01em;
+  color: var(--text);
+  text-shadow: 0 2px 28px color-mix(in srgb, var(--bg) 72%, transparent);
+}
+.panel-subtitle {
+  margin: 0;
+  max-width: 26ch;
+  /* Reserve two lines so every panel's title rests on one baseline. */
+  min-height: 2.7em;
+  font-size: clamp(0.85rem, 1vw, 0.98rem);
+  line-height: 1.4;
+  color: color-mix(in srgb, var(--text) 82%, transparent);
+  text-shadow: 0 1px 14px color-mix(in srgb, var(--bg) 70%, transparent);
+}
+.panel-detail {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  gap: clamp(12px, 1.8vh, 20px);
+  max-width: 440px;
+  /* A shared, fixed reserved height so every panel's title rests on the
+     same baseline; content is shorter at the wide active width, so it
+     sinks to the bottom of this box and never clips. */
+  height: clamp(150px, 20vh, 190px);
+  margin-top: clamp(6px, 1.4vh, 16px);
+  opacity: 0;
+  transform: translateY(16px);
+  pointer-events: none;
+  transition:
+    opacity 0.55s ease,
+    transform 0.6s cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+.panel.is-active .panel-detail {
+  opacity: 1;
+  transform: none;
+  pointer-events: auto;
+  transition-delay: 0.18s;
+}
+.panel-desc {
+  margin: 0;
+  font-size: clamp(0.92rem, 1.05vw, 1.05rem);
+  line-height: 1.6;
+  color: color-mix(in srgb, var(--text) 84%, transparent);
+  text-shadow: 0 1px 14px color-mix(in srgb, var(--bg) 60%, transparent);
+}
+.panel-actions {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+.panel-meta {
+  margin: 0;
+  display: flex;
+  gap: clamp(18px, 2vw, 32px);
+}
+.panel-meta div {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+.panel-meta dt {
+  font-family: var(--font-display);
+  font-size: 1.3rem;
+  line-height: 1;
+  color: var(--text);
+}
+.panel-meta dd {
+  margin: 0;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.54rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: color-mix(in srgb, var(--text) 58%, transparent);
+}
+
+.panel-credit {
+  position: absolute;
+  z-index: 2;
+  right: 12px;
+  bottom: 9px;
+  max-width: 55%;
+  text-align: right;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.5rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: color-mix(in srgb, var(--text) 40%, transparent);
+  opacity: 0.7;
+  pointer-events: none;
+  transition: opacity 0.4s ease;
+}
+.panel.is-collapsed .panel-credit {
+  opacity: 0;
+}
+
+.portal-dots {
+  position: absolute;
+  z-index: 3;
+  left: 0;
+  right: 0;
+  bottom: clamp(12px, 2.4vh, 20px);
+  display: none;
+  justify-content: center;
+  gap: 10px;
+}
+.portal-dot {
+  width: 8px;
+  height: 8px;
+  padding: 0;
+  border-radius: 50%;
+  border: 1px solid color-mix(in srgb, var(--text) 55%, transparent);
+  background: transparent;
+  cursor: pointer;
+  transition:
+    background 0.3s ease,
+    transform 0.3s ease,
+    border-color 0.3s ease;
+}
+.portal-dot.is-on {
+  background: var(--accent-2);
+  border-color: var(--accent-2);
+  transform: scale(1.2);
+}
+
+@keyframes portal-drift {
+  from {
+    transform: scale(1) translate3d(0, 0, 0);
+  }
+  to {
+    transform: scale(1.05) translate3d(-1.4%, -1%, 0);
+  }
+}
+
+/* Tablet: four panels remain, tuned tighter. */
+@media (max-width: 1024px) and (min-width: 761px) {
+  .panel-index {
+    display: none;
+  }
+  .panel-subtitle {
+    max-width: 22ch;
+  }
+}
+
+/* Phones and short viewports: the panels become full-screen slides you
+   swipe between, horizontally only. */
+@media (max-width: 760px), (max-height: 560px) {
+  .portal {
+    overflow-x: auto;
+    overflow-y: hidden;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+  .portal::-webkit-scrollbar {
+    display: none;
+  }
+  .panel {
+    flex: 0 0 100%;
+    scroll-snap-align: center;
+    transition: none;
+  }
+  .panel.is-active,
+  .panel.is-collapsed {
+    flex-grow: 0;
+  }
+  .panel-bg,
+  .panel.is-active .panel-bg,
+  .panel.is-collapsed .panel-bg {
+    filter: brightness(0.66) saturate(0.95);
+    animation: none;
+  }
+  .panel-bg img {
+    transform: scale(1.03);
+  }
+  .panel-rail {
+    display: none;
+  }
+  .panel-face {
+    opacity: 1;
+    padding-bottom: clamp(44px, 6vh, 60px);
+  }
+  .panel-detail {
+    height: auto;
+    opacity: 1;
+    transform: none;
+    pointer-events: auto;
+  }
+  .panel-credit {
+    top: 12px;
+    right: 12px;
+    bottom: auto;
+    opacity: 0.6;
+  }
+  .portal-dots {
+    display: flex;
+  }
+}
+
+/* Short landscape: trim to the essentials so nothing clips. */
+@media (max-height: 560px) {
+  .panel-desc {
+    display: none;
+  }
+  .panel-face {
+    padding: 12px clamp(16px, 4vw, 40px) 38px;
+    gap: 6px;
+  }
+  .panel-detail {
+    height: auto;
+    gap: 10px;
+    margin-top: 8px;
+  }
+  .panel-title {
+    font-size: clamp(1.5rem, 6vh, 2.2rem);
+  }
+  .panel-meta dt {
+    font-size: 1.05rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .panel-bg {
+    animation: none;
+  }
+  .panel,
+  .panel-bg img,
+  .panel-detail,
+  .panel-face,
+  .panel-rail,
+  .panel-credit {
+    transition: none;
+  }
+  .panel-detail {
+    transform: none;
+  }
+}

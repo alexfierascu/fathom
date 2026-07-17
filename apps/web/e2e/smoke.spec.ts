@@ -1,11 +1,20 @@
 import { expect, test } from '@playwright/test';
 
-test('homepage answers the five-second test', async ({ page }) => {
+test('homepage opens as four full-screen portals', async ({ page }) => {
   await page.goto('/');
-  await expect(page.locator('.home-hero-title')).toContainText('Where oceans meet');
-  await expect(page.getByRole('link', { name: 'Start exploring' })).toBeVisible();
-  await expect(page.getByRole('link', { name: 'Open the map' })).toBeVisible();
+  await expect(page.locator('.panel')).toHaveCount(4);
+  await expect(page.locator('.panel-title')).toContainText(['Explore', 'Journeys', 'Map', 'Learn']);
   await expect(page.locator('.site-nav a')).toHaveCount(4);
+  // Hovering a portal reveals its invitation.
+  await page.locator('.panel--explore').hover();
+  await expect(page.getByRole('link', { name: 'Start exploring' })).toBeVisible();
+  await expect(page.locator('.panel--explore')).toHaveClass(/is-active/);
+  // One screen: nothing scrolls.
+  const canScroll = await page.evaluate(() => {
+    window.scrollTo(0, 2000);
+    return window.scrollY > 0;
+  });
+  expect(canScroll).toBe(false);
 });
 
 test('strait article tells its story with sourced facts', async ({ page }) => {
