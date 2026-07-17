@@ -3849,34 +3849,284 @@ a.control-btn {
 }
 
 /* ------------------------------------------------------------------ */
-/* Off the chart — the 404 seascape (drawn on canvas each frame)       */
+/* Uncharted waters — the 404 hero                                     */
 
-.notfound {
+.uncharted {
+  position: relative;
+  width: 100vw;
+  margin: -40px calc(50% - 50vw) 0;
+  min-height: max(640px, calc(100svh - 118px));
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  isolation: isolate;
+}
+.uc-backdrop {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  transform: scale(1.06);
+  transition: transform 0.8s cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+.uc-photo {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: saturate(0.88) brightness(0.82);
+  animation: uc-drift 60s ease-in-out infinite alternate;
+}
+.uc-grade {
+  position: absolute;
+  inset: 0;
+  background: var(--bg);
+  opacity: 0.24;
+  mix-blend-mode: multiply;
+}
+.uc-scrim {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(to bottom, color-mix(in srgb, var(--bg) 78%, transparent), transparent 30%),
+    linear-gradient(
+      to top,
+      color-mix(in srgb, var(--bg) 94%, transparent) 0%,
+      color-mix(in srgb, var(--bg) 46%, transparent) 36%,
+      transparent 64%
+    ),
+    radial-gradient(
+      130% 90% at 50% 42%,
+      transparent 46%,
+      color-mix(in srgb, var(--bg) 52%, transparent)
+    );
+}
+.uc-fog {
+  position: absolute;
+  inset: -22%;
+  background: radial-gradient(44% 30% at 30% 62%, rgba(255, 255, 255, 0.55), transparent 70%);
+  opacity: 0.06;
+  filter: blur(46px);
+  mix-blend-mode: screen;
+  animation: uc-fog 75s ease-in-out infinite;
+}
+.uc-fog--two {
+  background: radial-gradient(38% 26% at 72% 38%, rgba(255, 255, 255, 0.5), transparent 70%);
+  opacity: 0.045;
+  animation-duration: 105s;
+  animation-direction: reverse;
+}
+.uc-spray {
+  position: absolute;
+  inset: 0;
+}
+.uc-spray span {
+  position: absolute;
+  bottom: -6px;
+  border-radius: 50%;
+  background: var(--text);
+  opacity: 0;
+  animation: uc-rise linear infinite;
+}
+
+.uc-content {
+  position: relative;
+  margin: auto 0;
+  padding: clamp(120px, 18vh, 200px) 24px 48px;
   display: grid;
   justify-items: center;
   text-align: center;
-  gap: 10px;
-  padding: 48px 20px 72px;
+  gap: 18px;
+  animation: uc-enter 1.1s cubic-bezier(0.22, 0.61, 0.36, 1) 0.1s both;
 }
-.nf-scene {
-  display: block;
-  width: min(640px, 100%);
-  aspect-ratio: 640 / 340;
-  margin-bottom: 8px;
+.uc-eyebrow {
+  margin: 0;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.66rem;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--accent-2);
 }
-.nf-code {
+.uc-title {
+  margin: 0;
   font-family: var(--font-display);
   font-weight: 500;
-  font-size: clamp(3.2rem, 8vw, 4.6rem);
-  line-height: 1;
-  letter-spacing: 0.06em;
-  color: var(--accent-2);
+  font-size: clamp(2.5rem, 6vw, 4.3rem);
+  line-height: 1.06;
+  letter-spacing: -0.01em;
+  text-wrap: balance;
+  max-width: 18ch;
+  text-shadow: 0 2px 32px color-mix(in srgb, var(--bg) 70%, transparent);
+}
+.uc-sub {
   margin: 0;
+  max-width: 47ch;
+  font-size: 1.04rem;
+  line-height: 1.65;
+  color: color-mix(in srgb, var(--text) 80%, transparent);
+  text-shadow: 0 1px 18px color-mix(in srgb, var(--bg) 70%, transparent);
 }
-.nf-note {
-  max-width: 52ch;
-  margin: 4px 0 14px;
-}
-.nf-pills {
+.uc-actions {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
   justify-content: center;
+  margin-top: 12px;
+}
+.uc-btn {
+  display: inline-block;
+  padding: 12px 24px;
+  border-radius: 999px;
+  font-size: 0.88rem;
+  text-decoration: none;
+  transition:
+    transform 0.25s ease,
+    background 0.25s ease,
+    border-color 0.25s ease;
+}
+.uc-btn:hover {
+  transform: translateY(-2px);
+}
+.uc-btn--primary {
+  background: var(--accent-2);
+  color: var(--accent-contrast);
+  font-weight: 600;
+}
+.uc-btn--primary:hover {
+  background: color-mix(in srgb, var(--accent-2) 88%, white);
+}
+.uc-btn--ghost {
+  color: var(--text);
+  border: 1px solid color-mix(in srgb, var(--text) 30%, transparent);
+  background: color-mix(in srgb, var(--bg) 32%, transparent);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+.uc-btn--ghost:hover {
+  border-color: color-mix(in srgb, var(--accent-2) 60%, transparent);
+}
+
+.uc-foot {
+  position: relative;
+  margin-top: auto;
+  padding: 24px clamp(20px, 4vw, 48px) 26px;
+  display: grid;
+  gap: 16px;
+  animation: uc-enter 1.1s cubic-bezier(0.22, 0.61, 0.36, 1) 0.35s both;
+}
+.uc-discover {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+  width: 100%;
+  max-width: 1132px;
+  margin: 0 auto;
+}
+.uc-tile {
+  display: grid;
+  gap: 5px;
+  padding: 16px 18px;
+  border-radius: 14px;
+  border: 1px solid color-mix(in srgb, var(--text) 14%, transparent);
+  background: color-mix(in srgb, var(--bg) 40%, transparent);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  color: var(--text);
+  text-decoration: none;
+  transition:
+    transform 0.25s ease,
+    border-color 0.25s ease;
+}
+.uc-tile:hover {
+  transform: translateY(-2px);
+  border-color: color-mix(in srgb, var(--accent-2) 55%, transparent);
+}
+.uc-tile-label {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.56rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: color-mix(in srgb, var(--text) 55%, transparent);
+}
+.uc-tile b {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: 1.08rem;
+}
+.uc-tile > span:last-child {
+  font-size: 0.78rem;
+  color: color-mix(in srgb, var(--text) 62%, transparent);
+}
+.uc-credit {
+  margin: 0;
+  text-align: center;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.58rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: color-mix(in srgb, var(--text) 42%, transparent);
+}
+
+@keyframes uc-drift {
+  from {
+    transform: scale(1);
+  }
+  to {
+    transform: scale(1.08) translateY(-1.4%);
+  }
+}
+@keyframes uc-fog {
+  0%,
+  100% {
+    transform: translateX(-5%);
+  }
+  50% {
+    transform: translateX(5%);
+  }
+}
+@keyframes uc-rise {
+  0% {
+    transform: translateY(0);
+    opacity: 0;
+  }
+  12% {
+    opacity: 0.22;
+  }
+  85% {
+    opacity: 0.08;
+  }
+  100% {
+    transform: translateY(-52vh);
+    opacity: 0;
+  }
+}
+@keyframes uc-enter {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+}
+
+@media (max-width: 760px) {
+  .uncharted {
+    min-height: max(560px, calc(100svh - 150px));
+  }
+  .uc-discover {
+    grid-template-columns: 1fr;
+  }
+  .uc-content {
+    padding-top: 96px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .uc-photo,
+  .uc-fog,
+  .uc-spray span,
+  .uc-content,
+  .uc-foot,
+  .uc-backdrop {
+    animation: none !important;
+    transition: none !important;
+  }
 }

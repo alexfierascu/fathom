@@ -55,11 +55,12 @@ test('map page offers the chart with its toggles', async ({ page }) => {
   await expect(page.getByRole('button', { name: /Set adrift/ })).toBeVisible();
 });
 
-test('uncharted addresses reach the 404 seascape', async ({ page }) => {
+test('uncharted addresses reach the 404 hero', async ({ page }) => {
   await page.goto('/uncharted-waters');
-  await expect(page.locator('.nf-code')).toHaveText('404');
-  await expect(page.locator('.nf-scene')).toBeVisible();
-  await expect(page.getByRole('link', { name: 'Return to the chart' })).toBeVisible();
+  await expect(page.locator('.uc-title')).toContainText('uncharted waters');
+  await expect(page.locator('.uc-photo')).toBeVisible();
+  await expect(page.getByRole('link', { name: 'Continue exploring' })).toBeVisible();
+  await expect(page.locator('.uc-credit')).toBeVisible();
 });
 
 test("captain's log keeps the score", async ({ page }) => {
