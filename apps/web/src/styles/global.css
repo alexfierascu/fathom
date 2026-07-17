@@ -3432,3 +3432,19 @@ a.flow-node:hover .flow-name {
   line-height: 1.8;
   font-size: 0.98rem;
 }
+
+.stamp.is-earned {
+  border-color: color-mix(in srgb, var(--teal) 50%, transparent);
+}
+.stamp.is-earned .stamp-ring {
+  border-color: var(--teal);
+  color: var(--teal);
+}
+.stamp.is-gold {
+  border-color: color-mix(in srgb, var(--accent-2) 55%, transparent);
+}
+.stamp.is-gold .stamp-ring {
+  border-color: var(--accent-2);
+  color: var(--accent-2);
+  box-shadow: 0 0 0 4px color-mix(in srgb, var(--accent-2) 15%, transparent);
+}

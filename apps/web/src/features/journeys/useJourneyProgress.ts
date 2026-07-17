@@ -36,8 +36,15 @@ function loadProgress(journeyId: string): JourneyProgress {
   }
 }
 
-export function useJourneyProgress(journeyId: string, stopCount: number) {
-  const [progress, setProgress] = useState<JourneyProgress>(() => loadProgress(journeyId));
+export function useJourneyProgress(journeyId: string, stopCount: number, initialStop?: number) {
+  const [progress, setProgress] = useState<JourneyProgress>(() => {
+    const stored = loadProgress(journeyId);
+    if (initialStop !== undefined && Number.isFinite(initialStop)) {
+      const stop = Math.min(Math.max(initialStop, 0), Math.max(stopCount - 1, 0));
+      return { ...stored, started: true, finished: false, stop };
+    }
+    return stored;
+  });
 
   // Navigating between journeys reuses the mounted page component.
   const [loadedFor, setLoadedFor] = useState(journeyId);

@@ -11,6 +11,8 @@ export interface JourneyLog {
   quiz: Record<string, boolean>;
   /** Keyed by stop index → challenge completed. */
   challenges: Record<string, boolean>;
+  /** The end-of-voyage exam, once taken. */
+  exam?: { score: number; total: number; passed: boolean };
 }
 
 const EMPTY: JourneyLog = { quiz: {}, challenges: {} };
@@ -30,6 +32,7 @@ function loadLog(journeyId: string): JourneyLog {
         typeof record.challenges === 'object' && record.challenges !== null
           ? record.challenges
           : {},
+      exam: typeof record.exam === 'object' && record.exam !== null ? record.exam : undefined,
     };
   } catch {
     return EMPTY;
@@ -59,9 +62,12 @@ export function useJourneyLog(journeyId: string) {
   const logChallenge = useCallback((stop: number) => {
     setLog((state) => ({ ...state, challenges: { ...state.challenges, [String(stop)]: true } }));
   }, []);
+  const logExam = useCallback((score: number, total: number, passed: boolean) => {
+    setLog((state) => ({ ...state, exam: { score, total, passed } }));
+  }, []);
   const resetLog = useCallback(() => {
     setLog(EMPTY);
   }, []);
 
-  return { log, logQuiz, logChallenge, resetLog };
+  return { log, logQuiz, logChallenge, logExam, resetLog };
 }

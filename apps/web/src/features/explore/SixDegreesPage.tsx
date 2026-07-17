@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-import { Link } from 'react-router';
+import { Link, useSearchParams } from 'react-router';
 
 import { loadAllStraits } from '@fathom/data';
 import { getMaritimeGraph, recommendationsFor, shortestPath } from '@fathom/discovery';
@@ -41,10 +41,27 @@ function pairFor(seed: number): Pair | null {
 const nameOf = (entityId: string) => getMaritimeGraph().nodes.get(entityId)?.name ?? entityId;
 
 export function SixDegreesPage() {
+  const [searchParams] = useSearchParams();
   const [day] = useState(() => Math.floor(Date.now() / 86_400_000));
-  const [seed, setSeed] = useState(day);
+  const crossingParam = Number.parseInt(searchParams.get('crossing') ?? '', 10);
+  const [seed, setSeed] = useState(Number.isFinite(crossingParam) ? crossingParam : day);
   const [trail, setTrail] = useState<string[]>([]);
   const [surrendered, setSurrendered] = useState(false);
+  const [copied, setCopied] = useState(false);
+
+  const shareCrossing = (pairInfo: Pair, hopCount: number) => {
+    const text = [
+      `Six Degrees of Sea — ${nameOf(pairInfo.fromId)} → ${nameOf(pairInfo.toId)}`,
+      `⚓ ${String(hopCount)} hops (par ${String(pairInfo.par)}) ${'🌊'.repeat(Math.min(hopCount, 10))}`,
+      `${window.location.origin}/six-degrees?crossing=${String(seed)}`,
+    ].join('\n');
+    void navigator.clipboard?.writeText(text).then(() => {
+      setCopied(true);
+      window.setTimeout(() => {
+        setCopied(false);
+      }, 1800);
+    });
+  };
 
   const pair = pairFor(seed);
   if (!pair) {
@@ -140,6 +157,17 @@ export function SixDegreesPage() {
                 >
                   Retry today's
                 </button>
+                {won && (
+                  <button
+                    type="button"
+                    className="journey-btn"
+                    onClick={() => {
+                      shareCrossing(pair, hops);
+                    }}
+                  >
+                    {copied ? 'Copied ✓' : 'Share crossing'}
+                  </button>
+                )}
                 {won && (
                   <Link
                     viewTransition

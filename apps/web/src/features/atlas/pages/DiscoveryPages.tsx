@@ -183,21 +183,55 @@ export function ComparePage() {
 
 // --- Quiz ---------------------------------------------------------------------
 
+type QuizTier = 'apprentice' | 'navigator' | 'pilot';
+const TIERS: Record<QuizTier, { label: string; options: { region?: string; hard?: boolean } }> = {
+  apprentice: { label: 'Apprentice · Europe', options: { region: 'Europe' } },
+  navigator: { label: 'Navigator · World', options: {} },
+  pilot: { label: 'Pilot · Expert', options: { hard: true } },
+};
+
+function readBest(): Partial<Record<QuizTier, number>> {
+  try {
+    const raw = window.localStorage.getItem('fathom-quiz-best');
+    return raw ? (JSON.parse(raw) as Partial<Record<QuizTier, number>>) : {};
+  } catch {
+    return {};
+  }
+}
+
 export function QuizPage() {
+  const [tier, setTier] = useState<QuizTier>('navigator');
   const [quiz, setQuiz] = useState<QuizQuestion[]>(() => buildQuiz(10));
   const [index, setIndex] = useState(0);
   const [score, setScore] = useState(0);
   const [picked, setPicked] = useState<string | null>(null);
+  const [best, setBest] = useState<Partial<Record<QuizTier, number>>>(readBest);
 
-  const question = quiz[index];
-  const finished = !question;
-
-  const restart = () => {
-    setQuiz(buildQuiz(10));
+  const startTier = (next: QuizTier) => {
+    setTier(next);
+    setQuiz(buildQuiz(10, Math.random, TIERS[next].options));
     setIndex(0);
     setScore(0);
     setPicked(null);
   };
+
+  const question = quiz[index];
+
+  const restart = () => {
+    startTier(tier);
+  };
+
+  // Record the finished run's score as a personal best.
+  const finished = index >= quiz.length;
+  if (finished && (best[tier] ?? -1) < score) {
+    const next = { ...best, [tier]: score };
+    setBest(next);
+    try {
+      window.localStorage.setItem('fathom-quiz-best', JSON.stringify(next));
+    } catch {
+      // Best simply isn't kept.
+    }
+  }
 
   return (
     <>
@@ -211,8 +245,24 @@ export function QuizPage() {
         <header className="strait-hero">
           <div className="eyebrow">Quiz</div>
           <h2 className="detail-title detail-title--hero">Know your narrows</h2>
+          <div className="pills" style={{ margin: '8px 0 10px' }}>
+            {(Object.keys(TIERS) as QuizTier[]).map((key) => (
+              <button
+                key={key}
+                type="button"
+                className={key === tier ? 'pill pill--tag' : 'pill'}
+                style={{ cursor: 'pointer' }}
+                onClick={() => {
+                  startTier(key);
+                }}
+              >
+                {TIERS[key].label}
+                {best[key] !== undefined ? ` · best ${String(best[key])}` : ''}
+              </button>
+            ))}
+          </div>
           <div className="connects">
-            {finished
+            {!question
               ? `Final score: ${String(score)} / ${String(quiz.length)}`
               : `Question ${String(index + 1)} of ${String(quiz.length)} — score ${String(score)}`}
           </div>

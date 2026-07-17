@@ -1,4 +1,5 @@
 import { getRelated, getStraitEntity, loadAllStraits, type Strait } from '@fathom/data';
+import { similarStraits } from '@fathom/discovery';
 
 /**
  * Quiz questions generated entirely from the dataset — the question, the
@@ -84,8 +85,20 @@ const GENERATORS = [connectsQuestion, regionQuestion, countryQuestion];
  * Builds a quiz of `count` questions. Pass a seeded `random` for
  * deterministic output (tests); defaults to Math.random.
  */
-export function buildQuiz(count = 10, random: () => number = Math.random): QuizQuestion[] {
-  const pool = loadAllStraits();
+export interface QuizOptions {
+  /** Restrict the pool to one region (the apprentice tier). */
+  region?: string;
+  /** Draw distractors from genuinely similar straits (the pilot tier). */
+  hard?: boolean;
+}
+
+export function buildQuiz(
+  count = 10,
+  random: () => number = Math.random,
+  options: QuizOptions = {},
+): QuizQuestion[] {
+  const all = loadAllStraits();
+  const pool = options.region ? all.filter((strait) => strait.region === options.region) : all;
   const straits = shuffle(pool, random);
   const questions: QuizQuestion[] = [];
   let generatorIndex = 0;
@@ -93,7 +106,16 @@ export function buildQuiz(count = 10, random: () => number = Math.random): QuizQ
     if (questions.length >= count) break;
     const generate = GENERATORS[generatorIndex % GENERATORS.length];
     generatorIndex += 1;
-    const question = generate?.(strait, pool, random);
+    let question = generate?.(strait, pool, random);
+    if (question && options.hard && generate === connectsQuestion) {
+      // Pilot tier: distractors are the straits most similar to the answer.
+      const kin = similarStraits(strait, 3).map((result) => result.name);
+      if (kin.length === 3) {
+        const opts = [...kin];
+        opts.splice(Math.floor(random() * (opts.length + 1)), 0, strait.name);
+        question = { ...question, options: opts };
+      }
+    }
     if (!question) continue;
     if (new Set(question.options).size === question.options.length) {
       questions.push(question);

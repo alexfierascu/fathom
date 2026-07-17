@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
 
-import { Link, useOutletContext, useParams } from 'react-router';
+import { Link, useOutletContext, useParams, useSearchParams } from 'react-router';
 
 import {
   entityId as canonicalId,
@@ -16,6 +16,7 @@ import {
   bearingWord,
   chartChallengeFor,
   eventYearQuiz,
+  straitQuiz,
   legBetween,
   loadJourneys,
   relatedJourneys,
@@ -163,6 +164,55 @@ function QuizBlock({
   );
 }
 
+/** Five questions, one after another; four right earns the gold stamp. */
+function ExamBlock({
+  questions,
+  onDone,
+}: {
+  questions: readonly JourneyQuiz[];
+  onDone: (score: number) => void;
+}) {
+  const [index, setIndex] = useState(0);
+  const [score, setScore] = useState(0);
+  const [answered, setAnswered] = useState(false);
+  const question = questions[index];
+  if (!question) return null;
+
+  return (
+    <div className="stop-quiz" style={{ marginTop: 14 }}>
+      <div className="geo-label">
+        Exam — question {String(index + 1)} of {String(questions.length)} · {String(score)} correct
+      </div>
+      <QuizBlock
+        key={index}
+        quiz={question}
+        onResult={(correct) => {
+          if (correct) setScore((s) => s + 1);
+          setAnswered(true);
+        }}
+      />
+      {answered && (
+        <div className="journey-actions" style={{ marginTop: 10 }}>
+          <button
+            type="button"
+            className="journey-btn journey-btn--primary"
+            onClick={() => {
+              if (index + 1 >= questions.length) {
+                onDone(score);
+              } else {
+                setIndex((i) => i + 1);
+                setAnswered(false);
+              }
+            }}
+          >
+            {index + 1 >= questions.length ? 'Finish exam' : 'Next question →'}
+          </button>
+        </div>
+      )}
+    </div>
+  );
+}
+
 /** The factual context for a stop, straight from the entity's document. */
 function stopContext(waypoint: JourneyWaypoint): string | null {
   const node = getEntity(canonicalId(waypoint.entity.type, waypoint.entity.id));
@@ -196,14 +246,22 @@ interface JourneyExperienceProps {
   /** Canonical path for SEO. */
   path: string;
   crumbs: readonly { label: string; to?: string }[];
+  /** Deep-linked stop (0-based) — starts the voyage there. */
+  initialStop?: number;
 }
 
 /** The full journey experience — catalog voyages and generated ones alike. */
-export function JourneyExperience({ journey, journeyKey, path, crumbs }: JourneyExperienceProps) {
+export function JourneyExperience({
+  journey,
+  journeyKey,
+  path,
+  crumbs,
+  initialStop,
+}: JourneyExperienceProps) {
   const { tileStyle } = useOutletContext<LayoutContext>();
   const stopCount = journey.waypoints.length;
   const { progress, start, resume, pause, next, previous, jumpTo, finish, reset } =
-    useJourneyProgress(journeyKey, stopCount);
+    useJourneyProgress(journeyKey, stopCount, initialStop);
   const courseRef = useRef<HTMLDivElement>(null);
 
   // Every travel action returns the eyes to the chart and the stop panel —
@@ -221,7 +279,9 @@ export function JourneyExperience({ journey, journeyKey, path, crumbs }: Journey
     },
     [scrollToCourse],
   );
-  const { log, logQuiz, logChallenge, resetLog } = useJourneyLog(journeyKey);
+  const { log, logQuiz, logChallenge, logExam, resetLog } = useJourneyLog(journeyKey);
+  const [copiedStop, setCopiedStop] = useState(false);
+  const [examOpen, setExamOpen] = useState(false);
 
   // Keyboard sailing: arrow keys move the voyage while travelling.
   const travellingRef = useRef(false);
@@ -355,6 +415,28 @@ export function JourneyExperience({ journey, journeyKey, path, crumbs }: Journey
   const stopStats = waypoint
     ? loadStatisticsFor({ type: waypoint.entity.type, id: waypoint.entity.id })
     : [];
+
+  // The end-of-voyage exam: five data-grounded questions from the stops.
+  const examQuestions = (() => {
+    const rng = seeded(journey.id.length * 977 + stopCount * 31);
+    const pool: JourneyQuiz[] = [];
+    for (const stop of journey.waypoints) {
+      if (stop.entity.type === 'strait') {
+        const question = straitQuiz(stop.entity.id, rng);
+        if (question) pool.push(question);
+      }
+      for (const event of loadHistoricalEvents().filter((candidate) =>
+        candidate.involves.some(
+          (involved) => involved.type === stop.entity.type && involved.id === stop.entity.id,
+        ),
+      )) {
+        const question = eventYearQuiz(event, rng);
+        if (question) pool.push(question);
+      }
+    }
+    const unique = [...new Map(pool.map((question) => [question.prompt, question])).values()];
+    return unique.slice(0, 5);
+  })();
 
   const stopTabs: TabSpec[] = [];
   if (waypoint && stopNode && stopKey) {
@@ -592,6 +674,22 @@ export function JourneyExperience({ journey, journeyKey, path, crumbs }: Journey
                   ‹ Overview
                 </button>
                 <span className="k-title">{journey.title}</span>
+                <button
+                  type="button"
+                  className="voyage-exit"
+                  title="Copy a link to this stop"
+                  onClick={() => {
+                    const url = `${window.location.origin}${path}?stop=${String(progress.stop + 1)}`;
+                    void navigator.clipboard?.writeText(url).then(() => {
+                      setCopiedStop(true);
+                      window.setTimeout(() => {
+                        setCopiedStop(false);
+                      }, 1600);
+                    });
+                  }}
+                >
+                  {copiedStop ? 'Copied ✓' : 'Share stop'}
+                </button>
                 <span className="k-count">
                   {progress.finished
                     ? 'Complete'
@@ -649,6 +747,45 @@ export function JourneyExperience({ journey, journeyKey, path, crumbs }: Journey
                     You have travelled all {String(stopCount)} stops of {journey.title}. The narrows
                     ahead are endless — pick another course.
                   </p>
+                  {examQuestions.length >= 3 &&
+                    (log.exam ? (
+                      <p className="note" style={{ marginTop: 14 }}>
+                        Exam: {String(log.exam.score)} / {String(log.exam.total)} —{' '}
+                        {log.exam.passed ? 'passed with honours ★' : 'not yet passed.'}
+                        {!log.exam.passed && (
+                          <button
+                            type="button"
+                            className="link-button"
+                            style={{ marginLeft: 8 }}
+                            onClick={() => {
+                              setExamOpen(true);
+                            }}
+                          >
+                            Retake
+                          </button>
+                        )}
+                      </p>
+                    ) : examOpen ? (
+                      <ExamBlock
+                        questions={examQuestions}
+                        onDone={(score) => {
+                          logExam(score, examQuestions.length, score >= 4);
+                          setExamOpen(false);
+                        }}
+                      />
+                    ) : (
+                      <div className="journey-actions" style={{ marginTop: 14 }}>
+                        <button
+                          type="button"
+                          className="journey-btn journey-btn--primary"
+                          onClick={() => {
+                            setExamOpen(true);
+                          }}
+                        >
+                          Take the exam — earn a gold stamp
+                        </button>
+                      </div>
+                    ))}
                 </div>
               ) : (
                 waypoint && (
@@ -803,7 +940,9 @@ export function JourneyExperience({ journey, journeyKey, path, crumbs }: Journey
 
 export function JourneyDetailPage() {
   const { slug } = useParams();
+  const [searchParams] = useSearchParams();
   const journey = findJourney(slug);
+  const stopParam = Number.parseInt(searchParams.get('stop') ?? '', 10);
   if (!journey) {
     return (
       <div className="empty">
@@ -819,6 +958,7 @@ export function JourneyDetailPage() {
       journey={journey}
       journeyKey={journey.id}
       path={`/journeys/${journey.id}`}
+      initialStop={Number.isFinite(stopParam) && stopParam >= 1 ? stopParam - 1 : undefined}
       crumbs={[
         { label: 'Home', to: '/' },
         { label: 'Journeys', to: '/journeys' },

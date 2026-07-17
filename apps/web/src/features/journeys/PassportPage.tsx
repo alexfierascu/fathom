@@ -19,6 +19,7 @@ interface StampInfo {
   quizCorrect: number;
   quizTotal: number;
   challenges: number;
+  honours: boolean;
 }
 
 function read(key: string): unknown {
@@ -38,6 +39,7 @@ function stampOf(journey: Journey): StampInfo {
   const log = read(`fathom-journey-log-${journey.id}`) as {
     quiz?: Record<string, boolean>;
     challenges?: Record<string, boolean>;
+    exam?: { passed?: boolean };
   } | null;
   const quiz = Object.values(log?.quiz ?? {});
   return {
@@ -47,6 +49,7 @@ function stampOf(journey: Journey): StampInfo {
     quizCorrect: quiz.filter(Boolean).length,
     quizTotal: quiz.length,
     challenges: Object.keys(log?.challenges ?? {}).length,
+    honours: log?.exam?.passed === true,
   };
 }
 
@@ -89,7 +92,55 @@ export function PassportPage() {
     { label: 'Quizmaster', earned: quizCorrect >= 10, hint: 'Answer 10 quizzes correctly' },
     { label: 'Pathfinder', earned: challenges >= 5, hint: 'Complete 5 chart challenges' },
     { label: 'Tide follower', earned: dailies >= 3, hint: 'Complete 3 daily expeditions' },
+    {
+      label: "Pilot's ticket",
+      earned: ((read('fathom-quiz-best') as { pilot?: number } | null)?.pilot ?? 0) >= 8,
+      hint: 'Score 8 or more on the Pilot quiz tier',
+    },
+    {
+      label: 'Examiner',
+      earned: stamps.some((stamp) => stamp.honours),
+      hint: 'Pass any journey exam',
+    },
   ];
+
+  const exportPassport = () => {
+    const dump: Record<string, unknown> = {};
+    try {
+      for (let i = 0; i < window.localStorage.length; i += 1) {
+        const key = window.localStorage.key(i);
+        if (key && (key.startsWith('fathom-journey') || key === 'fathom-quiz-best')) {
+          dump[key] = JSON.parse(window.localStorage.getItem(key) ?? 'null');
+        }
+      }
+    } catch {
+      return;
+    }
+    const blob = new Blob([JSON.stringify(dump, null, 2)], { type: 'application/json' });
+    const url = URL.createObjectURL(blob);
+    const link = document.createElement('a');
+    link.href = url;
+    link.download = 'fathom-passport.json';
+    link.click();
+    URL.revokeObjectURL(url);
+  };
+
+  const importPassport = (file: File) => {
+    void file.text().then((text) => {
+      try {
+        const dump: unknown = JSON.parse(text);
+        if (typeof dump !== 'object' || dump === null) return;
+        for (const [key, value] of Object.entries(dump)) {
+          if (key.startsWith('fathom-journey') || key === 'fathom-quiz-best') {
+            window.localStorage.setItem(key, JSON.stringify(value));
+          }
+        }
+        window.location.reload();
+      } catch {
+        // Not a passport file; leave everything as it was.
+      }
+    });
+  };
 
   return (
     <>
@@ -120,19 +171,23 @@ export function PassportPage() {
 
         <Section label="Stamps">
           <div className="stamp-grid">
-            {stamps.map(({ journey, finished: done, finishedOn }) => (
+            {stamps.map(({ journey, finished: done, finishedOn, honours }) => (
               <Link
                 viewTransition
                 key={journey.id}
-                className={done ? 'stamp is-earned' : 'stamp'}
+                className={honours ? 'stamp is-earned is-gold' : done ? 'stamp is-earned' : 'stamp'}
                 to={`/journeys/${journey.id}`}
               >
                 <span className="stamp-ring" aria-hidden="true">
-                  {done ? '✓' : '·'}
+                  {honours ? '★' : done ? '✓' : '·'}
                 </span>
                 <b>{journey.title}</b>
                 <span className="stamp-date">
-                  {done ? (finishedOn ?? 'Completed') : `${String(journey.waypoints.length)} stops`}
+                  {honours
+                    ? `With honours · ${finishedOn ?? ''}`
+                    : done
+                      ? (finishedOn ?? 'Completed')
+                      : `${String(journey.waypoints.length)} stops`}
                 </span>
               </Link>
             ))}
@@ -150,6 +205,26 @@ export function PassportPage() {
                 {badge.earned ? '★' : '☆'} {badge.label}
               </span>
             ))}
+          </div>
+        </Section>
+
+        <Section label="Carry it with you">
+          <div className="journey-actions" style={{ justifyContent: 'flex-start' }}>
+            <button type="button" className="journey-btn" onClick={exportPassport}>
+              Export passport ↓
+            </button>
+            <label className="journey-btn" style={{ cursor: 'pointer' }}>
+              Import passport
+              <input
+                type="file"
+                accept="application/json"
+                style={{ display: 'none' }}
+                onChange={(event) => {
+                  const file = event.target.files?.[0];
+                  if (file) importPassport(file);
+                }}
+              />
+            </label>
           </div>
         </Section>
 
