@@ -10,14 +10,19 @@ import { LocaleSwitcher } from '../features/i18n/LocaleSwitcher';
 import { useT } from '../features/i18n/locale';
 import { SearchOverlay } from '../features/search/SearchOverlay';
 import { ThemeSwitcher } from '../features/theme/ThemeSwitcher';
-import { THEMES, type TileStyle } from '../features/theme/themes';
+import { THEMES, type ThemeKey, type TileStyle } from '../features/theme/themes';
 import { useTheme } from '../features/theme/useTheme';
 
 export interface LayoutContext {
   tileStyle: TileStyle;
+  theme: ThemeKey;
+  setTheme: (theme: ThemeKey) => void;
+  cycleTheme: () => void;
+  openSearch: () => void;
 }
 
 const straitCount = loadAllStraits().length;
+const THEME_ORDER = ['abyss', 'parchment', 'midnight', 'daylight'] as const;
 
 export function RootLayout() {
   const { theme, setTheme } = useTheme();
@@ -26,6 +31,12 @@ export function RootLayout() {
   const closeSearch = useCallback(() => {
     setSearchOpen(false);
   }, []);
+  const openSearch = useCallback(() => {
+    setSearchOpen(true);
+  }, []);
+  const cycleTheme = useCallback(() => {
+    setTheme(THEME_ORDER[(THEME_ORDER.indexOf(theme) + 1) % THEME_ORDER.length] ?? 'abyss');
+  }, [theme, setTheme]);
 
   // Search is summonable anywhere: `/` or Cmd/Ctrl-K.
   useEffect(() => {
@@ -48,10 +59,23 @@ export function RootLayout() {
       document.removeEventListener('keydown', onKey);
     };
   }, []);
-  const context = useMemo<LayoutContext>(() => ({ tileStyle: THEMES[theme].tile }), [theme]);
   const location = useLocation();
+  const isHome = location.pathname === '/';
+  const context = useMemo<LayoutContext>(
+    () => ({ tileStyle: THEMES[theme].tile, theme, setTheme, cycleTheme, openSearch }),
+    [theme, setTheme, cycleTheme, openSearch],
+  );
   const mainRef = useRef<HTMLElement>(null);
   const isFirstRender = useRef(true);
+
+  // The homepage is its own chrome-free launcher: no navbar, no footer,
+  // one screen. It supplies its own floating logo, search, and controls.
+  useEffect(() => {
+    document.documentElement.classList.toggle('route-portal', isHome);
+    return () => {
+      document.documentElement.classList.remove('route-portal');
+    };
+  }, [isHome]);
 
   // Move focus to the content landmark on navigation so keyboard and
   // screen-reader users land on the new page, not mid-old-page.
@@ -110,26 +134,17 @@ export function RootLayout() {
       <a className="skip-link" href="#main">
         {t('skip.content')}
       </a>
-      <AtlasHeader
-        onSearchOpen={() => {
-          setSearchOpen(true);
-        }}
-      >
-        <LocaleSwitcher />
-        <ThemeSwitcher theme={theme} onChange={setTheme} />
-      </AtlasHeader>
-      <SearchOverlay
-        open={searchOpen}
-        onClose={closeSearch}
-        onCycleTheme={() => {
-          const order = ['abyss', 'parchment', 'midnight', 'daylight'] as const;
-          setTheme(order[(order.indexOf(theme) + 1) % order.length] ?? 'abyss');
-        }}
-      />
+      {!isHome && (
+        <AtlasHeader onSearchOpen={openSearch}>
+          <LocaleSwitcher />
+          <ThemeSwitcher theme={theme} onChange={setTheme} />
+        </AtlasHeader>
+      )}
+      <SearchOverlay open={searchOpen} onClose={closeSearch} onCycleTheme={cycleTheme} />
       <main id="main" ref={mainRef} tabIndex={-1}>
         <Outlet context={context} />
       </main>
-      <AtlasFooter straitCount={straitCount} />
+      {!isHome && <AtlasFooter straitCount={straitCount} />}
       <ScrollRestoration />
     </div>
   );

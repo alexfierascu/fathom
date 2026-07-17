@@ -1,20 +1,38 @@
 import { expect, test } from '@playwright/test';
 
-test('homepage opens as four full-screen portals', async ({ page }) => {
+test('homepage is a chrome-free four-mode launcher', async ({ page }) => {
   await page.goto('/');
   await expect(page.locator('.panel')).toHaveCount(4);
-  await expect(page.locator('.panel-title')).toContainText(['Explore', 'Journeys', 'Map', 'Learn']);
-  await expect(page.locator('.site-nav a')).toHaveCount(4);
-  // Hovering a portal reveals its invitation.
-  await page.locator('.panel--explore').hover();
-  await expect(page.getByRole('link', { name: 'Start exploring' })).toBeVisible();
-  await expect(page.locator('.panel--explore')).toHaveClass(/is-active/);
+  await expect(page.locator('.panel-title')).toContainText([
+    'Explore',
+    'Journey',
+    'Chart',
+    'Academy',
+  ]);
+  // No navbar — the chrome floats over the imagery.
+  await expect(page.locator('.site-nav')).toHaveCount(0);
+  await expect(page.locator('.portal-logo')).toBeVisible();
+  // The search pill opens the command palette.
+  await page.locator('.util-search').click();
+  await expect(page.locator('.search-overlay')).toBeVisible();
+  await page.keyboard.press('Escape');
+  // Hovering couples the mode label with its panel and reveals the CTA.
+  await page.locator('.panel--chart').hover();
+  await expect(page.locator('.mode-label', { hasText: 'Chart' })).toHaveClass(/is-active/);
+  await expect(page.getByRole('link', { name: 'Open Chart' })).toBeVisible();
   // One screen: nothing scrolls.
   const canScroll = await page.evaluate(() => {
     window.scrollTo(0, 2000);
     return window.scrollY > 0;
   });
   expect(canScroll).toBe(false);
+});
+
+test('choosing a mode steps through to its route', async ({ page }) => {
+  await page.goto('/');
+  await page.locator('.panel--explore').hover();
+  await page.locator('.panel--explore .uc-btn--primary').click();
+  await page.waitForURL(/\/explore$/, { timeout: 4000 });
 });
 
 test('strait article tells its story with sourced facts', async ({ page }) => {
