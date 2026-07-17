@@ -44,7 +44,7 @@ test('search is summonable everywhere and finds straits', async ({ page }) => {
   await page.goto('/learn');
   await page.locator('.search-trigger').click();
   await expect(page.locator('.search-overlay')).toBeVisible();
-  await page.keyboard.type('bosporus');
+  await page.locator('#search').fill('bosporus');
   await expect(page.locator('#search-results [role="option"]').first()).toContainText('Bosporus');
 });
 
