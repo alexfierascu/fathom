@@ -22,18 +22,11 @@ import {
 import { loadJourneys } from '@fathom/discovery';
 
 import type { LayoutContext } from '../../../app/RootLayout';
-import { useLocale, useT } from '../../i18n/locale';
-import { LOCALES, type Locale, type StringKey } from '../../i18n/strings';
+import { useT } from '../../i18n/locale';
+import { type StringKey } from '../../i18n/strings';
 import { heroImage, mediaSrcSet, mediaUrl } from '../../media/media';
-import { Avatar } from '../../progression/Avatar';
-import { loadIdentity, recordActiveDay, type Identity } from '../../progression/store';
-import {
-  appearanceToTheme,
-  loadAppearance,
-  saveAppearance,
-  type Appearance,
-} from '../../theme/appearance';
-import type { ThemeKey } from '../../theme/themes';
+import { recordActiveDay } from '../../progression/store';
+import { UserMenuButton } from '../../account/UserMenu';
 import { SeoTags } from '../components/SeoTags';
 
 /**
@@ -152,16 +145,6 @@ const PARTICLES = Array.from({ length: 12 }, (_, i) => ({
   size: 1.2 + ((i * 1.7) % 2),
 }));
 
-const APPEARANCE_KEY: Record<Appearance, StringKey> = {
-  system: 'home.profile.system',
-  dark: 'home.profile.dark',
-  light: 'home.profile.light',
-};
-const LOCALE_KEY: Record<Locale, StringKey> = {
-  en: 'home.profile.english',
-  ro: 'home.profile.romanian',
-};
-
 const prefersReducedMotion = () =>
   typeof window !== 'undefined' && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
@@ -183,129 +166,6 @@ function SearchGlyph() {
   );
 }
 
-function ProfileMenu({
-  identity,
-  theme,
-  setTheme,
-  onClose,
-}: {
-  identity: Identity;
-  theme: ThemeKey;
-  setTheme: (theme: ThemeKey) => void;
-  onClose: () => void;
-}) {
-  const t = useT();
-  const { locale, setLocale } = useLocale();
-  const [appearance, setAppearanceState] = useState<Appearance>(loadAppearance);
-  const rootRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    const onKey = (event: globalThis.KeyboardEvent) => {
-      if (event.key === 'Escape') onClose();
-    };
-    const onDown = (event: globalThis.PointerEvent) => {
-      if (!rootRef.current?.contains(event.target as Node)) onClose();
-    };
-    document.addEventListener('keydown', onKey);
-    document.addEventListener('pointerdown', onDown);
-    return () => {
-      document.removeEventListener('keydown', onKey);
-      document.removeEventListener('pointerdown', onDown);
-    };
-  }, [onClose]);
-
-  const chooseAppearance = (mode: Appearance) => {
-    setAppearanceState(mode);
-    saveAppearance(mode);
-    setTheme(appearanceToTheme(mode));
-  };
-
-  // Theme is set through appearance, so the appearance dots reflect the
-  // real theme even if it changed elsewhere.
-  const activeAppearance: Appearance =
-    theme === 'parchment' || theme === 'daylight'
-      ? appearance === 'system'
-        ? 'system'
-        : 'light'
-      : appearance === 'system'
-        ? 'system'
-        : 'dark';
-
-  return (
-    <div ref={rootRef} className="profile-menu" role="menu" aria-label={t('home.profile.identity')}>
-      <div className="profile-identity">
-        <span className="profile-avatar">
-          <Avatar identity={identity} size={54} />
-          <span className="avatar-status avatar-status--offline" aria-hidden="true" />
-        </span>
-        <div className="geo-label">{t('home.profile.identity')}</div>
-        <b>{identity.name || t('home.profile.guest')}</b>
-        <span className="profile-sub">{t('home.profile.sailor')}</span>
-        <span className="profile-rank">{t('home.profile.rank')}</span>
-      </div>
-
-      <div className="profile-section">
-        <div className="geo-label">{t('home.profile.appearance')}</div>
-        <div className="profile-radios" role="group" aria-label={t('home.profile.appearance')}>
-          {(['system', 'dark', 'light'] as const).map((mode) => (
-            <button
-              key={mode}
-              type="button"
-              role="menuitemradio"
-              aria-checked={activeAppearance === mode}
-              className={activeAppearance === mode ? 'profile-radio is-on' : 'profile-radio'}
-              onClick={() => {
-                chooseAppearance(mode);
-              }}
-            >
-              <span className="radio-dot" aria-hidden="true" />
-              {t(APPEARANCE_KEY[mode])}
-            </button>
-          ))}
-        </div>
-      </div>
-
-      <div className="profile-section">
-        <div className="geo-label">{t('home.profile.language')}</div>
-        <div className="profile-radios" role="group" aria-label={t('home.profile.language')}>
-          {LOCALES.map((code) => (
-            <button
-              key={code}
-              type="button"
-              role="menuitemradio"
-              aria-checked={locale === code}
-              className={locale === code ? 'profile-radio is-on' : 'profile-radio'}
-              onClick={() => {
-                setLocale(code);
-              }}
-            >
-              <span className="radio-dot" aria-hidden="true" />
-              {t(LOCALE_KEY[code])}
-            </button>
-          ))}
-        </div>
-      </div>
-
-      <div className="profile-links">
-        <Link viewTransition role="menuitem" to="/profile">
-          {t('home.profile.statistics')}
-        </Link>
-        <Link viewTransition role="menuitem" to="/profile">
-          {t('home.profile.achievements')}
-        </Link>
-        <Link viewTransition role="menuitem" to="/profile">
-          {t('home.profile.settings')}
-        </Link>
-        <Link viewTransition role="menuitem" to="/profile">
-          {t('home.profile.signin')}
-        </Link>
-      </div>
-
-      <div className="profile-foot">{t('home.profile.soon')}</div>
-    </div>
-  );
-}
-
 export function HomePage() {
   const { theme, setTheme, openSearch } = useOutletContext<LayoutContext>();
   const t = useT();
@@ -313,8 +173,6 @@ export function HomePage() {
 
   const [active, setActive] = useState<number | null>(null);
   const [launching, setLaunching] = useState<number | null>(null);
-  const [menuOpen, setMenuOpen] = useState(false);
-  const [identity] = useState(loadIdentity);
   const ctaRefs = useRef<(HTMLAnchorElement | null)[]>([]);
   const hintRef = useRef<HTMLDivElement>(null);
 
@@ -415,33 +273,7 @@ export function HomePage() {
             >
               <SearchGlyph />
             </button>
-            <div className="avatar-wrap">
-              <button
-                type="button"
-                className={menuOpen ? 'avatar-button is-open' : 'avatar-button'}
-                aria-haspopup="menu"
-                aria-expanded={menuOpen}
-                aria-label={t('home.profile.open')}
-                onClick={() => {
-                  setMenuOpen((open) => !open);
-                }}
-              >
-                <span className="avatar-shell">
-                  <Avatar identity={identity} size={34} />
-                  <span className="avatar-status avatar-status--offline" aria-hidden="true" />
-                </span>
-              </button>
-              {menuOpen && (
-                <ProfileMenu
-                  identity={identity}
-                  theme={theme}
-                  setTheme={setTheme}
-                  onClose={() => {
-                    setMenuOpen(false);
-                  }}
-                />
-              )}
-            </div>
+            <UserMenuButton theme={theme} setTheme={setTheme} />
           </div>
         </div>
 

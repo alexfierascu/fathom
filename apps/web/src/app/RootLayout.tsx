@@ -5,11 +5,9 @@ import { Outlet, ScrollRestoration, useLocation } from 'react-router';
 import { loadAllStraits } from '@fathom/data';
 
 import { AtlasFooter } from '../features/atlas/components/AtlasFooter';
-import { AtlasHeader } from '../features/atlas/components/AtlasHeader';
-import { LocaleSwitcher } from '../features/i18n/LocaleSwitcher';
+import { GlassNavigation } from '../features/atlas/components/GlassNavigation';
 import { useT } from '../features/i18n/locale';
 import { ChartRoom } from '../features/search/ChartRoom';
-import { ThemeSwitcher } from '../features/theme/ThemeSwitcher';
 import { THEMES, type ThemeKey, type TileStyle } from '../features/theme/themes';
 import { useTheme } from '../features/theme/useTheme';
 
@@ -108,7 +106,7 @@ export function RootLayout() {
     );
     const watch = () => {
       const targets = document.querySelectorAll(
-        '.detail-section:not(.in-view), .cinematic:not(.in-view), .one-fact:not(.in-view), .mode-cards:not(.in-view)',
+        '.detail-section:not(.in-view), .cinematic:not(.in-view), .one-fact:not(.in-view), .mode-cards:not(.in-view), .reveal:not(.in-view)',
       );
       for (const target of targets) io.observe(target);
     };
@@ -134,12 +132,7 @@ export function RootLayout() {
       <a className="skip-link" href="#main">
         {t('skip.content')}
       </a>
-      {!isHome && (
-        <AtlasHeader onSearchOpen={openSearch}>
-          <LocaleSwitcher />
-          <ThemeSwitcher theme={theme} onChange={setTheme} />
-        </AtlasHeader>
-      )}
+      {!isHome && <GlassNavigation theme={theme} setTheme={setTheme} onSearchOpen={openSearch} />}
       {searchOpen && <ChartRoom onClose={closeSearch} />}
       <main id="main" ref={mainRef} tabIndex={-1}>
         <Outlet context={context} />

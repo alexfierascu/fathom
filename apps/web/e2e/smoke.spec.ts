@@ -57,13 +57,17 @@ test('choosing a mode steps through to its route', async ({ page }) => {
   await page.waitForURL(/\/explore$/, { timeout: 4000 });
 });
 
-test('strait article tells its story with sourced facts', async ({ page }) => {
+test('strait page opens as an expedition, not a datasheet', async ({ page }) => {
   await page.goto('/straits/gibraltar');
-  await expect(page.locator('.strait-hero--image')).toBeVisible();
-  await expect(page.locator('.detail-section', { hasText: 'Why it matters' })).toBeVisible();
+  await expect(page.locator('.page-hero--image')).toBeVisible();
+  await expect(page.locator('.page-hero-title')).toHaveText('Strait of Gibraltar');
+  // The story, then the chart with its numbers, then wildlife — all sourced.
+  await expect(
+    page.locator('.editorial-title', { hasText: 'Why the Strait of Gibraltar matters' }),
+  ).toBeVisible();
+  await expect(page.locator('#chart')).toBeVisible();
   await expect(page.locator('.facts--line .fact-label', { hasText: 'Narrowest' })).toBeVisible();
-  await expect(page.locator('.detail-section', { hasText: 'The long read' })).toBeVisible();
-  await expect(page.locator('.card h3', { hasText: 'Orca' })).toBeVisible();
+  await expect(page.locator('.wildlife-card h3', { hasText: 'Orca' })).toBeVisible();
 });
 
 test('journey mode travels stop by stop', async ({ page }) => {
@@ -91,7 +95,8 @@ test('quiz reveals answers in green and red', async ({ page }) => {
 
 test('the Chart Room is summonable everywhere and finds straits', async ({ page }) => {
   await page.goto('/learn');
-  await page.locator('.search-trigger').click();
+  await expect(page.locator('.glass-nav')).toBeVisible();
+  await page.locator('.glass-nav .launch-icon').click();
   await expect(page.locator('.chartroom')).toBeVisible();
   // With no query it invites, not a bare input.
   await expect(page.locator('.chartroom')).toContainText('Featured destinations');

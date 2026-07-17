@@ -2524,7 +2524,8 @@ a.flow-node:hover .flow-name {
   .reveal-ready .detail-section,
   .reveal-ready .cinematic,
   .reveal-ready .one-fact,
-  .reveal-ready .mode-cards {
+  .reveal-ready .mode-cards,
+  .reveal-ready .reveal {
     opacity: 0;
     transform: translateY(16px);
     transition:
@@ -2534,7 +2535,8 @@ a.flow-node:hover .flow-name {
   .reveal-ready .detail-section.in-view,
   .reveal-ready .cinematic.in-view,
   .reveal-ready .one-fact.in-view,
-  .reveal-ready .mode-cards.in-view {
+  .reveal-ready .mode-cards.in-view,
+  .reveal-ready .reveal.in-view {
     opacity: 1;
     transform: none;
   }
@@ -5484,4 +5486,320 @@ html.chartroom-open {
     animation: none !important;
     transition: none !important;
   }
+}
+
+/* ------------------------------------------------------------------ */
+/* GlassNavigation — the one shell every page shares                   */
+
+.glass-nav {
+  position: sticky;
+  top: 0;
+  z-index: 40;
+  width: 100vw;
+  /* Break out of .wrap and cancel its top padding so the bar sits flush. */
+  margin: -40px calc(50% - 50vw) 40px;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 12px clamp(20px, 4vw, 44px);
+  background: color-mix(in srgb, var(--bg) 60%, transparent);
+  backdrop-filter: blur(18px) saturate(1.1);
+  -webkit-backdrop-filter: blur(18px) saturate(1.1);
+  border-bottom: 1px solid color-mix(in srgb, var(--text) 8%, transparent);
+}
+.glass-nav-logo {
+  flex: none;
+  display: grid;
+  gap: 1px;
+  text-decoration: none;
+  color: var(--text);
+}
+.glass-nav-mark {
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 700;
+  font-size: 1.2rem;
+  letter-spacing: 0.03em;
+}
+.glass-nav-sub {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.5rem;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: color-mix(in srgb, var(--text) 55%, transparent);
+}
+.glass-nav-modes {
+  flex: 1 1 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: clamp(8px, 2vw, 30px);
+  min-width: 0;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+.glass-nav-modes::-webkit-scrollbar {
+  display: none;
+}
+.glass-mode {
+  position: relative;
+  flex: none;
+  padding: 6px 2px;
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 0.92rem;
+  color: color-mix(in srgb, var(--text) 66%, transparent);
+  text-decoration: none;
+  white-space: nowrap;
+  transition: color 0.16s ease;
+}
+.glass-mode::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -1px;
+  height: 1.5px;
+  background: var(--accent-2);
+  transform: scaleX(0);
+  transform-origin: center;
+  transition: transform 0.22s cubic-bezier(0.2, 0, 0, 1);
+}
+.glass-mode:hover {
+  color: var(--text);
+}
+.glass-mode:hover::after {
+  transform: scaleX(0.5);
+}
+.glass-mode.is-current {
+  color: var(--text);
+}
+.glass-mode.is-current::after {
+  transform: scaleX(1);
+}
+.glass-nav-right {
+  flex: none;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+@media (max-width: 720px) {
+  .glass-nav {
+    gap: 10px;
+    padding: 10px 16px;
+  }
+  .glass-nav-sub {
+    display: none;
+  }
+  .glass-nav-modes {
+    justify-content: flex-start;
+    gap: 14px;
+  }
+  .glass-mode {
+    font-size: 0.82rem;
+  }
+}
+
+/* ------------------------------------------------------------------ */
+/* Page primitives — Hero, Editorial, Interactive                      */
+
+.page-hero {
+  position: relative;
+  width: 100vw;
+  /* Cancel the nav's bottom margin and go full-bleed under it. */
+  margin: -40px calc(50% - 50vw) clamp(24px, 5vh, 56px);
+  min-height: calc(100svh - 62px);
+  display: flex;
+  align-items: flex-end;
+  overflow: hidden;
+  isolation: isolate;
+  background: var(--panel);
+}
+.page-hero-media {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+.page-hero-media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: saturate(0.92) brightness(0.82);
+  animation: page-hero-zoom 24s ease-in-out infinite alternate;
+}
+@keyframes page-hero-zoom {
+  from {
+    transform: scale(1.02);
+  }
+  to {
+    transform: scale(1.1);
+  }
+}
+.page-hero-scrim {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(
+      to top,
+      color-mix(in srgb, var(--bg) 94%, transparent) 0%,
+      color-mix(in srgb, var(--bg) 48%, transparent) 34%,
+      transparent 70%
+    ),
+    linear-gradient(to bottom, color-mix(in srgb, var(--bg) 55%, transparent), transparent 26%),
+    linear-gradient(to right, color-mix(in srgb, var(--bg) 42%, transparent), transparent 62%);
+}
+.page-hero--image .page-hero-title,
+.page-hero--image .page-hero-sub {
+  text-shadow: 0 2px 30px color-mix(in srgb, var(--bg) 72%, transparent);
+}
+.page-hero-inner {
+  position: relative;
+  z-index: 1;
+  width: min(1180px, 100%);
+  margin: 0 auto;
+  padding: clamp(28px, 6vh, 72px) clamp(20px, 4vw, 44px);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: clamp(10px, 1.6vh, 18px);
+  animation: uc-enter 0.9s cubic-bezier(0.22, 0.61, 0.36, 1) 0.05s both;
+}
+.page-hero-eyebrow {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.64rem;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--accent-2);
+}
+.page-hero-title {
+  margin: 0;
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: clamp(2.4rem, min(6.4vw, 8.5vh), 4.6rem);
+  line-height: 1.02;
+  letter-spacing: -0.015em;
+  text-wrap: balance;
+}
+.page-hero-sub {
+  margin: 0;
+  max-width: 52ch;
+  font-size: clamp(0.98rem, 1.4vw, 1.16rem);
+  line-height: 1.6;
+  color: color-mix(in srgb, var(--text) 84%, transparent);
+}
+.page-hero-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 2px;
+}
+.page-hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: clamp(8px, 1.6vh, 18px);
+}
+
+.editorial {
+  padding: clamp(44px, 9vh, 100px) 0;
+}
+.editorial-inner {
+  max-width: 720px;
+  margin: 0 auto;
+}
+.editorial-inner--wide {
+  max-width: 900px;
+}
+.editorial-title {
+  margin: 10px 0 22px;
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: clamp(1.8rem, 4vw, 2.9rem);
+  line-height: 1.1;
+  letter-spacing: -0.01em;
+  text-wrap: balance;
+}
+.editorial-body {
+  font-size: clamp(1.02rem, 1.3vw, 1.14rem);
+  line-height: 1.78;
+  color: color-mix(in srgb, var(--text) 82%, transparent);
+}
+.editorial-body > p {
+  margin: 0 0 1.05em;
+}
+.editorial-body > p:last-child {
+  margin-bottom: 0;
+}
+.editorial-body .lede {
+  font-family: var(--font-display);
+  font-size: clamp(1.2rem, 2vw, 1.5rem);
+  line-height: 1.5;
+  color: var(--text);
+  margin-bottom: 0.8em;
+}
+
+.interactive {
+  padding: clamp(36px, 7vh, 80px) 0;
+}
+.interactive-head {
+  max-width: 720px;
+  margin: 0 auto clamp(18px, 3.5vh, 34px);
+  display: grid;
+  gap: 8px;
+}
+.interactive-title {
+  margin: 0;
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: clamp(1.6rem, 3.4vw, 2.4rem);
+  line-height: 1.1;
+}
+.interactive-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(230px, 330px);
+  gap: clamp(20px, 3vw, 40px);
+  align-items: start;
+}
+.interactive-aside {
+  display: grid;
+  gap: clamp(16px, 3vh, 26px);
+  align-content: start;
+}
+
+@media (max-width: 820px) {
+  .interactive-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Strait page — wildlife rail and the onward sections */
+.strait-onward {
+  padding: clamp(24px, 5vh, 56px) 0 0;
+}
+.strait-onward > * + * {
+  margin-top: var(--section-gap);
+}
+.wildlife-rail {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 16px;
+  margin-top: 8px;
+}
+.wildlife-card {
+  padding: 20px 22px;
+  border-radius: 14px;
+  border: 1px solid var(--border);
+  background: color-mix(in srgb, var(--panel) 45%, transparent);
+  transition:
+    transform 0.2s ease,
+    border-color 0.2s ease;
+}
+.wildlife-card:hover {
+  transform: translateY(-2px);
+  border-color: color-mix(in srgb, var(--accent-2) 40%, transparent);
+}
+.wildlife-card h3 {
+  margin: 6px 0 8px;
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: 1.16rem;
 }

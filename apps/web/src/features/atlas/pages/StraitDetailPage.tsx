@@ -3,15 +3,17 @@ import { Link, useOutletContext, useParams } from 'react-router';
 import { getRelated, getStraitEntity, loadImagesFor, loadSourcesFor } from '@fathom/data';
 import { journeyVisits, loadJourneys } from '@fathom/discovery';
 
+import type { LayoutContext } from '../../../app/RootLayout';
 import { ContinueExploring } from '../../explore/ContinueExploring';
 import { EntityGallery } from '../../media/MediaGallery';
-import { mediaUrl } from '../../media/media';
-import type { LayoutContext } from '../../../app/RootLayout';
-import { Breadcrumbs } from '../components/Breadcrumbs';
+import { mediaSrcSet, mediaUrl } from '../../media/media';
 import { ConnectsLine } from '../components/ConnectsLine';
+import { EditorialSection } from '../components/EditorialSection';
 import { EntityPills } from '../components/EntityPills';
-import { SeoTags } from '../components/SeoTags';
+import { InteractiveSection } from '../components/InteractiveSection';
+import { PageHero } from '../components/PageHero';
 import { Section } from '../components/Section';
+import { SeoTags } from '../components/SeoTags';
 import { SourcesList } from '../components/SourcesList';
 import { StraitMap } from '../components/StraitMap';
 import { StraitPager } from '../components/StraitPager';
@@ -20,10 +22,10 @@ import { findStraitBySlug, getAdjacentStraits } from '../lib/navigation';
 import { breadcrumbsJsonLd, buildStraitSeo, placeJsonLd } from '../lib/seo';
 
 /**
- * The strait article, ordered as a story: the hero (with imagery when
- * the strait has any), the chart, why it matters, the facts, its
- * history, its role in navigation, and then onward — the gallery,
- * exploration, and journeys that pass this way.
+ * The strait as an expedition, not a datasheet: a fullscreen hero, the
+ * story of why it matters, its history, the chart itself with the
+ * numbers alongside, then the waters, wildlife, images, and onward
+ * journeys — each given room to breathe.
  */
 export function StraitDetailPage() {
   const { slug } = useParams();
@@ -82,6 +84,8 @@ export function StraitDetailPage() {
 
   const hasNavigation =
     routes.length > 0 || crossings.length > 0 || ports.length > 0 || islands.length > 0;
+  const hasLongRead =
+    Boolean(strait.summary && strait.summary !== strait.note) || Boolean(strait.description);
 
   return (
     <>
@@ -106,194 +110,202 @@ export function StraitDetailPage() {
         ]}
       />
 
-      <Breadcrumbs
-        items={[
-          { label: 'Home', to: '/' },
-          region ? { label: region.name, to: `/regions/${region.id}` } : { label: regionName },
-          { label: strait.name },
-        ]}
-      />
+      <article className="strait-article">
+        <PageHero
+          eyebrow={regionName}
+          title={strait.name}
+          subtitle={strait.note}
+          image={heroImage ? mediaUrl(heroImage.file) : undefined}
+          imageSrcSet={heroImage ? mediaSrcSet(heroImage.file) : undefined}
+          pills={
+            <>
+              <EntityPills entities={countries} />
+              {tags.map((tag) => (
+                <Link viewTransition key={tag.id} className="pill pill--tag" to={`/tags/${tag.id}`}>
+                  {tag.name}
+                </Link>
+              ))}
+            </>
+          }
+          actions={
+            <>
+              <a className="uc-btn uc-btn--primary" href="#chart">
+                See it on the chart
+              </a>
+              <Link viewTransition className="uc-btn uc-btn--ghost" to={`/compare/${strait.id}`}>
+                Compare this strait ⇄
+              </Link>
+            </>
+          }
+        >
+          <ConnectsLine strait={strait} />
+        </PageHero>
 
-      <article className="detail strait-article">
-        <header className={heroImage ? 'strait-hero strait-hero--image' : 'strait-hero'}>
-          {heroImage && (
-            <div
-              className="strait-hero-media"
-              style={{ backgroundImage: `url(${mediaUrl(heroImage.file)})` }}
-            />
+        <EditorialSection eyebrow="The story" title={`Why the ${strait.name} matters`}>
+          <p className="lede">{strait.note}</p>
+          {strait.summary && strait.summary !== strait.note && <p>{strait.summary}</p>}
+          {strait.description
+            ?.split('\n\n')
+            .filter(Boolean)
+            .map((para, index) => (
+              <p key={index}>{para}</p>
+            ))}
+          {!hasLongRead && countries.length > 0 && (
+            <p>
+              It runs between {countries.map((country) => country.name).join(' and ')}, one of the
+              narrow waters where the map — and history — turns.
+            </p>
           )}
-          <div className="strait-hero-content">
-            <div className="eyebrow">{regionName}</div>
-            <h2 className="detail-title detail-title--hero">{strait.name}</h2>
-            <EntityPills entities={countries} />
-            <ConnectsLine strait={strait} />
-            {tags.length > 0 && (
-              <div className="pills pills--tags">
-                {tags.map((tag) => (
+        </EditorialSection>
+
+        {events.length > 0 && (
+          <EditorialSection eyebrow="History" title="Moments that turned here" wide>
+            <ol className="timeline timeline--compact">
+              {events.map((event) => (
+                <li key={event.id} className="timeline-event">
+                  <div className="timeline-year">{formatDateValue(event.data.date)}</div>
+                  <div className="timeline-body">
+                    <h3>{event.name}</h3>
+                    <p className="note">{event.data.summary}</p>
+                  </div>
+                </li>
+              ))}
+            </ol>
+            <Link viewTransition className="more-link" to="/timeline">
+              The full timeline →
+            </Link>
+          </EditorialSection>
+        )}
+
+        <InteractiveSection
+          eyebrow="The chart"
+          title={`${strait.name} on the water`}
+          id="chart"
+          aside={
+            <>
+              <div>
+                <div className="geo-label">Quick facts</div>
+                <div className="facts facts--line">
+                  {quickFacts.map((fact) => (
+                    <div key={fact.label} className="fact">
+                      <div className="fact-label">{fact.label}</div>
+                      <div className="fact-value fact-value--small">{fact.value}</div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+              {statistics.length > 0 && (
+                <div>
+                  <div className="geo-label">Numbers that matter</div>
+                  <div className="stat-cards">
+                    {statistics.map((stat) => (
+                      <div key={`${stat.metric}-${stat.period}`} className="stat-card">
+                        <div className="stat-value">{stat.value}</div>
+                        <div className="stat-unit">{stat.unit}</div>
+                        <div className="geo-label">
+                          {stat.metric === 'oil-transit' ? 'Oil moved through' : stat.metric} ·{' '}
+                          {stat.period} · {loadSourcesFor(stat)[0]?.publisher ?? 'sourced'}
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              )}
+            </>
+          }
+        >
+          <StraitMap strait={strait} tileStyle={tileStyle} />
+        </InteractiveSection>
+
+        {hasNavigation && (
+          <EditorialSection
+            eyebrow="Around the narrows"
+            title="What moves through these waters"
+            wide
+          >
+            <div className="geo-groups">
+              {routes.length > 0 && (
+                <div>
+                  <div className="geo-label">Shipping routes through</div>
+                  <EntityPills entities={routes} />
+                </div>
+              )}
+              {crossings.length > 0 && (
+                <div>
+                  <div className="geo-label">Crossings over and under</div>
+                  <EntityPills entities={crossings} />
+                </div>
+              )}
+              {ports.length > 0 && (
+                <div>
+                  <div className="geo-label">Ports on its shores</div>
+                  <EntityPills entities={ports} />
+                </div>
+              )}
+              {islands.length > 0 && (
+                <div>
+                  <div className="geo-label">Islands in the narrows</div>
+                  <EntityPills entities={islands} />
+                </div>
+              )}
+            </div>
+          </EditorialSection>
+        )}
+
+        {wildlife.length > 0 && (
+          <EditorialSection eyebrow="Life at the narrows" title="Who else passes this way" wide>
+            <div className="wildlife-rail">
+              {wildlife.map((species) => (
+                <article key={species.id} className="wildlife-card">
+                  <div className="eyebrow">
+                    {species.data.scientificName}
+                    {species.data.conservationStatus ? ' · at risk' : ''}
+                  </div>
+                  <h3>{species.data.commonName}</h3>
+                  <p className="note">{species.data.summary}</p>
+                  {species.data.seasonality && (
+                    <div className="coords">{species.data.seasonality}</div>
+                  )}
+                </article>
+              ))}
+            </div>
+          </EditorialSection>
+        )}
+
+        <div className="strait-onward">
+          <EntityGallery entity={{ type: 'strait', id: strait.id }} />
+
+          <ContinueExploring entityId={`strait:${strait.id}`} entityName={strait.name}>
+            <Link viewTransition className="pill pill--action" to={`/compare/${strait.id}`}>
+              Compare this strait ⇄
+            </Link>
+          </ContinueExploring>
+
+          {journeys.length > 0 && (
+            <Section label="Journeys that pass this way">
+              <div className="grid">
+                {journeys.map((journey) => (
                   <Link
                     viewTransition
-                    key={tag.id}
-                    className="pill pill--tag"
-                    to={`/tags/${tag.id}`}
+                    key={journey.id}
+                    className="card"
+                    to={`/journeys/${journey.id}`}
                   >
-                    {tag.name}
+                    <div className="eyebrow">
+                      {String(journey.waypoints.length)} stops · ~{String(journey.estimatedMinutes)}{' '}
+                      min
+                    </div>
+                    <h3>{journey.title}</h3>
+                    <div className="note">{journey.subtitle}</div>
                   </Link>
                 ))}
               </div>
-            )}
-          </div>
-        </header>
-
-        <div className="chart-split">
-          <aside className="chart-rail">
-            <StraitMap strait={strait} tileStyle={tileStyle} />
-            <Section label="Quick facts">
-              <div className="facts facts--line">
-                {quickFacts.map((fact) => (
-                  <div key={fact.label} className="fact">
-                    <div className="fact-label">{fact.label}</div>
-                    <div className="fact-value fact-value--small">{fact.value}</div>
-                  </div>
-                ))}
-              </div>
             </Section>
-            {statistics.length > 0 && (
-              <Section label="Numbers that matter">
-                <div className="stat-cards">
-                  {statistics.map((stat) => (
-                    <div key={`${stat.metric}-${stat.period}`} className="stat-card">
-                      <div className="stat-value">{stat.value}</div>
-                      <div className="stat-unit">{stat.unit}</div>
-                      <div className="geo-label">
-                        {stat.metric === 'oil-transit' ? 'Oil moved through' : stat.metric} ·{' '}
-                        {stat.period} · {loadSourcesFor(stat)[0]?.publisher ?? 'sourced'}
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              </Section>
-            )}
-          </aside>
-          <div className="chart-story">
-            <Section label="Why it matters">
-              <p className="note note--lede">{strait.note}</p>
-              {strait.summary && strait.summary !== strait.note && (
-                <p className="note" style={{ marginTop: 10 }}>
-                  {strait.summary}
-                </p>
-              )}
-            </Section>
+          )}
 
-            {strait.description && (
-              <Section label="The long read">
-                <p className="note note--read">{strait.description}</p>
-              </Section>
-            )}
+          <SourcesList sources={sources} />
 
-            {events.length > 0 && (
-              <Section label="History">
-                <ol className="timeline timeline--compact">
-                  {events.map((event) => (
-                    <li key={event.id} className="timeline-event">
-                      <div className="timeline-year">{formatDateValue(event.data.date)}</div>
-                      <div className="timeline-body">
-                        <h3>{event.name}</h3>
-                        <p className="note">{event.data.summary}</p>
-                      </div>
-                    </li>
-                  ))}
-                </ol>
-                <Link viewTransition className="more-link" to="/timeline">
-                  Full timeline →
-                </Link>
-              </Section>
-            )}
-
-            {hasNavigation && (
-              <Section label="Its place in navigation">
-                <div className="geo-groups">
-                  {routes.length > 0 && (
-                    <div>
-                      <div className="geo-label">Shipping routes through</div>
-                      <EntityPills entities={routes} />
-                    </div>
-                  )}
-                  {crossings.length > 0 && (
-                    <div>
-                      <div className="geo-label">Crossings over and under</div>
-                      <EntityPills entities={crossings} />
-                    </div>
-                  )}
-                  {ports.length > 0 && (
-                    <div>
-                      <div className="geo-label">Ports on its shores</div>
-                      <EntityPills entities={ports} />
-                    </div>
-                  )}
-                  {islands.length > 0 && (
-                    <div>
-                      <div className="geo-label">Islands in the narrows</div>
-                      <EntityPills entities={islands} />
-                    </div>
-                  )}
-                </div>
-              </Section>
-            )}
-
-            {wildlife.length > 0 && (
-              <Section label="Wildlife of the narrows">
-                <div className="grid">
-                  {wildlife.map((species) => (
-                    <div key={species.id} className="card" style={{ cursor: 'default' }}>
-                      <div className="eyebrow">
-                        {species.data.scientificName}
-                        {species.data.conservationStatus ? ' · at risk' : ''}
-                      </div>
-                      <h3>{species.data.commonName}</h3>
-                      <div className="note">{species.data.summary}</div>
-                      {species.data.seasonality && (
-                        <div className="coords">{species.data.seasonality}</div>
-                      )}
-                    </div>
-                  ))}
-                </div>
-              </Section>
-            )}
-
-            <EntityGallery entity={{ type: 'strait', id: strait.id }} />
-
-            <ContinueExploring entityId={`strait:${strait.id}`} entityName={strait.name}>
-              <Link viewTransition className="pill pill--action" to={`/compare/${strait.id}`}>
-                Compare this strait ⇄
-              </Link>
-            </ContinueExploring>
-
-            {journeys.length > 0 && (
-              <Section label="Journeys that pass this way">
-                <div className="grid">
-                  {journeys.map((journey) => (
-                    <Link
-                      viewTransition
-                      key={journey.id}
-                      className="card"
-                      to={`/journeys/${journey.id}`}
-                    >
-                      <div className="eyebrow">
-                        {String(journey.waypoints.length)} stops · ~
-                        {String(journey.estimatedMinutes)} min
-                      </div>
-                      <h3>{journey.title}</h3>
-                      <div className="note">{journey.subtitle}</div>
-                    </Link>
-                  ))}
-                </div>
-              </Section>
-            )}
-
-            <SourcesList sources={sources} />
-
-            <StraitPager previous={previous} next={next} />
-          </div>
+          <StraitPager previous={previous} next={next} />
         </div>
       </article>
     </>
