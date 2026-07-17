@@ -55,22 +55,28 @@ test('map page offers the chart with its toggles', async ({ page }) => {
   await expect(page.getByRole('button', { name: /Set adrift/ })).toBeVisible();
 });
 
-test('uncharted addresses become a discovery page, not an error', async ({ page }) => {
+test('uncharted addresses are a single-screen hero, not an error', async ({ page }) => {
   await page.goto('/uncharted-waters');
   await expect(page.locator('.uc-title')).toContainText('uncharted waters');
   await expect(page.locator('.uc-photo')).toBeVisible();
   await expect(page.getByRole('link', { name: 'Continue exploring' })).toBeVisible();
-  // The page never names the error.
-  await expect(page.locator('.uncharted')).not.toContainText('404');
-  await expect(page.locator('.uc-sections')).not.toContainText('not found');
-  // Discovery sections are present and the captain's log recommends onward.
-  await expect(page.locator('.uc-feature').first()).toBeVisible();
-  await expect(page.locator('.uc-log')).toContainText('Continue exploring');
+  await expect(page.getByRole('link', { name: 'Return home' })).toBeVisible();
+  await expect(page.getByRole('link', { name: 'Open the atlas' })).toBeVisible();
+  // The page never names the error, and nothing lives below the hero.
+  await expect(page.locator('body')).not.toContainText('404');
+  await expect(page.locator('body')).not.toContainText('not found');
+  await expect(page.locator('.uc-sections')).toHaveCount(0);
+  // The hero IS the page: it cannot be scrolled.
+  const canScroll = await page.evaluate(() => {
+    window.scrollTo(0, 2000);
+    return window.scrollY > 0;
+  });
+  expect(canScroll).toBe(false);
 });
 
 test('legendary waters grant the hidden trophy', async ({ page }) => {
   await page.goto('/somewhere-secret?legend=1');
-  await expect(page.locator('.uc-legend-card')).toContainText('true places never are');
+  await expect(page.locator('.uc-eyebrow')).toContainText('legendary');
   await page.goto('/profile');
   await expect(
     page.locator('.trophy-card.is-earned', { hasText: 'Beyond the Chart' }),
