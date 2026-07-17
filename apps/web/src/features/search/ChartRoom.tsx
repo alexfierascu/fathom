@@ -156,7 +156,10 @@ export function ChartRoom({ onClose }: ChartRoomProps) {
     [trimmed],
   );
 
+  const closingRef = useRef(false);
   const requestClose = useCallback(() => {
+    if (closingRef.current) return;
+    closingRef.current = true;
     setClosing(true);
     window.setTimeout(onClose, 220);
   }, [onClose]);
@@ -178,6 +181,17 @@ export function ChartRoom({ onClose }: ChartRoomProps) {
       document.documentElement.classList.remove('chartroom-open');
     };
   }, []);
+
+  // Escape closes from anywhere in the room, not only the input.
+  useEffect(() => {
+    const onKey = (event: globalThis.KeyboardEvent) => {
+      if (event.key === 'Escape') requestClose();
+    };
+    document.addEventListener('keydown', onKey);
+    return () => {
+      document.removeEventListener('keydown', onKey);
+    };
+  }, [requestClose]);
 
   // Any external navigation dismisses the Chart Room.
   const lastPath = useRef(location.pathname);
@@ -270,7 +284,13 @@ export function ChartRoom({ onClose }: ChartRoomProps) {
         </div>
       </div>
 
-      <div className="chartroom-scroll">
+      <div
+        className="chartroom-scroll"
+        onMouseDown={(event) => {
+          // Clicking the empty water around the content leaves the room.
+          if (event.target === event.currentTarget) requestClose();
+        }}
+      >
         <div className="chartroom-body">
           <header className="chartroom-head">
             <div className="geo-label">{t('chartroom.title')}</div>
