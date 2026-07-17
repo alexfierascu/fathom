@@ -1,5 +1,10 @@
 packages:
   - apps/*
   - packages/*
+  - functions
 allowBuilds:
   esbuild: true
+  sharp: true
+  workerd: true
+minimumReleaseAgeExclude:
+  - '@cloudflare/workers-types@5.20260717.1'
