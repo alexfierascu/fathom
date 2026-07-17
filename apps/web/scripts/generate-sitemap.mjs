@@ -23,7 +23,19 @@ const slugify = (name) =>
     .replace(/[^a-z0-9]+/g, '-')
     .replace(/^-+|-+$/g, '');
 
-const paths = ['/', '/explore', '/map', '/learn', '/journeys', '/timeline', '/quiz', '/compare'];
+const paths = [
+  '/',
+  '/explore',
+  '/map',
+  '/learn',
+  '/journeys',
+  '/timeline',
+  '/quiz',
+  '/compare',
+  '/daily',
+  '/passport',
+  '/six-degrees',
+];
 
 for (const tag of readJson('knowledge/tags.json')) paths.push(`/tags/${tag.id}`);
 // Kept in step with packages/discovery/src/catalog.ts.

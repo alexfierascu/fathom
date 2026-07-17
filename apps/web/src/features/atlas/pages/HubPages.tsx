@@ -157,6 +157,21 @@ export function LearnPage() {
             <h3>Compare straits</h3>
             <p>Two narrows side by side — geography, countries, and crossings.</p>
           </Link>
+          <Link viewTransition className="explore-tile" to="/daily">
+            <div className="explore-tile-glyph">⚓</div>
+            <h3>Daily Expedition</h3>
+            <p>A new generated passage every day — same course for everyone.</p>
+          </Link>
+          <Link viewTransition className="explore-tile" to="/six-degrees">
+            <div className="explore-tile-glyph">⛓</div>
+            <h3>Six Degrees of Sea</h3>
+            <p>Reach a far strait using only the atlas's own connections.</p>
+          </Link>
+          <Link viewTransition className="explore-tile" to="/passport">
+            <div className="explore-tile-glyph">★</div>
+            <h3>Voyage Passport</h3>
+            <p>Your journeys, quizzes, and challenges — stamped.</p>
+          </Link>
         </div>
 
         <Collections />

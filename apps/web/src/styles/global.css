@@ -3240,3 +3240,93 @@ a.flow-node:hover .flow-name {
 .stop-challenge .chip {
   margin-top: 10px;
 }
+
+/* ---------- Passport, badges, six degrees ---------- */
+
+.stamp-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(var(--tile-min), 1fr));
+  gap: 12px;
+}
+.stamp {
+  display: grid;
+  justify-items: center;
+  text-align: center;
+  gap: 8px;
+  padding: 22px 14px 18px;
+  border: 1px dashed var(--border);
+  border-radius: calc(var(--radius) * 2);
+  color: var(--text-muted);
+  text-decoration: none;
+}
+.stamp b {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: 0.98rem;
+  color: var(--text);
+}
+.stamp-ring {
+  width: 54px;
+  height: 54px;
+  border-radius: 50%;
+  border: 2px dashed var(--border);
+  display: grid;
+  place-items: center;
+  font-size: 1.3rem;
+}
+.stamp.is-earned {
+  border-style: solid;
+  border-color: color-mix(in srgb, var(--accent-2) 45%, transparent);
+}
+.stamp.is-earned .stamp-ring {
+  border: 2px solid var(--accent-2);
+  color: var(--accent-2);
+  transform: rotate(-8deg);
+  font-weight: 700;
+}
+.stamp-date {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.6rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+.badge-row {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+.badge {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.68rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  padding: 8px 14px;
+  color: var(--text-muted);
+}
+.badge.is-earned {
+  border-color: color-mix(in srgb, var(--accent-2) 55%, transparent);
+  color: var(--accent-2);
+}
+.six-board {
+  display: grid;
+  gap: 20px;
+}
+.six-trail {
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: calc(var(--radius) * 2);
+  padding: 18px 22px;
+}
+.six-result {
+  background: var(--panel);
+  border: 1px solid color-mix(in srgb, var(--accent-2) 40%, transparent);
+  border-radius: calc(var(--radius) * 2);
+  padding: 24px 26px;
+}
+.six-board .xp-card {
+  cursor: pointer;
+  font: inherit;
+  text-align: left;
+}

@@ -10,6 +10,8 @@ export interface JourneyProgress {
   finished: boolean;
   /** Index of the current stop once started. */
   stop: number;
+  /** ISO date of the first completion — the passport stamp. */
+  finishedOn?: string;
 }
 
 const FRESH: JourneyProgress = { started: false, finished: false, stop: 0 };
@@ -27,6 +29,7 @@ function loadProgress(journeyId: string): JourneyProgress {
       started: record.started === true,
       finished: record.finished === true,
       stop: typeof record.stop === 'number' && record.stop >= 0 ? record.stop : 0,
+      finishedOn: typeof record.finishedOn === 'string' ? record.finishedOn : undefined,
     };
   } catch {
     return FRESH;
@@ -78,7 +81,11 @@ export function useJourneyProgress(journeyId: string, stopCount: number) {
     [clamp],
   );
   const finish = useCallback(() => {
-    setProgress((state) => ({ ...state, finished: true }));
+    setProgress((state) => ({
+      ...state,
+      finished: true,
+      finishedOn: state.finishedOn ?? new Date().toISOString().slice(0, 10),
+    }));
   }, []);
   const reset = useCallback(() => {
     setProgress(FRESH);

@@ -1,4 +1,4 @@
-import { useCallback, useRef, useState } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 
 import { Link, useOutletContext, useParams } from 'react-router';
 
@@ -189,13 +189,21 @@ const TYPE_LABELS: Record<string, string> = {
   'maritime-route': 'Route',
 };
 
-export function JourneyDetailPage() {
-  const { slug } = useParams();
+interface JourneyExperienceProps {
+  journey: Journey;
+  /** Storage key for progress and the voyage log. */
+  journeyKey: string;
+  /** Canonical path for SEO. */
+  path: string;
+  crumbs: readonly { label: string; to?: string }[];
+}
+
+/** The full journey experience — catalog voyages and generated ones alike. */
+export function JourneyExperience({ journey, journeyKey, path, crumbs }: JourneyExperienceProps) {
   const { tileStyle } = useOutletContext<LayoutContext>();
-  const journey = findJourney(slug);
-  const stopCount = journey?.waypoints.length ?? 0;
+  const stopCount = journey.waypoints.length;
   const { progress, start, resume, pause, next, previous, jumpTo, finish, reset } =
-    useJourneyProgress(slug ?? 'unknown', stopCount);
+    useJourneyProgress(journeyKey, stopCount);
   const courseRef = useRef<HTMLDivElement>(null);
 
   // Every travel action returns the eyes to the chart and the stop panel —
@@ -213,19 +221,36 @@ export function JourneyDetailPage() {
     },
     [scrollToCourse],
   );
-  const { log, logQuiz, logChallenge, resetLog } = useJourneyLog(slug ?? 'unknown');
-  const [challengeRun, setChallengeRun] = useState<{ stop: number; solved: string[] } | null>(null);
+  const { log, logQuiz, logChallenge, resetLog } = useJourneyLog(journeyKey);
 
-  if (!journey) {
-    return (
-      <div className="empty">
-        No such journey.{' '}
-        <Link viewTransition to="/journeys">
-          Browse the journeys.
-        </Link>
-      </div>
-    );
-  }
+  // Keyboard sailing: arrow keys move the voyage while travelling.
+  const travellingRef = useRef(false);
+  useEffect(() => {
+    const onKey = (event: KeyboardEvent) => {
+      if (!travellingRef.current || event.metaKey || event.ctrlKey || event.altKey) return;
+      const target = event.target as HTMLElement | null;
+      if (
+        target instanceof HTMLInputElement ||
+        target instanceof HTMLTextAreaElement ||
+        target instanceof HTMLSelectElement
+      )
+        return;
+      if (event.key === 'ArrowRight') {
+        event.preventDefault();
+        next();
+        scrollToCourse();
+      } else if (event.key === 'ArrowLeft') {
+        event.preventDefault();
+        previous();
+        scrollToCourse();
+      }
+    };
+    document.addEventListener('keydown', onKey);
+    return () => {
+      document.removeEventListener('keydown', onKey);
+    };
+  }, [next, previous, scrollToCourse]);
+  const [challengeRun, setChallengeRun] = useState<{ stop: number; solved: string[] } | null>(null);
 
   const cover = coverOf(journey);
   const related = relatedJourneys(journey, loadJourneys());
@@ -233,6 +258,9 @@ export function JourneyDetailPage() {
   const stopNode = waypoint ? resolveWaypoint(waypoint) : null;
   const stopPath = stopNode ? entityPath(stopNode) : null;
   const travelling = progress.started && !progress.finished;
+  useEffect(() => {
+    travellingRef.current = travelling;
+  });
 
   // ----- The stop as a chapter: everything below derives from data -----
   const seeded = (seed: number) => {
@@ -507,18 +535,8 @@ export function JourneyDetailPage() {
 
   return (
     <>
-      <SeoTags
-        title={`${journey.title} — Fathom`}
-        description={journey.subtitle}
-        path={`/journeys/${journey.id}`}
-      />
-      <Breadcrumbs
-        items={[
-          { label: 'Home', to: '/' },
-          { label: 'Journeys', to: '/journeys' },
-          { label: journey.title },
-        ]}
-      />
+      <SeoTags title={`${journey.title} — Fathom`} description={journey.subtitle} path={path} />
+      <Breadcrumbs items={crumbs} />
       <article className="detail">
         <header className="strait-hero journey-hero">
           {cover && (
@@ -780,5 +798,32 @@ export function JourneyDetailPage() {
         )}
       </article>
     </>
+  );
+}
+
+export function JourneyDetailPage() {
+  const { slug } = useParams();
+  const journey = findJourney(slug);
+  if (!journey) {
+    return (
+      <div className="empty">
+        No such journey.{' '}
+        <Link viewTransition to="/journeys">
+          Browse the journeys.
+        </Link>
+      </div>
+    );
+  }
+  return (
+    <JourneyExperience
+      journey={journey}
+      journeyKey={journey.id}
+      path={`/journeys/${journey.id}`}
+      crumbs={[
+        { label: 'Home', to: '/' },
+        { label: 'Journeys', to: '/journeys' },
+        { label: journey.title },
+      ]}
+    />
   );
 }

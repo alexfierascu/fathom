@@ -85,6 +85,25 @@ export const router = createBrowserRouter([
         path: 'journeys/:slug',
         lazy: () => pageChunks.journeys().then((m) => ({ Component: m.JourneyDetailPage })),
       },
+      {
+        path: 'daily',
+        lazy: () =>
+          import('../features/journeys/DailyPage').then((m) => ({ Component: m.DailyPage })),
+      },
+      {
+        path: 'passport',
+        lazy: () =>
+          import('../features/journeys/PassportPage').then((m) => ({
+            Component: m.PassportPage,
+          })),
+      },
+      {
+        path: 'six-degrees',
+        lazy: () =>
+          import('../features/explore/SixDegreesPage').then((m) => ({
+            Component: m.SixDegreesPage,
+          })),
+      },
       { path: 'tours', element: <Navigate to="/journeys" replace /> },
       { path: 'tours/:slug', element: <TourRedirect /> },
       {
