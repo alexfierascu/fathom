@@ -55,8 +55,11 @@ test('map page offers the chart with its toggles', async ({ page }) => {
   await expect(page.getByRole('button', { name: /Set adrift/ })).toBeVisible();
 });
 
-test('passport keeps the score', async ({ page }) => {
-  await page.goto('/passport');
+test("captain's log keeps the score", async ({ page }) => {
+  await page.goto('/profile');
+  await expect(page.locator('.rank-title')).toContainText('Cadet');
   await expect(page.locator('.stamp')).toHaveCount(7);
-  await expect(page.locator('.badge')).toHaveCount(8);
+  await expect(page.locator('.trophy-card')).toHaveCount(17);
+  await page.goto('/passport');
+  await expect(page).toHaveURL(/\/profile$/);
 });

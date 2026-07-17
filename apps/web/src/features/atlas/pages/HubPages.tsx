@@ -279,10 +279,10 @@ export function LearnPage() {
             <h3>Six Degrees of Sea</h3>
             <p>Reach a far strait using only the atlas's own connections.</p>
           </Link>
-          <Link viewTransition className="explore-tile" to="/passport">
+          <Link viewTransition className="explore-tile" to="/profile">
             <div className="explore-tile-glyph">★</div>
-            <h3>Voyage Passport</h3>
-            <p>Your journeys, quizzes, and challenges — stamped.</p>
+            <h3>Captain's Log</h3>
+            <p>Your rank, voyages, trophies, and everything learned at sea.</p>
           </Link>
         </div>
 

@@ -1,3 +1,5 @@
+import { recordExploration } from '../progression/store';
+
 /**
  * A small trail of where the reader has been, for the homepage's
  * Continue Reading section. Stored locally; nothing leaves the browser.
@@ -38,4 +40,5 @@ export function recordVisit(visit: RecentVisit): void {
   } catch {
     // Storage unavailable — the trail simply isn't kept.
   }
+  recordExploration(visit.entityId);
 }

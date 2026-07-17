@@ -38,7 +38,7 @@ function SearchPanel({
     { label: 'Open the map', run: () => void navigate('/map') },
     { label: 'Set adrift', run: () => void navigate('/map?drift=1') },
     { label: 'Daily Expedition', run: () => void navigate('/daily') },
-    { label: 'Voyage Passport', run: () => void navigate('/passport') },
+    { label: "Captain's Log", run: () => void navigate('/profile') },
     { label: 'Six Degrees of Sea', run: () => void navigate('/six-degrees') },
     ...loadJourneys().map((journey) => ({
       label: `Start: ${journey.title}`,

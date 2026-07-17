@@ -91,12 +91,13 @@ export const router = createBrowserRouter([
           import('../features/journeys/DailyPage').then((m) => ({ Component: m.DailyPage })),
       },
       {
-        path: 'passport',
+        path: 'profile',
         lazy: () =>
-          import('../features/journeys/PassportPage').then((m) => ({
-            Component: m.PassportPage,
+          import('../features/profile/ProfilePage').then((m) => ({
+            Component: m.ProfilePage,
           })),
       },
+      { path: 'passport', element: <Navigate to="/profile" replace /> },
       {
         path: 'wildlife',
         lazy: () => pageChunks.hubs().then((m) => ({ Component: m.WildlifePage })),

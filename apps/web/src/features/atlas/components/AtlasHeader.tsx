@@ -60,6 +60,28 @@ export function AtlasHeader({ onSearchOpen, children }: AtlasHeaderProps) {
             <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
           </svg>
         </button>
+        <Link
+          viewTransition
+          to="/profile"
+          className="control-btn"
+          aria-label="Captain's log"
+          title="Captain's log"
+        >
+          <svg
+            width="17"
+            height="17"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2"
+            strokeLinecap="round"
+            aria-hidden="true"
+          >
+            <circle cx="12" cy="12" r="5"></circle>
+            <path d="M12 3v4M12 17v4M3 12h4M17 12h4"></path>
+            <circle cx="12" cy="12" r="1.6"></circle>
+          </svg>
+        </Link>
         {children}
       </div>
     </header>
