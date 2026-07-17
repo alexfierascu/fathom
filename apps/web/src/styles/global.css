@@ -3847,3 +3847,171 @@ a.control-btn {
 .account-linkish:hover {
   color: var(--text);
 }
+
+/* ------------------------------------------------------------------ */
+/* Off the chart — the 404 seascape                                    */
+
+.notfound {
+  display: grid;
+  justify-items: center;
+  text-align: center;
+  gap: 10px;
+  padding: 48px 20px 72px;
+}
+.nf-scene {
+  width: min(560px, 100%);
+  height: auto;
+  margin-bottom: 8px;
+  fill: none;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.nf-scene path,
+.nf-scene circle {
+  stroke: var(--text-muted);
+  stroke-width: 1.6;
+}
+.nf-stars circle {
+  fill: var(--text-muted);
+  stroke: none;
+  animation: nf-twinkle 4s ease-in-out infinite;
+}
+.nf-stars circle:nth-child(2n) {
+  animation-delay: -1.3s;
+}
+.nf-stars circle:nth-child(3n) {
+  animation-delay: -2.6s;
+}
+.nf-moon circle {
+  stroke: none;
+}
+.nf-moon path {
+  stroke: none;
+  fill: color-mix(in srgb, var(--accent-2) 70%, transparent);
+}
+.nf-beam {
+  stroke: none;
+  fill: var(--accent-2);
+  opacity: 0.07;
+  animation: nf-beam 6s ease-in-out infinite;
+}
+.nf-lamp {
+  fill: var(--accent-2);
+  stroke: none;
+}
+.nf-rock {
+  fill: color-mix(in srgb, var(--panel-2) 70%, transparent);
+}
+.nf-soft {
+  opacity: 0.45;
+}
+.nf-route {
+  stroke: var(--accent-2);
+  stroke-dasharray: 3 7;
+  opacity: 0.7;
+  animation: nf-current 1.6s linear infinite;
+}
+.nf-x path {
+  stroke: var(--accent-2);
+  stroke-width: 2;
+}
+.nf-here {
+  fill: var(--text-muted);
+  stroke: none;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 9px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+.nf-wave {
+  stroke: var(--teal);
+  animation: nf-drift 9s linear infinite;
+}
+.nf-wave--back {
+  opacity: 0.3;
+  animation-duration: 12s;
+}
+.nf-wave--mid {
+  opacity: 0.55;
+  animation-duration: 8s;
+  animation-direction: reverse;
+}
+.nf-wave--front {
+  opacity: 0.85;
+  animation-duration: 10s;
+}
+.nf-boat {
+  animation: nf-bob 6s ease-in-out infinite;
+  transform-box: fill-box;
+  transform-origin: center 80%;
+}
+.nf-hull {
+  fill: color-mix(in srgb, var(--panel-2) 80%, transparent);
+}
+.nf-sail {
+  fill: color-mix(in srgb, var(--text) 8%, transparent);
+}
+.nf-pennant {
+  fill: var(--accent-2);
+  stroke: none;
+}
+.nf-code {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: clamp(3.2rem, 8vw, 4.6rem);
+  line-height: 1;
+  letter-spacing: 0.06em;
+  color: var(--accent-2);
+  margin: 0;
+}
+.nf-note {
+  max-width: 52ch;
+  margin: 4px 0 14px;
+}
+.nf-pills {
+  justify-content: center;
+}
+
+@keyframes nf-twinkle {
+  0%,
+  100% {
+    opacity: 0.25;
+  }
+  50% {
+    opacity: 0.8;
+  }
+}
+@keyframes nf-beam {
+  0%,
+  100% {
+    opacity: 0.04;
+  }
+  50% {
+    opacity: 0.16;
+  }
+}
+@keyframes nf-drift {
+  to {
+    transform: translateX(-80px);
+  }
+}
+@keyframes nf-bob {
+  0%,
+  100% {
+    transform: translateY(0) rotate(-1.2deg);
+  }
+  50% {
+    transform: translateY(-5px) rotate(1.2deg);
+  }
+}
+@keyframes nf-current {
+  to {
+    stroke-dashoffset: -10;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .nf-scene * {
+    animation: none !important;
+  }
+}
