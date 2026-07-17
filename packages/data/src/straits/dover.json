@@ -7,5 +7,12 @@
   "lat": 51,
   "lon": 1.4,
   "note": "The narrowest point of the Channel — the far coast is visible on a clear day.",
-  "tagIds": ["chokepoint", "crossed"]
+  "tagIds": ["chokepoint", "crossed"],
+  "dimensions": {
+    "widthMin": {
+      "value": 33,
+      "unit": "km",
+      "sourceIds": ["britannica-dover-dims"]
+    }
+  }
 }

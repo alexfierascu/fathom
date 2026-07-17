@@ -7,5 +7,12 @@
   "lat": -53.5,
   "lon": -70,
   "note": "Ferdinand Magellan's 1520 passage that gave it its name.",
-  "tagIds": ["historic-trade"]
+  "tagIds": ["historic-trade"],
+  "dimensions": {
+    "length": {
+      "value": 570,
+      "unit": "km",
+      "sourceIds": ["britannica-magellan-dims"]
+    }
+  }
 }

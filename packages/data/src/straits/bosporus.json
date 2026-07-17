@@ -7,5 +7,17 @@
   "lat": 41.12,
   "lon": 29.07,
   "note": "Splits Istanbul in two; forms half of the Turkish Straits.",
-  "tagIds": ["chokepoint", "crossed"]
+  "tagIds": ["chokepoint", "crossed"],
+  "dimensions": {
+    "length": {
+      "value": 30,
+      "unit": "km",
+      "sourceIds": ["britannica-bosporus-dims"]
+    },
+    "widthMin": {
+      "value": 700,
+      "unit": "m",
+      "sourceIds": ["britannica-bosporus-dims"]
+    }
+  }
 }

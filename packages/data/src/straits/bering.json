@@ -7,5 +7,12 @@
   "lat": 65.75,
   "lon": -169,
   "note": "At its narrowest, only about 82 km separates Alaska from Russia.",
-  "tagIds": ["polar"]
+  "tagIds": ["polar"],
+  "dimensions": {
+    "widthMin": {
+      "value": 85,
+      "unit": "km",
+      "sourceIds": ["britannica-bering-dims"]
+    }
+  }
 }

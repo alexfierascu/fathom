@@ -47,5 +47,29 @@
     "method": "estimated",
     "notes": "Combined Suez Canal and SUMED pipeline flows.",
     "sourceIds": ["eia-chokepoints"]
+  },
+  {
+    "subject": {
+      "type": "canal",
+      "id": "suez-canal"
+    },
+    "metric": "vessel-transits",
+    "value": 26434,
+    "unit": "transits",
+    "period": "2023",
+    "method": "measured",
+    "sourceIds": ["sca-navigation-statistics"]
+  },
+  {
+    "subject": {
+      "type": "canal",
+      "id": "panama-canal"
+    },
+    "metric": "vessel-transits",
+    "value": 14080,
+    "unit": "transits",
+    "period": "FY2023",
+    "method": "measured",
+    "sourceIds": ["acp-annual-report-2023"]
   }
 ]

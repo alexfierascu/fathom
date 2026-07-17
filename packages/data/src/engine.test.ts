@@ -42,7 +42,9 @@ describe('getRelated: strait relationships', () => {
 
   it('resolves knowledge attachments where they exist', () => {
     expect(getRelated(gibraltar, 'tags').map((tag) => tag.id)).toContain('chokepoint');
-    expect(getRelated(gibraltar, 'wildlife')).toEqual([]);
+    expect(getRelated(gibraltar, 'wildlife').map((species) => species.id)).toContain(
+      'iberian-orca',
+    );
     expect(getRelated(gibraltar, 'statistics')).toEqual([]);
 
     const dardanelles = getStraitEntity(loadStrait('dardanelles'));

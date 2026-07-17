@@ -1,1 +1,48 @@
-[]
+[
+  {
+    "id": "gray-whale",
+    "commonName": "Gray whale",
+    "scientificName": "Eschrichtius robustus",
+    "summary": "Gray whales pass through the Bering Strait on one of the longest mammal migrations on Earth, between Arctic feeding grounds and Baja California lagoons.",
+    "habitats": [
+      {
+        "type": "strait",
+        "id": "bering"
+      }
+    ],
+    "category": "mammal",
+    "seasonality": "Transits northward in spring and southward in autumn.",
+    "sourceIds": ["wikipedia-gray-whale"]
+  },
+  {
+    "id": "iberian-orca",
+    "commonName": "Orca (Iberian subpopulation)",
+    "scientificName": "Orcinus orca",
+    "summary": "A small, critically endangered orca subpopulation hunts bluefin tuna in and around the Strait of Gibraltar.",
+    "habitats": [
+      {
+        "type": "strait",
+        "id": "gibraltar"
+      }
+    ],
+    "category": "mammal",
+    "conservationStatus": "Critically Endangered (IUCN assessment of the Iberian subpopulation)",
+    "seasonality": "Most often observed in the strait in summer, following tuna.",
+    "sourceIds": ["wikipedia-iberian-orca"]
+  },
+  {
+    "id": "narwhal",
+    "commonName": "Narwhal",
+    "scientificName": "Monodon monoceros",
+    "summary": "Narwhals winter in the deep, ice-covered waters of Baffin Bay and Davis Strait, diving beneath the pack ice.",
+    "habitats": [
+      {
+        "type": "strait",
+        "id": "davis"
+      }
+    ],
+    "category": "mammal",
+    "seasonality": "Winters offshore in Baffin Bay–Davis Strait; summers in High Arctic fjords.",
+    "sourceIds": ["wikipedia-narwhal"]
+  }
+]

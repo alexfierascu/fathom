@@ -4072,5 +4072,101 @@
     "publisher": "U.S. Energy Information Administration",
     "locator": "https://www.eia.gov/international/analysis/special-topics/World_Oil_Transit_Chokepoints",
     "accessedOn": "2026-07-17"
+  },
+  {
+    "id": "sca-navigation-statistics",
+    "type": "website",
+    "title": "Navigation Statistics",
+    "publisher": "Suez Canal Authority",
+    "locator": "https://www.suezcanal.gov.eg/English/Navigation/Pages/NavigationStatistics.aspx",
+    "accessedOn": "2026-07-17"
+  },
+  {
+    "id": "acp-annual-report-2023",
+    "type": "website",
+    "title": "Annual Report FY2023",
+    "publisher": "Panama Canal Authority",
+    "locator": "https://pancanal.com/en/annual-reports/",
+    "accessedOn": "2026-07-17"
+  },
+  {
+    "id": "wikipedia-gray-whale",
+    "type": "website",
+    "title": "Gray whale",
+    "publisher": "Wikipedia",
+    "locator": "https://en.wikipedia.org/wiki/Gray_whale",
+    "accessedOn": "2026-07-17"
+  },
+  {
+    "id": "wikipedia-iberian-orca",
+    "type": "website",
+    "title": "Iberian orca",
+    "publisher": "Wikipedia",
+    "locator": "https://en.wikipedia.org/wiki/Iberian_orca",
+    "accessedOn": "2026-07-17"
+  },
+  {
+    "id": "wikipedia-narwhal",
+    "type": "website",
+    "title": "Narwhal",
+    "publisher": "Wikipedia",
+    "locator": "https://en.wikipedia.org/wiki/Narwhal",
+    "accessedOn": "2026-07-17"
+  },
+  {
+    "id": "britannica-bosporus-dims",
+    "type": "website",
+    "title": "Encyclopaedia Britannica — Bosporus",
+    "publisher": "Encyclopaedia Britannica",
+    "locator": "https://www.britannica.com/place/Bosporus",
+    "accessedOn": "2026-07-17"
+  },
+  {
+    "id": "britannica-gibraltar-dims",
+    "type": "website",
+    "title": "Encyclopaedia Britannica — Gibraltar",
+    "publisher": "Encyclopaedia Britannica",
+    "locator": "https://www.britannica.com/place/Strait-of-Gibraltar",
+    "accessedOn": "2026-07-17"
+  },
+  {
+    "id": "britannica-dover-dims",
+    "type": "website",
+    "title": "Encyclopaedia Britannica — Dover",
+    "publisher": "Encyclopaedia Britannica",
+    "locator": "https://www.britannica.com/place/Strait-of-Dover",
+    "accessedOn": "2026-07-17"
+  },
+  {
+    "id": "britannica-hormuz-dims",
+    "type": "website",
+    "title": "Encyclopaedia Britannica — Hormuz",
+    "publisher": "Encyclopaedia Britannica",
+    "locator": "https://www.britannica.com/place/Strait-of-Hormuz",
+    "accessedOn": "2026-07-17"
+  },
+  {
+    "id": "britannica-malacca-dims",
+    "type": "website",
+    "title": "Encyclopaedia Britannica — Malacca",
+    "publisher": "Encyclopaedia Britannica",
+    "locator": "https://www.britannica.com/place/Strait-of-Malacca",
+    "accessedOn": "2026-07-17"
+  },
+  {
+    "id": "britannica-magellan-dims",
+    "type": "website",
+    "title": "Encyclopaedia Britannica — Magellan",
+    "publisher": "Encyclopaedia Britannica",
+    "locator": "https://www.britannica.com/place/Strait-of-Magellan",
+    "accessedOn": "2026-07-17"
+  },
+  {
+    "id": "britannica-bering-dims",
+    "type": "website",
+    "title": "Encyclopaedia Britannica — Bering",
+    "publisher": "Encyclopaedia Britannica",
+    "locator": "https://www.britannica.com/place/Bering-Strait",
+    "accessedOn": "2026-07-17"
   }
 ]

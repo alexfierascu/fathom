@@ -7,5 +7,17 @@
   "lat": 2.5,
   "lon": 101,
   "note": "Carries roughly a quarter of the world's traded goods by sea.",
-  "tagIds": ["chokepoint", "historic-trade"]
+  "tagIds": ["chokepoint", "historic-trade"],
+  "dimensions": {
+    "length": {
+      "value": 800,
+      "unit": "km",
+      "sourceIds": ["britannica-malacca-dims"]
+    },
+    "widthMin": {
+      "value": 2.8,
+      "unit": "km",
+      "sourceIds": ["britannica-malacca-dims"]
+    }
+  }
 }

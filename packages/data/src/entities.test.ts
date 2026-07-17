@@ -23,6 +23,6 @@ describe('knowledge collections', () => {
   });
 
   it('loads the still-empty collections as empty', () => {
-    expect(loadWildlife()).toEqual([]);
+    expect(loadWildlife().map((species) => species.id)).toContain('gray-whale');
   });
 });
