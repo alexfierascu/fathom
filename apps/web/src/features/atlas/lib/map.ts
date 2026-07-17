@@ -214,12 +214,14 @@ export function setupMapChrome(
   map: L.Map,
   panel: HTMLElement | null,
   initialStyle: TileStyle = 'dark',
+  options?: { base?: 'chart' | 'bathymetry' },
 ): TileManager {
   const chart = L.tileLayer(TILE_STYLES[initialStyle].url, {
     attribution: TILE_STYLES[initialStyle].attribution,
     subdomains: 'abcd',
     maxZoom: 19,
-  }).addTo(map);
+  });
+  if (options?.base !== 'bathymetry') chart.addTo(map);
   const satellite = L.tileLayer(ESRI_IMAGERY.url, {
     attribution: ESRI_IMAGERY.attribution,
     maxZoom: 19,
@@ -231,6 +233,7 @@ export function setupMapChrome(
     format: 'image/png',
     maxZoom: 12,
   });
+  if (options?.base === 'bathymetry') bathymetry.addTo(map);
 
   L.control
     .layers(

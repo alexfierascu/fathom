@@ -10,9 +10,12 @@ import {
   loadJourneys,
   randomEntity,
   randomWalk,
+  shortestPath,
 } from '@fathom/discovery';
 
-import { Link } from 'react-router';
+import { Link, useNavigate } from 'react-router';
+
+import { formatDistance } from '../lib/units';
 
 import type { TileStyle } from '../../theme/themes';
 import {
@@ -38,6 +41,12 @@ interface MapPanelProps {
   /** Drift mode: the chart sails itself from place to place. */
   drift?: boolean;
   onDriftStop?: () => void;
+  /** Clickable sea-name labels for anchored waters. */
+  seaLabels?: boolean;
+  /** Course plotter: click two straits, see the water route between them. */
+  plot?: boolean;
+  /** GEBCO bathymetry as the opening base layer. */
+  base?: 'chart' | 'bathymetry';
   tileStyle: TileStyle;
 }
 
@@ -49,6 +58,9 @@ export function MapPanel({
   lanes = false,
   drift = false,
   onDriftStop,
+  seaLabels = false,
+  plot = false,
+  base = 'chart',
   tileStyle,
 }: MapPanelProps) {
   const panelRef = useRef<HTMLDivElement>(null);
@@ -56,6 +68,73 @@ export function MapPanel({
   const mapRef = useRef<L.Map | null>(null);
   const tilesRef = useRef<TileManager | null>(null);
   const markersRef = useRef(new Map<string, L.Marker>());
+
+  // Course plotter: two picked straits, one water route between them.
+  const plotRef = useRef(plot);
+  const [plotPicks, setPlotPicks] = useState<string[]>([]);
+  const [plotResult, setPlotResult] = useState<{ label: string } | null>(null);
+  const plotLayerRef = useRef<L.LayerGroup | null>(null);
+  // Render-time adjustment: leaving plot mode clears the picks.
+  const [plotAdopted, setPlotAdopted] = useState(plot);
+  if (plotAdopted !== plot) {
+    setPlotAdopted(plot);
+    if (!plot) {
+      setPlotPicks([]);
+      setPlotResult(null);
+    }
+  }
+  useEffect(() => {
+    plotRef.current = plot;
+    if (!plot) {
+      plotLayerRef.current?.remove();
+      plotLayerRef.current = null;
+    }
+  }, [plot]);
+  const pickForPlot = (straitId: string) => {
+    setPlotPicks((picks) => {
+      const next = picks.includes(straitId) ? picks : [...picks, straitId].slice(-2);
+      if (next.length === 2 && next[0] && next[1]) {
+        const map = mapRef.current;
+        const graph = getMaritimeGraph();
+        const path = shortestPath(graph, `strait:${next[0]}`, `strait:${next[1]}`, {
+          kinds: ['connected_to', 'adjacent_to', 'flows_into', 'contains'],
+        });
+        plotLayerRef.current?.remove();
+        if (map && path) {
+          const points = path
+            .map((id) => graph.nodes.get(id))
+            .filter(
+              (node): node is NonNullable<typeof node> & { lat: number; lon: number } =>
+                node?.lat !== undefined && node.lon !== undefined,
+            );
+          const layer = L.layerGroup().addTo(map);
+          L.polyline(
+            points.map((point) => [point.lat, point.lon] as L.LatLngTuple),
+            { weight: 2, dashArray: '5 5', color: '#2faea0' },
+          ).addTo(layer);
+          plotLayerRef.current = layer;
+          let km = 0;
+          for (let i = 1; i < points.length; i += 1) {
+            const a = points[i - 1];
+            const b = points[i];
+            if (a && b) km += map.distance([a.lat, a.lon], [b.lat, b.lon]) / 1000;
+          }
+          const fromName = graph.nodes.get(`strait:${next[0]}`)?.name ?? next[0];
+          const toName = graph.nodes.get(`strait:${next[1]}`)?.name ?? next[1];
+          setPlotResult({
+            label: `${fromName} → ${toName} · ~${formatDistance(km)} via charted waters (estimate)`,
+          });
+        } else {
+          setPlotResult({ label: 'No charted water route between those two.' });
+        }
+      } else {
+        setPlotResult(null);
+        plotLayerRef.current?.remove();
+        plotLayerRef.current = null;
+      }
+      return next;
+    });
+  };
 
   useEffect(() => {
     const container = containerRef.current;
@@ -69,7 +148,7 @@ export function MapPanel({
       shared?.zoom ?? WORLD_ZOOM,
     );
     mapRef.current = map;
-    tilesRef.current = setupMapChrome(map, panelRef.current);
+    tilesRef.current = setupMapChrome(map, panelRef.current, 'dark', { base });
     const stopSyncing = syncViewToUrl(map);
 
     const cluster = L.markerClusterGroup({
@@ -85,7 +164,13 @@ export function MapPanel({
     });
     const markers = markersRef.current;
     for (const strait of straits) {
-      markers.set(strait.id, bindStraitMarker(cluster, strait));
+      const marker = bindStraitMarker(cluster, strait);
+      marker.on('click', () => {
+        if (!plotRef.current) return;
+        marker.closePopup();
+        pickForPlot(strait.id);
+      });
+      markers.set(strait.id, marker);
     }
     map.addLayer(cluster);
 
@@ -106,6 +191,29 @@ export function MapPanel({
   useEffect(() => {
     tilesRef.current?.set(tileStyle);
   });
+
+  // Sea-name labels for anchored waters — click one to open its page.
+  const navigate = useNavigate();
+  useEffect(() => {
+    const map = mapRef.current;
+    if (!map || !seaLabels) return;
+    const graph = getMaritimeGraph();
+    const layer = L.layerGroup().addTo(map);
+    for (const node of graph.nodes.values()) {
+      if (node.type !== 'water-body' || node.lat === undefined || node.lon === undefined) continue;
+      if (node.anchorDerived) continue;
+      const marker = L.marker([node.lat, node.lon], {
+        icon: L.divIcon({ className: 'sea-label', html: `<span>${node.name}</span>` }),
+        zIndexOffset: -100,
+      }).addTo(layer);
+      marker.on('click', () => {
+        void navigate(`/water-bodies/${node.id}`);
+      });
+    }
+    return () => {
+      layer.remove();
+    };
+  }, [seaLabels, navigate, straits]);
 
   // The world's flow, drawn: every charted journey course as a gold lane,
   // and the EIA-sourced chokepoints scaled by what passes through them.
@@ -222,6 +330,31 @@ export function MapPanel({
         </div>
       </div>
       <div id="map" ref={containerRef} />
+      {plot && (
+        <div className="drift-chip plot-chip">
+          <span className="geo-label">Plot a course</span>
+          <span className="plot-status">
+            {plotResult
+              ? plotResult.label
+              : plotPicks.length === 1
+                ? 'Now click the second strait'
+                : 'Click two straits on the chart'}
+          </span>
+          {plotPicks.length > 0 && (
+            <button
+              type="button"
+              onClick={() => {
+                setPlotPicks([]);
+                setPlotResult(null);
+                plotLayerRef.current?.remove();
+                plotLayerRef.current = null;
+              }}
+            >
+              Clear
+            </button>
+          )}
+        </div>
+      )}
       {drift && driftNode && (
         <div className="drift-chip">
           <span className="geo-label">Adrift</span>

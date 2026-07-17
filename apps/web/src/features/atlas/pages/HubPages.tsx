@@ -99,6 +99,8 @@ export function MapPage() {
   const { tileStyle } = useOutletContext<LayoutContext>();
   const [searchParams] = useSearchParams();
   const [lanes, setLanes] = useState(true);
+  const [seaLabels, setSeaLabels] = useState(true);
+  const [plot, setPlot] = useState(false);
   const [drift, setDrift] = useState(searchParams.get('drift') === '1');
 
   useEffect(() => {
@@ -133,6 +135,26 @@ export function MapPage() {
           </button>
           <button
             type="button"
+            className={seaLabels ? 'chip chip--on' : 'chip'}
+            aria-pressed={seaLabels}
+            onClick={() => {
+              setSeaLabels((state) => !state);
+            }}
+          >
+            Seas {seaLabels ? '✓' : ''}
+          </button>
+          <button
+            type="button"
+            className={plot ? 'chip chip--on' : 'chip'}
+            aria-pressed={plot}
+            onClick={() => {
+              setPlot((state) => !state);
+            }}
+          >
+            Plot a course
+          </button>
+          <button
+            type="button"
             className={drift ? 'chip chip--on' : 'chip'}
             aria-pressed={drift}
             onClick={() => {
@@ -148,6 +170,9 @@ export function MapPage() {
           hoveredId={null}
           visibleCount={STRAITS.length}
           lanes={lanes}
+          seaLabels={seaLabels}
+          plot={plot}
+          base="bathymetry"
           drift={drift}
           onDriftStop={() => {
             setDrift(false);

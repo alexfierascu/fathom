@@ -3448,3 +3448,28 @@ a.flow-node:hover .flow-name {
   color: var(--accent-2);
   box-shadow: 0 0 0 4px color-mix(in srgb, var(--accent-2) 15%, transparent);
 }
+
+.sea-label {
+  background: none;
+  border: none;
+}
+.sea-label span {
+  display: inline-block;
+  transform: translate(-50%, -50%);
+  white-space: nowrap;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.58rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(245, 241, 232, 0.66);
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.8);
+  cursor: pointer;
+}
+.sea-label span:hover {
+  color: var(--accent-2);
+}
+.plot-chip .plot-status {
+  font-size: 0.78rem;
+  color: var(--text);
+  max-width: 420px;
+}
