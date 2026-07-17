@@ -3812,3 +3812,38 @@ button.pill.pill--tag {
 a.control-btn {
   text-decoration: none;
 }
+
+.account-card {
+  display: grid;
+  gap: 14px;
+  padding: 22px;
+  border: 1px solid var(--border);
+  border-radius: calc(var(--radius) * 2);
+  background: var(--panel);
+  max-width: 560px;
+}
+.account-card .note {
+  margin: 0;
+}
+.account-form {
+  display: grid;
+  gap: 14px;
+}
+.account-note {
+  color: var(--accent-2);
+}
+.account-linkish {
+  background: none;
+  border: none;
+  padding: 0;
+  font: inherit;
+  font-size: 0.82rem;
+  color: var(--text-muted);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  cursor: pointer;
+  align-self: center;
+}
+.account-linkish:hover {
+  color: var(--text);
+}

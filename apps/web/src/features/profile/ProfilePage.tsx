@@ -1,10 +1,12 @@
-import { useMemo, useState } from 'react';
+import { useCallback, useMemo, useState } from 'react';
 
 import { Link } from 'react-router';
 
 import { loadCountriesIndex, loadStraitsIndex, loadWaterBodiesIndex } from '@fathom/data';
 import { loadJourneys, type Journey } from '@fathom/discovery';
 
+import { AccountSection } from '../account/AccountSection';
+import { accountApi } from '../account/api';
 import { Breadcrumbs } from '../atlas/components/Breadcrumbs';
 import { Section } from '../atlas/components/Section';
 import { SeoTags } from '../atlas/components/SeoTags';
@@ -220,7 +222,15 @@ export function ProfilePage() {
   const [identity, setIdentity] = useState(loadIdentity);
   const [editing, setEditing] = useState(false);
 
-  const stats = useMemo(() => gatherStats(), []);
+  // Bumped after a sync or sign-in so every derived figure recomputes.
+  const [logVersion, setLogVersion] = useState(0);
+  const refreshLog = useCallback(() => {
+    setIdentity(loadIdentity());
+    setLogVersion((version) => version + 1);
+  }, []);
+
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  const stats = useMemo(() => gatherStats(), [logVersion]);
   const xp = totalXp(stats);
   const { rank, next, progress } = rankFor(xp);
   const streaks = computeStreaks(stats, today());
@@ -229,7 +239,8 @@ export function ProfilePage() {
   const points = achievementPoints(stats);
   const ledger = xpLedger(stats);
 
-  const stamps = useMemo(() => loadJourneys().map(stampOf), []);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  const stamps = useMemo(() => loadJourneys().map(stampOf), [logVersion]);
   const finished = stamps.filter((stamp) => stamp.finished);
   const recent = loadRecentlyViewed();
 
@@ -291,6 +302,16 @@ export function ProfilePage() {
             onSave={(next_) => {
               saveIdentity(next_);
               setIdentity(next_);
+              // When signed in, the profile follows to the account;
+              // signed out (401) or unconfigured (503) is fine too.
+              void accountApi
+                .updateProfile({
+                  name: next_.name,
+                  bio: next_.bio,
+                  avatar: next_.avatar,
+                  portrait: next_.portrait ?? null,
+                })
+                .catch(() => undefined);
             }}
             onClose={() => {
               setEditing(false);
@@ -472,6 +493,8 @@ export function ProfilePage() {
             </div>
           </Section>
         )}
+
+        <AccountSection onSignedChange={refreshLog} />
 
         <Section label="Carry it with you">
           <p className="note">

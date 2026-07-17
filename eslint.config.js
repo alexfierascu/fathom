@@ -7,7 +7,7 @@ import reactRefresh from 'eslint-plugin-react-refresh';
 import prettier from 'eslint-config-prettier/flat';
 
 export default defineConfig([
-  globalIgnores(['**/dist/', '**/coverage/', '**/node_modules/']),
+  globalIgnores(['**/dist/', '**/coverage/', '**/node_modules/', '.wrangler/']),
 
   // Plain JavaScript (root config files)
   {
