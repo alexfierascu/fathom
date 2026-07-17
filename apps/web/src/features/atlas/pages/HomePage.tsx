@@ -22,21 +22,28 @@ import {
 import { loadJourneys } from '@fathom/discovery';
 
 import type { LayoutContext } from '../../../app/RootLayout';
-import { LocaleSwitcher } from '../../i18n/LocaleSwitcher';
-import { attributionOf, heroImage, mediaSrcSet, mediaUrl } from '../../media/media';
+import { useLocale, useT } from '../../i18n/locale';
+import { LOCALES, type Locale, type StringKey } from '../../i18n/strings';
+import { heroImage, mediaSrcSet, mediaUrl } from '../../media/media';
 import { Avatar } from '../../progression/Avatar';
-import { loadIdentity, recordActiveDay } from '../../progression/store';
-import { ThemeSwitcher } from '../../theme/ThemeSwitcher';
+import { loadIdentity, recordActiveDay, type Identity } from '../../progression/store';
+import {
+  appearanceToTheme,
+  loadAppearance,
+  saveAppearance,
+  type Appearance,
+} from '../../theme/appearance';
+import type { ThemeKey } from '../../theme/themes';
+import { GlobalSearch } from '../../search/GlobalSearch';
 import { SeoTags } from '../components/SeoTags';
 
 /**
- * Not a homepage but a launcher. Fathom is no longer "an atlas" — the
- * atlas is one of four ways to experience the sea, and this screen lets
- * you choose: Explore, Journey, Chart, Academy. Four cinematic modes
- * fill one viewport; there is no navbar, only floating chrome embedded
- * in the imagery. Hovering a mode glides it open and lights its label;
- * choosing one expands it to fill the screen — stepping through a
- * doorway — before the route ever changes.
+ * The launcher. Fathom is no longer "an atlas" — the atlas is one of
+ * four ways to experience the sea, and this screen lets you choose:
+ * Explore, Journey, Chart Room, Academy. Everything here is meant to
+ * disappear into the imagery: a floating logo, one collapsible search,
+ * one avatar. Choosing a mode expands it to fill the screen before the
+ * route ever changes.
  */
 
 const journeys = loadJourneys();
@@ -55,73 +62,79 @@ const COUNTS = {
 
 interface ModeSpec {
   key: string;
-  title: string;
-  subtitle: string;
-  description: string;
+  to: string;
+  to2: string;
   backdrop: string;
-  primary: { label: string; to: string };
-  secondary: { label: string; to: string };
-  meta: { value: number; label: string }[];
+  titleKey: StringKey;
+  subtitleKey: StringKey;
+  descKey: StringKey;
+  ctaKey: StringKey;
+  cta2Key: StringKey;
+  meta: { value: number; labelKey: StringKey }[];
 }
 
 const MODES: readonly ModeSpec[] = [
   {
     key: 'explore',
-    title: 'Explore',
-    subtitle: 'Discover places.',
-    description:
-      'Straits, ports, canals, regions and coastlines — the whole maritime world, mapped and keyed for the curious.',
+    to: '/explore',
+    to2: '/six-degrees',
     backdrop: 'gibraltar',
-    primary: { label: 'Enter Explore', to: '/explore' },
-    secondary: { label: 'Six degrees of sea', to: '/six-degrees' },
+    titleKey: 'home.explore.title',
+    subtitleKey: 'home.explore.subtitle',
+    descKey: 'home.explore.desc',
+    ctaKey: 'home.explore.cta',
+    cta2Key: 'home.explore.cta2',
     meta: [
-      { value: COUNTS.straits, label: 'Straits' },
-      { value: COUNTS.ports, label: 'Ports' },
-      { value: COUNTS.canals, label: 'Canals' },
+      { value: COUNTS.straits, labelKey: 'home.meta.straits' },
+      { value: COUNTS.ports, labelKey: 'home.meta.ports' },
+      { value: COUNTS.canals, labelKey: 'home.meta.canals' },
     ],
   },
   {
     key: 'journey',
-    title: 'Journey',
-    subtitle: 'Follow stories.',
-    description:
-      'Guided voyages and historic expeditions through the narrows that shaped trade, war, and discovery.',
+    to: '/journeys',
+    to2: '/daily',
     backdrop: 'singapore',
-    primary: { label: 'Begin Journey', to: '/journeys' },
-    secondary: { label: 'Today’s expedition', to: '/daily' },
+    titleKey: 'home.journey.title',
+    subtitleKey: 'home.journey.subtitle',
+    descKey: 'home.journey.desc',
+    ctaKey: 'home.journey.cta',
+    cta2Key: 'home.journey.cta2',
     meta: [
-      { value: COUNTS.journeys, label: 'Voyages' },
-      { value: COUNTS.stops, label: 'Stops' },
+      { value: COUNTS.journeys, labelKey: 'home.meta.voyages' },
+      { value: COUNTS.stops, labelKey: 'home.meta.stops' },
     ],
   },
   {
     key: 'chart',
-    title: 'Chart',
-    subtitle: 'Read the ocean.',
-    description:
-      'The interactive chart — every strait, trade lane, and stretch of water, laid out to measure and compare.',
+    to: '/map',
+    to2: '/map?drift=1',
     backdrop: 'magellan',
-    primary: { label: 'Open Chart', to: '/map' },
-    secondary: { label: 'Set adrift', to: '/map?drift=1' },
+    titleKey: 'home.chart.title',
+    subtitleKey: 'home.chart.subtitle',
+    descKey: 'home.chart.desc',
+    ctaKey: 'home.chart.cta',
+    cta2Key: 'home.chart.cta2',
     meta: [
-      { value: COUNTS.straits, label: 'Straits' },
-      { value: COUNTS.waters, label: 'Waters' },
-      { value: COUNTS.countries, label: 'Countries' },
+      { value: COUNTS.straits, labelKey: 'home.meta.straits' },
+      { value: COUNTS.waters, labelKey: 'home.meta.waters' },
+      { value: COUNTS.countries, labelKey: 'home.meta.countries' },
     ],
   },
   {
     key: 'academy',
-    title: 'Academy',
-    subtitle: 'Master the sea.',
-    description:
-      'Lessons, quizzes, timelines and wildlife — with a captain’s log that tracks how far you have come.',
+    to: '/learn',
+    to2: '/quiz',
     backdrop: 'denmark',
-    primary: { label: 'Start Learning', to: '/learn' },
-    secondary: { label: 'Take a quiz', to: '/quiz' },
+    titleKey: 'home.academy.title',
+    subtitleKey: 'home.academy.subtitle',
+    descKey: 'home.academy.desc',
+    ctaKey: 'home.academy.cta',
+    cta2Key: 'home.academy.cta2',
     meta: [
-      { value: COUNTS.events, label: 'Events' },
-      { value: COUNTS.species, label: 'Species' },
-      { value: 3, label: 'Quiz tiers' },
+      { value: COUNTS.events, labelKey: 'home.meta.events' },
+      { value: COUNTS.species, labelKey: 'home.meta.species' },
+      { value: 3, labelKey: 'home.meta.quizTiers' },
     ],
   },
 ];
@@ -140,19 +153,230 @@ const PARTICLES = Array.from({ length: 12 }, (_, i) => ({
   size: 1.2 + ((i * 1.7) % 2),
 }));
 
+const APPEARANCE_KEY: Record<Appearance, StringKey> = {
+  system: 'home.profile.system',
+  dark: 'home.profile.dark',
+  light: 'home.profile.light',
+};
+const LOCALE_KEY: Record<Locale, StringKey> = {
+  en: 'home.profile.english',
+  ro: 'home.profile.romanian',
+};
+
 const prefersReducedMotion = () =>
   typeof window !== 'undefined' && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
+function SearchGlyph() {
+  return (
+    <svg
+      width="16"
+      height="16"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      aria-hidden="true"
+    >
+      <circle cx="11" cy="11" r="7" />
+      <line x1="21" y1="21" x2="16.65" y2="16.65" />
+    </svg>
+  );
+}
+
+/** Collapsed to a circle, it expands into the live search on click. */
+function LauncherSearch({ label }: { label: string }) {
+  const [open, setOpen] = useState(false);
+  const [query, setQuery] = useState('');
+  const rootRef = useRef<HTMLDivElement>(null);
+
+  const close = useCallback(() => {
+    setOpen(false);
+    setQuery('');
+  }, []);
+
+  useEffect(() => {
+    if (!open) return;
+    const focusTimer = window.setTimeout(() => {
+      document.getElementById('search')?.focus();
+    }, 20);
+    const onKey = (event: globalThis.KeyboardEvent) => {
+      if (event.key === 'Escape') close();
+    };
+    const onDown = (event: globalThis.PointerEvent) => {
+      if (!rootRef.current?.contains(event.target as Node)) close();
+    };
+    document.addEventListener('keydown', onKey);
+    document.addEventListener('pointerdown', onDown);
+    return () => {
+      window.clearTimeout(focusTimer);
+      document.removeEventListener('keydown', onKey);
+      document.removeEventListener('pointerdown', onDown);
+    };
+  }, [open, close]);
+
+  return (
+    <div ref={rootRef} className={open ? 'launch-search is-open' : 'launch-search'}>
+      {open ? (
+        <div
+          className="launch-search-field"
+          onBlur={(event) => {
+            if (!rootRef.current?.contains(event.relatedTarget) && query.trim() === '') {
+              close();
+            }
+          }}
+        >
+          <GlobalSearch query={query} onQueryChange={setQuery} />
+        </div>
+      ) : (
+        <button
+          type="button"
+          className="launch-icon"
+          aria-label={label}
+          onClick={() => {
+            setOpen(true);
+          }}
+        >
+          <SearchGlyph />
+        </button>
+      )}
+    </div>
+  );
+}
+
+function ProfileMenu({
+  identity,
+  theme,
+  setTheme,
+  onClose,
+}: {
+  identity: Identity;
+  theme: ThemeKey;
+  setTheme: (theme: ThemeKey) => void;
+  onClose: () => void;
+}) {
+  const t = useT();
+  const { locale, setLocale } = useLocale();
+  const [appearance, setAppearanceState] = useState<Appearance>(loadAppearance);
+  const rootRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const onKey = (event: globalThis.KeyboardEvent) => {
+      if (event.key === 'Escape') onClose();
+    };
+    const onDown = (event: globalThis.PointerEvent) => {
+      if (!rootRef.current?.contains(event.target as Node)) onClose();
+    };
+    document.addEventListener('keydown', onKey);
+    document.addEventListener('pointerdown', onDown);
+    return () => {
+      document.removeEventListener('keydown', onKey);
+      document.removeEventListener('pointerdown', onDown);
+    };
+  }, [onClose]);
+
+  const chooseAppearance = (mode: Appearance) => {
+    setAppearanceState(mode);
+    saveAppearance(mode);
+    setTheme(appearanceToTheme(mode));
+  };
+
+  // Theme is set through appearance, so the appearance dots reflect the
+  // real theme even if it changed elsewhere.
+  const activeAppearance: Appearance =
+    theme === 'parchment' || theme === 'daylight'
+      ? appearance === 'system'
+        ? 'system'
+        : 'light'
+      : appearance === 'system'
+        ? 'system'
+        : 'dark';
+
+  return (
+    <div ref={rootRef} className="profile-menu" role="menu" aria-label={t('home.profile.identity')}>
+      <div className="profile-identity">
+        <span className="profile-avatar">
+          <Avatar identity={identity} size={54} />
+          <span className="avatar-status avatar-status--offline" aria-hidden="true" />
+        </span>
+        <div className="geo-label">{t('home.profile.identity')}</div>
+        <b>{identity.name || t('home.profile.guest')}</b>
+        <span className="profile-sub">{t('home.profile.sailor')}</span>
+        <span className="profile-rank">{t('home.profile.rank')}</span>
+      </div>
+
+      <div className="profile-section">
+        <div className="geo-label">{t('home.profile.appearance')}</div>
+        <div className="profile-radios" role="group" aria-label={t('home.profile.appearance')}>
+          {(['system', 'dark', 'light'] as const).map((mode) => (
+            <button
+              key={mode}
+              type="button"
+              role="menuitemradio"
+              aria-checked={activeAppearance === mode}
+              className={activeAppearance === mode ? 'profile-radio is-on' : 'profile-radio'}
+              onClick={() => {
+                chooseAppearance(mode);
+              }}
+            >
+              <span className="radio-dot" aria-hidden="true" />
+              {t(APPEARANCE_KEY[mode])}
+            </button>
+          ))}
+        </div>
+      </div>
+
+      <div className="profile-section">
+        <div className="geo-label">{t('home.profile.language')}</div>
+        <div className="profile-radios" role="group" aria-label={t('home.profile.language')}>
+          {LOCALES.map((code) => (
+            <button
+              key={code}
+              type="button"
+              role="menuitemradio"
+              aria-checked={locale === code}
+              className={locale === code ? 'profile-radio is-on' : 'profile-radio'}
+              onClick={() => {
+                setLocale(code);
+              }}
+            >
+              <span className="radio-dot" aria-hidden="true" />
+              {t(LOCALE_KEY[code])}
+            </button>
+          ))}
+        </div>
+      </div>
+
+      <div className="profile-links">
+        <Link viewTransition role="menuitem" to="/profile">
+          {t('home.profile.statistics')}
+        </Link>
+        <Link viewTransition role="menuitem" to="/profile">
+          {t('home.profile.achievements')}
+        </Link>
+        <Link viewTransition role="menuitem" to="/profile">
+          {t('home.profile.settings')}
+        </Link>
+        <Link viewTransition role="menuitem" to="/profile">
+          {t('home.profile.signin')}
+        </Link>
+      </div>
+
+      <div className="profile-foot">{t('home.profile.soon')}</div>
+    </div>
+  );
+}
+
 export function HomePage() {
-  const { theme, setTheme, openSearch } = useOutletContext<LayoutContext>();
+  const { theme, setTheme } = useOutletContext<LayoutContext>();
+  const t = useT();
   const navigate = useNavigate();
 
   const [active, setActive] = useState<number | null>(null);
   const [launching, setLaunching] = useState<number | null>(null);
-  const [slide, setSlide] = useState(0);
+  const [menuOpen, setMenuOpen] = useState(false);
   const [identity] = useState(loadIdentity);
   const ctaRefs = useRef<(HTMLAnchorElement | null)[]>([]);
-  const portalRef = useRef<HTMLDivElement>(null);
   const hintRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -173,8 +397,6 @@ export function HomePage() {
     ctaRefs.current[index]?.focus();
   }, []);
 
-  // Choosing a mode expands it to fill the screen, then navigates — the
-  // route change happens under cover of the doorway, never seen.
   const launch = useCallback(
     (index: number, to: string) => {
       if (launching !== null) return;
@@ -186,7 +408,7 @@ export function HomePage() {
       setLaunching(index);
       window.setTimeout(() => {
         void navigate(to, { viewTransition: true });
-      }, 640);
+      }, 460);
     },
     [launching, navigate],
   );
@@ -226,19 +448,6 @@ export function HomePage() {
     hint.style.opacity = '1';
   };
 
-  const onScroll = () => {
-    const element = portalRef.current;
-    if (!element || element.clientWidth === 0) return;
-    setSlide(Math.round(element.scrollLeft / element.clientWidth));
-  };
-
-  const goToSlide = (index: number) => {
-    portalRef.current?.scrollTo({
-      left: index * (portalRef.current.clientWidth || 0),
-      behavior: prefersReducedMotion() ? 'auto' : 'smooth',
-    });
-  };
-
   const wrapClass = launching !== null ? 'portal-wrap is-launching' : 'portal-wrap';
 
   return (
@@ -250,82 +459,51 @@ export function HomePage() {
         ogType="website"
       />
 
-      <h1 className="sr-only">
-        Fathom — an interactive maritime platform. Choose how you want to experience the sea:
-        Explore, Journey, Chart, or Academy.
-      </h1>
+      <h1 className="sr-only">Fathom — {t('home.platform')}</h1>
 
       <div className={wrapClass}>
-        {/* Floating chrome, embedded in the imagery — no navbar. */}
         <div className="portal-topbar">
           <Link viewTransition className="portal-logo" to="/">
             <span className="portal-logo-mark">FATHOM</span>
-            <span className="portal-logo-sub">Interactive Maritime Platform</span>
+            <span className="portal-logo-sub">{t('home.platform')}</span>
           </Link>
           <div className="portal-utils">
-            <button
-              type="button"
-              className="util-search"
-              onClick={openSearch}
-              aria-label="Search the atlas"
-            >
-              <svg
-                width="15"
-                height="15"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
-                strokeLinecap="round"
-                aria-hidden="true"
+            <LauncherSearch label={t('search.open')} />
+            <div className="avatar-wrap">
+              <button
+                type="button"
+                className={menuOpen ? 'avatar-button is-open' : 'avatar-button'}
+                aria-haspopup="menu"
+                aria-expanded={menuOpen}
+                aria-label={t('home.profile.open')}
+                onClick={() => {
+                  setMenuOpen((open) => !open);
+                }}
               >
-                <circle cx="11" cy="11" r="7" />
-                <line x1="21" y1="21" x2="16.65" y2="16.65" />
-              </svg>
-              <span className="util-search-label">Search the Atlas…</span>
-              <kbd>⌘K</kbd>
-            </button>
-            <LocaleSwitcher />
-            <ThemeSwitcher theme={theme} onChange={setTheme} />
-            <Link
-              viewTransition
-              className="util-profile"
-              to="/profile"
-              aria-label="Your captain's log"
-            >
-              <Avatar identity={identity} size={26} />
-              <span>{identity.name || 'Guest Explorer'}</span>
-            </Link>
+                <span className="avatar-shell">
+                  <Avatar identity={identity} size={34} />
+                  <span className="avatar-status avatar-status--offline" aria-hidden="true" />
+                </span>
+              </button>
+              {menuOpen && (
+                <ProfileMenu
+                  identity={identity}
+                  theme={theme}
+                  setTheme={setTheme}
+                  onClose={() => {
+                    setMenuOpen(false);
+                  }}
+                />
+              )}
+            </div>
           </div>
         </div>
 
-        {/* Museum plaques: the mode labels ride above their panels. */}
-        <div className="portal-labels" aria-hidden="true">
-          {MODE_DATA.map((mode, index) => (
-            <button
-              key={mode.key}
-              type="button"
-              tabIndex={-1}
-              className={`mode-label ${stateOf(index)}`.trim()}
-              onMouseEnter={() => {
-                setActive(index);
-              }}
-              onClick={() => {
-                launch(index, mode.primary.to);
-              }}
-            >
-              {mode.title}
-            </button>
-          ))}
-        </div>
-
         <div
-          ref={portalRef}
           className={launching !== null ? 'portal is-launching' : 'portal'}
           role="list"
-          aria-label="Choose how to experience the sea"
+          aria-label={t('home.platform')}
           onKeyDown={onKeyDown}
-          onScroll={onScroll}
           onPointerMove={onPointerMove}
           onMouseLeave={() => {
             setActive(null);
@@ -375,71 +553,53 @@ export function HomePage() {
               </div>
 
               <span className="panel-rail" aria-hidden="true">
-                <span className="panel-rail-title">{mode.title}</span>
+                <span className="panel-rail-title">{t(mode.titleKey)}</span>
               </span>
 
               <div className="panel-face">
                 <h2 id={`mode-${mode.key}`} className="panel-title">
-                  {mode.title}
+                  {t(mode.titleKey)}
                 </h2>
                 <div className="panel-lower">
-                  <p className="panel-subtitle">{mode.subtitle}</p>
+                  <p className="panel-subtitle">{t(mode.subtitleKey)}</p>
                   <div className="panel-detail">
-                    <p className="panel-desc">{mode.description}</p>
+                    <p className="panel-desc">{t(mode.descKey)}</p>
                     <div className="panel-actions">
                       <Link
                         viewTransition
                         className="uc-btn uc-btn--primary"
-                        to={mode.primary.to}
+                        to={mode.to}
                         ref={(node) => {
                           ctaRefs.current[index] = node;
                         }}
                         onClick={(event) => {
                           event.preventDefault();
-                          launch(index, mode.primary.to);
+                          launch(index, mode.to);
                         }}
                       >
-                        {mode.primary.label}
+                        {t(mode.ctaKey)}
                       </Link>
-                      <Link viewTransition className="uc-btn uc-btn--ghost" to={mode.secondary.to}>
-                        {mode.secondary.label}
+                      <Link viewTransition className="uc-btn uc-btn--ghost" to={mode.to2}>
+                        {t(mode.cta2Key)}
                       </Link>
                     </div>
                     <dl className="panel-meta">
                       {mode.meta.map((item) => (
-                        <div key={item.label}>
+                        <div key={item.labelKey}>
                           <dt>{item.value.toLocaleString('en')}</dt>
-                          <dd>{item.label}</dd>
+                          <dd>{t(item.labelKey)}</dd>
                         </div>
                       ))}
                     </dl>
                   </div>
                 </div>
               </div>
-
-              {mode.image && <span className="panel-credit">{attributionOf(mode.image)}</span>}
             </article>
           ))}
         </div>
 
-        <div className="portal-dots" role="tablist" aria-label="Choose a mode">
-          {MODE_DATA.map((mode, index) => (
-            <button
-              key={mode.key}
-              type="button"
-              role="tab"
-              aria-selected={slide === index}
-              aria-label={mode.title}
-              className={slide === index ? 'portal-dot is-on' : 'portal-dot'}
-              onClick={() => {
-                goToSlide(index);
-              }}
-            />
-          ))}
-        </div>
-
         <div ref={hintRef} className="portal-cursor" aria-hidden="true">
-          {active !== null ? `${MODE_DATA[active]?.primary.label ?? 'Enter'} →` : ''}
+          {active !== null ? `${t(MODE_DATA[active]?.ctaKey ?? 'home.explore.cta')} →` : ''}
         </div>
       </div>
     </>

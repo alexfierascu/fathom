@@ -1,31 +1,51 @@
 import { expect, test } from '@playwright/test';
 
-test('homepage is a chrome-free four-mode launcher', async ({ page }) => {
+test('homepage is a minimal four-mode launcher', async ({ page }) => {
   await page.goto('/');
   await expect(page.locator('.panel')).toHaveCount(4);
   await expect(page.locator('.panel-title')).toContainText([
     'Explore',
     'Journey',
-    'Chart',
+    'Chart Room',
     'Academy',
   ]);
-  // No navbar — the chrome floats over the imagery.
+  // No navbar, and the labels above the panels are gone.
   await expect(page.locator('.site-nav')).toHaveCount(0);
+  await expect(page.locator('.portal-labels')).toHaveCount(0);
   await expect(page.locator('.portal-logo')).toBeVisible();
-  // The search pill opens the command palette.
-  await page.locator('.util-search').click();
-  await expect(page.locator('.search-overlay')).toBeVisible();
+  // Only a search icon and an avatar float on the right.
+  await expect(page.locator('.launch-icon')).toBeVisible();
+  await expect(page.locator('.avatar-button')).toBeVisible();
+  // The search icon expands into the live field.
+  await page.locator('.launch-icon').click();
+  await expect(page.locator('.launch-search-field #search')).toBeFocused();
   await page.keyboard.press('Escape');
-  // Hovering couples the mode label with its panel and reveals the CTA.
+  await expect(page.locator('.launch-search-field')).toHaveCount(0);
+  // The avatar opens the profile panel with working appearance + language.
+  await page.locator('.avatar-button').click();
+  await expect(page.locator('.profile-menu')).toBeVisible();
+  await expect(page.locator('.profile-menu')).toContainText('Appearance');
+  await page.getByRole('menuitemradio', { name: 'Light' }).click();
+  await expect(page.locator('html')).toHaveAttribute('data-theme', 'parchment');
+  await page.keyboard.press('Escape');
+  // Hovering reveals the mode's invitation.
   await page.locator('.panel--chart').hover();
-  await expect(page.locator('.mode-label', { hasText: 'Chart' })).toHaveClass(/is-active/);
-  await expect(page.getByRole('link', { name: 'Open Chart' })).toBeVisible();
+  await expect(page.getByRole('link', { name: 'Open Chart Room' })).toBeVisible();
   // One screen: nothing scrolls.
   const canScroll = await page.evaluate(() => {
     window.scrollTo(0, 2000);
     return window.scrollY > 0;
   });
   expect(canScroll).toBe(false);
+});
+
+test('the homepage localizes into Romanian', async ({ page }) => {
+  await page.goto('/');
+  await page.locator('.avatar-button').click();
+  await page.getByRole('menuitemradio', { name: 'Romanian' }).click();
+  await page.keyboard.press('Escape');
+  await expect(page.locator('.panel--chart .panel-title')).toHaveText('Camera Hărților');
+  await expect(page.locator('.panel--explore .panel-title')).toHaveText('Explorează');
 });
 
 test('choosing a mode steps through to its route', async ({ page }) => {
