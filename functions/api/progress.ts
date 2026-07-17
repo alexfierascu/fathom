@@ -16,7 +16,13 @@ interface PutBody {
   entries?: Record<string, ProgressEntry>;
 }
 
-const KEY_PREFIXES = ['fathom-journey', 'fathom-quiz-best', 'fathom-visited', 'fathom-days', 'fathom-favourites'];
+const KEY_PREFIXES = [
+  'fathom-journey',
+  'fathom-quiz-best',
+  'fathom-visited',
+  'fathom-days',
+  'fathom-favourites',
+];
 const isSyncableKey = (key: string) => KEY_PREFIXES.some((prefix) => key.startsWith(prefix));
 
 const MAX_ENTRIES = 300;

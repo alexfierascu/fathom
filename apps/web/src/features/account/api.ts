@@ -40,9 +40,7 @@ async function call<T>(path: string, init?: RequestInit): Promise<T> {
   } catch {
     throw new ApiError(0, 'The tide is out — check your connection and try again.');
   }
-  const data = (await response.json().catch(() => null)) as
-    | (T & { error?: string })
-    | null;
+  const data = (await response.json().catch(() => null)) as (T & { error?: string }) | null;
   if (!response.ok) {
     throw new ApiError(response.status, data?.error ?? 'Something went wrong on the server.');
   }

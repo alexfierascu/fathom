@@ -33,9 +33,7 @@ export const onRequestPost: PagesFunction<Env> = async ({ request, env }) => {
   }
 
   await ensureSchema(env.DB);
-  const existing = await env.DB.prepare(`SELECT id FROM users WHERE email = ?`)
-    .bind(email)
-    .first();
+  const existing = await env.DB.prepare(`SELECT id FROM users WHERE email = ?`).bind(email).first();
   if (existing) return failure(409, 'An account already sails under that email.');
 
   const now = new Date().toISOString();

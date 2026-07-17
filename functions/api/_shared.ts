@@ -178,7 +178,9 @@ export async function createSession(db: D1Database, userId: string): Promise<str
   const now = new Date();
   const expires = new Date(now.getTime() + SESSION_DAYS * 86_400_000);
   await db
-    .prepare(`INSERT INTO sessions (token_hash, user_id, created_at, expires_at) VALUES (?, ?, ?, ?)`)
+    .prepare(
+      `INSERT INTO sessions (token_hash, user_id, created_at, expires_at) VALUES (?, ?, ?, ?)`,
+    )
     .bind(await sha256Hex(token), userId, now.toISOString(), expires.toISOString())
     .run();
   return token;

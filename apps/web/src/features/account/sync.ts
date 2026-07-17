@@ -80,7 +80,10 @@ export function mergeValue(key: string, local: Json, remote: Json): Json {
 
   if (key.startsWith('fathom-journey-log-')) {
     if (!isRecord(local) || !isRecord(remote)) return local;
-    const quiz = { ...(isRecord(remote.quiz) ? remote.quiz : {}), ...(isRecord(local.quiz) ? local.quiz : {}) };
+    const quiz = {
+      ...(isRecord(remote.quiz) ? remote.quiz : {}),
+      ...(isRecord(local.quiz) ? local.quiz : {}),
+    };
     const challenges = {
       ...(isRecord(remote.challenges) ? remote.challenges : {}),
       ...(isRecord(local.challenges) ? local.challenges : {}),
@@ -90,7 +93,9 @@ export function mergeValue(key: string, local: Json, remote: Json): Json {
     const exam = exams.sort((a, b) => {
       const passed = Number(b.passed === true) - Number(a.passed === true);
       if (passed !== 0) return passed;
-      return (typeof b.score === 'number' ? b.score : 0) - (typeof a.score === 'number' ? a.score : 0);
+      return (
+        (typeof b.score === 'number' ? b.score : 0) - (typeof a.score === 'number' ? a.score : 0)
+      );
     })[0];
     return exam ? { quiz, challenges, exam } : { quiz, challenges };
   }

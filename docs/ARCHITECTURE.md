@@ -6,10 +6,14 @@ how to extend it. For the rationale behind individual tooling choices, see the r
 
 ## Workspace layout
 
-The repository is a pnpm workspace with two package roots:
+The repository is a pnpm workspace with three package roots:
 
 - **`apps/*`** — deployable applications. Each app owns its build output and deployment
   concerns. `apps/web` (`@fathom/web`) is the Vite + React front end.
+- **`functions/`** — Cloudflare Pages Functions serving the optional account API under
+  `/api/*`, backed by D1. See [docs/PROGRESSION.md](PROGRESSION.md) and
+  [ADR 0002](decisions/0002-accounts-and-progression.md); the static atlas never
+  depends on them.
 - **`packages/*`** — shared libraries consumed by apps and by other packages:
   - `@fathom/data` — the entity documents, Zod schemas, validated loaders, and the typed
     single-hop relationship engine. The single authority on what the atlas knows.

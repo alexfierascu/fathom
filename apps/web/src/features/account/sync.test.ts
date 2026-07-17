@@ -77,8 +77,16 @@ describe('mergeValue', () => {
   it('unions journey logs and keeps the better exam', () => {
     const merged = mergeValue(
       'fathom-journey-log-x',
-      { quiz: { '0:a': true }, challenges: { '1': true }, exam: { score: 6, total: 10, passed: false } },
-      { quiz: { '2:b': false }, challenges: { '3': true }, exam: { score: 9, total: 10, passed: true } },
+      {
+        quiz: { '0:a': true },
+        challenges: { '1': true },
+        exam: { score: 6, total: 10, passed: false },
+      },
+      {
+        quiz: { '2:b': false },
+        challenges: { '3': true },
+        exam: { score: 9, total: 10, passed: true },
+      },
     );
     expect(merged).toEqual({
       quiz: { '0:a': true, '2:b': false },

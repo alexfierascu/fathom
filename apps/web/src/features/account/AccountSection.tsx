@@ -79,7 +79,8 @@ export function AccountSection({ onSignedChange }: { onSignedChange?: () => void
       })
       .catch((error: unknown) => {
         if (cancelled) return;
-        const unavailable = error instanceof ApiError && (error.status === 503 || error.status === 0);
+        const unavailable =
+          error instanceof ApiError && (error.status === 503 || error.status === 0);
         setStatus(unavailable ? { state: 'unavailable' } : { state: 'out' });
       });
     return () => {
@@ -204,12 +205,18 @@ export function AccountSection({ onSignedChange }: { onSignedChange?: () => void
     <Section label="Account">
       <div className="account-card">
         <p className="note">
-          The log lives in this browser. With an account it follows you — every voyage, trophy,
-          and favourite, merged across ships.
+          The log lives in this browser. With an account it follows you — every voyage, trophy, and
+          favourite, merged across ships.
         </p>
         <form className="account-form" onSubmit={submit}>
           {mode !== 'reset' && (
-            <FieldRow label="Email" type="email" value={email} onChange={setEmail} autoComplete="email" />
+            <FieldRow
+              label="Email"
+              type="email"
+              value={email}
+              onChange={setEmail}
+              autoComplete="email"
+            />
           )}
           {(mode === 'login' || mode === 'register') && (
             <FieldRow

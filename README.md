@@ -53,6 +53,8 @@ fathom/
 ├── packages/
 │   ├── data/             # @fathom/data — documents, schemas, relationship engine
 │   └── search/           # @fathom/search — the reusable search engine
+├── functions/            # Cloudflare Pages Functions — optional account API (/api/*)
+├── db/                   # D1 schema for the account backend
 ├── legacy/               # Original single-file prototype (permanent reference)
 ├── docs/                 # Vision, data model, architecture, decision records
 ├── .github/workflows/    # CI pipeline
@@ -73,8 +75,7 @@ install → lint → format check → typecheck → test → build. See
 
 ## Deployment
 
-The web app is a fully static build with no server-side code, deployable to Cloudflare
-Pages with these settings:
+The web app is a static build deployable to Cloudflare Pages with these settings:
 
 - **Build command:** `pnpm build`
 - **Build output directory:** `apps/web/dist`
@@ -84,3 +85,15 @@ Pages with these settings:
 
 Client-side routes (e.g. `/straits/gibraltar`) are served by the SPA fallback in
 `apps/web/public/_redirects`, so deep links and reloads work on any route.
+
+### Accounts (optional)
+
+User accounts and cross-device sync are served by the Pages Functions in `functions/`
+and need exactly one thing: a **D1 database bound as `DB`** on the Pages project
+(Storage & Databases → D1 → create, then Pages project → Settings → Bindings → add
+D1 binding named `DB`). The schema applies itself on first use. Optional environment
+variables: `RESEND_API_KEY` (and `RESET_FROM`) to deliver password-reset email.
+Without the binding, the account panel stays hidden and the atlas is fully static —
+see [docs/PROGRESSION.md](docs/PROGRESSION.md).
+
+Local development with the API: `npx wrangler pages dev apps/web/dist --d1 DB`.
