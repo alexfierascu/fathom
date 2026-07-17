@@ -22,6 +22,7 @@ const KEY_PREFIXES = [
   'fathom-visited',
   'fathom-days',
   'fathom-favourites',
+  'fathom-legend',
 ];
 const isSyncableKey = (key: string) => KEY_PREFIXES.some((prefix) => key.startsWith(prefix));
 

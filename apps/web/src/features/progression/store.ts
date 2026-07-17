@@ -91,6 +91,18 @@ export function toggleFavourite(place: FavouritePlace): boolean {
   return nowPinned;
 }
 
+const LEGEND_KEY = 'fathom-legend';
+
+/** The traveller found the legendary waters past the atlas's edge. */
+export function recordLegendFound(): void {
+  if (!read<{ on?: string }>(LEGEND_KEY)) write(LEGEND_KEY, { on: today() });
+  recordActiveDay();
+}
+
+export function legendFound(): boolean {
+  return read<{ on?: string }>(LEGEND_KEY) !== null;
+}
+
 // ---------------------------------------------------------------------------
 // Identity — who the captain's log belongs to. Local until an account
 // exists; the same shape syncs to the server once one does.

@@ -55,19 +55,33 @@ test('map page offers the chart with its toggles', async ({ page }) => {
   await expect(page.getByRole('button', { name: /Set adrift/ })).toBeVisible();
 });
 
-test('uncharted addresses reach the 404 hero', async ({ page }) => {
+test('uncharted addresses become a discovery page, not an error', async ({ page }) => {
   await page.goto('/uncharted-waters');
   await expect(page.locator('.uc-title')).toContainText('uncharted waters');
   await expect(page.locator('.uc-photo')).toBeVisible();
   await expect(page.getByRole('link', { name: 'Continue exploring' })).toBeVisible();
-  await expect(page.locator('.uc-credit')).toBeVisible();
+  // The page never names the error.
+  await expect(page.locator('.uncharted')).not.toContainText('404');
+  await expect(page.locator('.uc-sections')).not.toContainText('not found');
+  // Discovery sections are present and the captain's log recommends onward.
+  await expect(page.locator('.uc-feature').first()).toBeVisible();
+  await expect(page.locator('.uc-log')).toContainText('Continue exploring');
+});
+
+test('legendary waters grant the hidden trophy', async ({ page }) => {
+  await page.goto('/somewhere-secret?legend=1');
+  await expect(page.locator('.uc-legend-card')).toContainText('true places never are');
+  await page.goto('/profile');
+  await expect(
+    page.locator('.trophy-card.is-earned', { hasText: 'Beyond the Chart' }),
+  ).toBeVisible();
 });
 
 test("captain's log keeps the score", async ({ page }) => {
   await page.goto('/profile');
   await expect(page.locator('.rank-title')).toContainText('Cadet');
   await expect(page.locator('.stamp')).toHaveCount(7);
-  await expect(page.locator('.trophy-card')).toHaveCount(17);
+  await expect(page.locator('.trophy-card')).toHaveCount(18);
   await page.goto('/passport');
   await expect(page).toHaveURL(/\/profile$/);
 });

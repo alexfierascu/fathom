@@ -14,6 +14,7 @@ const SYNC_PREFIXES = [
   'fathom-visited',
   'fathom-days',
   'fathom-favourites',
+  'fathom-legend',
 ];
 
 export const isSyncableKey = (key: string) =>

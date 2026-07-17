@@ -64,7 +64,13 @@ function stampOf(journey: Journey): Stamp {
   };
 }
 
-const LOG_KEYS = ['fathom-quiz-best', 'fathom-visited', 'fathom-days', 'fathom-favourites'];
+const LOG_KEYS = [
+  'fathom-quiz-best',
+  'fathom-visited',
+  'fathom-days',
+  'fathom-favourites',
+  'fathom-legend',
+];
 const isLogKey = (key: string) =>
   key.startsWith('fathom-journey') || key === 'fathom-identity' || LOG_KEYS.includes(key);
 

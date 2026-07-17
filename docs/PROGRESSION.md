@@ -57,7 +57,9 @@ Thresholds are data in `RANKS`; tuning them retunes every profile instantly.
 ```
 
 Adding an achievement is one entry — the trophy cabinet, achievement points, and any
-future notification surface all read the same list. Trophies are engraved SVG
+future notification surface all read the same list. One achievement is hidden in the
+product itself: roughly one visit in a hundred to an uncharted address discovers
+legendary waters and earns **Beyond the Chart**. Trophies are engraved SVG
 instruments (`Trophy.tsx`): compass, sextant, anchor, wheel, star, flag, insignia,
 medal, map, knot, lighthouse, telescope — drawn in the atlas's line art, never emoji.
 

@@ -1,6 +1,12 @@
 import { loadJourneys } from '@fathom/discovery';
 
-import { loadActiveDays, loadFavourites, loadVisited, type FavouritePlace } from './store';
+import {
+  legendFound,
+  loadActiveDays,
+  loadFavourites,
+  loadVisited,
+  type FavouritePlace,
+} from './store';
 
 /**
  * The progression engine: pure functions over what the traveller has
@@ -31,6 +37,8 @@ export interface VoyageStats {
   /** Distinct days the atlas was used, oldest first. */
   activeDays: string[];
   favourites: FavouritePlace[];
+  /** Reached the legendary waters past the atlas's edge. */
+  legendFound: boolean;
 }
 
 export const EMPTY_STATS: VoyageStats = {
@@ -48,6 +56,7 @@ export const EMPTY_STATS: VoyageStats = {
   firstVisits: {},
   activeDays: [],
   favourites: [],
+  legendFound: false,
 };
 
 function read(key: string): unknown {
@@ -115,6 +124,7 @@ export function gatherStats(): VoyageStats {
   }
   stats.activeDays = loadActiveDays();
   stats.favourites = loadFavourites();
+  stats.legendFound = legendFound();
   return stats;
 }
 
@@ -415,6 +425,14 @@ export const ACHIEVEMENTS: readonly AchievementSpec[] = [
     trophy: 'flag',
     points: 25,
     earned: (s) => longestRun(s.activeDays) >= 7,
+  },
+  {
+    id: 'beyond-the-chart',
+    name: 'Beyond the Chart',
+    line: 'Find the legendary waters past the edge of the atlas',
+    trophy: 'telescope',
+    points: 40,
+    earned: (s) => s.legendFound,
   },
 ];
 
