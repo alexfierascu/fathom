@@ -7,9 +7,10 @@ import { entityId, getEntity, getRelated, type WaterBodyType } from '@fathom/dat
 import { ContinueExploring } from '../../explore/ContinueExploring';
 import { EntityGallery } from '../../media/MediaGallery';
 import type { LayoutContext } from '../../../app/RootLayout';
-import { Breadcrumbs } from '../components/Breadcrumbs';
+import { EditorialSection } from '../components/EditorialSection';
 import { EntityPills } from '../components/EntityPills';
-import { Section } from '../components/Section';
+import { InteractiveSection } from '../components/InteractiveSection';
+import { PageHero } from '../components/PageHero';
 import { SeoTags } from '../components/SeoTags';
 import { SourcesList } from '../components/SourcesList';
 import { StraitCard } from '../components/StraitCard';
@@ -112,75 +113,89 @@ export function CountryDetailPage() {
         ]}
       />
 
-      <Breadcrumbs items={[{ label: 'Home', to: '/' }, { label: country.name }]} />
+      <article>
+        <PageHero
+          eyebrow="Country"
+          title={country.name}
+          subtitle={country.summary}
+          actions={
+            straitDocs.length > 0 ? (
+              <a className="uc-btn uc-btn--primary" href="#chart">
+                See its waters on the chart
+              </a>
+            ) : undefined
+          }
+        />
 
-      <article className="detail">
-        <div className="eyebrow">Country</div>
-        <div className="detail-title-row">
-          <span className="flag-chip" title={`Flag of ${country.name} (placeholder)`}>
-            {country.code ?? '⚑'}
-          </span>
-          <h2 className="detail-title">{country.name}</h2>
-        </div>
-        <div className="note">{country.summary}</div>
-
-        <div className="chart-split">
-          <aside className="chart-rail">
-            {straitDocs.length > 0 && <StraitsMap straits={straitDocs} tileStyle={tileStyle} />}
-            <Section label="Statistics">
-              <div className="facts facts--line">
-                {facts.map((fact) => (
-                  <div key={fact.label} className="fact">
-                    <div className="fact-label">{fact.label}</div>
-                    <div className="fact-value fact-value--small">{fact.value}</div>
-                  </div>
-                ))}
-              </div>
-            </Section>
-          </aside>
-          <div className="chart-story">
-            <Section label={`Straits of ${country.name}`}>
-              {straits.length > 0 ? (
-                <div className="grid">
-                  {straits.map((strait) => (
-                    <StraitCard key={strait.id} strait={strait.data} />
+        {straitDocs.length > 0 && (
+          <InteractiveSection
+            eyebrow="The chart"
+            title={`The waters of ${country.name}`}
+            id="chart"
+            aside={
+              <div>
+                <div className="geo-label">At a glance</div>
+                <div className="facts facts--line">
+                  {facts.map((fact) => (
+                    <div key={fact.label} className="fact">
+                      <div className="fact-label">{fact.label}</div>
+                      <div className="fact-value fact-value--small">{fact.value}</div>
+                    </div>
                   ))}
                 </div>
-              ) : (
-                <div className="note">No charted straits touch {country.name}'s coasts yet.</div>
+              </div>
+            }
+          >
+            <StraitsMap straits={straitDocs} tileStyle={tileStyle} />
+          </InteractiveSection>
+        )}
+
+        {straits.length > 0 && (
+          <EditorialSection eyebrow="Its narrows" title={`Straits of ${country.name}`} wide>
+            <div className="grid">
+              {straits.map((strait) => (
+                <StraitCard key={strait.id} strait={strait.data} />
+              ))}
+            </div>
+          </EditorialSection>
+        )}
+
+        {(waterGroups.length > 0 || neighbors.length > 0) && (
+          <EditorialSection eyebrow="The waters" title="The seas it touches" wide>
+            <div className="geo-groups">
+              {waterGroups.map((group) => (
+                <div key={group.type}>
+                  <div className="geo-label">{group.label}</div>
+                  <EntityPills entities={group.bodies} />
+                </div>
+              ))}
+              {neighbors.length > 0 && (
+                <div>
+                  <div className="geo-label">Neighbors across the water</div>
+                  <EntityPills entities={neighbors} />
+                </div>
               )}
-            </Section>
+            </div>
+          </EditorialSection>
+        )}
 
-            {waterGroups.map((group) => (
-              <Section key={group.type} label={group.label}>
-                <EntityPills entities={group.bodies} />
-              </Section>
-            ))}
-
-            {infrastructure.length > 0 ? (
-              infrastructure.map((group) => (
-                <Section key={group.label} label={group.label}>
+        {infrastructure.length > 0 && (
+          <EditorialSection eyebrow="Infrastructure" title="What it has built" wide>
+            <div className="geo-groups">
+              {infrastructure.map((group) => (
+                <div key={group.label}>
+                  <div className="geo-label">{group.label}</div>
                   <EntityPills entities={group.entities} />
-                </Section>
-              ))
-            ) : (
-              <Section label="Infrastructure">
-                <div className="note">No ports, canals, bridges, or tunnels charted yet.</div>
-              </Section>
-            )}
+                </div>
+              ))}
+            </div>
+          </EditorialSection>
+        )}
 
-            {neighbors.length > 0 && (
-              <Section label="Neighbors across the water">
-                <EntityPills entities={neighbors} />
-              </Section>
-            )}
-
-            <EntityGallery entity={{ type: 'country', id: country.id }} />
-
-            <SourcesList sources={sources} />
-
-            <ContinueExploring entityId={`country:${country.id}`} entityName={country.name} />
-          </div>
+        <div className="strait-onward">
+          <EntityGallery entity={{ type: 'country', id: country.id }} />
+          <SourcesList sources={sources} />
+          <ContinueExploring entityId={`country:${country.id}`} entityName={country.name} />
         </div>
       </article>
     </>

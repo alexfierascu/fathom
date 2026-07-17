@@ -14,9 +14,10 @@ import {
 import { ContinueExploring } from '../../explore/ContinueExploring';
 import { EntityGallery } from '../../media/MediaGallery';
 import type { LayoutContext } from '../../../app/RootLayout';
-import { Breadcrumbs } from '../components/Breadcrumbs';
+import { EditorialSection } from '../components/EditorialSection';
 import { EntityPills } from '../components/EntityPills';
-import { Section } from '../components/Section';
+import { InteractiveSection } from '../components/InteractiveSection';
+import { PageHero } from '../components/PageHero';
 import { SeoTags } from '../components/SeoTags';
 import { SourcesList } from '../components/SourcesList';
 import { StraitsMap } from '../components/StraitsMap';
@@ -78,11 +79,27 @@ function StructurePage({
     );
   }
 
-  const { node } = resolved;
+  const { node, facts: factList, pillSections: sections, mapStraits: straits } = resolved;
   const summary =
     'summary' in node.data && typeof node.data.summary === 'string' ? node.data.summary : '';
   const path = entityPath(node) ?? '/';
   const title = `${node.name} — Fathom`;
+  const hasMap = straits.length > 0;
+
+  const factsBlock =
+    factList.length > 0 ? (
+      <div>
+        <div className="geo-label">At a glance</div>
+        <div className="facts facts--line">
+          {factList.map((fact) => (
+            <div key={fact.label} className="fact">
+              <div className="fact-label">{fact.label}</div>
+              <div className="fact-value fact-value--small">{fact.value}</div>
+            </div>
+          ))}
+        </div>
+      </div>
+    ) : null;
 
   return (
     <>
@@ -99,44 +116,50 @@ function StructurePage({
         ]}
       />
 
-      <Breadcrumbs items={[{ label: 'Home', to: '/' }, { label: node.name }]} />
+      <article>
+        <PageHero
+          eyebrow={eyebrow}
+          title={node.name}
+          subtitle={summary}
+          actions={
+            hasMap ? (
+              <a className="uc-btn uc-btn--primary" href="#chart">
+                See it on the chart
+              </a>
+            ) : undefined
+          }
+        />
 
-      <article className="detail">
-        <div className="eyebrow">{eyebrow}</div>
-        <h2 className="detail-title">{node.name}</h2>
-        <div className="note">{summary}</div>
+        {hasMap && (
+          <InteractiveSection
+            eyebrow="The chart"
+            title={`${node.name} on the water`}
+            id="chart"
+            aside={factsBlock ?? undefined}
+          >
+            <StraitsMap straits={straits} tileStyle={tileStyle} />
+          </InteractiveSection>
+        )}
 
-        <div className="chart-split">
-          <aside className="chart-rail">
-            {resolved.mapStraits.length > 0 && (
-              <StraitsMap straits={resolved.mapStraits} tileStyle={tileStyle} />
-            )}
-            {resolved.facts.length > 0 && (
-              <Section label="Statistics">
-                <div className="facts facts--line">
-                  {resolved.facts.map((fact) => (
-                    <div key={fact.label} className="fact">
-                      <div className="fact-label">{fact.label}</div>
-                      <div className="fact-value fact-value--small">{fact.value}</div>
-                    </div>
-                  ))}
+        {!hasMap && factsBlock && <EditorialSection wide>{factsBlock}</EditorialSection>}
+
+        {sections.length > 0 && (
+          <EditorialSection eyebrow="Connections" title={`Around ${node.name}`} wide>
+            <div className="geo-groups">
+              {sections.map((section) => (
+                <div key={section.label}>
+                  <div className="geo-label">{section.label}</div>
+                  <EntityPills entities={section.entities} />
                 </div>
-              </Section>
-            )}
-          </aside>
-          <div className="chart-story">
-            {resolved.pillSections.map((section) => (
-              <Section key={section.label} label={section.label}>
-                <EntityPills entities={section.entities} />
-              </Section>
-            ))}
+              ))}
+            </div>
+          </EditorialSection>
+        )}
 
-            <EntityGallery entity={{ type: node.type, id: node.id }} />
-
-            <SourcesList sources={resolved.sources} />
-
-            <ContinueExploring entityId={node.entityId} entityName={node.name} />
-          </div>
+        <div className="strait-onward">
+          <EntityGallery entity={{ type: node.type, id: node.id }} />
+          <SourcesList sources={resolved.sources} />
+          <ContinueExploring entityId={node.entityId} entityName={node.name} />
         </div>
       </article>
     </>

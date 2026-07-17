@@ -6,9 +6,10 @@ import { getEntity, getRelated } from '@fathom/data';
 
 import type { LayoutContext } from '../../../app/RootLayout';
 import { ContinueExploring } from '../../explore/ContinueExploring';
-import { Breadcrumbs } from '../components/Breadcrumbs';
+import { EditorialSection } from '../components/EditorialSection';
 import { EntityPills } from '../components/EntityPills';
-import { Section } from '../components/Section';
+import { InteractiveSection } from '../components/InteractiveSection';
+import { PageHero } from '../components/PageHero';
 import { SeoTags } from '../components/SeoTags';
 import { StraitCard } from '../components/StraitCard';
 import { StraitsMap } from '../components/StraitsMap';
@@ -75,52 +76,74 @@ export function RegionDetailPage() {
         ]}
       />
 
-      <Breadcrumbs items={[{ label: 'Home', to: '/' }, { label: node.name }]} />
+      <article>
+        <PageHero
+          eyebrow="Region"
+          title={node.name}
+          subtitle={summary}
+          actions={
+            straitDocs.length > 0 ? (
+              <a className="uc-btn uc-btn--primary" href="#chart">
+                See the region on the chart
+              </a>
+            ) : undefined
+          }
+        />
 
-      <article className="detail">
-        <div className="eyebrow">Region</div>
-        <h2 className="detail-title">{node.name}</h2>
-        <div className="note">{summary}</div>
-
-        <div className="chart-split">
-          <aside className="chart-rail">
-            <StraitsMap straits={straitDocs} tileStyle={tileStyle} />
-            <Section label="Statistics">
-              <div className="facts facts--line">
-                {facts.map((fact) => (
-                  <div key={fact.label} className="fact">
-                    <div className="fact-label">{fact.label}</div>
-                    <div className="fact-value fact-value--small">{fact.value}</div>
-                  </div>
-                ))}
-              </div>
-            </Section>
-          </aside>
-          <div className="chart-story">
-            {waterBodies.length > 0 && (
-              <Section label="Waters of the region">
-                <EntityPills entities={waterBodies} />
-              </Section>
-            )}
-
-            {countries.length > 0 && (
-              <Section label="Countries">
-                <EntityPills entities={countries} />
-              </Section>
-            )}
-
-            {straits.length > 0 && (
-              <Section label={`Straits of ${node.name}`}>
-                <div className="grid">
-                  {straits.map((strait) => (
-                    <StraitCard key={strait.id} strait={strait.data} />
+        {straitDocs.length > 0 && (
+          <InteractiveSection
+            eyebrow="The chart"
+            title={`${node.name} at a glance`}
+            id="chart"
+            aside={
+              <div>
+                <div className="geo-label">At a glance</div>
+                <div className="facts facts--line">
+                  {facts.map((fact) => (
+                    <div key={fact.label} className="fact">
+                      <div className="fact-label">{fact.label}</div>
+                      <div className="fact-value fact-value--small">{fact.value}</div>
+                    </div>
                   ))}
                 </div>
-              </Section>
-            )}
+              </div>
+            }
+          >
+            <StraitsMap straits={straitDocs} tileStyle={tileStyle} />
+          </InteractiveSection>
+        )}
 
-            <ContinueExploring entityId={node.entityId} entityName={node.name} />
-          </div>
+        {(waterBodies.length > 0 || countries.length > 0) && (
+          <EditorialSection eyebrow="The region" title="Its waters and coasts" wide>
+            <div className="geo-groups">
+              {waterBodies.length > 0 && (
+                <div>
+                  <div className="geo-label">Waters of the region</div>
+                  <EntityPills entities={waterBodies} />
+                </div>
+              )}
+              {countries.length > 0 && (
+                <div>
+                  <div className="geo-label">Countries</div>
+                  <EntityPills entities={countries} />
+                </div>
+              )}
+            </div>
+          </EditorialSection>
+        )}
+
+        {straits.length > 0 && (
+          <EditorialSection eyebrow="Its narrows" title={`Straits of ${node.name}`} wide>
+            <div className="grid">
+              {straits.map((strait) => (
+                <StraitCard key={strait.id} strait={strait.data} />
+              ))}
+            </div>
+          </EditorialSection>
+        )}
+
+        <div className="strait-onward">
+          <ContinueExploring entityId={node.entityId} entityName={node.name} />
         </div>
       </article>
     </>

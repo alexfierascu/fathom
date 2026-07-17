@@ -9,8 +9,10 @@ import { ContinueExploring } from '../../explore/ContinueExploring';
 import { EntityGallery } from '../../media/MediaGallery';
 import { FlowDiagram } from '../components/FlowDiagram';
 import type { LayoutContext } from '../../../app/RootLayout';
-import { Breadcrumbs, type BreadcrumbItem } from '../components/Breadcrumbs';
+import { EditorialSection } from '../components/EditorialSection';
 import { EntityPills } from '../components/EntityPills';
+import { InteractiveSection } from '../components/InteractiveSection';
+import { PageHero } from '../components/PageHero';
 import { Section } from '../components/Section';
 import { SeoTags } from '../components/SeoTags';
 import { SourcesList } from '../components/SourcesList';
@@ -76,10 +78,6 @@ export function WaterBodyDetailPage() {
     sources,
   } = related;
 
-  const crumbs: BreadcrumbItem[] = [{ label: 'Home', to: '/' }];
-  if (parent) crumbs.push({ label: parent.name, to: `/water-bodies/${parent.id}` });
-  crumbs.push({ label: waterBody.name });
-
   const seo = buildWaterBodySeo(waterBody);
   const journeys = loadJourneys().filter((journey) =>
     journeyVisits(journey, `water-body:${waterBody.id}`),
@@ -101,110 +99,130 @@ export function WaterBodyDetailPage() {
         ]}
       />
 
-      <Breadcrumbs items={crumbs} />
-
-      <article className="detail">
-        <div className="eyebrow">{TYPE_LABELS[waterBody.type] ?? waterBody.type}</div>
-        <h2 className="detail-title">{waterBody.name}</h2>
-        <div className="note">{waterBody.summary}</div>
-
-        {parent && (
-          <div className="connects">
-            Part of{' '}
-            <Link viewTransition to={`/water-bodies/${parent.id}`}>
-              {parent.name}
-            </Link>
-          </div>
-        )}
+      <article>
+        <PageHero
+          eyebrow={TYPE_LABELS[waterBody.type] ?? waterBody.type}
+          title={waterBody.name}
+          subtitle={waterBody.summary}
+          actions={
+            straitDocs.length > 0 ? (
+              <a className="uc-btn uc-btn--primary" href="#chart">
+                See it on the chart
+              </a>
+            ) : undefined
+          }
+        >
+          {parent && (
+            <div className="connects">
+              Part of{' '}
+              <Link viewTransition to={`/water-bodies/${parent.id}`}>
+                {parent.name}
+              </Link>
+            </div>
+          )}
+        </PageHero>
 
         <ThreadBar waterId={waterBody.id} waterName={waterBody.name} />
 
+        {straitDocs.length > 0 && (
+          <InteractiveSection
+            eyebrow="The chart"
+            title={`${waterBody.name} on the water`}
+            id="chart"
+          >
+            <StraitsMap straits={straitDocs} tileStyle={tileStyle} />
+          </InteractiveSection>
+        )}
+
         <FlowDiagram waterBodyId={waterBody.id} name={waterBody.name} />
 
-        <div className="chart-split">
-          <aside className="chart-rail">
-            <StraitsMap straits={straitDocs} tileStyle={tileStyle} />
-          </aside>
-          <div className="chart-story">
-            <Section label="Straits linking these waters to the world">
-              {straits.length > 0 ? (
-                <div className="grid">
-                  {straits.map((strait) => (
-                    <StraitCard key={strait.id} strait={strait.data} />
-                  ))}
+        {straits.length > 0 && (
+          <EditorialSection
+            eyebrow="Its narrows"
+            title="Straits linking these waters to the world"
+            wide
+          >
+            <div className="grid">
+              {straits.map((strait) => (
+                <StraitCard key={strait.id} strait={strait.data} />
+              ))}
+            </div>
+          </EditorialSection>
+        )}
+
+        {(routes.length > 0 ||
+          children.length > 0 ||
+          countries.length > 0 ||
+          canals.length > 0 ||
+          islands.length > 0 ||
+          ports.length > 0) && (
+          <EditorialSection eyebrow="Connections" title={`Around the ${waterBody.name}`} wide>
+            <div className="geo-groups">
+              {routes.length > 0 && (
+                <div>
+                  <div className="geo-label">Routes through these waters</div>
+                  <EntityPills entities={routes} />
                 </div>
-              ) : (
-                <div className="note">No charted straits connect these waters yet.</div>
               )}
-            </Section>
-
-            {routes.length > 0 && (
-              <Section label="Routes through these waters">
-                <EntityPills entities={routes} />
-              </Section>
-            )}
-
-            {children.length > 0 && (
-              <Section label="Contains">
-                <EntityPills entities={children} />
-              </Section>
-            )}
-
-            {countries.length > 0 && (
-              <Section label="Bordered by">
-                <EntityPills entities={countries} />
-              </Section>
-            )}
-
-            {canals.length > 0 && (
-              <Section label="Canals">
-                <EntityPills entities={canals} />
-              </Section>
-            )}
-
-            {islands.length > 0 && (
-              <Section label="Islands">
-                <EntityPills entities={islands} />
-              </Section>
-            )}
-
-            {ports.length > 0 && (
-              <Section label="Ports">
-                <EntityPills entities={ports} />
-              </Section>
-            )}
-
-            <EntityGallery entity={{ type: 'water-body', id: waterBody.id }} />
-
-            {journeys.length > 0 && (
-              <Section label="Journeys through these waters">
-                <div className="grid">
-                  {journeys.map((journey) => (
-                    <Link
-                      viewTransition
-                      key={journey.id}
-                      className="card"
-                      to={`/journeys/${journey.id}`}
-                    >
-                      <div className="eyebrow">
-                        {String(journey.waypoints.length)} stops · ~
-                        {String(journey.estimatedMinutes)} min
-                      </div>
-                      <h3>{journey.title}</h3>
-                      <div className="note">{journey.subtitle}</div>
-                    </Link>
-                  ))}
+              {children.length > 0 && (
+                <div>
+                  <div className="geo-label">Contains</div>
+                  <EntityPills entities={children} />
                 </div>
-              </Section>
-            )}
+              )}
+              {countries.length > 0 && (
+                <div>
+                  <div className="geo-label">Bordered by</div>
+                  <EntityPills entities={countries} />
+                </div>
+              )}
+              {canals.length > 0 && (
+                <div>
+                  <div className="geo-label">Canals</div>
+                  <EntityPills entities={canals} />
+                </div>
+              )}
+              {islands.length > 0 && (
+                <div>
+                  <div className="geo-label">Islands</div>
+                  <EntityPills entities={islands} />
+                </div>
+              )}
+              {ports.length > 0 && (
+                <div>
+                  <div className="geo-label">Ports</div>
+                  <EntityPills entities={ports} />
+                </div>
+              )}
+            </div>
+          </EditorialSection>
+        )}
 
-            <SourcesList sources={sources} />
-
-            <ContinueExploring
-              entityId={`water-body:${waterBody.id}`}
-              entityName={waterBody.name}
-            />
-          </div>
+        <div className="strait-onward">
+          <EntityGallery entity={{ type: 'water-body', id: waterBody.id }} />
+          {journeys.length > 0 && (
+            <Section label="Journeys through these waters">
+              <div className="grid">
+                {journeys.map((journey) => (
+                  <Link
+                    viewTransition
+                    key={journey.id}
+                    className="card"
+                    to={`/journeys/${journey.id}`}
+                  >
+                    <div className="eyebrow">
+                      {String(journey.waypoints.length)} stops · ~{String(journey.estimatedMinutes)}{' '}
+                      min
+                    </div>
+                    <h3>{journey.title}</h3>
+                    <div className="note">{journey.subtitle}</div>
+                  </Link>
+                ))}
+              </div>
+            </Section>
+          )}
+          <SourcesList sources={sources} />
+          <ContinueExploring entityId={`water-body:${waterBody.id}`} entityName={waterBody.name} />
         </div>
       </article>
     </>

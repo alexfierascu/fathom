@@ -5614,6 +5614,22 @@ html.chartroom-open {
   isolation: isolate;
   background: var(--panel);
 }
+/* Pages without a photograph get a calm ambient hero, not full height. */
+.page-hero:not(.page-hero--image) {
+  min-height: clamp(400px, 58vh, 600px);
+  background:
+    radial-gradient(
+      120% 110% at 12% 12%,
+      color-mix(in srgb, var(--teal) 14%, transparent),
+      transparent 52%
+    ),
+    radial-gradient(
+      100% 100% at 88% 92%,
+      color-mix(in srgb, var(--accent-2) 9%, transparent),
+      transparent 50%
+    ),
+    linear-gradient(to bottom, var(--panel-2), var(--panel));
+}
 .page-hero-media {
   position: absolute;
   inset: 0;
