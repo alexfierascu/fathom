@@ -106,34 +106,38 @@ function StructurePage({
         <h2 className="detail-title">{node.name}</h2>
         <div className="note">{summary}</div>
 
-        {resolved.facts.length > 0 && (
-          <Section label="Statistics">
-            <div className="facts">
-              {resolved.facts.map((fact) => (
-                <div key={fact.label} className="fact">
-                  <div className="fact-label">{fact.label}</div>
-                  <div className="fact-value">{fact.value}</div>
+        <div className="chart-split">
+          <aside className="chart-rail">
+            {resolved.mapStraits.length > 0 && (
+              <StraitsMap straits={resolved.mapStraits} tileStyle={tileStyle} />
+            )}
+            {resolved.facts.length > 0 && (
+              <Section label="Statistics">
+                <div className="facts facts--line">
+                  {resolved.facts.map((fact) => (
+                    <div key={fact.label} className="fact">
+                      <div className="fact-label">{fact.label}</div>
+                      <div className="fact-value fact-value--small">{fact.value}</div>
+                    </div>
+                  ))}
                 </div>
-              ))}
-            </div>
-          </Section>
-        )}
+              </Section>
+            )}
+          </aside>
+          <div className="chart-story">
+            {resolved.pillSections.map((section) => (
+              <Section key={section.label} label={section.label}>
+                <EntityPills entities={section.entities} />
+              </Section>
+            ))}
 
-        {resolved.pillSections.map((section) => (
-          <Section key={section.label} label={section.label}>
-            <EntityPills entities={section.entities} />
-          </Section>
-        ))}
+            <EntityGallery entity={{ type: node.type, id: node.id }} />
 
-        {resolved.mapStraits.length > 0 && (
-          <StraitsMap straits={resolved.mapStraits} tileStyle={tileStyle} />
-        )}
+            <SourcesList sources={resolved.sources} />
 
-        <EntityGallery entity={{ type: node.type, id: node.id }} />
-
-        <SourcesList sources={resolved.sources} />
-
-        <ContinueExploring entityId={node.entityId} entityName={node.name} />
+            <ContinueExploring entityId={node.entityId} entityName={node.name} />
+          </div>
+        </div>
       </article>
     </>
   );

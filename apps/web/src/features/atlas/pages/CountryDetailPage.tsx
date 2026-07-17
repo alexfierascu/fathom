@@ -124,60 +124,64 @@ export function CountryDetailPage() {
         </div>
         <div className="note">{country.summary}</div>
 
-        <Section label={`Straits of ${country.name}`}>
-          {straits.length > 0 ? (
-            <div className="grid">
-              {straits.map((strait) => (
-                <StraitCard key={strait.id} strait={strait.data} />
-              ))}
-            </div>
-          ) : (
-            <div className="note">No charted straits touch {country.name}'s coasts yet.</div>
-          )}
-        </Section>
-
-        {waterGroups.map((group) => (
-          <Section key={group.type} label={group.label}>
-            <EntityPills entities={group.bodies} />
-          </Section>
-        ))}
-
-        {infrastructure.length > 0 ? (
-          infrastructure.map((group) => (
-            <Section key={group.label} label={group.label}>
-              <EntityPills entities={group.entities} />
-            </Section>
-          ))
-        ) : (
-          <Section label="Infrastructure">
-            <div className="note">No ports, canals, bridges, or tunnels charted yet.</div>
-          </Section>
-        )}
-
-        <Section label="Statistics">
-          <div className="facts">
-            {facts.map((fact) => (
-              <div key={fact.label} className="fact">
-                <div className="fact-label">{fact.label}</div>
-                <div className="fact-value">{fact.value}</div>
+        <div className="chart-split">
+          <aside className="chart-rail">
+            {straitDocs.length > 0 && <StraitsMap straits={straitDocs} tileStyle={tileStyle} />}
+            <Section label="Statistics">
+              <div className="facts facts--line">
+                {facts.map((fact) => (
+                  <div key={fact.label} className="fact">
+                    <div className="fact-label">{fact.label}</div>
+                    <div className="fact-value fact-value--small">{fact.value}</div>
+                  </div>
+                ))}
               </div>
+            </Section>
+          </aside>
+          <div className="chart-story">
+            <Section label={`Straits of ${country.name}`}>
+              {straits.length > 0 ? (
+                <div className="grid">
+                  {straits.map((strait) => (
+                    <StraitCard key={strait.id} strait={strait.data} />
+                  ))}
+                </div>
+              ) : (
+                <div className="note">No charted straits touch {country.name}'s coasts yet.</div>
+              )}
+            </Section>
+
+            {waterGroups.map((group) => (
+              <Section key={group.type} label={group.label}>
+                <EntityPills entities={group.bodies} />
+              </Section>
             ))}
+
+            {infrastructure.length > 0 ? (
+              infrastructure.map((group) => (
+                <Section key={group.label} label={group.label}>
+                  <EntityPills entities={group.entities} />
+                </Section>
+              ))
+            ) : (
+              <Section label="Infrastructure">
+                <div className="note">No ports, canals, bridges, or tunnels charted yet.</div>
+              </Section>
+            )}
+
+            {neighbors.length > 0 && (
+              <Section label="Neighbors across the water">
+                <EntityPills entities={neighbors} />
+              </Section>
+            )}
+
+            <EntityGallery entity={{ type: 'country', id: country.id }} />
+
+            <SourcesList sources={sources} />
+
+            <ContinueExploring entityId={`country:${country.id}`} entityName={country.name} />
           </div>
-        </Section>
-
-        {straitDocs.length > 0 && <StraitsMap straits={straitDocs} tileStyle={tileStyle} />}
-
-        {neighbors.length > 0 && (
-          <Section label="Neighbors across the water">
-            <EntityPills entities={neighbors} />
-          </Section>
-        )}
-
-        <EntityGallery entity={{ type: 'country', id: country.id }} />
-
-        <SourcesList sources={sources} />
-
-        <ContinueExploring entityId={`country:${country.id}`} entityName={country.name} />
+        </div>
       </article>
     </>
   );

@@ -82,42 +82,46 @@ export function RegionDetailPage() {
         <h2 className="detail-title">{node.name}</h2>
         <div className="note">{summary}</div>
 
-        <Section label="Statistics">
-          <div className="facts">
-            {facts.map((fact) => (
-              <div key={fact.label} className="fact">
-                <div className="fact-label">{fact.label}</div>
-                <div className="fact-value">{fact.value}</div>
+        <div className="chart-split">
+          <aside className="chart-rail">
+            <StraitsMap straits={straitDocs} tileStyle={tileStyle} />
+            <Section label="Statistics">
+              <div className="facts facts--line">
+                {facts.map((fact) => (
+                  <div key={fact.label} className="fact">
+                    <div className="fact-label">{fact.label}</div>
+                    <div className="fact-value fact-value--small">{fact.value}</div>
+                  </div>
+                ))}
               </div>
-            ))}
+            </Section>
+          </aside>
+          <div className="chart-story">
+            {waterBodies.length > 0 && (
+              <Section label="Waters of the region">
+                <EntityPills entities={waterBodies} />
+              </Section>
+            )}
+
+            {countries.length > 0 && (
+              <Section label="Countries">
+                <EntityPills entities={countries} />
+              </Section>
+            )}
+
+            {straits.length > 0 && (
+              <Section label={`Straits of ${node.name}`}>
+                <div className="grid">
+                  {straits.map((strait) => (
+                    <StraitCard key={strait.id} strait={strait.data} />
+                  ))}
+                </div>
+              </Section>
+            )}
+
+            <ContinueExploring entityId={node.entityId} entityName={node.name} />
           </div>
-        </Section>
-
-        {waterBodies.length > 0 && (
-          <Section label="Waters of the region">
-            <EntityPills entities={waterBodies} />
-          </Section>
-        )}
-
-        {countries.length > 0 && (
-          <Section label="Countries">
-            <EntityPills entities={countries} />
-          </Section>
-        )}
-
-        <StraitsMap straits={straitDocs} tileStyle={tileStyle} />
-
-        {straits.length > 0 && (
-          <Section label={`Straits of ${node.name}`}>
-            <div className="grid">
-              {straits.map((strait) => (
-                <StraitCard key={strait.id} strait={strait.data} />
-              ))}
-            </div>
-          </Section>
-        )}
-
-        <ContinueExploring entityId={node.entityId} entityName={node.name} />
+        </div>
       </article>
     </>
   );

@@ -162,10 +162,8 @@ export function JourneyDetailPage() {
   const { tileStyle } = useOutletContext<LayoutContext>();
   const journey = findJourney(slug);
   const stopCount = journey?.waypoints.length ?? 0;
-  const { progress, start, resume, next, previous, jumpTo, finish, reset } = useJourneyProgress(
-    slug ?? 'unknown',
-    stopCount,
-  );
+  const { progress, start, resume, pause, next, previous, jumpTo, finish, reset } =
+    useJourneyProgress(slug ?? 'unknown', stopCount);
   const courseRef = useRef<HTMLDivElement>(null);
 
   // Every travel action returns the eyes to the chart and the stop panel —
@@ -264,117 +262,128 @@ export function JourneyDetailPage() {
           </div>
         </header>
 
-        <div ref={courseRef}>
-          <JourneyMap
-            journey={journey}
-            currentStop={progress.stop}
-            travelling={travelling}
-            tileStyle={tileStyle}
-          />
-        </div>
-
-        <div className="journey-mode">
-          <ol className="journey-stops" aria-label="Journey progress">
-            {journey.waypoints.map((stop, index) => {
-              const node = resolveWaypoint(stop);
-              const state = travelling
-                ? index === progress.stop
-                  ? ' is-current'
-                  : index < progress.stop
-                    ? ' is-done'
-                    : ''
-                : progress.finished
-                  ? ' is-done'
-                  : '';
-              return (
-                <li key={`${stop.entity.type}:${stop.entity.id}`}>
-                  <button
-                    type="button"
-                    className={`journey-stop${state}`}
-                    onClick={travel(() => {
-                      jumpTo(index);
-                    })}
-                  >
-                    <span className="journey-stop-number">{index + 1}</span>
-                    <span>
-                      <span className="journey-stop-name">{node?.name ?? stop.entity.id}</span>
-                      <span className="journey-stop-type">
-                        {TYPE_LABELS[stop.entity.type] ?? stop.entity.type}
-                      </span>
-                    </span>
-                  </button>
-                </li>
-              );
-            })}
-          </ol>
-
-          <div className="journey-panel">
-            {!progress.started && !progress.finished ? (
-              <div className="journey-intro">
-                <p className="note note--lede">
-                  {String(stopCount)} stops, about {String(journey.estimatedMinutes)} minutes. Start
-                  the journey to travel the course stop by stop — the chart follows you.
-                </p>
-                <button
-                  type="button"
-                  className="journey-btn journey-btn--primary"
-                  onClick={travel(start)}
-                >
-                  Start journey
+        {travelling || progress.finished ? (
+          <div className="voyage" ref={courseRef}>
+            <section className="voyage-card" aria-label="Journey mode">
+              <header className="voyage-head">
+                <button type="button" className="voyage-exit" onClick={pause}>
+                  ‹ Overview
                 </button>
+                <span className="k-title">{journey.title}</span>
+                <span className="k-count">
+                  {progress.finished
+                    ? 'Complete'
+                    : `Stop ${String(progress.stop + 1)} / ${String(stopCount)}`}
+                </span>
+              </header>
+
+              <div className="stop-rail" aria-label="Journey progress">
+                {journey.waypoints.map((stop, index) => {
+                  const node = resolveWaypoint(stop);
+                  const state = progress.finished
+                    ? ' is-done'
+                    : index === progress.stop
+                      ? ' is-current'
+                      : index < progress.stop
+                        ? ' is-done'
+                        : '';
+                  return (
+                    <span
+                      key={`${stop.entity.type}:${stop.entity.id}`}
+                      style={{ display: 'contents' }}
+                    >
+                      {index > 0 && (
+                        <span
+                          className={
+                            index <= progress.stop || progress.finished
+                              ? 'stop-link is-done'
+                              : 'stop-link'
+                          }
+                        />
+                      )}
+                      <button
+                        type="button"
+                        className={`stop-dot${state}`}
+                        title={node?.name ?? stop.entity.id}
+                        aria-label={`Stop ${String(index + 1)}: ${node?.name ?? stop.entity.id}`}
+                        aria-current={
+                          !progress.finished && index === progress.stop ? 'step' : undefined
+                        }
+                        onClick={travel(() => {
+                          jumpTo(index);
+                        })}
+                      >
+                        {index < progress.stop || progress.finished ? '✓' : index + 1}
+                      </button>
+                    </span>
+                  );
+                })}
               </div>
-            ) : progress.finished ? (
-              <div className="journey-intro">
-                <div className="geo-label">Journey complete</div>
-                <p className="note note--lede">
-                  You have travelled all {String(stopCount)} stops of {journey.title}. The narrows
-                  ahead are endless — pick another course.
-                </p>
-                <div className="journey-actions">
-                  <button
-                    type="button"
-                    className="journey-btn journey-btn--primary"
-                    onClick={start}
-                  >
-                    Travel again
-                  </button>
-                  <Link viewTransition className="journey-btn" to="/journeys">
-                    All journeys
-                  </Link>
+
+              {progress.finished ? (
+                <div className="voyage-body">
+                  <div className="geo-label">Journey complete</div>
+                  <p className="note note--lede" style={{ margin: '10px 0 0' }}>
+                    You have travelled all {String(stopCount)} stops of {journey.title}. The narrows
+                    ahead are endless — pick another course.
+                  </p>
                 </div>
-              </div>
-            ) : (
-              waypoint && (
-                <div className="journey-stop-panel" key={progress.stop}>
-                  <div className="eyebrow">
-                    Stop {String(progress.stop + 1)} of {String(stopCount)} ·{' '}
-                    {TYPE_LABELS[waypoint.entity.type] ?? waypoint.entity.type}
-                  </div>
-                  <h3 className="journey-stop-title">
-                    {stopPath ? (
-                      <Link viewTransition to={stopPath}>
-                        {stopNode?.name}
-                      </Link>
-                    ) : (
-                      (stopNode?.name ?? waypoint.entity.id)
-                    )}
-                  </h3>
-                  <p className="journey-leg">{waypoint.summary}</p>
-                  {stopContext(waypoint) && <p className="note">{stopContext(waypoint)}</p>}
-                  {waypoint.note && <p className="note">{waypoint.note}</p>}
-                  {waypoint.challenge && (
-                    <div className="stop-challenge">
-                      <div className="geo-label">Challenge</div>
-                      <p className="note">{waypoint.challenge}</p>
+              ) : (
+                waypoint && (
+                  <div className="voyage-body" key={progress.stop}>
+                    <div className="eyebrow">
+                      Stop {String(progress.stop + 1)} of {String(stopCount)} ·{' '}
+                      {TYPE_LABELS[waypoint.entity.type] ?? waypoint.entity.type}
                     </div>
-                  )}
-                  {waypoint.quiz && <QuizBlock quiz={waypoint.quiz} />}
-                  {stopPath && (
-                    <Link viewTransition className="more-link" to={stopPath}>
-                      Read the full article →
-                    </Link>
-                  )}
-                  <div className="journey-actions journey-actions--nav">
+                    <h3 className="journey-stop-title">
+                      {stopPath ? (
+                        <Link viewTransition to={stopPath}>
+                          {stopNode?.name}
+                        </Link>
+                      ) : (
+                        (stopNode?.name ?? waypoint.entity.id)
+                      )}
+                    </h3>
+                    <p className="journey-leg">{waypoint.summary}</p>
+                    {stopContext(waypoint) && <p className="note">{stopContext(waypoint)}</p>}
+                    {waypoint.note && <p className="note">{waypoint.note}</p>}
+                    {waypoint.challenge && (
+                      <div className="stop-challenge">
+                        <div className="geo-label">Challenge</div>
+                        <p className="note">{waypoint.challenge}</p>
+                      </div>
+                    )}
+                    {waypoint.quiz && <QuizBlock quiz={waypoint.quiz} />}
+                    {stopPath && (
+                      <Link viewTransition className="more-link" to={stopPath}>
+                        Read the full article →
+                      </Link>
+                    )}
+                  </div>
+                )
+              )}
+
+              <div className="voyage-actions">
+                {progress.finished ? (
+                  <>
+                    <button type="button" className="journey-btn" onClick={reset}>
+                      Reset
+                    </button>
+                    <div style={{ display: 'flex', gap: 10 }}>
+                      <Link viewTransition className="journey-btn" to="/journeys">
+                        All journeys
+                      </Link>
+                      <button
+                        type="button"
+                        className="journey-btn journey-btn--primary"
+                        onClick={travel(start)}
+                      >
+                        Travel again
+                      </button>
+                    </div>
+                  </>
+                ) : (
+                  <>
                     <button
                       type="button"
                       className="journey-btn"
@@ -400,12 +409,56 @@ export function JourneyDetailPage() {
                         Next stop →
                       </button>
                     )}
-                  </div>
-                </div>
-              )
-            )}
+                  </>
+                )}
+              </div>
+            </section>
+
+            <aside className="voyage-chart">
+              <JourneyMap
+                journey={journey}
+                currentStop={progress.stop}
+                travelling={travelling}
+                tileStyle={tileStyle}
+              />
+            </aside>
           </div>
-        </div>
+        ) : (
+          <>
+            <div ref={courseRef}>
+              <JourneyMap
+                journey={journey}
+                currentStop={progress.stop}
+                travelling={false}
+                tileStyle={tileStyle}
+              />
+            </div>
+
+            <Section label="The stops">
+              <div className="stops-preview">
+                {journey.waypoints.map((stop, index) => {
+                  const node = resolveWaypoint(stop);
+                  return (
+                    <button
+                      key={`${stop.entity.type}:${stop.entity.id}`}
+                      type="button"
+                      className="stop-chip"
+                      onClick={travel(() => {
+                        jumpTo(index);
+                      })}
+                    >
+                      <span className="journey-stop-number">{index + 1}</span>
+                      <span style={{ minWidth: 0 }}>
+                        <b>{node?.name ?? stop.entity.id}</b>
+                        <span>{TYPE_LABELS[stop.entity.type] ?? stop.entity.type}</span>
+                      </span>
+                    </button>
+                  );
+                })}
+              </div>
+            </Section>
+          </>
+        )}
 
         {related.length > 0 && (
           <Section label="Related journeys">

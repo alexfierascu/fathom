@@ -119,83 +119,91 @@ export function WaterBodyDetailPage() {
 
         <FlowDiagram waterBodyId={waterBody.id} name={waterBody.name} />
 
-        <Section label="Straits linking these waters to the world">
-          {straits.length > 0 ? (
-            <div className="grid">
-              {straits.map((strait) => (
-                <StraitCard key={strait.id} strait={strait.data} />
-              ))}
-            </div>
-          ) : (
-            <div className="note">No charted straits connect these waters yet.</div>
-          )}
-        </Section>
+        <div className="chart-split">
+          <aside className="chart-rail">
+            <StraitsMap straits={straitDocs} tileStyle={tileStyle} />
+          </aside>
+          <div className="chart-story">
+            <Section label="Straits linking these waters to the world">
+              {straits.length > 0 ? (
+                <div className="grid">
+                  {straits.map((strait) => (
+                    <StraitCard key={strait.id} strait={strait.data} />
+                  ))}
+                </div>
+              ) : (
+                <div className="note">No charted straits connect these waters yet.</div>
+              )}
+            </Section>
 
-        {routes.length > 0 && (
-          <Section label="Routes through these waters">
-            <EntityPills entities={routes} />
-          </Section>
-        )}
+            {routes.length > 0 && (
+              <Section label="Routes through these waters">
+                <EntityPills entities={routes} />
+              </Section>
+            )}
 
-        {children.length > 0 && (
-          <Section label="Contains">
-            <EntityPills entities={children} />
-          </Section>
-        )}
+            {children.length > 0 && (
+              <Section label="Contains">
+                <EntityPills entities={children} />
+              </Section>
+            )}
 
-        {countries.length > 0 && (
-          <Section label="Bordered by">
-            <EntityPills entities={countries} />
-          </Section>
-        )}
+            {countries.length > 0 && (
+              <Section label="Bordered by">
+                <EntityPills entities={countries} />
+              </Section>
+            )}
 
-        {canals.length > 0 && (
-          <Section label="Canals">
-            <EntityPills entities={canals} />
-          </Section>
-        )}
+            {canals.length > 0 && (
+              <Section label="Canals">
+                <EntityPills entities={canals} />
+              </Section>
+            )}
 
-        {islands.length > 0 && (
-          <Section label="Islands">
-            <EntityPills entities={islands} />
-          </Section>
-        )}
+            {islands.length > 0 && (
+              <Section label="Islands">
+                <EntityPills entities={islands} />
+              </Section>
+            )}
 
-        {ports.length > 0 && (
-          <Section label="Ports">
-            <EntityPills entities={ports} />
-          </Section>
-        )}
+            {ports.length > 0 && (
+              <Section label="Ports">
+                <EntityPills entities={ports} />
+              </Section>
+            )}
 
-        <StraitsMap straits={straitDocs} tileStyle={tileStyle} />
+            <EntityGallery entity={{ type: 'water-body', id: waterBody.id }} />
 
-        <EntityGallery entity={{ type: 'water-body', id: waterBody.id }} />
+            {journeys.length > 0 && (
+              <Section label="Journeys through these waters">
+                <div className="grid">
+                  {journeys.map((journey) => (
+                    <Link
+                      viewTransition
+                      key={journey.id}
+                      className="card"
+                      to={`/journeys/${journey.id}`}
+                    >
+                      <div className="eyebrow">
+                        {String(journey.waypoints.length)} stops · ~
+                        {String(journey.estimatedMinutes)} min
+                      </div>
+                      <h3>{journey.title}</h3>
+                      <div className="note">{journey.subtitle}</div>
+                    </Link>
+                  ))}
+                </div>
+              </Section>
+            )}
 
-        {journeys.length > 0 && (
-          <Section label="Journeys through these waters">
-            <div className="grid">
-              {journeys.map((journey) => (
-                <Link
-                  viewTransition
-                  key={journey.id}
-                  className="card"
-                  to={`/journeys/${journey.id}`}
-                >
-                  <div className="eyebrow">
-                    {String(journey.waypoints.length)} stops · ~{String(journey.estimatedMinutes)}{' '}
-                    min
-                  </div>
-                  <h3>{journey.title}</h3>
-                  <div className="note">{journey.subtitle}</div>
-                </Link>
-              ))}
-            </div>
-          </Section>
-        )}
+            <SourcesList sources={sources} />
 
-        <SourcesList sources={sources} />
-
-        <ContinueExploring entityId={`water-body:${waterBody.id}`} entityName={waterBody.name} />
+            <ContinueExploring
+              entityId={`water-body:${waterBody.id}`}
+              entityName={waterBody.name}
+            />
+          </div>
+        </div>
       </article>
     </>
   );

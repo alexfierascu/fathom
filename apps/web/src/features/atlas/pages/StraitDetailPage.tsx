@@ -135,106 +135,110 @@ export function StraitDetailPage() {
           </div>
         </header>
 
-        <StraitMap strait={strait} tileStyle={tileStyle} />
-
-        <Section label="Why it matters">
-          <p className="note note--lede">{strait.note}</p>
-        </Section>
-
-        <Section label="Quick facts">
-          <div className="facts facts--line">
-            {quickFacts.map((fact) => (
-              <div key={fact.label} className="fact">
-                <div className="fact-label">{fact.label}</div>
-                <div className="fact-value fact-value--small">{fact.value}</div>
+        <div className="chart-split">
+          <aside className="chart-rail">
+            <StraitMap strait={strait} tileStyle={tileStyle} />
+            <Section label="Quick facts">
+              <div className="facts facts--line">
+                {quickFacts.map((fact) => (
+                  <div key={fact.label} className="fact">
+                    <div className="fact-label">{fact.label}</div>
+                    <div className="fact-value fact-value--small">{fact.value}</div>
+                  </div>
+                ))}
               </div>
-            ))}
-          </div>
-        </Section>
+            </Section>
+          </aside>
+          <div className="chart-story">
+            <Section label="Why it matters">
+              <p className="note note--lede">{strait.note}</p>
+            </Section>
 
-        {events.length > 0 && (
-          <Section label="History">
-            <ol className="timeline timeline--compact">
-              {events.map((event) => (
-                <li key={event.id} className="timeline-event">
-                  <div className="timeline-year">{formatDateValue(event.data.date)}</div>
-                  <div className="timeline-body">
-                    <h3>{event.name}</h3>
-                    <p className="note">{event.data.summary}</p>
-                  </div>
-                </li>
-              ))}
-            </ol>
-            <Link viewTransition className="more-link" to="/timeline">
-              Full timeline →
-            </Link>
-          </Section>
-        )}
-
-        {hasNavigation && (
-          <Section label="Its place in navigation">
-            <div className="geo-groups">
-              {routes.length > 0 && (
-                <div>
-                  <div className="geo-label">Shipping routes through</div>
-                  <EntityPills entities={routes} />
-                </div>
-              )}
-              {crossings.length > 0 && (
-                <div>
-                  <div className="geo-label">Crossings over and under</div>
-                  <EntityPills entities={crossings} />
-                </div>
-              )}
-              {ports.length > 0 && (
-                <div>
-                  <div className="geo-label">Ports on its shores</div>
-                  <EntityPills entities={ports} />
-                </div>
-              )}
-              {islands.length > 0 && (
-                <div>
-                  <div className="geo-label">Islands in the narrows</div>
-                  <EntityPills entities={islands} />
-                </div>
-              )}
-            </div>
-          </Section>
-        )}
-
-        <EntityGallery entity={{ type: 'strait', id: strait.id }} />
-
-        <ContinueExploring entityId={`strait:${strait.id}`} entityName={strait.name}>
-          <Link viewTransition className="pill pill--action" to={`/compare/${strait.id}`}>
-            Compare this strait ⇄
-          </Link>
-        </ContinueExploring>
-
-        {journeys.length > 0 && (
-          <Section label="Journeys that pass this way">
-            <div className="grid">
-              {journeys.map((journey) => (
-                <Link
-                  viewTransition
-                  key={journey.id}
-                  className="card"
-                  to={`/journeys/${journey.id}`}
-                >
-                  <div className="eyebrow">
-                    {String(journey.waypoints.length)} stops · ~{String(journey.estimatedMinutes)}{' '}
-                    min
-                  </div>
-                  <h3>{journey.title}</h3>
-                  <div className="note">{journey.subtitle}</div>
+            {events.length > 0 && (
+              <Section label="History">
+                <ol className="timeline timeline--compact">
+                  {events.map((event) => (
+                    <li key={event.id} className="timeline-event">
+                      <div className="timeline-year">{formatDateValue(event.data.date)}</div>
+                      <div className="timeline-body">
+                        <h3>{event.name}</h3>
+                        <p className="note">{event.data.summary}</p>
+                      </div>
+                    </li>
+                  ))}
+                </ol>
+                <Link viewTransition className="more-link" to="/timeline">
+                  Full timeline →
                 </Link>
-              ))}
-            </div>
-          </Section>
-        )}
+              </Section>
+            )}
 
-        <SourcesList sources={sources} />
+            {hasNavigation && (
+              <Section label="Its place in navigation">
+                <div className="geo-groups">
+                  {routes.length > 0 && (
+                    <div>
+                      <div className="geo-label">Shipping routes through</div>
+                      <EntityPills entities={routes} />
+                    </div>
+                  )}
+                  {crossings.length > 0 && (
+                    <div>
+                      <div className="geo-label">Crossings over and under</div>
+                      <EntityPills entities={crossings} />
+                    </div>
+                  )}
+                  {ports.length > 0 && (
+                    <div>
+                      <div className="geo-label">Ports on its shores</div>
+                      <EntityPills entities={ports} />
+                    </div>
+                  )}
+                  {islands.length > 0 && (
+                    <div>
+                      <div className="geo-label">Islands in the narrows</div>
+                      <EntityPills entities={islands} />
+                    </div>
+                  )}
+                </div>
+              </Section>
+            )}
 
-        <StraitPager previous={previous} next={next} />
+            <EntityGallery entity={{ type: 'strait', id: strait.id }} />
+
+            <ContinueExploring entityId={`strait:${strait.id}`} entityName={strait.name}>
+              <Link viewTransition className="pill pill--action" to={`/compare/${strait.id}`}>
+                Compare this strait ⇄
+              </Link>
+            </ContinueExploring>
+
+            {journeys.length > 0 && (
+              <Section label="Journeys that pass this way">
+                <div className="grid">
+                  {journeys.map((journey) => (
+                    <Link
+                      viewTransition
+                      key={journey.id}
+                      className="card"
+                      to={`/journeys/${journey.id}`}
+                    >
+                      <div className="eyebrow">
+                        {String(journey.waypoints.length)} stops · ~
+                        {String(journey.estimatedMinutes)} min
+                      </div>
+                      <h3>{journey.title}</h3>
+                      <div className="note">{journey.subtitle}</div>
+                    </Link>
+                  ))}
+                </div>
+              </Section>
+            )}
+
+            <SourcesList sources={sources} />
+
+            <StraitPager previous={previous} next={next} />
+          </div>
+        </div>
       </article>
     </>
   );

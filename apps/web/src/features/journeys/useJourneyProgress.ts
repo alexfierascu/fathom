@@ -62,6 +62,9 @@ export function useJourneyProgress(journeyId: string, stopCount: number) {
   const resume = useCallback(() => {
     setProgress((state) => ({ ...state, started: true, finished: false }));
   }, []);
+  const pause = useCallback(() => {
+    setProgress((state) => ({ ...state, started: false }));
+  }, []);
   const next = useCallback(() => {
     setProgress((state) => ({ ...state, stop: clamp(state.stop + 1) }));
   }, [clamp]);
@@ -81,5 +84,5 @@ export function useJourneyProgress(journeyId: string, stopCount: number) {
     setProgress(FRESH);
   }, []);
 
-  return { progress, start, resume, next, previous, jumpTo, finish, reset };
+  return { progress, start, resume, pause, next, previous, jumpTo, finish, reset };
 }
