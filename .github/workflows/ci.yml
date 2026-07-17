@@ -43,3 +43,9 @@ jobs:
 
       - name: Build
         run: pnpm build
+
+      - name: Install Playwright browser
+        run: pnpm --filter @fathom/web exec playwright install --with-deps chromium
+
+      - name: End-to-end smoke tests
+        run: pnpm --filter @fathom/web run e2e

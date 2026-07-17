@@ -177,7 +177,18 @@ export function StraitDetailPage() {
           <div className="chart-story">
             <Section label="Why it matters">
               <p className="note note--lede">{strait.note}</p>
+              {strait.summary && strait.summary !== strait.note && (
+                <p className="note" style={{ marginTop: 10 }}>
+                  {strait.summary}
+                </p>
+              )}
             </Section>
+
+            {strait.description && (
+              <Section label="The long read">
+                <p className="note note--read">{strait.description}</p>
+              </Section>
+            )}
 
             {events.length > 0 && (
               <Section label="History">

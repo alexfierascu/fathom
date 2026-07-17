@@ -53,6 +53,11 @@ export function bindStraitMarker(target: L.Map | L.LayerGroup, strait: Strait): 
   const marker = L.marker([strait.lat, strait.lon], { icon: createStraitIcon() }).addTo(target);
   marker.bindTooltip(strait.name, { direction: 'top', offset: [0, -11], className: 'strait-tip' });
   marker.bindPopup(popupHtml(strait));
+  // Leaflet marker roots are keyboard-operable buttons; name them. The
+  // add event has already fired for direct map targets, so set it now too.
+  const nameMarker = () => marker.getElement()?.setAttribute('aria-label', strait.name);
+  marker.on('add', nameMarker);
+  nameMarker();
   return marker;
 }
 
