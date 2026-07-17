@@ -1,4 +1,4 @@
-import { useMemo } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 
 import { Link, useOutletContext, useParams } from 'react-router';
 
@@ -117,6 +117,8 @@ export function WaterBodyDetailPage() {
           </div>
         )}
 
+        <ThreadBar waterId={waterBody.id} waterName={waterBody.name} />
+
         <FlowDiagram waterBodyId={waterBody.id} name={waterBody.name} />
 
         <div className="chart-split">
@@ -206,5 +208,77 @@ export function WaterBodyDetailPage() {
         </div>
       </article>
     </>
+  );
+}
+
+interface ThreadEntry {
+  id: string;
+  name: string;
+}
+
+function readThread(): ThreadEntry[] {
+  try {
+    const raw = window.sessionStorage.getItem('fathom-thread');
+    const parsed: unknown = raw ? JSON.parse(raw) : [];
+    return Array.isArray(parsed) ? (parsed as ThreadEntry[]) : [];
+  } catch {
+    return [];
+  }
+}
+
+/**
+ * Walk the Thread: as the reader steps from sea to sea through the flow
+ * diagrams, their route accumulates here — a wake through the session.
+ */
+function ThreadBar({ waterId, waterName }: { waterId: string; waterName: string }) {
+  const [, bump] = useState(0);
+  const stored = readThread();
+  const display = [
+    ...stored.filter((entry) => entry.id !== waterId),
+    { id: waterId, name: waterName },
+  ];
+
+  useEffect(() => {
+    try {
+      window.sessionStorage.setItem('fathom-thread', JSON.stringify(display.slice(-12)));
+    } catch {
+      // Session storage unavailable — the thread simply isn't kept.
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [waterId]);
+
+  if (display.length < 2) return null;
+  return (
+    <div className="thread-bar">
+      <span className="geo-label">Your thread</span>
+      <div className="pills">
+        {display.map((entry, index) => (
+          <span key={entry.id} style={{ display: 'contents' }}>
+            {index > 0 && <span className="thread-link" aria-hidden="true" />}
+            {entry.id === waterId ? (
+              <span className="pill pill--tag">{entry.name}</span>
+            ) : (
+              <Link viewTransition className="pill" to={`/water-bodies/${entry.id}`}>
+                {entry.name}
+              </Link>
+            )}
+          </span>
+        ))}
+      </div>
+      <button
+        type="button"
+        className="link-button"
+        onClick={() => {
+          try {
+            window.sessionStorage.removeItem('fathom-thread');
+          } catch {
+            /* noop */
+          }
+          bump((n) => n + 1);
+        }}
+      >
+        Cut the thread
+      </button>
+    </div>
   );
 }

@@ -1,6 +1,6 @@
-import { useMemo, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 
-import { Link, useNavigate, useOutletContext } from 'react-router';
+import { Link, useNavigate, useOutletContext, useSearchParams } from 'react-router';
 
 import { loadAllStraits } from '@fathom/data';
 import { randomEntity } from '@fathom/discovery';
@@ -96,6 +96,21 @@ export function ExplorePage() {
  */
 export function MapPage() {
   const { tileStyle } = useOutletContext<LayoutContext>();
+  const [searchParams] = useSearchParams();
+  const [lanes, setLanes] = useState(true);
+  const [drift, setDrift] = useState(searchParams.get('drift') === '1');
+
+  useEffect(() => {
+    if (!drift) return;
+    const onKey = (event: KeyboardEvent) => {
+      if (event.key === 'Escape') setDrift(false);
+    };
+    document.addEventListener('keydown', onKey);
+    return () => {
+      document.removeEventListener('keydown', onKey);
+    };
+  }, [drift]);
+
   return (
     <>
       <SeoTags
@@ -104,15 +119,43 @@ export function MapPage() {
         path="/map"
       />
       <div className="map-page">
+        <div className="map-toggles">
+          <button
+            type="button"
+            className={lanes ? 'chip chip--on' : 'chip'}
+            aria-pressed={lanes}
+            onClick={() => {
+              setLanes((state) => !state);
+            }}
+          >
+            Trade lanes {lanes ? '✓' : ''}
+          </button>
+          <button
+            type="button"
+            className={drift ? 'chip chip--on' : 'chip'}
+            aria-pressed={drift}
+            onClick={() => {
+              setDrift((state) => !state);
+            }}
+          >
+            {drift ? 'Drop anchor' : 'Set adrift ⚓'}
+          </button>
+        </div>
         <MapPanel
           straits={STRAITS}
           filteredIds={null}
           hoveredId={null}
           visibleCount={STRAITS.length}
+          lanes={lanes}
+          drift={drift}
+          onDriftStop={() => {
+            setDrift(false);
+          }}
           tileStyle={tileStyle}
         />
         <p className="map-page-hint note">
-          Click any marker to open its strait — every pin is a place to start exploring.
+          Click any marker to open its strait — every pin is a place to start exploring. Gold rings
+          scale with sourced oil flow (EIA 2023).
         </p>
       </div>
     </>

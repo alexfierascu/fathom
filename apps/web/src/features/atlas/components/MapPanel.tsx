@@ -1,9 +1,18 @@
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
 import L from 'leaflet';
 import 'leaflet.markercluster';
 
-import type { Strait } from '@fathom/data';
+import { loadStatistics, type Strait } from '@fathom/data';
+import {
+  getMaritimeGraph,
+  journeyCourse,
+  loadJourneys,
+  randomEntity,
+  randomWalk,
+} from '@fathom/discovery';
+
+import { Link } from 'react-router';
 
 import type { TileStyle } from '../../theme/themes';
 import {
@@ -24,6 +33,11 @@ interface MapPanelProps {
   filteredIds: ReadonlySet<string> | null;
   hoveredId: string | null;
   visibleCount: number;
+  /** Draw the world's charted trade lanes and EIA-scaled chokepoints. */
+  lanes?: boolean;
+  /** Drift mode: the chart sails itself from place to place. */
+  drift?: boolean;
+  onDriftStop?: () => void;
   tileStyle: TileStyle;
 }
 
@@ -32,6 +46,9 @@ export function MapPanel({
   filteredIds,
   hoveredId,
   visibleCount,
+  lanes = false,
+  drift = false,
+  onDriftStop,
   tileStyle,
 }: MapPanelProps) {
   const panelRef = useRef<HTMLDivElement>(null);
@@ -90,6 +107,82 @@ export function MapPanel({
     tilesRef.current?.set(tileStyle);
   });
 
+  // The world's flow, drawn: every charted journey course as a gold lane,
+  // and the EIA-sourced chokepoints scaled by what passes through them.
+  useEffect(() => {
+    const map = mapRef.current;
+    if (!map || !lanes) return;
+    const layer = L.layerGroup().addTo(map);
+    for (const journey of loadJourneys()) {
+      L.polyline(
+        journeyCourse(journey).map((point) => [point.lat, point.lon] as L.LatLngTuple),
+        { weight: 1.4, opacity: 0.45, color: '#e7b75f' },
+      ).addTo(layer);
+    }
+    const graph = getMaritimeGraph();
+    for (const stat of loadStatistics()) {
+      if (stat.metric !== 'oil-transit') continue;
+      const node = graph.nodes.get(`${stat.subject.type}:${stat.subject.id}`);
+      if (node?.lat === undefined || node.lon === undefined) continue;
+      L.circleMarker([node.lat, node.lon], {
+        radius: 5 + stat.value / 2.2,
+        color: '#e7b75f',
+        weight: 1.5,
+        fillColor: '#e7b75f',
+        fillOpacity: 0.25,
+      })
+        .bindTooltip(`${node.name} — ${String(stat.value)} ${stat.unit} (EIA, ${stat.period})`, {
+          className: 'strait-tip',
+          direction: 'top',
+        })
+        .addTo(layer);
+    }
+    return () => {
+      layer.remove();
+    };
+  }, [lanes, straits]);
+
+  // Drift mode: sail to a new charted place every few seconds.
+  const [driftNode, setDriftNode] = useState<{ id: string; name: string; path: string } | null>(
+    null,
+  );
+  useEffect(() => {
+    const map = mapRef.current;
+    if (!map || !drift) {
+      setDriftNode(null);
+      return;
+    }
+    const graph = getMaritimeGraph();
+    let currentId = randomEntity({ types: ['strait'] }, graph)?.entityId ?? null;
+    const sail = () => {
+      if (!currentId) return;
+      let next = null;
+      let cursor = currentId;
+      for (let attempt = 0; attempt < 8 && !next; attempt += 1) {
+        const step = randomWalk(cursor, 1, undefined, graph)[0];
+        if (!step) break;
+        cursor = step.entityId;
+        if (step.lat !== undefined && step.lon !== undefined) next = step;
+      }
+      next ??= randomEntity({ types: ['strait'], excludeId: currentId }, graph);
+      if (next?.lat === undefined || next.lon === undefined) return;
+      currentId = next.entityId;
+      const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      if (reduce) map.setView([next.lat, next.lon], 5);
+      else map.flyTo([next.lat, next.lon], 5, { duration: 2.4 });
+      setDriftNode({
+        id: next.entityId,
+        name: next.name,
+        path: `/${next.type === 'strait' ? 'straits' : 'water-bodies'}/${next.id}`,
+      });
+    };
+    sail();
+    const timer = window.setInterval(sail, 4600);
+    return () => {
+      window.clearInterval(timer);
+    };
+  }, [drift]);
+
   useEffect(() => {
     for (const [id, marker] of markersRef.current) {
       const element = marker.getElement();
@@ -129,6 +222,22 @@ export function MapPanel({
         </div>
       </div>
       <div id="map" ref={containerRef} />
+      {drift && driftNode && (
+        <div className="drift-chip">
+          <span className="geo-label">Adrift</span>
+          <Link viewTransition to={driftNode.path}>
+            {driftNode.name}
+          </Link>
+          <button
+            type="button"
+            onClick={() => {
+              onDriftStop?.();
+            }}
+          >
+            Drop anchor
+          </button>
+        </div>
+      )}
     </div>
   );
 }
