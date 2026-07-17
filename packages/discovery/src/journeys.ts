@@ -1,4 +1,10 @@
-import { loadAllStraits, loadMaritimeRoutes, parseEntityId, type EntityRef } from '@fathom/data';
+import {
+  loadAllStraits,
+  loadMaritimeRoutes,
+  parseEntityId,
+  type EntityRef,
+  type HistoricalEvent,
+} from '@fathom/data';
 
 import { getMaritimeGraph, shortestPath, type GraphNode } from './graph';
 
@@ -120,6 +126,27 @@ export function straitQuiz(
     options,
     answer: subject.name,
   };
+}
+
+/**
+ * A year quiz grounded in a recorded event — the answer comes from the
+ * event's own date; distractors are deterministic offsets.
+ */
+export function eventYearQuiz(
+  event: HistoricalEvent,
+  random: () => number = Math.random,
+): JourneyQuiz | null {
+  const year = Number.parseInt(event.date.value, 10);
+  if (!Number.isFinite(year)) return null;
+  const offsets = [-31, -14, -8, 7, 12, 26];
+  const picks = new Set<number>();
+  while (picks.size < 3) {
+    const offset = offsets[Math.floor(random() * offsets.length)];
+    if (offset !== undefined && offset !== 0) picks.add(year + offset);
+  }
+  const options = [...picks].map(String);
+  options.splice(Math.floor(random() * (options.length + 1)), 0, String(year));
+  return { prompt: `In which year: ${event.name.toLowerCase()}?`, options, answer: String(year) };
 }
 
 /**

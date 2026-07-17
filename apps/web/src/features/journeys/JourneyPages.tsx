@@ -2,8 +2,18 @@ import { useCallback, useRef, useState } from 'react';
 
 import { Link, useOutletContext, useParams } from 'react-router';
 
-import { entityId as canonicalId, getEntity, loadImages } from '@fathom/data';
 import {
+  entityId as canonicalId,
+  getEntity,
+  loadHistoricalEvents,
+  loadImages,
+  loadImagesFor,
+  loadStrait,
+} from '@fathom/data';
+import {
+  bearingWord,
+  eventYearQuiz,
+  legBetween,
   loadJourneys,
   relatedJourneys,
   resolveWaypoint,
@@ -18,6 +28,13 @@ import { Breadcrumbs } from '../atlas/components/Breadcrumbs';
 import { Section } from '../atlas/components/Section';
 import { SeoTags } from '../atlas/components/SeoTags';
 import { entityPath } from '../atlas/lib/entityPaths';
+import { formatDateValue } from '../atlas/lib/format';
+import { CompareStop } from '../expedition/CompareStop';
+import { ConnectionCards } from '../expedition/ConnectionCards';
+import { JourneyChain } from '../expedition/JourneyChain';
+import { NextStopStrip } from '../expedition/NextStopStrip';
+import { Tabs, type TabSpec } from '../expedition/Tabs';
+import { EntityGallery } from '../media/MediaGallery';
 import { attributionOf, mediaUrl } from '../media/media';
 import { JourneyMap } from './JourneyMap';
 import { useJourneyProgress } from './useJourneyProgress';
@@ -198,8 +215,151 @@ export function JourneyDetailPage() {
   const waypoint = journey.waypoints[progress.stop];
   const stopNode = waypoint ? resolveWaypoint(waypoint) : null;
   const stopPath = stopNode ? entityPath(stopNode) : null;
-  const atLastStop = progress.stop >= stopCount - 1;
   const travelling = progress.started && !progress.finished;
+
+  // ----- The stop as a chapter: everything below derives from data -----
+  const seeded = (seed: number) => {
+    let state = seed >>> 0;
+    return () => {
+      state = (state * 1664525 + 1013904223) >>> 0;
+      return state / 4294967296;
+    };
+  };
+  const stopKey = waypoint ? `${waypoint.entity.type}:${waypoint.entity.id}` : null;
+  const stopEvents = waypoint
+    ? loadHistoricalEvents().filter((event) =>
+        event.involves.some(
+          (ref) => ref.type === waypoint.entity.type && ref.id === waypoint.entity.id,
+        ),
+      )
+    : [];
+  const stopImages = waypoint
+    ? loadImagesFor({ type: waypoint.entity.type, id: waypoint.entity.id })
+    : [];
+  const stopImage = stopImages[0];
+  const straitDoc = stopNode?.type === 'strait' ? loadStrait(stopNode.id) : undefined;
+  const historyQuiz =
+    stopEvents[0] !== undefined
+      ? eventYearQuiz(stopEvents[0], seeded(progress.stop * 31 + 7))
+      : null;
+  const chainItems = journey.waypoints.map((stop, index) => ({
+    id: `${stop.entity.type}:${stop.entity.id}`,
+    name: resolveWaypoint(stop)?.name ?? stop.entity.id,
+    state:
+      index < progress.stop
+        ? ('done' as const)
+        : index === progress.stop
+          ? ('current' as const)
+          : ('ahead' as const),
+  }));
+
+  const stopTabs: TabSpec[] = [];
+  if (waypoint && stopNode && stopKey) {
+    stopTabs.push({
+      key: 'story',
+      label: 'Story',
+      content: (
+        <>
+          {stopImage && (
+            <div
+              className="xp-hero"
+              style={{ backgroundImage: `url(${mediaUrl(stopImage.file)})` }}
+            >
+              <span className="media-attribution">{attributionOf(stopImage)}</span>
+            </div>
+          )}
+          <JourneyChain
+            items={chainItems}
+            onSelect={(index) => {
+              travel(() => {
+                jumpTo(index);
+              })();
+            }}
+          />
+          <p className="journey-leg">{waypoint.summary}</p>
+          {stopContext(waypoint) && <p className="note">{stopContext(waypoint)}</p>}
+          {waypoint.note && <p className="note">{waypoint.note}</p>}
+          {waypoint.challenge && (
+            <div className="stop-challenge">
+              <div className="geo-label">Challenge</div>
+              <p className="note">{waypoint.challenge}</p>
+            </div>
+          )}
+          {waypoint.quiz && <QuizBlock quiz={waypoint.quiz} />}
+          {stopPath && (
+            <Link viewTransition className="more-link" to={stopPath}>
+              Read the full article →
+            </Link>
+          )}
+        </>
+      ),
+    });
+    stopTabs.push({
+      key: 'connections',
+      label: 'Connections',
+      content: <ConnectionCards entityKey={stopKey} />,
+    });
+    if (stopEvents.length > 0) {
+      stopTabs.push({
+        key: 'history',
+        label: 'History',
+        content: (
+          <>
+            <ol className="timeline timeline--compact">
+              {stopEvents.map((event) => (
+                <li key={event.id} className="timeline-event">
+                  <div className="timeline-year">{formatDateValue(event.date)}</div>
+                  <div className="timeline-body">
+                    <h3>{event.name}</h3>
+                    <p className="note">{event.summary}</p>
+                  </div>
+                </li>
+              ))}
+            </ol>
+            {historyQuiz && <QuizBlock quiz={historyQuiz} />}
+          </>
+        ),
+      });
+    }
+    if (straitDoc) {
+      stopTabs.push({
+        key: 'compare',
+        label: 'Compare',
+        content: <CompareStop strait={straitDoc} />,
+      });
+    }
+    if (stopImages.length > 0) {
+      stopTabs.push({
+        key: 'gallery',
+        label: 'Gallery',
+        content: <EntityGallery entity={{ type: waypoint.entity.type, id: waypoint.entity.id }} />,
+      });
+    }
+  }
+  const stopMinutes = Math.min(stopTabs.length + 1, 5);
+
+  const nextWaypoint = journey.waypoints[progress.stop + 1];
+  const nextNode = nextWaypoint ? resolveWaypoint(nextWaypoint) : null;
+  const nextPreview =
+    nextWaypoint && nextNode
+      ? {
+          name: nextNode.name,
+          type: nextWaypoint.entity.type,
+          id: nextWaypoint.entity.id,
+          teaser: nextWaypoint.summary,
+          km: legBetween(journey.id, progress.stop, progress.stop + 1).km,
+          bearing:
+            stopNode?.lat !== undefined &&
+            stopNode.lon !== undefined &&
+            nextNode.lat !== undefined &&
+            nextNode.lon !== undefined
+              ? bearingWord(
+                  { lat: stopNode.lat, lon: stopNode.lon },
+                  { lat: nextNode.lat, lon: nextNode.lon },
+                )
+              : null,
+        }
+      : null;
 
   return (
     <>
@@ -333,7 +493,8 @@ export function JourneyDetailPage() {
                   <div className="voyage-body" key={progress.stop}>
                     <div className="eyebrow">
                       Stop {String(progress.stop + 1)} of {String(stopCount)} ·{' '}
-                      {TYPE_LABELS[waypoint.entity.type] ?? waypoint.entity.type}
+                      {TYPE_LABELS[waypoint.entity.type] ?? waypoint.entity.type} · ~
+                      {String(stopMinutes)} min
                     </div>
                     <h3 className="journey-stop-title">
                       {stopPath ? (
@@ -344,21 +505,7 @@ export function JourneyDetailPage() {
                         (stopNode?.name ?? waypoint.entity.id)
                       )}
                     </h3>
-                    <p className="journey-leg">{waypoint.summary}</p>
-                    {stopContext(waypoint) && <p className="note">{stopContext(waypoint)}</p>}
-                    {waypoint.note && <p className="note">{waypoint.note}</p>}
-                    {waypoint.challenge && (
-                      <div className="stop-challenge">
-                        <div className="geo-label">Challenge</div>
-                        <p className="note">{waypoint.challenge}</p>
-                      </div>
-                    )}
-                    {waypoint.quiz && <QuizBlock quiz={waypoint.quiz} />}
-                    {stopPath && (
-                      <Link viewTransition className="more-link" to={stopPath}>
-                        Read the full article →
-                      </Link>
-                    )}
+                    <Tabs idBase={`stop-${String(progress.stop)}`} tabs={stopTabs} />
                   </div>
                 )
               )}
@@ -389,25 +536,31 @@ export function JourneyDetailPage() {
                       className="journey-btn"
                       onClick={travel(previous)}
                       disabled={progress.stop === 0}
+                      aria-label="Previous stop"
                     >
-                      ← Previous
+                      ←
                     </button>
-                    {atLastStop ? (
-                      <button
-                        type="button"
-                        className="journey-btn journey-btn--primary"
-                        onClick={travel(finish)}
-                      >
-                        Finish journey
-                      </button>
+                    {nextPreview ? (
+                      <NextStopStrip
+                        name={nextPreview.name}
+                        entityType={nextPreview.type}
+                        entityId={nextPreview.id}
+                        teaser={nextPreview.teaser}
+                        km={nextPreview.km}
+                        bearing={nextPreview.bearing}
+                        onGo={travel(next)}
+                      />
                     ) : (
-                      <button
-                        type="button"
-                        className="journey-btn journey-btn--primary"
-                        onClick={travel(next)}
-                      >
-                        Next stop →
-                      </button>
+                      <NextStopStrip
+                        name="Complete the journey"
+                        entityType="journey"
+                        entityId={journey.id}
+                        teaser={`All ${String(stopCount)} stops travelled — log the voyage.`}
+                        km={null}
+                        bearing={null}
+                        final
+                        onGo={travel(finish)}
+                      />
                     )}
                   </>
                 )}
@@ -419,6 +572,11 @@ export function JourneyDetailPage() {
                 journey={journey}
                 currentStop={progress.stop}
                 travelling={travelling}
+                onSelectStop={(index) => {
+                  travel(() => {
+                    jumpTo(index);
+                  })();
+                }}
                 tileStyle={tileStyle}
               />
             </aside>

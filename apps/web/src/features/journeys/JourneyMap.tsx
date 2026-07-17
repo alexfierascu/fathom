@@ -19,6 +19,8 @@ interface JourneyMapProps {
   currentStop: number;
   /** Journey Mode is on — follow the traveller; otherwise show the course. */
   travelling: boolean;
+  /** Clicking a stop pin jumps the voyage there. */
+  onSelectStop?: (index: number) => void;
   tileStyle: TileStyle;
 }
 
@@ -27,12 +29,22 @@ interface JourneyMapProps {
  * course line that follows sea lanes through the authored via points,
  * and an animated fly-to whenever the traveller moves.
  */
-export function JourneyMap({ journey, currentStop, travelling, tileStyle }: JourneyMapProps) {
+export function JourneyMap({
+  journey,
+  currentStop,
+  travelling,
+  onSelectStop,
+  tileStyle,
+}: JourneyMapProps) {
   const panelRef = useRef<HTMLDivElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
   const mapRef = useRef<L.Map | null>(null);
   const tilesRef = useRef<TileManager | null>(null);
   const markersRef = useRef(new Map<number, L.Marker>());
+  const onSelectStopRef = useRef(onSelectStop);
+  useEffect(() => {
+    onSelectStopRef.current = onSelectStop;
+  });
 
   useEffect(() => {
     const container = containerRef.current;
@@ -66,6 +78,10 @@ export function JourneyMap({ journey, currentStop, travelling, tileStyle }: Jour
           className: 'strait-tip',
         });
       }
+      const stopIndex = point.stopIndex;
+      marker.on('click', () => {
+        onSelectStopRef.current?.(stopIndex);
+      });
       markers.set(point.stopIndex, marker);
     }
 
@@ -101,7 +117,11 @@ export function JourneyMap({ journey, currentStop, travelling, tileStyle }: Jour
     map.invalidateSize();
     const settle = window.setTimeout(() => map.invalidateSize(), 320);
     for (const [index, marker] of markersRef.current) {
-      marker.getElement()?.classList.toggle('is-current', travelling && index === currentStop);
+      const element = marker.getElement();
+      if (!element) continue;
+      element.classList.toggle('is-current', travelling && index === currentStop);
+      element.classList.toggle('is-done', travelling && index < currentStop);
+      element.classList.toggle('is-next', travelling && index === currentStop + 1);
     }
     if (!travelling) {
       return () => {

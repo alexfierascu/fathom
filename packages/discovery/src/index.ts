@@ -29,6 +29,7 @@ export { EXPLORABLE_TYPES, randomEntity, randomWalk } from './random';
 export {
   difficultyFor,
   estimateMinutes,
+  eventYearQuiz,
   journeyBetween,
   journeyFromRoute,
   journeyVisits,
@@ -48,5 +49,5 @@ export type {
 
 export { findJourney, loadJourneys } from './catalog';
 
-export { courseLengthKm, journeyCourse } from './course';
+export { bearingWord, courseLengthKm, journeyCourse, legBetween } from './course';
 export type { CoursePoint } from './course';

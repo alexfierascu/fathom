@@ -109,6 +109,43 @@ export function journeyCourse(journey: Journey): readonly CoursePoint[] {
   return unwrap(path);
 }
 
+/** Great-circle distance and compass direction from one stop to another. */
+export function legBetween(
+  journeyId: string,
+  fromStop: number,
+  toStop: number,
+): { km: number | null; bearing: string | null } {
+  const legs = COURSES[journeyId] ?? [];
+  const leg = legs.find((candidate) => candidate.from === fromStop && candidate.to === toStop);
+  return { km: leg?.km ?? null, bearing: null };
+}
+
+const WINDS = [
+  'north',
+  'north-east',
+  'east',
+  'south-east',
+  'south',
+  'south-west',
+  'west',
+  'north-west',
+];
+
+/** Compass word for the direction of travel between two points. */
+export function bearingWord(
+  from: { lat: number; lon: number },
+  to: { lat: number; lon: number },
+): string {
+  const toRad = (deg: number) => (deg * Math.PI) / 180;
+  const dLon = toRad(to.lon - from.lon);
+  const y = Math.sin(dLon) * Math.cos(toRad(to.lat));
+  const x =
+    Math.cos(toRad(from.lat)) * Math.sin(toRad(to.lat)) -
+    Math.sin(toRad(from.lat)) * Math.cos(toRad(to.lat)) * Math.cos(dLon);
+  const deg = ((Math.atan2(y, x) * 180) / Math.PI + 360) % 360;
+  return WINDS[Math.round(deg / 45) % 8] ?? 'onward';
+}
+
 /** Total charted length of a journey's precomputed course, in km. */
 export function courseLengthKm(journeyId: string): number | null {
   const legs = COURSES[journeyId];

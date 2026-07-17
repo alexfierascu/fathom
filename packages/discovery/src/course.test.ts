@@ -48,3 +48,13 @@ describe('journeyCourse', () => {
     expect(courseLengthKm('nonexistent')).toBeNull();
   });
 });
+
+describe('leg geometry', () => {
+  it('reports charted leg lengths and compass words', async () => {
+    const { legBetween, bearingWord } = await import('./course');
+    expect(legBetween('oil-to-europe', 1, 2).km).toBeGreaterThan(2000);
+    expect(legBetween('oil-to-europe', 0, 99).km).toBeNull();
+    expect(bearingWord({ lat: 26.57, lon: 56.25 }, { lat: 12.58, lon: 43.33 })).toBe('south-west');
+    expect(bearingWord({ lat: 35.95, lon: -5.59 }, { lat: 51, lon: 1.4 })).toBe('north');
+  });
+});

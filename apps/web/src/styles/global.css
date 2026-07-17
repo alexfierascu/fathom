@@ -2821,3 +2821,296 @@ a.flow-node:hover .flow-name {
     max-height: none;
   }
 }
+
+/* ---------- Expedition: the stop as a chapter ---------- */
+
+.xp-tablist {
+  display: flex;
+  gap: 4px;
+  border-bottom: 1px solid var(--border);
+  margin: 14px 0 16px;
+}
+.xp-tab {
+  background: none;
+  border: none;
+  border-bottom: 2px solid transparent;
+  padding: 8px 12px;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.62rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  cursor: pointer;
+}
+.xp-tab:hover {
+  color: var(--text);
+}
+.xp-tab.is-active {
+  color: var(--accent-2);
+  border-bottom-color: var(--accent-2);
+}
+@media (prefers-reduced-motion: no-preference) {
+  .xp-tabpanel:not([hidden]) {
+    animation: fade-up 0.3s ease both;
+  }
+}
+
+.xp-hero {
+  height: 120px;
+  border-radius: var(--radius);
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  margin-bottom: 14px;
+}
+.xp-hero .media-attribution {
+  position: absolute;
+  right: 8px;
+  bottom: 6px;
+}
+
+.chain {
+  list-style: none;
+  margin: 0 0 16px;
+  padding: 10px 12px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  row-gap: 6px;
+  background: color-mix(in srgb, var(--panel-2) 50%, transparent);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+}
+.chain-item {
+  display: flex;
+  align-items: center;
+}
+.chain-flow {
+  width: 22px;
+  height: 2px;
+  margin: 0 2px;
+  background-image: linear-gradient(
+    90deg,
+    color-mix(in srgb, var(--accent-2) 60%, transparent) 60%,
+    transparent 60%
+  );
+  background-size: 6px 2px;
+}
+@media (prefers-reduced-motion: no-preference) {
+  .chain-flow {
+    animation: chain-drift 1.6s linear infinite;
+  }
+}
+@keyframes chain-drift {
+  to {
+    background-position: 6px 0;
+  }
+}
+.chain-node {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: none;
+  border: none;
+  padding: 2px 4px;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.6rem;
+  letter-spacing: 0.05em;
+  color: var(--text-muted);
+  cursor: pointer;
+  white-space: nowrap;
+}
+.chain-glyph {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  border: 1px solid var(--border);
+  flex: none;
+}
+.chain-item--done .chain-node {
+  color: var(--teal);
+}
+.chain-item--done .chain-glyph {
+  background: var(--teal);
+  border-color: transparent;
+}
+.chain-item--current .chain-node {
+  color: var(--text);
+  font-weight: 700;
+}
+.chain-item--current .chain-glyph {
+  background: var(--accent-2);
+  border-color: transparent;
+  box-shadow: 0 0 0 4px color-mix(in srgb, var(--accent-2) 25%, transparent);
+}
+.chain-node:hover {
+  color: var(--accent-2);
+}
+
+.xp-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap: 8px;
+}
+.xp-card {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 10px 12px;
+  background: color-mix(in srgb, var(--panel-2) 45%, transparent);
+  text-decoration: none;
+  color: var(--text);
+  min-width: 0;
+}
+.xp-card:hover {
+  border-color: color-mix(in srgb, var(--accent-2) 50%, transparent);
+}
+.xp-card-kind {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.52rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--teal);
+}
+.xp-card b {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: 0.92rem;
+}
+.xp-card-reason {
+  font-size: 0.7rem;
+  color: var(--text-muted);
+  line-height: 1.4;
+}
+
+.xp-fact {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  margin-top: 12px;
+  border-left: 3px solid var(--teal);
+  background: color-mix(in srgb, var(--teal) 7%, transparent);
+  border-radius: 0 var(--radius) var(--radius) 0;
+  padding: 10px 14px;
+}
+.xp-fact p {
+  margin: 4px 0 0;
+  font-size: 0.82rem;
+  color: var(--text-muted);
+  line-height: 1.55;
+}
+.xp-fact-next {
+  margin-left: auto;
+  background: none;
+  border: 1px solid var(--border);
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  color: var(--accent-2);
+  cursor: pointer;
+  flex: none;
+}
+.xp-fact-next:hover {
+  border-color: var(--accent-2);
+}
+
+.xp-compare-cols {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  gap: 14px;
+  align-items: start;
+  background: color-mix(in srgb, var(--panel-2) 50%, transparent);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 16px 18px;
+}
+.xp-compare-cols b {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: 1.05rem;
+  display: block;
+  margin: 4px 0 4px;
+}
+.xp-compare-cols p {
+  margin: 0;
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  line-height: 1.5;
+}
+
+.next-strip {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  text-align: left;
+  background: color-mix(in srgb, var(--accent-2) 10%, var(--panel));
+  border: 1px solid color-mix(in srgb, var(--accent-2) 45%, transparent);
+  border-radius: var(--radius);
+  padding: 10px 14px;
+  cursor: pointer;
+  color: var(--text);
+  min-width: 0;
+  transition:
+    border-color 0.15s ease,
+    background 0.15s ease;
+}
+.next-strip:hover {
+  background: color-mix(in srgb, var(--accent-2) 16%, var(--panel));
+  border-color: var(--accent-2);
+}
+.next-strip-thumb {
+  width: 52px;
+  height: 40px;
+  border-radius: 6px;
+  background-size: cover;
+  background-position: center;
+  flex: none;
+}
+.next-strip-body {
+  min-width: 0;
+  display: grid;
+  gap: 1px;
+}
+.next-strip-body b {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: 1rem;
+}
+.next-strip-teaser {
+  font-size: 0.72rem;
+  color: var(--text-muted);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.next-strip-arrow {
+  margin-left: auto;
+  color: var(--accent-2);
+  font-size: 1.2rem;
+  flex: none;
+}
+
+/* Journey pin states: where you've been, where you're going. */
+.journey-pin.is-done {
+  border-color: var(--teal);
+  color: var(--teal);
+}
+.journey-pin.is-next {
+  border-color: var(--accent-2);
+}
+@media (prefers-reduced-motion: no-preference) {
+  .journey-pin.is-next {
+    animation: next-pulse 1.8s ease-out infinite;
+  }
+}
+@keyframes next-pulse {
+  0% {
+    box-shadow: 0 0 0 0 color-mix(in srgb, var(--accent-2) 45%, transparent);
+  }
+  100% {
+    box-shadow: 0 0 0 12px transparent;
+  }
+}
