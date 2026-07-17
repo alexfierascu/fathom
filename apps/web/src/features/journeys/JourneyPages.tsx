@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useCallback, useRef, useState } from 'react';
 
 import { Link, useOutletContext, useParams } from 'react-router';
 
@@ -161,6 +161,23 @@ export function JourneyDetailPage() {
     slug ?? 'unknown',
     stopCount,
   );
+  const courseRef = useRef<HTMLDivElement>(null);
+
+  // Every travel action returns the eyes to the chart and the stop panel —
+  // no manual scrolling back up after answering a quiz at the bottom.
+  const scrollToCourse = useCallback(() => {
+    window.setTimeout(() => {
+      const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      courseRef.current?.scrollIntoView({ behavior: reduce ? 'auto' : 'smooth', block: 'start' });
+    }, 40);
+  }, []);
+  const travel = useCallback(
+    (action: () => void) => () => {
+      action();
+      scrollToCourse();
+    },
+    [scrollToCourse],
+  );
 
   if (!journey) {
     return (
@@ -209,16 +226,24 @@ export function JourneyDetailPage() {
           <p className="note note--lede">{journey.description}</p>
           <div className="journey-actions">
             {!progress.started && progress.stop === 0 && !progress.finished && (
-              <button type="button" className="journey-btn journey-btn--primary" onClick={start}>
+              <button
+                type="button"
+                className="journey-btn journey-btn--primary"
+                onClick={travel(start)}
+              >
                 Start journey
               </button>
             )}
             {!progress.started && (progress.stop > 0 || progress.finished) && (
               <>
-                <button type="button" className="journey-btn journey-btn--primary" onClick={resume}>
+                <button
+                  type="button"
+                  className="journey-btn journey-btn--primary"
+                  onClick={travel(resume)}
+                >
                   Resume at stop {String(progress.stop + 1)}
                 </button>
-                <button type="button" className="journey-btn" onClick={start}>
+                <button type="button" className="journey-btn" onClick={travel(start)}>
                   Start over
                 </button>
               </>
@@ -231,12 +256,14 @@ export function JourneyDetailPage() {
           </div>
         </header>
 
-        <JourneyMap
-          journey={journey}
-          currentStop={progress.stop}
-          travelling={travelling}
-          tileStyle={tileStyle}
-        />
+        <div ref={courseRef}>
+          <JourneyMap
+            journey={journey}
+            currentStop={progress.stop}
+            travelling={travelling}
+            tileStyle={tileStyle}
+          />
+        </div>
 
         <div className="journey-mode">
           <ol className="journey-stops" aria-label="Journey progress">
@@ -256,9 +283,9 @@ export function JourneyDetailPage() {
                   <button
                     type="button"
                     className={`journey-stop${state}`}
-                    onClick={() => {
+                    onClick={travel(() => {
                       jumpTo(index);
-                    }}
+                    })}
                   >
                     <span className="journey-stop-number">{index + 1}</span>
                     <span>
@@ -280,7 +307,11 @@ export function JourneyDetailPage() {
                   {String(stopCount)} stops, about {String(journey.estimatedMinutes)} minutes. Start
                   the journey to travel the course stop by stop — the chart follows you.
                 </p>
-                <button type="button" className="journey-btn journey-btn--primary" onClick={start}>
+                <button
+                  type="button"
+                  className="journey-btn journey-btn--primary"
+                  onClick={travel(start)}
+                >
                   Start journey
                 </button>
               </div>
@@ -337,7 +368,7 @@ export function JourneyDetailPage() {
                     <button
                       type="button"
                       className="journey-btn"
-                      onClick={previous}
+                      onClick={travel(previous)}
                       disabled={progress.stop === 0}
                     >
                       ← Previous
@@ -346,7 +377,7 @@ export function JourneyDetailPage() {
                       <button
                         type="button"
                         className="journey-btn journey-btn--primary"
-                        onClick={finish}
+                        onClick={travel(finish)}
                       >
                         Finish journey
                       </button>
@@ -354,7 +385,7 @@ export function JourneyDetailPage() {
                       <button
                         type="button"
                         className="journey-btn journey-btn--primary"
-                        onClick={next}
+                        onClick={travel(next)}
                       >
                         Next stop →
                       </button>

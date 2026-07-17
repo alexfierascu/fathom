@@ -125,6 +125,7 @@ export function loadJourneys(): readonly Journey[] {
       id: 'around-europe-by-sea',
       title: 'Around Europe by Sea',
       subtitle: 'Gibraltar to the Baltic without crossing land',
+      coverImageId: 'dover-view',
       description:
         'The long way north: from the Mediterranean gate, up the Atlantic seaboard, through the Channel narrows, and around Denmark into the Baltic.',
       tags: ['historic-trade'],
@@ -210,6 +211,7 @@ export function loadJourneys(): readonly Journey[] {
       id: 'arctic-exploration',
       title: 'Arctic Exploration',
       subtitle: 'The high-latitude passages of the polar seas',
+      coverImageId: 'davis-view',
       description:
         'Trace the top of the world from the Pacific side to the Atlantic side, through the straits that link the Arctic Ocean to everything below it.',
       tags: ['polar'],
@@ -257,6 +259,7 @@ export function loadJourneys(): readonly Journey[] {
       id: 'the-silk-road-by-sea',
       title: 'The Silk Road by Sea',
       subtitle: 'The maritime trade artery between Asia and Europe',
+      coverImageId: 'singapore-view',
       description:
         'Sail the modern course of an ancient exchange: from the South China Sea through the Malacca and Singapore narrows, across the Indian Ocean, and up through Suez to the Mediterranean.',
       tags: ['historic-trade'],
@@ -279,6 +282,7 @@ export function loadJourneys(): readonly Journey[] {
       id: 'the-pacific-gateways',
       title: 'The Pacific Gateways',
       subtitle: 'The straits that ring the western Pacific',
+      coverImageId: 'korea-view',
       description:
         'Island-hop the western rim of the Pacific from south to north, through the passages that separate its seas from the open ocean.',
       tags: [],
