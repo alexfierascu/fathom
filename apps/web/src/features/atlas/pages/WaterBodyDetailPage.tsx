@@ -55,7 +55,10 @@ export function WaterBodyDetailPage() {
   if (!waterBody || !related) {
     return (
       <div className="empty">
-        No waters charted at this address. <Link to="/">Return to the chart.</Link>
+        No waters charted at this address.{' '}
+        <Link viewTransition to="/">
+          Return to the chart.
+        </Link>
       </div>
     );
   }
@@ -107,7 +110,10 @@ export function WaterBodyDetailPage() {
 
         {parent && (
           <div className="connects">
-            Part of <Link to={`/water-bodies/${parent.id}`}>{parent.name}</Link>
+            Part of{' '}
+            <Link viewTransition to={`/water-bodies/${parent.id}`}>
+              {parent.name}
+            </Link>
           </div>
         )}
 
@@ -169,7 +175,12 @@ export function WaterBodyDetailPage() {
           <Section label="Journeys through these waters">
             <div className="grid">
               {journeys.map((journey) => (
-                <Link key={journey.id} className="card" to={`/journeys/${journey.id}`}>
+                <Link
+                  viewTransition
+                  key={journey.id}
+                  className="card"
+                  to={`/journeys/${journey.id}`}
+                >
                   <div className="eyebrow">
                     {String(journey.waypoints.length)} stops · ~{String(journey.estimatedMinutes)}{' '}
                     min

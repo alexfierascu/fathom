@@ -142,17 +142,17 @@ export function LearnPage() {
         </header>
 
         <div className="explore-tiles">
-          <Link className="explore-tile" to="/quiz">
+          <Link viewTransition className="explore-tile" to="/quiz">
             <div className="explore-tile-glyph">?</div>
             <h3>Know your narrows</h3>
             <p>A quiz generated from the charts themselves — never the same twice.</p>
           </Link>
-          <Link className="explore-tile" to="/timeline">
+          <Link viewTransition className="explore-tile" to="/timeline">
             <div className="explore-tile-glyph">⌛</div>
             <h3>Travel through time</h3>
             <p>Every event the atlas records, in order, each grounded in its sources.</p>
           </Link>
-          <Link className="explore-tile" to="/compare">
+          <Link viewTransition className="explore-tile" to="/compare">
             <div className="explore-tile-glyph">⇄</div>
             <h3>Compare straits</h3>
             <p>Two narrows side by side — geography, countries, and crossings.</p>

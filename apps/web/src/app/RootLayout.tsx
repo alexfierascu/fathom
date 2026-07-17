@@ -63,6 +63,42 @@ export function RootLayout() {
     mainRef.current?.focus({ preventScroll: true });
   }, [location.pathname]);
 
+  // Sections glide up as they enter the viewport. The 'reveal-ready'
+  // class arms the effect only when the observer is actually running, so
+  // content can never be stranded invisible.
+  useEffect(() => {
+    if (!('IntersectionObserver' in window)) return;
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    document.documentElement.classList.add('reveal-ready');
+
+    const io = new IntersectionObserver(
+      (entries) => {
+        for (const entry of entries) {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('in-view');
+            io.unobserve(entry.target);
+          }
+        }
+      },
+      { threshold: 0.08, rootMargin: '0px 0px -40px 0px' },
+    );
+    const watch = () => {
+      const targets = document.querySelectorAll(
+        '.detail-section:not(.in-view), .cinematic:not(.in-view), .one-fact:not(.in-view), .mode-cards:not(.in-view)',
+      );
+      for (const target of targets) io.observe(target);
+    };
+    watch();
+    const mo = new MutationObserver(watch);
+    const main = mainRef.current;
+    if (main) mo.observe(main, { childList: true, subtree: true });
+    return () => {
+      io.disconnect();
+      mo.disconnect();
+      document.documentElement.classList.remove('reveal-ready');
+    };
+  }, []);
+
   // Primary-nav hash targets (e.g. /#explore-seas) scroll into view.
   useEffect(() => {
     if (!location.hash) return;

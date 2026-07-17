@@ -13,6 +13,7 @@ export function EntityPills({ entities }: { entities: readonly EntityNode[] }) {
         const path = entityPath(entity);
         return path ? (
           <Link
+            viewTransition
             key={entity.entityId}
             className="pill"
             to={path}

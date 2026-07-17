@@ -20,15 +20,23 @@ export function AtlasHeader({ onSearchOpen, children }: AtlasHeaderProps) {
   return (
     <header className="topbar">
       <h1 className="wordmark">
-        <Link to="/">
+        <Link viewTransition to="/">
           FATHOM<small>ATLAS</small>
         </Link>
       </h1>
       <nav className="site-nav" aria-label="Primary">
-        <NavLink to="/explore">{t('nav.explore')}</NavLink>
-        <NavLink to="/journeys">{t('nav.journeys')}</NavLink>
-        <NavLink to="/map">{t('nav.map')}</NavLink>
-        <NavLink to="/learn">{t('nav.learn')}</NavLink>
+        <NavLink viewTransition to="/explore">
+          {t('nav.explore')}
+        </NavLink>
+        <NavLink viewTransition to="/journeys">
+          {t('nav.journeys')}
+        </NavLink>
+        <NavLink viewTransition to="/map">
+          {t('nav.map')}
+        </NavLink>
+        <NavLink viewTransition to="/learn">
+          {t('nav.learn')}
+        </NavLink>
       </nav>
       <div className="header-controls">
         <button

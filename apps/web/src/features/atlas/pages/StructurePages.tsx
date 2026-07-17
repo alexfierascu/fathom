@@ -70,7 +70,10 @@ function StructurePage({
   if (!resolved) {
     return (
       <div className="empty">
-        No {emptyLabel} charted at this address. <Link to="/">Return to the chart.</Link>
+        No {emptyLabel} charted at this address.{' '}
+        <Link viewTransition to="/">
+          Return to the chart.
+        </Link>
       </div>
     );
   }

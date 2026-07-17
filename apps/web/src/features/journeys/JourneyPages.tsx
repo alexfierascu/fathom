@@ -58,7 +58,12 @@ export function JourneysPage() {
           {journeys.map((journey) => {
             const cover = coverOf(journey);
             return (
-              <Link key={journey.id} className="card journey-card" to={`/journeys/${journey.id}`}>
+              <Link
+                viewTransition
+                key={journey.id}
+                className="card journey-card"
+                to={`/journeys/${journey.id}`}
+              >
                 {cover && (
                   <img
                     className="journey-card-cover"
@@ -182,7 +187,10 @@ export function JourneyDetailPage() {
   if (!journey) {
     return (
       <div className="empty">
-        No such journey. <Link to="/journeys">Browse the journeys.</Link>
+        No such journey.{' '}
+        <Link viewTransition to="/journeys">
+          Browse the journeys.
+        </Link>
       </div>
     );
   }
@@ -330,7 +338,7 @@ export function JourneyDetailPage() {
                   >
                     Travel again
                   </button>
-                  <Link className="journey-btn" to="/journeys">
+                  <Link viewTransition className="journey-btn" to="/journeys">
                     All journeys
                   </Link>
                 </div>
@@ -344,7 +352,9 @@ export function JourneyDetailPage() {
                   </div>
                   <h3 className="journey-stop-title">
                     {stopPath ? (
-                      <Link to={stopPath}>{stopNode?.name}</Link>
+                      <Link viewTransition to={stopPath}>
+                        {stopNode?.name}
+                      </Link>
                     ) : (
                       (stopNode?.name ?? waypoint.entity.id)
                     )}
@@ -360,7 +370,7 @@ export function JourneyDetailPage() {
                   )}
                   {waypoint.quiz && <QuizBlock quiz={waypoint.quiz} />}
                   {stopPath && (
-                    <Link className="more-link" to={stopPath}>
+                    <Link viewTransition className="more-link" to={stopPath}>
                       Read the full article →
                     </Link>
                   )}
@@ -401,7 +411,7 @@ export function JourneyDetailPage() {
           <Section label="Related journeys">
             <div className="grid">
               {related.map((other) => (
-                <Link key={other.id} className="card" to={`/journeys/${other.id}`}>
+                <Link viewTransition key={other.id} className="card" to={`/journeys/${other.id}`}>
                   <div className="eyebrow">
                     {String(other.waypoints.length)} stops · {DIFFICULTY_LABELS[other.difficulty]}
                   </div>

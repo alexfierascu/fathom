@@ -33,7 +33,10 @@ export function StraitDetailPage() {
   if (!strait) {
     return (
       <div className="empty">
-        No strait charted at this address. <Link to="/">Return to the chart.</Link>
+        No strait charted at this address.{' '}
+        <Link viewTransition to="/">
+          Return to the chart.
+        </Link>
       </div>
     );
   }
@@ -118,7 +121,12 @@ export function StraitDetailPage() {
             {tags.length > 0 && (
               <div className="pills pills--tags">
                 {tags.map((tag) => (
-                  <Link key={tag.id} className="pill pill--tag" to={`/tags/${tag.id}`}>
+                  <Link
+                    viewTransition
+                    key={tag.id}
+                    className="pill pill--tag"
+                    to={`/tags/${tag.id}`}
+                  >
                     {tag.name}
                   </Link>
                 ))}
@@ -157,7 +165,7 @@ export function StraitDetailPage() {
                 </li>
               ))}
             </ol>
-            <Link className="more-link" to="/timeline">
+            <Link viewTransition className="more-link" to="/timeline">
               Full timeline →
             </Link>
           </Section>
@@ -197,7 +205,7 @@ export function StraitDetailPage() {
         <EntityGallery entity={{ type: 'strait', id: strait.id }} />
 
         <ContinueExploring entityId={`strait:${strait.id}`} entityName={strait.name}>
-          <Link className="pill pill--action" to={`/compare/${strait.id}`}>
+          <Link viewTransition className="pill pill--action" to={`/compare/${strait.id}`}>
             Compare this strait ⇄
           </Link>
         </ContinueExploring>
@@ -206,7 +214,12 @@ export function StraitDetailPage() {
           <Section label="Journeys that pass this way">
             <div className="grid">
               {journeys.map((journey) => (
-                <Link key={journey.id} className="card" to={`/journeys/${journey.id}`}>
+                <Link
+                  viewTransition
+                  key={journey.id}
+                  className="card"
+                  to={`/journeys/${journey.id}`}
+                >
                   <div className="eyebrow">
                     {String(journey.waypoints.length)} stops · ~{String(journey.estimatedMinutes)}{' '}
                     min

@@ -50,6 +50,7 @@ export function ContinueExploring({ entityId, entityName, children }: ContinueEx
                 const surprise = group.key === 'random-discovery';
                 return (
                   <Link
+                    viewTransition
                     key={item.entityId}
                     className={surprise ? 'pill pill--surprise' : 'pill'}
                     to={path}

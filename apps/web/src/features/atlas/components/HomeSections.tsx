@@ -78,7 +78,12 @@ export function ExploreSections() {
         <Section label="Explore by region">
           <div className="facts">
             {regions.map((region) => (
-              <Link key={region.name} className="fact fact--link" to={`/regions/${region.id}`}>
+              <Link
+                viewTransition
+                key={region.name}
+                className="fact fact--link"
+                to={`/regions/${region.id}`}
+              >
                 <div className="fact-label">{region.name}</div>
                 <div className="fact-value">
                   {region.count} strait{region.count === 1 ? '' : 's'}
@@ -93,7 +98,12 @@ export function ExploreSections() {
         <Section label="Explore by sea">
           <div className="facts">
             {seas.map(({ entity, straits: count }) => (
-              <Link key={entity.id} className="fact fact--link" to={`/water-bodies/${entity.id}`}>
+              <Link
+                viewTransition
+                key={entity.id}
+                className="fact fact--link"
+                to={`/water-bodies/${entity.id}`}
+              >
                 <div className="fact-label">{entity.name}</div>
                 <div className="fact-value">
                   {count} strait{count === 1 ? '' : 's'}
@@ -108,7 +118,12 @@ export function ExploreSections() {
         <Section label="Explore by country">
           <div className="facts">
             {countries.map(({ entity, straits: count }) => (
-              <Link key={entity.id} className="fact fact--link" to={`/countries/${entity.id}`}>
+              <Link
+                viewTransition
+                key={entity.id}
+                className="fact fact--link"
+                to={`/countries/${entity.id}`}
+              >
                 <div className="fact-label">{entity.name}</div>
                 <div className="fact-value">
                   {count} strait{count === 1 ? '' : 's'}
@@ -131,7 +146,10 @@ export function InterestingFacts() {
           <blockquote key={strait.id} className="fact-quote">
             <p>{strait.note}</p>
             <footer>
-              — <Link to={`/straits/${strait.id}`}>{strait.name}</Link>
+              —{' '}
+              <Link viewTransition to={`/straits/${strait.id}`}>
+                {strait.name}
+              </Link>
             </footer>
           </blockquote>
         ))}
@@ -146,7 +164,7 @@ export function RecentlyCharted() {
     <Section label="Recently charted">
       <div className="pills">
         {recent.map((strait) => (
-          <Link key={strait.id} className="pill" to={`/straits/${strait.id}`}>
+          <Link viewTransition key={strait.id} className="pill" to={`/straits/${strait.id}`}>
             {strait.name}
           </Link>
         ))}

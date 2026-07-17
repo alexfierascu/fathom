@@ -11,14 +11,14 @@ export function StraitPager({ previous, next }: StraitPagerProps) {
   return (
     <nav className="pager" aria-label="Adjacent straits">
       {previous ? (
-        <Link className="pager-link" to={`/straits/${previous.id}`} rel="prev">
+        <Link viewTransition className="pager-link" to={`/straits/${previous.id}`} rel="prev">
           ← {previous.name}
         </Link>
       ) : (
         <span />
       )}
       {next ? (
-        <Link className="pager-link" to={`/straits/${next.id}`} rel="next">
+        <Link viewTransition className="pager-link" to={`/straits/${next.id}`} rel="next">
           {next.name} →
         </Link>
       ) : (

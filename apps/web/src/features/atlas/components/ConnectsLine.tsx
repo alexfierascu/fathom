@@ -15,7 +15,9 @@ export function ConnectsLine({ strait }: { strait: Strait }) {
     const renderSide = (label: string) => {
       const waterBody = bySlug.get(slugifyName(label));
       return waterBody ? (
-        <Link to={`/water-bodies/${waterBody.id}`}>{label}</Link>
+        <Link viewTransition to={`/water-bodies/${waterBody.id}`}>
+          {label}
+        </Link>
       ) : (
         <span>{label}</span>
       );

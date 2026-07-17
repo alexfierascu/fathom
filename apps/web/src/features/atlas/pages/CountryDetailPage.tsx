@@ -52,7 +52,10 @@ export function CountryDetailPage() {
   if (!country || !related) {
     return (
       <div className="empty">
-        No country charted at this address. <Link to="/">Return to the chart.</Link>
+        No country charted at this address.{' '}
+        <Link viewTransition to="/">
+          Return to the chart.
+        </Link>
       </div>
     );
   }

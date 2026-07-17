@@ -33,7 +33,10 @@ export function TagDetailPage() {
   if (!tag) {
     return (
       <div className="empty">
-        No such tag in the atlas. <Link to="/">Return to the chart.</Link>
+        No such tag in the atlas.{' '}
+        <Link viewTransition to="/">
+          Return to the chart.
+        </Link>
       </div>
     );
   }
@@ -79,7 +82,9 @@ function CompareColumn({ strait }: { strait: Strait }) {
   return (
     <div className="compare-column">
       <h3>
-        <Link to={`/straits/${strait.id}`}>{strait.name}</Link>
+        <Link viewTransition to={`/straits/${strait.id}`}>
+          {strait.name}
+        </Link>
       </h3>
       <div className="eyebrow">{region?.name ?? strait.region}</div>
       <dl className="compare-facts">
@@ -100,7 +105,7 @@ function CompareColumn({ strait }: { strait: Strait }) {
           {tags.length > 0 ? (
             <div className="pills">
               {tags.map((tag) => (
-                <Link key={tag.id} className="pill" to={`/tags/${tag.id}`}>
+                <Link viewTransition key={tag.id} className="pill" to={`/tags/${tag.id}`}>
                   {tag.name}
                 </Link>
               ))}
@@ -254,7 +259,9 @@ export function QuizPage() {
             </div>
             {picked !== null && (
               <div className="quiz-followup">
-                <Link to={`/straits/${question.straitId}`}>Read about this strait →</Link>
+                <Link viewTransition to={`/straits/${question.straitId}`}>
+                  Read about this strait →
+                </Link>
                 <button
                   type="button"
                   className="nav-random"

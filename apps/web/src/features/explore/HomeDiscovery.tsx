@@ -29,6 +29,7 @@ export function PopularTags() {
       <div className="pills">
         {tags.map(({ tag, count }) => (
           <Link
+            viewTransition
             key={tag.id}
             className="pill pill--tag"
             to={`/tags/${tag.id}`}
@@ -57,13 +58,13 @@ export function Collections() {
   return (
     <Section label="Collections">
       <div className="grid">
-        <Link className="card" to="/journeys">
+        <Link viewTransition className="card" to="/journeys">
           <div className="eyebrow">{String(journeys.length)} voyages</div>
           <h3>Guided journeys</h3>
           <div className="note">Curated passages with a course to follow.</div>
         </Link>
         {tagCollections.map(({ tag, count }) => (
-          <Link key={tag.id} className="card" to={`/tags/${tag.id}`}>
+          <Link viewTransition key={tag.id} className="card" to={`/tags/${tag.id}`}>
             <div className="eyebrow">
               {String(count)} strait{count === 1 ? '' : 's'}
             </div>
@@ -100,7 +101,7 @@ export function ContinueReading() {
     <Section label="Continue reading">
       <div className="pills">
         {trail.map((visit) => (
-          <Link key={visit.entityId} className="pill" to={visit.path}>
+          <Link viewTransition key={visit.entityId} className="pill" to={visit.path}>
             {visit.name}
           </Link>
         ))}

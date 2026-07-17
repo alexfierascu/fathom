@@ -35,7 +35,10 @@ export function RegionDetailPage() {
   if (!region) {
     return (
       <div className="empty">
-        No region charted at this address. <Link to="/">Return to the chart.</Link>
+        No region charted at this address.{' '}
+        <Link viewTransition to="/">
+          Return to the chart.
+        </Link>
       </div>
     );
   }

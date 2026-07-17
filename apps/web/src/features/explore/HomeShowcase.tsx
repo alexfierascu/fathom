@@ -43,10 +43,10 @@ export function HomeHero() {
           countries, and centuries connect through them.
         </p>
         <div className="home-hero-actions">
-          <Link className="hero-btn hero-btn--primary" to="/explore">
+          <Link viewTransition className="hero-btn hero-btn--primary" to="/explore">
             Start exploring
           </Link>
-          <Link className="hero-btn" to="/map">
+          <Link viewTransition className="hero-btn" to="/map">
             Open the map
           </Link>
         </div>
@@ -61,21 +61,21 @@ export function ModeCards() {
     <section aria-label="Ways to explore" style={{ marginBottom: 56 }}>
       <h3 className="mode-heading">Where will curiosity take you?</h3>
       <div className="mode-cards" style={{ marginBottom: 0 }}>
-        <Link className="mode-card" to="/explore">
+        <Link viewTransition className="mode-card" to="/explore">
           <h3>Explore</h3>
           <p>Browse the world's waterways.</p>
           <span className="mode-arrow" aria-hidden="true">
             →
           </span>
         </Link>
-        <Link className="mode-card" to="/journeys">
+        <Link viewTransition className="mode-card" to="/journeys">
           <h3>Journeys</h3>
           <p>Follow curated expeditions.</p>
           <span className="mode-arrow" aria-hidden="true">
             →
           </span>
         </Link>
-        <Link className="mode-card" to="/learn">
+        <Link viewTransition className="mode-card" to="/learn">
           <h3>Learn</h3>
           <p>Collections, quizzes, and stories.</p>
           <span className="mode-arrow" aria-hidden="true">
@@ -108,7 +108,11 @@ export function FeaturedJourneyCinematic() {
         <h3 className="cinematic-title">{journey.title}</h3>
         <p className="cinematic-lede">{journey.description}</p>
         <div className="home-hero-actions">
-          <Link className="hero-btn hero-btn--primary" to={`/journeys/${journey.id}`}>
+          <Link
+            viewTransition
+            className="hero-btn hero-btn--primary"
+            to={`/journeys/${journey.id}`}
+          >
             Start journey
           </Link>
           <span className="cinematic-meta">
@@ -139,7 +143,7 @@ export function FeaturedStrait() {
         <h3 className="cinematic-title">{strait.name}</h3>
         <p className="cinematic-lede">{strait.note}</p>
         <div className="home-hero-actions">
-          <Link className="hero-btn" to={`/straits/${strait.id}`}>
+          <Link viewTransition className="hero-btn" to={`/straits/${strait.id}`}>
             Explore this strait
           </Link>
         </div>
@@ -162,7 +166,10 @@ export function OneFact() {
       <blockquote>
         <p>{strait.note}</p>
         <footer>
-          — <Link to={`/straits/${strait.id}`}>{strait.name}</Link>
+          —{' '}
+          <Link viewTransition to={`/straits/${strait.id}`}>
+            {strait.name}
+          </Link>
         </footer>
       </blockquote>
     </section>

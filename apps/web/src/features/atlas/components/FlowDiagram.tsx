@@ -52,7 +52,7 @@ function SeaNode({ id, name }: { id: string | null; name: string }) {
     </>
   );
   return id ? (
-    <Link className="flow-node flow-node--sea" to={`/water-bodies/${id}`}>
+    <Link viewTransition className="flow-node flow-node--sea" to={`/water-bodies/${id}`}>
       {body}
     </Link>
   ) : (
@@ -63,6 +63,7 @@ function SeaNode({ id, name }: { id: string | null; name: string }) {
 function StraitNode({ gate }: { gate: Gate }) {
   return (
     <Link
+      viewTransition
       className="flow-node flow-node--strait"
       to={`/${gate.kind === 'canal' ? 'canals' : 'straits'}/${gate.straitId}`}
     >

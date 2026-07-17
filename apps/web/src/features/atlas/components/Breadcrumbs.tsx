@@ -13,7 +13,9 @@ export function Breadcrumbs({ items }: { items: readonly BreadcrumbItem[] }) {
         {items.map((item, position) => (
           <li key={item.label}>
             {item.to ? (
-              <Link to={item.to}>{item.label}</Link>
+              <Link viewTransition to={item.to}>
+                {item.label}
+              </Link>
             ) : (
               <span aria-current={position === items.length - 1 ? 'page' : undefined}>
                 {item.label}

@@ -19,6 +19,7 @@ export const StraitCard = memo(function StraitCard({ strait, onHover }: StraitCa
 
   return (
     <Link
+      viewTransition
       to={`/straits/${strait.id}`}
       className="card"
       data-id={strait.id}

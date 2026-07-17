@@ -2352,11 +2352,7 @@ footer {
 }
 
 @media (prefers-reduced-motion: no-preference) {
-  .detail-section,
   .home-hero,
-  .mode-cards,
-  .cinematic,
-  .one-fact,
   .journey-mode {
     animation: fade-up 0.5s ease both;
   }
@@ -2592,4 +2588,58 @@ a.flow-node:hover .flow-name {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
   gap: 12px;
+}
+
+/* ---------- Motion language: glide ---------- */
+
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  /* Sections rise as the reader reaches them. Armed only while the
+     observer runs (html.reveal-ready), so content is never lost. */
+  .reveal-ready .detail-section,
+  .reveal-ready .cinematic,
+  .reveal-ready .one-fact,
+  .reveal-ready .mode-cards {
+    opacity: 0;
+    transform: translateY(16px);
+    transition:
+      opacity 0.6s ease,
+      transform 0.6s ease;
+  }
+  .reveal-ready .detail-section.in-view,
+  .reveal-ready .cinematic.in-view,
+  .reveal-ready .one-fact.in-view,
+  .reveal-ready .mode-cards.in-view {
+    opacity: 1;
+    transform: none;
+  }
+
+  /* Page-to-page: the old view sinks away, the new one glides up. */
+  ::view-transition-old(root) {
+    animation: vt-out 0.18s ease both;
+  }
+  ::view-transition-new(root) {
+    animation: vt-in 0.26s ease both;
+  }
+}
+@keyframes vt-out {
+  to {
+    opacity: 0;
+    transform: translateY(-6px);
+  }
+}
+@keyframes vt-in {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  ::view-transition-old(root),
+  ::view-transition-new(root) {
+    animation: none;
+  }
 }
