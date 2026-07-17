@@ -6,5 +6,7 @@
   "connects": "Java Sea ↔ Indian Ocean",
   "lat": -5.9,
   "lon": 105.9,
-  "note": "Between Java and Sumatra, near the volcano Krakatoa."
+  "note": "Between Java and Sumatra, near the volcano Krakatoa.",
+  "summary": "The Sunda Strait is the strait between the Indonesian islands of Java and Sumatra.",
+  "sourceIds": ["wikipedia-sunda"]
 }

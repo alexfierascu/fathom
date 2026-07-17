@@ -2,7 +2,7 @@ import { useEffect, useMemo, useState } from 'react';
 
 import { Link, useNavigate, useOutletContext, useSearchParams } from 'react-router';
 
-import { loadAllStraits } from '@fathom/data';
+import { entityId as canonicalId, getEntity, loadAllStraits, loadWildlife } from '@fathom/data';
 import { randomEntity } from '@fathom/discovery';
 
 import type { LayoutContext } from '../../../app/RootLayout';
@@ -265,6 +265,50 @@ export function LearnPage() {
 
         <Collections />
         <InterestingFacts />
+      </article>
+    </>
+  );
+}
+
+/** Wildlife of the narrows — the corridor species, each with its waters. */
+export function WildlifePage() {
+  const species = loadWildlife();
+  return (
+    <>
+      <SeoTags
+        title="Wildlife of the narrows — Fathom"
+        description="The documented species that migrate, hunt, and winter in the world's straits."
+        path="/wildlife"
+      />
+      <Breadcrumbs items={[{ label: 'Home', to: '/' }, { label: 'Wildlife' }]} />
+      <article className="detail">
+        <header className="hub-header">
+          <h2 className="detail-title detail-title--hero">Wildlife of the narrows</h2>
+          <p className="note note--lede">
+            Straits concentrate life as much as shipping — every species here is documented in its
+            cited source.
+          </p>
+        </header>
+        <div className="grid">
+          {species.map((animal) => {
+            const habitat = animal.habitats[0];
+            const node = habitat ? getEntity(canonicalId(habitat.type, habitat.id)) : null;
+            return (
+              <div key={animal.id} className="card" style={{ cursor: 'default' }}>
+                <div className="eyebrow">{animal.scientificName}</div>
+                <h3>{animal.commonName}</h3>
+                <div className="note">{animal.summary}</div>
+                {node && habitat && (
+                  <div className="pills" style={{ marginTop: 12 }}>
+                    <Link viewTransition className="pill pill--tag" to={`/straits/${habitat.id}`}>
+                      {node.name}
+                    </Link>
+                  </div>
+                )}
+              </div>
+            );
+          })}
+        </div>
       </article>
     </>
   );

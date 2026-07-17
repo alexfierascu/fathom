@@ -6,5 +6,7 @@
   "connects": "South China Sea ↔ Java Sea",
   "lat": -1.5,
   "lon": 108.5,
-  "note": "Between Sumatra and Borneo."
+  "note": "Between Sumatra and Borneo.",
+  "summary": "The Karimata Strait is a wide strait that connects the South China Sea to the Java Sea, separating the Indonesian islands of Belitung to the west and Borneo (Kalimantan) to the east.",
+  "sourceIds": ["wikipedia-karimata"]
 }

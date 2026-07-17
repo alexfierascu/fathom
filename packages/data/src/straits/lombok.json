@@ -7,5 +7,7 @@
   "lat": -8.45,
   "lon": 115.7,
   "note": "Marks part of the Wallace Line dividing Asian and Australian wildlife.",
-  "tagIds": ["wallace-line"]
+  "tagIds": ["wallace-line"],
+  "summary": "The Lombok Strait is a strait of the Bali Sea connecting to the Indian Ocean, and is located between the islands of Bali and Lombok in Indonesia.",
+  "sourceIds": ["wikipedia-lombok"]
 }

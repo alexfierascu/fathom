@@ -4168,5 +4168,541 @@
     "publisher": "Encyclopaedia Britannica",
     "locator": "https://www.britannica.com/place/Bering-Strait",
     "accessedOn": "2026-07-17"
+  },
+  {
+    "id": "wikipedia-fall-of-constantinople",
+    "type": "website",
+    "title": "Fall of Constantinople",
+    "publisher": "Wikipedia",
+    "locator": "https://en.wikipedia.org/wiki/Fall_of_Constantinople",
+    "accessedOn": "2026-07-17"
+  },
+  {
+    "id": "wikipedia-tariq-ibn-ziyad",
+    "type": "website",
+    "title": "Tariq ibn Ziyad",
+    "publisher": "Wikipedia",
+    "locator": "https://en.wikipedia.org/wiki/Tariq_ibn_Ziyad",
+    "accessedOn": "2026-07-17"
+  },
+  {
+    "id": "wikipedia-battle-of-trafalgar",
+    "type": "website",
+    "title": "Battle of Trafalgar",
+    "publisher": "Wikipedia",
+    "locator": "https://en.wikipedia.org/wiki/Battle_of_Trafalgar",
+    "accessedOn": "2026-07-17"
+  },
+  {
+    "id": "wikipedia-spanish-armada",
+    "type": "website",
+    "title": "Spanish Armada",
+    "publisher": "Wikipedia",
+    "locator": "https://en.wikipedia.org/wiki/Spanish_Armada",
+    "accessedOn": "2026-07-17"
+  },
+  {
+    "id": "wikipedia-matthew-webb",
+    "type": "website",
+    "title": "Matthew Webb",
+    "publisher": "Wikipedia",
+    "locator": "https://en.wikipedia.org/wiki/Matthew_Webb",
+    "accessedOn": "2026-07-17"
+  },
+  {
+    "id": "wikipedia-louis-bleriot",
+    "type": "website",
+    "title": "Louis Blériot",
+    "publisher": "Wikipedia",
+    "locator": "https://en.wikipedia.org/wiki/Louis_Blériot",
+    "accessedOn": "2026-07-17"
+  },
+  {
+    "id": "wikipedia-lord-byron",
+    "type": "website",
+    "title": "Lord Byron",
+    "publisher": "Wikipedia",
+    "locator": "https://en.wikipedia.org/wiki/Lord_Byron",
+    "accessedOn": "2026-07-17"
+  },
+  {
+    "id": "wikipedia-montreux-convention",
+    "type": "website",
+    "title": "Montreux Convention Regarding the Regime of the Straits",
+    "publisher": "Wikipedia",
+    "locator": "https://en.wikipedia.org/wiki/Montreux_Convention_Regarding_the_Regime_of_the_Straits",
+    "accessedOn": "2026-07-17"
+  },
+  {
+    "id": "wikipedia-bosphorus-bridge",
+    "type": "website",
+    "title": "Bosphorus Bridge",
+    "publisher": "Wikipedia",
+    "locator": "https://en.wikipedia.org/wiki/Bosphorus_Bridge",
+    "accessedOn": "2026-07-17"
+  },
+  {
+    "id": "wikipedia-tanker-war",
+    "type": "website",
+    "title": "Tanker War",
+    "publisher": "Wikipedia",
+    "locator": "https://en.wikipedia.org/wiki/Tanker_War",
+    "accessedOn": "2026-07-17"
+  },
+  {
+    "id": "wikipedia-capture-of-malacca",
+    "type": "website",
+    "title": "Capture of Malacca (1511)",
+    "publisher": "Wikipedia",
+    "locator": "https://en.wikipedia.org/wiki/Capture_of_Malacca_(1511)",
+    "accessedOn": "2026-07-17"
+  },
+  {
+    "id": "wikipedia-panama-canal",
+    "type": "website",
+    "title": "Panama Canal",
+    "publisher": "Wikipedia",
+    "locator": "https://en.wikipedia.org/wiki/Panama_Canal",
+    "accessedOn": "2026-07-17"
+  },
+  {
+    "id": "wikipedia-semyon-dezhnyov",
+    "type": "website",
+    "title": "Semyon Dezhnyov",
+    "publisher": "Wikipedia",
+    "locator": "https://en.wikipedia.org/wiki/Semyon_Dezhnyov",
+    "accessedOn": "2026-07-17"
+  },
+  {
+    "id": "wikipedia-vitus-bering",
+    "type": "website",
+    "title": "Vitus Bering",
+    "publisher": "Wikipedia",
+    "locator": "https://en.wikipedia.org/wiki/Vitus_Bering",
+    "accessedOn": "2026-07-17"
+  },
+  {
+    "id": "wikipedia-roald-amundsen",
+    "type": "website",
+    "title": "Roald Amundsen",
+    "publisher": "Wikipedia",
+    "locator": "https://en.wikipedia.org/wiki/Roald_Amundsen",
+    "accessedOn": "2026-07-17"
+  },
+  {
+    "id": "wikipedia-a-sibiryakov",
+    "type": "website",
+    "title": "A. Sibiryakov (icebreaker)",
+    "publisher": "Wikipedia",
+    "locator": "https://en.wikipedia.org/wiki/A._Sibiryakov_(icebreaker)",
+    "accessedOn": "2026-07-17"
+  },
+  {
+    "id": "wikipedia-battle-of-the-denmark-strait",
+    "type": "website",
+    "title": "Battle of the Denmark Strait",
+    "publisher": "Wikipedia",
+    "locator": "https://en.wikipedia.org/wiki/Battle_of_the_Denmark_Strait",
+    "accessedOn": "2026-07-17"
+  },
+  {
+    "id": "wikipedia-1883-eruption-of-krakatoa",
+    "type": "website",
+    "title": "1883 eruption of Krakatoa",
+    "publisher": "Wikipedia",
+    "locator": "https://en.wikipedia.org/wiki/1883_eruption_of_Krakatoa",
+    "accessedOn": "2026-07-17"
+  },
+  {
+    "id": "wikipedia-1908-messina-earthquake",
+    "type": "website",
+    "title": "1908 Messina earthquake",
+    "publisher": "Wikipedia",
+    "locator": "https://en.wikipedia.org/wiki/1908_Messina_earthquake",
+    "accessedOn": "2026-07-17"
+  },
+  {
+    "id": "wikipedia-suez-crisis",
+    "type": "website",
+    "title": "Suez Crisis",
+    "publisher": "Wikipedia",
+    "locator": "https://en.wikipedia.org/wiki/Suez_Crisis",
+    "accessedOn": "2026-07-17"
+  },
+  {
+    "id": "wikipedia-ever-given",
+    "type": "website",
+    "title": "Ever Given",
+    "publisher": "Wikipedia",
+    "locator": "https://en.wikipedia.org/wiki/Ever_Given",
+    "accessedOn": "2026-07-17"
+  },
+  {
+    "id": "wikipedia-luis-vaz-de-torres",
+    "type": "website",
+    "title": "Luís Vaz de Torres",
+    "publisher": "Wikipedia",
+    "locator": "https://en.wikipedia.org/wiki/Luís_Vaz_de_Torres",
+    "accessedOn": "2026-07-17"
+  },
+  {
+    "id": "wikipedia-james-cook",
+    "type": "website",
+    "title": "James Cook",
+    "publisher": "Wikipedia",
+    "locator": "https://en.wikipedia.org/wiki/James_Cook",
+    "accessedOn": "2026-07-17"
+  },
+  {
+    "id": "wikipedia-henry-hudson",
+    "type": "website",
+    "title": "Henry Hudson",
+    "publisher": "Wikipedia",
+    "locator": "https://en.wikipedia.org/wiki/Henry_Hudson",
+    "accessedOn": "2026-07-17"
+  },
+  {
+    "id": "wikipedia-kiel-canal",
+    "type": "website",
+    "title": "Kiel Canal",
+    "publisher": "Wikipedia",
+    "locator": "https://en.wikipedia.org/wiki/Kiel_Canal",
+    "accessedOn": "2026-07-17"
+  },
+  {
+    "id": "wikipedia-dugong",
+    "type": "website",
+    "title": "Dugong",
+    "publisher": "Wikipedia",
+    "locator": "https://en.wikipedia.org/wiki/Dugong",
+    "accessedOn": "2026-07-17"
+  },
+  {
+    "id": "wikipedia-beluga-whale",
+    "type": "website",
+    "title": "Beluga whale",
+    "publisher": "Wikipedia",
+    "locator": "https://en.wikipedia.org/wiki/Beluga_whale",
+    "accessedOn": "2026-07-17"
+  },
+  {
+    "id": "wikipedia-atlantic-bluefin-tuna",
+    "type": "website",
+    "title": "Atlantic bluefin tuna",
+    "publisher": "Wikipedia",
+    "locator": "https://en.wikipedia.org/wiki/Atlantic_bluefin_tuna",
+    "accessedOn": "2026-07-17"
+  },
+  {
+    "id": "wikipedia-harbour-porpoise",
+    "type": "website",
+    "title": "Harbour porpoise",
+    "publisher": "Wikipedia",
+    "locator": "https://en.wikipedia.org/wiki/Harbour_porpoise",
+    "accessedOn": "2026-07-17"
+  },
+  {
+    "id": "wikipedia-solent",
+    "type": "website",
+    "title": "The Solent",
+    "publisher": "Wikipedia",
+    "locator": "https://en.wikipedia.org/wiki/The_Solent",
+    "accessedOn": "2026-07-17"
+  },
+  {
+    "id": "wikipedia-messina",
+    "type": "website",
+    "title": "Strait of Messina",
+    "publisher": "Wikipedia",
+    "locator": "https://en.wikipedia.org/wiki/Strait_of_Messina",
+    "accessedOn": "2026-07-17"
+  },
+  {
+    "id": "wikipedia-bonifacio",
+    "type": "website",
+    "title": "Strait of Bonifacio",
+    "publisher": "Wikipedia",
+    "locator": "https://en.wikipedia.org/wiki/Strait_of_Bonifacio",
+    "accessedOn": "2026-07-17"
+  },
+  {
+    "id": "wikipedia-otranto",
+    "type": "website",
+    "title": "Strait of Otranto",
+    "publisher": "Wikipedia",
+    "locator": "https://en.wikipedia.org/wiki/Strait_of_Otranto",
+    "accessedOn": "2026-07-17"
+  },
+  {
+    "id": "wikipedia-kerch",
+    "type": "website",
+    "title": "Kerch Strait",
+    "publisher": "Wikipedia",
+    "locator": "https://en.wikipedia.org/wiki/Kerch_Strait",
+    "accessedOn": "2026-07-17"
+  },
+  {
+    "id": "wikipedia-skagerrak",
+    "type": "website",
+    "title": "Skagerrak",
+    "publisher": "Wikipedia",
+    "locator": "https://en.wikipedia.org/wiki/Skagerrak",
+    "accessedOn": "2026-07-17"
+  },
+  {
+    "id": "wikipedia-kattegat",
+    "type": "website",
+    "title": "Kattegat",
+    "publisher": "Wikipedia",
+    "locator": "https://en.wikipedia.org/wiki/Kattegat",
+    "accessedOn": "2026-07-17"
+  },
+  {
+    "id": "wikipedia-mozambique",
+    "type": "website",
+    "title": "Mozambique Channel",
+    "publisher": "Wikipedia",
+    "locator": "https://en.wikipedia.org/wiki/Mozambique_Channel",
+    "accessedOn": "2026-07-17"
+  },
+  {
+    "id": "wikipedia-palk",
+    "type": "website",
+    "title": "Palk Strait",
+    "publisher": "Wikipedia",
+    "locator": "https://en.wikipedia.org/wiki/Palk_Strait",
+    "accessedOn": "2026-07-17"
+  },
+  {
+    "id": "wikipedia-singapore",
+    "type": "website",
+    "title": "Singapore Strait",
+    "publisher": "Wikipedia",
+    "locator": "https://en.wikipedia.org/wiki/Singapore_Strait",
+    "accessedOn": "2026-07-17"
+  },
+  {
+    "id": "wikipedia-sunda",
+    "type": "website",
+    "title": "Sunda Strait",
+    "publisher": "Wikipedia",
+    "locator": "https://en.wikipedia.org/wiki/Sunda_Strait",
+    "accessedOn": "2026-07-17"
+  },
+  {
+    "id": "wikipedia-lombok",
+    "type": "website",
+    "title": "Lombok Strait",
+    "publisher": "Wikipedia",
+    "locator": "https://en.wikipedia.org/wiki/Lombok_Strait",
+    "accessedOn": "2026-07-17"
+  },
+  {
+    "id": "wikipedia-makassar",
+    "type": "website",
+    "title": "Makassar Strait",
+    "publisher": "Wikipedia",
+    "locator": "https://en.wikipedia.org/wiki/Makassar_Strait",
+    "accessedOn": "2026-07-17"
+  },
+  {
+    "id": "wikipedia-karimata",
+    "type": "website",
+    "title": "Karimata Strait",
+    "publisher": "Wikipedia",
+    "locator": "https://en.wikipedia.org/wiki/Karimata_Strait",
+    "accessedOn": "2026-07-17"
+  },
+  {
+    "id": "wikipedia-taiwan",
+    "type": "website",
+    "title": "Taiwan Strait",
+    "publisher": "Wikipedia",
+    "locator": "https://en.wikipedia.org/wiki/Taiwan_Strait",
+    "accessedOn": "2026-07-17"
+  },
+  {
+    "id": "wikipedia-korea",
+    "type": "website",
+    "title": "Korea Strait",
+    "publisher": "Wikipedia",
+    "locator": "https://en.wikipedia.org/wiki/Korea_Strait",
+    "accessedOn": "2026-07-17"
+  },
+  {
+    "id": "wikipedia-tsugaru",
+    "type": "website",
+    "title": "Tsugaru Strait",
+    "publisher": "Wikipedia",
+    "locator": "https://en.wikipedia.org/wiki/Tsugaru_Strait",
+    "accessedOn": "2026-07-17"
+  },
+  {
+    "id": "wikipedia-laperouse",
+    "type": "website",
+    "title": "La Pérouse Strait",
+    "publisher": "Wikipedia",
+    "locator": "https://en.wikipedia.org/wiki/La_P%C3%A9rouse_Strait",
+    "accessedOn": "2026-07-17"
+  },
+  {
+    "id": "wikipedia-torres",
+    "type": "website",
+    "title": "Torres Strait",
+    "publisher": "Wikipedia",
+    "locator": "https://en.wikipedia.org/wiki/Torres_Strait",
+    "accessedOn": "2026-07-17"
+  },
+  {
+    "id": "wikipedia-bass",
+    "type": "website",
+    "title": "Bass Strait",
+    "publisher": "Wikipedia",
+    "locator": "https://en.wikipedia.org/wiki/Bass_Strait",
+    "accessedOn": "2026-07-17"
+  },
+  {
+    "id": "wikipedia-cook",
+    "type": "website",
+    "title": "Cook Strait",
+    "publisher": "Wikipedia",
+    "locator": "https://en.wikipedia.org/wiki/Cook_Strait",
+    "accessedOn": "2026-07-17"
+  },
+  {
+    "id": "wikipedia-juandefuca",
+    "type": "website",
+    "title": "Strait of Juan de Fuca",
+    "publisher": "Wikipedia",
+    "locator": "https://en.wikipedia.org/wiki/Strait_of_Juan_de_Fuca",
+    "accessedOn": "2026-07-17"
+  },
+  {
+    "id": "wikipedia-georgia",
+    "type": "website",
+    "title": "Strait of Georgia",
+    "publisher": "Wikipedia",
+    "locator": "https://en.wikipedia.org/wiki/Strait_of_Georgia",
+    "accessedOn": "2026-07-17"
+  },
+  {
+    "id": "wikipedia-belleisle",
+    "type": "website",
+    "title": "Strait of Belle Isle",
+    "publisher": "Wikipedia",
+    "locator": "https://en.wikipedia.org/wiki/Strait_of_Belle_Isle",
+    "accessedOn": "2026-07-17"
+  },
+  {
+    "id": "wikipedia-northumberland",
+    "type": "website",
+    "title": "Northumberland Strait",
+    "publisher": "Wikipedia",
+    "locator": "https://en.wikipedia.org/wiki/Northumberland_Strait",
+    "accessedOn": "2026-07-17"
+  },
+  {
+    "id": "wikipedia-florida",
+    "type": "website",
+    "title": "Straits of Florida",
+    "publisher": "Wikipedia",
+    "locator": "https://en.wikipedia.org/wiki/Straits_of_Florida",
+    "accessedOn": "2026-07-17"
+  },
+  {
+    "id": "wikipedia-hudson",
+    "type": "website",
+    "title": "Hudson Strait",
+    "publisher": "Wikipedia",
+    "locator": "https://en.wikipedia.org/wiki/Hudson_Strait",
+    "accessedOn": "2026-07-17"
+  },
+  {
+    "id": "wikipedia-davis",
+    "type": "website",
+    "title": "Davis Strait",
+    "publisher": "Wikipedia",
+    "locator": "https://en.wikipedia.org/wiki/Davis_Strait",
+    "accessedOn": "2026-07-17"
+  },
+  {
+    "id": "wikipedia-denmark",
+    "type": "website",
+    "title": "Denmark Strait",
+    "publisher": "Wikipedia",
+    "locator": "https://en.wikipedia.org/wiki/Denmark_Strait",
+    "accessedOn": "2026-07-17"
+  },
+  {
+    "id": "wikipedia-nares",
+    "type": "website",
+    "title": "Nares Strait",
+    "publisher": "Wikipedia",
+    "locator": "https://en.wikipedia.org/wiki/Nares_Strait",
+    "accessedOn": "2026-07-17"
+  },
+  {
+    "id": "wikipedia-vilkitsky",
+    "type": "website",
+    "title": "Vilkitsky Strait",
+    "publisher": "Wikipedia",
+    "locator": "https://en.wikipedia.org/wiki/Vilkitsky_Strait",
+    "accessedOn": "2026-07-17"
+  },
+  {
+    "id": "wikipedia-foveaux-strait",
+    "type": "website",
+    "title": "Foveaux Strait",
+    "publisher": "Wikipedia",
+    "locator": "https://en.wikipedia.org/wiki/Foveaux_Strait",
+    "accessedOn": "2026-07-17"
+  },
+  {
+    "id": "wikipedia-vries-strait",
+    "type": "website",
+    "title": "Vries Strait",
+    "publisher": "Wikipedia",
+    "locator": "https://en.wikipedia.org/wiki/Vries_Strait",
+    "accessedOn": "2026-07-17"
+  },
+  {
+    "id": "wikipedia-admiral-kuznetsov-strait",
+    "type": "website",
+    "title": "Admiral Kuznetsov Strait",
+    "publisher": "Wikipedia",
+    "locator": "https://en.wikipedia.org/wiki/Admiral_Kuznetsov_Strait",
+    "accessedOn": "2026-07-17"
+  },
+  {
+    "id": "wikipedia-dundas-strait",
+    "type": "website",
+    "title": "Dundas Strait",
+    "publisher": "Wikipedia",
+    "locator": "https://en.wikipedia.org/wiki/Dundas_Strait",
+    "accessedOn": "2026-07-17"
+  },
+  {
+    "id": "wikipedia-kanmon-straits",
+    "type": "website",
+    "title": "Kanmon Straits",
+    "publisher": "Wikipedia",
+    "locator": "https://en.wikipedia.org/wiki/Kanmon_Straits",
+    "accessedOn": "2026-07-17"
+  },
+  {
+    "id": "wikipedia-fury-and-hecla-strait",
+    "type": "website",
+    "title": "Fury and Hecla Strait",
+    "publisher": "Wikipedia",
+    "locator": "https://en.wikipedia.org/wiki/Fury_and_Hecla_Strait",
+    "accessedOn": "2026-07-17"
+  },
+  {
+    "id": "wikipedia-tanon-strait",
+    "type": "website",
+    "title": "Tañon Strait",
+    "publisher": "Wikipedia",
+    "locator": "https://en.wikipedia.org/wiki/Ta%C3%B1on_Strait",
+    "accessedOn": "2026-07-17"
   }
 ]

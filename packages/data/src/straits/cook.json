@@ -6,5 +6,7 @@
   "connects": "Tasman Sea ↔ Pacific Ocean",
   "lat": -41.3,
   "lon": 174.5,
-  "note": "Notoriously rough waters between New Zealand's two main islands."
+  "note": "Notoriously rough waters between New Zealand's two main islands.",
+  "summary": "Cook Strait is a strait that separates the North and South Islands of New Zealand.",
+  "sourceIds": ["wikipedia-cook"]
 }

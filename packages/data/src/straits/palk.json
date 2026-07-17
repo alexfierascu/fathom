@@ -6,5 +6,7 @@
   "connects": "Bay of Bengal ↔ Palk Bay",
   "lat": 9.7,
   "lon": 79.6,
-  "note": "Too shallow for large ships; separates India from Sri Lanka."
+  "note": "Too shallow for large ships; separates India from Sri Lanka.",
+  "summary": "Palk Strait is a strait between the Pamban Island in the Indian state of Tamil Nadu and the Mannar Island in the Northern Province of Sri Lanka.",
+  "sourceIds": ["wikipedia-palk"]
 }

@@ -6,5 +6,7 @@
   "connects": "Southern Ocean ↔ Tasman Sea",
   "lat": -39.5,
   "lon": 146,
-  "note": "Separates the Australian mainland from Tasmania."
+  "note": "Separates the Australian mainland from Tasmania.",
+  "summary": "Bass Strait is a strait separating the island state of Tasmania from the Australian mainland.",
+  "sourceIds": ["wikipedia-bass"]
 }

@@ -8,5 +8,6 @@
   "lon": 123.67,
   "note": "Cebu Strait is a strait in the Central Visayas region in the Philippines.",
   "sourceIds": ["wikidata-q1454050", "wikipedia-cebu-strait"],
-  "status": "draft"
+  "status": "draft",
+  "summary": "Cebu Strait is a strait in the Central Visayas region in the Philippines."
 }

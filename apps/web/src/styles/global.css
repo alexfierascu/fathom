@@ -3426,3 +3426,9 @@ a.flow-node:hover .flow-name {
 .palette-action span {
   color: var(--accent-2);
 }
+
+.note--read {
+  max-width: 68ch;
+  line-height: 1.8;
+  font-size: 0.98rem;
+}

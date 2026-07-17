@@ -107,5 +107,424 @@
       }
     ],
     "sourceIds": ["oresundsbron"]
+  },
+  {
+    "id": "fall-of-constantinople",
+    "name": "Fall of Constantinople",
+    "date": {
+      "value": "1453"
+    },
+    "category": "battle",
+    "summary": "Ottoman forces took Constantinople, placing the Bosporus under a single power for the next four and a half centuries.",
+    "involves": [
+      {
+        "type": "strait",
+        "id": "bosporus"
+      }
+    ],
+    "sourceIds": ["wikipedia-fall-of-constantinople"]
+  },
+  {
+    "id": "umayyad-crossing",
+    "name": "Umayyad crossing into Iberia",
+    "date": {
+      "value": "711"
+    },
+    "category": "expedition",
+    "summary": "Tariq ibn Ziyad crossed the strait that now bears his name — Jabal Tariq, Gibraltar — beginning the Umayyad conquest of Hispania.",
+    "involves": [
+      {
+        "type": "strait",
+        "id": "gibraltar"
+      }
+    ],
+    "sourceIds": ["wikipedia-tariq-ibn-ziyad"]
+  },
+  {
+    "id": "battle-of-trafalgar",
+    "name": "Battle of Trafalgar",
+    "date": {
+      "value": "1805"
+    },
+    "category": "battle",
+    "summary": "Nelson's fleet defeated the combined French and Spanish navies off Cape Trafalgar, just west of the Strait of Gibraltar.",
+    "involves": [
+      {
+        "type": "strait",
+        "id": "gibraltar"
+      }
+    ],
+    "sourceIds": ["wikipedia-battle-of-trafalgar"]
+  },
+  {
+    "id": "spanish-armada-channel",
+    "name": "Spanish Armada in the Channel",
+    "date": {
+      "value": "1588"
+    },
+    "category": "battle",
+    "summary": "The Spanish Armada fought running battles up the English Channel and past the Strait of Dover before scattering at Gravelines.",
+    "involves": [
+      {
+        "type": "strait",
+        "id": "dover"
+      }
+    ],
+    "sourceIds": ["wikipedia-spanish-armada"]
+  },
+  {
+    "id": "webb-channel-swim",
+    "name": "First swim across the Channel",
+    "date": {
+      "value": "1875"
+    },
+    "category": "other",
+    "summary": "Matthew Webb swam from Dover to Calais in under 22 hours — the first person to swim the strait unaided.",
+    "involves": [
+      {
+        "type": "strait",
+        "id": "dover"
+      }
+    ],
+    "sourceIds": ["wikipedia-matthew-webb"]
+  },
+  {
+    "id": "bleriot-crossing",
+    "name": "Blériot flies the Channel",
+    "date": {
+      "value": "1909"
+    },
+    "category": "other",
+    "summary": "Louis Blériot crossed the Strait of Dover by aeroplane, the first flight across open sea between nations.",
+    "involves": [
+      {
+        "type": "strait",
+        "id": "dover"
+      }
+    ],
+    "sourceIds": ["wikipedia-louis-bleriot"]
+  },
+  {
+    "id": "byron-hellespont-swim",
+    "name": "Byron swims the Hellespont",
+    "date": {
+      "value": "1810"
+    },
+    "category": "other",
+    "summary": "Lord Byron swam the Dardanelles in homage to the myth of Leander, fixing the strait in the Romantic imagination.",
+    "involves": [
+      {
+        "type": "strait",
+        "id": "dardanelles"
+      }
+    ],
+    "sourceIds": ["wikipedia-lord-byron"]
+  },
+  {
+    "id": "montreux-convention",
+    "name": "Montreux Convention",
+    "date": {
+      "value": "1936"
+    },
+    "category": "treaty",
+    "summary": "The convention gave Türkiye control of the Bosporus and Dardanelles and set the rules warships follow to this day.",
+    "involves": [
+      {
+        "type": "strait",
+        "id": "bosporus"
+      },
+      {
+        "type": "strait",
+        "id": "dardanelles"
+      }
+    ],
+    "sourceIds": ["wikipedia-montreux-convention"]
+  },
+  {
+    "id": "bosphorus-bridge-opening",
+    "name": "Opening of the Bosphorus Bridge",
+    "date": {
+      "value": "1973"
+    },
+    "category": "construction",
+    "summary": "The first permanent crossing of the Bosporus joined Europe and Asia by road.",
+    "involves": [
+      {
+        "type": "strait",
+        "id": "bosporus"
+      }
+    ],
+    "sourceIds": ["wikipedia-bosphorus-bridge"]
+  },
+  {
+    "id": "tanker-war",
+    "name": "The Tanker War",
+    "date": {
+      "value": "1984",
+      "end": "1988"
+    },
+    "category": "battle",
+    "summary": "During the Iran–Iraq War, attacks on shipping made the Strait of Hormuz the most dangerous oil route on Earth.",
+    "involves": [
+      {
+        "type": "strait",
+        "id": "hormuz"
+      }
+    ],
+    "sourceIds": ["wikipedia-tanker-war"]
+  },
+  {
+    "id": "capture-of-malacca",
+    "name": "Portuguese capture of Malacca",
+    "date": {
+      "value": "1511"
+    },
+    "category": "battle",
+    "summary": "Afonso de Albuquerque took Malacca, seizing control of the spice route through the strait.",
+    "involves": [
+      {
+        "type": "strait",
+        "id": "malacca"
+      }
+    ],
+    "sourceIds": ["wikipedia-capture-of-malacca"]
+  },
+  {
+    "id": "panama-canal-opening",
+    "name": "Opening of the Panama Canal",
+    "date": {
+      "value": "1914"
+    },
+    "category": "construction",
+    "summary": "The canal joined the Atlantic and Pacific, redrawing world shipping and drawing traffic away from the Strait of Magellan.",
+    "involves": [
+      {
+        "type": "canal",
+        "id": "panama-canal"
+      },
+      {
+        "type": "strait",
+        "id": "magellan"
+      }
+    ],
+    "sourceIds": ["wikipedia-panama-canal"]
+  },
+  {
+    "id": "dezhnyov-passage",
+    "name": "Dezhnyov rounds the Chukchi Peninsula",
+    "date": {
+      "value": "1648"
+    },
+    "category": "expedition",
+    "summary": "Semyon Dezhnyov sailed from the Arctic into the Pacific — the first recorded passage of the Bering Strait.",
+    "involves": [
+      {
+        "type": "strait",
+        "id": "bering"
+      }
+    ],
+    "sourceIds": ["wikipedia-semyon-dezhnyov"]
+  },
+  {
+    "id": "bering-voyage",
+    "name": "Bering's voyage through the strait",
+    "date": {
+      "value": "1728"
+    },
+    "category": "expedition",
+    "summary": "Vitus Bering sailed north through the strait later named for him, confirming Asia and America stand apart.",
+    "involves": [
+      {
+        "type": "strait",
+        "id": "bering"
+      }
+    ],
+    "sourceIds": ["wikipedia-vitus-bering"]
+  },
+  {
+    "id": "amundsen-northwest-passage",
+    "name": "Amundsen completes the Northwest Passage",
+    "date": {
+      "value": "1903",
+      "end": "1906"
+    },
+    "category": "expedition",
+    "summary": "Roald Amundsen's Gjøa made the first full transit of the Northwest Passage, emerging through the Bering Strait.",
+    "involves": [
+      {
+        "type": "maritime-route",
+        "id": "northwest-passage"
+      },
+      {
+        "type": "strait",
+        "id": "bering"
+      }
+    ],
+    "sourceIds": ["wikipedia-roald-amundsen"]
+  },
+  {
+    "id": "sibiryakov-transit",
+    "name": "First single-season Northern Sea Route transit",
+    "date": {
+      "value": "1932"
+    },
+    "category": "expedition",
+    "summary": "The icebreaker A. Sibiryakov ran the Northern Sea Route in one season, passing the Vilkitsky Strait.",
+    "involves": [
+      {
+        "type": "maritime-route",
+        "id": "northern-sea-route"
+      },
+      {
+        "type": "strait",
+        "id": "vilkitsky"
+      }
+    ],
+    "sourceIds": ["wikipedia-a-sibiryakov"]
+  },
+  {
+    "id": "battle-of-denmark-strait",
+    "name": "Battle of the Denmark Strait",
+    "date": {
+      "value": "1941"
+    },
+    "category": "battle",
+    "summary": "Bismarck sank HMS Hood in the Denmark Strait; the Royal Navy hunted the battleship down within days.",
+    "involves": [
+      {
+        "type": "strait",
+        "id": "denmark"
+      }
+    ],
+    "sourceIds": ["wikipedia-battle-of-the-denmark-strait"]
+  },
+  {
+    "id": "krakatoa-eruption",
+    "name": "Eruption of Krakatoa",
+    "date": {
+      "value": "1883"
+    },
+    "category": "disaster",
+    "summary": "Krakatoa exploded in the Sunda Strait; its tsunamis killed tens of thousands along the strait's shores.",
+    "involves": [
+      {
+        "type": "strait",
+        "id": "sunda"
+      }
+    ],
+    "sourceIds": ["wikipedia-1883-eruption-of-krakatoa"]
+  },
+  {
+    "id": "messina-earthquake",
+    "name": "Messina earthquake",
+    "date": {
+      "value": "1908"
+    },
+    "category": "disaster",
+    "summary": "An earthquake and tsunami in the Strait of Messina destroyed the city of Messina — Europe's deadliest earthquake.",
+    "involves": [
+      {
+        "type": "strait",
+        "id": "messina"
+      }
+    ],
+    "sourceIds": ["wikipedia-1908-messina-earthquake"]
+  },
+  {
+    "id": "suez-crisis",
+    "name": "Suez Crisis",
+    "date": {
+      "value": "1956"
+    },
+    "category": "battle",
+    "summary": "The canal's nationalisation and the war that followed closed Suez and remade the politics of the route to Asia.",
+    "involves": [
+      {
+        "type": "canal",
+        "id": "suez-canal"
+      }
+    ],
+    "sourceIds": ["wikipedia-suez-crisis"]
+  },
+  {
+    "id": "ever-given-grounding",
+    "name": "Ever Given blocks the Suez Canal",
+    "date": {
+      "value": "2021"
+    },
+    "category": "disaster",
+    "summary": "A single grounded container ship closed the canal for six days and held up roughly a tenth of world trade.",
+    "involves": [
+      {
+        "type": "canal",
+        "id": "suez-canal"
+      }
+    ],
+    "sourceIds": ["wikipedia-ever-given"]
+  },
+  {
+    "id": "torres-transit",
+    "name": "Torres sails the strait",
+    "date": {
+      "value": "1606"
+    },
+    "category": "expedition",
+    "summary": "Luís Vaz de Torres threaded the reef-strewn strait between New Guinea and Australia that now carries his name.",
+    "involves": [
+      {
+        "type": "strait",
+        "id": "torres"
+      }
+    ],
+    "sourceIds": ["wikipedia-luis-vaz-de-torres"]
+  },
+  {
+    "id": "cook-charts-strait",
+    "name": "Cook charts the strait",
+    "date": {
+      "value": "1770"
+    },
+    "category": "expedition",
+    "summary": "James Cook confirmed and charted the strait between New Zealand's islands during his first voyage.",
+    "involves": [
+      {
+        "type": "strait",
+        "id": "cook"
+      }
+    ],
+    "sourceIds": ["wikipedia-james-cook"]
+  },
+  {
+    "id": "hudson-final-voyage",
+    "name": "Hudson's final voyage",
+    "date": {
+      "value": "1610",
+      "end": "1611"
+    },
+    "category": "expedition",
+    "summary": "Henry Hudson passed the strait now named for him into the great bay where his crew later set him adrift.",
+    "involves": [
+      {
+        "type": "strait",
+        "id": "hudson"
+      }
+    ],
+    "sourceIds": ["wikipedia-henry-hudson"]
+  },
+  {
+    "id": "kiel-canal-opening",
+    "name": "Opening of the Kiel Canal",
+    "date": {
+      "value": "1895"
+    },
+    "category": "construction",
+    "summary": "The canal across Jutland's neck gave shipping a shortcut between the North Sea and the Baltic.",
+    "involves": [
+      {
+        "type": "canal",
+        "id": "kiel-canal"
+      }
+    ],
+    "sourceIds": ["wikipedia-kiel-canal"]
   }
 ]

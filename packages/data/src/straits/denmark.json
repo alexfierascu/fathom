@@ -6,5 +6,7 @@
   "connects": "Greenland Sea ↔ Atlantic Ocean",
   "lat": 66,
   "lon": -27,
-  "note": "Site of the world's tallest underwater waterfall, the Denmark Strait cataract."
+  "note": "Site of the world's tallest underwater waterfall, the Denmark Strait cataract.",
+  "summary": "The Denmark Strait is the strait that separates Greenland from Iceland.",
+  "sourceIds": ["wikipedia-denmark"]
 }

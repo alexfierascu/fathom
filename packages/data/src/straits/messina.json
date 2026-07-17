@@ -6,5 +6,7 @@
   "connects": "Tyrrhenian Sea ↔ Ionian Sea",
   "lat": 38.25,
   "lon": 15.63,
-  "note": "Separates Sicily from the mainland; home of the mythical Scylla and Charybdis."
+  "note": "Separates Sicily from the mainland; home of the mythical Scylla and Charybdis.",
+  "summary": "The Strait of Messina is a narrow strait between the eastern tip of Sicily and the western tip of Calabria in Southern Italy.",
+  "sourceIds": ["wikipedia-messina"]
 }

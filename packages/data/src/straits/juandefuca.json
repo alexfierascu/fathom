@@ -6,5 +6,7 @@
   "connects": "Pacific Ocean ↔ Salish Sea",
   "lat": 48.3,
   "lon": -124,
-  "note": "Leads to Seattle and Vancouver's shared inland sea."
+  "note": "Leads to Seattle and Vancouver's shared inland sea.",
+  "summary": "The Strait of Juan de Fuca is a body of water about 96 miles long that is the Salish Sea's main outlet to the Pacific Ocean.",
+  "sourceIds": ["wikipedia-juandefuca"]
 }

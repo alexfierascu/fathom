@@ -6,5 +6,7 @@
   "connects": "Adriatic Sea ↔ Ionian Sea",
   "lat": 40.1,
   "lon": 19,
-  "note": "The gateway between the Adriatic and the wider Mediterranean."
+  "note": "The gateway between the Adriatic and the wider Mediterranean.",
+  "summary": "The Strait of Otranto connects the Adriatic Sea with the Ionian Sea and separates Italy from Albania.",
+  "sourceIds": ["wikipedia-otranto"]
 }

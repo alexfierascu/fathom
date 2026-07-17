@@ -7,6 +7,7 @@
   "lat": 54.78,
   "lon": 167.11,
   "note": "strait between Bering Sea and Pacific Ocean",
-  "sourceIds": ["wikidata-q4380564"],
-  "status": "draft"
+  "sourceIds": ["wikidata-q4380564", "wikipedia-admiral-kuznetsov-strait"],
+  "status": "draft",
+  "summary": "Admiral Kuznetsov Strait is a 50 km-wide strait in Russia."
 }

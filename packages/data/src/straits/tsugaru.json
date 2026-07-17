@@ -7,5 +7,7 @@
   "lat": 41.5,
   "lon": 140.5,
   "note": "Separates Honshu from Hokkaido; crossed by an undersea rail tunnel.",
-  "tagIds": ["crossed"]
+  "tagIds": ["crossed"],
+  "summary": "The Tsugaru Strait is a strait between Honshu and Hokkaido in northern Japan connecting the Sea of Japan with the Pacific Ocean.",
+  "sourceIds": ["wikipedia-tsugaru"]
 }

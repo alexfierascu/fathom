@@ -6,5 +6,7 @@
   "connects": "East China Sea ↔ South China Sea",
   "lat": 24.5,
   "lon": 119.5,
-  "note": "One of the most closely watched geopolitical flashpoints today."
+  "note": "One of the most closely watched geopolitical flashpoints today.",
+  "summary": "The Taiwan Strait is a 180-kilometer-wide strait separating the island of Taiwan and the Asian continent.",
+  "sourceIds": ["wikipedia-taiwan"]
 }

@@ -6,5 +6,7 @@
   "connects": "Hudson Bay ↔ Atlantic Ocean",
   "lat": 62,
   "lon": -70,
-  "note": "Between Baffin Island and northern Quebec."
+  "note": "Between Baffin Island and northern Quebec.",
+  "summary": "The Hudson Strait in Nunavut links the Atlantic Ocean and the Labrador Sea to Hudson Bay in Canada.",
+  "sourceIds": ["wikipedia-hudson"]
 }

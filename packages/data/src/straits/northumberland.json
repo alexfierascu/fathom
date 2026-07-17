@@ -6,5 +6,7 @@
   "connects": "Part of the Gulf of St. Lawrence",
   "lat": 46,
   "lon": -63.5,
-  "note": "Separates Prince Edward Island from the Canadian mainland."
+  "note": "Separates Prince Edward Island from the Canadian mainland.",
+  "summary": "The Northumberland Strait is a strait in the southern part of the Gulf of Saint Lawrence in eastern Canada.",
+  "sourceIds": ["wikipedia-northumberland"]
 }

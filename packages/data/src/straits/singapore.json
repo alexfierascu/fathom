@@ -7,5 +7,7 @@
   "lat": 1.2,
   "lon": 103.8,
   "note": "One of the busiest shipping lanes on Earth.",
-  "tagIds": ["historic-trade"]
+  "tagIds": ["historic-trade"],
+  "summary": "The Singapore Strait is a 113 km-long (70 mi), 19 km-wide (12 mi) strait between the Strait of Malacca in the west and the South China Sea in the east.",
+  "sourceIds": ["wikipedia-singapore"]
 }

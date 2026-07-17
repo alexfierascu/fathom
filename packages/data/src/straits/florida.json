@@ -6,5 +6,7 @@
   "connects": "Gulf of Mexico ↔ Atlantic Ocean",
   "lat": 24.5,
   "lon": -81,
-  "note": "Where the Gulf Stream begins its journey north."
+  "note": "Where the Gulf Stream begins its journey north.",
+  "summary": "The Straits of Florida, Florida Straits, or Florida Strait is a strait located south-southeast of the North American mainland, generally accepted to be between the Gulf of Mexico and the Atlantic Ocean, and between the Florida Keys (U.S.) and Cuba.",
+  "sourceIds": ["wikipedia-florida"]
 }

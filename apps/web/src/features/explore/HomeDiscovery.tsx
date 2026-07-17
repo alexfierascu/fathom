@@ -63,6 +63,11 @@ export function Collections() {
           <h3>Guided journeys</h3>
           <div className="note">Curated passages with a course to follow.</div>
         </Link>
+        <Link viewTransition className="card" to="/wildlife">
+          <div className="eyebrow">Corridor species</div>
+          <h3>Wildlife of the narrows</h3>
+          <div className="note">Whales, tuna, and dugongs that live by the straits.</div>
+        </Link>
         {tagCollections.map(({ tag, count }) => (
           <Link viewTransition key={tag.id} className="card" to={`/tags/${tag.id}`}>
             <div className="eyebrow">

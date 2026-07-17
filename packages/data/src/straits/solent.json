@@ -6,5 +6,7 @@
   "connects": "Separates the Isle of Wight from mainland England",
   "lat": 50.78,
   "lon": -1.3,
-  "note": "Some of the busiest recreational sailing waters in the world."
+  "note": "Some of the busiest recreational sailing waters in the world.",
+  "summary": "The Solent is a strait between the Isle of Wight and mainland Great Britain; the major historic ports of Southampton and Portsmouth lie inland of its shores.",
+  "sourceIds": ["wikipedia-solent"]
 }

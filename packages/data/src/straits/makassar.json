@@ -6,5 +6,7 @@
   "connects": "Java Sea ↔ Celebes Sea",
   "lat": -2,
   "lon": 118,
-  "note": "Between Borneo and Sulawesi."
+  "note": "Between Borneo and Sulawesi.",
+  "summary": "Makassar Strait is a strait between the islands of Borneo and Sulawesi in Indonesia.",
+  "sourceIds": ["wikipedia-makassar"]
 }

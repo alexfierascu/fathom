@@ -6,5 +6,7 @@
   "connects": "Coral Sea ↔ Arafura Sea",
   "lat": -10.3,
   "lon": 142.2,
-  "note": "Dotted with dozens of small islands between Cape York and New Guinea."
+  "note": "Dotted with dozens of small islands between Cape York and New Guinea.",
+  "summary": "The Torres Strait, also known as Zenadh Kes, is a strait between Australia and the Melanesian island of New Guinea.",
+  "sourceIds": ["wikipedia-torres"]
 }

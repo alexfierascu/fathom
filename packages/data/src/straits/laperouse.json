@@ -6,5 +6,7 @@
   "connects": "Sea of Japan ↔ Sea of Okhotsk",
   "lat": 45.75,
   "lon": 142,
-  "note": "Between Hokkaido and Russia's Sakhalin Island."
+  "note": "Between Hokkaido and Russia's Sakhalin Island.",
+  "summary": "La Pérouse Strait, or Sōya Strait , is a strait dividing the southern part of the Russian island of Sakhalin from the northern part of the Japanese island of Hokkaidō, and connecting the Sea of Japan on the west with the Sea of Okhotsk on the east.",
+  "sourceIds": ["wikipedia-laperouse"]
 }

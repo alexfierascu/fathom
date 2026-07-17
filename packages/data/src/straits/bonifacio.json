@@ -7,5 +7,7 @@
   "lat": 41.31,
   "lon": 9.18,
   "note": "A UNESCO-listed marine reserve known for treacherous currents.",
-  "tagIds": ["unesco-listed"]
+  "tagIds": ["unesco-listed"],
+  "summary": "The Strait of Bonifacio is the strait which connects the islands of Corsica and Sardinia.",
+  "sourceIds": ["wikipedia-bonifacio"]
 }

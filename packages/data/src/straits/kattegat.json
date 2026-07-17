@@ -6,5 +6,7 @@
   "connects": "Skagerrak ↔ Baltic approaches",
   "lat": 57,
   "lon": 11.3,
-  "note": "A shallow, sandy sea between the Skagerrak and the Baltic."
+  "note": "A shallow, sandy sea between the Skagerrak and the Baltic.",
+  "summary": "The Kattegat is a sea of roughly 24,000 km2 (9,300 sq mi) bounded by the Skagerrak in the north, Jutland in the west, the Danish Straits and Sjaelland in the south and the Swedish provinces of Bohuslän, Västergötland, Halland and Scania in the east.",
+  "sourceIds": ["wikipedia-kattegat"]
 }

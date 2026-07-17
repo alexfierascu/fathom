@@ -7,6 +7,7 @@
   "lat": -11.33,
   "lon": 131.58,
   "note": "sea passage in the Northern Territory of Australia located between Melville Island and the Garig Gunak Barlu National Park on the Cobourg Peninsula",
-  "sourceIds": ["wikidata-q3045395"],
-  "status": "draft"
+  "sourceIds": ["wikidata-q3045395", "wikipedia-dundas-strait"],
+  "status": "draft",
+  "summary": "Dundas Strait is a sea passage in the Northern Territory of Australia located between Melville Island and the Cobourg Peninsula."
 }

@@ -6,5 +6,7 @@
   "connects": "Gulf of St. Lawrence ↔ Atlantic Ocean",
   "lat": 51.6,
   "lon": -56.5,
-  "note": "Between Newfoundland and Labrador; often choked with icebergs."
+  "note": "Between Newfoundland and Labrador; often choked with icebergs.",
+  "summary": "The Strait of Belle Isle is a waterway in eastern Canada, that separates Labrador from the island of Newfoundland, in the province of Newfoundland and Labrador.",
+  "sourceIds": ["wikipedia-belleisle"]
 }

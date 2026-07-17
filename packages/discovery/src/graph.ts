@@ -55,9 +55,10 @@ export interface GraphNode {
   type: EntityType;
   id: string;
   name: string;
-  /** Coordinates, for entities that have them (straits today). */
+  /** Coordinates: from the document, or derived from located gates. */
   lat?: number;
   lon?: number;
+  anchorDerived?: boolean;
 }
 
 export interface GraphEdge {
@@ -344,6 +345,21 @@ export function buildMaritimeGraph(): MaritimeGraph {
     for (const { other } of nearest) {
       link(entityId('strait', strait.id), entityId('strait', other.id), 'nearby');
     }
+  }
+
+  // Waters without charted coordinates inherit a derived anchor: the
+  // centroid of their located gates (two or more, so the anchor never
+  // simply sits on a single strait).
+  for (const node of nodes.values()) {
+    if (node.type !== 'water-body' || node.lat !== undefined) continue;
+    const gates = (edges.get(node.entityId) ?? [])
+      .filter((edge) => edge.kind === 'connected_to')
+      .map((edge) => nodes.get(edge.to))
+      .filter((gate): gate is GraphNode => gate?.lat !== undefined && gate.lon !== undefined);
+    if (gates.length < 2) continue;
+    node.lat = gates.reduce((sum, gate) => sum + (gate.lat ?? 0), 0) / gates.length;
+    node.lon = gates.reduce((sum, gate) => sum + (gate.lon ?? 0), 0) / gates.length;
+    node.anchorDerived = true;
   }
 
   return { nodes, edges };

@@ -44,5 +44,63 @@
     "category": "mammal",
     "seasonality": "Winters offshore in Baffin Bay–Davis Strait; summers in High Arctic fjords.",
     "sourceIds": ["wikipedia-narwhal"]
+  },
+  {
+    "id": "dugong",
+    "commonName": "Dugong",
+    "scientificName": "Dugong dugon",
+    "summary": "The Torres Strait's seagrass meadows support one of the world's largest dugong populations, central to Torres Strait Islander culture.",
+    "habitats": [
+      {
+        "type": "strait",
+        "id": "torres"
+      }
+    ],
+    "category": "mammal",
+    "sourceIds": ["wikipedia-dugong"]
+  },
+  {
+    "id": "beluga-whale",
+    "commonName": "Beluga whale",
+    "scientificName": "Delphinapterus leucas",
+    "summary": "Belugas move through Hudson Strait between the bay's summering estuaries and their Atlantic wintering grounds.",
+    "habitats": [
+      {
+        "type": "strait",
+        "id": "hudson"
+      }
+    ],
+    "category": "mammal",
+    "seasonality": "Migrates through the strait in spring and autumn.",
+    "sourceIds": ["wikipedia-beluga-whale"]
+  },
+  {
+    "id": "atlantic-bluefin-tuna",
+    "commonName": "Atlantic bluefin tuna",
+    "scientificName": "Thunnus thynnus",
+    "summary": "Bluefin tuna funnel through the Strait of Gibraltar to spawn in the Mediterranean — a migration fished since Phoenician times and the prey that draws the strait's orcas.",
+    "habitats": [
+      {
+        "type": "strait",
+        "id": "gibraltar"
+      }
+    ],
+    "category": "fish",
+    "seasonality": "Enters the Mediterranean in late spring; returns to the Atlantic after spawning.",
+    "sourceIds": ["wikipedia-atlantic-bluefin-tuna"]
+  },
+  {
+    "id": "harbour-porpoise",
+    "commonName": "Harbour porpoise",
+    "scientificName": "Phocoena phocoena",
+    "summary": "One of the smallest cetaceans is a year-round resident of the Dover Strait's busy waters, sharing the world's densest shipping lane.",
+    "habitats": [
+      {
+        "type": "strait",
+        "id": "dover"
+      }
+    ],
+    "category": "mammal",
+    "sourceIds": ["wikipedia-harbour-porpoise"]
   }
 ]

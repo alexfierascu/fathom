@@ -6,5 +6,7 @@
   "connects": "Philippine Sea ↔ South China Sea",
   "lat": 21,
   "lon": 121,
-  "note": "Includes the Bashi Channel, a major undersea cable route."
+  "note": "Includes the Bashi Channel, a major undersea cable route.",
+  "summary": "The Luzon Strait is the strait between Luzon and Taiwan.",
+  "sourceIds": ["wikipedia-luzon"]
 }

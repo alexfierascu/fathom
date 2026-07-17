@@ -7,6 +7,7 @@
   "lat": -46.67,
   "lon": 168.19,
   "note": "strait in New Zealand between Stewart Island / Rakiura and South Island / Te Waipounamu",
-  "sourceIds": ["wikidata-q1043467"],
-  "status": "draft"
+  "sourceIds": ["wikidata-q1043467", "wikipedia-foveaux-strait"],
+  "status": "draft",
+  "summary": "Foveaux Strait is a strait that separates Stewart Island from the South Island of New Zealand."
 }

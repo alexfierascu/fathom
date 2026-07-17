@@ -7,6 +7,7 @@
   "lat": 33.95,
   "lon": 130.95,
   "note": "the stretch of water separating the islands Honshu and Kyushu in Japan",
-  "sourceIds": ["wikidata-q494894"],
-  "status": "draft"
+  "sourceIds": ["wikidata-q494894", "wikipedia-kanmon-straits"],
+  "status": "draft",
+  "summary": "The Kanmon Straits or the Straits of Shimonoseki is the stretch of water separating Honshu and Kyushu, two of Japan's four main islands."
 }

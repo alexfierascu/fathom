@@ -6,5 +6,7 @@
   "connects": "Indian Ocean passage",
   "lat": -18,
   "lon": 41,
-  "note": "One of the widest straits on Earth, over 400 km across."
+  "note": "One of the widest straits on Earth, over 400 km across.",
+  "summary": "The Mozambique Channel is an arm of the Indian Ocean located between the Southeast African countries of Madagascar and Mozambique.",
+  "sourceIds": ["wikipedia-mozambique"]
 }

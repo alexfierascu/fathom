@@ -11,7 +11,8 @@
     "summary": "One of the world's busiest container ports, commanding the Singapore Strait.",
     "sourceIds": ["mpa-singapore"],
     "lat": 1.26,
-    "lon": 103.84
+    "lon": 103.84,
+    "code": "SGSIN"
   },
   {
     "id": "shoreham-by-sea",
@@ -23,7 +24,10 @@
     },
     "summary": "seaside town and port in West Sussex, England",
     "sourceIds": ["wikidata-q770599"],
-    "status": "draft"
+    "status": "draft",
+    "lat": 50.83,
+    "lon": -0.24,
+    "code": "GBSHO"
   },
   {
     "id": "poti-sea-port",
@@ -35,7 +39,10 @@
     },
     "summary": "The Poti Sea Port is a major seaport and harbor off the eastern Black Sea coast at the mouth of the Rioni River in Poti, Georgia.",
     "sourceIds": ["wikidata-q2917500", "wikipedia-poti-sea-port"],
-    "status": "draft"
+    "status": "draft",
+    "lat": 42.15,
+    "lon": 41.65,
+    "code": "GEPTI"
   },
   {
     "id": "port-of-odesa",
@@ -47,7 +54,10 @@
     },
     "summary": "The Port of Odesa or Odesa Commercial Seaport, located near Odesa, is the largest Ukrainian seaport and one of the largest ports in the Black Sea basin, with a total annual traffic capacity of 40 million tonnes, the only port of Ukraine capable of accepting Panamax class vessels.",
     "sourceIds": ["wikidata-q4331470", "wikipedia-port-of-odesa"],
-    "status": "draft"
+    "status": "draft",
+    "lat": 46.49,
+    "lon": 30.74,
+    "code": "UAODS"
   },
   {
     "id": "port-of-haifa",
@@ -59,7 +69,10 @@
     },
     "summary": "seaport in Haifa, Israel, on the Mediterranean Sea",
     "sourceIds": ["wikidata-q1376739"],
-    "status": "draft"
+    "status": "draft",
+    "lat": 32.82,
+    "lon": 35.0,
+    "code": "ILHFA"
   },
   {
     "id": "tel-aviv-port",
@@ -71,7 +84,9 @@
     },
     "summary": "The Tel Aviv Port is a commercial and entertainment district in northwest Tel Aviv, Israel along the Mediterranean Sea.",
     "sourceIds": ["wikidata-q2889387", "wikipedia-tel-aviv-port"],
-    "status": "draft"
+    "status": "draft",
+    "lat": 32.1,
+    "lon": 34.77
   },
   {
     "id": "port-of-baku",
@@ -83,7 +98,10 @@
     },
     "summary": "Port of Baku, located on the ancient Silk Road connecting Europe and Asia, is a prime transport and logistics hub of Eurasia.",
     "sourceIds": ["wikidata-q4075924", "wikipedia-port-of-baku"],
-    "status": "draft"
+    "status": "draft",
+    "lat": 40.37,
+    "lon": 49.85,
+    "code": "AZBAK"
   },
   {
     "id": "port-of-ashdod",
@@ -95,7 +113,10 @@
     },
     "summary": "port in Israel",
     "sourceIds": ["wikidata-q2914934", "wikidata-q2914934"],
-    "status": "draft"
+    "status": "draft",
+    "lat": 31.83,
+    "lon": 34.64,
+    "code": "ILASH"
   },
   {
     "id": "alexandria-port",
@@ -107,7 +128,10 @@
     },
     "summary": "port in Alexandria, Egypt",
     "sourceIds": ["wikidata-q1344739"],
-    "status": "draft"
+    "status": "draft",
+    "lat": 31.2,
+    "lon": 29.88,
+    "code": "EGALY"
   },
   {
     "id": "port-of-klaipeda",
@@ -119,7 +143,10 @@
     },
     "summary": "port",
     "sourceIds": ["wikidata-q1567799"],
-    "status": "draft"
+    "status": "draft",
+    "lat": 55.71,
+    "lon": 21.13,
+    "code": "LTKLJ"
   },
   {
     "id": "port-of-mariupol",
@@ -131,7 +158,9 @@
     },
     "summary": "port in Ukraine",
     "sourceIds": ["wikidata-q4281590"],
-    "status": "draft"
+    "status": "draft",
+    "lat": 47.05,
+    "lon": 37.51
   },
   {
     "id": "port-of-koper",
@@ -143,7 +172,10 @@
     },
     "summary": "port",
     "sourceIds": ["wikidata-q478048"],
-    "status": "draft"
+    "status": "draft",
+    "lat": 45.55,
+    "lon": 13.73,
+    "code": "SIKOP"
   },
   {
     "id": "port-of-constanta",
@@ -155,7 +187,10 @@
     },
     "summary": "port to Black Sea in Romania",
     "sourceIds": ["wikidata-q822981"],
-    "status": "draft"
+    "status": "draft",
+    "lat": 44.17,
+    "lon": 28.65,
+    "code": "ROCND"
   },
   {
     "id": "port-of-durres",
@@ -167,7 +202,10 @@
     },
     "summary": "largest sea port of Albania, on the Adriatic Sea near the Strait of Otranto",
     "sourceIds": ["wikidata-q3303198"],
-    "status": "draft"
+    "status": "draft",
+    "lat": 41.31,
+    "lon": 19.45,
+    "code": "ALDRZ"
   },
   {
     "id": "port-of-karachi",
@@ -179,7 +217,10 @@
     },
     "summary": "port in Pakistan",
     "sourceIds": ["wikidata-q1842361"],
-    "status": "draft"
+    "status": "draft",
+    "lat": 24.79,
+    "lon": 66.97,
+    "code": "PKKHI"
   },
   {
     "id": "shahid-rajai-port",
@@ -205,7 +246,9 @@
     },
     "summary": "seaport in Guam",
     "sourceIds": ["wikidata-q621760"],
-    "status": "draft"
+    "status": "draft",
+    "lat": 13.44,
+    "lon": 144.66
   },
   {
     "id": "port-of-rijeka",
@@ -217,7 +260,10 @@
     },
     "summary": "port",
     "sourceIds": ["wikidata-q1567835"],
-    "status": "draft"
+    "status": "draft",
+    "lat": 45.33,
+    "lon": 14.44,
+    "code": "HRRJK"
   },
   {
     "id": "port-of-beirut",
@@ -229,7 +275,10 @@
     },
     "summary": "The Port of Beirut is the main port in Lebanon on the eastern part of the Saint George Bay on Beirut's northern Mediterranean coast, west of the Beirut River.",
     "sourceIds": ["wikidata-q2975999", "wikipedia-port-of-beirut"],
-    "status": "draft"
+    "status": "draft",
+    "lat": 33.9,
+    "lon": 35.52,
+    "code": "LBBEY"
   },
   {
     "id": "port-of-eilat",
@@ -241,7 +290,10 @@
     },
     "summary": "The Port of Eilat was the only Israeli port on the Red Sea, located at the northern tip of the Gulf of Aqaba.",
     "sourceIds": ["wikidata-q2915417", "wikipedia-port-of-eilat"],
-    "status": "draft"
+    "status": "draft",
+    "lat": 29.53,
+    "lon": 34.95,
+    "code": "ILETH"
   },
   {
     "id": "port-of-kobe",
@@ -253,7 +305,10 @@
     },
     "summary": "The Port of Kobe is a Japanese maritime port in Kobe, Hyōgo in the Keihanshin area, backgrounded by the Hanshin Industrial Region.",
     "sourceIds": ["wikidata-q1336906", "wikipedia-port-of-kobe"],
-    "status": "draft"
+    "status": "draft",
+    "lat": 34.67,
+    "lon": 135.2,
+    "code": "JPUKB"
   },
   {
     "id": "port-of-yokohama",
@@ -265,7 +320,10 @@
     },
     "summary": "The Port of Yokohama is operated by the Port and Harbor Bureau of the City of Yokohama in Japan.",
     "sourceIds": ["wikidata-q1190021", "wikipedia-port-of-yokohama"],
-    "status": "draft"
+    "status": "draft",
+    "lat": 35.44,
+    "lon": 139.66,
+    "code": "JPYOK"
   },
   {
     "id": "port-of-nagoya",
@@ -277,7 +335,10 @@
     },
     "summary": "The Port of Nagoya , located in Ise Bay, is the largest and busiest trading port in Japan, accounting for about 10% of the total trade value of Japan.",
     "sourceIds": ["wikidata-q1189542", "wikipedia-port-of-nagoya"],
-    "status": "draft"
+    "status": "draft",
+    "lat": 35.05,
+    "lon": 136.85,
+    "code": "JPNGO"
   },
   {
     "id": "port-of-gaza",
@@ -289,7 +350,9 @@
     },
     "summary": "Port in State of Palestine",
     "sourceIds": ["wikidata-q7231144"],
-    "status": "draft"
+    "status": "draft",
+    "lat": 31.52,
+    "lon": 34.43
   },
   {
     "id": "port-of-kolkata",
@@ -301,6 +364,9 @@
     },
     "summary": "port in India",
     "sourceIds": ["wikidata-q7231171"],
-    "status": "draft"
+    "status": "draft",
+    "lat": 22.54,
+    "lon": 88.32,
+    "code": "INCCU"
   }
 ]

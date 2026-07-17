@@ -60,6 +60,9 @@ export function chartChallengeFor(ref: EntityRef): ChartChallenge | null {
     .filter((node) => node.type === 'water-body')
     .filter(anchored);
   if (answers.length !== 2) return null;
+  if (answers.some((answer) => distanceKm(answer.lat, answer.lon, self.lat, self.lon) < 60)) {
+    return null;
+  }
 
   const answerIds = new Set(answers.map((node) => node.id));
   const decoys = [...graph.nodes.values()]

@@ -6,5 +6,7 @@
   "connects": "North Sea ↔ Kattegat",
   "lat": 57.8,
   "lon": 8.5,
-  "note": "One of the busiest and saltiest shipping straits in the world."
+  "note": "One of the busiest and saltiest shipping straits in the world.",
+  "summary": "The Skagerrak is a strait running between the North Jutlandic Island of Denmark, the east coast of Norway and the west coast of Sweden, connecting the North Sea and the Kattegat sea.",
+  "sourceIds": ["wikipedia-skagerrak"]
 }

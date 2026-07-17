@@ -7,5 +7,7 @@
   "lat": 80,
   "lon": -70,
   "note": "One of the northernmost straits on Earth.",
-  "tagIds": ["polar"]
+  "tagIds": ["polar"],
+  "summary": "The Nares Strait is a waterway between Ellesmere Island and Greenland that connects the northern part of Baffin Bay in the Atlantic Ocean with the Lincoln Sea in the Arctic Ocean.",
+  "sourceIds": ["wikipedia-nares"]
 }

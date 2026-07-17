@@ -6,5 +6,7 @@
   "connects": "East China Sea ↔ Sea of Japan",
   "lat": 34,
   "lon": 129,
-  "note": "Separates the Korean Peninsula from Japan's Kyushu island."
+  "note": "Separates the Korean Peninsula from Japan's Kyushu island.",
+  "summary": "The Korea Strait is a sea passage in East Asia between the Korean Peninsula and Japan.",
+  "sourceIds": ["wikipedia-korea"]
 }

@@ -6,5 +6,7 @@
   "connects": "Part of the Salish Sea",
   "lat": 49.3,
   "lon": -123.8,
-  "note": "Between Vancouver Island and mainland British Columbia."
+  "note": "Between Vancouver Island and mainland British Columbia.",
+  "summary": "The Strait of Georgia or the Georgia Strait is an arm of the Salish Sea between Vancouver Island and the extreme southwestern mainland coast of British Columbia, Canada, and the extreme northwestern mainland coast of Washington, United States.",
+  "sourceIds": ["wikipedia-georgia"]
 }

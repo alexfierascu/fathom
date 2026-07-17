@@ -98,6 +98,10 @@ export const router = createBrowserRouter([
           })),
       },
       {
+        path: 'wildlife',
+        lazy: () => pageChunks.hubs().then((m) => ({ Component: m.WildlifePage })),
+      },
+      {
         path: 'six-degrees',
         lazy: () =>
           import('../features/explore/SixDegreesPage').then((m) => ({

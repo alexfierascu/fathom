@@ -6,5 +6,7 @@
   "connects": "Baffin Bay ↔ Labrador Sea",
   "lat": 66,
   "lon": -58,
-  "note": "Between Baffin Island and Greenland."
+  "note": "Between Baffin Island and Greenland.",
+  "summary": "Davis Strait is a southern arm of the Arctic Ocean that lies north of the Labrador Sea.",
+  "sourceIds": ["wikipedia-davis"]
 }

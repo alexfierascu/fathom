@@ -7,6 +7,7 @@
   "lat": 69.83,
   "lon": -83,
   "note": "Arctic strait below northwest Baffin Island, Nunavut, Canada",
-  "sourceIds": ["wikidata-q691945"],
-  "status": "draft"
+  "sourceIds": ["wikidata-q691945", "wikipedia-fury-and-hecla-strait"],
+  "status": "draft",
+  "summary": "Fury and Hecla Strait is a narrow Arctic seawater channel located in the Qikiqtaaluk Region of Nunavut, Canada."
 }
