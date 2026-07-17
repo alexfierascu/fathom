@@ -19,6 +19,15 @@
   --accent-contrast: #14243d;
   --pin-ring: #041427;
   --radius: 8px;
+
+  /* Layout language: every screen builds from these. */
+  --gap: 18px;
+  --section-gap: 56px;
+  --rail-col: clamp(340px, 38%, 470px);
+  --rail-map-h: clamp(320px, calc(100vh - 380px), 540px);
+  --card-min: 260px;
+  --tile-min: 210px;
+  --fact-min: 160px;
   --font-display: 'Iowan Old Style', 'Palatino Linotype', Palatino, 'Book Antiqua', Georgia, serif;
 }
 
@@ -593,7 +602,7 @@ button:focus-visible,
 
 .grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(var(--card-min), 1fr));
   gap: 14px;
 }
 
@@ -815,7 +824,7 @@ a.pill:hover {
 }
 .facts {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(var(--fact-min), 1fr));
   gap: 10px;
 }
 .fact {
@@ -1246,7 +1255,7 @@ a.fact:hover {
 }
 .fact-quotes {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(var(--card-min), 1fr));
   gap: 14px;
 }
 .fact-quote {
@@ -1794,42 +1803,6 @@ a.journey-btn:hover {
   background: color-mix(in srgb, var(--accent-2) 85%, white);
 }
 
-.journey-mode {
-  display: grid;
-  grid-template-columns: 260px 1fr;
-  gap: 14px;
-  margin-top: 36px;
-  align-items: start;
-}
-.journey-stops {
-  list-style: none;
-  margin: 0;
-  padding: 6px;
-  background: var(--panel);
-  border: 1px solid var(--border);
-  border-radius: var(--radius);
-  display: grid;
-  gap: 2px;
-  position: sticky;
-  top: 12px;
-}
-.journey-stop {
-  display: grid;
-  grid-template-columns: 30px 1fr;
-  gap: 10px;
-  align-items: center;
-  width: 100%;
-  text-align: left;
-  background: transparent;
-  border: none;
-  border-radius: calc(var(--radius) - 3px);
-  padding: 8px 10px;
-  cursor: pointer;
-  color: var(--text);
-}
-.journey-stop:hover {
-  background: var(--panel-2);
-}
 .journey-stop-number {
   font-family: 'IBM Plex Mono', monospace;
   font-size: 0.75rem;
@@ -1841,38 +1814,7 @@ a.journey-btn:hover {
   display: grid;
   place-items: center;
 }
-.journey-stop.is-done .journey-stop-number {
-  color: var(--accent-2);
-  border-color: color-mix(in srgb, var(--accent-2) 55%, transparent);
-}
-.journey-stop.is-current {
-  background: var(--panel-2);
-}
-.journey-stop.is-current .journey-stop-number {
-  background: var(--accent-2);
-  color: var(--accent-contrast);
-  border-color: transparent;
-}
-.journey-stop-name {
-  display: block;
-  font-size: 0.88rem;
-}
-.journey-stop-type {
-  display: block;
-  font-family: 'IBM Plex Mono', monospace;
-  font-size: 0.6rem;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--text-muted);
-}
 
-.journey-panel {
-  background: var(--panel);
-  border: 1px solid var(--border);
-  border-radius: var(--radius);
-  padding: 22px 24px;
-  min-height: 260px;
-}
 .journey-stop-title {
   margin: 6px 0 10px;
   font-size: 1.5rem;
@@ -1905,11 +1847,6 @@ a.journey-btn:hover {
   justify-content: space-between;
   margin-top: 22px;
 }
-.journey-intro {
-  display: grid;
-  gap: 14px;
-  justify-items: start;
-}
 
 .journey-pin {
   background: var(--panel);
@@ -1936,23 +1873,11 @@ a.journey-btn:hover {
   height: 380px;
 }
 
-@media (max-width: 760px) {
-  .journey-mode {
-    grid-template-columns: 1fr;
-  }
-  .journey-stops {
-    position: static;
-    grid-auto-flow: column;
-    grid-auto-columns: minmax(150px, 1fr);
-    overflow-x: auto;
-  }
-}
-
 /* ---------- Homepage discovery ---------- */
 
 .explore-tiles {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(var(--tile-min), 1fr));
   gap: 14px;
 }
 .explore-tile {
@@ -2060,7 +1985,7 @@ a.journey-btn:hover {
   border-radius: calc(var(--radius) * 2);
   overflow: hidden;
   padding: clamp(56px, 9vw, 120px) clamp(28px, 6vw, 80px);
-  margin-bottom: 56px;
+  margin-bottom: var(--section-gap);
   background: var(--panel);
   border: 1px solid var(--border);
 }
@@ -2151,9 +2076,9 @@ a.journey-btn:hover {
 
 .mode-cards {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(var(--card-min), 1fr));
   gap: 18px;
-  margin-bottom: 56px;
+  margin-bottom: var(--section-gap);
 }
 .mode-card {
   background: var(--panel);
@@ -2193,7 +2118,7 @@ a.journey-btn:hover {
   border: 1px solid var(--border);
   background: var(--panel);
   padding: clamp(40px, 6vw, 72px) clamp(28px, 5vw, 64px);
-  margin-bottom: 56px;
+  margin-bottom: var(--section-gap);
 }
 .cinematic-media {
   position: absolute;
@@ -2330,7 +2255,7 @@ body {
 section + .detail-section,
 .detail-section + .detail-section,
 div + .detail-section {
-  margin-top: 56px;
+  margin-top: var(--section-gap);
 }
 .detail-section > .eyebrow {
   margin-bottom: 18px;
@@ -2353,10 +2278,10 @@ footer {
 
 @media (prefers-reduced-motion: no-preference) {
   .home-hero,
-  .journey-mode {
+  .voyage {
     animation: fade-up 0.5s ease both;
   }
-  .journey-stop-panel {
+  .voyage-body {
     animation: fade-up 0.35s ease both;
   }
 }
@@ -2422,13 +2347,10 @@ footer {
   color: var(--teal);
 }
 .rail-tag,
-.journey-stop-type {
-  color: var(--teal);
-}
 
 /* Quick facts as a chartroom line: hairlines, not boxes. */
 .facts--line {
-  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(var(--fact-min), 1fr));
   gap: 24px;
 }
 .facts--line .fact {
@@ -2586,7 +2508,7 @@ a.flow-node:hover .flow-name {
 }
 .flow-gates {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(var(--tile-min), 1fr));
   gap: 12px;
 }
 
@@ -2648,8 +2570,8 @@ a.flow-node:hover .flow-name {
 
 .chart-split {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) 420px;
-  gap: 18px;
+  grid-template-columns: minmax(0, 1fr) var(--rail-col);
+  gap: var(--gap);
   align-items: start;
 }
 .chart-rail {
@@ -2670,7 +2592,7 @@ a.flow-node:hover .flow-name {
   margin: 0;
 }
 .chart-rail #map {
-  height: clamp(300px, calc(100vh - 380px), 520px);
+  height: var(--rail-map-h);
 }
 .chart-rail .facts {
   grid-template-columns: repeat(2, 1fr);
@@ -2684,8 +2606,8 @@ a.flow-node:hover .flow-name {
 
 .voyage {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) 46%;
-  gap: 18px;
+  grid-template-columns: minmax(0, 1fr) var(--rail-col);
+  gap: var(--gap);
   align-items: start;
 }
 .voyage-chart {
@@ -2694,7 +2616,7 @@ a.flow-node:hover .flow-name {
   top: 14px;
 }
 .voyage .journey-map #map {
-  height: clamp(360px, calc(100vh - 250px), 640px);
+  height: var(--rail-map-h);
 }
 .voyage-card {
   display: flex;
@@ -2833,7 +2755,7 @@ a.flow-node:hover .flow-name {
 /* Document-mode stop preview chips */
 .stops-preview {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(190px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(var(--tile-min), 1fr));
   gap: 10px;
 }
 .stop-chip {

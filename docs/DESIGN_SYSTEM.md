@@ -61,6 +61,25 @@ Mono labels are uppercase with wide letter-spacing (`0.08–0.14em`) at small si
 - Transitions are 150 ms ease on color/border/background; movement respects
   `prefers-reduced-motion`.
 
+## Layout templates
+
+Every screen is built from one of five templates — new pages pick one instead of
+inventing a layout. All of them draw from the same tokens in `global.css`
+(`--rail-col`, `--gap`, `--section-gap`, `--card-min`, `--tile-min`, `--fact-min`),
+so proportions and rhythm match across the product.
+
+| Template             | Structure                                                                                                          | Used by                                                              |
+| -------------------- | ------------------------------------------------------------------------------------------------------------------ | -------------------------------------------------------------------- |
+| **Hero + Split**     | Full-width hero, then `.chart-split`: story column + sticky `.chart-rail` holding the map and quick facts          | Straits, seas, countries, regions, ports, canals, crossings, islands |
+| **Voyage cockpit**   | `.voyage`: viewport-fit story card (pinned actions, dot rail) + sticky chart. Same column geometry as Hero + Split | Journey Mode                                                         |
+| **Index grid**       | Hero-lite header + card grids on `--card-min` / `--tile-min`                                                       | Journeys, Explore, Learn, tags, collections                          |
+| **Fullscreen chart** | The map at near-viewport height, minimal chrome                                                                    | /map                                                                 |
+| **Focus panel**      | One centered panel, `max-width: 640px`                                                                             | Quiz, search layer                                                   |
+
+Rules: the rail is always `clamp(340px, 38%, 470px)` and always collapses to a
+single column at 1020px; panel gaps are always `--gap`; sections breathe by
+`--section-gap`. Deviations need a UX reason, not a whim.
+
 ## Components
 
 The recurring vocabulary (all in `global.css`):
