@@ -2608,15 +2608,25 @@ a.flow-node:hover .flow-name {
   display: grid;
   grid-template-columns: minmax(0, 1fr) var(--rail-col);
   gap: var(--gap);
-  align-items: start;
+  /* The card and the chart are one instrument: always the same height. */
+  align-items: stretch;
 }
 .voyage-chart {
   order: 2;
-  position: sticky;
-  top: 14px;
+  min-width: 0;
+  display: flex;
+}
+.voyage-chart .journey-map {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  min-height: 0;
 }
 .voyage .journey-map #map {
-  height: var(--rail-map-h);
+  flex: 1 1 auto;
+  height: auto;
+  min-height: 300px;
 }
 .voyage-card {
   display: flex;
@@ -2804,6 +2814,7 @@ a.flow-node:hover .flow-name {
     order: 0;
   }
   .voyage .journey-map #map {
+    flex: none;
     height: 340px;
   }
   .voyage-card {

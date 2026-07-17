@@ -93,18 +93,28 @@ export function JourneyMap({ journey, currentStop, travelling, tileStyle }: Jour
   });
 
   // While travelling, follow the traveller and highlight their pin;
-  // before departure the chart shows the whole course.
+  // before departure the chart shows the whole course. The stop card's
+  // height changes with its content, so re-measure before flying.
   useEffect(() => {
     const map = mapRef.current;
     if (!map) return;
+    map.invalidateSize();
+    const settle = window.setTimeout(() => map.invalidateSize(), 320);
     for (const [index, marker] of markersRef.current) {
       marker.getElement()?.classList.toggle('is-current', travelling && index === currentStop);
     }
-    if (!travelling) return;
+    if (!travelling) {
+      return () => {
+        window.clearTimeout(settle);
+      };
+    }
     const marker = markersRef.current.get(currentStop);
     if (marker) {
       map.flyTo(marker.getLatLng(), 6, { duration: 1.1 });
     }
+    return () => {
+      window.clearTimeout(settle);
+    };
   }, [currentStop, travelling, journey]);
 
   const chartedStops = journeyCourse(journey).filter(
