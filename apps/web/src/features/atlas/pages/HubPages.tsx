@@ -168,11 +168,19 @@ export function MapPage() {
   return (
     <>
       <SeoTags
-        title="Map — Fathom"
-        description="Every charted strait on one interactive map."
+        title="Chart Room — Fathom"
+        description="Every charted strait on one interactive world map — trade lanes, seas, and oil-flow rings."
         path="/map"
       />
       <div className="map-page">
+        <header className="map-intro">
+          <div className="geo-label">Chart Room</div>
+          <h1 className="map-intro-title">The world on one chart</h1>
+          <p className="map-intro-sub">
+            Every charted strait, plotted on the open sea. Trace the trade lanes, name the
+            surrounding waters, or set the globe adrift — then open any pin to sail in.
+          </p>
+        </header>
         <div className="map-toggles">
           <button
             type="button"
