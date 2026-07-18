@@ -4868,8 +4868,8 @@ html.route-portal body {
   .panel.is-launching .panel-title,
   .portal-cursor,
   .launch-search-field,
-  .profile-menu,
-  .profile-menu * {
+  .cabin,
+  .cabin * {
     animation: none !important;
     transition: none !important;
   }
@@ -4999,345 +4999,617 @@ html[data-reduce-motion='on'] *::after {
   text-align: center;
 }
 
-/* The Captain's Log — a floating glass notebook opened from the avatar. */
-.profile-menu {
-  position: absolute;
-  top: calc(100% + 12px);
-  right: 0;
-  z-index: 30;
-  width: clamp(340px, 94vw, 404px);
-  max-width: calc(100vw - 24px);
-  /* Cap to the viewport and scroll within — the homepage is locked, so
-     an over-tall log (expanded preferences on a short screen) must not
-     spill its last leaf beyond reach. */
-  max-height: min(760px, calc(100vh - 88px));
-  overflow-y: auto;
-  overscroll-behavior: contain;
-  scrollbar-width: thin;
-  display: grid;
-  gap: 16px;
-  padding: 20px 20px 18px;
-  border-radius: 20px;
-  border: 1px solid color-mix(in srgb, var(--accent-2) 32%, transparent);
-  background:
-    linear-gradient(180deg, color-mix(in srgb, var(--accent-2) 6%, transparent), transparent 26%),
-    color-mix(in srgb, var(--bg) 88%, transparent);
-  backdrop-filter: blur(26px) saturate(1.18);
-  -webkit-backdrop-filter: blur(26px) saturate(1.18);
-  box-shadow:
-    0 30px 74px -28px rgba(0, 0, 0, 0.72),
-    inset 0 1px 0 color-mix(in srgb, var(--text) 8%, transparent);
-  transform-origin: top right;
-  animation: clog-open 0.34s cubic-bezier(0.22, 0.61, 0.36, 1);
+/* ================================================================== */
+/* The Captain's Cabin — a frosted drawer that slides from the right   */
+
+html.cabin-open {
+  overflow: hidden;
 }
-/* A faint gilded spine down the binding edge — a leather-bound feel. */
-.profile-menu::before {
-  content: '';
-  position: absolute;
-  left: 0;
-  top: 16px;
-  bottom: 16px;
-  width: 2px;
-  border-radius: 2px;
-  background: linear-gradient(
-    to bottom,
-    transparent,
-    color-mix(in srgb, var(--accent-2) 55%, transparent),
-    transparent
-  );
-  opacity: 0.7;
+
+.cabin-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 150;
+  background: color-mix(in srgb, var(--bg) 55%, transparent);
+  backdrop-filter: blur(6px) saturate(0.9);
+  -webkit-backdrop-filter: blur(6px) saturate(0.9);
+  animation: cabin-fade 0.32s ease;
 }
-.profile-menu.is-closing {
-  animation: clog-close 0.2s ease-in forwards;
+.cabin-backdrop.is-closing {
+  animation: cabin-fade 0.28s ease reverse forwards;
 }
-@keyframes clog-open {
+@keyframes cabin-fade {
   from {
     opacity: 0;
-    transform: translateY(-10px) scale(0.94);
-  }
-}
-@keyframes clog-close {
-  to {
-    opacity: 0;
-    transform: translateY(-8px) scale(0.96);
-  }
-}
-/* The four leaves of the log rise in sequence as it opens. */
-.profile-menu > * {
-  animation: clog-rise 0.4s cubic-bezier(0.22, 0.61, 0.36, 1) both;
-}
-.profile-menu > *:nth-child(1) {
-  animation-delay: 0.05s;
-}
-.profile-menu > *:nth-child(2) {
-  animation-delay: 0.11s;
-}
-.profile-menu > *:nth-child(3) {
-  animation-delay: 0.17s;
-}
-.profile-menu > *:nth-child(4) {
-  animation-delay: 0.23s;
-}
-.profile-menu.is-closing > * {
-  animation: none;
-}
-@keyframes clog-rise {
-  from {
-    opacity: 0;
-    transform: translateY(9px);
   }
 }
 
-/* 1 — Captain identity */
-.clog-id {
-  display: grid;
-  grid-template-columns: auto 1fr;
-  gap: 14px;
-  align-items: center;
+.cabin {
+  position: fixed;
+  top: 0;
+  right: 0;
+  z-index: 151;
+  height: 100dvh;
+  width: clamp(360px, 92vw, 440px);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  background: color-mix(in srgb, var(--bg) 82%, transparent);
+  backdrop-filter: blur(30px) saturate(1.2);
+  -webkit-backdrop-filter: blur(30px) saturate(1.2);
+  border-left: 1px solid color-mix(in srgb, var(--text) 10%, transparent);
+  box-shadow: -30px 0 80px -30px rgba(0, 0, 0, 0.7);
+  animation: cabin-slide 0.34s cubic-bezier(0.22, 0.61, 0.36, 1);
+  outline: none;
 }
-.clog-avatar {
-  position: relative;
+.cabin.is-closing {
+  animation: cabin-slide-out 0.3s cubic-bezier(0.4, 0, 1, 1) forwards;
+}
+.cabin.is-closing,
+.cabin-backdrop.is-closing {
+  pointer-events: none;
+}
+@keyframes cabin-slide {
+  from {
+    transform: translateX(100%);
+  }
+}
+@keyframes cabin-slide-out {
+  to {
+    transform: translateX(100%);
+  }
+}
+
+.cabin-close {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  z-index: 4;
+  width: 30px;
+  height: 30px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  border: 1px solid transparent;
+  background: none;
+  color: var(--text-muted);
+  font-size: 1.3rem;
+  line-height: 1;
+  cursor: pointer;
+  transition:
+    color 0.25s ease-in-out,
+    background 0.25s ease-in-out;
+}
+.cabin-close:hover {
+  color: var(--text);
+  background: color-mix(in srgb, var(--text) 8%, transparent);
+}
+
+.cabin-scroll {
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  scrollbar-width: thin;
+  padding: 30px 26px 34px;
+  display: flex;
+  flex-direction: column;
+  gap: 26px;
+}
+.cabin-scroll > * {
+  animation: cabin-rise 0.5s cubic-bezier(0.22, 0.61, 0.36, 1) both;
+}
+.cabin-scroll > *:nth-child(1) {
+  animation-delay: 0.06s;
+}
+.cabin-scroll > *:nth-child(2) {
+  animation-delay: 0.12s;
+}
+.cabin-scroll > *:nth-child(3) {
+  animation-delay: 0.18s;
+}
+.cabin-scroll > *:nth-child(4) {
+  animation-delay: 0.24s;
+}
+.cabin-scroll > *:nth-child(5) {
+  animation-delay: 0.3s;
+}
+.cabin-scroll > *:nth-child(6) {
+  animation-delay: 0.36s;
+}
+.cabin-scroll > *:nth-child(7) {
+  animation-delay: 0.42s;
+}
+.cabin-scroll > *:nth-child(8) {
+  animation-delay: 0.48s;
+}
+.cabin.is-closing .cabin-scroll > * {
+  animation: none;
+}
+@keyframes cabin-rise {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+}
+
+/* Identity hero */
+.cabin-hero {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 8px;
+  padding: 8px 0 4px;
+}
+.cabin-avatar {
   display: inline-grid;
   place-items: center;
+  animation: cabin-avatar 0.7s cubic-bezier(0.22, 0.61, 0.36, 1) both;
 }
-.clog-seal {
-  position: absolute;
-  right: -3px;
-  bottom: -3px;
-  display: grid;
-  place-items: center;
-  width: 21px;
-  height: 21px;
-  border-radius: 50%;
-  border: 1px solid color-mix(in srgb, var(--accent-2) 50%, transparent);
-  background: var(--bg);
-  color: var(--accent-2);
+@keyframes cabin-avatar {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
 }
-.clog-id-text {
-  display: grid;
-  gap: 2px;
-  min-width: 0;
-}
-.clog-name {
+.cabin-hero-name {
   font-family: var(--font-display);
   font-weight: 500;
-  font-size: 1.3rem;
-  line-height: 1.08;
+  font-size: 1.6rem;
+  line-height: 1.1;
+  letter-spacing: -0.01em;
 }
-.clog-sub {
-  font-size: 0.8rem;
-  color: var(--text-muted);
-}
-.clog-rank {
+.cabin-hero-rank {
   font-family: 'IBM Plex Mono', monospace;
-  font-size: 0.58rem;
-  letter-spacing: 0.14em;
+  font-size: 0.62rem;
+  letter-spacing: 0.18em;
   text-transform: uppercase;
   color: var(--accent-2);
 }
-.clog-xp {
-  grid-column: 1 / -1;
-  display: grid;
-  gap: 6px;
+.cabin-levelrow {
+  width: 100%;
+  max-width: 300px;
+  display: flex;
+  justify-content: space-between;
+  margin-top: 6px;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.64rem;
+  letter-spacing: 0.06em;
+  color: var(--text-muted);
 }
-.clog-xp-bar {
+.cabin-xp-bar {
+  width: 100%;
+  max-width: 300px;
   height: 5px;
   border-radius: 3px;
   background: color-mix(in srgb, var(--text) 12%, transparent);
   overflow: hidden;
 }
-.clog-xp-bar > span {
+.cabin-xp-bar > span {
   display: block;
   height: 100%;
   border-radius: 3px;
   background: linear-gradient(
     90deg,
-    color-mix(in srgb, var(--accent-2) 60%, transparent),
+    color-mix(in srgb, var(--accent-2) 55%, transparent),
     var(--accent-2)
   );
-  transition: width 0.5s ease;
+  animation: cabin-fill 0.9s cubic-bezier(0.22, 0.61, 0.36, 1) 0.2s both;
+  transform-origin: left;
 }
-.clog-xp-cap {
-  display: flex;
-  justify-content: space-between;
-  gap: 10px;
-  font-family: 'IBM Plex Mono', monospace;
-  font-size: 0.6rem;
-  letter-spacing: 0.06em;
+@keyframes cabin-fill {
+  from {
+    transform: scaleX(0);
+  }
+}
+.cabin-next {
+  font-size: 0.78rem;
   color: var(--text-muted);
 }
-
-.clog-block {
-  display: grid;
-  gap: 9px;
+.cabin-next b {
+  color: var(--text);
+  font-weight: 500;
 }
 
-/* 2 — Continue expedition */
-.clog-expedition {
+.cabin-hero--guest {
+  gap: 12px;
+  padding: 18px 0 6px;
+}
+.cabin-crest {
   display: grid;
-  gap: 9px;
-  padding: 15px 16px;
-  border-radius: 14px;
-  border: 1px solid color-mix(in srgb, var(--accent-2) 26%, transparent);
+  place-items: center;
+  width: 66px;
+  height: 66px;
+  border-radius: 50%;
+  border: 1px solid color-mix(in srgb, var(--accent-2) 40%, transparent);
+  background: radial-gradient(
+    circle at 50% 40%,
+    color-mix(in srgb, var(--accent-2) 14%, transparent),
+    transparent 70%
+  );
+  color: var(--accent-2);
+}
+.cabin-hero-line {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: 1.18rem;
+  color: var(--text);
+}
+.cabin-hero-pitch {
+  margin: 0;
+  max-width: 34ch;
+  font-size: 0.9rem;
+  line-height: 1.6;
+  color: var(--text-muted);
+}
+.cabin-hero-cta {
+  display: grid;
+  gap: 10px;
+  width: 100%;
+  max-width: 300px;
+  margin-top: 6px;
+}
+
+.cabin-btn {
+  padding: 12px 18px;
+  border-radius: 12px;
+  border: 1px solid transparent;
+  font: inherit;
+  font-size: 0.92rem;
+  cursor: pointer;
+  transition:
+    transform 0.28s ease-in-out,
+    background 0.28s ease-in-out,
+    border-color 0.28s ease-in-out;
+}
+.cabin-btn--primary {
+  background: var(--accent-2);
+  color: var(--accent-contrast);
+  font-weight: 500;
+}
+.cabin-btn--primary:hover {
+  transform: translateY(-1px);
+  background: color-mix(in srgb, var(--accent-2) 88%, white);
+}
+.cabin-btn--ghost {
+  background: none;
+  border-color: color-mix(in srgb, var(--text) 18%, transparent);
+  color: var(--text-muted);
+}
+.cabin-btn--ghost:hover {
+  color: var(--text);
+  border-color: color-mix(in srgb, var(--text) 32%, transparent);
+}
+.cabin-btn:disabled {
+  opacity: 0.6;
+  cursor: default;
+}
+
+/* Sections */
+.cabin-section {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding-top: 24px;
+  border-top: 1px solid color-mix(in srgb, var(--text) 8%, transparent);
+}
+.cabin-hero + .cabin-section {
+  border-top: none;
+  padding-top: 4px;
+}
+.cabin-lead {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px;
+}
+.cabin-more {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.6rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--accent-2);
+  text-decoration: none;
+  white-space: nowrap;
+  transition: opacity 0.25s ease-in-out;
+}
+.cabin-more:hover {
+  opacity: 0.7;
+}
+
+.cabin-journey {
+  display: grid;
+  gap: 10px;
+  padding: 18px;
+  border-radius: 16px;
   background:
     radial-gradient(
-      130% 130% at 100% 0%,
-      color-mix(in srgb, var(--teal) 17%, transparent),
+      140% 130% at 100% 0%,
+      color-mix(in srgb, var(--teal) 18%, transparent),
       transparent 55%
     ),
-    color-mix(in srgb, var(--panel) 55%, transparent);
+    color-mix(in srgb, var(--panel) 50%, transparent);
+  border: 1px solid color-mix(in srgb, var(--text) 8%, transparent);
   text-decoration: none;
   color: var(--text);
   transition:
-    border-color 0.18s ease,
-    transform 0.18s ease,
-    box-shadow 0.18s ease;
+    transform 0.3s ease-in-out,
+    border-color 0.3s ease-in-out,
+    box-shadow 0.3s ease-in-out;
 }
-.clog-expedition:hover {
-  border-color: color-mix(in srgb, var(--accent-2) 55%, transparent);
+.cabin-journey:hover {
   transform: translateY(-2px);
-  box-shadow: 0 16px 34px -20px rgba(0, 0, 0, 0.6);
+  border-color: color-mix(in srgb, var(--accent-2) 40%, transparent);
+  box-shadow: 0 18px 40px -24px rgba(0, 0, 0, 0.6);
 }
-.clog-exp-title {
+.cabin-journey-title {
   font-family: var(--font-display);
   font-weight: 500;
-  font-size: 1.08rem;
-  line-height: 1.14;
+  font-size: 1.2rem;
+  line-height: 1.15;
 }
-.clog-exp-stop {
+.cabin-journey-meta {
   font-family: 'IBM Plex Mono', monospace;
-  font-size: 0.58rem;
+  font-size: 0.6rem;
   letter-spacing: 0.1em;
   text-transform: uppercase;
   color: var(--text-muted);
 }
-.clog-exp-bar {
+.cabin-journey-bar {
   height: 4px;
   border-radius: 3px;
   background: color-mix(in srgb, var(--text) 12%, transparent);
   overflow: hidden;
 }
-.clog-exp-bar > span {
+.cabin-journey-bar > span {
   display: block;
   height: 100%;
   background: var(--accent-2);
 }
-.clog-exp-resume {
+.cabin-journey-resume {
   display: inline-flex;
   align-items: center;
   gap: 7px;
   font-family: 'IBM Plex Mono', monospace;
-  font-size: 0.64rem;
+  font-size: 0.66rem;
   letter-spacing: 0.14em;
   text-transform: uppercase;
   color: var(--accent-2);
 }
-.clog-arrow {
-  transition: transform 0.18s ease;
+.cabin-arrow {
+  transition: transform 0.3s ease-in-out;
 }
-.clog-expedition:hover .clog-arrow {
+.cabin-journey:hover .cabin-arrow,
+.cabin-daily:hover .cabin-arrow {
   transform: translateX(3px);
 }
 
-/* 3 — Explorer hub rows */
-.clog-rows {
+.cabin-timeline {
+  list-style: none;
+  margin: 0;
+  padding: 0 0 0 6px;
+  display: grid;
+  gap: 14px;
+}
+.cabin-event {
+  position: relative;
+  padding-left: 20px;
+  font-size: 0.88rem;
+  line-height: 1.4;
+}
+.cabin-event::before {
+  content: '';
+  position: absolute;
+  left: 3px;
+  top: 18px;
+  bottom: -14px;
+  width: 1px;
+  background: color-mix(in srgb, var(--text) 12%, transparent);
+}
+.cabin-event:last-child::before {
+  display: none;
+}
+.cabin-event-dot {
+  position: absolute;
+  left: 0;
+  top: 5px;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  border: 1px solid var(--accent-2);
+}
+.cabin-event--complete .cabin-event-dot {
+  background: var(--accent-2);
+}
+.cabin-event--unlock .cabin-event-dot {
+  background: var(--teal);
+  border-color: var(--teal);
+}
+.cabin-event a {
+  color: var(--text);
+  text-decoration: none;
+  transition: color 0.25s ease-in-out;
+}
+.cabin-event a:hover {
+  color: var(--accent-2);
+}
+.cabin-empty {
+  margin: 0;
+  font-size: 0.88rem;
+  color: var(--text-muted);
+}
+
+.cabin-daily {
+  display: grid;
+  gap: 9px;
+  padding: 18px;
+  border-radius: 16px;
+  border: 1px solid color-mix(in srgb, var(--text) 8%, transparent);
+  background: color-mix(in srgb, var(--panel) 42%, transparent);
+  text-decoration: none;
+  color: var(--text);
+  transition:
+    transform 0.3s ease-in-out,
+    border-color 0.3s ease-in-out;
+}
+.cabin-daily:hover {
+  transform: translateY(-2px);
+  border-color: color-mix(in srgb, var(--accent-2) 34%, transparent);
+}
+.cabin-daily-eyebrow {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.6rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--accent-2);
+}
+.cabin-daily-fact {
+  font-family: var(--font-display);
+  font-size: 1.02rem;
+  line-height: 1.45;
+}
+.cabin-daily-read {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.62rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+.cabin-medals {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+}
+.cabin-medal {
+  display: grid;
+  justify-items: center;
+  gap: 8px;
+  padding: 14px 8px;
+  border-radius: 14px;
+  text-decoration: none;
+  color: var(--text-muted);
+  text-align: center;
+  transition:
+    transform 0.3s ease-in-out,
+    background 0.3s ease-in-out,
+    color 0.3s ease-in-out;
+}
+.cabin-medal span {
+  font-size: 0.66rem;
+  line-height: 1.3;
+}
+.cabin-medal:hover {
+  transform: translateY(-2px);
+  background: color-mix(in srgb, var(--text) 6%, transparent);
+  color: var(--text);
+}
+
+.cabin-saved {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.cabin-chip {
+  padding: 7px 13px;
+  border-radius: 999px;
+  border: 1px solid color-mix(in srgb, var(--text) 14%, transparent);
+  font-size: 0.82rem;
+  text-decoration: none;
+  color: var(--text);
+  transition:
+    border-color 0.25s ease-in-out,
+    background 0.25s ease-in-out;
+}
+.cabin-chip:hover {
+  border-color: color-mix(in srgb, var(--accent-2) 45%, transparent);
+  background: color-mix(in srgb, var(--accent-2) 10%, transparent);
+}
+
+.cabin-metrics {
+  margin: 0;
   display: grid;
   gap: 2px;
 }
-.clog-row {
-  display: grid;
-  grid-template-columns: 20px 1fr auto;
-  align-items: center;
-  gap: 12px;
-  padding: 11px 12px;
-  border-radius: 11px;
-  border: 1px solid transparent;
+.cabin-metric {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 14px;
+  padding: 9px 0;
+  border-bottom: 1px solid color-mix(in srgb, var(--text) 6%, transparent);
+}
+.cabin-metric:last-child {
+  border-bottom: none;
+}
+.cabin-metric dt {
+  font-size: 0.86rem;
+  color: var(--text-muted);
+}
+.cabin-metric dd {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: 1.16rem;
   color: var(--text);
-  text-decoration: none;
-  font-size: 0.9rem;
-  transition:
-    background 0.16s ease,
-    border-color 0.16s ease,
-    transform 0.16s ease;
-}
-.clog-row-glyph {
-  display: grid;
-  place-items: center;
-  color: var(--accent-2);
-  font-size: 0.9rem;
-  opacity: 0.85;
-}
-.clog-row-label {
-  min-width: 0;
-}
-.clog-row-arrow {
-  color: color-mix(in srgb, var(--text) 32%, transparent);
-  transition:
-    transform 0.16s ease,
-    color 0.16s ease;
-}
-.clog-row:hover {
-  background: color-mix(in srgb, var(--accent-2) 10%, transparent);
-  border-color: color-mix(in srgb, var(--accent-2) 24%, transparent);
-  transform: translateX(6px);
-}
-.clog-row:hover .clog-row-arrow {
-  color: var(--accent-2);
-  transform: translateX(3px);
-}
-@media (prefers-reduced-motion: reduce) {
-  .clog-row:hover,
-  .clog-expedition:hover {
-    transform: none;
-  }
 }
 
-/* 4 — Preferences, folded away */
-.clog-prefs {
-  border-top: 1px solid var(--border);
-  padding-top: 12px;
-  display: grid;
-  gap: 12px;
-}
-.clog-prefs-trigger {
-  display: grid;
-  grid-template-columns: 20px 1fr auto;
+.cabin-collapse-trigger {
+  display: flex;
   align-items: center;
-  gap: 12px;
-  padding: 3px 2px;
+  justify-content: space-between;
+  width: 100%;
+  padding: 0;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+.cabin-chevron {
+  width: 7px;
+  height: 7px;
+  border-right: 1.5px solid var(--text-muted);
+  border-bottom: 1.5px solid var(--text-muted);
+  transform: rotate(45deg);
+  transition: transform 0.3s ease-in-out;
+}
+.cabin-chevron.is-open {
+  transform: rotate(-135deg);
+}
+.cabin-collapse-body {
+  display: grid;
+  gap: 4px;
+  margin-top: 14px;
+  animation: cabin-rise 0.3s ease both;
+}
+.cabin-sub-trigger {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  padding: 9px 2px;
   background: none;
   border: none;
   color: var(--text);
   font: inherit;
-  font-size: 0.9rem;
+  font-size: 0.88rem;
   cursor: pointer;
 }
-.clog-chevron {
-  width: 7px;
-  height: 7px;
-  margin-right: 5px;
-  border-right: 1.5px solid var(--text-muted);
-  border-bottom: 1.5px solid var(--text-muted);
-  transform: rotate(45deg);
-  transition: transform 0.2s ease;
+.cabin-sub-trigger .cabin-chevron {
+  width: 6px;
+  height: 6px;
 }
-.clog-prefs.is-open .clog-chevron {
+.cabin-sub.is-open .cabin-sub-trigger .cabin-chevron {
   transform: rotate(-135deg);
 }
-.clog-prefs-body {
-  display: grid;
-  gap: 14px;
-  animation: clog-rise 0.26s ease both;
+.cabin-sub-body {
+  padding: 2px 0 12px 16px;
+  animation: cabin-rise 0.26s ease both;
 }
-.clog-pref {
-  display: grid;
-  gap: 8px;
-}
-.clog-radios {
+.cabin-radios {
   display: flex;
   gap: 6px;
 }
-.clog-radios button {
+.cabin-radios button {
   flex: 1 1 0;
   display: inline-flex;
   align-items: center;
@@ -5346,20 +5618,20 @@ html[data-reduce-motion='on'] *::after {
   padding: 8px 6px;
   border-radius: 10px;
   border: 1px solid var(--border);
-  background: color-mix(in srgb, var(--panel) 60%, transparent);
+  background: color-mix(in srgb, var(--panel) 55%, transparent);
   color: var(--text-muted);
   font: inherit;
   font-size: 0.76rem;
   cursor: pointer;
   transition:
-    color 0.16s ease,
-    border-color 0.16s ease,
-    background 0.16s ease;
+    color 0.25s ease-in-out,
+    border-color 0.25s ease-in-out,
+    background 0.25s ease-in-out;
 }
-.clog-radios button:hover {
+.cabin-radios button:hover {
   color: var(--text);
 }
-.clog-radios button.is-on {
+.cabin-radios button.is-on {
   color: var(--text);
   border-color: color-mix(in srgb, var(--accent-2) 55%, transparent);
   background: color-mix(in srgb, var(--accent-2) 12%, transparent);
@@ -5370,15 +5642,19 @@ html[data-reduce-motion='on'] *::after {
   border-radius: 50%;
   border: 1px solid color-mix(in srgb, var(--text) 40%, transparent);
 }
-.clog-radios button.is-on .radio-dot {
+.cabin-radios button.is-on .radio-dot {
   border-color: var(--accent-2);
   background: var(--accent-2);
 }
-.clog-toggle {
+.cabin-switches {
+  display: grid;
+  gap: 4px;
+}
+.cabin-switch {
   display: inline-flex;
   align-items: center;
-  gap: 10px;
-  padding: 6px 2px;
+  gap: 11px;
+  padding: 8px 2px;
   background: none;
   border: none;
   color: var(--text);
@@ -5386,7 +5662,7 @@ html[data-reduce-motion='on'] *::after {
   font-size: 0.84rem;
   cursor: pointer;
 }
-.clog-toggle-track {
+.cabin-switch-track {
   position: relative;
   flex: none;
   width: 34px;
@@ -5395,10 +5671,10 @@ html[data-reduce-motion='on'] *::after {
   border: 1px solid var(--border);
   background: color-mix(in srgb, var(--text) 16%, transparent);
   transition:
-    background 0.18s ease,
-    border-color 0.18s ease;
+    background 0.25s ease-in-out,
+    border-color 0.25s ease-in-out;
 }
-.clog-toggle-knob {
+.cabin-switch-knob {
   position: absolute;
   top: 1px;
   left: 1px;
@@ -5407,27 +5683,171 @@ html[data-reduce-motion='on'] *::after {
   border-radius: 50%;
   background: var(--text-muted);
   transition:
-    transform 0.18s ease,
-    background 0.18s ease;
+    transform 0.25s ease-in-out,
+    background 0.25s ease-in-out;
 }
-.clog-toggle.is-on .clog-toggle-track {
+.cabin-switch.is-on .cabin-switch-track {
   background: color-mix(in srgb, var(--accent-2) 38%, transparent);
   border-color: color-mix(in srgb, var(--accent-2) 55%, transparent);
 }
-.clog-toggle.is-on .clog-toggle-knob {
+.cabin-switch.is-on .cabin-switch-knob {
   transform: translateX(16px);
   background: var(--accent-2);
+}
+
+.cabin-signout {
+  align-self: center;
+  margin-top: 4px;
+  padding: 8px 16px;
+  background: none;
+  border: none;
+  color: var(--text-muted);
+  font: inherit;
+  font-size: 0.82rem;
+  cursor: pointer;
+  transition: color 0.25s ease-in-out;
+}
+.cabin-signout:hover {
+  color: #d9776a;
+}
+
+/* The "Welcome aboard" auth panel, pushed from the right */
+.cabin-auth {
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  display: flex;
+  flex-direction: column;
+  background: color-mix(in srgb, var(--bg) 98.5%, transparent);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  animation: cabin-push 0.34s cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+@keyframes cabin-push {
+  from {
+    transform: translateX(100%);
+  }
+}
+.cabin-back {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  align-self: flex-start;
+  margin: 20px 20px 0;
+  padding: 6px 4px;
+  background: none;
+  border: none;
+  color: var(--text-muted);
+  font: inherit;
+  font-size: 0.86rem;
+  cursor: pointer;
+  transition: color 0.25s ease-in-out;
+}
+.cabin-back:hover {
+  color: var(--text);
+}
+.cabin-back-arrow {
+  transition: transform 0.25s ease-in-out;
+}
+.cabin-back:hover .cabin-back-arrow {
+  transform: translateX(-3px);
+}
+.cabin-auth-body {
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+  padding: 16px 30px 34px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+.cabin-auth-body .cabin-crest {
+  margin-bottom: 18px;
+}
+.cabin-auth-title {
+  margin: 0 0 6px;
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: 1.8rem;
+}
+.cabin-auth-sub {
+  margin: 0 0 24px;
+  max-width: 32ch;
+  font-size: 0.9rem;
+  line-height: 1.6;
+  color: var(--text-muted);
+}
+.cabin-form {
+  width: 100%;
+  max-width: 320px;
+  display: grid;
+  gap: 14px;
+  text-align: left;
+}
+.cabin-field {
+  display: grid;
+  gap: 6px;
+}
+.cabin-field input {
+  padding: 11px 13px;
+  border-radius: 11px;
+  border: 1px solid var(--border);
+  background: color-mix(in srgb, var(--panel) 55%, transparent);
+  color: var(--text);
+  font: inherit;
+  font-size: 0.9rem;
+}
+.cabin-field input:focus-visible {
+  outline: none;
+  border-color: color-mix(in srgb, var(--accent-2) 60%, transparent);
+}
+.cabin-auth-msg {
+  margin: 0;
+  font-size: 0.82rem;
+  line-height: 1.5;
+  color: color-mix(in srgb, var(--text) 74%, transparent);
+}
+.cabin-form .cabin-btn {
+  margin-top: 4px;
+}
+.cabin-auth-toggle {
+  margin-top: 20px;
+  background: none;
+  border: none;
+  color: var(--text-muted);
+  font: inherit;
+  font-size: 0.84rem;
+  cursor: pointer;
+}
+.cabin-auth-toggle b {
+  color: var(--accent-2);
+  font-weight: 500;
+}
+
+@media (max-width: 480px) {
+  .cabin {
+    width: 100vw;
+  }
+}
+
+/* Accessibility preferences — manual companions to the OS queries. */
+:root[data-contrast='on'] {
+  --border: color-mix(in srgb, var(--text) 44%, transparent);
+  --text-muted: color-mix(in srgb, var(--text) 82%, transparent);
+}
+html[data-text-scale='on'] {
+  font-size: 112.5%;
+}
+html[data-focus-rings='on'] :focus-visible {
+  outline: 2px solid var(--accent-2);
+  outline-offset: 2px;
+  border-radius: 3px;
 }
 
 @media (max-width: 760px) {
   .launch-search-field {
     width: min(70vw, 300px);
-  }
-  .profile-menu {
-    position: fixed;
-    top: 64px;
-    right: 12px;
-    left: auto;
   }
 }
 

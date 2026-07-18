@@ -23,15 +23,16 @@ test('homepage is a minimal four-mode launcher', async ({ page }) => {
   await expect(page.locator('.panel')).toHaveCount(4); // homepage never disappears
   await page.keyboard.press('Escape');
   await expect(page.locator('.chartroom')).toHaveCount(0);
-  // The avatar opens the Captain's Log; preferences are folded away
-  // until asked for, then appearance and language work from within.
+  // The avatar opens the Captain's Cabin; preferences are folded away,
+  // and appearance works from within the nested Preferences → Appearance.
   await page.locator('.avatar-button').click();
-  await expect(page.locator('.profile-menu')).toBeVisible();
-  await page.locator('.clog-prefs-trigger').click();
-  await expect(page.locator('.profile-menu')).toContainText('Appearance');
-  await page.getByRole('menuitemradio', { name: 'Light' }).click();
+  await expect(page.locator('.cabin')).toBeVisible();
+  await page.getByRole('button', { name: 'Preferences' }).click();
+  await page.getByRole('button', { name: 'Appearance' }).click();
+  await page.getByRole('radio', { name: 'Light' }).click();
   await expect(page.locator('html')).toHaveAttribute('data-theme', 'parchment');
   await page.keyboard.press('Escape');
+  await expect(page.locator('.cabin')).toHaveCount(0);
   // Hovering reveals the mode's invitation.
   await page.locator('.panel--chart').hover();
   await expect(page.getByRole('link', { name: 'Open Chart Room' })).toBeVisible();
@@ -46,9 +47,11 @@ test('homepage is a minimal four-mode launcher', async ({ page }) => {
 test('the homepage localizes into Romanian', async ({ page }) => {
   await page.goto('/');
   await page.locator('.avatar-button').click();
-  await page.locator('.clog-prefs-trigger').click();
-  await page.getByRole('menuitemradio', { name: 'Romanian' }).click();
+  await page.getByRole('button', { name: 'Preferences' }).click();
+  await page.getByRole('button', { name: 'Language' }).click();
+  await page.getByRole('radio', { name: 'Romanian' }).click();
   await page.keyboard.press('Escape');
+  await expect(page.locator('.cabin')).toHaveCount(0);
   await expect(page.locator('.panel--chart .panel-title')).toHaveText('Camera Hărților');
   await expect(page.locator('.panel--explore .panel-title')).toHaveText('Explorează');
 });
