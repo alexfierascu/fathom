@@ -10,12 +10,10 @@ import {
 import { Link, useNavigate, useOutletContext } from 'react-router';
 
 import {
-  loadCanals,
+  loadAllStraits,
   loadCountriesIndex,
   loadHistoricalEvents,
   loadImagesFor,
-  loadPorts,
-  loadStraitsIndex,
   loadWaterBodiesIndex,
   loadWildlife,
 } from '@fathom/data';
@@ -39,11 +37,12 @@ import { SeoTags } from '../components/SeoTags';
  */
 
 const journeys = loadJourneys();
+const straits = loadAllStraits();
 
 const COUNTS = {
-  straits: loadStraitsIndex().length,
-  ports: loadPorts().length,
-  canals: loadCanals().length,
+  straits: straits.length,
+  chokepoints: straits.filter((strait) => strait.tagIds?.includes('chokepoint')).length,
+  regions: new Set(straits.map((strait) => strait.region)).size,
   waters: loadWaterBodiesIndex().length,
   countries: loadCountriesIndex().length,
   journeys: journeys.length,
@@ -78,8 +77,8 @@ const MODES: readonly ModeSpec[] = [
     cta2Key: 'home.explore.cta2',
     meta: [
       { value: COUNTS.straits, labelKey: 'home.meta.straits' },
-      { value: COUNTS.ports, labelKey: 'home.meta.ports' },
-      { value: COUNTS.canals, labelKey: 'home.meta.canals' },
+      { value: COUNTS.chokepoints, labelKey: 'home.meta.chokepoints' },
+      { value: COUNTS.regions, labelKey: 'home.meta.regions' },
     ],
   },
   {

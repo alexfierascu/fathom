@@ -6,11 +6,11 @@ import {
   entityId as canonicalId,
   getEntity,
   loadAllStraits,
+  loadHistoricalEvents,
   loadImagesFor,
+  loadStatisticsFor,
   loadWildlife,
-  slugifyName,
 } from '@fathom/data';
-import { randomEntity } from '@fathom/discovery';
 
 import type { LayoutContext } from '../../../app/RootLayout';
 import { Collections, ContinueReading } from '../../explore/HomeDiscovery';
@@ -22,7 +22,6 @@ import { PageHero } from '../components/PageHero';
 import { Section } from '../components/Section';
 import { InterestingFacts } from '../components/HomeSections';
 import { SeoTags } from '../components/SeoTags';
-import { entityPath } from '../lib/entityPaths';
 
 const STRAITS = loadAllStraits();
 
@@ -38,32 +37,40 @@ function straitTile(id: string, name: string, meta?: string): RailItem {
   };
 }
 
+/** Tiles for a themed set of straits, showing each strait's region as context. */
+const themeTiles = (list: readonly (typeof STRAITS)[number][]): RailItem[] =>
+  list.map((strait) => straitTile(strait.id, strait.name, strait.region));
+
 const metres = (m?: { value: number; unit: string }) =>
   m ? (m.unit === 'm' ? m.value : m.value * 1000) : Infinity;
 
-const FEATURED: readonly RailItem[] = STRAITS.filter(
-  (strait) => loadImagesFor({ type: 'strait', id: strait.id }).length > 0,
-)
+const hasTag = (id: string) => (strait: (typeof STRAITS)[number]) => strait.tagIds?.includes(id);
+
+// Straits seen through data, not entity lists: which appear in history, which
+// shelter wildlife, which carry sourced energy flows.
+const EVENT_STRAIT_IDS = new Set(
+  loadHistoricalEvents().flatMap((event) =>
+    event.involves.filter((ref) => ref.type === 'strait').map((ref) => ref.id),
+  ),
+);
+const WILDLIFE_STRAIT_IDS = new Set(
+  loadWildlife().flatMap((animal) =>
+    animal.habitats.filter((habitat) => habitat.type === 'strait').map((habitat) => habitat.id),
+  ),
+);
+const ENERGY_STRAIT_IDS = new Set(
+  STRAITS.filter((strait) =>
+    loadStatisticsFor({ type: 'strait', id: strait.id }).some((stat) =>
+      stat.metric.includes('oil'),
+    ),
+  ).map((strait) => strait.id),
+);
+
+const FEATURED = STRAITS.filter((strait) => loadImagesFor({ type: 'strait', id: strait.id }).length)
   .slice(0, 14)
   .map((strait) => straitTile(strait.id, strait.name, strait.region));
 
-const CHOKEPOINTS: readonly RailItem[] = STRAITS.filter((strait) =>
-  strait.tagIds?.includes('chokepoint'),
-).map((strait) => straitTile(strait.id, strait.name, 'Chokepoint'));
-
-const LONGEST: readonly RailItem[] = [...STRAITS]
-  .filter((strait) => strait.dimensions?.length)
-  .sort((a, b) => (b.dimensions?.length?.value ?? 0) - (a.dimensions?.length?.value ?? 0))
-  .slice(0, 10)
-  .map((strait) =>
-    straitTile(
-      strait.id,
-      strait.name,
-      `${String(strait.dimensions?.length?.value)} ${strait.dimensions?.length?.unit ?? ''}`,
-    ),
-  );
-
-const NARROWEST: readonly RailItem[] = [...STRAITS]
+const NARROWEST = [...STRAITS]
   .filter((strait) => strait.dimensions?.widthMin)
   .sort((a, b) => metres(a.dimensions?.widthMin) - metres(b.dimensions?.widthMin))
   .slice(0, 10)
@@ -75,43 +82,91 @@ const NARROWEST: readonly RailItem[] = [...STRAITS]
     ),
   );
 
-const REGIONS: readonly RailItem[] = [...new Set(STRAITS.map((strait) => strait.region))]
-  .sort()
-  .map((region) => ({
-    key: region,
-    name: region,
-    to: `/regions/${slugifyName(region)}`,
-    meta: `${String(STRAITS.filter((strait) => strait.region === region).length)} straits`,
-  }));
+const LONGEST = [...STRAITS]
+  .filter((strait) => strait.dimensions?.length)
+  .sort((a, b) => (b.dimensions?.length?.value ?? 0) - (a.dimensions?.length?.value ?? 0))
+  .slice(0, 10)
+  .map((strait) =>
+    straitTile(
+      strait.id,
+      strait.name,
+      `${String(strait.dimensions?.length?.value)} ${strait.dimensions?.length?.unit ?? ''}`,
+    ),
+  );
 
 /**
- * Explore — the atlas as a place to browse, not a directory to filter.
- * A calm hero, then rails of immersive tiles: featured waters, the great
- * chokepoints, the longest and narrowest, the collections, and the
- * regions. Search itself lives in the Chart Room.
+ * The lenses through which straits are discovered. Every rail is a set of
+ * straits seen from one angle — strategic, economic, historical, natural.
+ * Nothing here navigates to a country or a port; the strait is always the
+ * destination. Rails with fewer than two straits are simply not shown.
+ */
+const LENSES: readonly { eyebrow: string; title: string; items: readonly RailItem[] }[] = [
+  { eyebrow: 'Start here', title: 'Featured straits', items: FEATURED },
+  {
+    eyebrow: 'By strategic importance',
+    title: 'The great chokepoints',
+    items: themeTiles(STRAITS.filter(hasTag('chokepoint'))),
+  },
+  {
+    eyebrow: 'By energy',
+    title: 'The oil arteries',
+    items: themeTiles(STRAITS.filter((strait) => ENERGY_STRAIT_IDS.has(strait.id))),
+  },
+  {
+    eyebrow: 'By trade & civilisation',
+    title: 'Ancient trade routes',
+    items: themeTiles(STRAITS.filter(hasTag('historic-trade'))),
+  },
+  { eyebrow: 'By width', title: 'The narrowest squeezes', items: NARROWEST },
+  { eyebrow: 'By length', title: 'The longest passages', items: LONGEST },
+  {
+    eyebrow: 'By history',
+    title: 'Where history turned',
+    items: themeTiles(STRAITS.filter((strait) => EVENT_STRAIT_IDS.has(strait.id))),
+  },
+  {
+    eyebrow: 'By wildlife',
+    title: 'Life at the narrows',
+    items: themeTiles(STRAITS.filter((strait) => WILDLIFE_STRAIT_IDS.has(strait.id))),
+  },
+  {
+    eyebrow: 'By climate',
+    title: 'Polar passages',
+    items: themeTiles(STRAITS.filter(hasTag('polar'))),
+  },
+  {
+    eyebrow: 'By crossing',
+    title: 'Bridged & tunnelled',
+    items: themeTiles(STRAITS.filter(hasTag('crossed'))),
+  },
+].filter((lens) => lens.items.length >= 2);
+
+/**
+ * Explore — the heart of the application, and a strait-first one. Not an
+ * entity browser: a discovery experience where every rail reveals the
+ * world's straits through a different lens. Search lives in the Chart Room.
  */
 export function ExplorePage() {
   const { openSearch } = useOutletContext<LayoutContext>();
   const navigate = useNavigate();
 
   const surprise = () => {
-    const pick = randomEntity();
-    const path = pick ? entityPath(pick) : null;
-    if (path) void navigate(path);
+    const pick = STRAITS[Math.floor(Math.random() * STRAITS.length)];
+    if (pick) void navigate(`/straits/${pick.id}`, { viewTransition: true });
   };
 
   return (
     <>
       <SeoTags
-        title="Explore — Fathom"
-        description="Browse the world's straits, seas, countries, and maritime structures."
+        title="Explore the world's straits — Fathom"
+        description="Discover the world's straits through the lenses that matter — chokepoints, the narrows, trade routes, and the waters where history turned."
         path="/explore"
       />
       <article>
         <PageHero
           eyebrow="Explore"
-          title="The world's waterways"
-          subtitle="Every strait, sea, port and coastline — gathered into collections to wander through. Open the Chart Room to search by name, or let the tide decide."
+          title="The world's straits"
+          subtitle="Discover them through the lenses that matter — the chokepoints, the narrows, the trade routes, and the waters where history turned. Open the Chart Room to search, or let the tide decide."
           actions={
             <>
               <button type="button" className="uc-btn uc-btn--primary" onClick={openSearch}>
@@ -124,15 +179,14 @@ export function ExplorePage() {
           }
         />
 
-        <DiscoveryRail eyebrow="Start here" title="Featured waters" items={FEATURED} />
-        <DiscoveryRail
-          eyebrow="Where the world funnels"
-          title="The great chokepoints"
-          items={CHOKEPOINTS}
-        />
-        <DiscoveryRail eyebrow="By the numbers" title="The longest passages" items={LONGEST} />
-        <DiscoveryRail eyebrow="By the numbers" title="The narrowest squeezes" items={NARROWEST} />
-        <DiscoveryRail eyebrow="By place" title="Browse by region" items={REGIONS} />
+        {LENSES.map((lens) => (
+          <DiscoveryRail
+            key={lens.title}
+            eyebrow={lens.eyebrow}
+            title={lens.title}
+            items={lens.items}
+          />
+        ))}
 
         <div className="strait-onward">
           <Collections />
