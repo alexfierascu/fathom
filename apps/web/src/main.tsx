@@ -6,6 +6,10 @@ import 'leaflet.markercluster/dist/MarkerCluster.css';
 import './styles/global.css';
 
 import { App } from './app/App';
+import { applyReduceMotion, loadReduceMotion } from './features/theme/motion';
+
+// Honour the saved "reduce motion" preference before first paint.
+applyReduceMotion(loadReduceMotion());
 
 const container = document.getElementById('root');
 

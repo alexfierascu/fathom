@@ -4868,10 +4868,22 @@ html.route-portal body {
   .panel.is-launching .panel-title,
   .portal-cursor,
   .launch-search-field,
-  .profile-menu {
+  .profile-menu,
+  .profile-menu * {
     animation: none !important;
     transition: none !important;
   }
+}
+
+/* The manual "reduce motion" preference stills every animation and
+   transition, exactly as the media query above does for the OS setting. */
+html[data-reduce-motion='on'] *,
+html[data-reduce-motion='on'] *::before,
+html[data-reduce-motion='on'] *::after {
+  animation-duration: 0.001ms !important;
+  animation-iteration-count: 1 !important;
+  transition-duration: 0.001ms !important;
+  scroll-behavior: auto !important;
 }
 
 /* ------------------------------------------------------------------ */
@@ -4987,74 +4999,345 @@ html.route-portal body {
   text-align: center;
 }
 
-/* The profile panel — glass, rounded, calm. */
+/* The Captain's Log — a floating glass notebook opened from the avatar. */
 .profile-menu {
   position: absolute;
   top: calc(100% + 12px);
   right: 0;
   z-index: 30;
-  width: 288px;
-  max-width: calc(100vw - 32px);
+  width: clamp(340px, 94vw, 404px);
+  max-width: calc(100vw - 24px);
+  /* Cap to the viewport and scroll within — the homepage is locked, so
+     an over-tall log (expanded preferences on a short screen) must not
+     spill its last leaf beyond reach. */
+  max-height: min(760px, calc(100vh - 88px));
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  scrollbar-width: thin;
   display: grid;
-  gap: 14px;
-  padding: 18px;
-  border-radius: 18px;
-  border: 1px solid color-mix(in srgb, var(--text) 14%, transparent);
-  background: color-mix(in srgb, var(--bg) 82%, transparent);
-  backdrop-filter: blur(22px) saturate(1.1);
-  -webkit-backdrop-filter: blur(22px) saturate(1.1);
-  box-shadow: 0 24px 60px -24px rgba(0, 0, 0, 0.6);
-  animation: menu-in 0.2s ease-out;
+  gap: 16px;
+  padding: 20px 20px 18px;
+  border-radius: 20px;
+  border: 1px solid color-mix(in srgb, var(--accent-2) 32%, transparent);
+  background:
+    linear-gradient(180deg, color-mix(in srgb, var(--accent-2) 6%, transparent), transparent 26%),
+    color-mix(in srgb, var(--bg) 88%, transparent);
+  backdrop-filter: blur(26px) saturate(1.18);
+  -webkit-backdrop-filter: blur(26px) saturate(1.18);
+  box-shadow:
+    0 30px 74px -28px rgba(0, 0, 0, 0.72),
+    inset 0 1px 0 color-mix(in srgb, var(--text) 8%, transparent);
   transform-origin: top right;
+  animation: clog-open 0.34s cubic-bezier(0.22, 0.61, 0.36, 1);
 }
-@keyframes menu-in {
+/* A faint gilded spine down the binding edge — a leather-bound feel. */
+.profile-menu::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 16px;
+  bottom: 16px;
+  width: 2px;
+  border-radius: 2px;
+  background: linear-gradient(
+    to bottom,
+    transparent,
+    color-mix(in srgb, var(--accent-2) 55%, transparent),
+    transparent
+  );
+  opacity: 0.7;
+}
+.profile-menu.is-closing {
+  animation: clog-close 0.2s ease-in forwards;
+}
+@keyframes clog-open {
   from {
     opacity: 0;
-    transform: translateY(-6px) scale(0.98);
+    transform: translateY(-10px) scale(0.94);
   }
 }
-.profile-identity {
-  display: grid;
-  justify-items: center;
-  text-align: center;
-  gap: 3px;
-  padding-bottom: 14px;
-  border-bottom: 1px solid var(--border);
+@keyframes clog-close {
+  to {
+    opacity: 0;
+    transform: translateY(-8px) scale(0.96);
+  }
 }
-.profile-avatar {
+/* The four leaves of the log rise in sequence as it opens. */
+.profile-menu > * {
+  animation: clog-rise 0.4s cubic-bezier(0.22, 0.61, 0.36, 1) both;
+}
+.profile-menu > *:nth-child(1) {
+  animation-delay: 0.05s;
+}
+.profile-menu > *:nth-child(2) {
+  animation-delay: 0.11s;
+}
+.profile-menu > *:nth-child(3) {
+  animation-delay: 0.17s;
+}
+.profile-menu > *:nth-child(4) {
+  animation-delay: 0.23s;
+}
+.profile-menu.is-closing > * {
+  animation: none;
+}
+@keyframes clog-rise {
+  from {
+    opacity: 0;
+    transform: translateY(9px);
+  }
+}
+
+/* 1 — Captain identity */
+.clog-id {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 14px;
+  align-items: center;
+}
+.clog-avatar {
   position: relative;
   display: inline-grid;
   place-items: center;
-  margin-bottom: 6px;
 }
-.profile-identity .geo-label {
-  margin-top: 2px;
+.clog-seal {
+  position: absolute;
+  right: -3px;
+  bottom: -3px;
+  display: grid;
+  place-items: center;
+  width: 21px;
+  height: 21px;
+  border-radius: 50%;
+  border: 1px solid color-mix(in srgb, var(--accent-2) 50%, transparent);
+  background: var(--bg);
+  color: var(--accent-2);
 }
-.profile-identity b {
+.clog-id-text {
+  display: grid;
+  gap: 2px;
+  min-width: 0;
+}
+.clog-name {
   font-family: var(--font-display);
   font-weight: 500;
-  font-size: 1.12rem;
+  font-size: 1.3rem;
+  line-height: 1.08;
 }
-.profile-sub {
-  font-size: 0.82rem;
+.clog-sub {
+  font-size: 0.8rem;
   color: var(--text-muted);
 }
-.profile-rank {
+.clog-rank {
   font-family: 'IBM Plex Mono', monospace;
-  font-size: 0.6rem;
-  letter-spacing: 0.12em;
+  font-size: 0.58rem;
+  letter-spacing: 0.14em;
   text-transform: uppercase;
   color: var(--accent-2);
 }
-.profile-section {
+.clog-xp {
+  grid-column: 1 / -1;
+  display: grid;
+  gap: 6px;
+}
+.clog-xp-bar {
+  height: 5px;
+  border-radius: 3px;
+  background: color-mix(in srgb, var(--text) 12%, transparent);
+  overflow: hidden;
+}
+.clog-xp-bar > span {
+  display: block;
+  height: 100%;
+  border-radius: 3px;
+  background: linear-gradient(
+    90deg,
+    color-mix(in srgb, var(--accent-2) 60%, transparent),
+    var(--accent-2)
+  );
+  transition: width 0.5s ease;
+}
+.clog-xp-cap {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.6rem;
+  letter-spacing: 0.06em;
+  color: var(--text-muted);
+}
+
+.clog-block {
+  display: grid;
+  gap: 9px;
+}
+
+/* 2 — Continue expedition */
+.clog-expedition {
+  display: grid;
+  gap: 9px;
+  padding: 15px 16px;
+  border-radius: 14px;
+  border: 1px solid color-mix(in srgb, var(--accent-2) 26%, transparent);
+  background:
+    radial-gradient(
+      130% 130% at 100% 0%,
+      color-mix(in srgb, var(--teal) 17%, transparent),
+      transparent 55%
+    ),
+    color-mix(in srgb, var(--panel) 55%, transparent);
+  text-decoration: none;
+  color: var(--text);
+  transition:
+    border-color 0.18s ease,
+    transform 0.18s ease,
+    box-shadow 0.18s ease;
+}
+.clog-expedition:hover {
+  border-color: color-mix(in srgb, var(--accent-2) 55%, transparent);
+  transform: translateY(-2px);
+  box-shadow: 0 16px 34px -20px rgba(0, 0, 0, 0.6);
+}
+.clog-exp-title {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: 1.08rem;
+  line-height: 1.14;
+}
+.clog-exp-stop {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.58rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+.clog-exp-bar {
+  height: 4px;
+  border-radius: 3px;
+  background: color-mix(in srgb, var(--text) 12%, transparent);
+  overflow: hidden;
+}
+.clog-exp-bar > span {
+  display: block;
+  height: 100%;
+  background: var(--accent-2);
+}
+.clog-exp-resume {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.64rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--accent-2);
+}
+.clog-arrow {
+  transition: transform 0.18s ease;
+}
+.clog-expedition:hover .clog-arrow {
+  transform: translateX(3px);
+}
+
+/* 3 — Explorer hub rows */
+.clog-rows {
+  display: grid;
+  gap: 2px;
+}
+.clog-row {
+  display: grid;
+  grid-template-columns: 20px 1fr auto;
+  align-items: center;
+  gap: 12px;
+  padding: 11px 12px;
+  border-radius: 11px;
+  border: 1px solid transparent;
+  color: var(--text);
+  text-decoration: none;
+  font-size: 0.9rem;
+  transition:
+    background 0.16s ease,
+    border-color 0.16s ease,
+    transform 0.16s ease;
+}
+.clog-row-glyph {
+  display: grid;
+  place-items: center;
+  color: var(--accent-2);
+  font-size: 0.9rem;
+  opacity: 0.85;
+}
+.clog-row-label {
+  min-width: 0;
+}
+.clog-row-arrow {
+  color: color-mix(in srgb, var(--text) 32%, transparent);
+  transition:
+    transform 0.16s ease,
+    color 0.16s ease;
+}
+.clog-row:hover {
+  background: color-mix(in srgb, var(--accent-2) 10%, transparent);
+  border-color: color-mix(in srgb, var(--accent-2) 24%, transparent);
+  transform: translateX(6px);
+}
+.clog-row:hover .clog-row-arrow {
+  color: var(--accent-2);
+  transform: translateX(3px);
+}
+@media (prefers-reduced-motion: reduce) {
+  .clog-row:hover,
+  .clog-expedition:hover {
+    transform: none;
+  }
+}
+
+/* 4 — Preferences, folded away */
+.clog-prefs {
+  border-top: 1px solid var(--border);
+  padding-top: 12px;
+  display: grid;
+  gap: 12px;
+}
+.clog-prefs-trigger {
+  display: grid;
+  grid-template-columns: 20px 1fr auto;
+  align-items: center;
+  gap: 12px;
+  padding: 3px 2px;
+  background: none;
+  border: none;
+  color: var(--text);
+  font: inherit;
+  font-size: 0.9rem;
+  cursor: pointer;
+}
+.clog-chevron {
+  width: 7px;
+  height: 7px;
+  margin-right: 5px;
+  border-right: 1.5px solid var(--text-muted);
+  border-bottom: 1.5px solid var(--text-muted);
+  transform: rotate(45deg);
+  transition: transform 0.2s ease;
+}
+.clog-prefs.is-open .clog-chevron {
+  transform: rotate(-135deg);
+}
+.clog-prefs-body {
+  display: grid;
+  gap: 14px;
+  animation: clog-rise 0.26s ease both;
+}
+.clog-pref {
   display: grid;
   gap: 8px;
 }
-.profile-radios {
+.clog-radios {
   display: flex;
   gap: 6px;
 }
-.profile-radio {
+.clog-radios button {
   flex: 1 1 0;
   display: inline-flex;
   align-items: center;
@@ -5065,17 +5348,18 @@ html.route-portal body {
   border: 1px solid var(--border);
   background: color-mix(in srgb, var(--panel) 60%, transparent);
   color: var(--text-muted);
-  font-size: 0.78rem;
+  font: inherit;
+  font-size: 0.76rem;
   cursor: pointer;
   transition:
     color 0.16s ease,
     border-color 0.16s ease,
     background 0.16s ease;
 }
-.profile-radio:hover {
+.clog-radios button:hover {
   color: var(--text);
 }
-.profile-radio.is-on {
+.clog-radios button.is-on {
   color: var(--text);
   border-color: color-mix(in srgb, var(--accent-2) 55%, transparent);
   background: color-mix(in srgb, var(--accent-2) 12%, transparent);
@@ -5086,36 +5370,53 @@ html.route-portal body {
   border-radius: 50%;
   border: 1px solid color-mix(in srgb, var(--text) 40%, transparent);
 }
-.profile-radio.is-on .radio-dot {
+.clog-radios button.is-on .radio-dot {
   border-color: var(--accent-2);
   background: var(--accent-2);
 }
-.profile-links {
-  display: grid;
-  gap: 2px;
-  padding-top: 12px;
-  border-top: 1px solid var(--border);
-}
-.profile-links a {
-  padding: 8px 10px;
-  border-radius: 9px;
+.clog-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 6px 2px;
+  background: none;
+  border: none;
   color: var(--text);
-  text-decoration: none;
-  font-size: 0.86rem;
+  font: inherit;
+  font-size: 0.84rem;
+  cursor: pointer;
+}
+.clog-toggle-track {
+  position: relative;
+  flex: none;
+  width: 34px;
+  height: 18px;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  background: color-mix(in srgb, var(--text) 16%, transparent);
   transition:
-    background 0.16s ease,
-    color 0.16s ease;
+    background 0.18s ease,
+    border-color 0.18s ease;
 }
-.profile-links a:hover {
-  background: color-mix(in srgb, var(--text) 8%, transparent);
-  color: var(--accent-2);
+.clog-toggle-knob {
+  position: absolute;
+  top: 1px;
+  left: 1px;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: var(--text-muted);
+  transition:
+    transform 0.18s ease,
+    background 0.18s ease;
 }
-.profile-foot {
-  padding-top: 10px;
-  border-top: 1px solid var(--border);
-  text-align: center;
-  font-size: 0.72rem;
-  color: var(--text-muted);
+.clog-toggle.is-on .clog-toggle-track {
+  background: color-mix(in srgb, var(--accent-2) 38%, transparent);
+  border-color: color-mix(in srgb, var(--accent-2) 55%, transparent);
+}
+.clog-toggle.is-on .clog-toggle-knob {
+  transform: translateX(16px);
+  background: var(--accent-2);
 }
 
 @media (max-width: 760px) {

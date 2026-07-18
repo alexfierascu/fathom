@@ -23,9 +23,11 @@ test('homepage is a minimal four-mode launcher', async ({ page }) => {
   await expect(page.locator('.panel')).toHaveCount(4); // homepage never disappears
   await page.keyboard.press('Escape');
   await expect(page.locator('.chartroom')).toHaveCount(0);
-  // The avatar opens the profile panel with working appearance + language.
+  // The avatar opens the Captain's Log; preferences are folded away
+  // until asked for, then appearance and language work from within.
   await page.locator('.avatar-button').click();
   await expect(page.locator('.profile-menu')).toBeVisible();
+  await page.locator('.clog-prefs-trigger').click();
   await expect(page.locator('.profile-menu')).toContainText('Appearance');
   await page.getByRole('menuitemradio', { name: 'Light' }).click();
   await expect(page.locator('html')).toHaveAttribute('data-theme', 'parchment');
@@ -44,6 +46,7 @@ test('homepage is a minimal four-mode launcher', async ({ page }) => {
 test('the homepage localizes into Romanian', async ({ page }) => {
   await page.goto('/');
   await page.locator('.avatar-button').click();
+  await page.locator('.clog-prefs-trigger').click();
   await page.getByRole('menuitemradio', { name: 'Romanian' }).click();
   await page.keyboard.press('Escape');
   await expect(page.locator('.panel--chart .panel-title')).toHaveText('Camera Hărților');

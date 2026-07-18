@@ -1,6 +1,6 @@
-import { useCallback, useMemo, useState } from 'react';
+import { useCallback, useEffect, useMemo, useState } from 'react';
 
-import { Link } from 'react-router';
+import { Link, useLocation } from 'react-router';
 
 import { loadCountriesIndex, loadStraitsIndex, loadWaterBodiesIndex } from '@fathom/data';
 import { loadJourneys, type Journey } from '@fathom/discovery';
@@ -274,6 +274,16 @@ export function ProfilePage() {
 
   const displayName = identity.name || 'Unnamed mariner';
 
+  // Deep links from the Captain's Log panel land on a specific chapter.
+  const location = useLocation();
+  useEffect(() => {
+    if (!location.hash) return;
+    const target = document.getElementById(location.hash.slice(1));
+    if (!target) return;
+    const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    target.scrollIntoView({ behavior: reduce ? 'auto' : 'smooth', block: 'start' });
+  }, [location.hash]);
+
   return (
     <>
       <SeoTags
@@ -334,7 +344,7 @@ export function ProfilePage() {
           />
         )}
 
-        <Section label="Standing">
+        <Section label="Standing" id="standing">
           <div className="rank-card">
             <div className="rank-heading">
               <span className="rank-title">{rank.title}</span>
@@ -412,6 +422,7 @@ export function ProfilePage() {
 
         <Section
           label={`Trophy cabinet · ${String(earned.length)} of ${String(achievements.length)}`}
+          id="trophies"
         >
           <div className="trophy-grid">
             {achievements.map((achievement) => (
@@ -486,7 +497,7 @@ export function ProfilePage() {
         </Section>
 
         {stats.favourites.length > 0 && (
-          <Section label="Favourite waters">
+          <Section label="Favourite waters" id="saved">
             <div className="pills">
               {stats.favourites.map((place) => (
                 <Link viewTransition key={place.entityId} className="pill" to={place.path}>
