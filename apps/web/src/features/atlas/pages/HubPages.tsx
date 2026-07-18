@@ -1,45 +1,98 @@
-import { useEffect, useMemo, useState } from 'react';
+import { useEffect, useState } from 'react';
 
 import { Link, useNavigate, useOutletContext, useSearchParams } from 'react-router';
 
-import { entityId as canonicalId, getEntity, loadAllStraits, loadWildlife } from '@fathom/data';
+import {
+  entityId as canonicalId,
+  getEntity,
+  loadAllStraits,
+  loadImagesFor,
+  loadWildlife,
+  slugifyName,
+} from '@fathom/data';
 import { randomEntity } from '@fathom/discovery';
 
 import type { LayoutContext } from '../../../app/RootLayout';
-import { Collections, ContinueReading, PopularTags } from '../../explore/HomeDiscovery';
-import { GlobalSearch } from '../../search/GlobalSearch';
+import { Collections, ContinueReading } from '../../explore/HomeDiscovery';
+import { mediaSrcSet, mediaUrl } from '../../media/media';
+import { DiscoveryRail, type RailItem } from '../components/DiscoveryRail';
 import { MapPanel } from '../components/MapPanel';
+import { PageHero } from '../components/PageHero';
 import { Breadcrumbs } from '../components/Breadcrumbs';
 import { Section } from '../components/Section';
-import {
-  Chokepoints,
-  ExploreSections,
-  InterestingFacts,
-  RecentlyCharted,
-} from '../components/HomeSections';
-import { RegionChips } from '../components/RegionChips';
-import { ResultsGrid } from '../components/ResultsGrid';
+import { InterestingFacts } from '../components/HomeSections';
 import { SeoTags } from '../components/SeoTags';
 import { entityPath } from '../lib/entityPaths';
-import { filterStraits, isFiltering, type RegionFilter } from '../lib/filtering';
 
 const STRAITS = loadAllStraits();
 
+function straitTile(id: string, name: string, meta?: string): RailItem {
+  const image = loadImagesFor({ type: 'strait', id })[0];
+  return {
+    key: id,
+    name,
+    to: `/straits/${id}`,
+    image: image ? mediaUrl(image.file) : undefined,
+    imageSrcSet: image ? mediaSrcSet(image.file) : undefined,
+    meta,
+  };
+}
+
+const metres = (m?: { value: number; unit: string }) =>
+  m ? (m.unit === 'm' ? m.value : m.value * 1000) : Infinity;
+
+const FEATURED: readonly RailItem[] = STRAITS.filter(
+  (strait) => loadImagesFor({ type: 'strait', id: strait.id }).length > 0,
+)
+  .slice(0, 14)
+  .map((strait) => straitTile(strait.id, strait.name, strait.region));
+
+const CHOKEPOINTS: readonly RailItem[] = STRAITS.filter((strait) =>
+  strait.tagIds?.includes('chokepoint'),
+).map((strait) => straitTile(strait.id, strait.name, 'Chokepoint'));
+
+const LONGEST: readonly RailItem[] = [...STRAITS]
+  .filter((strait) => strait.dimensions?.length)
+  .sort((a, b) => (b.dimensions?.length?.value ?? 0) - (a.dimensions?.length?.value ?? 0))
+  .slice(0, 10)
+  .map((strait) =>
+    straitTile(
+      strait.id,
+      strait.name,
+      `${String(strait.dimensions?.length?.value)} ${strait.dimensions?.length?.unit ?? ''}`,
+    ),
+  );
+
+const NARROWEST: readonly RailItem[] = [...STRAITS]
+  .filter((strait) => strait.dimensions?.widthMin)
+  .sort((a, b) => metres(a.dimensions?.widthMin) - metres(b.dimensions?.widthMin))
+  .slice(0, 10)
+  .map((strait) =>
+    straitTile(
+      strait.id,
+      strait.name,
+      `${String(strait.dimensions?.widthMin?.value)} ${strait.dimensions?.widthMin?.unit ?? ''}`,
+    ),
+  );
+
+const REGIONS: readonly RailItem[] = [...new Set(STRAITS.map((strait) => strait.region))]
+  .sort()
+  .map((region) => ({
+    key: region,
+    name: region,
+    to: `/regions/${slugifyName(region)}`,
+    meta: `${String(STRAITS.filter((strait) => strait.region === region).length)} straits`,
+  }));
+
 /**
- * Explore — the browse hub. Everything the atlas can list lives here:
- * search, the region-filtered index, and the directories. One page, one
- * question: "what should I explore?"
+ * Explore — the atlas as a place to browse, not a directory to filter.
+ * A calm hero, then rails of immersive tiles: featured waters, the great
+ * chokepoints, the longest and narrowest, the collections, and the
+ * regions. Search itself lives in the Chart Room.
  */
 export function ExplorePage() {
-  const [query, setQuery] = useState('');
-  const [activeRegion, setActiveRegion] = useState<RegionFilter>('All');
+  const { openSearch } = useOutletContext<LayoutContext>();
   const navigate = useNavigate();
-
-  const filtered = useMemo(
-    () => filterStraits(STRAITS, activeRegion, query),
-    [activeRegion, query],
-  );
-  const filtering = isFiltering(activeRegion, query);
 
   const surprise = () => {
     const pick = randomEntity();
@@ -54,39 +107,37 @@ export function ExplorePage() {
         description="Browse the world's straits, seas, countries, and maritime structures."
         path="/explore"
       />
-      <Breadcrumbs items={[{ label: 'Home', to: '/' }, { label: 'Explore' }]} />
-      <article className="detail">
-        <header className="hub-header">
-          <h2 className="detail-title detail-title--hero">Explore</h2>
-          <p className="note note--lede">
-            Browse the world's waterways — or{' '}
-            <button type="button" className="link-button" onClick={surprise}>
-              let the tide decide ⚄
-            </button>
-            .
-          </p>
-        </header>
+      <article>
+        <PageHero
+          eyebrow="Explore"
+          title="The world's waterways"
+          subtitle="Every strait, sea, port and coastline — gathered into collections to wander through. Open the Chart Room to search by name, or let the tide decide."
+          actions={
+            <>
+              <button type="button" className="uc-btn uc-btn--primary" onClick={openSearch}>
+                Open the Chart Room
+              </button>
+              <button type="button" className="uc-btn uc-btn--ghost" onClick={surprise}>
+                Let the tide decide ⚄
+              </button>
+            </>
+          }
+        />
 
-        <div className="controls">
-          <GlobalSearch query={query} onQueryChange={setQuery} />
-          <RegionChips
-            straits={STRAITS}
-            activeRegion={activeRegion}
-            onRegionChange={setActiveRegion}
-          />
+        <DiscoveryRail eyebrow="Start here" title="Featured waters" items={FEATURED} />
+        <DiscoveryRail
+          eyebrow="Where the world funnels"
+          title="The great chokepoints"
+          items={CHOKEPOINTS}
+        />
+        <DiscoveryRail eyebrow="By the numbers" title="The longest passages" items={LONGEST} />
+        <DiscoveryRail eyebrow="By the numbers" title="The narrowest squeezes" items={NARROWEST} />
+        <DiscoveryRail eyebrow="By place" title="Browse by region" items={REGIONS} />
+
+        <div className="strait-onward">
+          <Collections />
+          <ContinueReading />
         </div>
-
-        <ResultsGrid straits={filtered} totalCount={STRAITS.length} query={query} />
-
-        {!filtering && (
-          <>
-            <Chokepoints />
-            <ExploreSections />
-            <PopularTags />
-            <ContinueReading />
-            <RecentlyCharted />
-          </>
-        )}
       </article>
     </>
   );

@@ -29,6 +29,7 @@ import {
 
 import type { LayoutContext } from '../../app/RootLayout';
 import { Breadcrumbs } from '../atlas/components/Breadcrumbs';
+import { PageHero } from '../atlas/components/PageHero';
 import { Section } from '../atlas/components/Section';
 import { SeoTags } from '../atlas/components/SeoTags';
 import { entityPath } from '../atlas/lib/entityPaths';
@@ -40,7 +41,7 @@ import { NextStopStrip } from '../expedition/NextStopStrip';
 import { Tabs, type TabSpec } from '../expedition/Tabs';
 import { useT } from '../i18n/locale';
 import { EntityGallery } from '../media/MediaGallery';
-import { attributionOf, mediaUrl } from '../media/media';
+import { attributionOf, mediaSrcSet, mediaUrl } from '../media/media';
 import { JourneyMap } from './JourneyMap';
 import { useJourneyLog } from './useJourneyLog';
 import { useJourneyProgress } from './useJourneyProgress';
@@ -60,6 +61,8 @@ function coverOf(journey: Journey) {
 
 export function JourneysPage() {
   const journeys = loadJourneys();
+  const heroCover = journeys.map(coverOf).find((cover) => cover !== null) ?? null;
+  const first = journeys[0];
   return (
     <>
       <SeoTags
@@ -67,44 +70,69 @@ export function JourneysPage() {
         description="Guided voyages through the world's straits, seas, and canals."
         path="/journeys"
       />
-      <Breadcrumbs items={[{ label: 'Home', to: '/' }, { label: 'Journeys' }]} />
-      <article className="detail">
-        <header className="strait-hero">
-          <div className="eyebrow">Guided journeys</div>
-          <h2 className="detail-title detail-title--hero">Voyages through the narrows</h2>
-          <p className="note note--lede">
-            Ordered passages through the atlas — start a journey and travel stop by stop across the
-            maritime world.
-          </p>
-        </header>
-        <div className="grid">
-          {journeys.map((journey) => {
-            const cover = coverOf(journey);
-            return (
-              <Link
-                viewTransition
-                key={journey.id}
-                className="card journey-card"
-                to={`/journeys/${journey.id}`}
-              >
-                {cover && (
-                  <img
-                    className="journey-card-cover"
-                    src={mediaUrl(cover.file)}
-                    alt={cover.alt}
-                    loading="lazy"
-                  />
-                )}
-                <div className="eyebrow">
-                  {String(journey.waypoints.length)} stops · {DIFFICULTY_LABELS[journey.difficulty]}{' '}
-                  · ~{String(journey.estimatedMinutes)} min
-                </div>
-                <h3>{journey.title}</h3>
-                <div className="note">{journey.subtitle}</div>
-              </Link>
-            );
-          })}
-        </div>
+      <article>
+        <PageHero
+          eyebrow="Guided journeys"
+          title="Voyages through the narrows"
+          subtitle="Ordered passages through the atlas — begin a journey and travel it stop by stop, from open ocean to the narrows that shaped history."
+          image={heroCover ? mediaUrl(heroCover.file) : undefined}
+          imageSrcSet={heroCover ? mediaSrcSet(heroCover.file) : undefined}
+          actions={
+            first ? (
+              <>
+                <Link
+                  viewTransition
+                  className="uc-btn uc-btn--primary"
+                  to={`/journeys/${first.id}`}
+                >
+                  Begin a journey
+                </Link>
+                <Link viewTransition className="uc-btn uc-btn--ghost" to="/daily">
+                  Today&rsquo;s expedition ⚓
+                </Link>
+              </>
+            ) : undefined
+          }
+        />
+
+        <section className="reveal journey-index">
+          <div className="journey-index-grid">
+            {journeys.map((journey) => {
+              const cover = coverOf(journey);
+              return (
+                <Link
+                  viewTransition
+                  key={journey.id}
+                  className="journey-tile"
+                  to={`/journeys/${journey.id}`}
+                >
+                  <span className="journey-tile-media" aria-hidden="true">
+                    {cover && (
+                      <img
+                        src={mediaUrl(cover.file)}
+                        srcSet={mediaSrcSet(cover.file)}
+                        sizes="(max-width: 760px) 100vw, 460px"
+                        alt=""
+                        loading="lazy"
+                        decoding="async"
+                      />
+                    )}
+                    <span className="journey-tile-grad" />
+                  </span>
+                  <span className="journey-tile-body">
+                    <span className="journey-tile-meta">
+                      {String(journey.waypoints.length)} stops ·{' '}
+                      {DIFFICULTY_LABELS[journey.difficulty]} · ~{String(journey.estimatedMinutes)}{' '}
+                      min
+                    </span>
+                    <b>{journey.title}</b>
+                    <span className="journey-tile-sub">{journey.subtitle}</span>
+                  </span>
+                </Link>
+              );
+            })}
+          </div>
+        </section>
       </article>
     </>
   );

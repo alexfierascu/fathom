@@ -5819,3 +5819,186 @@ html.chartroom-open {
   font-weight: 500;
   font-size: 1.16rem;
 }
+
+/* ------------------------------------------------------------------ */
+/* Discovery rails (Explore) and journey tiles                         */
+
+.rail {
+  padding: clamp(22px, 4vh, 46px) 0;
+}
+.rail-head {
+  margin: 0 0 clamp(14px, 2.6vh, 22px);
+  display: grid;
+  gap: 6px;
+}
+.rail-title {
+  margin: 0;
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: clamp(1.4rem, 3vw, 2.1rem);
+  line-height: 1.1;
+}
+.rail-track {
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: clamp(214px, 24vw, 296px);
+  gap: 14px;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scroll-snap-type: x proximity;
+  padding-bottom: 10px;
+  scrollbar-width: none;
+}
+.rail-track::-webkit-scrollbar {
+  display: none;
+}
+.rail-tile {
+  position: relative;
+  aspect-ratio: 3 / 4;
+  border-radius: 16px;
+  overflow: hidden;
+  scroll-snap-align: start;
+  text-decoration: none;
+  border: 1px solid var(--border);
+  background: var(--panel-2);
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease,
+    border-color 0.25s ease;
+}
+.rail-tile:hover {
+  transform: translateY(-4px);
+  border-color: color-mix(in srgb, var(--accent-2) 45%, transparent);
+  box-shadow: 0 20px 44px -22px rgba(0, 0, 0, 0.6);
+}
+.rail-tile-media {
+  position: absolute;
+  inset: 0;
+}
+.rail-tile-media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s ease;
+}
+.rail-tile:hover .rail-tile-media img {
+  transform: scale(1.07);
+}
+.rail-tile-fallback {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(
+      120% 100% at 28% 18%,
+      color-mix(in srgb, var(--teal) 24%, transparent),
+      transparent 55%
+    ),
+    linear-gradient(to bottom, var(--panel-2), var(--panel));
+}
+.rail-tile-grad {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to top,
+    color-mix(in srgb, var(--bg) 92%, transparent),
+    transparent 58%
+  );
+}
+.rail-tile-text {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding: 16px;
+  display: grid;
+  gap: 3px;
+}
+.rail-tile-meta {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.54rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: color-mix(in srgb, var(--accent-2) 92%, transparent);
+}
+.rail-tile-text b {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: 1.1rem;
+  color: var(--text);
+  text-shadow: 0 1px 12px color-mix(in srgb, var(--bg) 72%, transparent);
+}
+
+.journey-index {
+  padding: clamp(18px, 3.5vh, 40px) 0 clamp(36px, 7vh, 76px);
+}
+.journey-index-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: clamp(16px, 2vw, 24px);
+}
+.journey-tile {
+  display: block;
+  border-radius: 16px;
+  overflow: hidden;
+  border: 1px solid var(--border);
+  background: color-mix(in srgb, var(--panel) 50%, transparent);
+  color: var(--text);
+  text-decoration: none;
+  transition:
+    transform 0.25s ease,
+    border-color 0.25s ease,
+    box-shadow 0.25s ease;
+}
+.journey-tile:hover {
+  transform: translateY(-4px);
+  border-color: color-mix(in srgb, var(--accent-2) 45%, transparent);
+  box-shadow: 0 22px 50px -26px rgba(0, 0, 0, 0.6);
+}
+.journey-tile-media {
+  position: relative;
+  display: block;
+  aspect-ratio: 16 / 9;
+  background: var(--panel-2);
+}
+.journey-tile-media img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s ease;
+}
+.journey-tile:hover .journey-tile-media img {
+  transform: scale(1.05);
+}
+.journey-tile-grad {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to top,
+    color-mix(in srgb, var(--bg) 42%, transparent),
+    transparent 52%
+  );
+}
+.journey-tile-body {
+  display: grid;
+  gap: 5px;
+  padding: 16px 18px 20px;
+}
+.journey-tile-meta {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.58rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: color-mix(in srgb, var(--accent-2) 92%, transparent);
+}
+.journey-tile-body b {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: 1.24rem;
+}
+.journey-tile-sub {
+  font-size: 0.86rem;
+  line-height: 1.5;
+  color: var(--text-muted);
+}
