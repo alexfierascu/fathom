@@ -5,7 +5,7 @@ import { Link, useSearchParams } from 'react-router';
 import { loadAllStraits } from '@fathom/data';
 import { getMaritimeGraph, recommendationsFor, shortestPath } from '@fathom/discovery';
 
-import { Breadcrumbs } from '../atlas/components/Breadcrumbs';
+import { PageHero } from '../atlas/components/PageHero';
 import { Section } from '../atlas/components/Section';
 import { SeoTags } from '../atlas/components/SeoTags';
 import { entityPath } from '../atlas/lib/entityPaths';
@@ -96,18 +96,20 @@ export function SixDegreesPage() {
         description="Navigate from strait to strait using only the atlas's own connections."
         path="/six-degrees"
       />
-      <Breadcrumbs items={[{ label: 'Home', to: '/' }, { label: 'Six Degrees of Sea' }]} />
       <article className="detail">
-        <header className="hub-header">
-          <h2 className="detail-title detail-title--hero">Six Degrees of Sea</h2>
-          <p className="note note--lede">
-            Get from <b>{nameOf(pair.fromId)}</b> to <b>{nameOf(pair.toId)}</b> using only the
-            connections the atlas itself suggests. Par for today's crossing:{' '}
-            <b>{String(pair.par)}</b> hops.
-          </p>
-        </header>
+        <PageHero
+          eyebrow="Academy · Game"
+          title="Six Degrees of Sea"
+          subtitle={
+            <>
+              Get from <b>{nameOf(pair.fromId)}</b> to <b>{nameOf(pair.toId)}</b> using only the
+              connections the atlas itself suggests — par for today&rsquo;s crossing is{' '}
+              <b>{String(pair.par)}</b> hops.
+            </>
+          }
+        />
 
-        <div className="six-board">
+        <div className="six-board reveal">
           <div className="six-trail">
             <div className="geo-label">Your course · {String(hops)} hops</div>
             <div className="pills" style={{ marginTop: 8 }}>

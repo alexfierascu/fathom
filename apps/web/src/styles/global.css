@@ -1425,6 +1425,7 @@ a.fact:hover {
 
 .compare-pickers {
   display: flex;
+  align-items: center;
   gap: 12px;
   margin: 14px 0 10px;
   flex-wrap: wrap;
@@ -6001,4 +6002,122 @@ html.chartroom-open {
   font-size: 0.86rem;
   line-height: 1.5;
   color: var(--text-muted);
+}
+
+/* ------------------------------------------------------------------ */
+/* Academy modules, wildlife hub, and page-level hero refinements      */
+
+.learn-shelf {
+  padding: clamp(20px, 4vh, 44px) 0 clamp(28px, 5vh, 60px);
+}
+.learn-head {
+  max-width: 720px;
+  margin: 0 auto clamp(18px, 3.5vh, 34px);
+  display: grid;
+  gap: 8px;
+}
+.learn-head .editorial-title {
+  margin: 0;
+}
+.learn-paths {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: clamp(14px, 1.8vw, 20px);
+}
+.learn-path {
+  position: relative;
+  display: block;
+  padding: 26px 24px 24px;
+  border-radius: 18px;
+  border: 1px solid var(--border);
+  background: color-mix(in srgb, var(--panel) 55%, transparent);
+  color: var(--text);
+  text-decoration: none;
+  overflow: hidden;
+  transition:
+    transform 0.22s ease,
+    border-color 0.22s ease,
+    box-shadow 0.22s ease;
+}
+.learn-path:hover {
+  transform: translateY(-4px);
+  border-color: color-mix(in srgb, var(--accent-2) 45%, transparent);
+  box-shadow: 0 22px 50px -28px rgba(0, 0, 0, 0.55);
+}
+@media (prefers-reduced-motion: reduce) {
+  .learn-path:hover {
+    transform: none;
+  }
+}
+.learn-path-index {
+  position: absolute;
+  top: 18px;
+  right: 20px;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.72rem;
+  letter-spacing: 0.1em;
+  color: color-mix(in srgb, var(--text) 34%, transparent);
+}
+.learn-path-glyph {
+  display: grid;
+  place-items: center;
+  width: 46px;
+  height: 46px;
+  border-radius: 13px;
+  margin-bottom: 16px;
+  font-size: 1.4rem;
+  color: var(--accent-2);
+  background: color-mix(in srgb, var(--accent-2) 13%, transparent);
+  border: 1px solid color-mix(in srgb, var(--accent-2) 26%, transparent);
+}
+.learn-path-chapter {
+  display: block;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.6rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--accent-2);
+  margin-bottom: 8px;
+}
+.learn-path h3 {
+  margin: 0 0 8px;
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: 1.32rem;
+  line-height: 1.15;
+}
+.learn-path p {
+  margin: 0;
+  color: var(--text-muted);
+  font-size: 0.9rem;
+  line-height: 1.55;
+}
+
+/* Quiz — status line and tier chips between the hero and the panel */
+.quiz-status {
+  margin-bottom: 16px;
+}
+.quiz-tiers {
+  margin-top: 2px;
+}
+
+/* Profile — captain's-log hero identity strip */
+.log-hero-id {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  flex-wrap: wrap;
+  margin-top: 4px;
+}
+.log-hero-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+/* Journey cover hero — the description reads as a lede under the subtitle */
+.journey-hero-lede {
+  max-width: 60ch;
+  margin: 0;
+  color: color-mix(in srgb, var(--text) 78%, transparent);
 }

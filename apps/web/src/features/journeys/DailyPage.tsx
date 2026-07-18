@@ -37,12 +37,5 @@ export function DailyPage() {
   if (!journey) {
     return <div className="empty">The tide charts no passage today — return tomorrow.</div>;
   }
-  return (
-    <JourneyExperience
-      journey={journey}
-      journeyKey={journey.id}
-      path="/daily"
-      crumbs={[{ label: 'Home', to: '/' }, { label: 'Daily Expedition' }]}
-    />
-  );
+  return <JourneyExperience journey={journey} journeyKey={journey.id} path="/daily" />;
 }

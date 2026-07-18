@@ -7,7 +7,7 @@ import { loadJourneys, type Journey } from '@fathom/discovery';
 
 import { AccountSection } from '../account/AccountSection';
 import { accountApi } from '../account/api';
-import { Breadcrumbs } from '../atlas/components/Breadcrumbs';
+import { PageHero } from '../atlas/components/PageHero';
 import { Section } from '../atlas/components/Section';
 import { SeoTags } from '../atlas/components/SeoTags';
 import { loadRecentlyViewed } from '../explore/recentlyViewed';
@@ -281,25 +281,34 @@ export function ProfilePage() {
         description="Your rank, voyages, trophies, and everything you have learned at sea."
         path="/profile"
       />
-      <Breadcrumbs items={[{ label: 'Home', to: '/' }, { label: "Captain's Log" }]} />
       <article className="detail">
-        <header className="log-masthead">
-          <Avatar identity={identity} size={72} />
-          <div className="log-masthead-text">
-            <div className="geo-label">Captain's log · {rank.title}</div>
-            <h2 className="detail-title detail-title--hero">{displayName}</h2>
-            {identity.bio ? <p className="note note--lede">{identity.bio}</p> : null}
+        <PageHero
+          eyebrow="Captain's log"
+          title={displayName}
+          subtitle={identity.bio || undefined}
+          actions={
+            <button
+              type="button"
+              className="uc-btn uc-btn--ghost"
+              onClick={() => {
+                setEditing((state) => !state);
+              }}
+            >
+              {editing ? 'Close' : 'Edit profile'}
+            </button>
+          }
+        >
+          <div className="log-hero-id">
+            <Avatar identity={identity} size={76} />
+            <div className="log-hero-chips">
+              <span className="chip chip--on">{rank.title}</span>
+              <span className="chip chip--teal">{String(xp)} XP</span>
+              <span className="chip">
+                {String(earned.length)} of {String(achievements.length)} trophies
+              </span>
+            </div>
           </div>
-          <button
-            type="button"
-            className="journey-btn log-edit"
-            onClick={() => {
-              setEditing((state) => !state);
-            }}
-          >
-            {editing ? 'Close' : 'Edit profile'}
-          </button>
-        </header>
+        </PageHero>
 
         {editing && (
           <IdentityEditor

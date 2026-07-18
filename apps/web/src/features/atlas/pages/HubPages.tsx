@@ -16,9 +16,9 @@ import type { LayoutContext } from '../../../app/RootLayout';
 import { Collections, ContinueReading } from '../../explore/HomeDiscovery';
 import { mediaSrcSet, mediaUrl } from '../../media/media';
 import { DiscoveryRail, type RailItem } from '../components/DiscoveryRail';
+import { EditorialSection } from '../components/EditorialSection';
 import { MapPanel } from '../components/MapPanel';
 import { PageHero } from '../components/PageHero';
-import { Breadcrumbs } from '../components/Breadcrumbs';
 import { Section } from '../components/Section';
 import { InterestingFacts } from '../components/HomeSections';
 import { SeoTags } from '../components/SeoTags';
@@ -283,64 +283,105 @@ function Records() {
 }
 
 /**
- * Learn — the educational shelf: quizzes, the timeline, collections, and
- * the comparison tool. One question: "what did I learn?"
+ * Academy — the educational shelf, rebuilt as a set of course modules:
+ * quizzes, the timeline, the comparison tool, and the games. Every
+ * module is a place to practice against the charts themselves.
  */
+interface LearnPath {
+  to: string;
+  glyph: string;
+  chapter: string;
+  title: string;
+  blurb: string;
+}
+
+const LEARN_PATHS: readonly LearnPath[] = [
+  {
+    to: '/quiz',
+    glyph: '?',
+    chapter: 'Practice',
+    title: 'Know your narrows',
+    blurb: 'A quiz generated from the charts themselves — never the same twice.',
+  },
+  {
+    to: '/timeline',
+    glyph: '⌛',
+    chapter: 'History',
+    title: 'Travel through time',
+    blurb: 'Every event the atlas records, in order, each grounded in its sources.',
+  },
+  {
+    to: '/compare',
+    glyph: '⇄',
+    chapter: 'Analysis',
+    title: 'Compare straits',
+    blurb: 'Two narrows side by side — geography, countries, and crossings.',
+  },
+  {
+    to: '/daily',
+    glyph: '⚓',
+    chapter: 'Daily',
+    title: 'Daily Expedition',
+    blurb: 'A new generated passage every day — the same course for everyone.',
+  },
+  {
+    to: '/six-degrees',
+    glyph: '⛓',
+    chapter: 'Challenge',
+    title: 'Six Degrees of Sea',
+    blurb: "Reach a far strait using only the atlas's own connections.",
+  },
+  {
+    to: '/profile',
+    glyph: '★',
+    chapter: 'Your log',
+    title: "Captain's Log",
+    blurb: 'Your rank, voyages, trophies, and everything learned at sea.',
+  },
+];
+
 export function LearnPage() {
   return (
     <>
       <SeoTags
-        title="Learn — Fathom"
-        description="Quizzes, history, collections, and stories from the world's straits."
+        title="Academy — Fathom"
+        description="Quizzes, history, comparisons, and games drawn from the world's straits."
         path="/learn"
       />
-      <Breadcrumbs items={[{ label: 'Home', to: '/' }, { label: 'Learn' }]} />
       <article className="detail">
-        <header className="hub-header">
-          <h2 className="detail-title detail-title--hero">Learn</h2>
-          <p className="note note--lede">
-            The atlas as a teacher — test yourself, travel through time, and follow the themes that
-            connect the narrows.
-          </p>
-        </header>
+        <PageHero
+          eyebrow="Academy"
+          title="Learn the sea"
+          subtitle="The atlas as a teacher — test yourself against the charts, travel through time, and follow the themes that connect the world's narrows."
+        />
 
-        <div className="explore-tiles">
-          <Link viewTransition className="explore-tile" to="/quiz">
-            <div className="explore-tile-glyph">?</div>
-            <h3>Know your narrows</h3>
-            <p>A quiz generated from the charts themselves — never the same twice.</p>
-          </Link>
-          <Link viewTransition className="explore-tile" to="/timeline">
-            <div className="explore-tile-glyph">⌛</div>
-            <h3>Travel through time</h3>
-            <p>Every event the atlas records, in order, each grounded in its sources.</p>
-          </Link>
-          <Link viewTransition className="explore-tile" to="/compare">
-            <div className="explore-tile-glyph">⇄</div>
-            <h3>Compare straits</h3>
-            <p>Two narrows side by side — geography, countries, and crossings.</p>
-          </Link>
-          <Link viewTransition className="explore-tile" to="/daily">
-            <div className="explore-tile-glyph">⚓</div>
-            <h3>Daily Expedition</h3>
-            <p>A new generated passage every day — same course for everyone.</p>
-          </Link>
-          <Link viewTransition className="explore-tile" to="/six-degrees">
-            <div className="explore-tile-glyph">⛓</div>
-            <h3>Six Degrees of Sea</h3>
-            <p>Reach a far strait using only the atlas's own connections.</p>
-          </Link>
-          <Link viewTransition className="explore-tile" to="/profile">
-            <div className="explore-tile-glyph">★</div>
-            <h3>Captain's Log</h3>
-            <p>Your rank, voyages, trophies, and everything learned at sea.</p>
-          </Link>
+        <section className="reveal learn-shelf">
+          <div className="learn-head">
+            <div className="geo-label">Course modules</div>
+            <h2 className="editorial-title">Where to begin</h2>
+          </div>
+          <div className="learn-paths">
+            {LEARN_PATHS.map((path, index) => (
+              <Link viewTransition key={path.to} className="learn-path" to={path.to}>
+                <span className="learn-path-index" aria-hidden="true">
+                  {String(index + 1).padStart(2, '0')}
+                </span>
+                <span className="learn-path-glyph" aria-hidden="true">
+                  {path.glyph}
+                </span>
+                <span className="learn-path-chapter">{path.chapter}</span>
+                <h3>{path.title}</h3>
+                <p>{path.blurb}</p>
+              </Link>
+            ))}
+          </div>
+        </section>
+
+        <div className="strait-onward">
+          <Records />
+          <Collections />
+          <InterestingFacts />
         </div>
-
-        <Records />
-
-        <Collections />
-        <InterestingFacts />
       </article>
     </>
   );
@@ -356,35 +397,39 @@ export function WildlifePage() {
         description="The documented species that migrate, hunt, and winter in the world's straits."
         path="/wildlife"
       />
-      <Breadcrumbs items={[{ label: 'Home', to: '/' }, { label: 'Wildlife' }]} />
       <article className="detail">
-        <header className="hub-header">
-          <h2 className="detail-title detail-title--hero">Wildlife of the narrows</h2>
-          <p className="note note--lede">
-            Straits concentrate life as much as shipping — every species here is documented in its
-            cited source.
-          </p>
-        </header>
-        <div className="grid">
-          {species.map((animal) => {
-            const habitat = animal.habitats[0];
-            const node = habitat ? getEntity(canonicalId(habitat.type, habitat.id)) : null;
-            return (
-              <div key={animal.id} className="card" style={{ cursor: 'default' }}>
-                <div className="eyebrow">{animal.scientificName}</div>
-                <h3>{animal.commonName}</h3>
-                <div className="note">{animal.summary}</div>
-                {node && habitat && (
-                  <div className="pills" style={{ marginTop: 12 }}>
-                    <Link viewTransition className="pill pill--tag" to={`/straits/${habitat.id}`}>
-                      {node.name}
-                    </Link>
-                  </div>
-                )}
-              </div>
-            );
-          })}
-        </div>
+        <PageHero
+          eyebrow="Wildlife"
+          title="Wildlife of the narrows"
+          subtitle="Straits concentrate life as much as shipping — the species that migrate, hunt, and winter in the world's channels, each grounded in its cited source."
+        />
+
+        <EditorialSection
+          eyebrow="The corridor species"
+          title="Creatures of the world's straits"
+          wide
+        >
+          <div className="wildlife-rail">
+            {species.map((animal) => {
+              const habitat = animal.habitats[0];
+              const node = habitat ? getEntity(canonicalId(habitat.type, habitat.id)) : null;
+              return (
+                <div key={animal.id} className="wildlife-card">
+                  <div className="geo-label">{animal.scientificName}</div>
+                  <h3>{animal.commonName}</h3>
+                  <p className="note">{animal.summary}</p>
+                  {node && habitat && (
+                    <div className="pills" style={{ marginTop: 12 }}>
+                      <Link viewTransition className="pill pill--tag" to={`/straits/${habitat.id}`}>
+                        {node.name}
+                      </Link>
+                    </div>
+                  )}
+                </div>
+              );
+            })}
+          </div>
+        </EditorialSection>
       </article>
     </>
   );

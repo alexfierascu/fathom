@@ -28,7 +28,6 @@ import {
 } from '@fathom/discovery';
 
 import type { LayoutContext } from '../../app/RootLayout';
-import { Breadcrumbs } from '../atlas/components/Breadcrumbs';
 import { PageHero } from '../atlas/components/PageHero';
 import { Section } from '../atlas/components/Section';
 import { SeoTags } from '../atlas/components/SeoTags';
@@ -274,7 +273,6 @@ interface JourneyExperienceProps {
   journeyKey: string;
   /** Canonical path for SEO. */
   path: string;
-  crumbs: readonly { label: string; to?: string }[];
   /** Deep-linked stop (0-based) — starts the voyage there. */
   initialStop?: number;
 }
@@ -284,7 +282,6 @@ export function JourneyExperience({
   journey,
   journeyKey,
   path,
-  crumbs,
   initialStop,
 }: JourneyExperienceProps) {
   const { tileStyle } = useOutletContext<LayoutContext>();
@@ -648,53 +645,37 @@ export function JourneyExperience({
   return (
     <>
       <SeoTags title={`${journey.title} — Fathom`} description={journey.subtitle} path={path} />
-      <Breadcrumbs items={crumbs} />
       <article className="detail">
-        <header className="strait-hero journey-hero">
-          {cover && (
-            <div className="journey-hero-media">
-              <img src={mediaUrl(cover.file)} alt={cover.alt} />
-              <span className="media-attribution">{attributionOf(cover)}</span>
-            </div>
-          )}
-          <div className="eyebrow">
-            Guided journey · {DIFFICULTY_LABELS[journey.difficulty]} · ~
-            {String(journey.estimatedMinutes)} min · {String(stopCount)} stops
-          </div>
-          <h2 className="detail-title detail-title--hero">{journey.title}</h2>
-          <div className="connects">{journey.subtitle}</div>
-          <p className="note note--lede">{journey.description}</p>
-          <div className="journey-actions">
-            {!progress.started && progress.stop === 0 && !progress.finished && (
-              <button
-                type="button"
-                className="journey-btn journey-btn--primary"
-                onClick={beginFresh}
-              >
-                {t('journey.start')}
-              </button>
-            )}
-            {!progress.started && (progress.stop > 0 || progress.finished) && (
-              <>
-                <button
-                  type="button"
-                  className="journey-btn journey-btn--primary"
-                  onClick={travel(resume)}
-                >
-                  {t('journey.resume', { n: progress.stop + 1 })}
+        {!travelling && !progress.finished && (
+          <PageHero
+            eyebrow={`Guided journey · ${DIFFICULTY_LABELS[journey.difficulty]} · ~${String(
+              journey.estimatedMinutes,
+            )} min · ${String(stopCount)} stops`}
+            title={journey.title}
+            subtitle={journey.subtitle}
+            image={cover ? mediaUrl(cover.file) : undefined}
+            imageSrcSet={cover ? mediaSrcSet(cover.file) : undefined}
+            imageAlt={cover?.alt}
+            actions={
+              progress.stop === 0 ? (
+                <button type="button" className="uc-btn uc-btn--primary" onClick={beginFresh}>
+                  {t('journey.start')}
                 </button>
-                <button type="button" className="journey-btn" onClick={beginFresh}>
-                  {t('journey.startOver')}
-                </button>
-              </>
-            )}
-            {progress.finished && progress.started && (
-              <button type="button" className="journey-btn" onClick={reset}>
-                Reset journey
-              </button>
-            )}
-          </div>
-        </header>
+              ) : (
+                <>
+                  <button type="button" className="uc-btn uc-btn--primary" onClick={travel(resume)}>
+                    {t('journey.resume', { n: progress.stop + 1 })}
+                  </button>
+                  <button type="button" className="uc-btn uc-btn--ghost" onClick={beginFresh}>
+                    {t('journey.startOver')}
+                  </button>
+                </>
+              )
+            }
+          >
+            <p className="note note--lede journey-hero-lede">{journey.description}</p>
+          </PageHero>
+        )}
 
         {travelling || progress.finished ? (
           <div className="voyage" ref={courseRef}>
@@ -989,11 +970,6 @@ export function JourneyDetailPage() {
       journeyKey={journey.id}
       path={`/journeys/${journey.id}`}
       initialStop={Number.isFinite(stopParam) && stopParam >= 1 ? stopParam - 1 : undefined}
-      crumbs={[
-        { label: 'Home', to: '/' },
-        { label: 'Journeys', to: '/journeys' },
-        { label: journey.title },
-      ]}
     />
   );
 }

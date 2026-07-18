@@ -16,9 +16,9 @@ import {
   type Strait,
 } from '@fathom/data';
 
-import { Breadcrumbs } from '../components/Breadcrumbs';
+import { EditorialSection } from '../components/EditorialSection';
 import { EntityPills } from '../components/EntityPills';
-import { Section } from '../components/Section';
+import { PageHero } from '../components/PageHero';
 import { SeoTags } from '../components/SeoTags';
 import { StraitCard } from '../components/StraitCard';
 import { formatDateValue, formatLat, formatLon } from '../lib/format';
@@ -51,20 +51,19 @@ export function TagDetailPage() {
         description={tag.definition}
         path={`/tags/${tag.id}`}
       />
-      <Breadcrumbs items={[{ label: 'Home', to: '/' }, { label: tag.label }]} />
       <article className="detail">
-        <header className="strait-hero">
-          <div className="eyebrow">Tag</div>
-          <h2 className="detail-title detail-title--hero">{tag.label}</h2>
-          <p className="note note--lede">{tag.definition}</p>
-        </header>
-        <Section label={`${String(straits.length)} strait${straits.length === 1 ? '' : 's'}`}>
+        <PageHero eyebrow="Tag" title={tag.label} subtitle={tag.definition} />
+        <EditorialSection
+          eyebrow={`${String(straits.length)} strait${straits.length === 1 ? '' : 's'}`}
+          title={`Straits tagged ${tag.label}`}
+          wide
+        >
           <div className="grid">
             {straits.map((strait) => (
               <StraitCard key={strait.id} strait={strait} />
             ))}
           </div>
-        </Section>
+        </EditorialSection>
       </article>
     </>
   );
@@ -147,13 +146,12 @@ export function ComparePage() {
         description={`Side-by-side comparison of the ${left.name} and the ${right.name}.`}
         path={`/compare/${left.id}/${right.id}`}
       />
-      <Breadcrumbs items={[{ label: 'Home', to: '/' }, { label: 'Compare' }]} />
       <article className="detail">
-        <header className="strait-hero">
-          <div className="eyebrow">Compare straits</div>
-          <h2 className="detail-title detail-title--hero">
-            {left.name} <span className="compare-vs">vs</span> {right.name}
-          </h2>
+        <PageHero
+          eyebrow="Compare straits"
+          title={`${left.name} vs ${right.name}`}
+          subtitle={`${formatDistance(separation)} apart — two narrows, read side by side.`}
+        >
           <div className="compare-pickers">
             <select aria-label="First strait" value={left.id} onChange={pick('a')}>
               {straits.map((strait) => (
@@ -162,6 +160,9 @@ export function ComparePage() {
                 </option>
               ))}
             </select>
+            <span className="compare-vs" aria-hidden="true">
+              vs
+            </span>
             <select aria-label="Second strait" value={right.id} onChange={pick('b')}>
               {straits.map((strait) => (
                 <option key={strait.id} value={strait.id}>
@@ -170,11 +171,12 @@ export function ComparePage() {
               ))}
             </select>
           </div>
-          <div className="connects">{formatDistance(separation)} apart</div>
-        </header>
-        <div className="compare-grid">
-          <CompareColumn strait={left} />
-          <CompareColumn strait={right} />
+        </PageHero>
+        <div className="strait-onward reveal">
+          <div className="compare-grid">
+            <CompareColumn strait={left} />
+            <CompareColumn strait={right} />
+          </div>
         </div>
       </article>
     </>
@@ -240,12 +242,13 @@ export function QuizPage() {
         description="Test your knowledge of the world's straits."
         path="/quiz"
       />
-      <Breadcrumbs items={[{ label: 'Home', to: '/' }, { label: 'Quiz' }]} />
       <article className="detail">
-        <header className="strait-hero">
-          <div className="eyebrow">Quiz</div>
-          <h2 className="detail-title detail-title--hero">Know your narrows</h2>
-          <div className="pills" style={{ margin: '8px 0 10px' }}>
+        <PageHero
+          eyebrow="Academy · Quiz"
+          title="Know your narrows"
+          subtitle="A quiz drawn from the charts themselves — pick a tier and see how many channels you can call. Never the same twice."
+        >
+          <div className="pills quiz-tiers">
             {(Object.keys(TIERS) as QuizTier[]).map((key) => (
               <button
                 key={key}
@@ -261,96 +264,98 @@ export function QuizPage() {
               </button>
             ))}
           </div>
-          <div className="connects">
-            {!question
-              ? `Final score: ${String(score)} / ${String(quiz.length)}`
-              : `Question ${String(index + 1)} of ${String(quiz.length)} — score ${String(score)}`}
-          </div>
-        </header>
+        </PageHero>
 
-        {question ? (
-          <div className="quiz-panel">
-            <p className="quiz-prompt">{question.prompt}</p>
-            <div className="quiz-options">
-              {question.options.map((option, index) => {
-                const state =
-                  picked === null
-                    ? ''
-                    : option === question.answer
-                      ? ' quiz-option--correct'
-                      : option === picked
-                        ? ' quiz-option--wrong'
-                        : '';
-                return (
+        <div className="strait-onward reveal">
+          <div className="geo-label quiz-status">
+            {!question
+              ? `Final score — ${String(score)} of ${String(quiz.length)}`
+              : `Question ${String(index + 1)} of ${String(quiz.length)} · ${String(score)} correct`}
+          </div>
+          {question ? (
+            <div className="quiz-panel">
+              <p className="quiz-prompt">{question.prompt}</p>
+              <div className="quiz-options">
+                {question.options.map((option, index) => {
+                  const state =
+                    picked === null
+                      ? ''
+                      : option === question.answer
+                        ? ' quiz-option--correct'
+                        : option === picked
+                          ? ' quiz-option--wrong'
+                          : '';
+                  return (
+                    <button
+                      key={option}
+                      type="button"
+                      className={`quiz-option${state}`}
+                      disabled={picked !== null}
+                      onClick={() => {
+                        setPicked(option);
+                        if (option === question.answer) setScore((s) => s + 1);
+                      }}
+                    >
+                      <i className="quiz-letter">{'ABCD'[index]}</i>
+                      {option}
+                      {picked !== null && option === question.answer && (
+                        <span className="quiz-mark" aria-hidden="true">
+                          ✓
+                        </span>
+                      )}
+                      {picked === option && option !== question.answer && (
+                        <span className="quiz-mark" aria-hidden="true">
+                          ✕
+                        </span>
+                      )}
+                    </button>
+                  );
+                })}
+              </div>
+              {picked !== null && (
+                <div className="quiz-followup">
+                  <Link viewTransition to={`/straits/${question.straitId}`}>
+                    Read about this strait →
+                  </Link>
                   <button
-                    key={option}
                     type="button"
-                    className={`quiz-option${state}`}
-                    disabled={picked !== null}
+                    className="nav-random"
                     onClick={() => {
-                      setPicked(option);
-                      if (option === question.answer) setScore((s) => s + 1);
+                      setIndex((i) => i + 1);
+                      setPicked(null);
                     }}
                   >
-                    <i className="quiz-letter">{'ABCD'[index]}</i>
-                    {option}
-                    {picked !== null && option === question.answer && (
-                      <span className="quiz-mark" aria-hidden="true">
-                        ✓
-                      </span>
-                    )}
-                    {picked === option && option !== question.answer && (
-                      <span className="quiz-mark" aria-hidden="true">
-                        ✕
-                      </span>
-                    )}
+                    {index + 1 < quiz.length ? 'Next question' : 'See final score'}
                   </button>
-                );
-              })}
+                </div>
+              )}
             </div>
-            {picked !== null && (
+          ) : (
+            <div className="quiz-panel">
+              <p className="quiz-prompt">
+                {score === quiz.length
+                  ? 'A perfect chart — every channel called correctly.'
+                  : score >= quiz.length / 2
+                    ? 'A steady hand at the helm. The narrows reward another pass.'
+                    : 'The narrows are treacherous — explore the atlas and try again.'}
+              </p>
               <div className="quiz-followup">
-                <Link viewTransition to={`/straits/${question.straitId}`}>
-                  Read about this strait →
-                </Link>
+                <button type="button" className="nav-random" onClick={restart}>
+                  Play again
+                </button>
                 <button
                   type="button"
-                  className="nav-random"
+                  className="journey-btn"
                   onClick={() => {
-                    setIndex((i) => i + 1);
-                    setPicked(null);
+                    shareQuizResult(score, quiz.length);
                   }}
                 >
-                  {index + 1 < quiz.length ? 'Next question' : 'See final score'}
+                  Share result ↓
                 </button>
               </div>
-            )}
-          </div>
-        ) : (
-          <div className="quiz-panel">
-            <p className="quiz-prompt">
-              {score === quiz.length
-                ? 'A perfect chart — every channel called correctly.'
-                : score >= quiz.length / 2
-                  ? 'A steady hand at the helm. The narrows reward another pass.'
-                  : 'The narrows are treacherous — explore the atlas and try again.'}
-            </p>
-            <div className="quiz-followup">
-              <button type="button" className="nav-random" onClick={restart}>
-                Play again
-              </button>
-              <button
-                type="button"
-                className="journey-btn"
-                onClick={() => {
-                  shareQuizResult(score, quiz.length);
-                }}
-              >
-                Share result ↓
-              </button>
             </div>
-          </div>
-        )}
+          )}
+        </div>
       </article>
     </>
   );
@@ -408,17 +413,13 @@ export function TimelinePage() {
         description="Historical events in the world's straits, in order."
         path="/timeline"
       />
-      <Breadcrumbs items={[{ label: 'Home', to: '/' }, { label: 'Timeline' }]} />
       <article className="detail">
-        <header className="strait-hero">
-          <div className="eyebrow">Timeline</div>
-          <h2 className="detail-title detail-title--hero">History in the narrows</h2>
-          <p className="note note--lede">
-            Every event the atlas records, in chronological order — each grounded in its cited
-            sources.
-          </p>
-        </header>
-        <ol className="timeline">
+        <PageHero
+          eyebrow="Timeline"
+          title="History in the narrows"
+          subtitle="Every event the atlas records, in chronological order — each grounded in its cited sources."
+        />
+        <ol className="timeline reveal">
           {events.map((event) => (
             <li key={event.id} className="timeline-event">
               <div className="timeline-year">{formatDateValue(event.date)}</div>
